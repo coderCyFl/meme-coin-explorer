@@ -473,29 +473,47 @@
   }
 
   function diversifySetups(scored, n = 6) {
+    // Hard diversify: ≥3 angles for 6 picks; max 1 per angle first, never pad same angle via catch-all.
+    const ANGLE_ORDER = ["accumulation", "rotation", "compression", "mean_reversion", "higher_lows", "relative"];
+    const HARD = 1; // first pass
+    const SOFT = 2; // only after every available angle has ≥1
     const setups = scored.filter((s) => !s.alreadyUp && !s.extended && s.setupScore >= 26)
       .sort((a, b) => b.setupScore - a.setupScore);
-    const out = [], used = new Set(), usedAngle = new Map();
-    const take = (pred, maxPerAngle = 2) => {
-      for (const s of setups) {
+    const out = [];
+    const used = new Set();
+    const usedAngle = new Map();
+    const angN = (a) => usedAngle.get(a) || 0;
+    const add = (s) => {
+      out.push(s);
+      used.add(s.symbol);
+      usedAngle.set(s.angle, angN(s.angle) + 1);
+    };
+
+    // Pass 1: one best coin per angle (preferred order)
+    for (const ang of ANGLE_ORDER) {
+      if (out.length >= n) break;
+      const s = setups.find((x) => !used.has(x.symbol) && x.angle === ang);
+      if (s) add(s);
+    }
+
+    // Pass 2: fill with unused angles first; only then allow 2nd of an angle (never 3+)
+    while (out.length < n) {
+      let next = setups.find((x) => !used.has(x.symbol) && angN(x.angle) === 0);
+      if (!next) next = setups.find((x) => !used.has(x.symbol) && angN(x.angle) < SOFT);
+      if (!next) break;
+      add(next);
+    }
+
+    // Pass 3: relax score gate, still enforce SOFT angle cap + chg24 < 8
+    if (out.length < n) {
+      const relaxed = scored
+        .filter((s) => (s.chg24 || 0) < 8)
+        .sort((a, b) => b.setupScore - a.setupScore);
+      for (const s of relaxed) {
         if (out.length >= n) break;
         if (used.has(s.symbol)) continue;
-        if (!pred(s)) continue;
-        const c = usedAngle.get(s.angle) || 0;
-        if (c >= maxPerAngle) continue;
-        out.push(s); used.add(s.symbol); usedAngle.set(s.angle, c + 1);
-      }
-    };
-    take((s) => s.angle === "accumulation" || s.angle === "mean_reversion", 2);
-    take((s) => s.angle === "rotation", 2);
-    take((s) => s.angle === "compression", 1);
-    take((s) => s.angle === "higher_lows" || s.angle === "relative", 1);
-    take(() => true, 3);
-    if (out.length < n) {
-      for (const s of scored.sort((a, b) => b.setupScore - a.setupScore)) {
-        if (out.length >= n) break;
-        if (used.has(s.symbol) || (s.chg24 || 0) >= 8) continue;
-        out.push(s); used.add(s.symbol);
+        if (angN(s.angle) >= SOFT) continue;
+        add(s);
       }
     }
     return out.slice(0, n);

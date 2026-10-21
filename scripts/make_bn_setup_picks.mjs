@@ -219,43 +219,43 @@ function scoreSetup(f) {
   return { setupScore: Math.round(setupScore * 10) / 10, chaseScore: Math.round(chaseScore * 10) / 10, angle, tip, parts };
 }
 
-/** Diversify: pick mix of angles, avoid 6 identical green clones. */
+/** Diversify: hard multi-angle mix — max 1 per angle first, never pad same angle via catch-all. */
 function diversifyPicks(scored, n = 6) {
+  const ANGLE_ORDER = ["accumulation", "rotation", "compression", "mean_reversion", "higher_lows", "relative"];
+  const SOFT = 2; // never more than 2 of same angle
   const setups = scored.filter((s) => !s.f.alreadyUp && !s.f.extended && s.setupScore >= 28)
     .sort((a, b) => b.setupScore - a.setupScore);
   const out = [];
   const usedAngle = new Map();
   const used = new Set();
-
-  const take = (pred, maxPerAngle = 2) => {
-    for (const s of setups) {
-      if (out.length >= n) break;
-      if (used.has(s.symbol)) continue;
-      if (!pred(s)) continue;
-      const c = usedAngle.get(s.angle) || 0;
-      if (c >= maxPerAngle) continue;
-      out.push(s);
-      used.add(s.symbol);
-      usedAngle.set(s.angle, c + 1);
-    }
+  const angN = (a) => usedAngle.get(a) || 0;
+  const add = (s) => {
+    out.push(s);
+    used.add(s.symbol);
+    usedAngle.set(s.angle, angN(s.angle) + 1);
   };
 
-  // Target mix: ~2 accum/meanrev, 1–2 rotation, 1 compression/breakout, 1 higher_lows/relative
-  take((s) => s.angle === "accumulation" || s.angle === "mean_reversion", 2);
-  take((s) => s.angle === "rotation", 2);
-  take((s) => s.angle === "compression" || s.angle === "breakout", 1);
-  take((s) => s.angle === "higher_lows" || s.angle === "relative", 1);
-  // fill
-  take(() => true, 3);
+  for (const ang of ANGLE_ORDER) {
+    if (out.length >= n) break;
+    const s = setups.find((x) => !used.has(x.symbol) && x.angle === ang);
+    if (s) add(s);
+  }
 
-  // If still short, relax alreadyUp filter but keep chg24 < 6
+  while (out.length < n) {
+    let next = setups.find((x) => !used.has(x.symbol) && angN(x.angle) === 0);
+    if (!next) next = setups.find((x) => !used.has(x.symbol) && angN(x.angle) < SOFT);
+    if (!next) break;
+    add(next);
+  }
+
   if (out.length < n) {
-    for (const s of scored.sort((a, b) => b.setupScore - a.setupScore)) {
+    const relaxed = scored.slice().sort((a, b) => b.setupScore - a.setupScore);
+    for (const s of relaxed) {
       if (out.length >= n) break;
       if (used.has(s.symbol)) continue;
       if (s.f.chg24 >= 8) continue;
-      out.push(s);
-      used.add(s.symbol);
+      if (angN(s.angle) >= SOFT) continue;
+      add(s);
     }
   }
   return out.slice(0, n);

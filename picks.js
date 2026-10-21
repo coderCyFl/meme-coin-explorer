@@ -314,7 +314,6 @@
       pb.append(el("tr", { class: "cardish", onclick: () => showDetail(x) },
         el("td", { "data-label": "幣" }, el("div", { class: "tok" }, el("div", {}, el("div", { class: "nm", text: x.e.name }), el("div", { class: "sy", text: `$${x.e.symbol} · ${x.e.chain}` })))),
         el("td", { "data-label": "批次" }, el("div", { text: x.b.id }), el("div", { class: "muted", text: localTime(x.e.created_at) })),
-        el("td", { class: "num", "data-label": "信心", title: `模型 ${x.e.model_score} → 信心 ${x.e.conviction}` }, el("b", { text: x.e.conviction ?? x.e.model_score })),
         el("td", { class: "num", "data-label": "推薦價", text: price(x.e.entry_price_usd) }),
         el("td", { class: "num", "data-label": "而家", text: x.li.state === "live" ? price(x.li.price) : x.li.state === "dead" ? "–" : "…" }),
         retTd,
@@ -383,9 +382,17 @@
         ? `Binance OHLCV · ${ev.symbol || e.pair_address || e.symbol || ""} · ${ev.note || "多角度留意盤（唔係 X 熱度）"}`
         : "Binance 盤 · 無 X 證據欄")
       : `近 24h ${fmtInt(ev.x_last24h)} 則 vs 之前每日 ${fmtInt(ev.x_prior_daily_avg)} · 近 6h ${ev.x_last6h ?? "–"} vs 前 6h ${ev.x_prev6h ?? "–"} · 7 日共 ${fmtInt(ev.x_7d_total)} · cashtag 樣本 ${(ev.cashtag_sample && ev.cashtag_sample.posts) || 0} 則 / ${(ev.cashtag_sample && ev.cashtag_sample.unique_authors) || 0} 人 · 查詢：${ev.x_count_query || "–"}`;
-    const scoreLine = Object.keys(parts).length
-      ? `${e.model_score}/100${e.conviction != null ? ` → 信心 ${e.conviction}` : ""} · ` + Object.entries(parts).map(([k, v]) => `${k} ${v}`).join(", ")
-      : `${e.model_score}/100${e.conviction != null ? ` → 信心 ${e.conviction}` : ""}`;
+    const angle = e.angle || snap.angle || "";
+    const angleLabel = ANGLE_LABEL[angle] || angle || "留意盤";
+    // Confidence / score_parts hidden by default (user hates score walls); obscure expand only
+    const geekBits = [];
+    if (e.model_score != null) geekBits.push("model " + e.model_score);
+    if (Object.keys(parts).length) geekBits.push(Object.entries(parts).map(([k, v]) => k + " " + v).join(", "));
+    const geekDetails = geekBits.length
+      ? el("details", { class: "sc-details geek-score" },
+          el("summary", { class: "muted tiny", text: "技術分數（可略）" }),
+          el("div", { class: "muted tiny", text: geekBits.join(" · ") }))
+      : "";
     d.append(
       el("h3", { text: `${e.type === "buy" ? "🟢 買入推薦" : "🔴 避過"}：${e.name} ($${e.symbol}) · ${e.id}` }),
       el("p", { class: "rationale", text: e.rationale }),
@@ -394,9 +401,10 @@
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
         el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 SOL $${x.b.benchmarks?.SOL?.price_usd ?? "?"}` }),
         el("div", { text: "入場快照" }), el("div", { text: `流動性 ${money(snap.liquidity_usd)} · 24h 成交 ${money(snap.volume24h_usd)} · 市值 ${money(snap.market_cap_usd)} · 年齡 ${ageH} · 24h ${pct(snap.chg24h_pct)}` }),
-        el("div", { text: "模型分數" }), el("div", { text: scoreLine }),
+        el("div", { text: "角度" }), el("div", { text: angleLabel + (e.tip ? " · " + e.tip : "") }),
         el("div", { text: "旗標" }), el("div", { text: (e.flags || []).join(" · ") || "無" }),
         el("div", { text: bnEv ? "證據" : "X 證據" }), el("div", { text: evidenceText })),
+      geekDetails,
       el("div", {}, (ev.posts || []).map((u) => safeUrl(u) ? [el("a", { href: safeUrl(u), target: "_blank", rel: "noopener nofollow", text: "X 帖 ↗" }), " "] : "")));
   }
 
@@ -716,7 +724,7 @@
           chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, url: e.url,
         }); } },
           el("b", { text: "$" + e.symbol }), " ", el("span", { class: "muted", text: e.name + " · " + e.chain }),
-          el("div", { class: "muted", text: "信心 " + (e.conviction ?? e.model_score) })));
+          el("div", { class: "muted", text: (e.tip || e.rationale || "").slice(0, 48) || (ANGLE_LABEL[e.angle] || "留意盤") })));
       }
       $("allinPickCancel").onclick = () => { dlg.close(); resolve(null); };
       dlg.onclose = () => {};

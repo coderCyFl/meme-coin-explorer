@@ -13,3 +13,8 @@
 
 ## QA gate
 Local `node --check`, http.server, headless Chrome asserts ≥6 setup picks ≠ top gainers, logos, buy→portfolio live mark — before push.
+
+## QA batch-003 fixes
+- `diversifySetups` / `diversifyPicks`: hard 1-per-angle first pass; soft max 2; removed catch-all `take(() => true, 3)` that refilled same angles.
+- Leverage copy unified to code max **50x** (risk tiers still 3 / 10 / 50).
+- Confidence column + default `score_parts` wall removed; geek scores only behind obscure expand.
