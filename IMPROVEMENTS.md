@@ -18,3 +18,9 @@ Local `node --check`, http.server, headless Chrome asserts ≥6 setup picks ≠ 
 - `diversifySetups` / `diversifyPicks`: hard 1-per-angle first pass; soft max 2; removed catch-all `take(() => true, 3)` that refilled same angles.
 - Leverage copy unified to code max **50x** (risk tiers still 3 / 10 / 50).
 - Confidence column + default `score_parts` wall removed; geek scores only behind obscure expand.
+
+## QA UX (user-angle) + batch-004
+- **Glance PnL**: `#pfGlance` + home `simplePfMini` show 總資產 / 總盈虧$+％ / 現金 / 持倉 at a glance; live green/red; flash on equity tick.
+- **Spot vs lev**: buy modal big 「現貨」「槓桿」mode cards + risk note; holdings sections/badges color-coded; lev shows Nx + 爆倉價.
+- **Light feedback**: fill toast (ok/lev), portfolio highlight + row pulse after 落倉, subtle card fill-pulse; tick flash kept; not noisy.
+- **batch-004**: regenerated via `make_bn_setup_picks.mjs` with 1-per-angle first / max 2 soft (4 unique angles on this run).

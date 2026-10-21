@@ -486,6 +486,7 @@
   };
   let P = pf.load();
   let pfMode = "all"; // spot | lev | all — portfolio section filter
+  let _lastEquity = null;
   const posKey = (chain, pair) => chain + ":" + pair;
   const levKey = () => "L" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 
@@ -575,22 +576,36 @@
         co.hidden = false; co.className = "risk-callout" + (hot ? " hot" : ""); co.textContent = text;
       };
 
-      document.querySelectorAll("#tradeModeRow .segbtn").forEach((b) => {
-        b.classList.toggle("active", b.dataset.trademode === mode);
+      const paintModeCards = () => {
+        document.querySelectorAll("#tradeModeRow .mode-card").forEach((b) => {
+          b.classList.toggle("active", b.dataset.trademode === mode);
+        });
+        const note = $("tradeModeRiskNote");
+        if (note) {
+          note.textContent = mode === "lev"
+            ? "🟠 槓桿：保證金可歸零 · 假錢可試 · 真錢唔好亂開"
+            : "🟢 現貨：最多蝕晒本金 · 冇爆倉價";
+          note.className = "mode-risk-note muted" + (mode === "lev" ? " lev" : " spot");
+        }
+        $("tradeLevRow").hidden = mode !== "lev";
+        $("tradeAmtLabel").textContent = mode === "lev" ? "保證金 (USD)" : label;
+        $("tradeSimNote").textContent = mode === "lev"
+          ? "💥 槓桿模擬：假錢儘管試大；真錢唔好咁玩。保證金可以歸零。"
+          : "🧪 現貨模擬。假錢可以落大注；真錢請當娛樂。";
+        const ok = $("tradeOk");
+        if (ok) {
+          ok.classList.toggle("lev-ok", mode === "lev");
+          ok.textContent = mode === "lev" ? "確認開槓桿" : (okLabel || "確認落倉");
+        }
+      };
+      document.querySelectorAll("#tradeModeRow .mode-card").forEach((b) => {
         b.onclick = () => {
           mode = b.dataset.trademode;
-          if (mode === "lev" && riskId === "safe") {
-            // allow but warn
-          }
-          document.querySelectorAll("#tradeModeRow .segbtn").forEach((x) => x.classList.toggle("active", x === b));
-          $("tradeLevRow").hidden = mode !== "lev";
-          $("tradeAmtLabel").textContent = mode === "lev" ? "保證金 (USD)" : label;
-          $("tradeSimNote").textContent = mode === "lev"
-            ? "💥 槓桿模擬：假錢儘管試大；真錢唔好咁玩。"
-            : "🧪 現貨模擬。假錢可以落大注。";
+          paintModeCards();
           upd();
         };
       });
+      paintModeCards();
       $("tradeLev").onchange = () => { lev = parseInt($("tradeLev").value, 10) || risk().defaultLev; upd(); };
       inp.value = value;
       const q = $("tradeQuick"); q.textContent = "";
@@ -1016,16 +1031,16 @@
       if (!res) return;
       if (res.mode === "lev") {
         await doOpenLev(info, li, res.amt, res.lev);
-        toast(`已開 ${res.lev}x $${info.symbol}，保證金 ${money2(res.amt)}`);
-        floatPop("🪙 +" + res.lev + "x"); pfMode = "lev";
+        toast(`已開槓桿 ${res.lev}x $${info.symbol} · 保證金 ${money2(res.amt)}`, "lev");
+        floatPop((res.lev || "") + "x"); pfMode = "lev";
       } else {
         await doBuySpot(info, li, res.amt);
-        toast(`已現貨落倉 ${money2(res.amt)} $${info.symbol}`);
-        floatPop("🪙"); pfMode = "spot";
+        toast(`已現貨落倉 $${info.symbol} · ${money2(res.amt)}`, "ok");
+        floatPop("✓"); pfMode = "spot";
       }
       ensureLiveLoop(true);
-      if (location.hash.slice(1) !== "portfolio") location.hash = "portfolio";
-      else await renderPortfolio(true);
+      await renderPortfolio(true);
+      afterFillUX({ mode: res.mode, symbol: info.symbol });
     } catch (e) { alert(e.message); }
   }
 
@@ -1213,13 +1228,17 @@
       const u = v == null ? null : v - p.cost;
       const upct = u == null || !p.cost ? null : (u / p.cost) * 100;
       const flashCls = li.flash === "up" ? " tick-up" : li.flash === "down" ? " tick-down" : "";
-      hb.append(el("tr", { class: "cardish" + flashCls, "data-pos": k },
-        el("td", { "data-label": "幣" }, el("b", { text: "$" + p.symbol }), " ", el("span", { class: "muted", text: p.chain }), " ", srcBadge(p.chain, p.pair, li), li.state === "dead" ? el("span", { class: "pill dead" }, "已死") : ""),
+      hb.append(el("tr", { class: "cardish spot-row" + flashCls, "data-pos": k },
+        el("td", { "data-label": "幣" },
+          el("span", { class: "kind-badge spot", text: "現貨" }), " ",
+          el("b", { text: "$" + p.symbol }), " ", srcBadge(p.chain, p.pair, li),
+          li.state === "dead" ? el("span", { class: "pill dead" }, "已死") : "",
+          u != null ? el("div", { class: "pnl-glance " + cls(u), text: (u >= 0 ? "+" : "") + money2(u) + " · " + (upct == null ? "" : pct(upct)) }) : ""),
         el("td", { class: "num", "data-label": "數量", text: p.qty.toLocaleString(undefined, { maximumFractionDigits: 2 }) }),
         el("td", { class: "num", "data-label": "入場", text: price(p.cost / p.qty) }), el("td", { class: "num", "data-label": "成本", text: money2(p.cost) }),
         el("td", { class: "num live-px", "data-label": "而家", text: px == null ? "…" : price(px) }), el("td", { class: "num", "data-label": "市值", text: v == null ? "…" : money2(v) }),
-        el("td", { class: "num " + cls(upct), "data-label": "浮盈虧%", text: upct == null ? "…" : pct(upct) }),
-        el("td", { class: "num " + cls(u), "data-label": "浮盈虧$", text: u == null ? "…" : money2(u) }),
+        el("td", { class: "num pnl-strong " + cls(upct), "data-label": "浮盈虧%", text: upct == null ? "…" : pct(upct) }),
+        el("td", { class: "num pnl-strong " + cls(u), "data-label": "浮盈虧$", text: u == null ? "…" : money2(u) }),
         el("td", { "data-label": "", class: "actions" }, el("button", { class: "cta", onclick: () => openSell(k) }, "平倉"), " ",
           el("button", { class: "cta primary", onclick: () => openBuy({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol, name: p.name }) }, "加倉"))));
     }
@@ -1235,16 +1254,20 @@
       const dropPct = px != null ? ((px / pos.entry - 1) * 100) : null;
       const toLiq = px != null ? ((px - liqPriceLong(pos.entry, pos.leverage)) / px * 100) : null;
       const flashClsL = li.flash === "up" ? " tick-up" : li.flash === "down" ? " tick-down" : "";
-      lb.append(el("tr", { class: "cardish" + flashClsL, "data-lev": id },
-        el("td", { "data-label": "幣" }, el("b", { text: "$" + pos.symbol }), " ", el("span", { class: "pill" }, "long"), " ", srcBadge(pos.chain, pos.pair, li),
-          toLiq != null ? el("div", { class: "dist" + (toLiq < 5 ? " hot" : ""), text: `距爆倉 ${toLiq.toFixed(1)}%` }) : ""),
+      const levPnlPct = m && dropPct != null ? dropPct * pos.leverage : null;
+      lb.append(el("tr", { class: "cardish lev-row" + flashClsL, "data-lev": id },
+        el("td", { "data-label": "幣" },
+          el("span", { class: "kind-badge lev", text: pos.leverage + "x" }), " ",
+          el("b", { text: "$" + pos.symbol }), " ", srcBadge(pos.chain, pos.pair, li),
+          m ? el("div", { class: "pnl-glance " + cls(m.unreal), text: (m.unreal >= 0 ? "+" : "") + money2(m.unreal) + (levPnlPct == null ? "" : " · " + pct(levPnlPct)) }) : "",
+          toLiq != null ? el("div", { class: "dist" + (toLiq < 5 ? " hot" : ""), text: `爆倉價 ${price(liqPriceLong(pos.entry, pos.leverage))} · 距 ${toLiq.toFixed(1)}%` }) : el("div", { class: "dist", text: "爆倉價 " + price(liqPriceLong(pos.entry, pos.leverage)) })),
         el("td", { class: "num", "data-label": "倍數", text: pos.leverage + "x" }),
         el("td", { class: "num", "data-label": "保證金", text: money2(pos.margin) }),
         el("td", { class: "num", "data-label": "名義", text: money2(pos.notional) }),
         el("td", { class: "num", "data-label": "入場", text: price(pos.entry) }),
         el("td", { class: "num live-px", "data-label": "標記", text: px == null ? "…" : price(px) }),
         el("td", { class: "num neg", "data-label": "爆倉價", text: price(liqPriceLong(pos.entry, pos.leverage)) }),
-        el("td", { class: "num " + cls(m?.unreal), "data-label": "浮盈虧", text: m ? `${money2(m.unreal)} (${dropPct == null ? "" : pct(dropPct * pos.leverage)})` : "…" }),
+        el("td", { class: "num pnl-strong " + cls(m?.unreal), "data-label": "浮盈虧", text: m ? `${money2(m.unreal)} (${levPnlPct == null ? "" : pct(levPnlPct)})` : "…" }),
         el("td", { class: "num " + cls(m?.equity - pos.margin), "data-label": "倉權益", text: m ? money2(m.equity) : "…" }),
         el("td", { "data-label": "", class: "actions" }, el("button", { class: "cta", onclick: () => closeLev(id) }, "平倉"))));
     }
@@ -1264,25 +1287,51 @@
     const st = $("pfStats"); st.textContent = "";
     const stat = (k, v, s, c = "") => el("div", { class: "stat" }, el("div", { class: "k", text: k }), el("div", { class: "v " + c, text: v }), s ? el("div", { class: "s", text: s }) : "");
     renderAllinChrome(spotValue, levEquity);
+    const spotN = Object.keys(P.positions).length, levN = Object.keys(P.levPositions).length;
+    // Glance strip (portfolio + home mini)
+    const setTxt = (id, t) => { const n = $(id); if (n) n.textContent = t; };
+    setTxt("pgEquity", money2(equity));
+    setTxt("pgEquitySub", "起始 " + money2(P.start));
+    setTxt("pgPnl", (total >= 0 ? "+" : "") + money2(total));
+    setTxt("pgPnlPct", pct(totalPct));
+    setTxt("pgCash", money2(P.cash));
+    setTxt("pgPos", String(spotN + levN));
+    setTxt("pgPosSub", `現貨 ${spotN} · 槓桿 ${levN}`);
+    const pgPnl = $("pgPnl"), pgPct = $("pgPnlPct");
+    if (pgPnl) pgPnl.className = "pg-v " + cls(total);
+    if (pgPct) pgPct.className = "pg-s " + cls(total);
+    if (_lastEquity != null && Math.abs(equity - _lastEquity) / Math.max(P.start, 1) >= 0.0005) {
+      flashGlance(equity >= _lastEquity ? "up" : "down");
+    }
+    _lastEquity = equity;
+
     const simpleSt = $("simplePfStats");
     if (simpleSt) {
       simpleSt.textContent = "";
-      const spotN = Object.keys(P.positions).length, levN = Object.keys(P.levPositions).length;
       const sstat = (k, v, s, c = "") => el("div", { class: "stat" }, el("div", { class: "k", text: k }), el("div", { class: "v " + c, text: v }), s ? el("div", { class: "s", text: s }) : "");
       simpleSt.append(
         sstat("總資產", money2(equity), `起始 ${money2(P.start)}`),
-        sstat("總回報", pct(totalPct), money2(total), cls(total)),
+        sstat("總盈虧", (total >= 0 ? "+" : "") + money2(total), pct(totalPct), cls(total)),
         sstat("持倉", String(spotN + levN), `現貨 ${spotN} · 槓桿 ${levN}`),
         sstat("現金", money2(P.cash)));
-      const mini = $("simplePfMini");
-      if (mini) {
-        mini.textContent = "";
-        mini.append(el("a", { href: "#portfolio", class: "simple-pf-link", text: `模擬倉 ${money2(equity)} · 回報 ${pct(totalPct)} →` }));
-      }
+    }
+    const mini = $("simplePfMini");
+    if (mini) {
+      mini.textContent = "";
+      mini.className = "simple-pf-mini pf-glance mini";
+      const cell = (k, v, s, c = "") => el("a", { href: "#portfolio", class: "pg-cell " + c },
+        el("div", { class: "pg-k", text: k }),
+        el("div", { class: "pg-v", text: v }),
+        s ? el("div", { class: "pg-s", text: s }) : "");
+      mini.append(
+        cell("總資產", money2(equity), "睇倉 →"),
+        cell("總盈虧", (total >= 0 ? "+" : "") + money2(total), pct(totalPct), cls(total)),
+        cell("現金", money2(P.cash), "可落倉"),
+        cell("持倉", String(spotN + levN), `現 ${spotN} · 槓 ${levN}`));
     }
     st.append(
       stat("總資產", money2(equity), `起始 ${money2(P.start)}`),
-      stat("總回報", `${money2(total)} (${pct(totalPct)})`, P.firstBuyAt ? `由 ${localTime(P.firstBuyAt)}` : "未開倉", cls(total)),
+      stat("總盈虧", `${money2(total)} (${pct(totalPct)})`, P.firstBuyAt ? `由 ${localTime(P.firstBuyAt)}` : "未開倉", cls(total)),
       stat("現金", money2(P.cash)),
       stat("現貨市值", money2(spotValue), `浮盈虧 ${money2(unrealSpot)}`, cls(unrealSpot)),
       stat("槓桿倉權益", money2(levEquity), `保證金 ${money2(levMargin)} · 浮 ${money2(levUnreal)}`, cls(levUnreal)),
@@ -1427,9 +1476,51 @@
     _lastAllinPct = pctVal;
   }
 
-  function toast(msg) {
-    const t = el("div", { class: "toast pop", text: msg, style: "position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid #334155;padding:10px 16px;border-radius:10px;z-index:50;max-width:90%" });
-    document.body.append(t); setTimeout(() => t.remove(), 3500);
+  function toast(msg, kind = "ok") {
+    const t = el("div", { class: "toast pop toast-" + kind, text: msg });
+    document.body.append(t); setTimeout(() => t.remove(), 3200);
+  }
+  function flashGlance(dir) {
+    const g = $("pfGlance"); if (!g || reduceMotion()) return;
+    g.classList.remove("flash-up", "flash-down");
+    void g.offsetWidth;
+    g.classList.add(dir === "up" ? "flash-up" : "flash-down");
+    setTimeout(() => g.classList.remove("flash-up", "flash-down"), 700);
+  }
+  function pulseEl(node, clsName = "just-filled") {
+    if (!node || reduceMotion()) return;
+    node.classList.remove(clsName);
+    void node.offsetWidth;
+    node.classList.add(clsName);
+    setTimeout(() => node.classList.remove(clsName), 1200);
+  }
+  function afterFillUX({ mode, symbol }) {
+    const tab = document.querySelector('.tab[data-view="portfolio"]');
+    if (tab) coinPopEl(tab);
+    const cards = document.querySelectorAll(".simple-card");
+    for (const c of cards) {
+      const nm = c.querySelector(".nm");
+      if (nm && nm.textContent === symbol) { pulseEl(c, "fill-pulse"); break; }
+    }
+    const highlight = () => {
+      const glance = $("pfGlance");
+      if (glance) {
+        glance.classList.add("pf-highlight");
+        setTimeout(() => glance.classList.remove("pf-highlight"), 1600);
+      }
+      const sel = mode === "lev" ? "#levBody tr.lev-row" : "#holdBody tr.spot-row";
+      const rows = document.querySelectorAll(sel);
+      for (const tr of rows) {
+        if (tr.textContent && tr.textContent.includes("$" + symbol)) {
+          pulseEl(tr, "just-filled");
+          try { tr.scrollIntoView({ block: "nearest", behavior: "smooth" }); } catch (_) {}
+          break;
+        }
+      }
+    };
+    if ((location.hash || "").slice(1) !== "portfolio") location.hash = "portfolio";
+    // Wait for renderPortfolio / view switch to paint rows
+    setTimeout(highlight, 220);
   }
 
   // ---------- 重點新聞 ----------

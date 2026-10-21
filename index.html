@@ -175,7 +175,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
     </div>
     <div id="simpleCards" class="simple-cards"></div>
-    <div class="simple-pf-mini" id="simplePfMini"></div>
+    <div class="simple-pf-mini pf-glance mini" id="simplePfMini" aria-live="polite"></div>
   </section>
 
   <details class="panel chase-panel simple-only" id="chasePanel">
@@ -342,16 +342,22 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
       <p class="muted risk-hint" id="riskHint">假錢儘管試大；真錢唔好咁玩。進取檔預設最多 10x。</p>
     </div>
+    <div class="pf-glance" id="pfGlance" aria-live="polite">
+      <div class="pg-cell" data-k="equity"><div class="pg-k">總資產</div><div class="pg-v" id="pgEquity">—</div><div class="pg-s" id="pgEquitySub"></div></div>
+      <div class="pg-cell" data-k="pnl"><div class="pg-k">總盈虧</div><div class="pg-v" id="pgPnl">—</div><div class="pg-s" id="pgPnlPct"></div></div>
+      <div class="pg-cell" data-k="cash"><div class="pg-k">現金</div><div class="pg-v" id="pgCash">—</div><div class="pg-s">可落倉</div></div>
+      <div class="pg-cell" data-k="pos"><div class="pg-k">持倉</div><div class="pg-v" id="pgPos">—</div><div class="pg-s" id="pgPosSub"></div></div>
+    </div>
     <div class="stats" id="pfStats"></div>
 
-    <div class="seg" role="tablist" aria-label="倉位類型">
-      <button type="button" class="segbtn active" data-pfmode="spot">現貨 Spot</button>
-      <button type="button" class="segbtn" data-pfmode="lev">槓桿 Leverage</button>
+    <div class="seg pf-mode-seg" role="tablist" aria-label="倉位類型">
+      <button type="button" class="segbtn active" data-pfmode="spot">🟢 現貨</button>
+      <button type="button" class="segbtn" data-pfmode="lev">🟠 槓桿</button>
       <button type="button" class="segbtn" data-pfmode="all">全部</button>
     </div>
 
-    <div id="spotSection">
-      <h3>現貨持倉 <span class="en">Spot · 最多蝕晒本金</span></h3>
+    <div id="spotSection" class="pos-section spot-section">
+      <h3><span class="kind-badge spot">現貨</span> 持倉 <span class="en">Spot · 最多蝕晒本金</span></h3>
       <div class="tablewrap"><table><thead><tr>
         <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
         <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
@@ -359,8 +365,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <div class="empty" id="holdEmpty">未有現貨。去「AI 揀幣」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
     </div>
 
-    <div id="levSection" hidden>
-      <h3>槓桿倉（逐倉模擬） <span class="en">Isolated · 可爆倉</span></h3>
+    <div id="levSection" class="pos-section lev-section" hidden>
+      <h3><span class="kind-badge lev">槓桿</span> 倉（逐倉模擬） <span class="en">Isolated · 可爆倉</span></h3>
       <p class="muted lev-note">名義倉 = 保證金 × 倍數。浮虧 ≈ 保證金 90% → 爆倉，保證金歸零。v1 未計資金費（真實 perps 有 funding）。</p>
       <div class="tablewrap"><table><thead><tr>
         <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
@@ -523,12 +529,18 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <form method="dialog" id="tradeForm">
     <h3 id="tradeTitle">模擬交易</h3>
     <p class="muted" id="tradeInfo"></p>
-    <div id="tradeModeRow" class="mode-row" hidden>
-      <span class="muted">模式</span>
-      <div class="seg mini">
-        <button type="button" class="segbtn active" data-trademode="spot">現貨</button>
-        <button type="button" class="segbtn" data-trademode="lev">槓桿</button>
+    <div id="tradeModeRow" class="mode-row mode-cards-row" hidden>
+      <div class="mode-cards" role="group" aria-label="落倉模式">
+        <button type="button" class="mode-card active" data-trademode="spot">
+          <span class="mc-title">現貨</span>
+          <span class="mc-note">最多蝕晒本金 · 冇爆倉</span>
+        </button>
+        <button type="button" class="mode-card lev" data-trademode="lev">
+          <span class="mc-title">槓桿</span>
+          <span class="mc-note">可爆倉 · 保證金可歸零</span>
+        </button>
       </div>
+      <p class="mode-risk-note muted" id="tradeModeRiskNote">揀「現貨」較穩；「槓桿」假錢可試，真錢唔好亂開。</p>
     </div>
     <div id="tradeRiskRow" class="mode-row">
       <span class="muted">風險檔</span>

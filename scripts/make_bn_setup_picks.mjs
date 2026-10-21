@@ -334,13 +334,13 @@ async function main() {
   const hk = new Date(now.getTime() + 8 * 3600e3);
   const isoHK = hk.toISOString().replace("Z", "+08:00").replace(/\.\d{3}/, "");
   const day = isoHK.slice(0, 10).replace(/-/g, "");
-  const batchId = "batch-003";
+  const batchId = "batch-004";
 
   const btcPx = +tickers.get("BTCUSDT")?.lastPrice || btcDaily.at(-1)?.c;
   const solPx = +tickers.get("SOLUSDT")?.lastPrice;
 
   const entries = picks.map((p, i) => ({
-    id: `${day}-003-${p.base}`,
+    id: `${day}-004-${p.base}`,
     batch: batchId,
     type: "buy",
     created_at: isoHK,
@@ -384,7 +384,7 @@ async function main() {
   // avoid entries = chasing (label as avoid chase)
   for (const p of chasing) {
     entries.push({
-      id: `${day}-003-AVOID-${p.base}`,
+      id: `${day}-004-AVOID-${p.base}`,
       batch: batchId,
       type: "avoid",
       created_at: isoHK,
