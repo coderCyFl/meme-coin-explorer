@@ -54,7 +54,11 @@
 
   async function fetchPairs(list, force = false) {
     const byChain = new Map();
-    for (const { chain, pair } of list) { if (!byChain.has(chain)) byChain.set(chain, new Set()); byChain.get(chain).add(pair); }
+    for (const { chain, pair } of list) {
+      if (!chain || !pair || chain === "binance") continue;
+      if (!byChain.has(chain)) byChain.set(chain, new Set());
+      byChain.get(chain).add(pair);
+    }
     const jobs = [];
     for (const [chain, set] of byChain) {
       const a = [...set];
@@ -72,7 +76,14 @@
     const mark = window.MCE.live && window.MCE.live.getMark(chain, pair);
     if (mark && mark.dead) return { state: "dead", price: 0, liq: mark.liq || 0, p: mark.p, source: mark.source };
     if (mark && mark.price > 0) {
-      return { state: "live", price: mark.price, liq: mark.liq ?? (S.live.get(chain + ":" + pair)?.liquidity?.usd ?? 0), p: mark.p || S.live.get(chain + ":" + pair), source: mark.source, flash: mark._flash };
+      const dexLiq = S.live.get(chain + ":" + pair)?.liquidity?.usd ?? 0;
+      const liq = mark.source === "binance" ? (mark.liq || 1e12) : (mark.liq ?? dexLiq);
+      return { state: "live", price: mark.price, liq, p: mark.p || S.live.get(chain + ":" + pair), source: mark.source, flash: mark._flash };
+    }
+    if (chain === "binance") {
+      const row = window.MCE.live && window.MCE.live.board && window.MCE.live.board.get(pair);
+      if (row && row.price > 0) return { state: "live", price: row.price, liq: 1e12, source: "binance" };
+      return { state: "unknown" };
     }
     const k = chain + ":" + pair;
     if (!S.live.has(k)) return { state: "unknown" };
@@ -328,6 +339,23 @@
   }
 
   async function livePrice(chain, pair) {
+    if (chain === "binance") {
+      if (window.MCE.live) {
+        try { await window.MCE.live.ensureBoard(false); } catch {}
+        // Force sync so mark exists
+        const m = window.MCE.live.getMark("binance", pair);
+        if (m && m.price > 0) {
+          return { state: "live", price: m.price, liq: 1e12, source: "binance", p: null };
+        }
+        // Last resort REST via board seed
+        const rows = window.MCE.live.getBoardRows() || [];
+        const row = rows.find((r) => r.symbol === pair);
+        if (row && row.price > 0) {
+          return { state: "live", price: row.price, liq: 1e12, source: "binance", p: null };
+        }
+      }
+      throw new Error("暫時攞唔到 Binance 報價");
+    }
     await fetchPairs([{ chain, pair }], true);
     const li = liveInfo(chain, pair);
     if (li.state !== "live") throw new Error(li.state === "dead" ? "交易對已死或冇流動性，唔可以交易" : "暫時攞唔到報價");
@@ -438,8 +466,8 @@
     const fillPx = li.price * (1 + imp.impactPct / 100); // buy worse
     const qty = (usd - fee) / fillPx;
     const k = posKey(info.chain, info.pair);
-    const pos = P.positions[k] || { chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name, qty: 0, cost: 0 };
-    pos.qty += qty; pos.cost += usd; P.positions[k] = pos; P.cash -= usd;
+    const pos = P.positions[k] || { chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name, qty: 0, cost: 0, source: info.source || (info.chain === "binance" ? "binance" : "dex") };
+    pos.qty += qty; pos.cost += usd; pos.source = pos.source || info.source || (info.chain === "binance" ? "binance" : "dex"); P.positions[k] = pos; P.cash -= usd;
     P.trades.unshift({ t: new Date().toISOString(), kind: "spot", side: "BUY", chain: info.chain, pair: info.pair, symbol: info.symbol, price: fillPx, qty, usd, fee, pnl: null, leverage: null, impactPct: imp.impactPct });
     pf.save(P);
   }
@@ -786,9 +814,12 @@
       if (riskId === "allin") { await openAllinFlow(info); return; }
       const li = await livePrice(info.chain, info.pair);
       const defMode = riskId === "safe" ? "spot" : "spot";
+      const liqNote = info.chain === "binance" || li.source === "binance"
+        ? "來源 Binance 即時"
+        : `流動性 ${money(li.liq)}`;
       const res = await askTrade({
         title: `落倉 $${info.symbol}`,
-        info: `即時價 ${price(li.price)} · 流動性 ${money(li.liq)} · 現金 ${money2(P.cash)} · 檔：${risk().label}`,
+        info: `即時價 ${price(li.price)} · ${liqNote} · 現金 ${money2(P.cash)} · 檔：${risk().label}`,
         label: "落倉金額 (USD)",
         value: Math.min(Math.max(100, Math.round(P.cash * 0.1)), Math.floor(P.cash)),
         quick: [
@@ -1174,12 +1205,14 @@
       return;
     }
     for (const r of top) {
+      const img = safeUrl(r.img) || (window.MCE.iconUrl && window.MCE.iconUrl(r.img));
       box.append(el("div", { class: "hot-buy-row" },
         el("div", { class: "tok" },
+          img ? el("img", { src: img, alt: "", loading: "lazy", width: "36", height: "36", style: "border-radius:50%;object-fit:cover;background:#111" }) : el("span", { class: "bc-ph", text: "🪙" }),
           el("div", {}, el("div", { class: "nm", text: r.name }), el("div", { class: "sy", text: `$${r.sym} · ${r.chain}` }))),
         el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), text: pct(r.chg24) }),
         el("div", { class: "num", text: price(r.price) }),
-        el("button", { class: "cta primary sm", onclick: () => openBuy({ chain: r.chain, pair: r.pair, token: r.address, symbol: r.sym, name: r.name }) }, "落倉")
+        el("button", { class: "cta primary sm", onclick: () => openBuy({ chain: r.chain, pair: r.pair, token: r.address, symbol: r.sym, name: r.name, price: r.price }) }, "落倉")
       ));
     }
   }
@@ -1356,10 +1389,14 @@
     });
     if (view === "picks") {
       loadPicks(); loadNews();
+      if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
       if (window.MCE.ensureBrowse) window.MCE.ensureBrowse().then((rows) => renderHotBuys(rows));
       else renderHotBuys(window.MCE.getBrowseRows ? window.MCE.getBrowseRows() : []);
     }
-    if (view === "browse" && window.MCE.ensureBrowse) window.MCE.ensureBrowse();
+    if (view === "browse") {
+      if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
+      if (window.MCE.ensureBrowse) window.MCE.ensureBrowse();
+    }
     if (view === "portfolio") { renderPortfolio(true); ensureLiveLoop(true); }
     if (view === "news") loadNews();
     if (view === "explore" && window.MCE.ensureExplore) window.MCE.ensureExplore();

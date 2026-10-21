@@ -25,6 +25,19 @@
     return n;
   }
   const safeUrl = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch { return null; } };
+  /** Dex boosts sometimes return bare CMS ids; profiles/pairs often full URLs. */
+  function iconUrl(raw) {
+    if (!raw || typeof raw !== "string") return null;
+    const s = raw.trim();
+    if (!s) return null;
+    if (/^https?:\/\//i.test(s)) return safeUrl(s);
+    // bare cms id → CDN
+    if (/^[A-Za-z0-9_-]{8,}$/.test(s)) {
+      return safeUrl(`https://cdn.dexscreener.com/cms/images/${s}?width=64&height=64&fit=crop&quality=95&format=auto`);
+    }
+    return null;
+  }
+  const iconMap = new Map(); // chain:token -> icon url
   function money(v) {
     if (v == null || isNaN(v)) return "–";
     const a = Math.abs(v);
@@ -120,7 +133,12 @@
         const path = src === "profiles" ? "/token-profiles/latest/v1" : "/token-boosts/top/v1";
         const r = await cachedJson(API + path, { force });
         const list = Array.isArray(r.data) ? r.data : [];
-        for (const t of list) if (t.totalAmount) state.boosted.set(t.chainId + ":" + t.tokenAddress, t.totalAmount);
+        for (const t of list) {
+          const k = t.chainId + ":" + t.tokenAddress;
+          if (t.totalAmount) state.boosted.set(k, t.totalAmount);
+          const ic = iconUrl(t.icon);
+          if (ic) iconMap.set(k, ic);
+        }
         pairs = await resolvePairs(list, force);
       }
       state.rows = pairs.map(toRow);
@@ -142,7 +160,7 @@
       price: p.priceUsd ? parseFloat(p.priceUsd) : null, chg24: p.priceChange?.h24 ?? null, vol24, liq,
       mcap: p.marketCap ?? p.fdv ?? null, created: p.pairCreatedAt || null,
       age: p.pairCreatedAt ? Date.now() - p.pairCreatedAt : null, url: p.url,
-      img: p.info?.imageUrl || null, boost: state.boosted.get(addrKey) || p.boosts?.active || 0,
+      img: iconUrl(p.info?.imageUrl) || iconMap.get(addrKey) || null, boost: state.boosted.get(addrKey) || p.boosts?.active || 0,
     };
     r.flags = riskFlags(r);
     r.risk = r.flags.length;
@@ -295,7 +313,7 @@
     else {
       if (c.mentions_7d != null) {
         body.append(el("p", {}, el("b", { text: fmtInt(c.mentions_7d) }), " posts in ~7 days ", el("span", { class: "muted", text: `(query: ${c.count_query})` })));
-        if (Array.isArray(c.mentions_daily)) {
+        if (Array.isArray(c.mentions_daily) && c.mentions_daily.length && c.mentions_daily.some((n) => n > 0)) {
           const max = Math.max(1, ...c.mentions_daily);
           body.append(el("div", { class: "spark", title: "Posts per day, oldest → newest" }, c.mentions_daily.map((n) => el("i", { style: `height:${Math.max(2, (n / max) * 36)}px`, title: fmtInt(n) }))));
         }
@@ -327,7 +345,7 @@
       pair: p.pairAddress, price: p.priceUsd ? parseFloat(p.priceUsd) : null,
       chg24: p.priceChange?.h24 ?? null, vol24, liq,
       mcap: p.marketCap ?? p.fdv ?? null, url: p.url,
-      img: p.info?.imageUrl || null, boost: boostedMap.get(addrKey) || p.boosts?.active || 0,
+      img: iconUrl(p.info?.imageUrl) || iconMap.get(addrKey) || boostedMap.get(addrKey + ":icon") || null, boost: boostedMap.get(addrKey) || p.boosts?.active || 0,
     };
   }
   async function loadBrowse(force = false) {
@@ -346,12 +364,16 @@
       const tokens = [];
       const seenTok = new Set();
       for (const t of (Array.isArray(boostsR.data) ? boostsR.data : [])) {
-        if (t.totalAmount) boostedMap.set(t.chainId + ":" + t.tokenAddress, t.totalAmount);
         const k = t.chainId + ":" + t.tokenAddress;
+        if (t.totalAmount) boostedMap.set(k, t.totalAmount);
+        const ic = iconUrl(t.icon);
+        if (ic) { iconMap.set(k, ic); boostedMap.set(k + ":icon", ic); }
         if (!seenTok.has(k)) { seenTok.add(k); tokens.push({ chainId: t.chainId, tokenAddress: t.tokenAddress }); }
       }
       for (const t of (Array.isArray(profilesR.data) ? profilesR.data : [])) {
         const k = t.chainId + ":" + t.tokenAddress;
+        const ic = iconUrl(t.icon);
+        if (ic) { iconMap.set(k, ic); if (!boostedMap.has(k + ":icon")) boostedMap.set(k + ":icon", ic); }
         if (!seenTok.has(k)) { seenTok.add(k); tokens.push({ chainId: t.chainId, tokenAddress: t.tokenAddress }); }
       }
       let pairs = await resolvePairs(tokens, force);
@@ -425,12 +447,147 @@
     }
   }
 
+
+  // ---------- Binance 置頂 board ----------
+  function renderBnBoard(rows) {
+    const list = $("bnList"); if (!list) return;
+    const q = (($("bnFilter") && $("bnFilter").value) || "").trim().toLowerCase();
+    let data = rows || (window.MCE.live ? window.MCE.live.getBoardRows() : []);
+    if (q) data = data.filter((r) => (r.base || "").toLowerCase().includes(q) || (r.symbol || "").toLowerCase().includes(q));
+    // Prefer meme-ish first after majors? Keep curated order then volume
+    list.textContent = "";
+    if (!data.length) {
+      list.append(el("p", { class: "muted", text: "暫時冇 Binance 資料。撳 ↻ 或稍後再試。" }));
+      return;
+    }
+    for (const r of data) {
+      const flash = r._flash === "up" ? " tick-up" : r._flash === "down" ? " tick-down" : "";
+      list.append(el("article", { class: "browse-card bn-card" + flash, "data-bn": r.symbol },
+        el("div", { class: "bc-top" },
+          el("div", { class: "tok" },
+            el("span", { class: "bn-badge", text: "BN" }),
+            el("div", {},
+              el("div", { class: "nm", text: r.base || r.symbol }),
+              el("div", { class: "sy", text: (r.symbol || "") + " · Binance 現貨" })
+            )
+          ),
+          el("div", { class: "bc-px" },
+            el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
+            el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) })
+          )
+        ),
+        el("div", { class: "bc-meta" },
+          el("span", { "data-bn-vol": r.symbol, text: "24h額 " + money(r.volQuote) }),
+          el("span", { class: "pill", text: "CEX 即時" })
+        ),
+        el("div", { class: "bc-actions" },
+          el("button", { class: "cta primary", onclick: () => {
+            window.MCE.paper && window.MCE.paper.openBuy({
+              chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
+              symbol: r.base || r.symbol.replace(/USDT$/, ""), name: (r.base || "") + " (Binance)",
+              price: r.price, source: "binance",
+            });
+          } }, "落倉"),
+          el("a", { class: "cta", href: "https://www.binance.com/en/trade/" + encodeURIComponent((r.base || "") + "_USDT"), target: "_blank", rel: "noopener", text: "Binance ↗" })
+        )
+      ));
+    }
+    const meta = $("bnMeta");
+    if (meta) meta.textContent = `共 ${data.length} 組 USDT · Binance 公開 API · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`;
+  }
+
+  function paintBnStrip(rows) {
+    const box = $("bnStripList"); if (!box) return;
+    const data = (rows || (window.MCE.live ? window.MCE.live.getBoardRows() : [])).slice();
+    // Show a mix: majors first then top |chg| memes
+    const majors = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "DOGEUSDT", "PEPEUSDT", "SHIBUSDT", "BONKUSDT", "WIFUSDT", "PENGUUSDT", "TRUMPUSDT", "NEIROUSDT"];
+    const picked = [];
+    const seen = new Set();
+    for (const s of majors) {
+      const r = data.find((x) => x.symbol === s);
+      if (r) { picked.push(r); seen.add(s); }
+    }
+    const rest = data.filter((x) => !seen.has(x.symbol)).sort((a, b) => Math.abs(b.chg24 || 0) - Math.abs(a.chg24 || 0));
+    for (const r of rest) {
+      if (picked.length >= 12) break;
+      picked.push(r);
+    }
+    box.textContent = "";
+    for (const r of picked) {
+      box.append(el("button", {
+        type: "button", class: "bn-chip",
+        onclick: () => {
+          window.MCE.paper && window.MCE.paper.openBuy({
+            chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
+            symbol: r.base || r.symbol.replace(/USDT$/, ""), name: (r.base || "") + " (Binance)",
+            price: r.price, source: "binance",
+          });
+        },
+      },
+        el("b", { text: "$" + (r.base || "") }),
+        el("span", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
+        el("span", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) })
+      ));
+    }
+  }
+
+  function patchBnDom(boardMap) {
+    if (!boardMap) return;
+    for (const [sym, r] of boardMap) {
+      document.querySelectorAll(`[data-bn-price="${sym}"]`).forEach((n) => { n.textContent = price(r.price); });
+      document.querySelectorAll(`[data-bn-chg="${sym}"]`).forEach((n) => {
+        n.textContent = pct(r.chg24);
+        n.className = "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : "");
+      });
+      document.querySelectorAll(`[data-bn-vol="${sym}"]`).forEach((n) => { n.textContent = "24h額 " + money(r.volQuote); });
+    }
+  }
+
+  async function loadBinanceBoard(force = false) {
+    const meta = $("bnMeta");
+    if (meta) meta.textContent = "載入 Binance…";
+    try {
+      if (!window.MCE.live) throw new Error("live.js 未載入");
+      const rows = await window.MCE.live.ensureBoard(force);
+      renderBnBoard(rows);
+      paintBnStrip(rows);
+      // Keep WS alive even without positions
+      if (!window.MCE.live.running) {
+        window.MCE.live.start({ getPositions: () => (window.MCE.paper && window.MCE.paper.state ? (() => {
+          const P = window.MCE.paper.state();
+          return {
+            spot: Object.values(P.positions || {}).map((p) => ({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol })),
+            lev: Object.values(P.levPositions || {}).map((p) => ({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol })),
+          };
+        })() : { spot: [], lev: [] }) });
+      } else {
+        window.MCE.live.sync();
+      }
+      return rows;
+    } catch (e) {
+      console.error(e);
+      if (meta) meta.textContent = "Binance 載入失敗：" + e.message;
+      return [];
+    }
+  }
+
+  let bnTickBound = false;
+  function bindBnTicks() {
+    if (bnTickBound || !window.MCE.live) return;
+    bnTickBound = true;
+    window.MCE.live.onTick((_marks, boardMap) => {
+      patchBnDom(boardMap || window.MCE.live.board);
+      // Soft-refresh strip numbers only
+    });
+  }
+
   // ---------- wire up ----------
   let exploreLoaded = false;
-  window.MCE = { el, money, price, pct, age, fmtInt, localTime, safeUrl, cachedJson, API,
+  window.MCE = { el, money, price, pct, age, fmtInt, localTime, safeUrl, iconUrl, cachedJson, API,
     ensureExplore() { if (!exploreLoaded) { exploreLoaded = true; loadBuzz().then(() => load()); } },
     ensureBrowse() { return browse.loaded && !arguments[0] ? Promise.resolve(browse.rows) : loadBrowse(!!arguments[0]); },
     loadBrowse, renderBrowse, getBrowseRows: () => browse.rows,
+    loadBinanceBoard, renderBnBoard, paintBnStrip,
   };
   function boot() {
     document.querySelectorAll("th[data-k]").forEach((th) => th.addEventListener("click", () => {
@@ -448,7 +605,14 @@
     $("drawer").addEventListener("click", (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("drawer").hidden = true; });
     if ((location.hash || "#picks").slice(1) === "explore") { exploreLoaded = true; loadBuzz().then(() => load()); }
-    if ((location.hash || "").slice(1) === "browse") loadBrowse(false);
+    const hash = (location.hash || "#picks").slice(1);
+    if (hash === "browse") {
+      loadBinanceBoard(false).then(() => bindBnTicks());
+      loadBrowse(false);
+    } else {
+      // Prefetch Binance for AI strip
+      loadBinanceBoard(false).then(() => bindBnTicks());
+    }
     const bf = $("browseFilter");
     if (bf) bf.addEventListener("input", () => renderBrowse());
     const br = $("browseRefresh");
@@ -460,6 +624,10 @@
       if (badge) badge.textContent = bl.checked ? "Dex 即時（每 4 秒）" : "";
       if (bl.checked) loadBrowse(true);
     });
+    const bnf = $("bnFilter");
+    if (bnf) bnf.addEventListener("input", () => renderBnBoard());
+    const bnr = $("bnRefresh");
+    if (bnr) bnr.addEventListener("click", () => loadBinanceBoard(true));
   }
   if (typeof document !== "undefined") document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", boot) : boot();
 })();

@@ -406,3 +406,17 @@ tr.tick-down .live-px, .tick-down .live-px{animation:pnlFlashRed .7s ease}
 @media (prefers-reduced-motion: reduce){
   .live-dot,tr.tick-up .live-px,tr.tick-down .live-px{animation:none!important}
 }
+
+/* ===== Binance 置頂 ===== */
+.bn-top{border:1px solid #1d4ed8;background:linear-gradient(180deg,#0b1224 0%,var(--panel) 48%)}
+.bn-top h2,.bn-top h3{color:#93c5fd}
+.bn-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.bn-card{border-color:#1e3a5f}
+.bn-badge{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#1e3a5f;color:#93c5fd;font-weight:800;font-size:12px;border:1px solid #1d4ed8;flex-shrink:0}
+.bn-strip{display:flex;flex-wrap:wrap;gap:8px}
+.bn-chip{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px;min-width:108px;border-radius:12px;border:1px solid #1e3a5f;background:#0b1224;color:var(--text);cursor:pointer;text-align:left}
+.bn-chip:hover{border-color:#3b82f6}
+.bn-chip b{font-size:13px}
+.bn-chip .num{font-size:12px}
+.hot-buy-row .tok{display:flex;gap:8px;align-items:center}
+.hot-buy-row .tok img{width:36px;height:36px;border-radius:50%;object-fit:cover;background:#111}

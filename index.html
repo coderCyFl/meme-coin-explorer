@@ -195,9 +195,18 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="simple-pf-mini" id="simplePfMini"></div>
   </section>
 
+  <section class="panel bn-top" id="bnStripPanel">
+    <div class="panelhead">
+      <h3>⚡ Binance 即時 <span class="muted">置頂 · CEX 公開價</span></h3>
+      <a class="sm" href="#browse">睇晒 →</a>
+    </div>
+    <p class="boost-note">大幣 + meme USDT 組合，免費 stream。撳「落倉」用 Binance 價模擬。</p>
+    <div id="bnStripList" class="bn-strip"></div>
+  </section>
+
   <section class="panel" id="hotBuyPanel">
     <div class="panelhead">
-      <h3>🔥 熱門可買 <span class="muted">市場列表 · 唔係 AI 信心分</span></h3>
+      <h3>🔥 熱門可買（Dex） <span class="muted">市場列表 · 唔係 AI 信心分</span></h3>
       <a class="sm" href="#browse">睇晒 →</a>
     </div>
     <p class="boost-note">來自 DexScreener 熱門／最新幣，好多係 paid boost。想自己揀去「睇幣」。</p>
@@ -221,16 +230,34 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <!-- ===== 睇幣（公開瀏覽） ===== -->
 <div id="view-browse" class="view" hidden>
+  <!-- Binance 置頂：CEX 即時 -->
+  <section class="panel bn-top" id="bnBoardPanel">
+    <div class="panelhead">
+      <h2>⚡ Binance 即時 <span class="en">CEX live USDT</span></h2>
+      <button type="button" id="bnRefresh" class="sm">↻</button>
+    </div>
+    <p class="intro">免費公開 API（data-api / data-stream.binance.vision，唔使 key）。
+      置頂顯示<strong>多組 USDT 現貨</strong>（大幣 + meme），價格同 24h 會即時跳。
+      撳「落倉」用 Binance 價做模擬標記（唔係鏈上 mint）。</p>
+    <div class="row wrap browse-controls">
+      <input id="bnFilter" type="search" placeholder="搜 Binance 代號（例如 DOGE / PEPE）" autocomplete="off">
+      <span id="bnLiveBadge" class="live-badge">Binance WS 即時</span>
+    </div>
+    <p class="muted" id="bnMeta">載入 Binance…</p>
+    <div id="bnList" class="bn-list"></div>
+  </section>
+
+  <!-- Dex / Solana on-chain memes -->
   <section class="panel">
     <div class="panelhead">
-      <h2>👀 睇幣 <span class="en">Browse meme coins</span></h2>
+      <h2>👀 鏈上 Meme（Dex） <span class="en">On-chain memes</span></h2>
       <button type="button" id="browseRefresh" class="sm">↻ 更新</button>
     </div>
-    <p class="intro">公開市場列表：合併 DexScreener <b>熱門 boosted</b> + <b>最新 profiles</b> + 流動性搜尋。
-      <strong>唔係 AI 推薦</strong>，只係畀大家睇而家有啲咩幣、價錢同流動性。撳「落倉」放進模擬倉。</p>
+    <p class="intro">DexScreener 公開資料：熱門 boosted + 最新 profiles + 流動性搜尋。
+      <strong>多數唔喺 Binance</strong>。唔係 AI 推薦。撳「落倉」跟 Dex 價。</p>
     <div class="row wrap browse-controls">
       <input id="browseFilter" type="search" placeholder="搜尋名稱／代號／鏈" autocomplete="off">
-      <label class="live-tog"><input type="checkbox" id="browseLive"> 即時更新</label>
+      <label class="live-tog"><input type="checkbox" id="browseLive"> Dex 即時</label>
       <span id="browseLiveBadge" class="live-badge"></span>
     </div>
     <p class="muted" id="browseMeta">載入中…</p>
@@ -530,7 +557,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <footer>
   <p>市場數據：<a href="https://docs.dexscreener.com/api/reference" target="_blank" rel="noopener">DexScreener 公開 API</a>（瀏覽器直接抓；睇幣／持倉即時會強制刷新）。
-  少數已上架幣：<a href="https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams" target="_blank" rel="noopener">Binance 公開 WebSocket</a>（data-stream.binance.vision，唔使 key）。
+  睇幣置頂係 Binance 多組 USDT；少數鏈上已上架幣亦用 <a href="https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams" target="_blank" rel="noopener">Binance 公開 WebSocket</a>（data-stream.binance.vision，唔使 key）。
   大多數 pump.fun／Dex meme <b>唔喺 Binance</b>，會標「Dex 即時」。
   X 數據：靜態快照 <code>data/x_buzz.json</code> / <code>data/picks.json</code>。模擬倉只存 localStorage。</p>
   <p class="legend">旗標：💧 流動性 &lt; $50k · 🐣 交易對 &lt; 24 小時 · 🌀 24h 成交額 &gt; 50× 流動性 · 📉 24h 跌超過 50% · 🚀 boosted（俾錢推廣）</p>
