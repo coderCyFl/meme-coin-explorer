@@ -52,6 +52,28 @@
     return { feePct, impactPct, totalPct: feePct + impactPct, note };
   }
 
+  /** Human batch label — never show raw batch-00x to users. */
+  function batchLabel(batch, { latestId } = {}) {
+    if (!batch) return "—";
+    const id = typeof batch === "string" ? batch : batch.id;
+    const created = typeof batch === "string" ? null : (batch.created_at || null);
+    const latest = latestId || (S.picks?.batches?.length ? S.picks.batches[S.picks.batches.length - 1].id : null);
+    if (id && latest && id === latest) return "今批";
+    if (created) {
+      try {
+        const d = new Date(created);
+        if (!isNaN(d)) {
+          const md = `${d.getMonth() + 1}月${d.getDate()}日`;
+          const hm = d.toLocaleTimeString("zh-HK", { hour: "2-digit", minute: "2-digit", hour12: false });
+          return `${md} ${hm}`;
+        }
+      } catch (_) {}
+    }
+    // Fallback: ordinal without "batch-" prefix
+    const m = String(id || "").match(/(\d+)$/);
+    return m ? `第 ${parseInt(m[1], 10)} 批` : "較早批次";
+  }
+
   async function fetchPairs(list, force = false) {
     const byChain = new Map();
     for (const { chain, pair } of list) {
@@ -313,7 +335,7 @@
       const hz = horizonCell(x); hz.setAttribute("data-label", "展望");
       pb.append(el("tr", { class: "cardish", onclick: () => showDetail(x) },
         el("td", { "data-label": "幣" }, el("div", { class: "tok" }, el("div", {}, el("div", { class: "nm", text: x.e.name }), el("div", { class: "sy", text: `$${x.e.symbol} · ${x.e.chain}` })))),
-        el("td", { "data-label": "批次" }, el("div", { text: x.b.id }), el("div", { class: "muted", text: localTime(x.e.created_at) })),
+        el("td", { "data-label": "批次" }, el("div", { text: batchLabel(x.b) }), el("div", { class: "muted", text: localTime(x.e.created_at) })),
         el("td", { class: "num", "data-label": "推薦價", text: price(x.e.entry_price_usd) }),
         el("td", { class: "num", "data-label": "而家", text: x.li.state === "live" ? price(x.li.price) : x.li.state === "dead" ? "–" : "…" }),
         retTd,
@@ -328,7 +350,7 @@
     for (const x of avoidsNewest) {
       const good = x.ret != null && x.ret < -0.05, flat = x.ret != null && Math.abs(x.ret) < 0.05;
       ab.append(el("tr", { onclick: () => showDetail(x) }, tokenCell(x.e),
-        el("td", {}, el("div", { text: x.b.id }), el("div", { class: "muted", text: localTime(x.e.created_at) })),
+        el("td", { "data-label": "批次" }, el("div", { text: batchLabel(x.b) }), el("div", { class: "muted", text: localTime(x.e.created_at) })),
         el("td", { class: "num", text: price(x.e.entry_price_usd) }),
         el("td", { class: "num", text: x.li.state === "live" ? price(x.li.price) : "–" }),
         retCell(x), el("td", { class: "num " + cls(x.solRet), text: pct(x.solRet) }), el("td", { text: held(x.e.created_at) }),
@@ -394,7 +416,7 @@
           el("div", { class: "muted tiny", text: geekBits.join(" · ") }))
       : "";
     d.append(
-      el("h3", { text: `${e.type === "buy" ? "🟢 買入推薦" : "🔴 避過"}：${e.name} ($${e.symbol}) · ${e.id}` }),
+      el("h3", { text: `${e.type === "buy" ? "🟢 買入推薦" : "🔴 避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
       el("p", { class: "rationale", text: e.rationale }),
       e.type === "buy" ? el("p", {}, el("button", { class: "primary buybtn", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
       el("div", { class: "kv" },
@@ -619,7 +641,15 @@
         else paintCallout(null, false);
       };
       inp.oninput = upd; upd();
-      const done = (v) => { dlg.close(); $("tradeForm").onsubmit = null; $("tradeCancel").onclick = null; resolve(v); };
+      let settled = false;
+      const done = (v) => {
+        if (settled) return;
+        settled = true;
+        dlg.onclose = null;
+        try { dlg.close(); } catch (_) {}
+        $("tradeForm").onsubmit = null; $("tradeCancel").onclick = null;
+        resolve(v);
+      };
       $("tradeForm").onsubmit = (ev) => {
         ev.preventDefault();
         const amt = parseFloat(inp.value);
@@ -630,7 +660,7 @@
         done(amt > 0 ? { amt, mode, lev: L } : null);
       };
       $("tradeCancel").onclick = () => done(null);
-      dlg.onclose = () => resolve(null);
+      dlg.onclose = () => done(null);
       dlg.showModal(); inp.focus(); inp.select();
     });
   }
@@ -749,7 +779,7 @@
 
   async function openAllinFlow(preselected) {
     try {
-      if (allinActive()) { toast("已經有一鋪進行中"); location.hash = "portfolio"; return; }
+      if (allinActive()) { toast("已經有一鋪進行中"); goView("portfolio"); return; }
       // clear other positions? User should start clean — warn if has positions
       if (Object.keys(P.positions).length || Object.keys(P.levPositions).length) {
         if (!confirm("孤注一擲會要求空倉。要重置模擬倉再開始嗎？（會清空現有倉同現金回到起始資金）")) return;
@@ -825,7 +855,7 @@
     });
     toast(`🎰 孤注一擲已開始：$${info.symbol}（${mode === "lev" ? "50x" : "現貨"}）`);
     ensureLiveLoop(true);
-    location.hash = "portfolio";
+    goView("portfolio");
     await renderPortfolio(true);
     const ban = $("allinBanner");
     if (ban && !reduceMotion()) { ban.classList.remove("slam"); void ban.offsetWidth; ban.classList.add("slam"); }
@@ -988,8 +1018,9 @@
   }
 
   async function openBuy(info) {
+    const fillGen = navGen;
     try {
-      if (allinActive()) { toast("孤注一擲進行中，請先平倉"); location.hash = "portfolio"; return; }
+      if (allinActive()) { toast("孤注一擲進行中，請先平倉"); goView("portfolio"); return; }
       if (riskId === "allin") { await openAllinFlow(info); return; }
       const li = await livePrice(info.chain, info.pair);
       const defMode = riskId === "safe" ? "spot" : "spot";
@@ -1040,6 +1071,10 @@
       }
       ensureLiveLoop(true);
       await renderPortfolio(true);
+      if (navGen !== fillGen) {
+        // User already left during price/dialog awaits — do not yank back
+        return;
+      }
       afterFillUX({ mode: res.mode, symbol: info.symbol });
     } catch (e) { alert(e.message); }
   }
@@ -1148,7 +1183,7 @@
     if (!buys.length) return alert("今批冇買入推薦");
     const allowLevCopy = riskId !== "safe";
     const res = await askTrade({
-      title: `跟晒今批（${last.id} · ${risk().label}）`,
+      title: `跟晒今批（${batchLabel(last)} · ${risk().label}）`,
       info: buys.map((b) => "$" + b.symbol).join("、") + ` · 現金 ${money2(P.cash)}` + (allowLevCopy ? " · 可選「槓桿」用細保證金高倍（危險）" : " · 穩陣檔只限現貨"),
       label: "總金額／總保證金 (USD)", value: Math.min(3000, Math.floor(P.cash)),
       quick: [["$500", 500], ["$1k", 1000], ["$3k", 3000], ["$5k", 5000], ["全倉", Math.floor(P.cash)]].map(([t, v]) => [t, Math.min(v, Math.floor(P.cash))]),
@@ -1181,7 +1216,7 @@
     toast(errs.length ? "部分失敗：" + errs.join("；") : `已跟倉 ${buys.length} 隻（${res.mode === "lev" ? res.lev + "x" : "現貨"}）`);
     pfMode = res.mode === "lev" ? "lev" : "spot";
     ensureLiveLoop(true);
-    location.hash = "portfolio";
+    goView("portfolio");
     renderPortfolio(false);
   }
 
@@ -1494,6 +1529,26 @@
     node.classList.add(clsName);
     setTimeout(() => node.classList.remove(clsName), 1200);
   }
+  let navGen = 0; // bumps in show() — cancels stale afterFillUX highlight / yank
+  let applyingHash = false;
+  function goView(view) {
+    const allowed = uiMode === "simple"
+      ? ["picks", "browse", "portfolio", "more", "news", "explore"]
+      : ["explore", "picks", "browse", "portfolio", "news", "more"];
+    if (!allowed.includes(view)) view = "picks";
+    // Close any leftover modal so it cannot eat pointer events
+    for (const id of ["tradeDlg", "allinDlg", "allinPickDlg"]) {
+      const d = $(id);
+      if (d && d.open) { try { d.close(); } catch (_) {} }
+    }
+    if ((location.hash || "").slice(1) !== view) {
+      applyingHash = true;
+      location.hash = view;
+      applyingHash = false;
+    }
+    show(view); // sync — do not wait for async hashchange
+    return view;
+  }
   function afterFillUX({ mode, symbol }) {
     const tab = document.querySelector('.tab[data-view="portfolio"]');
     if (tab) coinPopEl(tab);
@@ -1502,7 +1557,12 @@
       const nm = c.querySelector(".nm");
       if (nm && nm.textContent === symbol) { pulseEl(c, "fill-pulse"); break; }
     }
+    // Arrive on portfolio, then lock highlight gen AFTER nav bumps
+    goView("portfolio");
+    const myGen = navGen;
     const highlight = () => {
+      if (myGen !== navGen) return; // user left portfolio after fill
+      if ((location.hash || "").slice(1) !== "portfolio") return;
       const glance = $("pfGlance");
       if (glance) {
         glance.classList.add("pf-highlight");
@@ -1518,8 +1578,6 @@
         }
       }
     };
-    if ((location.hash || "").slice(1) !== "portfolio") location.hash = "portfolio";
-    // Wait for renderPortfolio / view switch to paint rows
     setTimeout(highlight, 220);
   }
 
@@ -1587,7 +1645,7 @@
       location.hash = "news";
       toast("研究模式：先睇重點新聞同避過清單");
     } else if (lens === "lev") {
-      location.hash = "portfolio";
+      goView("portfolio");
       pfMode = "lev";
       const el = document.getElementById("lens-lev");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -1595,7 +1653,7 @@
       setTimeout(() => renderPortfolio(true), 200);
     } else if (lens === "allin") {
       setRisk("allin");
-      location.hash = "portfolio";
+      goView("portfolio");
       const el = document.getElementById("lens-allin");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
       toast("孤注一擲：假錢 All-in 一隻幣，一舖過");
@@ -1614,6 +1672,7 @@
       ? ["picks", "browse", "portfolio", "more", "news", "explore"]
       : ["explore", "picks", "browse", "portfolio", "news", "more"];
     if (!allowed.includes(view)) view = "picks";
+    navGen++;
     for (const v of ["explore", "picks", "browse", "portfolio", "news", "more"]) {
       const node = $("view-" + v); if (node) node.hidden = v !== view;
     }
@@ -1622,18 +1681,36 @@
       if (on && !a.classList.contains("active")) coinPopEl(a);
       a.classList.toggle("active", on);
     });
-    if (view === "picks") {
-      loadPicks(); loadNews();
-      loadLiveBnPicks(false);
+    try {
+      if (view === "picks") {
+        loadPicks(); loadNews();
+        loadLiveBnPicks(false);
+      }
+      if (view === "browse") {
+        if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
+      }
+      if (view === "portfolio") { renderPortfolio(true); ensureLiveLoop(true); }
+      if (view === "news") loadNews();
+      if (view === "explore" && window.MCE.ensureExplore) window.MCE.ensureExplore();
+    } catch (err) {
+      console.warn("show view load error", view, err);
     }
-    if (view === "browse") {
-      if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
-    }
-    if (view === "portfolio") { renderPortfolio(true); ensureLiveLoop(true); }
-    if (view === "news") loadNews();
-    if (view === "explore" && window.MCE.ensureExplore) window.MCE.ensureExplore();
   }
-  window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+  window.addEventListener("hashchange", () => {
+    if (applyingHash) return; // already handled synchronously in goView
+    show((location.hash || "#picks").slice(1));
+  });
+  // Explicit tab routing — works even if hash unchanged / overlay ate the default nav
+  document.addEventListener("click", (ev) => {
+    const a = ev.target.closest && ev.target.closest("a.tab[data-view], a.more-item[href^='#']");
+    if (!a || a.tagName !== "A") return;
+    const href = a.getAttribute("href") || "";
+    if (!href.startsWith("#")) return;
+    const view = a.dataset.view || href.slice(1);
+    if (!view) return;
+    ev.preventDefault();
+    goView(view);
+  }, true);
   document.querySelectorAll(".news-filters .chip").forEach((b) => b.addEventListener("click", () => {
     newsTag = b.dataset.ntag; document.querySelectorAll(".news-filters .chip").forEach((x) => x.classList.toggle("active", x === b)); renderNews();
   }));

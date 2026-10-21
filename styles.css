@@ -149,7 +149,7 @@ body{padding-bottom:0}
   h1{font-size:18px}
   .top-tabs{display:none}
   .bottom-nav{
-    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:40;
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:80;
     background:#0d111aee;backdrop-filter:blur(8px);border-top:1px solid var(--line);
     padding:6px 4px calc(6px + env(safe-area-inset-bottom));justify-content:space-around;
   }
@@ -598,8 +598,12 @@ body.ui-simple .howto{display:none!important}
 
 .toast{
   position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
-  padding:10px 16px;border-radius:10px;z-index:50;max-width:90%;
+  padding:10px 16px;border-radius:10px;z-index:70;max-width:min(90%,420px);
   font-weight:600;font-size:13px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;
+  pointer-events:none; /* never block bottom nav / tabs */
+}
+@media (max-width:700px){
+  .toast{bottom:calc(72px + env(safe-area-inset-bottom) + 10px)}
 }
 .toast-ok{background:#12301f;border-color:#22c55e;color:#bbf7d0}
 .toast-lev{background:#3a1a08;border-color:#f97316;color:#fed7aa}

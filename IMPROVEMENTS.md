@@ -24,3 +24,8 @@ Local `node --check`, http.server, headless Chrome asserts ≥6 setup picks ≠ 
 - **Spot vs lev**: buy modal big 「現貨」「槓桿」mode cards + risk note; holdings sections/badges color-coded; lev shows Nx + 爆倉價.
 - **Light feedback**: fill toast (ok/lev), portfolio highlight + row pulse after 落倉, subtle card fill-pulse; tick flash kept; not noisy.
 - **batch-004**: regenerated via `make_bn_setup_picks.mjs` with 1-per-angle first / max 2 soft (4 unique angles on this run).
+
+## P0 nav + batch labels (QA)
+- Bottom/top tabs always route via `goView` (capture click) + sync `show`; close leftover dialogs; toast `pointer-events:none` and sits above nav (nav z-index 80).
+- `afterFillUX` no longer yanks user back if they left during fill awaits (`navGen`); highlight cancels if they leave portfolio.
+- Full history never shows raw `batch-00x` — uses 「今批」 / date-time labels.
