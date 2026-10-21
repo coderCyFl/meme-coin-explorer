@@ -1,0 +1,32 @@
+# DexScreener-only horizon snapshots. No X API / secrets.
+name: Daily outcomes snapshot
+on:
+  schedule:
+    # ~01:00 UTC ≈ 09:00 HKT
+    - cron: "0 1 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Snapshot pick horizons
+        run: python3 scripts/snapshot_outcomes.py
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/outcomes.json
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: update pick horizon outcomes [skip ci]"
+            git push
+          fi

@@ -1,0 +1,104 @@
+[
+ {
+  "symbol": "KIMCHI",
+  "name": "Kimchi Coin",
+  "chain": "solana",
+  "address": "7thgKgtK1rp1UtLpWUZEuu9vakedTMoZzuyps6RGpump"
+ },
+ {
+  "symbol": "GUZZLEGOAT",
+  "name": "Guzzle Goat",
+  "chain": "solana",
+  "address": "4tieigPJCAQbw1C9wBLtg9QZGgPFeuyibRD6Hi2spump"
+ },
+ {
+  "symbol": "POKECITY",
+  "name": "Pokecity Coin",
+  "chain": "solana",
+  "address": "4wopERxtKHjzaANSywo9BVVycGJ7q7uXJ38Q6EoCpump"
+ },
+ {
+  "symbol": "GIGATENEV",
+  "name": "Giga Tenev",
+  "chain": "robinhood",
+  "address": "0xC9675fe679C7d4e1b94416F66D61c96127eb964a"
+ },
+ {
+  "symbol": "BINA",
+  "name": "Bina",
+  "chain": "bsc",
+  "address": "0xED71B42b07cC1664C0F82361D48D0417a6ED7777"
+ },
+ {
+  "symbol": "GATO",
+  "name": "GTA6CAT",
+  "chain": "solana",
+  "address": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump"
+ },
+ {
+  "symbol": "DAWG",
+  "name": "DAWG",
+  "chain": "bsc",
+  "address": "0x7D0443CdDFc8E11AF105F4fE44Dd28c630237777"
+ },
+ {
+  "symbol": "DACITYCOIN",
+  "name": "AudaCity",
+  "chain": "solana",
+  "address": "DKYcjobF7HPtL9RyQBRdeRQ2iWvizpfbgWwPWNXdpump"
+ },
+ {
+  "symbol": "BONNIE",
+  "name": "Bonnie",
+  "chain": "solana",
+  "address": "8T2nkC9HQkgd2yjxc7Yn1LAietmXyZKbv1vR4FXDbonk"
+ },
+ {
+  "symbol": "LARPCHECK",
+  "name": "Larpcheck",
+  "chain": "solana",
+  "address": "t9bnCGiZVUYsRKvx4d5dPcoDCSyuBM9C33ZNGNULARP"
+ },
+ {
+  "symbol": "GLITCH",
+  "name": "Infinite Money Glitch",
+  "chain": "solana",
+  "address": "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump"
+ },
+ {
+  "symbol": "SI276",
+  "name": "Super Intelligence SI276",
+  "chain": "solana",
+  "address": "HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump"
+ },
+ {
+  "symbol": "KOLO",
+  "name": "Kolomon",
+  "chain": "solana",
+  "address": "KoLoaG4ktXXA2g5FjrwNAHeNy5wPfQ2RzVUxscgZrpc"
+ },
+ {
+  "symbol": "RIBBIT",
+  "name": "RIBBIT ZYGO THE FROG ",
+  "chain": "solana",
+  "address": "FrtbBAaSZksfh4oV46E7Pvb43QiiUmYLD3dcGS6gpump"
+ },
+ {
+  "symbol": "CBUCKS",
+  "name": "Cartoon Money",
+  "chain": "solana",
+  "address": "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump"
+ },
+ {
+  "symbol": "CHUD",
+  "name": "chud cat",
+  "chain": "solana",
+  "address": "Ac4UPAYTpiNPpwXQ7cqTZnRVtPH3yeC9md8oJLo4pump"
+ },
+ {
+  "symbol": "KIMCHI",
+  "name": "Aura Final Boss",
+  "chain": "solana",
+  "address": "4hbHSyn4vxJ5wPfbayqT2qDGUaE33AijJe1Ty9q6pump"
+ }
+]

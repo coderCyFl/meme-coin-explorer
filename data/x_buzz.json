@@ -1,0 +1,903 @@
+{
+ "fetched_at": "2026-10-21T18:43:50Z",
+ "window": {
+  "start": "2026-10-15T19:00:00Z",
+  "end": "2026-10-21T18:37:19.000Z"
+ },
+ "source": "X public search via the agent's built-in X tools (snapshot; the website never calls X)",
+ "queries": [
+  "($POKECITY OR $LARPCHECK OR $GATO OR $CBUCKS OR $GIGATENEV OR $BINA) -is:retweet",
+  "($KOLO OR $GLITCH OR $DAWG OR $SI276 OR $CHUD OR $MOTION OR $KIMCHI) -is:retweet",
+  "($KIMCHI OR $POKECITY OR $GIGATENEV OR $BINA OR $GATO OR $DAWG OR $LARPCHECK OR $GLITCH) -is:retweet",
+  "($KOLO OR $CBUCKS OR $CHUD OR $SI276 OR $RIBBIT OR $GUZZLEGOAT OR $DACITYCOIN OR $BONNIE) -is:retweet",
+  "(memecoin OR \"meme coin\") lang:en -is:retweet min_likes:50"
+ ],
+ "notes": [
+  "mentions_7d = X recent post counts (non-retweets) for the keyword in count_query. The search backend drops the '$' operator, so counts are keyword counts; for ambiguous tickers a crypto-context query is used instead.",
+  "top_posts only include posts that literally contain the $CASHTAG.",
+  "Buzz is not quality: shills, bots and paid promos inflate mentions."
+ ],
+ "coins": [
+  {
+   "symbol": "KIMCHI",
+   "tokens": [
+    {
+     "name": "Kimchi Coin",
+     "chain": "solana",
+     "address": "7thgKgtK1rp1UtLpWUZEuu9vakedTMoZzuyps6RGpump"
+    },
+    {
+     "name": "Aura Final Boss",
+     "chain": "solana",
+     "address": "4hbHSyn4vxJ5wPfbayqT2qDGUaE33AijJe1Ty9q6pump"
+    }
+   ],
+   "mentions_7d": 4519,
+   "mentions_daily": [
+    25,
+    83,
+    37,
+    85,
+    50,
+    352,
+    3887
+   ],
+   "count_query": "kimchi (solana OR memecoin OR mcap OR pump OR crypto OR coin) -is:retweet",
+   "count_note": "crypto-context keyword query; plain 'KIMCHI' matched 28,685 incl. food posts",
+   "search_hits": 16,
+   "top_posts": [
+    {
+     "id": "2112769118382199115",
+     "text": "Daily Memecoin Recap - October 20 bull market will resume sometime in q4 Kimchi signs to pumpfun $kimchi -&gt; hit $44m - @kimchi1x announced a partnership with pump today + released his first ever youtube video - most …",
+     "created_at": "2026-10-21T04:53:05.000Z",
+     "likes": 280,
+     "reposts": 12,
+     "replies": 19,
+     "author": "mellometrics",
+     "url": "https://x.com/mellometrics/status/2112769118382199115"
+    },
+    {
+     "id": "2112965811304312993",
+     "text": "What you missed in the trenches today 🏃 $Kimchi is Aura Final Boss, a day old on Solana. 💵 $33.5M mcap 💰 $45.6M vol 👥 23,371 holders The name is the narrative. @kimchi1x $Pokecity is Pokecity Coin, eighteen hours on Sol…",
+     "created_at": "2026-10-21T17:54:41.000Z",
+     "likes": 9,
+     "reposts": 3,
+     "replies": 2,
+     "author": "DEXToolsApp",
+     "url": "https://x.com/DEXToolsApp/status/2112965811304312993"
+    },
+    {
+     "id": "2112015743306891521",
+     "text": "🔥 Fresh listings on Gate Trenches: $PIERRE, $Kimchi, $mucron, $WEFT, $ELON, $LARPCHECK and $simulator 👀 Explore emerging trending tokens on Gate Trenches — Gate’s professional on-chain trading aggregation platform. 👇 Tr…",
+     "created_at": "2026-10-19T02:59:27.000Z",
+     "likes": 3,
+     "reposts": 0,
+     "replies": 1,
+     "author": "GateTrenches",
+     "url": "https://x.com/GateTrenches/status/2112015743306891521"
+    },
+    {
+     "id": "2112688750505369734",
+     "text": "First $larpcheck analysis Token:$KIMCHI CLAIM: kimchi launched and holds 70% of tokens. Let’s see what the larpcheck says",
+     "created_at": "2026-10-20T23:33:44.000Z",
+     "likes": 3,
+     "reposts": 0,
+     "replies": 0,
+     "author": "808bobthajeeter",
+     "url": "https://x.com/808bobthajeeter/status/2112688750505369734"
+    },
+    {
+     "id": "2112886486408585721",
+     "text": "链上土狗 X 热度榜 $KIMCHI CSocnzcRpgSCr1naKcNTieWZUxb6rABe45j844m7pump 叙事：主角是交易员 Kimchi（@kimchi1x），传说他靠 $TRUMP 一小时赚了 4000 万美元。这次他签约 pump，把 bio 改成 @pumpfun，还发了第一支 YouTube vlog。币名叫“Aura Final Boss”，vlog 上线 7",
+     "created_at": "2026-10-21T12:39:28.000Z",
+     "likes": 3,
+     "reposts": 0,
+     "replies": 0,
+     "author": "ling65697_z",
+     "url": "https://x.com/ling65697_z/status/2112886486408585721"
+    }
+   ],
+   "flags": [
+    "common_word",
+    "ticker_collision",
+    "spiking"
+   ]
+  },
+  {
+   "symbol": "GUZZLEGOAT",
+   "tokens": [
+    {
+     "name": "Guzzle Goat",
+     "chain": "solana",
+     "address": "4tieigPJCAQbw1C9wBLtg9QZGgPFeuyibRD6Hi2spump"
+    }
+   ],
+   "mentions_7d": null,
+   "mentions_daily": null,
+   "count_query": null,
+   "count_note": null,
+   "search_hits": 0,
+   "top_posts": [],
+   "flags": []
+  },
+  {
+   "symbol": "POKECITY",
+   "tokens": [
+    {
+     "name": "Pokecity Coin",
+     "chain": "solana",
+     "address": "4wopERxtKHjzaANSywo9BVVycGJ7q7uXJ38Q6EoCpump"
+    }
+   ],
+   "mentions_7d": 429,
+   "mentions_daily": [
+    0,
+    0,
+    0,
+    0,
+    50,
+    379
+   ],
+   "count_query": "POKECITY -is:retweet",
+   "count_note": null,
+   "search_hits": 5,
+   "top_posts": [
+    {
+     "id": "2112944194176143783",
+     "text": "⚡ $POKECITY is bringing a familiar name into the meme coin scene! Built around the iconic Pokémon universe, Pokecity is bringing nostalgic energy into the meme coin space. With its growing community, increasing visibili…",
+     "created_at": "2026-10-21T16:28:47.000Z",
+     "likes": 235,
+     "reposts": 99,
+     "replies": 20,
+     "author": "TheCryptooGems",
+     "url": "https://x.com/TheCryptooGems/status/2112944194176143783"
+    },
+    {
+     "id": "2112965811304312993",
+     "text": "What you missed in the trenches today 🏃 $Kimchi is Aura Final Boss, a day old on Solana. 💵 $33.5M mcap 💰 $45.6M vol 👥 23,371 holders The name is the narrative. @kimchi1x $Pokecity is Pokecity Coin, eighteen hours on Sol…",
+     "created_at": "2026-10-21T17:54:41.000Z",
+     "likes": 9,
+     "reposts": 3,
+     "replies": 2,
+     "author": "DEXToolsApp",
+     "url": "https://x.com/DEXToolsApp/status/2112965811304312993"
+    },
+    {
+     "id": "2112824319445434540",
+     "text": "📈 Hottest 5 on #Solana 1. $KIMCHI · $12.6M · +21,423% 2. $Kimchi · $30.8M · +69,564% 3. $MONEYBIZ · $409K · +509% 4. $Pokecity · $1.1M · +2,233% 5. solana:Cbkg5w7V7W2J2sUmecnyN825CbvwvXwasfhduVtNpump · $878K · +1,936% T…",
+     "created_at": "2026-10-21T08:32:26.000Z",
+     "likes": 1,
+     "reposts": 0,
+     "replies": 0,
+     "author": "TheTrendGuy1",
+     "url": "https://x.com/TheTrendGuy1/status/2112824319445434540"
+    },
+    {
+     "id": "2112920379945779577",
+     "text": "🚀 Hottest 5 on #Solana 1. $Kimchi · $30.2M · +68,403% 2. $Dacity · $16.1M · +170% 3. $Pokecity · $1.3M · +2,588% 4. solana:Cbkg5w7V7W2J2sUmecnyN825CbvwvXwasfhduVtNpump · $444K · +930% 5. $GATO · $2.5M · +43% Trade 👉",
+     "created_at": "2026-10-21T14:54:09.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "TheTrendGuy1",
+     "url": "https://x.com/TheTrendGuy1/status/2112920379945779577"
+    },
+    {
+     "id": "2112877962651464045",
+     "text": "Top movers on CurveRadar, last 24h: 1. $POKECITY +1855% 2. MONEYBIZ +1513% 3. KIMCHI +1343% 4. KIMCHI +962% 5. BONNIE +355%",
+     "created_at": "2026-10-21T12:05:36.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "CurveRadar",
+     "url": "https://x.com/CurveRadar/status/2112877962651464045"
+    }
+   ],
+   "flags": [
+    "spiking"
+   ]
+  },
+  {
+   "symbol": "GIGATENEV",
+   "tokens": [
+    {
+     "name": "Giga Tenev",
+     "chain": "robinhood",
+     "address": "0xC9675fe679C7d4e1b94416F66D61c96127eb964a"
+    }
+   ],
+   "mentions_7d": 1080,
+   "mentions_daily": [
+    369,
+    61,
+    58,
+    93,
+    311,
+    188
+   ],
+   "count_query": "GIGATENEV -is:retweet",
+   "count_note": null,
+   "search_hits": 2,
+   "top_posts": [
+    {
+     "id": "2112783605504377295",
+     "text": "Most traded Robinhood projects Which one gets your vote today?👇 $TORCH @Torchpaddotfun $CREORA @creora_ai $CASHCAT @cashcat_token $KIMCHI @kimchi1x $GIGATENEV @GigaTenevRH $40M robinhood:0x18e674231a58c239dc7daedcffe15e…",
+     "created_at": "2026-10-21T05:50:39.000Z",
+     "likes": 2,
+     "reposts": 0,
+     "replies": 0,
+     "author": "0xHood_",
+     "url": "https://x.com/0xHood_/status/2112783605504377295"
+    },
+    {
+     "id": "2112714528802627867",
+     "text": "📊 Cross-chain trending leaders #Solana — $KIMCHI +19,109% #BNB — $DAWG +9.6% #Robinhood — $GIGATENEV +926% Trade them 👉",
+     "created_at": "2026-10-21T01:16:10.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "TheTrendGuy1",
+     "url": "https://x.com/TheTrendGuy1/status/2112714528802627867"
+    }
+   ],
+   "flags": []
+  },
+  {
+   "symbol": "BINA",
+   "tokens": [
+    {
+     "name": "Bina",
+     "chain": "bsc",
+     "address": "0xED71B42b07cC1664C0F82361D48D0417a6ED7777"
+    }
+   ],
+   "mentions_7d": 63,
+   "mentions_daily": [
+    0,
+    2,
+    1,
+    0,
+    4,
+    4,
+    52
+   ],
+   "count_query": "bina (bnb OR bsc OR memecoin OR mcap OR pump) -is:retweet",
+   "count_note": "crypto-context query; plain 'BINA' matched 31,764 (common word/name)",
+   "search_hits": 1,
+   "top_posts": [
+    {
+     "id": "2112975743739384058",
+     "text": "@BenTodar 0x102666ba2adc10038aede755f2468231715d7777 I think you can back $BINA now, it’s still super early.🚀👍",
+     "created_at": "2026-10-21T18:34:09.000Z",
+     "likes": 1,
+     "reposts": 0,
+     "replies": 0,
+     "author": "xinhui27",
+     "url": "https://x.com/xinhui27/status/2112975743739384058"
+    }
+   ],
+   "flags": [
+    "common_word",
+    "spiking"
+   ]
+  },
+  {
+   "symbol": "GATO",
+   "tokens": [
+    {
+     "name": "GTA6CAT",
+     "chain": "solana",
+     "address": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump"
+    }
+   ],
+   "mentions_7d": 770,
+   "mentions_daily": [
+    7,
+    133,
+    330,
+    119,
+    31,
+    150
+   ],
+   "count_query": "gato (GTA6CAT OR solana OR memecoin OR mcap OR pump) -is:retweet",
+   "count_note": null,
+   "search_hits": 3,
+   "top_posts": [
+    {
+     "id": "2111589707192930521",
+     "text": "Yall can take $Gato a bundled scam and a rug pull coin to a million but can’t invest in a coin that has the potential to do 100m but sitting at 700kMCAP rn. lol. Jokes on you all. $LARPCHECK FTW",
+     "created_at": "2026-10-17T22:46:32.000Z",
+     "likes": 8,
+     "reposts": 0,
+     "replies": 4,
+     "author": "Eimanuer",
+     "url": "https://x.com/Eimanuer/status/2111589707192930521"
+    },
+    {
+     "id": "2112213398331285542",
+     "text": "$PIERRE, the French Goku Hero coin, launched on 18 Oct. By the next morning it had a margin market. New margin markets, live now: $PIERRE $UHI $LUKE $GATO @gampsito $LARPCHECK @Larpcheckbot Long them with margin, or bor…",
+     "created_at": "2026-10-19T16:04:51.000Z",
+     "likes": 2,
+     "reposts": 1,
+     "replies": 1,
+     "author": "Lavaragexyz",
+     "url": "https://x.com/Lavaragexyz/status/2112213398331285542"
+    },
+    {
+     "id": "2112920379945779577",
+     "text": "🚀 Hottest 5 on #Solana 1. $Kimchi · $30.2M · +68,403% 2. $Dacity · $16.1M · +170% 3. $Pokecity · $1.3M · +2,588% 4. solana:Cbkg5w7V7W2J2sUmecnyN825CbvwvXwasfhduVtNpump · $444K · +930% 5. $GATO · $2.5M · +43% Trade 👉",
+     "created_at": "2026-10-21T14:54:09.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "TheTrendGuy1",
+     "url": "https://x.com/TheTrendGuy1/status/2112920379945779577"
+    }
+   ],
+   "flags": [
+    "common_word"
+   ]
+  },
+  {
+   "symbol": "DAWG",
+   "tokens": [
+    {
+     "name": "DAWG",
+     "chain": "bsc",
+     "address": "0x7D0443CdDFc8E11AF105F4fE44Dd28c630237777"
+    }
+   ],
+   "mentions_7d": 539,
+   "mentions_daily": [
+    135,
+    92,
+    100,
+    82,
+    65,
+    65
+   ],
+   "count_query": "dawg (bsc OR bnb OR memecoin OR mcap OR pump) -is:retweet",
+   "count_note": null,
+   "search_hits": 1,
+   "top_posts": [
+    {
+     "id": "2112714528802627867",
+     "text": "📊 Cross-chain trending leaders #Solana — $KIMCHI +19,109% #BNB — $DAWG +9.6% #Robinhood — $GIGATENEV +926% Trade them 👉",
+     "created_at": "2026-10-21T01:16:10.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "TheTrendGuy1",
+     "url": "https://x.com/TheTrendGuy1/status/2112714528802627867"
+    }
+   ],
+   "flags": [
+    "common_word"
+   ]
+  },
+  {
+   "symbol": "DACITYCOIN",
+   "tokens": [
+    {
+     "name": "AudaCity",
+     "chain": "solana",
+     "address": "DKYcjobF7HPtL9RyQBRdeRQ2iWvizpfbgWwPWNXdpump"
+    }
+   ],
+   "mentions_7d": null,
+   "mentions_daily": null,
+   "count_query": null,
+   "count_note": null,
+   "search_hits": 1,
+   "top_posts": [
+    {
+     "id": "2111345613350621628",
+     "text": "@crypto_bitlord7 Yuppppp $Dacitycoin DKYcjobF7HPtL9RyQBRdeRQ2iWvizpfbgWwPWNXdpump",
+     "created_at": "2026-10-17T06:36:35.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "XcRyPto59244433",
+     "url": "https://x.com/XcRyPto59244433/status/2111345613350621628"
+    }
+   ],
+   "flags": []
+  },
+  {
+   "symbol": "BONNIE",
+   "tokens": [
+    {
+     "name": "Bonnie",
+     "chain": "solana",
+     "address": "8T2nkC9HQkgd2yjxc7Yn1LAietmXyZKbv1vR4FXDbonk"
+    }
+   ],
+   "mentions_7d": null,
+   "mentions_daily": null,
+   "count_query": null,
+   "count_note": null,
+   "search_hits": 2,
+   "top_posts": [
+    {
+     "id": "2112849647383240751",
+     "text": "20th OCTOBER TOP GEM ALERT. 🚨 $ENERGY 31x 💎 $35.1K To $1.1M $ZENO 6x 🔥 $30.6K To $176.5K $Pokémon 102x 💎💎 $27.2K To $2.8M $DOT 4x 🔥 $75.3K To $306.4K $FAUCET 22x 💎 $25.5K To $556.0K $Bonnie 5x 🔥 $40.4K To $197.7K $JEANN…",
+     "created_at": "2026-10-21T10:13:05.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "memcoingemalert",
+     "url": "https://x.com/memcoingemalert/status/2112849647383240751"
+    },
+    {
+     "id": "2112944436833354146",
+     "text": "El 4h de Binance sigue con sesgo de compra en los grandes: BTC cerca de 83k, RSI en zona media y medias alcistas. Nada de euforia, más bien sostenido. Lo que no encaja está en $BONNIE. Más de 1,6M de volumen en 24h con …",
+     "created_at": "2026-10-21T16:29:45.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "piraox",
+     "url": "https://x.com/piraox/status/2112944436833354146"
+    }
+   ],
+   "flags": [
+    "common_word"
+   ]
+  },
+  {
+   "symbol": "LARPCHECK",
+   "tokens": [
+    {
+     "name": "Larpcheck",
+     "chain": "solana",
+     "address": "t9bnCGiZVUYsRKvx4d5dPcoDCSyuBM9C33ZNGNULARP"
+    }
+   ],
+   "mentions_7d": 11109,
+   "mentions_daily": [
+    1564,
+    1889,
+    2424,
+    2058,
+    1783,
+    1391
+   ],
+   "count_query": "LARPCHECK -is:retweet",
+   "count_note": null,
+   "search_hits": 7,
+   "top_posts": [
+    {
+     "id": "2112699118313513208",
+     "text": "My opinion: Don’t think just buy $LARPCHECK at these levels. People are going to get hurt by kimchi, Larpcheck is here to stay, it’s been around for 9 days and I’ve used it 50 times today alone. Hold strong 💪 ✅👏 760k t9…",
+     "created_at": "2026-10-21T00:14:56.000Z",
+     "likes": 28,
+     "reposts": 6,
+     "replies": 4,
+     "author": "foshawty",
+     "url": "https://x.com/foshawty/status/2112699118313513208"
+    },
+    {
+     "id": "2111589707192930521",
+     "text": "Yall can take $Gato a bundled scam and a rug pull coin to a million but can’t invest in a coin that has the potential to do 100m but sitting at 700kMCAP rn. lol. Jokes on you all. $LARPCHECK FTW",
+     "created_at": "2026-10-17T22:46:32.000Z",
+     "likes": 8,
+     "reposts": 0,
+     "replies": 4,
+     "author": "Eimanuer",
+     "url": "https://x.com/Eimanuer/status/2111589707192930521"
+    },
+    {
+     "id": "2112213398331285542",
+     "text": "$PIERRE, the French Goku Hero coin, launched on 18 Oct. By the next morning it had a margin market. New margin markets, live now: $PIERRE $UHI $LUKE $GATO @gampsito $LARPCHECK @Larpcheckbot Long them with margin, or bor…",
+     "created_at": "2026-10-19T16:04:51.000Z",
+     "likes": 2,
+     "reposts": 1,
+     "replies": 1,
+     "author": "Lavaragexyz",
+     "url": "https://x.com/Lavaragexyz/status/2112213398331285542"
+    },
+    {
+     "id": "2112015743306891521",
+     "text": "🔥 Fresh listings on Gate Trenches: $PIERRE, $Kimchi, $mucron, $WEFT, $ELON, $LARPCHECK and $simulator 👀 Explore emerging trending tokens on Gate Trenches — Gate’s professional on-chain trading aggregation platform. 👇 Tr…",
+     "created_at": "2026-10-19T02:59:27.000Z",
+     "likes": 3,
+     "reposts": 0,
+     "replies": 1,
+     "author": "GateTrenches",
+     "url": "https://x.com/GateTrenches/status/2112015743306891521"
+    },
+    {
+     "id": "2112688750505369734",
+     "text": "First $larpcheck analysis Token:$KIMCHI CLAIM: kimchi launched and holds 70% of tokens. Let’s see what the larpcheck says",
+     "created_at": "2026-10-20T23:33:44.000Z",
+     "likes": 3,
+     "reposts": 0,
+     "replies": 0,
+     "author": "808bobthajeeter",
+     "url": "https://x.com/808bobthajeeter/status/2112688750505369734"
+    }
+   ],
+   "flags": []
+  },
+  {
+   "symbol": "GLITCH",
+   "tokens": [
+    {
+     "name": "Infinite Money Glitch",
+     "chain": "solana",
+     "address": "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump"
+    }
+   ],
+   "mentions_7d": 449,
+   "mentions_daily": [
+    44,
+    83,
+    119,
+    78,
+    39,
+    86
+   ],
+   "count_query": "glitch (solana OR memecoin OR mcap OR pump) -is:retweet",
+   "count_note": null,
+   "search_hits": 0,
+   "top_posts": [],
+   "flags": [
+    "common_word"
+   ]
+  },
+  {
+   "symbol": "SI276",
+   "tokens": [
+    {
+     "name": "Super Intelligence SI276",
+     "chain": "solana",
+     "address": "HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump"
+    }
+   ],
+   "mentions_7d": 4477,
+   "mentions_daily": [
+    601,
+    521,
+    800,
+    902,
+    857,
+    796
+   ],
+   "count_query": "SI276 -is:retweet",
+   "count_note": null,
+   "search_hits": 0,
+   "top_posts": [],
+   "flags": []
+  },
+  {
+   "symbol": "KOLO",
+   "tokens": [
+    {
+     "name": "Kolomon",
+     "chain": "solana",
+     "address": "KoLoaG4ktXXA2g5FjrwNAHeNy5wPfQ2RzVUxscgZrpc"
+    }
+   ],
+   "mentions_7d": 68,
+   "mentions_daily": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    68
+   ],
+   "count_query": "(kolomon OR (kolo (solana OR memecoin OR mcap OR pump))) -is:retweet",
+   "count_note": null,
+   "search_hits": 0,
+   "top_posts": [],
+   "flags": [
+    "common_word",
+    "spiking"
+   ]
+  },
+  {
+   "symbol": "RIBBIT",
+   "tokens": [
+    {
+     "name": "RIBBIT ZYGO THE FROG ",
+     "chain": "solana",
+     "address": "FrtbBAaSZksfh4oV46E7Pvb43QiiUmYLD3dcGS6gpump"
+    }
+   ],
+   "mentions_7d": null,
+   "mentions_daily": null,
+   "count_query": null,
+   "count_note": null,
+   "search_hits": 0,
+   "top_posts": [],
+   "flags": [
+    "common_word"
+   ]
+  },
+  {
+   "symbol": "CBUCKS",
+   "tokens": [
+    {
+     "name": "Cartoon Money",
+     "chain": "solana",
+     "address": "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump"
+    }
+   ],
+   "mentions_7d": 1069,
+   "mentions_daily": [
+    280,
+    190,
+    199,
+    164,
+    108,
+    128
+   ],
+   "count_query": "CBUCKS -is:retweet",
+   "count_note": null,
+   "search_hits": 5,
+   "top_posts": [
+    {
+     "id": "2110812568428417126",
+     "text": "Attention $CBUCKS Family! YOUR vote matters! Less than 100 votes are needed to list $CBUCKS on the Moonshot Top 100 Leaderboard. - Listing ID: 3393 Every vote counts - Moonshot would be huge for community growth. 🔽",
+     "created_at": "2026-10-15T19:18:27.000Z",
+     "likes": 2,
+     "reposts": 1,
+     "replies": 0,
+     "author": "VeyroshadeETH",
+     "url": "https://x.com/VeyroshadeETH/status/2110812568428417126"
+    },
+    {
+     "id": "2110833409207767059",
+     "text": "Attention $CBUCKS Family! YOUR vote matters! Less than 100 votes are needed to list $CBUCKS on the Moonshot Top 100 Leaderboard. - Listing ID: 2724 Every vote counts - Moonshot would be huge for community growth. ↩️",
+     "created_at": "2026-10-15T20:41:16.000Z",
+     "likes": 2,
+     "reposts": 0,
+     "replies": 0,
+     "author": "ShadowProtocolX",
+     "url": "https://x.com/ShadowProtocolX/status/2110833409207767059"
+    },
+    {
+     "id": "2110879177880514818",
+     "text": "$CBUCKS Is printing heavily on my Alpha telegram group If you’re in my tg group your copy trade would have been on same profit as I am. Ca: DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
+     "created_at": "2026-10-15T23:43:08.000Z",
+     "likes": 2,
+     "reposts": 0,
+     "replies": 0,
+     "author": "sotrader01",
+     "url": "https://x.com/sotrader01/status/2110879177880514818"
+    },
+    {
+     "id": "2110872869823824369",
+     "text": "$CBUCKS Is making waves printing massive profits on my Alpha telegram group If you’re in my tg group your copy trade would have been on same profit as I am. Ca: DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
+     "created_at": "2026-10-15T23:18:04.000Z",
+     "likes": 1,
+     "reposts": 0,
+     "replies": 0,
+     "author": "sol_t01",
+     "url": "https://x.com/sol_t01/status/2110872869823824369"
+    },
+    {
+     "id": "2110847860103061748",
+     "text": "Want $CBUCKS on pumpfun or not? Then stop waiting and show up DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump 4j2ho keeping this $CBUCKS link here before I close the tab",
+     "created_at": "2026-10-15T21:38:42.000Z",
+     "likes": 0,
+     "reposts": 0,
+     "replies": 0,
+     "author": "Dwaynehirsch",
+     "url": "https://x.com/Dwaynehirsch/status/2110847860103061748"
+    }
+   ],
+   "flags": []
+  },
+  {
+   "symbol": "CHUD",
+   "tokens": [
+    {
+     "name": "chud cat",
+     "chain": "solana",
+     "address": "Ac4UPAYTpiNPpwXQ7cqTZnRVtPH3yeC9md8oJLo4pump"
+    }
+   ],
+   "mentions_7d": 357,
+   "mentions_daily": [
+    72,
+    56,
+    36,
+    43,
+    52,
+    98
+   ],
+   "count_query": "chud (solana OR memecoin OR mcap OR pump OR cat) -is:retweet",
+   "count_note": null,
+   "search_hits": 0,
+   "top_posts": [],
+   "flags": [
+    "common_word"
+   ]
+  }
+ ],
+ "top_cashtags_in_sample": [
+  [
+   "KIMCHI",
+   16
+  ],
+  [
+   "LARPCHECK",
+   7
+  ],
+  [
+   "POKECITY",
+   5
+  ],
+  [
+   "CBUCKS",
+   5
+  ],
+  [
+   "TRUMP",
+   3
+  ],
+  [
+   "PIERRE",
+   3
+  ],
+  [
+   "GATO",
+   3
+  ],
+  [
+   "SIRREG",
+   3
+  ],
+  [
+   "GIGATENEV",
+   2
+  ],
+  [
+   "ENERGY",
+   2
+  ],
+  [
+   "BONNIE",
+   2
+  ],
+  [
+   "BINA",
+   1
+  ],
+  [
+   "DAWG",
+   1
+  ],
+  [
+   "CLAUDIA",
+   1
+  ],
+  [
+   "DACITY",
+   1
+  ],
+  [
+   "SOL",
+   1
+  ],
+  [
+   "ELON",
+   1
+  ],
+  [
+   "SIMULATOR",
+   1
+  ],
+  [
+   "MUCRON",
+   1
+  ],
+  [
+   "WEFT",
+   1
+  ],
+  [
+   "LUKE",
+   1
+  ],
+  [
+   "UHI",
+   1
+  ],
+  [
+   "CASHCAT",
+   1
+  ],
+  [
+   "GLOAM",
+   1
+  ],
+  [
+   "CREORA",
+   1
+  ]
+ ],
+ "top_general_posts": [
+  {
+   "id": "2112944194176143783",
+   "text": "⚡ $POKECITY is bringing a familiar name into the meme coin scene! Built around the iconic Pokémon universe, Pokecity is bringing nostalgic energy into the meme coin space. With its growing community, increasing visibili…",
+   "created_at": "2026-10-21T16:28:47.000Z",
+   "likes": 235,
+   "reposts": 99,
+   "replies": 20,
+   "author": "TheCryptooGems",
+   "url": "https://x.com/TheCryptooGems/status/2112944194176143783"
+  },
+  {
+   "id": "2112626297818222835",
+   "text": "JUST IN: $PUNANI — THE MEME COIN THAT STARTED AS A MOVIE JOKE Sometimes the internet turns a fictional idea into a real on-chain story. $PUNANI is a fan-made Solana meme coin inspired by a reported movie reference invol…",
+   "created_at": "2026-10-20T19:25:34.000Z",
+   "likes": 225,
+   "reposts": 74,
+   "replies": 15,
+   "author": "MaxelRowan",
+   "url": "https://x.com/MaxelRowan/status/2112626297818222835"
+  },
+  {
+   "id": "2112769118382199115",
+   "text": "Daily Memecoin Recap - October 20 bull market will resume sometime in q4 Kimchi signs to pumpfun $kimchi -&gt; hit $44m - @kimchi1x announced a partnership with pump today + released his first ever youtube video - most …",
+   "created_at": "2026-10-21T04:53:05.000Z",
+   "likes": 280,
+   "reposts": 12,
+   "replies": 19,
+   "author": "mellometrics",
+   "url": "https://x.com/mellometrics/status/2112769118382199115"
+  },
+  {
+   "id": "2112046594090528833",
+   "text": "Daily Memecoin Recap - October 18 the biggest opportunities are shifting back to new pair traders France Riots $pierre -&gt; hit $1.6m - viral guy who stood on business while rioters tried to loot his store AI Music $cl…",
+   "created_at": "2026-10-19T05:02:02.000Z",
+   "likes": 189,
+   "reposts": 10,
+   "replies": 10,
+   "author": "mellometrics",
+   "url": "https://x.com/mellometrics/status/2112046594090528833"
+  },
+  {
+   "id": "2112875670867267638",
+   "text": "🐱🔥 MEET $MAW — A NEW MEME COIN TO WATCH ON SOLANA! 🚀💎 The Solana meme coin universe never sleeps, and new projects keep bringing fresh energy to the community! 👀⚡ 🐾 Introducing $MAW — a token to add to your watchlist an…",
+   "created_at": "2026-10-21T11:56:29.000Z",
+   "likes": 59,
+   "reposts": 55,
+   "replies": 0,
+   "author": "MrGemsHunter",
+   "url": "https://x.com/MrGemsHunter/status/2112875670867267638"
+  },
+  {
+   "id": "2111831926763860474",
+   "text": "🐸🚀 Will a new meme coin crack the CMC top 10? The market is open. Will a new meme coin enter the CMC top 10 cryptocurrencies by market cap by October 30, 2026? 👀 Make your prediction. See what the market thinks. Let the…",
+   "created_at": "2026-10-18T14:49:01.000Z",
+   "likes": 41,
+   "reposts": 40,
+   "replies": 0,
+   "author": "edgemarketAI",
+   "url": "https://x.com/edgemarketAI/status/2111831926763860474"
+  },
+  {
+   "id": "2112948275665940885",
+   "text": "Top Memecoins on Solana | Last 24H 🚀 These 10 memecoins are catching attention across the $SOL ecosystem. $ENERGY DARKCAT - @thedarkcats MONEYBIZ - @MoneyBizMonkey Kimchi - @kimchi1x Pokecity - @pokecitycoin GATO - @The…",
+   "created_at": "2026-10-21T16:45:00.000Z",
+   "likes": 41,
+   "reposts": 12,
+   "replies": 18,
+   "author": "SolCommunityy",
+   "url": "https://x.com/SolCommunityy/status/2112948275665940885"
+  },
+  {
+   "id": "2112891721054925187",
+   "text": "Most Trending #MemeCoins on @dexscreener Last 24H🚀 #KIMCHI @KimChcoinX #MONEYBIZ @moneybizmonkey #POKECITY @pokecitycoin #PIKA @superpikaonsol #GATO @TheGTA6cat #WICK @TheHouseDotFun #FERRY @use_ferry #KIMCHIBOSS @aurab…",
+   "created_at": "2026-10-21T13:00:16.000Z",
+   "likes": 31,
+   "reposts": 19,
+   "replies": 0,
+   "author": "CoinvoteCC",
+   "url": "https://x.com/CoinvoteCC/status/2112891721054925187"
+  }
+ ]
+}

@@ -1,0 +1,402 @@
+{
+ "schema": 1,
+ "description": "Append-only AI pick log. Never edit or delete past entries.",
+ "batches": [
+  {
+   "id": "batch-001",
+   "created_at": "2026-10-22T02:39:15+08:00",
+   "x_window": [
+    "2026-10-15T19:00:00Z",
+    "2026-10-21T18:37:19.000Z"
+   ],
+   "method": "scripts/make_picks.py score_one() v1; qualitative read in rationale",
+   "benchmarks": {
+    "SOL": {
+     "chain": "solana",
+     "address": "So11111111111111111111111111111111111111112",
+     "pair_address": "Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE",
+     "price_usd": 108.82
+    },
+    "BTC": {
+     "chain": "ethereum",
+     "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+     "pair_address": "0x56534741CD8B152df6d48AdF7ac51f75169A83b2",
+     "price_usd": 84593.58
+    }
+   },
+   "entries": [
+    {
+     "id": "20261022-001-LARPCHECK",
+     "batch": "batch-001",
+     "type": "buy",
+     "created_at": "2026-10-22T02:39:15+08:00",
+     "chain": "solana",
+     "token_address": "t9bnCGiZVUYsRKvx4d5dPcoDCSyuBM9C33ZNGNULARP",
+     "pair_address": "FJ1Gf7yYZQnpjAd2Go6Rws14WmStjZyo8XgxmLPHHaEU",
+     "dex": "pumpswap",
+     "symbol": "LARPCHECK",
+     "name": "Larpcheck",
+     "url": "https://dexscreener.com/solana/fj1gf7yyzqnpjad2go6rws14wmstjzyo8xgxmlphhaeu",
+     "entry_price_usd": 0.0007965,
+     "entry_snapshot": {
+      "liquidity_usd": 93279.09,
+      "volume24h_usd": 293011.19,
+      "market_cap_usd": 751364,
+      "fdv_usd": 751364,
+      "pair_age_h": 261.1,
+      "chg24h_pct": -17.74,
+      "buys24h": 2157,
+      "sells24h": 1975
+     },
+     "model_score": 52,
+     "score_parts": {
+      "buzz_growth": 5.2,
+      "buzz_level": 15,
+      "buzz_momentum": 0.3,
+      "engagement": 14.9,
+      "liquidity": 4.2,
+      "market": 15,
+      "penalties": -3
+     },
+     "conviction": 47,
+     "rationale": "This one has the highest steady X activity of the batch: about 1.4k posts in the last 24h, roughly 1.8-2.3k a day before that, and it's still holding up over the last 6h. But a large share of that volume is the @Larpcheckbot product replying to users, so it's real usage but not organic hype. Buzz is flat to slightly declining, not rising. Liquidity is about $93k and the pair is 11 days old. It's -14% over 24h and the buy/sell balance is healthy. It's a bet that a utility-ish meme keeps attention. Low-to-medium conviction.",
+     "flags": [
+      "paid DexScreener boost"
+     ],
+     "evidence": {
+      "x_count_query": "LARPCHECK -is:retweet",
+      "x_7d_total": 11109,
+      "x_last24h": 1391,
+      "x_prior_daily_avg": 1943.6,
+      "x_last6h": 407,
+      "x_prev6h": 370,
+      "cashtag_sample": {
+       "posts": 7,
+       "unique_authors": 6,
+       "likes": 44
+      },
+      "posts": [
+       "https://x.com/foshawty/status/2112699118313513208",
+       "https://x.com/Eimanuer/status/2111589707192930521",
+       "https://x.com/Lavaragexyz/status/2112213398331285542"
+      ]
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-001-GATO",
+     "batch": "batch-001",
+     "type": "buy",
+     "created_at": "2026-10-22T02:39:15+08:00",
+     "chain": "solana",
+     "token_address": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+     "pair_address": "5E3dXLXGwmTDCokA51WYYaKttjFZBwqCoyUHBUi5gt2m",
+     "dex": "pumpswap",
+     "symbol": "GATO",
+     "name": "GTA6CAT",
+     "url": "https://dexscreener.com/solana/5e3dxlxgwmtdcoka51wyyakttjfzbwqcoyuhbui5gt2m",
+     "entry_price_usd": 0.002754,
+     "entry_snapshot": {
+      "liquidity_usd": 159292.73,
+      "volume24h_usd": 824775.71,
+      "market_cap_usd": 2718031,
+      "fdv_usd": 2718013,
+      "pair_age_h": 1374.2,
+      "chg24h_pct": 61.39,
+      "buys24h": 4837,
+      "sells24h": 4172
+     },
+     "model_score": 46,
+     "score_parts": {
+      "buzz_growth": 12.6,
+      "buzz_level": 10.9,
+      "buzz_momentum": -4.8,
+      "engagement": 8.1,
+      "liquidity": 7.7,
+      "market": 15,
+      "penalties": -3
+     },
+     "conviction": 41,
+     "rationale": "Crypto-context mentions jumped to about 150 in the last 24h, versus about 31 the day before and about 147 a day earlier in the week, so the buzz is coming back. But the last 6h (25) are well below the 6h before (103). This is the deepest liquidity in the batch (about $159k), and the pair is 57 days old, so it has survived longer than most. It's +60% over 24h. In the sample, one poster calls it 'a bundled scam', while a LARPCHECK bot scan says holders are spread out (top 10 hold about 14.5%) with a 'likely LARP' narrative. Mixed, low conviction.",
+     "flags": [
+      "paid DexScreener boost",
+      "buzz fading in last 6h"
+     ],
+     "evidence": {
+      "x_count_query": "gato (GTA6CAT OR solana OR memecoin OR mcap OR pump) -is:retweet",
+      "x_7d_total": 770,
+      "x_last24h": 150,
+      "x_prior_daily_avg": 124.0,
+      "x_last6h": 25,
+      "x_prev6h": 103,
+      "cashtag_sample": {
+       "posts": 3,
+       "unique_authors": 3,
+       "likes": 10
+      },
+      "posts": [
+       "https://x.com/Eimanuer/status/2111589707192930521",
+       "https://x.com/Lavaragexyz/status/2112213398331285542",
+       "https://x.com/TheTrendGuy1/status/2112920379945779577"
+      ]
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-001-GLITCH",
+     "batch": "batch-001",
+     "type": "buy",
+     "created_at": "2026-10-22T02:39:15+08:00",
+     "chain": "solana",
+     "token_address": "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump",
+     "pair_address": "Em6RvzGXhd35pZ7CVUjCTPEnv4jAztScaVHaXBXCBcG7",
+     "dex": "pumpswap",
+     "symbol": "GLITCH",
+     "name": "Infinite Money Glitch",
+     "url": "https://dexscreener.com/solana/em6rvzgxhd35pz7cvujctpenv4jaztscavhaxbxcbcg7",
+     "entry_price_usd": 0.002015,
+     "entry_snapshot": {
+      "liquidity_usd": 127296.42,
+      "volume24h_usd": 271435.78,
+      "market_cap_usd": 1881557,
+      "fdv_usd": 1922074,
+      "pair_age_h": 123.1,
+      "chg24h_pct": 9.63,
+      "buys24h": 1382,
+      "sells24h": 1302
+     },
+     "model_score": 41,
+     "score_parts": {
+      "buzz_growth": 12.3,
+      "buzz_level": 9.7,
+      "buzz_momentum": 1.0,
+      "engagement": 0,
+      "liquidity": 6.2,
+      "market": 15,
+      "penalties": -3
+     },
+     "conviction": 36,
+     "rationale": "Mentions of 'glitch' with crypto context roughly doubled to 86 in the last 24h (39 the day before), and the last 6h are still rising (27 vs 20). Liquidity is about $127k, the pair is about 5 days old, and it's +9% over 24h with a normal volume/liquidity ratio. But no $GLITCH cashtag posts showed up in my samples, so engagement quality is unverified, and 'glitch' is a noisy keyword. This is a speculative, low-conviction pick on an early buzz uptick.",
+     "flags": [
+      "paid DexScreener boost"
+     ],
+     "evidence": {
+      "x_count_query": "glitch (solana OR memecoin OR mcap OR pump) -is:retweet",
+      "x_7d_total": 449,
+      "x_last24h": 86,
+      "x_prior_daily_avg": 72.6,
+      "x_last6h": 27,
+      "x_prev6h": 20,
+      "cashtag_sample": {
+       "posts": 0,
+       "unique_authors": 0,
+       "likes": 0
+      },
+      "posts": []
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-001-POKECITY",
+     "batch": "batch-001",
+     "type": "avoid",
+     "created_at": "2026-10-22T02:39:15+08:00",
+     "chain": "solana",
+     "token_address": "4wopERxtKHjzaANSywo9BVVycGJ7q7uXJ38Q6EoCpump",
+     "pair_address": "13ah1XkrFTsXeaPdvVQn8giGpS3HJVXfVwq9qtAPSqxf",
+     "dex": "pumpswap",
+     "symbol": "POKECITY",
+     "name": "Pokecity Coin",
+     "url": "https://dexscreener.com/solana/13ah1xkrftsxeapdvvqn8gigps3hjvxfvwq9qtapsqxf",
+     "entry_price_usd": 0.001306,
+     "entry_snapshot": {
+      "liquidity_usd": 105592.74,
+      "volume24h_usd": 2654506.53,
+      "market_cap_usd": 1293088,
+      "fdv_usd": 1293088,
+      "pair_age_h": 19.6,
+      "chg24h_pct": 2546,
+      "buys24h": 41066,
+      "sells24h": 22223
+     },
+     "model_score": 46,
+     "score_parts": {
+      "buzz_growth": 30,
+      "buzz_level": 12.9,
+      "buzz_momentum": -2.8,
+      "engagement": 13.9,
+      "liquidity": 5.0,
+      "market": 10.5,
+      "penalties": -23
+     },
+     "conviction": null,
+     "rationale": "This is the classic chase setup. It's +2,500% in 24h on a pair under a day old, and it's a paid boost. X buzz went from zero to about 380 posts a day, but it's already fading (44 posts in the last 6h vs 98 in the 6h before). The top post is a promo-style 'gem' account, and Pokémon IP is a legal and narrative risk.",
+     "flags": [
+      "already +2546% in 24h (chasing risk)",
+      "paid DexScreener boost",
+      "buzz fading in last 6h",
+      "pair only 20h old"
+     ],
+     "evidence": {
+      "x_count_query": "POKECITY -is:retweet",
+      "x_7d_total": 429,
+      "x_last24h": 379,
+      "x_prior_daily_avg": 10.0,
+      "x_last6h": 44,
+      "x_prev6h": 98,
+      "cashtag_sample": {
+       "posts": 5,
+       "unique_authors": 4,
+       "likes": 245
+      },
+      "posts": [
+       "https://x.com/TheCryptooGems/status/2112944194176143783",
+       "https://x.com/DEXToolsApp/status/2112965811304312993",
+       "https://x.com/TheTrendGuy1/status/2112824319445434540"
+      ]
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-001-CHUD",
+     "batch": "batch-001",
+     "type": "avoid",
+     "created_at": "2026-10-22T02:39:15+08:00",
+     "chain": "solana",
+     "token_address": "Ac4UPAYTpiNPpwXQ7cqTZnRVtPH3yeC9md8oJLo4pump",
+     "pair_address": "6BA5PywrnZwiCbYUZuTgyYNfQt5uXajoVJAH93FfHrfk",
+     "dex": "pumpswap",
+     "symbol": "CHUD",
+     "name": "chud cat",
+     "url": "https://dexscreener.com/solana/6ba5pywrnzwicbyuzutgyynfqt5uxajovjah93ffhrfk",
+     "entry_price_usd": 0.001146,
+     "entry_snapshot": {
+      "liquidity_usd": 977526.01,
+      "volume24h_usd": 99030.1,
+      "market_cap_usd": 1106461,
+      "fdv_usd": 1106461,
+      "pair_age_h": 4.9,
+      "chg24h_pct": 2465,
+      "buys24h": 2263,
+      "sells24h": 1369
+     },
+     "model_score": 35,
+     "score_parts": {
+      "buzz_growth": 18.6,
+      "buzz_level": 10.0,
+      "buzz_momentum": 4.5,
+      "engagement": 0,
+      "liquidity": 19.8,
+      "market": 10.5,
+      "penalties": -28
+     },
+     "conviction": null,
+     "rationale": "The pair is only about 5h old and already +2,465%. Reported liquidity (about $978k) is almost equal to the market cap (about $1.1M), which is an unusual pool setup that can mislead. There's too little history to judge, and the buzz is tiny in absolute terms.",
+     "flags": [
+      "already +2465% in 24h (chasing risk)",
+      "liquidity ≈ market cap (unusual pool setup)",
+      "paid DexScreener boost",
+      "pair only 5h old"
+     ],
+     "evidence": {
+      "x_count_query": "chud (solana OR memecoin OR mcap OR pump OR cat) -is:retweet",
+      "x_7d_total": 357,
+      "x_last24h": 98,
+      "x_prior_daily_avg": 51.8,
+      "x_last6h": 52,
+      "x_prev6h": 13,
+      "cashtag_sample": {
+       "posts": 0,
+       "unique_authors": 0,
+       "likes": 0
+      },
+      "posts": []
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-001-CBUCKS",
+     "batch": "batch-001",
+     "type": "avoid",
+     "created_at": "2026-10-22T02:39:15+08:00",
+     "chain": "solana",
+     "token_address": "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
+     "pair_address": "B4Cp45PGifVM5FAXfh6AeV8QZ3eUNQnqGBw7KuC7MHnB",
+     "dex": "pumpswap",
+     "symbol": "CBUCKS",
+     "name": "Cartoon Money",
+     "url": "https://dexscreener.com/solana/b4cp45pgifvm5faxfh6aev8qz3eunqnqgbw7kuc7mhnb",
+     "entry_price_usd": 0.001083,
+     "entry_snapshot": {
+      "liquidity_usd": 106646.44,
+      "volume24h_usd": 121862.17,
+      "market_cap_usd": 1022299,
+      "fdv_usd": 1022299,
+      "pair_age_h": 360.2,
+      "chg24h_pct": -8.23,
+      "buys24h": 640,
+      "sells24h": 512
+     },
+     "model_score": 42,
+     "score_parts": {
+      "buzz_growth": 4.6,
+      "buzz_level": 10.6,
+      "buzz_momentum": -1.8,
+      "engagement": 11.3,
+      "liquidity": 5.1,
+      "market": 15,
+      "penalties": -3
+     },
+     "conviction": null,
+     "rationale": "The model score is middling (42), but the X sample reads as coordinated promotion. Several accounts posted the same 'Attention $CBUCKS Family, vote' text, plus 'my Alpha telegram' copy-trade shills. Mentions are falling against its own weekly average. Coordinated shilling is a red flag, not organic buzz.",
+     "flags": [
+      "paid DexScreener boost"
+     ],
+     "evidence": {
+      "x_count_query": "CBUCKS -is:retweet",
+      "x_7d_total": 1069,
+      "x_last24h": 128,
+      "x_prior_daily_avg": 188.2,
+      "x_last6h": 11,
+      "x_prev6h": 20,
+      "cashtag_sample": {
+       "posts": 5,
+       "unique_authors": 5,
+       "likes": 7
+      },
+      "posts": [
+       "https://x.com/VeyroshadeETH/status/2110812568428417126",
+       "https://x.com/ShadowProtocolX/status/2110833409207767059",
+       "https://x.com/sotrader01/status/2110879177880514818"
+      ]
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    }
+   ]
+  }
+ ]
+}

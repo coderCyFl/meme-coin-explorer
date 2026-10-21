@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>模擬倉 · AI 揀幣 · Meme Coin Explorer</title>
+<meta name="description" content="個人 AI 模擬倉：用 AI + X 搵幣，模擬落倉，追蹤真實賺蝕。唔係投資建議。">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🐸%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<script>
+(function(){try{var m=localStorage.getItem('mce:ui:mode')||'simple';
+document.body.classList.add(m==='full'?'ui-full':'ui-simple');
+}catch(e){document.body.classList.add('ui-simple');}})();
+</script>
+<header class="top">
+  <div class="brand">
+    <span class="logo">🐸</span>
+    <div>
+      <h1>模擬倉 · AI 揀幣</h1>
+      <p class="sub">用 AI 搵幣 → 模擬落倉 → 睇賺蝕</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="seg mini ui-toggle" id="uiModeToggle" title="介面模式">
+      <button type="button" class="segbtn active" data-ui="simple">簡單</button>
+      <button type="button" class="segbtn" data-ui="full">完整</button>
+    </div>
+    <div class="status" id="status">載入中…</div>
+  </div>
+</header>
+
+<div class="disclaimer" role="note">
+  <div class="disc-one"><strong>⚠️ 模擬／研究，唔係投資建議。</strong> Meme 高風險 · 假錢倉
+    <button type="button" class="linkish" id="discToggle">詳情</button></div>
+  <div class="disc-full" id="discFull" hidden>
+    Meme coin 大多數歸零，好多係 scam / rug / honeypot。
+    DexScreener 「boosted」係<b>俾錢推廣</b>，X 熱度好易造假。
+    呢度係<strong>模擬倉</strong>，冇真實金錢。永遠唔好投入多過你輸得起嘅錢。
+  </div>
+</div>
+
+<nav class="tabs top-tabs full-only" role="tablist">
+  <a href="#picks" class="tab" data-view="picks">🤖 AI 揀幣</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">🧪 模擬倉</a>
+  <a href="#news" class="tab" data-view="news">📰 新聞</a>
+  <a href="#explore" class="tab" data-view="explore">🔎 掃描</a>
+</nav>
+
+<details class="howto full-only" id="howto">
+  <summary>📖 點樣用 · How to use（揀角色 · 一日流程 · FAQ）</summary>
+
+  <div class="howto-grid">
+    <button type="button" class="lens" data-lens="scalp">
+      <b>⚡ 短線炒家</b>
+      <span>跳去市場掃描</span>
+    </button>
+    <button type="button" class="lens" data-lens="careful">
+      <b>🛡️ 謹慎模擬倉</b>
+      <span>只跟 AI · 用現貨</span>
+    </button>
+    <button type="button" class="lens" data-lens="research">
+      <b>🔬 研究型</b>
+      <span>新聞 + 避過清單</span>
+    </button>
+    <button type="button" class="lens" data-lens="lev">
+      <b>💥 槓桿使用者</b>
+      <span>先讀爆倉規則</span>
+    </button>
+    <button type="button" class="lens" data-lens="allin">
+      <b>🎰 孤注一擲</b>
+      <span>假錢 All-in 試膽</span>
+    </button>
+  </div>
+
+  <div class="howto-body">
+    <section class="howto-sec" id="lens-scalp">
+      <h4>⚡ 短線炒家</h4>
+      <ul>
+        <li>去「市場掃描」，流動性 ≥ <b>$50k</b>，留意 📈 急升同 X 7 日熱度。</li>
+        <li>🚩 紅旗：💧 低流動性、🐣 &lt;24h 新盤、🌀 成交額 &gt;50× 流動性、🚀 俾錢 boost——可以睇，但唔好重倉追。</li>
+        <li><b>幾時唔好追：</b>已經 +300%／一日內、buzz 近 6 小時明顯回落、淨係 TG shill 文案——多數係接盤。</li>
+        <li>短線都建議用<strong>現貨</strong>練手；meme 波動大，槓桿好易秒爆。</li>
+      </ul>
+    </section>
+    <section class="howto-sec" id="lens-careful">
+      <h4>🛡️ 謹慎模擬倉（推薦入門）</h4>
+      <ul>
+        <li>只喺「AI 揀幣」撳 <b>落倉</b>，模式選 <b>現貨</b>。或者用「跟晒今批 AI 買入」（<em>只支援現貨</em>，較安全）。</li>
+        <li>睇「跑贏 SOL」同勝率——樣本少（&lt;20 筆）唔好下結論。</li>
+        <li>一定要睇 <b>避過</b> 清單：AI 叫你唔好追嘅，多數係 FOMO／Rug 形態。</li>
+        <li>起始資金可以改，但重置會清空紀錄；當係實驗本金，唔係真錢。</li>
+      </ul>
+    </section>
+    <section class="howto-sec" id="lens-research">
+      <h4>🔬 研究型</h4>
+      <ul>
+        <li>先「重點新聞」：rug／監管／大盤，再返 AI 揀幣。</li>
+        <li>對照避過清單同新聞有冇呼應（例如名人幣 scam、Pump.fun 97% 蝕錢）。</li>
+        <li>Scorecard 係誠實 track record：舊推薦永不刪改，錯都要留低。</li>
+      </ul>
+    </section>
+    <section class="howto-sec" id="lens-lev">
+      <h4>💥 槓桿使用者（模擬 · 逐倉）</h4>
+      <ul>
+        <li>風險檔：<b>穩陣</b>（現貨／最多 3x）· <b>進取</b>（最多 10x）· <b>極高風險</b>（最多 50x）。假錢可以試大，真錢唔好咁玩。</li>
+        <li>槓桿預設可開到 <b>50x</b>（2/3/5/10/20/50）。你出<strong>保證金</strong>，名義 = 保證金 × 倍數。</li>
+        <li><b>爆倉價：</b>浮虧 ≈ 保證金 90% 就爆，保證金歸零。50x 只要跌約 1.8% 就爆。</li>
+        <li>落倉畫面會大膽顯示「距離爆倉」同「若翻倍／歸零」——高風險要心知肚明。</li>
+      </ul>
+    </section>
+
+    <section class="howto-sec" id="lens-allin">
+      <h4>🎰 孤注一擲</h4>
+      <ul>
+        <li>現實唔敢 All-in？用<strong>假錢</strong>一次過押晒喺一隻幣——驗證你係咪真係信呢個 call。</li>
+        <li>只可以持有<strong>一個</strong>倉：現貨 All-in（用晒現金）或槓桿 All-in（保證金盡用 + 最高 50x）。</li>
+        <li>確認前會顯示 ×2／×5／×10 估算同爆倉距離。輸可以歸零；贏就大賺。</li>
+        <li>進行中唔可以再開第二個倉，直至平倉／爆倉／重置。之後可「再來一鋪」。</li>
+        <li>好易歸零。假錢儘管試；真錢唔好咁玩。</li>
+      </ul>
+    </section>
+    <section class="howto-sec">
+      <h4>📅 建議一日流程</h4>
+      <ol class="dayflow">
+        <li>📰 睇重點新聞（有冇新 rug／監管）</li>
+        <li>🤖 睇 AI 揀幣同避過 · 對照 SOL</li>
+        <li>🧪 現貨落倉（或跟晒今批）</li>
+        <li>第二天更新報價 · 睇成績 · 決定平倉定繼續</li>
+      </ol>
+    </section>
+
+    <details class="faq">
+      <summary>❓ FAQ（常見問題）</summary>
+      <dl>
+        <dt>同真倉有咩分別？</dt>
+        <dd>完全模擬，錢只喺瀏覽器 localStorage。冇鏈上交易、冇錢包。</dd>
+        <dt>點解有手續費 1%？</dt>
+        <dd>粗略模擬 fee + 滑點。真盤薄池通常更差。</dd>
+        <dt>「跟晒今批」可唔可以槓桿？</dt>
+        <dd>預設現貨平均分。進取／極高風險檔可以選「細保證金高倍」一鍵開，但會有嚇人確認。</dd>
+        <dt>爆倉之後點算？</dt>
+        <dd>該倉保證金唔返，記一筆已實現虧損；其他現貨／現金唔受影響（逐倉）。</dd>
+        <dt>AI 一定賺？</dt>
+        <dd>唔會。呢個實驗就係要驗證賺定蝕；樣本少證明唔到咩。</dd>
+        <dt>孤注一擲係咩？</dt>
+        <dd>假錢 All-in 一隻幣（現貨或最高 50x）。一舖過，輸就接近歸零，用來試膽同驗證信念。</dd>
+      </dl>
+    </details>
+  </div>
+</details>
+
+
+<!-- ===== AI 揀幣 ===== -->
+<div id="view-picks" class="view" hidden>
+  <section class="panel hero">
+    <div class="flow">
+      <div class="step"><b>1</b> AI + X 搵幣</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>2</b> 你落模擬倉</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>3</b> 追蹤真實賺蝕</div>
+    </div>
+    <p class="intro">呢個係<strong>你嘅個人 AI 模擬實驗</strong>：我用分析同 X 搜尋幫你揀幣，你用模擬金錢落倉，之後睇呢啲倉位實際上賺定蝕。
+      每條推薦會永久記喺 <code>data/picks.json</code>（只加唔改），同埋同時間 SOL 對照。樣本少唔證明得咩。
+      <span class="en">Personal experiment: AI recommends → you paper-buy → track real P&amp;L.</span></p>
+    <div class="panelhead">
+      <h2>🤖 今批 AI 推薦 <span class="en">My recommendations for your sim</span></h2>
+      <div class="row wrap">
+        <button id="allinFromPicks" class="cta hot" title="孤注一擲">🎰 孤注一擲</button>
+        <button id="followBatch" class="primary full-only" title="跟晒今批">🤖 跟晒今批</button>
+        <button id="picksRefresh" class="sm">↻</button>
+      </div>
+    </div>
+    <p class="boost-note">📌 候選幣好多來自 DexScreener <b>paid boost</b>，唔等於優質，只係曝光多。</p>
+    <p class="honesty muted" id="sampleHonesty"></p>
+    <div class="stats full-only" id="pickStats"></div>
+  </section>
+
+  <section class="panel simple-only" id="simpleNewsStrip" hidden>
+    <a id="simpleNewsLink" class="simple-news" href="#news"><span class="k">新聞</span> <span id="simpleNewsText">載入中…</span> <span id="simpleNewsAge" class="age"></span></a>
+  </section>
+
+  <section class="panel simple-only" id="simpleCardsPanel">
+    <h3>今批推薦</h3>
+    <div id="simpleCards" class="simple-cards"></div>
+    <div class="simple-pf-mini" id="simplePfMini"></div>
+  </section>
+
+  <section class="panel full-only">
+    <h3>🟢 買入推薦 · 撳「落倉」放入模擬倉</h3>
+    <div class="tablewrap"><table class="picks"><thead><tr>
+      <th>幣</th><th>批次 / 時間</th><th class="num">信心</th><th class="num">推薦價</th><th class="num">而家</th>
+      <th class="num">回報</th><th class="num">同期 SOL</th><th class="num">跑贏 SOL</th><th>持有</th><th>24h / 72h / 7d</th><th></th>
+    </tr></thead><tbody id="picksBody"></tbody></table></div>
+
+    <h3>🔴 避過建議 <span class="muted">正確＝之後跌咗</span></h3>
+    <div class="tablewrap"><table class="picks"><thead><tr>
+      <th>避過</th><th>批次 / 時間</th><th class="num">當時價</th><th class="num">而家</th><th class="num">之後走勢</th><th class="num">SOL</th><th>持有</th><th>暫時判決</th><th></th>
+    </tr></thead><tbody id="avoidBody"></tbody></table></div>
+  </section>
+  <section class="panel full-only" id="pickDetails"></section>
+</div>
+
+<!-- ===== 模擬倉 ===== -->
+<div id="view-portfolio" class="view" hidden>
+  <div class="simbanner">🧪 <b>模擬倉 · 冇真實金錢。</b>
+    共用一個現金池；現貨同槓桿分開顯示。槓桿係<strong>逐倉模擬</strong>（最高 10x），真實永續通常有資金費同插針，會爆得更快。
+    <span class="en">Simulated only · shared cash · isolated margin.</span></div>
+  <div class="simbanner lev-warn">💥 <b>槓桿模擬極高風險。</b>
+    Meme coin 波動可以一日 ±50%，高倍槓桿好易保證金歸零。呢度唔係投資建議；請先用現貨練。</div>
+
+  <div id="allinBanner" class="allin-banner" hidden>
+    <div class="allin-live">
+      <div class="allin-title">🎰 孤注一擲進行中 · 一舖過</div>
+      <div id="allinLive" class="allin-live-stats"></div>
+    </div>
+    <button type="button" id="allinCloseBtn" class="cta danger">平倉／結束呢鋪</button>
+  </div>
+
+  <div id="allinResult" class="allin-result" hidden>
+    <div id="allinResultBody"></div>
+    <button type="button" id="allinAgain" class="cta primary">再來一鋪</button>
+  </div>
+
+  <section class="panel simple-only" id="simplePfPanel">
+    <h2>我的模擬倉</h2>
+    <div class="stats" id="simplePfStats"></div>
+    <button type="button" class="cta" id="simplePfDetail">睇持倉詳情</button>
+  </section>
+
+  <section class="panel">
+    <div class="allin-entry row wrap" id="allinEntryBar">
+      <button type="button" id="allinStartBtn" class="cta primary hot">🎰 開始孤注一擲</button>
+      <span class="muted">揀一隻幣 → All-in 現貨或 50x。假錢試膽，真錢唔好。</span>
+    </div>
+    <div class="panelhead">
+      <h2>🧪 我嘅模擬倉 <span class="en">Paper portfolio</span></h2>
+      <div class="risk-bar">
+        <span class="muted">風險檔</span>
+        <div class="seg risk" id="riskProfile">
+          <button type="button" class="segbtn" data-risk="safe">穩陣</button>
+          <button type="button" class="segbtn active" data-risk="agg">進取</button>
+          <button type="button" class="segbtn" data-risk="yolo">極高風險</button>
+          <button type="button" class="segbtn" data-risk="allin">孤注一擲</button>
+        </div>
+      </div>
+      <div class="row wrap capital-row">
+        <span class="muted">起始資金</span>
+        <div class="presets" id="capitalPresets">
+          <button type="button" class="sm preset" data-cap="1000">$1k</button>
+          <button type="button" class="sm preset active" data-cap="5000">$5k</button>
+          <button type="button" class="sm preset" data-cap="10000">$10k</button>
+          <button type="button" class="sm preset" data-cap="50000">$50k</button>
+        </div>
+        <input id="startCash" type="number" min="100" step="100" value="5000" title="重置時生效">
+        <label class="muted" for="feePct">費%</label>
+        <input id="feePct" type="number" min="0" max="20" step="0.1" value="1">
+        <button id="pfRefresh" class="sm">↻ 報價</button>
+        <button id="copyPicks" class="primary">🤖 跟晒今批</button>
+        <button id="pfReset" class="danger sm">重置</button>
+      </div>
+      <p class="muted risk-hint" id="riskHint">假錢儘管試大；真錢唔好咁玩。進取檔預設最多 10x。</p>
+    </div>
+    <div class="stats" id="pfStats"></div>
+
+    <div class="seg" role="tablist" aria-label="倉位類型">
+      <button type="button" class="segbtn active" data-pfmode="spot">現貨 Spot</button>
+      <button type="button" class="segbtn" data-pfmode="lev">槓桿 Leverage</button>
+      <button type="button" class="segbtn" data-pfmode="all">全部</button>
+    </div>
+
+    <div id="spotSection">
+      <h3>現貨持倉 <span class="en">Spot · 最多蝕晒本金</span></h3>
+      <div class="tablewrap"><table><thead><tr>
+        <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
+        <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
+      </tr></thead><tbody id="holdBody"></tbody></table>
+      <div class="empty" id="holdEmpty">未有現貨。去「AI 揀幣」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
+    </div>
+
+    <div id="levSection" hidden>
+      <h3>槓桿倉（逐倉模擬） <span class="en">Isolated · 可爆倉</span></h3>
+      <p class="muted lev-note">名義倉 = 保證金 × 倍數。浮虧 ≈ 保證金 90% → 爆倉，保證金歸零。v1 未計資金費（真實 perps 有 funding）。</p>
+      <div class="tablewrap"><table><thead><tr>
+        <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
+        <th class="num">入場</th><th class="num">標記價</th><th class="num">爆倉價</th>
+        <th class="num">浮盈虧</th><th class="num">倉權益</th><th></th>
+      </tr></thead><tbody id="levBody"></tbody></table>
+      <div class="empty" id="levEmpty">未有槓桿倉。落倉時選「槓桿」，揀 2x–10x 同保證金。</div></div>
+    </div>
+
+    <h3>交易紀錄 <span class="en">Trade history</span></h3>
+    <div class="tablewrap"><table><thead><tr>
+      <th>時間</th><th>類型</th><th>方向</th><th>幣</th><th class="num">價</th><th class="num">數量/名義</th><th class="num">金額</th><th class="num">手續費</th><th class="num">已實現</th>
+    </tr></thead><tbody id="tradeBody"></tbody></table></div>
+  </section>
+</div>
+
+<!-- ===== 更多（簡單模式） ===== -->
+<div id="view-more" class="view simple-only" hidden>
+  <section class="panel">
+    <h2>更多</h2>
+    <div class="more-list">
+      <a class="more-item" href="#news">📰 重點新聞</a>
+      <a class="more-item" href="#explore">🔎 市場掃描</a>
+      <button type="button" class="more-item" id="moreToFull">🔓 切換「完整」介面</button>
+      <button type="button" class="more-item" id="moreHowto">📖 點樣用</button>
+      <a class="more-item" href="#picks">🤖 返去揀幣</a>
+    </div>
+  </section>
+</div>
+
+<!-- ===== 重點新聞 ===== -->
+<div id="view-news" class="view" hidden>
+  <section class="panel">
+    <div class="panelhead">
+      <h2>📰 重點新聞 <span class="en">Key news for meme traders</span></h2>
+      <span class="muted" id="newsMeta"></span>
+    </div>
+    <p class="intro">精選新聞快照（網站唔 call X）。<span id="newsFreshness" class="age"></span></p>
+    <div class="news-filters">
+      <button type="button" class="chip active" data-ntag="all">全部</button>
+      <button type="button" class="chip" data-ntag="rug">Rug / Scam</button>
+      <button type="button" class="chip" data-ntag="market">市場</button>
+      <button type="button" class="chip" data-ntag="meme">Meme</button>
+      <button type="button" class="chip" data-ntag="regulation">監管</button>
+    </div>
+    <div id="newsList" class="news-list"></div>
+  </section>
+</div>
+
+<!-- ===== 市場掃描 ===== -->
+<div id="view-explore" class="view" hidden>
+<section class="controls">
+  <div class="group">
+    <label for="source">來源</label>
+    <select id="source">
+      <option value="boosts">熱門 boosted</option>
+      <option value="profiles">最新 token profiles</option>
+      <option value="search">搜尋…</option>
+    </select>
+  </div>
+  <div class="group" id="searchGroup" hidden>
+    <label for="q">搜尋 DexScreener</label>
+    <div class="row"><input id="q" type="search" placeholder="例如 pepe, bonk, wif" value="pepe"><button id="go">Go</button></div>
+  </div>
+  <div class="group">
+    <label for="chain">鏈</label>
+    <select id="chain"><option value="">全部</option></select>
+  </div>
+  <div class="group">
+    <label for="minLiq">最低流動性</label>
+    <select id="minLiq">
+      <option value="0">不限</option>
+      <option value="10000">$10k</option>
+      <option value="50000" selected>$50k</option>
+      <option value="100000">$100k</option>
+      <option value="500000">$500k</option>
+      <option value="1000000">$1M</option>
+    </select>
+  </div>
+  <div class="group">
+    <label for="filter">篩選</label>
+    <input id="filter" type="search" placeholder="名稱或代號">
+  </div>
+  <div class="group checks">
+    <label><input type="checkbox" id="buzzOnly"> 有 X 熱度</label>
+    <label><input type="checkbox" id="hideRisky"> 隱藏 🚩</label>
+  </div>
+  <div class="group">
+    <label>&nbsp;</label>
+    <button id="refresh" title="略過快取重新抓">↻ 更新</button>
+  </div>
+</section>
+
+<section class="buzzbar" id="buzzbar" hidden>
+  <div class="buzzhead">
+    <h2>🔥 X 熱度快照</h2>
+    <span class="muted" id="buzzMeta"></span>
+  </div>
+  <div class="chips" id="buzzChips"></div>
+</section>
+
+<main>
+  <div class="tablewrap">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th data-k="name">幣</th>
+          <th data-k="chain">鏈</th>
+          <th data-k="price" class="num">價</th>
+          <th data-k="chg24" class="num">24h</th>
+          <th data-k="vol24" class="num">成交額</th>
+          <th data-k="liq" class="num">流動性</th>
+          <th data-k="mcap" class="num">市值</th>
+          <th data-k="age" class="num">年齡</th>
+          <th data-k="buzz" class="num">X 7日</th>
+          <th data-k="risk">旗標</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>冇幣符合篩選。試下降低最低流動性。</div>
+  </div>
+</main>
+</div>
+
+<dialog id="allinDlg">
+  <form method="dialog" id="allinForm">
+    <h3>🎰 孤注一擲確認</h3>
+    <p class="allin-scary">輸就接近歸零 · 贏就大賺 · <b>假錢</b> · 唔係投資建議</p>
+    <p class="muted" id="allinInfo"></p>
+    <div class="mode-row">
+      <span class="muted">點樣 All-in</span>
+      <div class="seg mini" id="allinModeSeg">
+        <button type="button" class="segbtn active" data-allinmode="spot">現貨 All-in</button>
+        <button type="button" class="segbtn" data-allinmode="lev">槓桿 All-in 50x</button>
+      </div>
+    </div>
+    <div class="risk-callout hot" id="allinCallout"></div>
+    <div class="allin-scenarios" id="allinScenarios"></div>
+    <p class="simnote">確認後會鎖倉：唔可以再開其他倉，直至平倉／爆倉／重置。</p>
+    <div class="row">
+      <button type="button" id="allinCancel">取消</button>
+      <button type="submit" id="allinOk" class="primary hot">我知風險 · 孤注一擲</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="allinPickDlg">
+  <form method="dialog" id="allinPickForm">
+    <h3>揀一隻幣 · 孤注一擲</h3>
+    <p class="muted">建議用 AI 買入推薦。揀完會進入確認。</p>
+    <div id="allinPickList" class="allin-pick-list"></div>
+    <div class="row"><button type="button" id="allinPickCancel">取消</button></div>
+  </form>
+</dialog>
+
+<dialog id="tradeDlg">
+  <form method="dialog" id="tradeForm">
+    <h3 id="tradeTitle">模擬交易</h3>
+    <p class="muted" id="tradeInfo"></p>
+    <div id="tradeModeRow" class="mode-row" hidden>
+      <span class="muted">模式</span>
+      <div class="seg mini">
+        <button type="button" class="segbtn active" data-trademode="spot">現貨</button>
+        <button type="button" class="segbtn" data-trademode="lev">槓桿</button>
+      </div>
+    </div>
+    <div id="tradeRiskRow" class="mode-row">
+      <span class="muted">風險檔</span>
+      <div class="seg mini" id="tradeRisk">
+        <button type="button" class="segbtn" data-risk="safe">穩陣</button>
+        <button type="button" class="segbtn active" data-risk="agg">進取</button>
+        <button type="button" class="segbtn" data-risk="yolo">極高風險</button>
+        <button type="button" class="segbtn" data-risk="allin">孤注一擲</button>
+      </div>
+    </div>
+    <div id="tradeLevRow" class="mode-row" hidden>
+      <label class="muted" for="tradeLev">倍數</label>
+      <div class="presets" id="tradeLevPresets"></div>
+      <select id="tradeLev" hidden>
+        <option value="2">2x</option>
+        <option value="3">3x</option>
+        <option value="5" selected>5x</option>
+        <option value="10">10x</option>
+        <option value="20">20x</option>
+        <option value="50">50x</option>
+      </select>
+    </div>
+    <label for="tradeAmt" id="tradeAmtLabel">金額 (USD)</label>
+    <input id="tradeAmt" type="number" min="0" step="any" required>
+    <div class="row quick" id="tradeQuick"></div>
+    <div class="risk-callout" id="tradeCallout" hidden></div>
+    <p class="muted" id="tradePreview"></p>
+    <p class="simnote" id="tradeSimNote">🧪 假錢儘管試大；真錢唔好咁玩。</p>
+    <div class="row"><button value="cancel" type="button" id="tradeCancel">取消</button><button id="tradeOk" value="ok" class="primary">確認落倉</button></div>
+  </form>
+</dialog>
+
+<aside class="drawer" id="drawer" hidden>
+  <div class="drawer-inner">
+    <button class="close" id="closeDrawer" aria-label="關閉">✕</button>
+    <div id="drawerBody"></div>
+  </div>
+</aside>
+
+<footer>
+  <p>市場數據：<a href="https://docs.dexscreener.com/api/reference" target="_blank" rel="noopener">DexScreener 公開 API</a>（瀏覽器直接抓，快取 3 分鐘）。
+  X 數據：靜態快照 <code>data/x_buzz.json</code> / <code>data/picks.json</code>，網站本身唔會 call X。
+  模擬倉只存你瀏覽器 localStorage。</p>
+  <p class="legend">旗標：💧 流動性 &lt; $50k · 🐣 交易對 &lt; 24 小時 · 🌀 24h 成交額 &gt; 50× 流動性 · 📉 24h 跌超過 50% · 🚀 boosted（俾錢推廣）</p>
+</footer>
+
+<!-- Cartoon FX overlays -->
+<div id="allinFx" class="fx-overlay" hidden aria-hidden="true">
+  <div class="fx-shake">
+    <div class="fx-burst" aria-hidden="true"></div>
+    <div class="fx-emoji" id="allinFxEmoji">🎰</div>
+    <div class="fx-title" id="allinFxTitle">孤注一擲！</div>
+    <div class="fx-sub" id="allinFxSub">一舖過</div>
+    <div class="fx-coin" id="allinFxCoin"></div>
+  </div>
+</div>
+<div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
+
+<nav class="bottom-nav" role="tablist" aria-label="主要分頁">
+  <a href="#picks" class="tab" data-view="picks"><span class="ico">🤖</span><span>揀幣</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico">🧪</span><span>模擬倉</span></a>
+  <a href="#news" class="tab bn-full" data-view="news"><span class="ico">📰</span><span>新聞</span></a>
+  <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico">🔎</span><span>掃描</span></a>
+  <a href="#more" class="tab bn-simple" data-view="more"><span class="ico">⋯</span><span>更多</span></a>
+</nav>
+
+<script src="app.js"></script>
+<script src="picks.js"></script>
+</body>
+</html>
