@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "description": "Append-only AI pick log. Never edit or delete past entries.",
+ "description": "Append-only AI pick log. Never edit or delete past entries. batch-002+ = Binance USDT spot scores.",
  "batches": [
   {
    "id": "batch-001",
@@ -389,6 +389,520 @@
        "https://x.com/ShadowProtocolX/status/2110833409207767059",
        "https://x.com/sotrader01/status/2110879177880514818"
       ]
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-002",
+   "created_at": "2026-10-22T04:18:47+08:00",
+   "x_window": null,
+   "method": "Binance public /api/v3/ticker/24hr score = abs(chg)+log10(vol)+volatility; diversified majors+meme; honest labels not magic AI",
+   "benchmarks": {
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 108.08
+    },
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 84524.01
+    }
+   },
+   "entries": [
+    {
+     "id": "20261022-002-XRP",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:XRPUSDT",
+     "pair_address": "XRPUSDT",
+     "dex": "binance-spot",
+     "symbol": "XRP",
+     "name": "XRP (Binance)",
+     "url": "https://www.binance.com/en/trade/XRP_USDT",
+     "entry_price_usd": 1.3912,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 134086884.58276,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 4.72,
+      "high24h": 1.3992,
+      "low24h": 1.3277,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 58,
+     "score_parts": {
+      "abs_chg": 16.5,
+      "volume": 35,
+      "volatility": 6.3,
+      "penalties": 0
+     },
+     "conviction": 58,
+     "rationale": "Binance 現貨 XRPUSDT：24h +4.72%（升），成交額約 $134.1M，高低波幅約 5.2%。分數 57.8/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "XRPUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-ETH",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:ETHUSDT",
+     "pair_address": "ETHUSDT",
+     "dex": "binance-spot",
+     "symbol": "ETH",
+     "name": "ETH (Binance)",
+     "url": "https://www.binance.com/en/trade/ETH_USDT",
+     "entry_price_usd": 2492.46,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 905515574.333179,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 2.246,
+      "high24h": 2526.62,
+      "low24h": 2435.93,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 47,
+     "score_parts": {
+      "abs_chg": 7.9,
+      "volume": 35,
+      "volatility": 4.4,
+      "penalties": 0
+     },
+     "conviction": 47,
+     "rationale": "Binance 現貨 ETHUSDT：24h +2.25%（升），成交額約 $905.5M，高低波幅約 3.7%。分數 47.2/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "ETHUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-PEOPLE",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:PEOPLEUSDT",
+     "pair_address": "PEOPLEUSDT",
+     "dex": "binance-spot",
+     "symbol": "PEOPLE",
+     "name": "PEOPLE (Binance)",
+     "url": "https://www.binance.com/en/trade/PEOPLE_USDT",
+     "entry_price_usd": 0.00882,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 1516178.284132,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 13.368,
+      "high24h": 0.00895,
+      "low24h": 0.00777,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 86,
+     "score_parts": {
+      "abs_chg": 35,
+      "volume": 34.0,
+      "volatility": 16.9,
+      "penalties": 0
+     },
+     "conviction": 86,
+     "rationale": "Binance 現貨 PEOPLEUSDT：24h +13.37%（升），成交額約 $1.5M，高低波幅約 14.1%。分數 85.9/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "PEOPLEUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-ANIME",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:ANIMEUSDT",
+     "pair_address": "ANIMEUSDT",
+     "dex": "binance-spot",
+     "symbol": "ANIME",
+     "name": "ANIME (Binance)",
+     "url": "https://www.binance.com/en/trade/ANIME_USDT",
+     "entry_price_usd": 0.00289,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 1001801.97792,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 5.861,
+      "high24h": 0.00302,
+      "low24h": 0.00273,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 66,
+     "score_parts": {
+      "abs_chg": 20.5,
+      "volume": 33.0,
+      "volatility": 12.1,
+      "penalties": 0
+     },
+     "conviction": 66,
+     "rationale": "Binance 現貨 ANIMEUSDT：24h +5.86%（升），成交額約 $1.0M，高低波幅約 10.1%。分數 65.6/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "ANIMEUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-BONK",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:BONKUSDT",
+     "pair_address": "BONKUSDT",
+     "dex": "binance-spot",
+     "symbol": "BONK",
+     "name": "BONK (Binance)",
+     "url": "https://www.binance.com/en/trade/BONK_USDT",
+     "entry_price_usd": 3.23e-06,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 2488120.56972925,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 5.902,
+      "high24h": 3.24e-06,
+      "low24h": 3.05e-06,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 63,
+     "score_parts": {
+      "abs_chg": 20.7,
+      "volume": 35,
+      "volatility": 7.2,
+      "penalties": 0
+     },
+     "conviction": 63,
+     "rationale": "Binance 現貨 BONKUSDT：24h +5.90%（升），成交額約 $2.5M，高低波幅約 6.0%。分數 62.9/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "BONKUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-BOME",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:BOMEUSDT",
+     "pair_address": "BOMEUSDT",
+     "dex": "binance-spot",
+     "symbol": "BOME",
+     "name": "BOME (Binance)",
+     "url": "https://www.binance.com/en/trade/BOME_USDT",
+     "entry_price_usd": 0.000646,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 1579673.8178543,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 4.768,
+      "high24h": 0.0006594,
+      "low24h": 0.0006114,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 60,
+     "score_parts": {
+      "abs_chg": 16.7,
+      "volume": 34.1,
+      "volatility": 9.1,
+      "penalties": 0
+     },
+     "conviction": 60,
+     "rationale": "Binance 現貨 BOMEUSDT：24h +4.77%（升），成交額約 $1.6M，高低波幅約 7.6%。分數 59.8/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "BOMEUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-W",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:WUSDT",
+     "pair_address": "WUSDT",
+     "dex": "binance-spot",
+     "symbol": "W",
+     "name": "W (Binance)",
+     "url": "https://www.binance.com/en/trade/W_USDT",
+     "entry_price_usd": 0.01479,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 9843962.367129,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 11.538,
+      "high24h": 0.0162,
+      "low24h": 0.01324,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 94,
+     "score_parts": {
+      "abs_chg": 35,
+      "volume": 35,
+      "volatility": 24.1,
+      "penalties": 0
+     },
+     "conviction": 94,
+     "rationale": "Binance 現貨 WUSDT：24h +11.54%（升），成交額約 $9.8M，高低波幅約 20.1%。分數 94.1/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "WUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-ENA",
+     "batch": "batch-002",
+     "type": "buy",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:ENAUSDT",
+     "pair_address": "ENAUSDT",
+     "dex": "binance-spot",
+     "symbol": "ENA",
+     "name": "ENA (Binance)",
+     "url": "https://www.binance.com/en/trade/ENA_USDT",
+     "entry_price_usd": 0.2162,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 49714482.50696,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 12.663,
+      "high24h": 0.226,
+      "low24h": 0.1916,
+      "buys24h": null,
+      "sells24h": null
+     },
+     "model_score": 90,
+     "score_parts": {
+      "abs_chg": 35,
+      "volume": 35,
+      "volatility": 19.8,
+      "penalties": 0
+     },
+     "conviction": 90,
+     "rationale": "Binance 現貨 ENAUSDT：24h +12.66%（升），成交額約 $49.7M，高低波幅約 16.5%。分數 89.8/100 來自 24h 變動幅度、成交額同波幅（誠實標籤，唔係神秘 AI）。CEX 公開價，適合模擬練習。",
+     "flags": [
+      "Binance USDT spot",
+      "live 24hr score",
+      "not magic AI"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "ENAUSDT",
+      "note": "Scored from public Binance 24hr ticker (change/volume/volatility). No X buzz in this batch."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-AVOID-WLD",
+     "batch": "batch-002",
+     "type": "avoid",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:WLDUSDT",
+     "pair_address": "WLDUSDT",
+     "dex": "binance-spot",
+     "symbol": "WLD",
+     "name": "WLD (Binance)",
+     "url": "https://www.binance.com/en/trade/WLD_USDT",
+     "entry_price_usd": 0.5699,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 64348706.50011,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.927,
+      "high24h": 0.5983,
+      "low24h": 0.5655
+     },
+     "model_score": 48,
+     "score_parts": {
+      "abs_chg": 1.927,
+      "volume": 64348706.50011,
+      "volatility": 5.636707338030598,
+      "penalties": 0
+     },
+     "conviction": null,
+     "rationale": "24h -1.93% 偏弱／波動大，暫時避過，等更清晰方向。誠實標籤，唔係保證會跌。",
+     "flags": [
+      "Binance USDT spot",
+      "avoid for sim"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "WLDUSDT"
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-002-AVOID-TIA",
+     "batch": "batch-002",
+     "type": "avoid",
+     "created_at": "2026-10-22T04:18:47+08:00",
+     "chain": "binance",
+     "token_address": "binance:TIAUSDT",
+     "pair_address": "TIAUSDT",
+     "dex": "binance-spot",
+     "symbol": "TIA",
+     "name": "TIA (Binance)",
+     "url": "https://www.binance.com/en/trade/TIA_USDT",
+     "entry_price_usd": 0.6201,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000.0,
+      "volume24h_usd": 10666084.321139,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.148,
+      "high24h": 0.6471,
+      "low24h": 0.6062
+     },
+     "model_score": 47,
+     "score_parts": {
+      "abs_chg": 1.148,
+      "volume": 10666084.321139,
+      "volatility": 6.526769328971524,
+      "penalties": 0
+     },
+     "conviction": null,
+     "rationale": "24h -1.15% 偏弱／波動大，暫時避過，等更清晰方向。誠實標籤，唔係保證會跌。",
+     "flags": [
+      "Binance USDT spot",
+      "avoid for sim"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "TIAUSDT"
      },
      "horizons_h": [
       24,

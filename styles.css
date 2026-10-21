@@ -420,3 +420,55 @@ tr.tick-down .live-px, .tick-down .live-px{animation:pnlFlashRed .7s ease}
 .bn-chip .num{font-size:12px}
 .hot-buy-row .tok{display:flex;gap:8px;align-items:center}
 .hot-buy-row .tok img{width:36px;height:36px;border-radius:50%;object-fit:cover;background:#111}
+
+/* ===== Coin Mood (Binance) ===== */
+.mood-wrap{padding:12px 14px 20px;background:linear-gradient(180deg,#12100a 0%,var(--bg) 40%);border:none}
+.mood-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.mood-live{display:flex;align-items:center;gap:8px;font-size:12px;color:#86efac;font-weight:700}
+.mood-tools{display:flex;gap:6px}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);font-size:16px;cursor:pointer}
+.mood-hero{
+  background:linear-gradient(160deg,#1a1408 0%,#121722 55%,#0e1624 100%);
+  border:1px solid #3d2e12;border-radius:22px;padding:18px 16px 16px;text-align:center;
+  box-shadow:0 10px 40px #0006;
+}
+.mood-title{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#c9a227;font-weight:800;margin-bottom:4px}
+.mood-mascot{font-size:56px;line-height:1;filter:drop-shadow(0 6px 12px #c9a22755)}
+.mood-feel{font-size:22px;font-weight:800;color:#e8c547;margin-top:4px}
+.mood-feel-zh{font-size:13px;color:var(--muted);margin-bottom:10px}
+.mood-pair{display:flex;gap:8px;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#f3e6b5}
+.mood-ico{font-size:18px}
+.mood-price{font-size:40px;font-weight:800;letter-spacing:-.02em;margin:4px 0;color:#fff}
+.mood-chg{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:800;font-size:14px;background:#12301f;color:var(--green)}
+.mood-chg.neg{background:#3a1212;color:var(--red)}
+.mood-chg.pos{background:#12301f;color:var(--green)}
+.mood-chart{margin:12px auto 8px;max-width:300px;height:88px}
+.mood-chart svg{width:100%;height:88px;display:block}
+.mood-range{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;font-size:12px;color:var(--muted);margin:8px 4px 0}
+.mood-bar{position:relative;height:6px;border-radius:999px;background:linear-gradient(90deg,#334155,#c9a227,#334155)}
+.mood-bar i{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24aa;transform:translate(-50%,-50%);left:50%}
+.mood-vol{margin-top:8px;font-size:13px;color:var(--muted);font-weight:600}
+.mood-actions{display:flex;gap:8px;margin-top:12px}
+.mood-actions .cta{flex:1;min-height:44px;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.mood-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.mood-row{
+  display:grid;grid-template-columns:1fr 80px auto;gap:10px;align-items:center;
+  width:100%;text-align:left;padding:12px 14px;border-radius:16px;
+  border:1px solid var(--line);background:var(--panel2);color:var(--text);cursor:pointer;
+}
+.mood-row.active{border-color:#c9a227;box-shadow:0 0 0 1px #c9a22755 inset;background:#1a160c}
+.mood-row-left{display:flex;gap:10px;align-items:center;min-width:0}
+.mood-row-ico{font-size:28px;line-height:1;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#111;flex-shrink:0}
+.mood-row-spark{display:flex;align-items:center;justify-content:center}
+.mood-row-spark svg{width:72px;height:28px}
+.mood-row-px{text-align:right}
+.mood-row-px .num{font-weight:700}
+.tiny{font-size:11px;margin-top:10px}
+.simple-cards{display:flex;flex-direction:column;gap:10px}
+.simple-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--panel2)}
+.simple-card .sc-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.simple-card .sc-score{font-size:28px;font-weight:800;color:#e8c547}
+.simple-card .sc-why{font-size:13px;color:var(--muted);margin:8px 0}
+.simple-card .sc-meta{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:12px;margin-bottom:8px}
+.simple-card .sc-actions{display:flex;gap:8px}
+.simple-card .sc-actions .cta{flex:1;min-height:44px}

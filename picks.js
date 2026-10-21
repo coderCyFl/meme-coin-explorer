@@ -144,30 +144,95 @@
   function renderSimpleCards(buys) {
     const box = $("simpleCards"); if (!box) return;
     box.textContent = "";
-    const top = buys.slice(0, 3);
-    if (!top.length) { box.append(el("p", { class: "muted", text: "暫時未有推薦。" })); return; }
+    // Prefer Binance buys from newest batch; need ≥6 symbols
+    const bn = buys.filter((x) => x.e.chain === "binance");
+    const top = (bn.length >= 6 ? bn : buys).slice(0, 8);
+    if (!top.length) { box.append(el("p", { class: "muted", text: "載入 Binance 推薦中…" })); return; }
     for (const x of top) {
-      const reason = (x.e.rationale || "").slice(0, 90) + ((x.e.rationale || "").length > 90 ? "…" : "");
-      const ret = x.ret == null ? "…" : pct(x.ret);
+      const reason = (x.e.rationale || "").slice(0, 110) + ((x.e.rationale || "").length > 110 ? "…" : "");
+      const livePx = x.li && x.li.state === "live" ? x.li.price : null;
+      const ret = x.ret == null ? (livePx != null ? pct(((livePx / x.e.entry_price_usd) - 1) * 100) : "…") : pct(x.ret);
+      const chg = x.e.entry_snapshot?.chg24h_pct;
       box.append(el("article", { class: "simple-card" },
         el("div", { class: "sc-top" },
-          el("div", {}, el("div", { class: "nm", text: x.e.name }), el("div", { class: "sy", text: `$${x.e.symbol} · ${x.e.chain}` })),
+          el("div", {},
+            el("div", { class: "nm", text: "$" + x.e.symbol }),
+            el("div", { class: "sy", text: (x.e.chain === "binance" ? "Binance USDT" : x.e.chain) + (chg != null ? " · 24h " + pct(chg) : "") })),
           el("div", { class: "sc-score", text: String(x.e.conviction ?? x.e.model_score) })),
         el("p", { class: "sc-why", text: reason || "（未有理由）" }),
         el("div", { class: "sc-meta" },
           el("span", { text: "推薦價 " + price(x.e.entry_price_usd) }),
-          el("span", { class: cls(x.ret), text: "而家 " + ret })),
+          el("span", { class: "num", "data-bn-price": x.e.chain === "binance" ? x.e.pair_address : "", text: "而家 " + (livePx != null ? price(livePx) : "…") }),
+          el("span", { class: cls(x.ret), text: "回報 " + ret })),
         el("div", { class: "sc-actions" },
-          el("button", { class: "cta primary", onclick: () => openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }) }, "落倉"),
+          el("button", { class: "cta primary", onclick: () => openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name, price: livePx, source: x.e.chain === "binance" ? "binance" : undefined }) }, "落倉"),
           el("button", { class: "cta hot", onclick: () => openAllinFlow({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }) }, "孤注一擲"))));
     }
   }
 
+  /** Live recomputed Binance picks (≥6) for home + hot list. */
+  async function loadLiveBnPicks(force) {
+    if (!window.MCE.live) return [];
+    const rows = await window.MCE.live.ensureBoard(!!force);
+    const scored = window.MCE.live.scoreBoardRows(rows);
+    renderHotBuysFromBn(scored);
+    // If picks.json latest batch is thin/old solana-only for simple UI, overlay live cards
+    const box = $("simpleCards");
+    if (box && scored.length >= 6) {
+      // Build synthetic eval-like objects for cards
+      const synth = scored.slice(0, 8).map((r) => ({
+        e: {
+          chain: "binance", pair_address: r.symbol, token_address: "binance:" + r.symbol,
+          symbol: r.base, name: (r.base || "") + " (Binance)",
+          entry_price_usd: r.price, conviction: Math.round(r.score), model_score: Math.round(r.score),
+          rationale: `Binance ${r.symbol}：24h ${pct(r.chg24)}，成交約 ${money(r.volQuote)}。分數 ${r.score}/100 = |變動|+成交+波幅（誠實標籤）。`,
+          entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, low24h: r.low },
+        },
+        li: { state: "live", price: r.price, source: "binance" },
+        ret: null,
+      }));
+      renderSimpleCards(synth);
+    }
+    return scored;
+  }
+
+  function renderHotBuysFromBn(scored) {
+    const box = $("hotBuyList"); if (!box) return;
+    box.textContent = "";
+    const top = (scored || []).slice(0, 12);
+    if (!top.length) {
+      box.append(el("p", { class: "muted", text: "載入 Binance 熱門中…" }));
+      return;
+    }
+    for (const r of top) {
+      const emoji = (window.MCE.live && window.MCE.live.ICON_EMOJI && window.MCE.live.ICON_EMOJI[r.base]) || "🪙";
+      box.append(el("div", { class: "hot-buy-row" },
+        el("div", { class: "tok" },
+          el("span", { class: "bc-ph", text: emoji }),
+          el("div", {}, el("div", { class: "nm", text: "$" + r.base }), el("div", { class: "sy", text: `分數 ${r.score} · Binance` }))),
+        el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
+        el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
+        el("button", { class: "cta primary sm", onclick: () => openBuy({
+          chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
+          symbol: r.base, name: (r.base || "") + " (Binance)", price: r.price, source: "binance",
+        }) }, "落倉")
+      ));
+    }
+  }
+
+
   function renderPicks() {
     const all = S.picks.batches.flatMap((b) => b.entries.map((e) => evalEntry(b, e)));
+    const latest = S.picks.batches[S.picks.batches.length - 1];
+    const latestBuys = (latest ? latest.entries : []).filter((e) => e.type === "buy").map((e) => evalEntry(latest, e));
     const buys = all.filter((x) => x.e.type === "buy"), avoids = all.filter((x) => x.e.type === "avoid");
+    // Simple UI uses latest batch (Binance) first
+    const simpleBuys = latestBuys.length ? latestBuys : buys;
+    // Newest first so Binance batch-002+ surfaces above old Solana Dex
+    const buysNewest = [...buys].sort((a, b) => new Date(b.e.created_at) - new Date(a.e.created_at));
+    const avoidsNewest = [...avoids].sort((a, b) => new Date(b.e.created_at) - new Date(a.e.created_at));
     const pb = $("picksBody"); pb.textContent = "";
-    for (const x of buys) {
+    for (const x of buysNewest) {
       const href = safeUrl(x.e.url);
       const retTd = retCell(x); retTd.setAttribute("data-label", "回報");
       const hz = horizonCell(x); hz.setAttribute("data-label", "展望");
@@ -186,7 +251,7 @@
           href ? el("a", { href, target: "_blank", rel: "noopener", onclick: (ev) => ev.stopPropagation(), text: "↗" }) : "")));
     }
     const ab = $("avoidBody"); ab.textContent = "";
-    for (const x of avoids) {
+    for (const x of avoidsNewest) {
       const good = x.ret != null && x.ret < -0.05, flat = x.ret != null && Math.abs(x.ret) < 0.05;
       ab.append(el("tr", { onclick: () => showDetail(x) }, tokenCell(x.e),
         el("td", {}, el("div", { text: x.b.id }), el("div", { class: "muted", text: localTime(x.e.created_at) })),
@@ -210,7 +275,8 @@
       sh.textContent = (n < 20 ? `⚠️ 樣本太少（買入推薦 ${n} 筆），唔好當結論。` : `樣本 ${n} 筆。`)
         + (hasOut ? "" : " 24h／7d 結果尚未到期（或未跑 snapshot）。");
     }
-    renderSimpleCards(buys);
+    renderSimpleCards(simpleBuys);
+    loadLiveBnPicks(false);
 
     const st = $("pickStats"); st.textContent = "";
     const stat = (k, v, s, c = "") => el("div", { class: "stat" }, el("div", { class: "k", text: k }), el("div", { class: "v " + c, text: v }), s ? el("div", { class: "s", text: s }) : "");
@@ -224,8 +290,9 @@
       stat("平均跑贏 SOL", ex.length ? (avg(ex) > 0 ? "+" : "") + avg(ex).toFixed(1) + " pts" : "–", `${ex.filter((v) => v > 0).length}/${ex.length} 跑贏`, cls(avg(ex))),
       stat("已死 / Rug", String(buys.filter((x) => x.li.state === "dead").length), "計 −100%"),
       stat("避過啱咗", avoids.length ? `${goodAvoid}/${avoids.length}` : "–", "之後價跌"));
-    st.append(el("p", { class: "muted", style: "grid-column:1/-1;margin:0", text: `即時報價來自 DexScreener · ${new Date().toLocaleTimeString()} · 推薦紀錄永不刪改。樣本少唔證明得咩。` }));
-    if (!$("pickDetails").childElementCount && buys[0]) showDetail(buys[0]);
+    st.append(el("p", { class: "muted", style: "grid-column:1/-1;margin:0", text: `新批報價：Binance 即時 · 舊批可能仍係 Dex · ${new Date().toLocaleTimeString()} · 紀錄只加唔改。樣本少唔證明得咩。` }));
+    const detailDefault = buysNewest.find((x) => x.e.chain === "binance") || buysNewest[0];
+    if (!$("pickDetails").childElementCount && detailDefault) showDetail(detailDefault);
   }
   function showDetail(x) {
     const d = $("pickDetails"); d.textContent = "";
@@ -1175,8 +1242,7 @@
   function ensureLiveLoop(forceStart) {
     if (!window.MCE.live) return;
     const n = Object.keys(P.positions).length + Object.keys(P.levPositions).length;
-    const browseLive = !!($("browseLive") && $("browseLive").checked);
-    if (n === 0 && !browseLive && !forceStart) return;
+    if (n === 0 && !forceStart) return;
     if (!liveTickBound) {
       liveTickBound = true;
       window.MCE.live.onTick(() => {
@@ -1196,26 +1262,7 @@
     }
   }
 
-  function renderHotBuys(rows) {
-    const box = $("hotBuyList"); if (!box) return;
-    box.textContent = "";
-    const top = (rows || []).slice(0, 12);
-    if (!top.length) {
-      box.append(el("p", { class: "muted", text: "載入熱門幣中…去「睇幣」睇晒。" }));
-      return;
-    }
-    for (const r of top) {
-      const img = safeUrl(r.img) || (window.MCE.iconUrl && window.MCE.iconUrl(r.img));
-      box.append(el("div", { class: "hot-buy-row" },
-        el("div", { class: "tok" },
-          img ? el("img", { src: img, alt: "", loading: "lazy", width: "36", height: "36", style: "border-radius:50%;object-fit:cover;background:#111" }) : el("span", { class: "bc-ph", text: "🪙" }),
-          el("div", {}, el("div", { class: "nm", text: r.name }), el("div", { class: "sy", text: `$${r.sym} · ${r.chain}` }))),
-        el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), text: pct(r.chg24) }),
-        el("div", { class: "num", text: price(r.price) }),
-        el("button", { class: "cta primary sm", onclick: () => openBuy({ chain: r.chain, pair: r.pair, token: r.address, symbol: r.sym, name: r.name, price: r.price }) }, "落倉")
-      ));
-    }
-  }
+  function renderHotBuys(rows) { /* deprecated Dex path */ renderHotBuysFromBn([]); }
 
   // ---------- Cartoon FX ----------
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1389,13 +1436,10 @@
     });
     if (view === "picks") {
       loadPicks(); loadNews();
-      if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
-      if (window.MCE.ensureBrowse) window.MCE.ensureBrowse().then((rows) => renderHotBuys(rows));
-      else renderHotBuys(window.MCE.getBrowseRows ? window.MCE.getBrowseRows() : []);
+      loadLiveBnPicks(false);
     }
     if (view === "browse") {
       if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
-      if (window.MCE.ensureBrowse) window.MCE.ensureBrowse();
     }
     if (view === "portfolio") { renderPortfolio(true); ensureLiveLoop(true); }
     if (view === "news") loadNews();
@@ -1406,7 +1450,7 @@
     newsTag = b.dataset.ntag; document.querySelectorAll(".news-filters .chip").forEach((x) => x.classList.toggle("active", x === b)); renderNews();
   }));
   document.querySelectorAll(".lens").forEach((b) => b.addEventListener("click", () => applyLens(b.dataset.lens)));
-  $("picksRefresh").addEventListener("click", () => loadPicks(true));
+  $("picksRefresh").addEventListener("click", () => { loadPicks(true); loadLiveBnPicks(true); });
   $("followBatch").addEventListener("click", copyPicks);
   document.querySelectorAll(".segbtn[data-pfmode]").forEach((b) => b.addEventListener("click", () => {
     pfMode = b.dataset.pfmode; renderPortfolio(false);
@@ -1469,7 +1513,14 @@
     openAllinFlow, executeAllin, allinActive, loadAllinRounds, endAllinRound, playOverlay, reduceMotion,
     ingestPair, ensureLiveLoop, renderPortfolio,
   };
-  window.MCE.onBrowseLoaded = (rows) => renderHotBuys(rows);
+  window.MCE.onBrowseLoaded = () => {};
+  window.MCE.onBnBoardLoaded = (rows) => {
+    if (window.MCE.live && window.MCE.live.scoreBoardRows) renderHotBuysFromBn(window.MCE.live.scoreBoardRows(rows));
+  };
+  if ($("livePicksRefresh")) $("livePicksRefresh").addEventListener("click", () => loadLiveBnPicks(true));
+  // Kick live BN picks ASAP for home
+  loadLiveBnPicks(false);
+
   // 預設落地：簡單模式 + #picks
   if (!location.hash) location.replace("#picks");
   else show(location.hash.slice(1));

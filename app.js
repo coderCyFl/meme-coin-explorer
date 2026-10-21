@@ -334,199 +334,157 @@
 
   const setStatus = (t) => ($("status").textContent = t);
 
-  // ---------- 睇幣 browse (public discovery) ----------
-  const browse = { rows: [], loaded: false, loading: false };
-  function browseToRow(p, boostedMap) {
-    const sym = (p.baseToken.symbol || "").toUpperCase();
-    const liq = p.liquidity?.usd ?? null, vol24 = p.volume?.h24 ?? null;
-    const addrKey = p.chainId + ":" + p.baseToken.address;
+  // ---------- Coin Mood / Binance browse (NO Dex hot list) ----------
+  const mood = { selected: "BNBUSDT", rows: [] };
+
+  function fmtVol(v) {
+    if (v == null || isNaN(v)) return "–";
+    const a = Math.abs(v);
+    if (a >= 1e9) return (v / 1e9).toFixed(2) + "B";
+    if (a >= 1e6) return (v / 1e6).toFixed(1) + "M";
+    if (a >= 1e3) return (v / 1e3).toFixed(1) + "K";
+    return String(Math.round(v));
+  }
+  function moodLabel(chg) {
+    if (chg == null || isNaN(chg)) return { en: "Feeling…", zh: "載入中", mascot: "🐻" };
+    if (chg >= 1.5) return { en: "Feeling good", zh: "心情好好", mascot: "🐻" };
+    if (chg <= -1.5) return { en: "Feeling careful", zh: "小心啲", mascot: "😟" };
+    return { en: "Feeling okay", zh: "心情一般", mascot: "😐" };
+  }
+  function bnBuyPayload(r) {
     return {
-      p, sym, name: p.baseToken.name || sym, chain: p.chainId, address: p.baseToken.address,
-      pair: p.pairAddress, price: p.priceUsd ? parseFloat(p.priceUsd) : null,
-      chg24: p.priceChange?.h24 ?? null, vol24, liq,
-      mcap: p.marketCap ?? p.fdv ?? null, url: p.url,
-      img: iconUrl(p.info?.imageUrl) || iconMap.get(addrKey) || boostedMap.get(addrKey + ":icon") || null, boost: boostedMap.get(addrKey) || p.boosts?.active || 0,
+      chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
+      symbol: r.base || r.symbol.replace(/USDT$/, ""),
+      name: (r.base || "") + " (Binance)",
+      price: r.price, source: "binance",
     };
   }
-  async function loadBrowse(force = false) {
-    if (browse.loading) return browse.rows;
-    browse.loading = true;
-    const meta = $("browseMeta");
-    const list = $("browseList");
-    if (meta) meta.textContent = "載入市場幣中…";
-    try {
-      const boostedMap = new Map();
-      const [boostsR, profilesR, searchR] = await Promise.all([
-        cachedJson(API + "/token-boosts/top/v1", { force }),
-        cachedJson(API + "/token-profiles/latest/v1", { force }),
-        cachedJson(API + "/latest/dex/search?q=" + encodeURIComponent("SOL"), { force }).catch(() => ({ data: { pairs: [] } })),
-      ]);
-      const tokens = [];
-      const seenTok = new Set();
-      for (const t of (Array.isArray(boostsR.data) ? boostsR.data : [])) {
-        const k = t.chainId + ":" + t.tokenAddress;
-        if (t.totalAmount) boostedMap.set(k, t.totalAmount);
-        const ic = iconUrl(t.icon);
-        if (ic) { iconMap.set(k, ic); boostedMap.set(k + ":icon", ic); }
-        if (!seenTok.has(k)) { seenTok.add(k); tokens.push({ chainId: t.chainId, tokenAddress: t.tokenAddress }); }
-      }
-      for (const t of (Array.isArray(profilesR.data) ? profilesR.data : [])) {
-        const k = t.chainId + ":" + t.tokenAddress;
-        const ic = iconUrl(t.icon);
-        if (ic) { iconMap.set(k, ic); if (!boostedMap.has(k + ":icon")) boostedMap.set(k + ":icon", ic); }
-        if (!seenTok.has(k)) { seenTok.add(k); tokens.push({ chainId: t.chainId, tokenAddress: t.tokenAddress }); }
-      }
-      let pairs = await resolvePairs(tokens, force);
-      // Merge liquid search hits (often majors / high-vol) for more choices
-      const searchPairs = bestPerToken(searchR.data?.pairs || []);
-      const pairSeen = new Set(pairs.map((p) => p.chainId + ":" + p.pairAddress));
-      for (const p of searchPairs) {
-        const k = p.chainId + ":" + p.pairAddress;
-        if (!pairSeen.has(k) && (p.liquidity?.usd || 0) >= 10000) { pairSeen.add(k); pairs.push(p); }
-      }
-      // Prefer higher liquidity / volume
-      pairs.sort((a, b) => (b.liquidity?.usd || 0) - (a.liquidity?.usd || 0));
-      browse.rows = pairs.map((p) => browseToRow(p, boostedMap));
-      browse.loaded = true;
-      renderBrowse();
-      if (meta) meta.textContent = `共 ${browse.rows.length} 隻 · DexScreener 公開資料 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`;
-      setStatus(`睇幣 ${browse.rows.length} 隻 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`);
-      // Feed hot list on picks if present
-      if (window.MCE.onBrowseLoaded) window.MCE.onBrowseLoaded(browse.rows);
-      return browse.rows;
-    } catch (e) {
-      console.error(e);
-      if (meta) meta.textContent = "載入失敗：" + e.message;
-      if (list) list.textContent = "";
-      return [];
-    } finally {
-      browse.loading = false;
+  function paintMoodHero(r) {
+    if (!r) return;
+    const live = window.MCE.live;
+    const feel = moodLabel(r.chg24);
+    const up = (r.chg24 || 0) >= 0;
+    const set = (id, t) => { const n = $(id); if (n) n.textContent = t; };
+    set("moodFeel", feel.en);
+    set("moodFeelZh", feel.zh);
+    set("moodMascot", feel.mascot);
+    set("moodIco", (live && live.ICON_EMOJI && live.ICON_EMOJI[r.base]) || r.emoji || "🪙");
+    set("moodSym", (r.base || "—") + " /USDT");
+    set("moodPrice", price(r.price).replace(/^\$/, ""));
+    const chgEl = $("moodChg");
+    if (chgEl) {
+      chgEl.textContent = pct(r.chg24);
+      chgEl.className = "mood-chg " + (up ? "pos" : "neg");
     }
-  }
-  function renderBrowse() {
-    const list = $("browseList"); if (!list) return;
-    const q = (($("browseFilter") && $("browseFilter").value) || "").trim().toLowerCase();
-    let rows = browse.rows;
-    if (q) rows = rows.filter((r) => r.name.toLowerCase().includes(q) || r.sym.toLowerCase().includes(q) || r.chain.includes(q));
-    list.textContent = "";
-    if (!rows.length) {
-      list.append(el("p", { class: "muted", text: "冇幣。試下清空搜尋或撳更新。" }));
-      return;
+    set("moodLow", "L " + (r.low != null ? price(r.low).replace(/^\$/, "") : "—"));
+    set("moodHigh", "H " + (r.high != null ? price(r.high).replace(/^\$/, "") : "—"));
+    set("moodVol", "Vol " + fmtVol(r.volQuote));
+    const bar = $("moodDot");
+    if (bar && r.low != null && r.high != null && r.high > r.low && r.price != null) {
+      const pctPos = Math.max(0, Math.min(1, (r.price - r.low) / (r.high - r.low)));
+      bar.style.left = (pctPos * 100) + "%";
     }
-    for (const r of rows) {
-      const img = safeUrl(r.img);
-      const href = safeUrl(r.url);
-      list.append(el("article", { class: "browse-card" },
-        el("div", { class: "bc-top" },
-          el("div", { class: "tok" },
-            img ? el("img", { src: img, alt: "", loading: "lazy" }) : el("span", { class: "bc-ph", text: "🪙" }),
-            el("div", {},
-              el("div", { class: "nm", text: r.name }),
-              el("div", { class: "sy" }, "$" + r.sym + " ", el("span", { class: "chainbadge", text: r.chain }))
-            )
-          ),
-          el("div", { class: "bc-px" },
-            el("div", { class: "num", "data-browse-price": r.chain + ":" + r.pair, text: price(r.price) }),
-            el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), text: pct(r.chg24) })
-          )
-        ),
-        el("div", { class: "bc-meta" },
-          el("span", { text: "流動性 " + money(r.liq) }),
-          el("span", { text: "24h量 " + money(r.vol24) }),
-          r.boost ? el("span", { class: "pill", title: "俾錢推廣", text: "🚀 boost" }) : ""
-        ),
-        el("div", { class: "bc-actions" },
-          el("button", { class: "cta primary", onclick: () => {
-            window.MCE.paper && window.MCE.paper.openBuy({
-              chain: r.chain, pair: r.pair, token: r.address, symbol: r.sym, name: r.name, price: r.price
-            });
-          } }, "落倉"),
-          href ? el("a", { class: "cta", href, target: "_blank", rel: "noopener", text: "Dex ↗" }) : ""
-        )
-      ));
+    const chart = $("moodChart");
+    if (chart && live && live.sparkSvg) {
+      chart.textContent = "";
+      const closes = r.spark || [];
+      const svg = live.sparkSvg(closes.length >= 2 ? closes : [r.open || r.low || r.price, r.low || r.price, r.high || r.price, r.price], { w: 280, h: 88, up });
+      if (svg) chart.append(svg);
+    }
+    const buy = $("moodBuy");
+    if (buy) buy.onclick = () => window.MCE.paper && window.MCE.paper.openBuy(bnBuyPayload(r));
+    const link = $("moodBnLink");
+    if (link) {
+      link.href = "https://www.binance.com/en/trade/" + encodeURIComponent((r.base || "") + "_USDT");
     }
   }
 
+  async function selectMood(symbol, rows) {
+    mood.selected = symbol;
+    const live = window.MCE.live;
+    let r = (rows || mood.rows).find((x) => x.symbol === symbol) || (live && live.board.get(symbol));
+    if (!r) return;
+    if (live) {
+      const closes = await live.fetchKlines(symbol).catch(() => []);
+      if (closes.length) r = { ...r, spark: closes };
+    }
+    paintMoodHero(r);
+    renderBnBoard(mood.rows);
+  }
 
-  // ---------- Binance 置頂 board ----------
   function renderBnBoard(rows) {
     const list = $("bnList"); if (!list) return;
     const q = (($("bnFilter") && $("bnFilter").value) || "").trim().toLowerCase();
     let data = rows || (window.MCE.live ? window.MCE.live.getBoardRows() : []);
+    mood.rows = data.slice();
     if (q) data = data.filter((r) => (r.base || "").toLowerCase().includes(q) || (r.symbol || "").toLowerCase().includes(q));
-    // Prefer meme-ish first after majors? Keep curated order then volume
+    // Prefer selected / majors first visually but keep volume sort for rest
+    const sel = mood.selected;
+    data = data.slice().sort((a, b) => {
+      if (a.symbol === sel) return -1;
+      if (b.symbol === sel) return 1;
+      return (b.volQuote || 0) - (a.volQuote || 0);
+    });
     list.textContent = "";
     if (!data.length) {
-      list.append(el("p", { class: "muted", text: "暫時冇 Binance 資料。撳 ↻ 或稍後再試。" }));
+      list.append(el("p", { class: "muted", text: "暫時冇 Binance 資料。撳 ↻ 再試。" }));
       return;
     }
+    const live = window.MCE.live;
     for (const r of data) {
+      const up = (r.chg24 || 0) >= 0;
+      const active = r.symbol === sel ? " active" : "";
       const flash = r._flash === "up" ? " tick-up" : r._flash === "down" ? " tick-down" : "";
-      list.append(el("article", { class: "browse-card bn-card" + flash, "data-bn": r.symbol },
-        el("div", { class: "bc-top" },
-          el("div", { class: "tok" },
-            el("span", { class: "bn-badge", text: "BN" }),
-            el("div", {},
-              el("div", { class: "nm", text: r.base || r.symbol }),
-              el("div", { class: "sy", text: (r.symbol || "") + " · Binance 現貨" })
-            )
-          ),
-          el("div", { class: "bc-px" },
-            el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
-            el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) })
-          )
-        ),
-        el("div", { class: "bc-meta" },
-          el("span", { "data-bn-vol": r.symbol, text: "24h額 " + money(r.volQuote) }),
-          el("span", { class: "pill", text: "CEX 即時" })
-        ),
-        el("div", { class: "bc-actions" },
-          el("button", { class: "cta primary", onclick: () => {
-            window.MCE.paper && window.MCE.paper.openBuy({
-              chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
-              symbol: r.base || r.symbol.replace(/USDT$/, ""), name: (r.base || "") + " (Binance)",
-              price: r.price, source: "binance",
-            });
-          } }, "落倉"),
-          el("a", { class: "cta", href: "https://www.binance.com/en/trade/" + encodeURIComponent((r.base || "") + "_USDT"), target: "_blank", rel: "noopener", text: "Binance ↗" })
+      const emoji = (live && live.ICON_EMOJI && live.ICON_EMOJI[r.base]) || r.emoji || "🪙";
+      const row = el("button", {
+        type: "button",
+        class: "mood-row" + active + flash,
+        "data-bn": r.symbol,
+        onclick: () => selectMood(r.symbol, mood.rows),
+      });
+      const left = el("div", { class: "mood-row-left" },
+        el("span", { class: "mood-row-ico", text: emoji }),
+        el("div", {},
+          el("div", { class: "nm", text: r.base || r.symbol }),
+          el("div", { class: "sy", text: "Vol " + fmtVol(r.volQuote) })
         )
-      ));
+      );
+      const mid = el("div", { class: "mood-row-spark", "data-bn-spark": r.symbol });
+      if (live && live.sparkSvg) {
+        const closes = r.spark || [];
+        const svg = live.sparkSvg(closes.length >= 2 ? closes : [r.open || r.price, r.price], { w: 72, h: 28, up });
+        if (svg) mid.append(svg);
+      }
+      const right = el("div", { class: "mood-row-px" },
+        el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price).replace(/^\$/, "") }),
+        el("div", { class: "num " + (up ? "pos" : "neg"), "data-bn-chg": r.symbol, text: pct(r.chg24) })
+      );
+      row.append(left, mid, right);
+      // long-press / secondary: buy
+      row.addEventListener("dblclick", (ev) => {
+        ev.preventDefault();
+        window.MCE.paper && window.MCE.paper.openBuy(bnBuyPayload(r));
+      });
+      list.append(row);
     }
+    // Buy strip under list for selected
     const meta = $("bnMeta");
-    if (meta) meta.textContent = `共 ${data.length} 組 USDT · Binance 公開 API · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`;
+    if (meta) meta.textContent = `共 ${mood.rows.length} 組 USDT · Binance 公開價 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`;
   }
 
   function paintBnStrip(rows) {
     const box = $("bnStripList"); if (!box) return;
-    const data = (rows || (window.MCE.live ? window.MCE.live.getBoardRows() : [])).slice();
-    // Show a mix: majors first then top |chg| memes
-    const majors = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "DOGEUSDT", "PEPEUSDT", "SHIBUSDT", "BONKUSDT", "WIFUSDT", "PENGUUSDT", "TRUMPUSDT", "NEIROUSDT"];
-    const picked = [];
-    const seen = new Set();
-    for (const s of majors) {
-      const r = data.find((x) => x.symbol === s);
-      if (r) { picked.push(r); seen.add(s); }
-    }
-    const rest = data.filter((x) => !seen.has(x.symbol)).sort((a, b) => Math.abs(b.chg24 || 0) - Math.abs(a.chg24 || 0));
-    for (const r of rest) {
-      if (picked.length >= 12) break;
-      picked.push(r);
-    }
+    const live = window.MCE.live;
+    const scored = live && live.scoreBoardRows ? live.scoreBoardRows(rows || live.getBoardRows()) : (rows || []).slice(0, 12);
     box.textContent = "";
-    for (const r of picked) {
+    for (const r of scored.slice(0, 12)) {
       box.append(el("button", {
         type: "button", class: "bn-chip",
-        onclick: () => {
-          window.MCE.paper && window.MCE.paper.openBuy({
-            chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
-            symbol: r.base || r.symbol.replace(/USDT$/, ""), name: (r.base || "") + " (Binance)",
-            price: r.price, source: "binance",
-          });
-        },
+        onclick: () => window.MCE.paper && window.MCE.paper.openBuy(bnBuyPayload(r)),
       },
         el("b", { text: "$" + (r.base || "") }),
         el("span", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
-        el("span", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) })
+        el("span", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) })
       ));
     }
   }
@@ -534,12 +492,28 @@
   function patchBnDom(boardMap) {
     if (!boardMap) return;
     for (const [sym, r] of boardMap) {
-      document.querySelectorAll(`[data-bn-price="${sym}"]`).forEach((n) => { n.textContent = price(r.price); });
+      document.querySelectorAll(`[data-bn-price="${sym}"]`).forEach((n) => {
+        const raw = price(r.price);
+        n.textContent = n.closest(".mood-row, .mood-hero") ? raw.replace(/^\$/, "") : raw;
+      });
       document.querySelectorAll(`[data-bn-chg="${sym}"]`).forEach((n) => {
         n.textContent = pct(r.chg24);
-        n.className = "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : "");
+        n.className = (n.className || "").replace(/\b(pos|neg)\b/g, "").trim() + " " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : "");
       });
       document.querySelectorAll(`[data-bn-vol="${sym}"]`).forEach((n) => { n.textContent = "24h額 " + money(r.volQuote); });
+    }
+    // Update hero if selected
+    if (mood.selected && boardMap.has(mood.selected)) {
+      const r = boardMap.get(mood.selected);
+      const feel = moodLabel(r.chg24);
+      const set = (id, t) => { const n = $(id); if (n) n.textContent = t; };
+      set("moodPrice", price(r.price).replace(/^\$/, ""));
+      set("moodFeel", feel.en); set("moodFeelZh", feel.zh); set("moodMascot", feel.mascot);
+      set("moodVol", "Vol " + fmtVol(r.volQuote));
+      const chgEl = $("moodChg");
+      if (chgEl) { chgEl.textContent = pct(r.chg24); chgEl.className = "mood-chg " + ((r.chg24 || 0) >= 0 ? "pos" : "neg"); }
+      if (r.low != null) set("moodLow", "L " + price(r.low).replace(/^\$/, ""));
+      if (r.high != null) set("moodHigh", "H " + price(r.high).replace(/^\$/, ""));
     }
   }
 
@@ -549,9 +523,12 @@
     try {
       if (!window.MCE.live) throw new Error("live.js 未載入");
       const rows = await window.MCE.live.ensureBoard(force);
-      renderBnBoard(rows);
+      mood.rows = rows.slice();
+      if (!rows.find((r) => r.symbol === mood.selected) && rows[0]) mood.selected = rows[0].symbol;
+      // Prefer BNB if present
+      if (!force && rows.find((r) => r.symbol === "BNBUSDT")) mood.selected = "BNBUSDT";
+      await selectMood(mood.selected, rows);
       paintBnStrip(rows);
-      // Keep WS alive even without positions
       if (!window.MCE.live.running) {
         window.MCE.live.start({ getPositions: () => (window.MCE.paper && window.MCE.paper.state ? (() => {
           const P = window.MCE.paper.state();
@@ -563,6 +540,8 @@
       } else {
         window.MCE.live.sync();
       }
+      if (window.MCE.onBnBoardLoaded) window.MCE.onBnBoardLoaded(rows);
+      setStatus(`Binance ${rows.length} 組 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`);
       return rows;
     } catch (e) {
       console.error(e);
@@ -571,24 +550,28 @@
     }
   }
 
+  // Dex browse kept as no-op stubs (explore still uses Dex in full mode)
+  const browse = { rows: [], loaded: false };
+  async function loadBrowse() { return []; }
+  function renderBrowse() {}
+
   let bnTickBound = false;
   function bindBnTicks() {
     if (bnTickBound || !window.MCE.live) return;
     bnTickBound = true;
     window.MCE.live.onTick((_marks, boardMap) => {
       patchBnDom(boardMap || window.MCE.live.board);
-      // Soft-refresh strip numbers only
     });
   }
 
   // ---------- wire up ----------
   let exploreLoaded = false;
-  window.MCE = { el, money, price, pct, age, fmtInt, localTime, safeUrl, iconUrl, cachedJson, API,
+  window.MCE = Object.assign(window.MCE || {}, { el, money, price, pct, age, fmtInt, localTime, safeUrl, iconUrl, cachedJson, API,
     ensureExplore() { if (!exploreLoaded) { exploreLoaded = true; loadBuzz().then(() => load()); } },
-    ensureBrowse() { return browse.loaded && !arguments[0] ? Promise.resolve(browse.rows) : loadBrowse(!!arguments[0]); },
-    loadBrowse, renderBrowse, getBrowseRows: () => browse.rows,
-    loadBinanceBoard, renderBnBoard, paintBnStrip,
-  };
+    ensureBrowse() { return loadBinanceBoard(!!arguments[0]); },
+    loadBrowse, renderBrowse, getBrowseRows: () => mood.rows,
+    loadBinanceBoard, renderBnBoard, paintBnStrip, selectMood, mood,
+  });
   function boot() {
     document.querySelectorAll("th[data-k]").forEach((th) => th.addEventListener("click", () => {
       const k = th.dataset.k;
@@ -605,29 +588,19 @@
     $("drawer").addEventListener("click", (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("drawer").hidden = true; });
     if ((location.hash || "#picks").slice(1) === "explore") { exploreLoaded = true; loadBuzz().then(() => load()); }
-    const hash = (location.hash || "#picks").slice(1);
-    if (hash === "browse") {
-      loadBinanceBoard(false).then(() => bindBnTicks());
-      loadBrowse(false);
-    } else {
-      // Prefetch Binance for AI strip
-      loadBinanceBoard(false).then(() => bindBnTicks());
-    }
-    const bf = $("browseFilter");
-    if (bf) bf.addEventListener("input", () => renderBrowse());
-    const br = $("browseRefresh");
-    if (br) br.addEventListener("click", () => loadBrowse(true));
-    const bl = $("browseLive");
-    if (bl) bl.addEventListener("change", () => {
-      if (window.MCE.live) window.MCE.live.setLiveMode(bl.checked);
-      const badge = $("browseLiveBadge");
-      if (badge) badge.textContent = bl.checked ? "Dex 即時（每 4 秒）" : "";
-      if (bl.checked) loadBrowse(true);
-    });
+    // Always prefetch Binance board (AI + Coin Mood)
+    loadBinanceBoard(false).then(() => bindBnTicks());
     const bnf = $("bnFilter");
-    if (bnf) bnf.addEventListener("input", () => renderBnBoard());
+    if (bnf) bnf.addEventListener("input", () => renderBnBoard(mood.rows));
     const bnr = $("bnRefresh");
     if (bnr) bnr.addEventListener("click", () => loadBinanceBoard(true));
+    const bns = $("bnSearchBtn");
+    if (bns) bns.addEventListener("click", () => {
+      const row = $("bnSearchRow");
+      if (!row) return;
+      row.hidden = !row.hidden;
+      if (!row.hidden && $("bnFilter")) $("bnFilter").focus();
+    });
   }
   if (typeof document !== "undefined") document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", boot) : boot();
 })();

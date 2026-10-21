@@ -19,7 +19,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <span class="logo">🐸</span>
     <div>
       <h1>模擬倉 · AI 揀幣</h1>
-      <p class="sub">睇幣 · AI 揀 · 模擬倉 · 即時賺蝕</p>
+      <p class="sub">Binance 即時 · Coin Mood · 模擬倉</p>
     </div>
   </div>
   <div class="header-right">
@@ -180,7 +180,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <button id="picksRefresh" class="sm">↻</button>
       </div>
     </div>
-    <p class="boost-note">📌 候選幣好多來自 DexScreener <b>paid boost</b>，唔等於優質，只係曝光多。</p>
+    <p class="boost-note">📌 而家推薦來自 <b>Binance 公開 24h</b>（變動／成交／波幅）。舊批 Solana Dex 只留喺完整紀錄，唔再當熱門。</p>
     <p class="honesty muted" id="sampleHonesty"></p>
     <div class="stats full-only" id="pickStats"></div>
   </section>
@@ -190,7 +190,11 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   </section>
 
   <section class="panel simple-only" id="simpleCardsPanel">
-    <h3>今批推薦</h3>
+    <div class="panelhead">
+      <h3>今批推薦 · Binance</h3>
+      <button type="button" id="livePicksRefresh" class="sm">↻ 跟市重排</button>
+    </div>
+    <p class="boost-note">至少 6 隻 USDT 組合，分數跟 24h 市況；唔再困喺舊批 Solana。</p>
     <div id="simpleCards" class="simple-cards"></div>
     <div class="simple-pf-mini" id="simplePfMini"></div>
   </section>
@@ -206,10 +210,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
   <section class="panel" id="hotBuyPanel">
     <div class="panelhead">
-      <h3>🔥 熱門可買（Dex） <span class="muted">市場列表 · 唔係 AI 信心分</span></h3>
+      <h3>🔥 熱門可買（Binance） <span class="muted">即時 24h 分數 · 唔係神秘 AI</span></h3>
       <a class="sm" href="#browse">睇晒 →</a>
     </div>
-    <p class="boost-note">來自 DexScreener 熱門／最新幣，好多係 paid boost。想自己揀去「睇幣」。</p>
+    <p class="boost-note">淨 Binance USDT 現貨。分數來自 24h 變動／成交額／波幅；撳刷新會跟市重排。</p>
     <div id="hotBuyList" class="hot-buy-list"></div>
   </section>
 
@@ -228,40 +232,42 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel full-only" id="pickDetails"></section>
 </div>
 
-<!-- ===== 睇幣（公開瀏覽） ===== -->
+<!-- ===== 睇幣（Coin Mood · Binance only） ===== -->
 <div id="view-browse" class="view" hidden>
-  <!-- Binance 置頂：CEX 即時 -->
-  <section class="panel bn-top" id="bnBoardPanel">
-    <div class="panelhead">
-      <h2>⚡ Binance 即時 <span class="en">CEX live USDT</span></h2>
-      <button type="button" id="bnRefresh" class="sm">↻</button>
+  <section class="panel mood-wrap" id="moodPanel">
+    <div class="mood-topbar">
+      <div class="mood-live"><span class="live-dot"></span> Live · Binance</div>
+      <div class="mood-tools">
+        <button type="button" id="bnSearchBtn" class="iconbtn" title="搜尋" aria-label="搜尋">🔍</button>
+        <button type="button" id="bnRefresh" class="iconbtn" title="刷新">↻</button>
+      </div>
     </div>
-    <p class="intro">免費公開 API（data-api / data-stream.binance.vision，唔使 key）。
-      置頂顯示<strong>多組 USDT 現貨</strong>（大幣 + meme），價格同 24h 會即時跳。
-      撳「落倉」用 Binance 價做模擬標記（唔係鏈上 mint）。</p>
-    <div class="row wrap browse-controls">
-      <input id="bnFilter" type="search" placeholder="搜 Binance 代號（例如 DOGE / PEPE）" autocomplete="off">
-      <span id="bnLiveBadge" class="live-badge">Binance WS 即時</span>
+    <div class="mood-hero" id="moodHero">
+      <div class="mood-title">Coin Mood</div>
+      <div class="mood-mascot" id="moodMascot" aria-hidden="true">🐻</div>
+      <div class="mood-feel" id="moodFeel">Feeling…</div>
+      <div class="mood-feel-zh" id="moodFeelZh">載入中</div>
+      <div class="mood-pair" id="moodPair"><span class="mood-ico" id="moodIco">🔶</span> <span id="moodSym">—</span></div>
+      <div class="mood-price" id="moodPrice">—</div>
+      <div class="mood-chg" id="moodChg">—</div>
+      <div class="mood-chart" id="moodChart"></div>
+      <div class="mood-range">
+        <span id="moodLow">L —</span>
+        <div class="mood-bar"><i id="moodDot"></i></div>
+        <span id="moodHigh">H —</span>
+      </div>
+      <div class="mood-vol" id="moodVol">Vol —</div>
+      <div class="mood-actions">
+        <button type="button" class="cta primary" id="moodBuy">落倉</button>
+        <a class="cta" id="moodBnLink" href="#" target="_blank" rel="noopener">Binance ↗</a>
+      </div>
+    </div>
+    <div class="row wrap browse-controls mood-search" id="bnSearchRow" hidden>
+      <input id="bnFilter" type="search" placeholder="搜 Binance 代號（DOGE / PEPE / BNB）" autocomplete="off">
     </div>
     <p class="muted" id="bnMeta">載入 Binance…</p>
-    <div id="bnList" class="bn-list"></div>
-  </section>
-
-  <!-- Dex / Solana on-chain memes -->
-  <section class="panel">
-    <div class="panelhead">
-      <h2>👀 鏈上 Meme（Dex） <span class="en">On-chain memes</span></h2>
-      <button type="button" id="browseRefresh" class="sm">↻ 更新</button>
-    </div>
-    <p class="intro">DexScreener 公開資料：熱門 boosted + 最新 profiles + 流動性搜尋。
-      <strong>多數唔喺 Binance</strong>。唔係 AI 推薦。撳「落倉」跟 Dex 價。</p>
-    <div class="row wrap browse-controls">
-      <input id="browseFilter" type="search" placeholder="搜尋名稱／代號／鏈" autocomplete="off">
-      <label class="live-tog"><input type="checkbox" id="browseLive"> Dex 即時</label>
-      <span id="browseLiveBadge" class="live-badge"></span>
-    </div>
-    <p class="muted" id="browseMeta">載入中…</p>
-    <div id="browseList" class="browse-list"></div>
+    <div id="bnList" class="mood-list"></div>
+    <p class="muted tiny">熱門／睇幣淨用 Binance 公開 API（唔使 key）。鏈上 Dex meme 唔再出現喺呢度。</p>
   </section>
 </div>
 
@@ -369,9 +375,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel">
     <h2>更多</h2>
     <div class="more-list">
-      <a class="more-item" href="#browse">👀 睇幣（公開市場）</a>
+      <a class="more-item" href="#browse">👀 睇幣（Coin Mood · Binance）</a>
       <a class="more-item" href="#news">📰 重點新聞</a>
-      <a class="more-item" href="#explore">🔎 市場掃描</a>
+      <a class="more-item" href="#explore">🔎 市場掃描（完整 · Dex 舊工具）</a>
       <button type="button" class="more-item" id="moreToFull">🔓 切換「完整」介面</button>
       <button type="button" class="more-item" id="moreHowto">📖 點樣用</button>
       <a class="more-item" href="#picks">🤖 返去揀幣</a>
@@ -556,11 +562,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </aside>
 
 <footer>
-  <p>市場數據：<a href="https://docs.dexscreener.com/api/reference" target="_blank" rel="noopener">DexScreener 公開 API</a>（瀏覽器直接抓；睇幣／持倉即時會強制刷新）。
-  睇幣置頂係 Binance 多組 USDT；少數鏈上已上架幣亦用 <a href="https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams" target="_blank" rel="noopener">Binance 公開 WebSocket</a>（data-stream.binance.vision，唔使 key）。
-  大多數 pump.fun／Dex meme <b>唔喺 Binance</b>，會標「Dex 即時」。
-  X 數據：靜態快照 <code>data/x_buzz.json</code> / <code>data/picks.json</code>。模擬倉只存 localStorage。</p>
-  <p class="legend">旗標：💧 流動性 &lt; $50k · 🐣 交易對 &lt; 24 小時 · 🌀 24h 成交額 &gt; 50× 流動性 · 📉 24h 跌超過 50% · 🚀 boosted（俾錢推廣）</p>
+  <p>睇幣／熱門／AI 揀幣（新批）：<b>淨 Binance</b> 公開 REST + WebSocket（data-api / data-stream.binance.vision，唔使 key）。
+  舊批 Solana Dex 推薦只留喺完整紀錄；Dex 掃描喺完整模式先有，唔再當熱門。
+  X 快照：<code>data/x_buzz.json</code>。模擬倉存 localStorage（假錢）。</p>
+  <p class="legend">誠實標籤：AI 分數 = 24h 變動幅度 + 成交額 + 波幅。唔係保證賺錢。</p>
 </footer>
 
 <!-- Cartoon FX overlays -->
@@ -584,8 +589,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <a href="#more" class="tab bn-simple" data-view="more"><span class="ico">⋯</span><span>更多</span></a>
 </nav>
 
-<script src="app.js"></script>
 <script src="live.js"></script>
+<script src="app.js"></script>
 <script src="picks.js"></script>
 </body>
 </html>

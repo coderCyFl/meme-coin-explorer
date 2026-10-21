@@ -1,13 +1,14 @@
-/* Hybrid live marks: Binance public REST+WS for CEX board + mapped assets;
- * DexScreener REST poll for on-chain memes. No API keys. */
+/* Binance-first live marks: public REST+WS (no API key).
+ * Dex poll kept only for legacy paper positions that are not on Binance. */
 (() => {
   "use strict";
   const BN_REST = "https://data-api.binance.vision";
   const BN_WS = "wss://data-stream.binance.vision/stream";
   const DEX_POLL_MS = 4000;
   const UI_THROTTLE_MS = 400;
+  const KLINE_TTL_MS = 60_000;
 
-  // Curated USDT spot bases — majors + meme-ish. Only shown if TRADING on exchangeInfo.
+  // Curated USDT spot bases — majors + meme-ish. Only shown if TRADING.
   const CURATED_BASES = [
     "BTC", "ETH", "SOL", "BNB", "XRP", "ADA", "DOGE", "AVAX", "LINK", "DOT",
     "NEAR", "APT", "ARB", "OP", "SUI", "INJ", "TIA", "SEI", "JUP", "PYTH",
@@ -17,7 +18,6 @@
     "1MBABYDOGE", "WLD", "MOVE", "FET", "RENDER", "ONDO", "PENDLE",
   ];
 
-  // Only map when we know the contract IS the Binance asset (avoid pump.fun clones).
   const MINT_TO_BN = {
     "solana:So11111111111111111111111111111111111111112": "SOLUSDT",
     "solana:DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263": "BONKUSDT",
@@ -27,15 +27,27 @@
     "ethereum:0x6982508145454ce325ddbe47a25d4ec3d2311933": "PEPEUSDT",
     "ethereum:0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce": "SHIBUSDT",
     "ethereum:0xcf0c122c6b73ff809c693db761e7baebe62b6a2e": "FLOKIUSDT",
-    "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": null,
     "bsc:0xba2ae424d960c26247dd6c32edc70b295c744c43": "DOGEUSDT",
   };
 
-  const marks = new Map(); // key chain:pair -> { price, liq, source, symbol, bn, t, chg24, volQuote }
-  const board = new Map(); // SYMBOL -> row
+  const ICON_EMOJI = {
+    BTC: "👑", ETH: "💎", SOL: "☀️", BNB: "🔶", XRP: "💧", ADA: "🔷", DOGE: "🐶",
+    AVAX: "🔺", LINK: "🔗", DOT: "⚫", AAVE: "👻", UNI: "🦄", PEPE: "🐸", SHIB: "🐕",
+    FLOKI: "🐺", BONK: "💥", WIF: "🎩", BOME: "📜", MEME: "😂", NEIRO: "🐱",
+    PNUT: "🥜", PENGU: "🐧", TRUMP: "🇺🇸", TURBO: "🚀", ORDI: "🟧", NOT: "➖",
+    PEOPLE: "👥", ANIME: "🎌", WLD: "🌍", ENA: "✨", W: "🌊", RENDER: "🎨",
+    FET: "🤖", ONDO: "📈", PENDLE: "⏳", SUI: "💧", INJ: "💉", TIA: "🌌",
+    SEI: "⚡", JUP: "🪐", PYTH: "🔮", APT: "🅰️", ARB: "🔵", OP: "🔴",
+    NEAR: "🌐", LTC: "Ł", BCH: "💵", ATOM: "⚛️", ACT: "🎭", HMSTR: "🐹",
+    "1000SATS": "🟠", "1MBABYDOGE": "🍼", MOVE: "📦", EIGEN: "🧬",
+  };
+
+  const marks = new Map();
+  const board = new Map();
+  const klineCache = new Map(); // symbol -> { t, closes }
   const watchers = new Set();
-  let bnListed = null; // Set of SYMBOLUSDT
-  let boardSymbols = []; // filtered curated that are TRADING
+  let bnListed = null;
+  let boardSymbols = [];
   let boardReady = false;
   let boardLoading = null;
   let ws = null;
@@ -57,10 +69,7 @@
     marks.set(k, next);
     return next;
   }
-
-  function getMark(chain, pair) {
-    return marks.get(keyOf(chain, pair)) || null;
-  }
+  function getMark(chain, pair) { return marks.get(keyOf(chain, pair)) || null; }
 
   function notify(force) {
     const now = Date.now();
@@ -112,27 +121,23 @@
     const m = getMark(chain, pair);
     if (!m) return "";
     if (m.source === "binance") return "Binance 即時";
-    if (m.source === "dex") return "Dex 即時（每 " + (DEX_POLL_MS / 1000) + " 秒）";
+    if (m.source === "dex") return "Dex 即時（舊倉）";
     return "";
   }
 
   function applyBnTick(sym, px, extra) {
     if (!sym || !(px > 0)) return;
-    // Board row
     const row = board.get(sym) || { symbol: sym, base: sym.replace(/USDT$/, "") };
     const prev = row.price;
     Object.assign(row, extra || {}, { price: px, t: Date.now() });
     if (prev != null && prev !== px) row._flash = px > prev ? "up" : "down";
+    if (!row.emoji) row.emoji = ICON_EMOJI[row.base] || "🪙";
     board.set(sym, row);
-
-    // Synthetic board mark
     setMark("binance", sym, {
       bn: sym, price: px, source: "binance", symbol: row.base,
       liq: 1e12, chg24: row.chg24, volQuote: row.volQuote,
-      _flash: row._flash || null,
+      high: row.high, low: row.low, _flash: row._flash || null,
     });
-
-    // Any position marks mapped to this bn
     for (const [, m] of marks) {
       if (m.bn === sym && !(m.chain === "binance" && m.pair === sym)) {
         const p0 = m.price;
@@ -149,19 +154,10 @@
     const same = next.size === wsStreams.size && [...next].every((s) => wsStreams.has(s));
     if (same && ws && ws.readyState <= 1) return;
     wsStreams = next;
-    if (ws) {
-      try { ws.close(); } catch {}
-      ws = null;
-    }
+    if (ws) { try { ws.close(); } catch {} ws = null; }
     if (!next.size) return;
     const streams = [...next].map((s) => s.toLowerCase() + "@miniTicker").join("/");
-    const url = BN_WS + "?streams=" + streams;
-    try {
-      ws = new WebSocket(url);
-    } catch (e) {
-      console.warn("WS open failed", e);
-      return;
-    }
+    try { ws = new WebSocket(BN_WS + "?streams=" + streams); } catch (e) { console.warn("WS open failed", e); return; }
     ws.onmessage = (ev) => {
       try {
         const msg = JSON.parse(ev.data);
@@ -169,7 +165,9 @@
         const sym = d.s;
         const px = parseFloat(d.c || d.p);
         if (!sym || !(px > 0)) return;
-        const chg = d.P != null ? parseFloat(d.P) : undefined;
+        const chg = d.o != null && parseFloat(d.o) > 0
+          ? ((px / parseFloat(d.o)) - 1) * 100
+          : (d.P != null ? parseFloat(d.P) : undefined);
         const qv = d.q != null ? parseFloat(d.q) : undefined;
         applyBnTick(sym, px, {
           chg24: Number.isFinite(chg) ? chg : board.get(sym)?.chg24,
@@ -188,7 +186,6 @@
 
   async function seedBoardRest(symbols) {
     if (!symbols.length) return;
-    // Batch 24hr ticker — URL length safe in chunks of 40
     for (let i = 0; i < symbols.length; i += 40) {
       const slice = symbols.slice(i, i + 40);
       const q = encodeURIComponent(JSON.stringify(slice));
@@ -205,11 +202,11 @@
             volQuote: Number.isFinite(volQ) ? volQ : null,
             high: parseFloat(t.highPrice) || null,
             low: parseFloat(t.lowPrice) || null,
+            open: parseFloat(t.openPrice) || null,
           });
         }
       } catch (e) {
         console.warn("Binance 24hr seed failed", e);
-        // Fallback per-symbol price
         await Promise.all(slice.map(async (sym) => {
           try {
             const r = await fetch(BN_REST + "/api/v3/ticker/price?symbol=" + encodeURIComponent(sym));
@@ -223,20 +220,117 @@
     }
   }
 
+  /** Fetch recent closes for sparkline. interval 1h x 24 or 5m x 48. */
+  async function fetchKlines(symbol, { interval = "1h", limit = 24, force = false } = {}) {
+    const key = symbol + ":" + interval + ":" + limit;
+    const hit = klineCache.get(key);
+    if (!force && hit && Date.now() - hit.t < KLINE_TTL_MS) return hit.closes;
+    try {
+      const url = `${BN_REST}/api/v3/klines?symbol=${encodeURIComponent(symbol)}&interval=${interval}&limit=${limit}`;
+      const r = await fetch(url, { headers: { Accept: "application/json" } });
+      if (!r.ok) throw new Error(r.status);
+      const arr = await r.json();
+      const closes = arr.map((c) => parseFloat(c[4])).filter((n) => n > 0);
+      klineCache.set(key, { t: Date.now(), closes });
+      const row = board.get(symbol);
+      if (row) { row.spark = closes; board.set(symbol, row); }
+      return closes;
+    } catch (e) {
+      console.warn("klines failed", symbol, e);
+      // Approximate from OHLC if we have board row
+      const row = board.get(symbol);
+      if (row && row.low && row.high && row.price) {
+        const approx = [row.open || row.low, row.low, (row.low + row.high) / 2, row.high, row.price];
+        klineCache.set(key, { t: Date.now(), closes: approx });
+        return approx;
+      }
+      return hit?.closes || [];
+    }
+  }
+
+  async function warmSparks(symbols, maxN = 20) {
+    const list = (symbols || boardSymbols).slice(0, maxN);
+    await Promise.all(list.map((s) => fetchKlines(s).catch(() => [])));
+  }
+
+  function sparkPath(closes, w = 120, h = 40, pad = 2) {
+    if (!closes || closes.length < 2) return "";
+    const min = Math.min(...closes), max = Math.max(...closes);
+    const span = max - min || 1;
+    const n = closes.length;
+    const pts = closes.map((v, i) => {
+      const x = pad + (i / (n - 1)) * (w - pad * 2);
+      const y = pad + (1 - (v - min) / span) * (h - pad * 2);
+      return [x, y];
+    });
+    return pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
+  }
+
+  function sparkSvg(closes, { w = 120, h = 40, up = true, className = "spark-svg" } = {}) {
+    const path = sparkPath(closes, w, h);
+    if (!path) return null;
+    const stroke = up ? "#22c55e" : "#ef4444";
+    const fill = up ? "url(#sg)" : "url(#sr)";
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    svg.setAttribute("width", String(w));
+    svg.setAttribute("height", String(h));
+    svg.setAttribute("class", className);
+    svg.innerHTML = `<defs>
+      <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22c55e66"/><stop offset="100%" stop-color="#22c55e00"/></linearGradient>
+      <linearGradient id="sr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef444466"/><stop offset="100%" stop-color="#ef444400"/></linearGradient>
+    </defs>
+    <path d="${path} L${w - 2},${h - 2} L2,${h - 2} Z" fill="${fill}" stroke="none"/>
+    <path d="${path}" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+    return svg;
+  }
+
+  /** Score board rows for AI-style recommendations (honest labels). */
+  function scoreBoardRows(rows) {
+    const majors = new Set(["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT"]);
+    const meme = new Set(["DOGE", "PEPE", "SHIB", "FLOKI", "BONK", "WIF", "BOME", "MEME", "NEIRO", "PNUT", "ACT", "PENGU", "TRUMP", "TURBO", "ORDI", "NOT", "HMSTR", "PEOPLE", "ANIME", "1000SATS", "1MBABYDOGE"]);
+    const scored = (rows || []).map((r) => {
+      const chg = r.chg24 || 0, vol = r.volQuote || 0;
+      const hi = r.high || r.price, lo = r.low || r.price, mid = ((hi + lo) / 2) || r.price || 1;
+      const vola = ((hi - lo) / mid) * 100;
+      const score = Math.min(100,
+        Math.min(35, Math.abs(chg) * 3.5) +
+        Math.min(35, Math.log10(Math.max(vol, 1)) * 5.5) +
+        Math.min(30, vola * 1.2)
+      );
+      return { ...r, score: Math.round(score * 10) / 10, vola, isMajor: majors.has(r.symbol), isMeme: meme.has(r.base) };
+    }).filter((r) => r.price > 0);
+    scored.sort((a, b) => b.score - a.score);
+    const out = [], seen = new Set();
+    for (const s of scored) {
+      if (s.isMajor && !seen.has(s.symbol)) { out.push(s); seen.add(s.symbol); }
+      if (out.filter((x) => x.isMajor).length >= 2) break;
+    }
+    for (const s of scored) {
+      if (s.isMeme && !seen.has(s.symbol)) { out.push(s); seen.add(s.symbol); }
+      if (out.filter((x) => x.isMeme).length >= 4) break;
+    }
+    for (const s of scored) {
+      if (!seen.has(s.symbol)) { out.push(s); seen.add(s.symbol); }
+      if (out.length >= 8) break;
+    }
+    return out;
+  }
+
   async function ensureBoard(force) {
     if (boardReady && !force && board.size) return getBoardRows();
     if (boardLoading) return boardLoading;
     boardLoading = (async () => {
       await ensureExchangeInfo();
-      boardSymbols = CURATED_BASES
-        .map((b) => b + "USDT")
-        .filter((s) => bnListed.has(s));
+      boardSymbols = CURATED_BASES.map((b) => b + "USDT").filter((s) => bnListed.has(s));
       await seedBoardRest(boardSymbols);
       boardReady = true;
-      // Keep WS covering board + open positions
       const { bnNeeded } = collectTargets();
       const all = [...new Set([...boardSymbols, ...bnNeeded])];
       rebuildWs(all);
+      // Warm sparklines for top / selected (non-blocking)
+      warmSparks(boardSymbols, 24).then(() => notify(true));
       notify(true);
       return getBoardRows();
     })().finally(() => { boardLoading = null; });
@@ -282,16 +376,10 @@
         const prev = getMark(chain, pair);
         if (px > 0) {
           setMark(chain, pair, {
-            price: px,
-            liq,
-            source: "dex",
-            p,
-            symbol: prev?.symbol,
+            price: px, liq, source: "dex", p, symbol: prev?.symbol,
             _flash: prev?.price != null && prev.price !== px ? (px > prev.price ? "up" : "down") : null,
           });
-          if (window.MCE.paper && window.MCE.paper.ingestPair) {
-            window.MCE.paper.ingestPair(chain, pair, p);
-          }
+          if (window.MCE.paper && window.MCE.paper.ingestPair) window.MCE.paper.ingestPair(chain, pair, p);
         } else if (liq < 1000) {
           setMark(chain, pair, { price: 0, liq, source: "dex", dead: true });
         }
@@ -336,7 +424,6 @@
     const allBn = [...new Set([...boardSymbols, ...bnNeeded])];
     rebuildWs(allBn);
     if (dexTargets.length) await pollDex();
-    // Re-seed any bnNeeded missing price
     const missing = bnNeeded.filter((s) => !(getMark("binance", s)?.price > 0) && !(board.get(s)?.price > 0));
     if (missing.length) await seedBoardRest(missing);
     for (const bn of bnNeeded) {
@@ -354,10 +441,11 @@
     stopTimers();
     if (!running) return;
     if (document.visibilityState === "hidden") return;
+    // Only poll Dex for legacy positions; board is WS-driven
     dexTimer = setInterval(() => {
       if (document.visibilityState === "hidden") return;
       collectTargets();
-      if (dexTargets.length || liveModeOn) pollDex();
+      if (dexTargets.length) pollDex();
     }, DEX_POLL_MS);
   }
 
@@ -368,30 +456,25 @@
     await tickOnce();
     schedule();
   }
-
   function stop() {
     running = false;
     stopTimers();
     if (ws) { try { ws.close(); } catch {} ws = null; }
     wsStreams = new Set();
   }
-
   function setLiveMode(on) {
     liveModeOn = !!on;
     if (running) schedule();
   }
-
   function sync(getPos) {
     if (getPos) getPositions = getPos;
     if (!running) return start({ getPositions });
     return tickOnce().then(schedule);
   }
-
   function onTick(fn) {
     watchers.add(fn);
     return () => watchers.delete(fn);
   }
-
   function hasOpenPositions() {
     const { spot = [], lev = [] } = getPositions() || {};
     return spot.length + lev.length > 0;
@@ -410,8 +493,9 @@
   window.MCE = window.MCE || {};
   window.MCE.live = {
     start, stop, sync, onTick, getMark, sourceLabel, setLiveMode, classify,
-    hasOpenPositions, ensureBoard, getBoardRows,
-    DEX_POLL_MS, MINT_TO_BN, CURATED_BASES,
+    hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, warmSparks,
+    sparkSvg, sparkPath, scoreBoardRows, ICON_EMOJI,
+    DEX_POLL_MS, MINT_TO_BN, CURATED_BASES, BN_REST,
     get running() { return running; },
     get marks() { return marks; },
     get board() { return board; },
