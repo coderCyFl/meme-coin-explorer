@@ -6,7 +6,7 @@
 <title>模擬倉 · AI 揀幣 · Meme Coin Explorer</title>
 <meta name="description" content="個人 AI 模擬倉：用 AI + X 搵幣，模擬落倉，追蹤真實賺蝕。唔係投資建議。">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🐸%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%237c5cff%22 width=%22100%22 height=%22100%22 rx=%2220%22/%3E%3Ctext x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-size=%2258%22 fill=%22white%22 font-family=%22system-ui%22%3EM%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <script>
@@ -16,10 +16,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <span class="logo">🐸</span>
+    <span class="logo logo-mark" aria-hidden="true">M</span>
     <div>
       <h1>模擬倉 · AI 揀幣</h1>
-      <p class="sub">Binance 即時 · Coin Mood · 模擬倉</p>
+      <p class="sub">Binance · 多角度留意盤 · 模擬倉</p>
     </div>
   </div>
   <div class="header-right">
@@ -42,17 +42,17 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
-  <a href="#picks" class="tab" data-view="picks">🤖 AI 揀幣</a>
-  <a href="#browse" class="tab" data-view="browse">👀 睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">🧪 模擬倉</a>
-  <a href="#news" class="tab" data-view="news">📰 新聞</a>
-  <a href="#explore" class="tab" data-view="explore">🔎 掃描</a>
+  <a href="#picks" class="tab" data-view="picks">AI 揀幣</a>
+  <a href="#browse" class="tab" data-view="browse">睇幣</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
+  <a href="#news" class="tab" data-view="news">新聞</a>
+  <a href="#explore" class="tab" data-view="explore">掃描</a>
 </nav>
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="簡單分頁">
-  <a href="#picks" class="tab" data-view="picks">🤖 揀幣</a>
-  <a href="#browse" class="tab" data-view="browse">👀 睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">🧪 模擬倉</a>
-  <a href="#more" class="tab" data-view="more">⋯ 更多</a>
+  <a href="#picks" class="tab" data-view="picks">今日跟買</a>
+  <a href="#browse" class="tab" data-view="browse">睇幣</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
+  <a href="#more" class="tab" data-view="more">更多</a>
 </nav>
 
 <details class="howto full-only" id="howto">
@@ -161,66 +161,73 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <!-- ===== AI 揀幣 ===== -->
 <div id="view-picks" class="view" hidden>
-  <section class="panel hero">
-    <div class="flow">
-      <div class="step"><b>1</b> AI + X 搵幣</div>
-      <div class="arrow">→</div>
-      <div class="step"><b>2</b> 你落模擬倉</div>
-      <div class="arrow">→</div>
-      <div class="step"><b>3</b> 追蹤真實賺蝕</div>
-    </div>
-    <p class="intro">呢個係<strong>你嘅個人 AI 模擬實驗</strong>：我用分析同 X 搜尋幫你揀幣，你用模擬金錢落倉，之後睇呢啲倉位實際上賺定蝕。
-      每條推薦會永久記喺 <code>data/picks.json</code>（只加唔改），同埋同時間 SOL 對照。樣本少唔證明得咩。
-      <span class="en">Personal experiment: AI recommends → you paper-buy → track real P&amp;L.</span></p>
+  <!-- Simple home: brief + cards + portfolio strip -->
+  <section class="panel home-brief simple-only" id="simpleCardsPanel">
     <div class="panelhead">
-      <h2>🤖 今批 AI 推薦 <span class="en">My recommendations for your sim</span></h2>
+      <div>
+        <h2 class="home-title">今日跟買</h2>
+        <p class="home-sub" id="setupMeta">多角度留意盤 · 唔係 24h 升幅榜</p>
+      </div>
       <div class="row wrap">
-        <button id="allinFromPicks" class="cta hot" title="孤注一擲">🎰 孤注一擲</button>
-        <button id="followBatch" class="primary full-only" title="跟晒今批">🤖 跟晒今批</button>
-        <button id="picksRefresh" class="sm">↻</button>
+        <button type="button" id="livePicksRefresh" class="sm">↻ 重算</button>
+        <button id="allinFromPicks" class="cta hot sm" title="孤注一擲">All-in</button>
+        <button id="picksRefresh" class="sm full-only">↻</button>
       </div>
     </div>
-    <p class="boost-note">📌 而家推薦來自 <b>Binance 公開 24h</b>（變動／成交／波幅）。舊批 Solana Dex 只留喺完整紀錄，唔再當熱門。</p>
-    <p class="honesty muted" id="sampleHonesty"></p>
-    <div class="stats full-only" id="pickStats"></div>
+    <div id="simpleCards" class="simple-cards"></div>
+    <div class="simple-pf-mini" id="simplePfMini"></div>
   </section>
+
+  <details class="panel chase-panel simple-only" id="chasePanel">
+    <summary>已在升／勿追 <span class="muted">對照 · 唔係推薦</span></summary>
+    <div id="chaseList" class="chase-list"></div>
+  </details>
 
   <section class="panel simple-only" id="simpleNewsStrip" hidden>
     <a id="simpleNewsLink" class="simple-news" href="#news"><span class="k">新聞</span> <span id="simpleNewsText">載入中…</span> <span id="simpleNewsAge" class="age"></span></a>
   </section>
 
-  <section class="panel simple-only" id="simpleCardsPanel">
-    <div class="panelhead">
-      <h3>今批推薦 · Binance</h3>
-      <button type="button" id="livePicksRefresh" class="sm">↻ 跟市重排</button>
+  <!-- Full mode hero / extras -->
+  <section class="panel hero full-only">
+    <div class="flow">
+      <div class="step"><b>1</b> 多角度盤</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>2</b> 模擬落倉</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>3</b> 追蹤賺蝕</div>
     </div>
-    <p class="boost-note">至少 6 隻 USDT 組合，分數跟 24h 市況；唔再困喺舊批 Solana。</p>
-    <div id="simpleCards" class="simple-cards"></div>
-    <div class="simple-pf-mini" id="simplePfMini"></div>
+    <p class="intro">個人 AI 模擬：用 Binance 1d／1h OHLCV 睇<strong>量能、壓縮、相對 BTC、輪動、吸籌</strong>——推薦「之後有機會」嘅盤，唔係已經急升嗰啲。
+      <span class="en">Multi-angle setups from public OHLCV — not 24h gainer rank.</span></p>
+    <div class="panelhead">
+      <h2>完整紀錄</h2>
+      <div class="row wrap">
+        <button id="followBatch" class="primary" title="跟晒今批">跟晒今批</button>
+      </div>
+    </div>
+    <p class="honesty muted" id="sampleHonesty"></p>
+    <div class="stats" id="pickStats"></div>
   </section>
 
-  <section class="panel bn-top" id="bnStripPanel">
+  <section class="panel bn-top full-only" id="bnStripPanel">
     <div class="panelhead">
-      <h3>⚡ Binance 即時 <span class="muted">置頂 · CEX 公開價</span></h3>
+      <h3>Binance 即時 <span class="muted">成交額排序</span></h3>
       <a class="sm" href="#browse">睇晒 →</a>
     </div>
-    <p class="boost-note">大幣 + meme USDT 組合，免費 stream。撳「落倉」用 Binance 價模擬。</p>
     <div id="bnStripList" class="bn-strip"></div>
   </section>
 
-  <section class="panel" id="hotBuyPanel">
+  <section class="panel full-only" id="hotBuyPanel">
     <div class="panelhead">
-      <h3>🔥 熱門可買（Binance） <span class="muted">即時 24h 分數 · 唔係神秘 AI</span></h3>
-      <a class="sm" href="#browse">睇晒 →</a>
+      <h3>留意盤（同今日跟買）</h3>
+      <a class="sm" href="#browse">睇幣 →</a>
     </div>
-    <p class="boost-note">淨 Binance USDT 現貨。分數來自 24h 變動／成交額／波幅；撳刷新會跟市重排。</p>
     <div id="hotBuyList" class="hot-buy-list"></div>
   </section>
 
   <section class="panel full-only">
     <h3>🟢 買入推薦 · 撳「落倉」放入模擬倉</h3>
     <div class="tablewrap"><table class="picks"><thead><tr>
-      <th>幣</th><th>批次 / 時間</th><th class="num">信心</th><th class="num">推薦價</th><th class="num">而家</th>
+      <th>幣</th><th>批次 / 時間</th><th class="num">分</th><th class="num">推薦價</th><th class="num">而家</th>
       <th class="num">回報</th><th class="num">同期 SOL</th><th class="num">跑贏 SOL</th><th>持有</th><th>24h / 72h / 7d</th><th></th>
     </tr></thead><tbody id="picksBody"></tbody></table></div>
 
@@ -238,16 +245,16 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="mood-topbar">
       <div class="mood-live"><span class="live-dot"></span> Live · Binance</div>
       <div class="mood-tools">
-        <button type="button" id="bnSearchBtn" class="iconbtn" title="搜尋" aria-label="搜尋">🔍</button>
+        <button type="button" id="bnSearchBtn" class="iconbtn" title="搜尋" aria-label="搜尋">⌕</button>
         <button type="button" id="bnRefresh" class="iconbtn" title="刷新">↻</button>
       </div>
     </div>
     <div class="mood-hero" id="moodHero">
       <div class="mood-title">Coin Mood</div>
-      <div class="mood-mascot" id="moodMascot" aria-hidden="true">🐻</div>
+      <div class="mood-mascot" id="moodMascot" aria-hidden="true"></div>
       <div class="mood-feel" id="moodFeel">Feeling…</div>
       <div class="mood-feel-zh" id="moodFeelZh">載入中</div>
-      <div class="mood-pair" id="moodPair"><span class="mood-ico" id="moodIco">🔶</span> <span id="moodSym">—</span></div>
+      <div class="mood-pair" id="moodPair"><span class="mood-ico" id="moodIco"></span> <span id="moodSym">—</span></div>
       <div class="mood-price" id="moodPrice">—</div>
       <div class="mood-chg" id="moodChg">—</div>
       <div class="mood-chart" id="moodChart"></div>
@@ -565,7 +572,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <p>睇幣／熱門／AI 揀幣（新批）：<b>淨 Binance</b> 公開 REST + WebSocket（data-api / data-stream.binance.vision，唔使 key）。
   舊批 Solana Dex 推薦只留喺完整紀錄；Dex 掃描喺完整模式先有，唔再當熱門。
   X 快照：<code>data/x_buzz.json</code>。模擬倉存 localStorage（假錢）。</p>
-  <p class="legend">誠實標籤：AI 分數 = 24h 變動幅度 + 成交額 + 波幅。唔係保證賺錢。</p>
+  <p class="legend">誠實標籤：今日跟買 = 多角度 OHLCV 留意盤（量能／壓縮／相對 BTC／輪動／吸籌），刻意唔係 24h 升幅榜。唔係保證賺錢。</p>
 </footer>
 
 <!-- Cartoon FX overlays -->
@@ -581,11 +588,11 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
 
 <nav class="bottom-nav" role="tablist" aria-label="主要分頁">
-  <a href="#picks" class="tab" data-view="picks"><span class="ico">🤖</span><span>揀幣</span></a>
-  <a href="#browse" class="tab" data-view="browse"><span class="ico">👀</span><span>睇幣</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico">🧪</span><span>模擬倉</span></a>
-  <a href="#news" class="tab bn-full" data-view="news"><span class="ico">📰</span><span>新聞</span></a>
-  <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico">🔎</span><span>掃描</span></a>
+  <a href="#picks" class="tab" data-view="picks"><span class="ico">买</span><span>跟買</span></a>
+  <a href="#browse" class="tab" data-view="browse"><span class="ico">市</span><span>睇幣</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico">倉</span><span>模擬倉</span></a>
+  <a href="#news" class="tab bn-full" data-view="news"><span class="ico">訊</span><span>新聞</span></a>
+  <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico">掃</span><span>掃描</span></a>
   <a href="#more" class="tab bn-simple" data-view="more"><span class="ico">⋯</span><span>更多</span></a>
 </nav>
 

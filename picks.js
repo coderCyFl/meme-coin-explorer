@@ -141,75 +141,150 @@
     return el("td", {}, el("div", { class: "tok" }, el("div", {}, el("div", { class: "nm", text: e.name }), el("div", { class: "sy", text: `$${e.symbol} · ${e.chain}` }))));
   }
 
+  const ANGLE_LABEL = {
+    accumulation: "靜吸",
+    rotation: "輪動",
+    compression: "壓縮",
+    mean_reversion: "回彈",
+    higher_lows: "結構",
+    relative: "相對",
+    already_up: "勿追",
+  };
+
   function renderSimpleCards(buys) {
     const box = $("simpleCards"); if (!box) return;
     box.textContent = "";
-    // Prefer Binance buys from newest batch; need ≥6 symbols
-    const bn = buys.filter((x) => x.e.chain === "binance");
-    const top = (bn.length >= 6 ? bn : buys).slice(0, 8);
-    if (!top.length) { box.append(el("p", { class: "muted", text: "載入 Binance 推薦中…" })); return; }
+    const bn = (buys || []).filter((x) => x.e && x.e.chain === "binance");
+    const top = (bn.length ? bn : buys || []).slice(0, 6);
+    if (!top.length) { box.append(el("p", { class: "muted", text: "計緊多角度盤…稍等" })); return; }
+    const liveApi = window.MCE.live;
     for (const x of top) {
-      const reason = (x.e.rationale || "").slice(0, 110) + ((x.e.rationale || "").length > 110 ? "…" : "");
-      const livePx = x.li && x.li.state === "live" ? x.li.price : null;
-      const ret = x.ret == null ? (livePx != null ? pct(((livePx / x.e.entry_price_usd) - 1) * 100) : "…") : pct(x.ret);
+      const tip = x.e.tip || (x.e.rationale || "").split("（")[0].slice(0, 72) || "多角度盤 · 唔係追 24h 升幅";
+      const livePx = x.li && x.li.state === "live" ? x.li.price : (x.e.entry_price_usd || null);
       const chg = x.e.entry_snapshot?.chg24h_pct;
-      box.append(el("article", { class: "simple-card" },
+      const angle = x.e.angle || x.e.entry_snapshot?.angle || "";
+      const logo = liveApi && liveApi.coinLogoEl
+        ? liveApi.coinLogoEl(x.e.symbol, "coin-logo", 44)
+        : el("span", { class: "coin-logo letter", text: String(x.e.symbol || "?").slice(0, 2) });
+      const details = el("details", { class: "sc-details" },
+        el("summary", { text: "詳情" }),
+        el("div", { class: "sc-detail-body muted" },
+          el("div", { text: "角度：" + (ANGLE_LABEL[angle] || angle || "setup") }),
+          el("div", { text: "推薦價 " + price(x.e.entry_price_usd) + (chg != null ? " · 當時 24h " + pct(chg) : "") }),
+          el("div", { text: (x.e.rationale || "").slice(0, 160) })
+        )
+      );
+      box.append(el("article", { class: "simple-card", "data-angle": angle || "" },
         el("div", { class: "sc-top" },
-          el("div", {},
-            el("div", { class: "nm", text: "$" + x.e.symbol }),
-            el("div", { class: "sy", text: (x.e.chain === "binance" ? "Binance USDT" : x.e.chain) + (chg != null ? " · 24h " + pct(chg) : "") })),
-          el("div", { class: "sc-score", text: String(x.e.conviction ?? x.e.model_score) })),
-        el("p", { class: "sc-why", text: reason || "（未有理由）" }),
-        el("div", { class: "sc-meta" },
-          el("span", { text: "推薦價 " + price(x.e.entry_price_usd) }),
-          el("span", { class: "num", "data-bn-price": x.e.chain === "binance" ? x.e.pair_address : "", text: "而家 " + (livePx != null ? price(livePx) : "…") }),
-          el("span", { class: cls(x.ret), text: "回報 " + ret })),
+          logo,
+          el("div", { class: "sc-id" },
+            el("div", { class: "nm", text: x.e.symbol }),
+            el("div", { class: "sy" },
+              el("span", { class: "angle-pill", text: ANGLE_LABEL[angle] || "留意盤" }),
+              chg != null ? el("span", { class: "num " + cls(chg), text: " 24h " + pct(chg) }) : ""
+            )
+          ),
+          el("div", { class: "sc-px" },
+            el("div", { class: "num live-px", "data-bn-price": x.e.pair_address || "", text: livePx != null ? price(livePx) : "…" })
+          )
+        ),
+        el("p", { class: "sc-why", text: tip }),
+        details,
         el("div", { class: "sc-actions" },
-          el("button", { class: "cta primary", onclick: () => openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name, price: livePx, source: x.e.chain === "binance" ? "binance" : undefined }) }, "落倉"),
-          el("button", { class: "cta hot", onclick: () => openAllinFlow({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }) }, "孤注一擲"))));
+          el("button", { class: "cta primary", onclick: () => openBuy({
+            chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address,
+            symbol: x.e.symbol, name: x.e.name, price: livePx,
+            source: x.e.chain === "binance" ? "binance" : undefined,
+          }) }, "落倉")
+        )
+      ));
     }
   }
 
-  /** Live recomputed Binance picks (≥6) for home + hot list. */
+  function renderChaseList(chasing) {
+    const box = $("chaseList"); if (!box) return;
+    box.textContent = "";
+    const rows = (chasing || []).slice(0, 6);
+    if (!rows.length) {
+      box.append(el("p", { class: "muted tiny", text: "暫時冇極端急升對照。" }));
+      return;
+    }
+    const liveApi = window.MCE.live;
+    for (const r of rows) {
+      const base = r.base || r.symbol;
+      const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(base, "coin-logo", 28) : "";
+      box.append(el("div", { class: "chase-row" },
+        logo,
+        el("span", { class: "nm", text: base }),
+        el("span", { class: "num pos", "data-bn-chg": r.symbol, text: pct(r.chg24) }),
+        el("span", { class: "muted tiny", text: "勿追" })
+      ));
+    }
+  }
+
+  /** Live multi-angle setup picks (≥6) — NOT 24h gainer rank. */
   async function loadLiveBnPicks(force) {
     if (!window.MCE.live) return [];
-    const rows = await window.MCE.live.ensureBoard(!!force);
-    const scored = window.MCE.live.scoreBoardRows(rows);
-    renderHotBuysFromBn(scored);
-    // If picks.json latest batch is thin/old solana-only for simple UI, overlay live cards
-    const box = $("simpleCards");
-    if (box && scored.length >= 6) {
-      // Build synthetic eval-like objects for cards
-      const synth = scored.slice(0, 8).map((r) => ({
+    await window.MCE.live.ensureBoard(!!force);
+    const meta = $("setupMeta");
+    if (meta) meta.textContent = "分析緊 1d／1h 盤…";
+    let result;
+    try {
+      result = await window.MCE.live.computeSetupPicks({ force: !!force, limitSymbols: 36 });
+    } catch (e) {
+      console.error(e);
+      if (meta) meta.textContent = "分析失敗，改用存檔推薦";
+      return [];
+    }
+    const picks = result.picks || [];
+    const chasing = result.chasing || [];
+    renderChaseList(chasing);
+    renderHotBuysFromBn(picks); // full-mode list shows setups too
+    if (meta) {
+      const angles = [...new Set(picks.map((p) => p.angle).filter(Boolean))];
+      meta.textContent = picks.length
+        ? `多角度 · ${picks.length} 隻 · ${angles.map((a) => ANGLE_LABEL[a] || a).join("／")} · 唔係 24h 升幅榜`
+        : "未搵到足夠留意盤";
+    }
+    if (picks.length >= 4) {
+      const synth = picks.slice(0, 6).map((r) => ({
         e: {
           chain: "binance", pair_address: r.symbol, token_address: "binance:" + r.symbol,
           symbol: r.base, name: (r.base || "") + " (Binance)",
-          entry_price_usd: r.price, conviction: Math.round(r.score), model_score: Math.round(r.score),
-          rationale: `Binance ${r.symbol}：24h ${pct(r.chg24)}，成交約 ${money(r.volQuote)}。分數 ${r.score}/100 = |變動|+成交+波幅（誠實標籤）。`,
-          entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, low24h: r.low },
+          entry_price_usd: r.price, conviction: Math.round(r.setupScore || r.score),
+          model_score: Math.round(r.setupScore || r.score),
+          tip: r.tip, angle: r.angle, rationale: r.tip,
+          entry_snapshot: {
+            chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, low24h: r.low, angle: r.angle,
+          },
         },
         li: { state: "live", price: r.price, source: "binance" },
         ret: null,
       }));
       renderSimpleCards(synth);
     }
-    return scored;
+    return picks;
   }
 
   function renderHotBuysFromBn(scored) {
     const box = $("hotBuyList"); if (!box) return;
     box.textContent = "";
-    const top = (scored || []).slice(0, 12);
+    const top = (scored || []).slice(0, 8);
     if (!top.length) {
-      box.append(el("p", { class: "muted", text: "載入 Binance 熱門中…" }));
+      box.append(el("p", { class: "muted", text: "計緊留意盤…" }));
       return;
     }
+    const liveApi = window.MCE.live;
     for (const r of top) {
-      const emoji = (window.MCE.live && window.MCE.live.ICON_EMOJI && window.MCE.live.ICON_EMOJI[r.base]) || "🪙";
+      const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: (r.base || "?").slice(0, 2) });
       box.append(el("div", { class: "hot-buy-row" },
         el("div", { class: "tok" },
-          el("span", { class: "bc-ph", text: emoji }),
-          el("div", {}, el("div", { class: "nm", text: "$" + r.base }), el("div", { class: "sy", text: `分數 ${r.score} · Binance` }))),
+          logo,
+          el("div", {},
+            el("div", { class: "nm", text: r.base }),
+            el("div", { class: "sy", text: (ANGLE_LABEL[r.angle] || "留意盤") + " · " + (r.tip || "").slice(0, 36) })
+          )
+        ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
         el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
         el("button", { class: "cta primary sm", onclick: () => openBuy({
@@ -1450,7 +1525,7 @@
     newsTag = b.dataset.ntag; document.querySelectorAll(".news-filters .chip").forEach((x) => x.classList.toggle("active", x === b)); renderNews();
   }));
   document.querySelectorAll(".lens").forEach((b) => b.addEventListener("click", () => applyLens(b.dataset.lens)));
-  $("picksRefresh").addEventListener("click", () => { loadPicks(true); loadLiveBnPicks(true); });
+  if ($("picksRefresh")) $("picksRefresh").addEventListener("click", () => { loadPicks(true); loadLiveBnPicks(true); });
   $("followBatch").addEventListener("click", copyPicks);
   document.querySelectorAll(".segbtn[data-pfmode]").forEach((b) => b.addEventListener("click", () => {
     pfMode = b.dataset.pfmode; renderPortfolio(false);

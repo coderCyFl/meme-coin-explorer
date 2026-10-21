@@ -346,10 +346,10 @@
     return String(Math.round(v));
   }
   function moodLabel(chg) {
-    if (chg == null || isNaN(chg)) return { en: "Feeling…", zh: "載入中", mascot: "🐻" };
-    if (chg >= 1.5) return { en: "Feeling good", zh: "心情好好", mascot: "🐻" };
-    if (chg <= -1.5) return { en: "Feeling careful", zh: "小心啲", mascot: "😟" };
-    return { en: "Feeling okay", zh: "心情一般", mascot: "😐" };
+    if (chg == null || isNaN(chg)) return { en: "Feeling…", zh: "載入中" };
+    if (chg >= 1.5) return { en: "Feeling good", zh: "心情好好" };
+    if (chg <= -1.5) return { en: "Feeling careful", zh: "小心啲" };
+    return { en: "Feeling okay", zh: "心情一般" };
   }
   function bnBuyPayload(r) {
     return {
@@ -367,8 +367,17 @@
     const set = (id, t) => { const n = $(id); if (n) n.textContent = t; };
     set("moodFeel", feel.en);
     set("moodFeelZh", feel.zh);
-    set("moodMascot", feel.mascot);
-    set("moodIco", (live && live.ICON_EMOJI && live.ICON_EMOJI[r.base]) || r.emoji || "🪙");
+    const mascot = $("moodMascot");
+    if (mascot) {
+      mascot.textContent = "";
+      if (live && live.coinLogoEl) mascot.append(live.coinLogoEl(r.base, "coin-logo mood-logo", 72));
+      else mascot.textContent = (r.base || "?").slice(0, 2);
+    }
+    const ico = $("moodIco");
+    if (ico) {
+      ico.textContent = "";
+      if (live && live.coinLogoEl) ico.append(live.coinLogoEl(r.base, "coin-logo", 22));
+    }
     set("moodSym", (r.base || "—") + " /USDT");
     set("moodPrice", price(r.price).replace(/^\$/, ""));
     const chgEl = $("moodChg");
@@ -435,7 +444,7 @@
       const up = (r.chg24 || 0) >= 0;
       const active = r.symbol === sel ? " active" : "";
       const flash = r._flash === "up" ? " tick-up" : r._flash === "down" ? " tick-down" : "";
-      const emoji = (live && live.ICON_EMOJI && live.ICON_EMOJI[r.base]) || r.emoji || "🪙";
+      const logo = (live && live.coinLogoEl) ? live.coinLogoEl(r.base, "coin-logo", 40) : el("span", { class: "coin-logo letter", text: (r.base || "?").slice(0, 2) });
       const row = el("button", {
         type: "button",
         class: "mood-row" + active + flash,
@@ -443,7 +452,7 @@
         onclick: () => selectMood(r.symbol, mood.rows),
       });
       const left = el("div", { class: "mood-row-left" },
-        el("span", { class: "mood-row-ico", text: emoji }),
+        logo,
         el("div", {},
           el("div", { class: "nm", text: r.base || r.symbol }),
           el("div", { class: "sy", text: "Vol " + fmtVol(r.volQuote) })
@@ -475,14 +484,15 @@
   function paintBnStrip(rows) {
     const box = $("bnStripList"); if (!box) return;
     const live = window.MCE.live;
-    const scored = live && live.scoreBoardRows ? live.scoreBoardRows(rows || live.getBoardRows()) : (rows || []).slice(0, 12);
+    const data = (rows || (live ? live.getBoardRows() : [])).slice().sort((a, b) => (b.volQuote || 0) - (a.volQuote || 0)).slice(0, 12);
     box.textContent = "";
-    for (const r of scored.slice(0, 12)) {
+    for (const r of data) {
+      const logo = live && live.coinLogoEl ? live.coinLogoEl(r.base, "coin-logo", 20) : "";
       box.append(el("button", {
         type: "button", class: "bn-chip",
         onclick: () => window.MCE.paper && window.MCE.paper.openBuy(bnBuyPayload(r)),
       },
-        el("b", { text: "$" + (r.base || "") }),
+        el("div", { class: "bn-chip-top" }, logo, el("b", { text: r.base || "" })),
         el("span", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
         el("span", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) })
       ));
@@ -508,7 +518,7 @@
       const feel = moodLabel(r.chg24);
       const set = (id, t) => { const n = $(id); if (n) n.textContent = t; };
       set("moodPrice", price(r.price).replace(/^\$/, ""));
-      set("moodFeel", feel.en); set("moodFeelZh", feel.zh); set("moodMascot", feel.mascot);
+      set("moodFeel", feel.en); set("moodFeelZh", feel.zh);
       set("moodVol", "Vol " + fmtVol(r.volQuote));
       const chgEl = $("moodChg");
       if (chgEl) { chgEl.textContent = pct(r.chg24); chgEl.className = "mood-chg " + ((r.chg24 || 0) >= 0 ? "pos" : "neg"); }

@@ -30,17 +30,60 @@
     "bsc:0xba2ae424d960c26247dd6c32edc70b295c744c43": "DOGEUSDT",
   };
 
-  const ICON_EMOJI = {
-    BTC: "👑", ETH: "💎", SOL: "☀️", BNB: "🔶", XRP: "💧", ADA: "🔷", DOGE: "🐶",
-    AVAX: "🔺", LINK: "🔗", DOT: "⚫", AAVE: "👻", UNI: "🦄", PEPE: "🐸", SHIB: "🐕",
-    FLOKI: "🐺", BONK: "💥", WIF: "🎩", BOME: "📜", MEME: "😂", NEIRO: "🐱",
-    PNUT: "🥜", PENGU: "🐧", TRUMP: "🇺🇸", TURBO: "🚀", ORDI: "🟧", NOT: "➖",
-    PEOPLE: "👥", ANIME: "🎌", WLD: "🌍", ENA: "✨", W: "🌊", RENDER: "🎨",
-    FET: "🤖", ONDO: "📈", PENDLE: "⏳", SUI: "💧", INJ: "💉", TIA: "🌌",
-    SEI: "⚡", JUP: "🪐", PYTH: "🔮", APT: "🅰️", ARB: "🔵", OP: "🔴",
-    NEAR: "🌐", LTC: "Ł", BCH: "💵", ATOM: "⚛️", ACT: "🎭", HMSTR: "🐹",
-    "1000SATS": "🟠", "1MBABYDOGE": "🍼", MOVE: "📦", EIGEN: "🧬",
+  /** Real coin logos with CDN fallbacks. Letter avatar last — no emoji mascots. */
+  const LOGO_ALIAS = {
+    "1000SATS": "1000sats", "1MBABYDOGE": "babydoge", BOME: "bome", WIF: "wif",
+    BONK: "bonk", PEPE: "pepe", SHIB: "shib", FLOKI: "floki", NEIRO: "neiro",
+    PNUT: "pnut", PENGU: "pengu", TRUMP: "trump", RENDER: "render", FET: "fet",
   };
+  function logoCandidates(base) {
+    const raw = String(base || "").toUpperCase();
+    if (!raw) return [];
+    const lower = (LOGO_ALIAS[raw] || raw).toLowerCase();
+    // Prefer jsDelivr cryptocurrency-icons (CORS-friendly), then Binance, then CoinCap
+    return [
+      "https://bin.bnbstatic.com/static/assets/logos/" + encodeURIComponent(raw) + ".png",
+      "https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/" + encodeURIComponent(lower) + ".png",
+      "https://assets.coincap.io/assets/icons/" + encodeURIComponent(lower) + "@2x.png",
+    ];
+  }
+  function logoUrl(base) {
+    const c = logoCandidates(base);
+    return c[0] || "";
+  }
+  function letterAvatar(base, className) {
+    const s = document.createElement("span");
+    s.className = (className || "coin-logo") + " letter";
+    s.textContent = String(base || "?").slice(0, 2).toUpperCase();
+    s.setAttribute("aria-hidden", "true");
+    return s;
+  }
+  function coinLogoEl(base, className = "coin-logo", size = 40) {
+    const wrap = document.createElement("span");
+    wrap.className = "coin-logo-wrap";
+    const urls = logoCandidates(base);
+    const img = document.createElement("img");
+    img.className = className;
+    img.alt = base || "";
+    img.width = size;
+    img.height = size;
+    img.decoding = "async";
+    img.referrerPolicy = "no-referrer";
+    let i = 0;
+    const tryNext = () => {
+      if (i >= urls.length) {
+        img.remove();
+        if (!wrap.querySelector(".letter")) wrap.append(letterAvatar(base, className));
+        return;
+      }
+      img.src = urls[i++];
+    };
+    img.onerror = tryNext;
+    wrap.append(img);
+    tryNext();
+    return wrap;
+  }
+  const ICON_EMOJI = {};
 
   const marks = new Map();
   const board = new Map();
@@ -131,7 +174,7 @@
     const prev = row.price;
     Object.assign(row, extra || {}, { price: px, t: Date.now() });
     if (prev != null && prev !== px) row._flash = px > prev ? "up" : "down";
-    if (!row.emoji) row.emoji = ICON_EMOJI[row.base] || "🪙";
+    row.logo = logoUrl(row.base);
     board.set(sym, row);
     setMark("binance", sym, {
       bn: sym, price: px, source: "binance", symbol: row.base,
@@ -220,31 +263,47 @@
     }
   }
 
+  function parseKlineBars(arr) {
+    return (arr || []).map((c) => ({
+      t: c[0], o: +c[1], h: +c[2], l: +c[3], c: +c[4], v: +c[5], qv: +c[7],
+    })).filter((b) => b.c > 0);
+  }
+
   /** Fetch recent closes for sparkline. interval 1h x 24 or 5m x 48. */
   async function fetchKlines(symbol, { interval = "1h", limit = 24, force = false } = {}) {
+    const bars = await fetchKlineBars(symbol, { interval, limit, force });
+    return bars.map((b) => b.c);
+  }
+
+  async function fetchKlineBars(symbol, { interval = "1h", limit = 24, force = false } = {}) {
     const key = symbol + ":" + interval + ":" + limit;
     const hit = klineCache.get(key);
-    if (!force && hit && Date.now() - hit.t < KLINE_TTL_MS) return hit.closes;
+    if (!force && hit && Date.now() - hit.t < KLINE_TTL_MS && hit.bars) return hit.bars;
     try {
       const url = `${BN_REST}/api/v3/klines?symbol=${encodeURIComponent(symbol)}&interval=${interval}&limit=${limit}`;
       const r = await fetch(url, { headers: { Accept: "application/json" } });
       if (!r.ok) throw new Error(r.status);
-      const arr = await r.json();
-      const closes = arr.map((c) => parseFloat(c[4])).filter((n) => n > 0);
-      klineCache.set(key, { t: Date.now(), closes });
+      const bars = parseKlineBars(await r.json());
+      const closes = bars.map((b) => b.c);
+      klineCache.set(key, { t: Date.now(), closes, bars });
       const row = board.get(symbol);
       if (row) { row.spark = closes; board.set(symbol, row); }
-      return closes;
+      return bars;
     } catch (e) {
       console.warn("klines failed", symbol, e);
-      // Approximate from OHLC if we have board row
       const row = board.get(symbol);
       if (row && row.low && row.high && row.price) {
-        const approx = [row.open || row.low, row.low, (row.low + row.high) / 2, row.high, row.price];
-        klineCache.set(key, { t: Date.now(), closes: approx });
+        const approx = [
+          { o: row.open || row.low, h: row.high, l: row.low, c: row.open || row.low, qv: 0 },
+          { o: row.low, h: row.high, l: row.low, c: row.low, qv: 0 },
+          { o: row.low, h: row.high, l: row.low, c: (row.low + row.high) / 2, qv: 0 },
+          { o: row.low, h: row.high, l: row.low, c: row.high, qv: 0 },
+          { o: row.low, h: row.high, l: row.low, c: row.price, qv: row.volQuote || 0 },
+        ];
+        klineCache.set(key, { t: Date.now(), closes: approx.map((b) => b.c), bars: approx });
         return approx;
       }
-      return hit?.closes || [];
+      return hit?.bars || [];
     }
   }
 
@@ -286,36 +345,207 @@
     return svg;
   }
 
-  /** Score board rows for AI-style recommendations (honest labels). */
-  function scoreBoardRows(rows) {
-    const majors = new Set(["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT"]);
-    const meme = new Set(["DOGE", "PEPE", "SHIB", "FLOKI", "BONK", "WIF", "BOME", "MEME", "NEIRO", "PNUT", "ACT", "PENGU", "TRUMP", "TURBO", "ORDI", "NOT", "HMSTR", "PEOPLE", "ANIME", "1000SATS", "1MBABYDOGE"]);
+  const avgNum = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
+  const clampNum = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+
+  /** Chase / momentum score — for 「已在升／勿追」 only, NOT primary AI picks. */
+  function scoreChaseRows(rows) {
     const scored = (rows || []).map((r) => {
       const chg = r.chg24 || 0, vol = r.volQuote || 0;
-      const hi = r.high || r.price, lo = r.low || r.price, mid = ((hi + lo) / 2) || r.price || 1;
-      const vola = ((hi - lo) / mid) * 100;
+      const hi = r.high || r.price, lo = r.low || r.price;
+      const mid = ((hi + lo) / 2) || r.price || 1;
+      const pos = hi > lo ? (r.price - lo) / (hi - lo) : 0.5;
       const score = Math.min(100,
-        Math.min(35, Math.abs(chg) * 3.5) +
-        Math.min(35, Math.log10(Math.max(vol, 1)) * 5.5) +
-        Math.min(30, vola * 1.2)
+        Math.min(40, Math.max(0, chg) * 3.5) +
+        Math.min(30, Math.log10(Math.max(vol, 1)) * 4) +
+        (pos > 0.85 ? 15 : 0)
       );
-      return { ...r, score: Math.round(score * 10) / 10, vola, isMajor: majors.has(r.symbol), isMeme: meme.has(r.base) };
-    }).filter((r) => r.price > 0);
+      return { ...r, score: Math.round(score * 10) / 10, chase: true, alreadyUp: chg >= 8 };
+    }).filter((r) => r.price > 0 && (r.chg24 || 0) >= 6);
     scored.sort((a, b) => b.score - a.score);
-    const out = [], seen = new Set();
-    for (const s of scored) {
-      if (s.isMajor && !seen.has(s.symbol)) { out.push(s); seen.add(s.symbol); }
-      if (out.filter((x) => x.isMajor).length >= 2) break;
+    return scored.slice(0, 8);
+  }
+
+  /** Legacy alias — DO NOT use for primary AI recs (was 24h gainer bait). */
+  function scoreBoardRows(rows) {
+    return scoreChaseRows(rows);
+  }
+
+  function setupFeatures(row, daily, hourly, btcDaily) {
+    const chg24 = row.chg24 || 0;
+    const price = row.price || 0;
+    const volQ = row.volQuote || 0;
+    const hi = row.high || price, lo = row.low || price;
+    const d = daily.slice(-8), h = hourly.slice(-48);
+    const volD = d.map((b) => b.qv);
+    const volAvg7 = avgNum(volD.slice(0, -1)) || avgNum(volD) || 1;
+    const volToday = volD[volD.length - 1] || volQ;
+    const volCreep = volToday / volAvg7;
+    const vRecent = avgNum(volD.slice(-4, -1)) || 1;
+    const vPrior = avgNum(volD.slice(-7, -4)) || vRecent;
+    const volRegime = vRecent / vPrior;
+    const range = (bars) => {
+      if (!bars.length) return 0;
+      const hh = Math.max(...bars.map((b) => b.h));
+      const ll = Math.min(...bars.map((b) => b.l));
+      const mid = (hh + ll) / 2 || 1;
+      return ((hh - ll) / mid) * 100;
+    };
+    const rangeRecent = range(d.slice(-4));
+    const rangePrior = range(d.slice(-7, -3)) || rangeRecent || 1;
+    const compression = rangePrior / Math.max(rangeRecent, 0.01);
+    const recentHigh = Math.max(...d.slice(-5).map((b) => b.h), hi);
+    const recentLow = Math.min(...d.slice(-5).map((b) => b.l), lo);
+    const posInRange = (price - recentLow) / Math.max(recentHigh - recentLow, 1e-12);
+    const nearMidLow = posInRange < 0.55;
+    const lowsH = h.slice(-24).map((b) => b.l);
+    let higherLows = 0;
+    if (lowsH.length >= 8) {
+      const a = avgNum(lowsH.slice(0, 8)), b = avgNum(lowsH.slice(8, 16)), c = avgNum(lowsH.slice(16));
+      if (b > a * 1.001 && c >= b * 0.998) higherLows = 1;
+      else if (c > a * 1.002) higherLows = 0.5;
     }
-    for (const s of scored) {
-      if (s.isMeme && !seen.has(s.symbol)) { out.push(s); seen.add(s.symbol); }
-      if (out.filter((x) => x.isMeme).length >= 4) break;
+    const ret7 = d.length >= 2 ? (d[d.length - 1].c / d[0].c - 1) * 100 : 0;
+    const btcRet7 = (btcDaily && btcDaily.length >= 2)
+      ? (btcDaily[btcDaily.length - 1].c / btcDaily[0].c - 1) * 100 : 0;
+    const relStrength = ret7 - btcRet7;
+    const meanRev = chg24 < 1 && chg24 > -8 && nearMidLow && volCreep > 1.15;
+    const calmAccum = Math.abs(chg24) < 3 && volRegime > 1.1 && compression > 1.15 && posInRange < 0.65;
+    const rotation = relStrength < -3 && volCreep > 1.1 && chg24 > -5 && chg24 < 6;
+    const breakout = compression > 1.2 && posInRange > 0.55 && posInRange < 0.92 && volCreep > 1.2 && chg24 < 8;
+    const alreadyUp = chg24 >= 8;
+    const extended = chg24 >= 12 || (chg24 >= 6 && posInRange > 0.9);
+    let precursorEcho = 0;
+    const retsD = [];
+    for (let i = 1; i < d.length; i++) retsD.push((d[i].c / d[i - 1].c - 1) * 100);
+    for (let i = 2; i < retsD.length; i++) {
+      if (retsD[i] > 8) {
+        const volBefore = volD[i] / Math.max(avgNum(volD.slice(Math.max(0, i - 3), i)) || 1, 1);
+        if (volBefore > 1.15 && retsD[i - 1] < 5) precursorEcho += 1;
+      }
     }
-    for (const s of scored) {
-      if (!seen.has(s.symbol)) { out.push(s); seen.add(s.symbol); }
-      if (out.length >= 8) break;
+    const turnoverQ = clampNum(Math.log10(Math.max(volQ, 1)) / 8, 0, 1);
+    return {
+      chg24, price, volQ, hi, lo, volCreep, volRegime, compression, posInRange, nearMidLow,
+      higherLows, ret7, btcRet7, relStrength, meanRev, calmAccum, rotation, breakout,
+      alreadyUp, extended, precursorEcho, turnoverQ,
+    };
+  }
+
+  function scoreSetupFeatures(f) {
+    const parts = {
+      vol_creep: 0, compression: 0, relative: 0, higher_lows: 0,
+      rotation: 0, accumulation: 0, breakout: 0, precursor_echo: 0, turnover: 0, chase_penalty: 0,
+    };
+    if (f.volCreep > 1.1 && f.chg24 < 6) parts.vol_creep = clampNum((f.volCreep - 1) * 28, 0, 22);
+    if (f.compression > 1.1) parts.compression = clampNum((f.compression - 1) * 18, 0, 16);
+    if (f.relStrength < -2 && f.volCreep > 1.05) parts.relative = clampNum(-f.relStrength * 1.8, 0, 18);
+    parts.higher_lows = f.higherLows * 12;
+    if (f.rotation) parts.rotation = 16 + clampNum(-f.relStrength, 0, 8);
+    if (f.calmAccum) parts.accumulation = 18;
+    if (f.breakout) parts.breakout = 14;
+    parts.precursor_echo = clampNum(f.precursorEcho * 6, 0, 12);
+    parts.turnover = f.turnoverQ * 10;
+    if (f.alreadyUp) parts.chase_penalty = -35 - Math.min(20, (f.chg24 - 8) * 2);
+    else if (f.chg24 > 5) parts.chase_penalty = -12;
+    if (f.extended) parts.chase_penalty -= 15;
+    if (f.chg24 < -10 && !f.higherLows) parts.chase_penalty -= 10;
+    const setupScore = clampNum(Object.values(parts).reduce((a, b) => a + b, 0), 0, 100);
+    const angleScores = [
+      ["accumulation", parts.accumulation + (f.calmAccum ? 5 : 0), "量增價穩 · 靜靜吸籌"],
+      ["rotation", parts.rotation + (f.rotation ? 5 : 0), "滯後大盤 · 輪動候選"],
+      ["compression", parts.compression + parts.breakout, "波幅收窄後輕突破"],
+      ["mean_reversion", f.meanRev ? 20 + parts.vol_creep : parts.vol_creep, "偏低估位 · 量能回暖"],
+      ["higher_lows", parts.higher_lows + parts.vol_creep * 0.3, "小時線抬高低位"],
+      ["relative", parts.relative, "相對 BTC 偏弱後回神"],
+    ];
+    angleScores.sort((a, b) => b[1] - a[1]);
+    const angle = angleScores[0][0];
+    let tip = angleScores[0][2];
+    if (f.alreadyUp) tip = `已急升 ${f.chg24.toFixed(1)}% · 宜勿追（只供對照）`;
+    else if (angle === "accumulation") tip = `24h 只 ${f.chg24 >= 0 ? "+" : ""}${f.chg24.toFixed(1)}%，成交較 7 日均高 ${(f.volCreep * 100 - 100).toFixed(0)}% · 靜吸`;
+    else if (angle === "rotation") tip = `7 日跑輸 BTC ${(-f.relStrength).toFixed(1)} pt，量能開始回 · 輪動留意`;
+    else if (angle === "compression") tip = `近幾日波幅收窄 ${f.compression.toFixed(1)}×，輕觸上沿 · 唔係已爆升`;
+    else if (angle === "mean_reversion") tip = `仍近區間中低位，量回暖 · 睇反彈多過追升`;
+    else if (angle === "higher_lows") tip = `1h 抬高低位而 24h 未瘋 · 結構轉好`;
+    else tip = `相對大盤偏弱後量能回 · 提早留意`;
+    return { setupScore: Math.round(setupScore * 10) / 10, angle, tip, parts };
+  }
+
+  function diversifySetups(scored, n = 6) {
+    const setups = scored.filter((s) => !s.alreadyUp && !s.extended && s.setupScore >= 26)
+      .sort((a, b) => b.setupScore - a.setupScore);
+    const out = [], used = new Set(), usedAngle = new Map();
+    const take = (pred, maxPerAngle = 2) => {
+      for (const s of setups) {
+        if (out.length >= n) break;
+        if (used.has(s.symbol)) continue;
+        if (!pred(s)) continue;
+        const c = usedAngle.get(s.angle) || 0;
+        if (c >= maxPerAngle) continue;
+        out.push(s); used.add(s.symbol); usedAngle.set(s.angle, c + 1);
+      }
+    };
+    take((s) => s.angle === "accumulation" || s.angle === "mean_reversion", 2);
+    take((s) => s.angle === "rotation", 2);
+    take((s) => s.angle === "compression", 1);
+    take((s) => s.angle === "higher_lows" || s.angle === "relative", 1);
+    take(() => true, 3);
+    if (out.length < n) {
+      for (const s of scored.sort((a, b) => b.setupScore - a.setupScore)) {
+        if (out.length >= n) break;
+        if (used.has(s.symbol) || (s.chg24 || 0) >= 8) continue;
+        out.push(s); used.add(s.symbol);
+      }
     }
-    return out;
+    return out.slice(0, n);
+  }
+
+  let setupCache = { t: 0, picks: [], chasing: [] };
+  const SETUP_TTL = 5 * 60_000;
+
+  /** Multi-angle setup picks — primary AI brief. Not 24h gainer rank. */
+  async function computeSetupPicks({ force = false, limitSymbols = 40 } = {}) {
+    if (!force && setupCache.picks.length && Date.now() - setupCache.t < SETUP_TTL) {
+      return setupCache;
+    }
+    const rows = getBoardRows().filter((r) => r.price > 0);
+    if (!rows.length) await ensureBoard(false);
+    let list = getBoardRows().filter((r) => r.price > 0);
+    // Prefer mix: skip pure majors-only; analyze most liquid + memes
+    list = list.slice().sort((a, b) => (b.volQuote || 0) - (a.volQuote || 0)).slice(0, limitSymbols);
+    const btcDaily = await fetchKlineBars("BTCUSDT", { interval: "1d", limit: 8 }).catch(() => []);
+    const scored = [];
+    // Batch with concurrency 4
+    const queue = list.slice();
+    const workers = Array.from({ length: 4 }, async () => {
+      while (queue.length) {
+        const row = queue.shift();
+        if (!row) break;
+        try {
+          const [daily, hourly] = await Promise.all([
+            fetchKlineBars(row.symbol, { interval: "1d", limit: 8 }),
+            fetchKlineBars(row.symbol, { interval: "1h", limit: 48 }),
+          ]);
+          const f = setupFeatures(row, daily, hourly, btcDaily);
+          const sc = scoreSetupFeatures(f);
+          scored.push({
+            ...row,
+            ...f,
+            ...sc,
+            score: sc.setupScore,
+            logo: logoUrl(row.base),
+          });
+        } catch (e) {
+          console.warn("setup fail", row.symbol, e);
+        }
+      }
+    });
+    await Promise.all(workers);
+    const picks = diversifySetups(scored, 6);
+    const chasing = scoreChaseRows(scored.length ? scored : list);
+    setupCache = { t: Date.now(), picks, chasing, all: scored };
+    return setupCache;
   }
 
   async function ensureBoard(force) {
@@ -493,8 +723,9 @@
   window.MCE = window.MCE || {};
   window.MCE.live = {
     start, stop, sync, onTick, getMark, sourceLabel, setLiveMode, classify,
-    hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, warmSparks,
-    sparkSvg, sparkPath, scoreBoardRows, ICON_EMOJI,
+    hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, fetchKlineBars, warmSparks,
+    sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks,
+    logoUrl, coinLogoEl, letterAvatar, ICON_EMOJI,
     DEX_POLL_MS, MINT_TO_BN, CURATED_BASES, BN_REST,
     get running() { return running; },
     get marks() { return marks; },

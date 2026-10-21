@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "description": "Append-only AI pick log. Never edit or delete past entries. batch-002+ = Binance USDT spot scores.",
+ "description": "Append-only AI pick log. batch-003+ = multi-angle Binance setup (not 24h gainer rank).",
  "batches": [
   {
    "id": "batch-001",
@@ -130,7 +130,7 @@
       "x_count_query": "gato (GTA6CAT OR solana OR memecoin OR mcap OR pump) -is:retweet",
       "x_7d_total": 770,
       "x_last24h": 150,
-      "x_prior_daily_avg": 124.0,
+      "x_prior_daily_avg": 124,
       "x_last6h": 25,
       "x_prev6h": 103,
       "cashtag_sample": {
@@ -177,7 +177,7 @@
      "score_parts": {
       "buzz_growth": 12.3,
       "buzz_level": 9.7,
-      "buzz_momentum": 1.0,
+      "buzz_momentum": 1,
       "engagement": 0,
       "liquidity": 6.2,
       "market": 15,
@@ -237,7 +237,7 @@
       "buzz_level": 12.9,
       "buzz_momentum": -2.8,
       "engagement": 13.9,
-      "liquidity": 5.0,
+      "liquidity": 5,
       "market": 10.5,
       "penalties": -23
      },
@@ -253,7 +253,7 @@
       "x_count_query": "POKECITY -is:retweet",
       "x_7d_total": 429,
       "x_last24h": 379,
-      "x_prior_daily_avg": 10.0,
+      "x_prior_daily_avg": 10,
       "x_last6h": 44,
       "x_prev6h": 98,
       "cashtag_sample": {
@@ -299,7 +299,7 @@
      "model_score": 35,
      "score_parts": {
       "buzz_growth": 18.6,
-      "buzz_level": 10.0,
+      "buzz_level": 10,
       "buzz_momentum": 4.5,
       "engagement": 0,
       "liquidity": 19.8,
@@ -432,7 +432,7 @@
      "url": "https://www.binance.com/en/trade/XRP_USDT",
      "entry_price_usd": 1.3912,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 134086884.58276,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -482,7 +482,7 @@
      "url": "https://www.binance.com/en/trade/ETH_USDT",
      "entry_price_usd": 2492.46,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 905515574.333179,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -532,7 +532,7 @@
      "url": "https://www.binance.com/en/trade/PEOPLE_USDT",
      "entry_price_usd": 0.00882,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 1516178.284132,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -546,7 +546,7 @@
      "model_score": 86,
      "score_parts": {
       "abs_chg": 35,
-      "volume": 34.0,
+      "volume": 34,
       "volatility": 16.9,
       "penalties": 0
      },
@@ -582,7 +582,7 @@
      "url": "https://www.binance.com/en/trade/ANIME_USDT",
      "entry_price_usd": 0.00289,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 1001801.97792,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -596,7 +596,7 @@
      "model_score": 66,
      "score_parts": {
       "abs_chg": 20.5,
-      "volume": 33.0,
+      "volume": 33,
       "volatility": 12.1,
       "penalties": 0
      },
@@ -630,16 +630,16 @@
      "symbol": "BONK",
      "name": "BONK (Binance)",
      "url": "https://www.binance.com/en/trade/BONK_USDT",
-     "entry_price_usd": 3.23e-06,
+     "entry_price_usd": 0.00000323,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 2488120.56972925,
       "market_cap_usd": null,
       "fdv_usd": null,
       "pair_age_h": null,
       "chg24h_pct": 5.902,
-      "high24h": 3.24e-06,
-      "low24h": 3.05e-06,
+      "high24h": 0.00000324,
+      "low24h": 0.00000305,
       "buys24h": null,
       "sells24h": null
      },
@@ -682,7 +682,7 @@
      "url": "https://www.binance.com/en/trade/BOME_USDT",
      "entry_price_usd": 0.000646,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 1579673.8178543,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -732,7 +732,7 @@
      "url": "https://www.binance.com/en/trade/W_USDT",
      "entry_price_usd": 0.01479,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 9843962.367129,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -782,7 +782,7 @@
      "url": "https://www.binance.com/en/trade/ENA_USDT",
      "entry_price_usd": 0.2162,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 49714482.50696,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -832,7 +832,7 @@
      "url": "https://www.binance.com/en/trade/WLD_USDT",
      "entry_price_usd": 0.5699,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 64348706.50011,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -878,7 +878,7 @@
      "url": "https://www.binance.com/en/trade/TIA_USDT",
      "entry_price_usd": 0.6201,
      "entry_snapshot": {
-      "liquidity_usd": 1000000000000.0,
+      "liquidity_usd": 1000000000000,
       "volume24h_usd": 10666084.321139,
       "market_cap_usd": null,
       "fdv_usd": null,
@@ -903,6 +903,523 @@
      "evidence": {
       "source": "binance-24hr-ticker",
       "symbol": "TIAUSDT"
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-003",
+   "created_at": "2026-10-22T04:42:34+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 84750
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 108.44
+    }
+   },
+   "entries": [
+    {
+     "id": "20261022-003-TRUMP",
+     "batch": "batch-003",
+     "type": "buy",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:TRUMPUSDT",
+     "pair_address": "TRUMPUSDT",
+     "dex": "binance-spot",
+     "symbol": "TRUMP",
+     "name": "TRUMP (Binance)",
+     "url": "https://www.binance.com/en/trade/TRUMP_USDT",
+     "entry_price_usd": 1.87,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 15323815.173124,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 3.947,
+      "high24h": 1.922,
+      "low24h": 1.78,
+      "vol_creep": 1.493,
+      "rel_vs_btc_7d": -4.13,
+      "compression": 0.905,
+      "angle": "rotation"
+     },
+     "model_score": 62,
+     "score_parts": {
+      "vol_creep": 13.805573395827206,
+      "compression": 0,
+      "relative": 7.432092127038286,
+      "higher_lows": 12,
+      "rotation": 20.128940070576824,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.981708631421458,
+      "chase_penalty": 0
+     },
+     "conviction": 62,
+     "rationale": "7 日跑輸 BTC 4.1 pt，量能開始回 · 輪動留意（角度：rotation。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "7 日跑輸 BTC 4.1 pt，量能開始回 · 輪動留意",
+     "angle": "rotation",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:rotation"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "TRUMPUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-TIA",
+     "batch": "batch-003",
+     "type": "buy",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:TIAUSDT",
+     "pair_address": "TIAUSDT",
+     "dex": "binance-spot",
+     "symbol": "TIA",
+     "name": "TIA (Binance)",
+     "url": "https://www.binance.com/en/trade/TIA_USDT",
+     "entry_price_usd": 0.6213,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 10622559.297383,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.256,
+      "high24h": 0.6471,
+      "low24h": 0.6062,
+      "vol_creep": 0.505,
+      "rel_vs_btc_7d": 8.67,
+      "compression": 3.055,
+      "angle": "compression"
+     },
+     "model_score": 37,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 16,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.78278645511549,
+      "chase_penalty": 0
+     },
+     "conviction": 37,
+     "rationale": "近幾日波幅收窄 3.1×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 3.1×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "TIAUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-PEPE",
+     "batch": "batch-003",
+     "type": "buy",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:PEPEUSDT",
+     "pair_address": "PEPEUSDT",
+     "dex": "binance-spot",
+     "symbol": "PEPE",
+     "name": "PEPE (Binance)",
+     "url": "https://www.binance.com/en/trade/PEPE_USDT",
+     "entry_price_usd": 0.00000468,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 38299866.73710043,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 2.183,
+      "high24h": 0.00000479,
+      "low24h": 0.00000446,
+      "vol_creep": 1.157,
+      "rel_vs_btc_7d": 10.7,
+      "compression": 0.463,
+      "angle": "higher_lows"
+     },
+     "model_score": 32,
+     "score_parts": {
+      "vol_creep": 4.409145137427162,
+      "compression": 0,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 6,
+      "turnover": 9.478996578575575,
+      "chase_penalty": 0
+     },
+     "conviction": 32,
+     "rationale": "1h 抬高低位而 24h 未瘋 · 結構轉好（角度：higher_lows。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "1h 抬高低位而 24h 未瘋 · 結構轉好",
+     "angle": "higher_lows",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:higher_lows"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "PEPEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-PYTH",
+     "batch": "batch-003",
+     "type": "buy",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:PYTHUSDT",
+     "pair_address": "PYTHUSDT",
+     "dex": "binance-spot",
+     "symbol": "PYTH",
+     "name": "PYTH (Binance)",
+     "url": "https://www.binance.com/en/trade/PYTH_USDT",
+     "entry_price_usd": 0.0803,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 3734436.05429,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 1.491,
+      "high24h": 0.08247,
+      "low24h": 0.07894,
+      "vol_creep": 0.341,
+      "rel_vs_btc_7d": -9.32,
+      "compression": 2.357,
+      "angle": "compression"
+     },
+     "model_score": 36,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 16,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.215281284127737,
+      "chase_penalty": 0
+     },
+     "conviction": 36,
+     "rationale": "近幾日波幅收窄 2.4×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 2.4×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "PYTHUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-SEI",
+     "batch": "batch-003",
+     "type": "buy",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:SEIUSDT",
+     "pair_address": "SEIUSDT",
+     "dex": "binance-spot",
+     "symbol": "SEI",
+     "name": "SEI (Binance)",
+     "url": "https://www.binance.com/en/trade/SEI_USDT",
+     "entry_price_usd": 0.0637,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 5794647.063648,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 4.085,
+      "high24h": 0.06406,
+      "low24h": 0.06082,
+      "vol_creep": 0.791,
+      "rel_vs_btc_7d": -1.53,
+      "compression": 1.69,
+      "angle": "compression"
+     },
+     "model_score": 33,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 12.4230953345362,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.45378373674684,
+      "chase_penalty": 0
+     },
+     "conviction": 33,
+     "rationale": "近幾日波幅收窄 1.7×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 1.7×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "SEIUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-ARB",
+     "batch": "batch-003",
+     "type": "buy",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:ARBUSDT",
+     "pair_address": "ARBUSDT",
+     "dex": "binance-spot",
+     "symbol": "ARB",
+     "name": "ARB (Binance)",
+     "url": "https://www.binance.com/en/trade/ARB_USDT",
+     "entry_price_usd": 0.1966,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 23368502.29469,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 4.021,
+      "high24h": 0.1986,
+      "low24h": 0.1865,
+      "vol_creep": 1.271,
+      "rel_vs_btc_7d": 4.33,
+      "compression": 1.161,
+      "angle": "higher_lows"
+     },
+     "model_score": 32,
+     "score_parts": {
+      "vol_creep": 7.58529851624222,
+      "compression": 2.8943340471802994,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.2107885987704,
+      "chase_penalty": 0
+     },
+     "conviction": 32,
+     "rationale": "1h 抬高低位而 24h 未瘋 · 結構轉好（角度：higher_lows。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "1h 抬高低位而 24h 未瘋 · 結構轉好",
+     "angle": "higher_lows",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:higher_lows"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "ARBUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-AVOID-ENA",
+     "batch": "batch-003",
+     "type": "avoid",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:ENAUSDT",
+     "pair_address": "ENAUSDT",
+     "dex": "binance-spot",
+     "symbol": "ENA",
+     "name": "ENA (Binance)",
+     "url": "https://www.binance.com/en/trade/ENA_USDT",
+     "entry_price_usd": 0.2184,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 49967679.681126,
+      "chg24h_pct": 12.23,
+      "high24h": 0.226,
+      "low24h": 0.1946,
+      "angle": "already_up"
+     },
+     "model_score": 85,
+     "score_parts": {
+      "chase": 85
+     },
+     "conviction": 85,
+     "rationale": "已在升 12.2% · 勿追高。只放對照清單。",
+     "tip": "已急升 · 勿追",
+     "angle": "already_up",
+     "flags": [
+      "already pumping",
+      "do not chase"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "ENAUSDT"
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-AVOID-PEOPLE",
+     "batch": "batch-003",
+     "type": "avoid",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:PEOPLEUSDT",
+     "pair_address": "PEOPLEUSDT",
+     "dex": "binance-spot",
+     "symbol": "PEOPLE",
+     "name": "PEOPLE (Binance)",
+     "url": "https://www.binance.com/en/trade/PEOPLE_USDT",
+     "entry_price_usd": 0.00878,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 1521909.064356,
+      "chg24h_pct": 12.133,
+      "high24h": 0.00895,
+      "low24h": 0.00779,
+      "angle": "already_up"
+     },
+     "model_score": 80,
+     "score_parts": {
+      "chase": 79.7
+     },
+     "conviction": 80,
+     "rationale": "已在升 12.1% · 勿追高。只放對照清單。",
+     "tip": "已急升 · 勿追",
+     "angle": "already_up",
+     "flags": [
+      "already pumping",
+      "do not chase"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "PEOPLEUSDT"
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261022-003-AVOID-W",
+     "batch": "batch-003",
+     "type": "avoid",
+     "created_at": "2026-10-22T04:42:34+08:00",
+     "chain": "binance",
+     "token_address": "binance:WUSDT",
+     "pair_address": "WUSDT",
+     "dex": "binance-spot",
+     "symbol": "W",
+     "name": "W (Binance)",
+     "url": "https://www.binance.com/en/trade/W_USDT",
+     "entry_price_usd": 0.01489,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 9974746.247627,
+      "chg24h_pct": 11.787,
+      "high24h": 0.0162,
+      "low24h": 0.01326,
+      "angle": "already_up"
+     },
+     "model_score": 68,
+     "score_parts": {
+      "chase": 68
+     },
+     "conviction": 68,
+     "rationale": "已在升 11.8% · 勿追高。只放對照清單。",
+     "tip": "已急升 · 勿追",
+     "angle": "already_up",
+     "flags": [
+      "already pumping",
+      "do not chase"
+     ],
+     "evidence": {
+      "source": "binance-24hr-ticker",
+      "symbol": "WUSDT"
      },
      "horizons_h": [
       24,

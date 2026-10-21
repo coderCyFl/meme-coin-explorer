@@ -472,3 +472,74 @@ tr.tick-down .live-px, .tick-down .live-px{animation:pnlFlashRed .7s ease}
 .simple-card .sc-meta{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:12px;margin-bottom:8px}
 .simple-card .sc-actions{display:flex;gap:8px}
 .simple-card .sc-actions .cta{flex:1;min-height:44px}
+
+/* ===== Real logos (no emoji mascots) ===== */
+.coin-logo-wrap{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+img.coin-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#111;display:block}
+img.coin-logo.mood-logo{width:72px;height:72px;border-radius:50%;box-shadow:0 8px 24px #c9a22744}
+.coin-logo.letter{
+  width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  background:#1e293b;color:#e2e8f0;font-weight:800;font-size:12px;letter-spacing:-.02em;
+}
+.logo-mark{
+  width:36px;height:36px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#7c5cff,#4f46e5);color:#fff;font-weight:900;font-size:16px;line-height:1;
+}
+
+/* ===== Simple home: 今日跟買 ===== */
+.home-brief{border:1px solid #2a2150;background:linear-gradient(180deg,#141029 0%,var(--panel) 55%)}
+.home-title{margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.home-sub{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.simple-card{
+  border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--panel2);
+  display:flex;flex-direction:column;gap:8px;
+}
+.simple-card .sc-top{display:flex;align-items:center;gap:12px}
+.simple-card .sc-id{flex:1;min-width:0}
+.simple-card .sc-id .nm{font-size:17px;font-weight:800}
+.simple-card .sc-px{text-align:right}
+.simple-card .sc-why{margin:0;font-size:13px;line-height:1.45;color:#c9d0e0}
+.simple-card .sc-score{display:none!important} /* no confidence wall */
+.angle-pill{
+  display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;
+  background:#1e1a3a;color:#c4b5fd;border:1px solid #4c1d95;margin-right:6px;vertical-align:middle;
+}
+.sc-details{font-size:12px;color:var(--muted)}
+.sc-details summary{cursor:pointer;color:#a99bff;font-weight:600;list-style:none}
+.sc-details summary::-webkit-details-marker{display:none}
+.sc-detail-body{margin-top:6px;padding:8px;border-radius:8px;background:#0f1420;line-height:1.45}
+
+.chase-panel{margin-top:0}
+.chase-panel summary{cursor:pointer;font-weight:700;list-style:none}
+.chase-panel summary::-webkit-details-marker{display:none}
+.chase-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.chase-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--panel2);border:1px solid #3a1212}
+.chase-row .nm{font-weight:700;flex:1}
+
+.bn-chip-top{display:flex;align-items:center;gap:6px}
+.bn-chip-top img.coin-logo{width:20px;height:20px}
+
+.mood-mascot{min-height:72px;display:flex;align-items:center;justify-content:center}
+.mood-row-left img.coin-logo{width:40px;height:40px}
+.mood-ico{display:inline-flex;align-items:center}
+.mood-ico img.coin-logo{width:22px;height:22px}
+
+body.ui-simple .hero .intro,
+body.ui-simple .boost-note{display:none}
+body.ui-simple #hotBuyPanel,
+body.ui-simple #bnStripPanel{display:none!important}
+
+@media (max-width:700px){
+  .home-title{font-size:20px}
+  .simple-card .sc-actions .cta{width:100%;min-height:48px}
+}
+
+/* Simple mode: less text walls */
+body.ui-simple .disclaimer .disc-full{display:none}
+body.ui-simple .simbanner.lev-warn{display:none}
+body.ui-simple .allin-banner{font-size:12px;padding:8px 10px}
+body.ui-simple .howto{display:none!important}
+.bottom-nav .ico{
+  width:22px;height:22px;border-radius:8px;background:#1a2133;display:inline-flex;
+  align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#c4b5fd;
+}
