@@ -21,8 +21,8 @@
     if (howto && uiMode === "simple") howto.open = false;
     // refresh current view
     const v = (location.hash || "#picks").slice(1);
-    if (uiMode === "simple" && (v === "news" || v === "explore") && location.hash) {
-      /* allow deep link */ 
+    if (uiMode === "simple" && (v === "news" || v === "explore" || v === "browse") && location.hash) {
+      /* allow deep link */
     }
   }
 
@@ -33,6 +33,13 @@
   const median = (a) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
   const avg = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
   const money2 = (v) => (v == null || isNaN(v) ? "–" : (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+  function srcBadge(chain, pair, li) {
+    const label = (window.MCE.live && window.MCE.live.sourceLabel(chain, pair))
+      || (li && li.source === "binance" ? "Binance 即時" : li && li.source === "dex" ? "Dex 即時" : "");
+    if (!label) return "";
+    const clsName = label.startsWith("Binance") ? "src-bn" : "src-dex";
+    return el("span", { class: "src-badge " + clsName, text: label });
+  }
   /** Rough price impact: ~ k * sqrt(notional/liquidity), capped. Fee is separate. */
   function estimateImpact(notional, liqUsd) {
     if (!(notional > 0) || !(liqUsd > 0)) return { impactPct: 0, note: "流動性未知，未計衝擊" };
@@ -62,12 +69,20 @@
     }
   }
   function liveInfo(chain, pair) {
+    const mark = window.MCE.live && window.MCE.live.getMark(chain, pair);
+    if (mark && mark.dead) return { state: "dead", price: 0, liq: mark.liq || 0, p: mark.p, source: mark.source };
+    if (mark && mark.price > 0) {
+      return { state: "live", price: mark.price, liq: mark.liq ?? (S.live.get(chain + ":" + pair)?.liquidity?.usd ?? 0), p: mark.p || S.live.get(chain + ":" + pair), source: mark.source, flash: mark._flash };
+    }
     const k = chain + ":" + pair;
     if (!S.live.has(k)) return { state: "unknown" };
     const p = S.live.get(k);
     const liq = p?.liquidity?.usd ?? 0;
     if (!p || liq < DEAD_LIQ || !p.priceUsd) return { state: "dead", price: 0, liq, p };
-    return { state: "live", price: parseFloat(p.priceUsd), liq, p };
+    return { state: "live", price: parseFloat(p.priceUsd), liq, p, source: "dex" };
+  }
+  function ingestPair(chain, pair, p) {
+    S.live.set(chain + ":" + pair, p || null);
   }
 
   async function loadPicks(force = false) {
@@ -602,6 +617,7 @@
       ms: 1600,
     });
     toast(`🎰 孤注一擲已開始：$${info.symbol}（${mode === "lev" ? "50x" : "現貨"}）`);
+    ensureLiveLoop(true);
     location.hash = "portfolio";
     await renderPortfolio(true);
     const ban = $("allinBanner");
@@ -812,8 +828,9 @@
         toast(`已現貨落倉 ${money2(res.amt)} $${info.symbol}`);
         floatPop("🪙"); pfMode = "spot";
       }
+      ensureLiveLoop(true);
       if (location.hash.slice(1) !== "portfolio") location.hash = "portfolio";
-      else renderPortfolio(false);
+      else await renderPortfolio(true);
     } catch (e) { alert(e.message); }
   }
 
@@ -953,6 +970,7 @@
     }
     toast(errs.length ? "部分失敗：" + errs.join("；") : `已跟倉 ${buys.length} 隻（${res.mode === "lev" ? res.lev + "x" : "現貨"}）`);
     pfMode = res.mode === "lev" ? "lev" : "spot";
+    ensureLiveLoop(true);
     location.hash = "portfolio";
     renderPortfolio(false);
   }
@@ -999,11 +1017,12 @@
       if (v != null) spotValue += v; spotCost += p.cost;
       const u = v == null ? null : v - p.cost;
       const upct = u == null || !p.cost ? null : (u / p.cost) * 100;
-      hb.append(el("tr", { class: "cardish" },
-        el("td", { "data-label": "幣" }, el("b", { text: "$" + p.symbol }), " ", el("span", { class: "muted", text: p.chain }), li.state === "dead" ? el("span", { class: "pill dead" }, "已死") : ""),
+      const flashCls = li.flash === "up" ? " tick-up" : li.flash === "down" ? " tick-down" : "";
+      hb.append(el("tr", { class: "cardish" + flashCls, "data-pos": k },
+        el("td", { "data-label": "幣" }, el("b", { text: "$" + p.symbol }), " ", el("span", { class: "muted", text: p.chain }), " ", srcBadge(p.chain, p.pair, li), li.state === "dead" ? el("span", { class: "pill dead" }, "已死") : ""),
         el("td", { class: "num", "data-label": "數量", text: p.qty.toLocaleString(undefined, { maximumFractionDigits: 2 }) }),
         el("td", { class: "num", "data-label": "入場", text: price(p.cost / p.qty) }), el("td", { class: "num", "data-label": "成本", text: money2(p.cost) }),
-        el("td", { class: "num", "data-label": "而家", text: px == null ? "…" : price(px) }), el("td", { class: "num", "data-label": "市值", text: v == null ? "…" : money2(v) }),
+        el("td", { class: "num live-px", "data-label": "而家", text: px == null ? "…" : price(px) }), el("td", { class: "num", "data-label": "市值", text: v == null ? "…" : money2(v) }),
         el("td", { class: "num " + cls(upct), "data-label": "浮盈虧%", text: upct == null ? "…" : pct(upct) }),
         el("td", { class: "num " + cls(u), "data-label": "浮盈虧$", text: u == null ? "…" : money2(u) }),
         el("td", { "data-label": "", class: "actions" }, el("button", { class: "cta", onclick: () => openSell(k) }, "平倉"), " ",
@@ -1020,14 +1039,15 @@
       if (m) { levEquity += m.equity; levMargin += pos.margin; levUnreal += m.unreal; }
       const dropPct = px != null ? ((px / pos.entry - 1) * 100) : null;
       const toLiq = px != null ? ((px - liqPriceLong(pos.entry, pos.leverage)) / px * 100) : null;
-      lb.append(el("tr", { class: "cardish" },
-        el("td", { "data-label": "幣" }, el("b", { text: "$" + pos.symbol }), " ", el("span", { class: "pill" }, "long"),
+      const flashClsL = li.flash === "up" ? " tick-up" : li.flash === "down" ? " tick-down" : "";
+      lb.append(el("tr", { class: "cardish" + flashClsL, "data-lev": id },
+        el("td", { "data-label": "幣" }, el("b", { text: "$" + pos.symbol }), " ", el("span", { class: "pill" }, "long"), " ", srcBadge(pos.chain, pos.pair, li),
           toLiq != null ? el("div", { class: "dist" + (toLiq < 5 ? " hot" : ""), text: `距爆倉 ${toLiq.toFixed(1)}%` }) : ""),
         el("td", { class: "num", "data-label": "倍數", text: pos.leverage + "x" }),
         el("td", { class: "num", "data-label": "保證金", text: money2(pos.margin) }),
         el("td", { class: "num", "data-label": "名義", text: money2(pos.notional) }),
         el("td", { class: "num", "data-label": "入場", text: price(pos.entry) }),
-        el("td", { class: "num", "data-label": "標記", text: px == null ? "…" : price(px) }),
+        el("td", { class: "num live-px", "data-label": "標記", text: px == null ? "…" : price(px) }),
         el("td", { class: "num neg", "data-label": "爆倉價", text: price(liqPriceLong(pos.entry, pos.leverage)) }),
         el("td", { class: "num " + cls(m?.unreal), "data-label": "浮盈虧", text: m ? `${money2(m.unreal)} (${dropPct == null ? "" : pct(dropPct * pos.leverage)})` : "…" }),
         el("td", { class: "num " + cls(m?.equity - pos.margin), "data-label": "倉權益", text: m ? money2(m.equity) : "…" }),
@@ -1090,8 +1110,79 @@
         el("td", { class: "num", text: money2(t.usd) }),
         el("td", { class: "num", text: money2(t.fee) }),
         el("td", { class: "num " + cls(t.pnl), text: t.pnl == null ? "–" : money2(t.pnl) })));
+    updateLiveStrip();
+    ensureLiveLoop(false);
   }
 
+  function portfolioFeed() {
+    return {
+      spot: Object.values(P.positions).map((p) => ({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol })),
+      lev: Object.values(P.levPositions).map((p) => ({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol })),
+    };
+  }
+  function updateLiveStrip() {
+    const strip = $("liveStrip"), txt = $("liveStripText");
+    if (!strip || !txt) return;
+    const n = Object.keys(P.positions).length + Object.keys(P.levPositions).length;
+    if (!n) { strip.hidden = true; return; }
+    strip.hidden = false;
+    let bn = 0, dex = 0;
+    for (const p of Object.values(P.positions)) {
+      const m = window.MCE.live && window.MCE.live.getMark(p.chain, p.pair);
+      if (m?.source === "binance") bn++; else dex++;
+    }
+    for (const p of Object.values(P.levPositions)) {
+      const m = window.MCE.live && window.MCE.live.getMark(p.chain, p.pair);
+      if (m?.source === "binance") bn++; else dex++;
+    }
+    const parts = [];
+    if (bn) parts.push(`Binance 即時 ×${bn}`);
+    if (dex) parts.push(`Dex 即時（每 ${(window.MCE.live?.DEX_POLL_MS || 4000) / 1000} 秒）×${dex}`);
+    txt.textContent = "持倉報價：" + (parts.join(" · ") || "連接中…");
+  }
+  let liveStarted = false, liveRenderBusy = false, liveTickBound = false;
+  function ensureLiveLoop(forceStart) {
+    if (!window.MCE.live) return;
+    const n = Object.keys(P.positions).length + Object.keys(P.levPositions).length;
+    const browseLive = !!($("browseLive") && $("browseLive").checked);
+    if (n === 0 && !browseLive && !forceStart) return;
+    if (!liveTickBound) {
+      liveTickBound = true;
+      window.MCE.live.onTick(() => {
+        if (liveRenderBusy) return;
+        const view = (location.hash || "").slice(1);
+        if (view !== "portfolio" && view !== "picks") return;
+        if (!Object.keys(P.positions).length && !Object.keys(P.levPositions).length) return;
+        liveRenderBusy = true;
+        Promise.resolve(renderPortfolio(false)).finally(() => { liveRenderBusy = false; });
+      });
+    }
+    if (!liveStarted) {
+      liveStarted = true;
+      window.MCE.live.start({ getPositions: portfolioFeed });
+    } else {
+      window.MCE.live.sync(portfolioFeed);
+    }
+  }
+
+  function renderHotBuys(rows) {
+    const box = $("hotBuyList"); if (!box) return;
+    box.textContent = "";
+    const top = (rows || []).slice(0, 12);
+    if (!top.length) {
+      box.append(el("p", { class: "muted", text: "載入熱門幣中…去「睇幣」睇晒。" }));
+      return;
+    }
+    for (const r of top) {
+      box.append(el("div", { class: "hot-buy-row" },
+        el("div", { class: "tok" },
+          el("div", {}, el("div", { class: "nm", text: r.name }), el("div", { class: "sy", text: `$${r.sym} · ${r.chain}` }))),
+        el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), text: pct(r.chg24) }),
+        el("div", { class: "num", text: price(r.price) }),
+        el("button", { class: "cta primary sm", onclick: () => openBuy({ chain: r.chain, pair: r.pair, token: r.address, symbol: r.sym, name: r.name }) }, "落倉")
+      ));
+    }
+  }
 
   // ---------- Cartoon FX ----------
   const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1252,20 +1343,24 @@
 
   function show(view) {
     const allowed = uiMode === "simple"
-      ? ["picks", "portfolio", "more", "news", "explore"]
-      : ["explore", "picks", "portfolio", "news", "more"];
+      ? ["picks", "browse", "portfolio", "more", "news", "explore"]
+      : ["explore", "picks", "browse", "portfolio", "news", "more"];
     if (!allowed.includes(view)) view = "picks";
-    for (const v of ["explore", "picks", "portfolio", "news", "more"]) {
+    for (const v of ["explore", "picks", "browse", "portfolio", "news", "more"]) {
       const node = $("view-" + v); if (node) node.hidden = v !== view;
     }
-    // In simple mode, full-only views still work via 更多 but body stays simple
     document.querySelectorAll(".tab").forEach((a) => {
       const on = a.dataset.view === view;
       if (on && !a.classList.contains("active")) coinPopEl(a);
       a.classList.toggle("active", on);
     });
-    if (view === "picks") { loadPicks(); loadNews(); }
-    if (view === "portfolio") renderPortfolio(true);
+    if (view === "picks") {
+      loadPicks(); loadNews();
+      if (window.MCE.ensureBrowse) window.MCE.ensureBrowse().then((rows) => renderHotBuys(rows));
+      else renderHotBuys(window.MCE.getBrowseRows ? window.MCE.getBrowseRows() : []);
+    }
+    if (view === "browse" && window.MCE.ensureBrowse) window.MCE.ensureBrowse();
+    if (view === "portfolio") { renderPortfolio(true); ensureLiveLoop(true); }
     if (view === "news") loadNews();
     if (view === "explore" && window.MCE.ensureExplore) window.MCE.ensureExplore();
   }
@@ -1335,7 +1430,9 @@
     doOpenLev, doBuySpot, closeLev, checkLiquidations, liqPriceLong, levMark,
     LIQ_MARGIN_FRAC, setState(s) { P = s; pf.save(P); },
     openAllinFlow, executeAllin, allinActive, loadAllinRounds, endAllinRound, playOverlay, reduceMotion,
+    ingestPair, ensureLiveLoop, renderPortfolio,
   };
+  window.MCE.onBrowseLoaded = (rows) => renderHotBuys(rows);
   // 預設落地：簡單模式 + #picks
   if (!location.hash) location.replace("#picks");
   else show(location.hash.slice(1));

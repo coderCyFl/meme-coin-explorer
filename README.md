@@ -3,7 +3,7 @@
 **個人 AI 模擬實驗（HK）**：用 AI + X 搵幣 → 你模擬落倉 → 追蹤真實賺蝕。
 
 預設 **「簡單」** 介面（大卡推薦 + 模擬倉摘要）；可切換 **「完整」**。  
-Tabs：🤖 揀幣 · 🧪 模擬倉 · 📰 新聞 · 🔎 掃描（完整模式）／⋯ 更多（簡單模式）。
+Tabs：🤖 揀幣 · 👀 睇幣 · 🧪 模擬倉 · 📰 新聞 · 🔎 掃描（完整）／⋯ 更多（簡單）。
 
 > 用 AI + X 搵幣 → 模擬落倉 → 睇真實賺蝕。全部係模擬，冇真實金錢。
 
@@ -21,7 +21,9 @@ It's plain HTML, CSS and vanilla JS, with no build step, no API keys and no serv
 Three tabs: **🔎 Explorer** (live table), **🤖 AI Picks & Scorecard** (an honest, append-only track record of AI picks vs SOL) and **🧪 Paper Trading** (a fake $1,000 portfolio kept in your browser).
 
 ## Features
+- **👀 睇幣 (Browse)**: public discovery of 30–50+ meme coins (boosts + profiles + liquid search). Not AI picks.
 - **Sources**: DexScreener *Top boosted*, *Latest token profiles*, or free-text *Search* (e.g. `pepe`, `bonk`).
+- **Hybrid live pricing**: Binance WS for a few known listed assets (by contract); Dex poll for everything else. Labels show 「Binance 即時」vs「Dex 即時」.
 - **Sortable table** (click headers) with name/symbol, chain, price, 24h change, 24h volume, liquidity,
   market cap/FDV, pair age, X mentions (7d), risk flags, and a DexScreener link.
 - **Filters**: chain, minimum liquidity (default $50k), name/symbol text, "has X buzz", "hide flagged".
@@ -40,8 +42,10 @@ You need a local server rather than `file://` because the page `fetch()`es `data
 ## Cost-saving design
 | Piece | Where it runs | Cost |
 |---|---|---|
-| Market data | Your browser → DexScreener public API (CORS `*`, no key) | Free |
-| Repeat visits | `localStorage` cache, 3 min TTL per URL | Fewer API hits |
+| Market data | Browser → DexScreener public API (CORS `*`, no key) | Free |
+| Live marks (most memes) | DexScreener pair REST poll ~every 4s while positions open / browse live on | Free |
+| Live marks (known CEX) | Binance public WS via `data-stream.binance.vision` (no key); only known mints | Free |
+| Repeat visits | `localStorage` cache, 3 min TTL (live loop forces refresh) | Fewer API hits |
 | Token → pair lookup | `/tokens/v1/{chain}/{a,b,c…}`, batched 30 addresses per call | ~1–4 calls per load |
 | X buzz | **Pre-computed** `data/x_buzz.json`. The site never calls X | Only when you refresh |
 | Hosting | GitHub Pages (static) | Free |
@@ -53,6 +57,12 @@ DexScreener endpoints used (tested working with CORS `access-control-allow-origi
 - `GET /tokens/v1/{chainId}/{addr1,addr2,…}`: pair data for up to 30 tokens per call
 
 Public rate limits are roughly 60 req/min for profiles/boosts and 300 req/min for pairs/search, which is plenty for one person.
+
+## Live pricing honesty
+Most pump.fun / DexScreener memes are **not** on Binance. The app never pretends they are.
+- **Binance** (`wss://data-stream.binance.vision`, REST `https://data-api.binance.vision`): only when the token mint is in a small known map (e.g. wrapped SOL, BONK, WIF, PEPE, …) and a USDT spot pair exists.
+- **DexScreener**: everyone else — polled about every 4 seconds while you have open paper positions (or browse 「即時更新」 is on). Paused when the tab is hidden (Page Visibility API).
+
 
 ## How the X buzz snapshot works
 ```

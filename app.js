@@ -255,7 +255,14 @@
       el("td", { class: "num", text: age(r.created) }),
       el("td", { class: "num" }, buzzCell),
       el("td", { class: "flags" }, r.flags.map(([i, t]) => el("span", { title: t, text: i }))),
-      el("td", {}, href ? el("a", { href, target: "_blank", rel: "noopener", onclick: (e) => e.stopPropagation(), text: "DexScreener ↗" }) : ""));
+      el("td", { class: "actions" },
+        el("button", { class: "cta primary sm", onclick: (e) => {
+          e.stopPropagation();
+          window.MCE.paper && window.MCE.paper.openBuy({
+            chain: r.chain, pair: r.p.pairAddress, token: r.address, symbol: r.sym, name: r.name, price: r.price
+          });
+        } }, "落倉"),
+        href ? el("a", { href, target: "_blank", rel: "noopener", onclick: (e) => e.stopPropagation(), text: " ↗" }) : ""));
   }
 
   function openDrawer(r) {
@@ -309,10 +316,122 @@
 
   const setStatus = (t) => ($("status").textContent = t);
 
+  // ---------- 睇幣 browse (public discovery) ----------
+  const browse = { rows: [], loaded: false, loading: false };
+  function browseToRow(p, boostedMap) {
+    const sym = (p.baseToken.symbol || "").toUpperCase();
+    const liq = p.liquidity?.usd ?? null, vol24 = p.volume?.h24 ?? null;
+    const addrKey = p.chainId + ":" + p.baseToken.address;
+    return {
+      p, sym, name: p.baseToken.name || sym, chain: p.chainId, address: p.baseToken.address,
+      pair: p.pairAddress, price: p.priceUsd ? parseFloat(p.priceUsd) : null,
+      chg24: p.priceChange?.h24 ?? null, vol24, liq,
+      mcap: p.marketCap ?? p.fdv ?? null, url: p.url,
+      img: p.info?.imageUrl || null, boost: boostedMap.get(addrKey) || p.boosts?.active || 0,
+    };
+  }
+  async function loadBrowse(force = false) {
+    if (browse.loading) return browse.rows;
+    browse.loading = true;
+    const meta = $("browseMeta");
+    const list = $("browseList");
+    if (meta) meta.textContent = "載入市場幣中…";
+    try {
+      const boostedMap = new Map();
+      const [boostsR, profilesR, searchR] = await Promise.all([
+        cachedJson(API + "/token-boosts/top/v1", { force }),
+        cachedJson(API + "/token-profiles/latest/v1", { force }),
+        cachedJson(API + "/latest/dex/search?q=" + encodeURIComponent("SOL"), { force }).catch(() => ({ data: { pairs: [] } })),
+      ]);
+      const tokens = [];
+      const seenTok = new Set();
+      for (const t of (Array.isArray(boostsR.data) ? boostsR.data : [])) {
+        if (t.totalAmount) boostedMap.set(t.chainId + ":" + t.tokenAddress, t.totalAmount);
+        const k = t.chainId + ":" + t.tokenAddress;
+        if (!seenTok.has(k)) { seenTok.add(k); tokens.push({ chainId: t.chainId, tokenAddress: t.tokenAddress }); }
+      }
+      for (const t of (Array.isArray(profilesR.data) ? profilesR.data : [])) {
+        const k = t.chainId + ":" + t.tokenAddress;
+        if (!seenTok.has(k)) { seenTok.add(k); tokens.push({ chainId: t.chainId, tokenAddress: t.tokenAddress }); }
+      }
+      let pairs = await resolvePairs(tokens, force);
+      // Merge liquid search hits (often majors / high-vol) for more choices
+      const searchPairs = bestPerToken(searchR.data?.pairs || []);
+      const pairSeen = new Set(pairs.map((p) => p.chainId + ":" + p.pairAddress));
+      for (const p of searchPairs) {
+        const k = p.chainId + ":" + p.pairAddress;
+        if (!pairSeen.has(k) && (p.liquidity?.usd || 0) >= 10000) { pairSeen.add(k); pairs.push(p); }
+      }
+      // Prefer higher liquidity / volume
+      pairs.sort((a, b) => (b.liquidity?.usd || 0) - (a.liquidity?.usd || 0));
+      browse.rows = pairs.map((p) => browseToRow(p, boostedMap));
+      browse.loaded = true;
+      renderBrowse();
+      if (meta) meta.textContent = `共 ${browse.rows.length} 隻 · DexScreener 公開資料 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`;
+      setStatus(`睇幣 ${browse.rows.length} 隻 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`);
+      // Feed hot list on picks if present
+      if (window.MCE.onBrowseLoaded) window.MCE.onBrowseLoaded(browse.rows);
+      return browse.rows;
+    } catch (e) {
+      console.error(e);
+      if (meta) meta.textContent = "載入失敗：" + e.message;
+      if (list) list.textContent = "";
+      return [];
+    } finally {
+      browse.loading = false;
+    }
+  }
+  function renderBrowse() {
+    const list = $("browseList"); if (!list) return;
+    const q = (($("browseFilter") && $("browseFilter").value) || "").trim().toLowerCase();
+    let rows = browse.rows;
+    if (q) rows = rows.filter((r) => r.name.toLowerCase().includes(q) || r.sym.toLowerCase().includes(q) || r.chain.includes(q));
+    list.textContent = "";
+    if (!rows.length) {
+      list.append(el("p", { class: "muted", text: "冇幣。試下清空搜尋或撳更新。" }));
+      return;
+    }
+    for (const r of rows) {
+      const img = safeUrl(r.img);
+      const href = safeUrl(r.url);
+      list.append(el("article", { class: "browse-card" },
+        el("div", { class: "bc-top" },
+          el("div", { class: "tok" },
+            img ? el("img", { src: img, alt: "", loading: "lazy" }) : el("span", { class: "bc-ph", text: "🪙" }),
+            el("div", {},
+              el("div", { class: "nm", text: r.name }),
+              el("div", { class: "sy" }, "$" + r.sym + " ", el("span", { class: "chainbadge", text: r.chain }))
+            )
+          ),
+          el("div", { class: "bc-px" },
+            el("div", { class: "num", "data-browse-price": r.chain + ":" + r.pair, text: price(r.price) }),
+            el("div", { class: "num " + (r.chg24 > 0 ? "pos" : r.chg24 < 0 ? "neg" : ""), text: pct(r.chg24) })
+          )
+        ),
+        el("div", { class: "bc-meta" },
+          el("span", { text: "流動性 " + money(r.liq) }),
+          el("span", { text: "24h量 " + money(r.vol24) }),
+          r.boost ? el("span", { class: "pill", title: "俾錢推廣", text: "🚀 boost" }) : ""
+        ),
+        el("div", { class: "bc-actions" },
+          el("button", { class: "cta primary", onclick: () => {
+            window.MCE.paper && window.MCE.paper.openBuy({
+              chain: r.chain, pair: r.pair, token: r.address, symbol: r.sym, name: r.name, price: r.price
+            });
+          } }, "落倉"),
+          href ? el("a", { class: "cta", href, target: "_blank", rel: "noopener", text: "Dex ↗" }) : ""
+        )
+      ));
+    }
+  }
+
   // ---------- wire up ----------
   let exploreLoaded = false;
   window.MCE = { el, money, price, pct, age, fmtInt, localTime, safeUrl, cachedJson, API,
-    ensureExplore() { if (!exploreLoaded) { exploreLoaded = true; loadBuzz().then(() => load()); } } };
+    ensureExplore() { if (!exploreLoaded) { exploreLoaded = true; loadBuzz().then(() => load()); } },
+    ensureBrowse() { return browse.loaded && !arguments[0] ? Promise.resolve(browse.rows) : loadBrowse(!!arguments[0]); },
+    loadBrowse, renderBrowse, getBrowseRows: () => browse.rows,
+  };
   function boot() {
     document.querySelectorAll("th[data-k]").forEach((th) => th.addEventListener("click", () => {
       const k = th.dataset.k;
@@ -329,6 +448,18 @@
     $("drawer").addEventListener("click", (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("drawer").hidden = true; });
     if ((location.hash || "#picks").slice(1) === "explore") { exploreLoaded = true; loadBuzz().then(() => load()); }
+    if ((location.hash || "").slice(1) === "browse") loadBrowse(false);
+    const bf = $("browseFilter");
+    if (bf) bf.addEventListener("input", () => renderBrowse());
+    const br = $("browseRefresh");
+    if (br) br.addEventListener("click", () => loadBrowse(true));
+    const bl = $("browseLive");
+    if (bl) bl.addEventListener("change", () => {
+      if (window.MCE.live) window.MCE.live.setLiveMode(bl.checked);
+      const badge = $("browseLiveBadge");
+      if (badge) badge.textContent = bl.checked ? "Dex 即時（每 4 秒）" : "";
+      if (bl.checked) loadBrowse(true);
+    });
   }
   if (typeof document !== "undefined") document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", boot) : boot();
 })();

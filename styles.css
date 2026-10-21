@@ -363,3 +363,46 @@ body.ui-simple .en{display:none}
   .sc-score{font-size:24px}
   .bottom-nav .tab span:not(.ico){font-size:10px}
 }
+
+/* ===== 睇幣 / live ===== */
+.simple-tabs{display:flex;gap:6px;padding:8px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.simple-tabs .tab{padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:700;font-size:14px;background:transparent;border:1px solid transparent}
+.simple-tabs .tab.active{color:#fff;background:#1a1033;border-color:#3b2a66}
+@media (max-width:700px){ .simple-tabs{display:none!important} }
+
+.browse-controls{gap:10px;align-items:center;margin:8px 0}
+.browse-controls input[type=search]{flex:1;min-width:160px;min-height:44px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-size:16px}
+.live-tog{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text)}
+.live-badge{font-size:12px;color:#86efac;font-weight:700}
+.browse-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.browse-card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:12px}
+.bc-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.bc-ph{font-size:28px;line-height:1}
+.browse-card .tok{display:flex;gap:10px;align-items:center}
+.browse-card .tok img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#111}
+.bc-px{text-align:right}
+.bc-meta{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:12px;color:var(--muted);margin:8px 0}
+.bc-actions{display:flex;gap:8px}
+.bc-actions .cta{flex:1;min-height:44px;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+
+.hot-buy-list{display:flex;flex-direction:column;gap:8px}
+.hot-buy-row{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel2)}
+@media (max-width:700px){
+  .hot-buy-row{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .hot-buy-row .cta{grid-column:1/-1}
+}
+
+.live-strip{margin:0 20px 10px;padding:8px 12px;border-radius:10px;background:#0b1f14;border:1px solid #166534;color:#bbf7d0;font-size:13px;display:flex;align-items:center;gap:8px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 #22c55e88;animation:livePulse 1.6s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 #22c55e66}70%{box-shadow:0 0 0 8px #22c55e00}100%{box-shadow:0 0 0 0 #22c55e00}}
+@media (max-width:700px){.live-strip{margin-left:12px;margin-right:12px}}
+
+.src-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 6px;border-radius:999px;margin-left:4px;vertical-align:middle}
+.src-badge.src-bn{background:#1e3a5f;color:#93c5fd;border:1px solid #1d4ed8}
+.src-badge.src-dex{background:#1a2e1a;color:#86efac;border:1px solid #166534}
+
+tr.tick-up .live-px, .tick-up .live-px{animation:pnlFlashGreen .7s ease}
+tr.tick-down .live-px, .tick-down .live-px{animation:pnlFlashRed .7s ease}
+@media (prefers-reduced-motion: reduce){
+  .live-dot,tr.tick-up .live-px,tr.tick-down .live-px{animation:none!important}
+}
