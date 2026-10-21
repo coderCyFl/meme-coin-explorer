@@ -370,20 +370,34 @@
     if (!$("pickDetails").childElementCount && detailDefault) showDetail(detailDefault);
   }
   function showDetail(x) {
-    const d = $("pickDetails"); d.textContent = "";
+    const d = $("pickDetails"); if (!d) return;
+    d.textContent = "";
     const e = x.e;
+    const snap = e.entry_snapshot || {};
+    const ev = e.evidence || {};
+    const parts = e.score_parts || {};
+    const ageH = snap.pair_age_h != null ? snap.pair_age_h + "h" : "–";
+    const bnEv = e.chain === "binance" || (ev.source && String(ev.source).indexOf("binance") === 0) || !ev.cashtag_sample;
+    const evidenceText = bnEv
+      ? (ev.note || ev.source
+        ? `Binance OHLCV · ${ev.symbol || e.pair_address || e.symbol || ""} · ${ev.note || "多角度留意盤（唔係 X 熱度）"}`
+        : "Binance 盤 · 無 X 證據欄")
+      : `近 24h ${fmtInt(ev.x_last24h)} 則 vs 之前每日 ${fmtInt(ev.x_prior_daily_avg)} · 近 6h ${ev.x_last6h ?? "–"} vs 前 6h ${ev.x_prev6h ?? "–"} · 7 日共 ${fmtInt(ev.x_7d_total)} · cashtag 樣本 ${(ev.cashtag_sample && ev.cashtag_sample.posts) || 0} 則 / ${(ev.cashtag_sample && ev.cashtag_sample.unique_authors) || 0} 人 · 查詢：${ev.x_count_query || "–"}`;
+    const scoreLine = Object.keys(parts).length
+      ? `${e.model_score}/100${e.conviction != null ? ` → 信心 ${e.conviction}` : ""} · ` + Object.entries(parts).map(([k, v]) => `${k} ${v}`).join(", ")
+      : `${e.model_score}/100${e.conviction != null ? ` → 信心 ${e.conviction}` : ""}`;
     d.append(
       el("h3", { text: `${e.type === "buy" ? "🟢 買入推薦" : "🔴 避過"}：${e.name} ($${e.symbol}) · ${e.id}` }),
       el("p", { class: "rationale", text: e.rationale }),
-      e.type === "buy" ? el("p", {}, el("button", { class: "primary buybtn", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name }) }, "落倉 · 放入模擬倉")) : "",
+      e.type === "buy" ? el("p", {}, el("button", { class: "primary buybtn", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
       el("div", { class: "kv" },
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
         el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 SOL $${x.b.benchmarks?.SOL?.price_usd ?? "?"}` }),
-        el("div", { text: "入場快照" }), el("div", { text: `流動性 ${money(e.entry_snapshot.liquidity_usd)} · 24h 成交 ${money(e.entry_snapshot.volume24h_usd)} · 市值 ${money(e.entry_snapshot.market_cap_usd)} · 年齡 ${e.entry_snapshot.pair_age_h}h · 24h ${pct(e.entry_snapshot.chg24h_pct)}` }),
-        el("div", { text: "模型分數" }), el("div", { text: `${e.model_score}/100${e.conviction != null ? ` → 信心 ${e.conviction}` : ""} · ` + Object.entries(e.score_parts).map(([k, v]) => `${k} ${v}`).join(", ") }),
+        el("div", { text: "入場快照" }), el("div", { text: `流動性 ${money(snap.liquidity_usd)} · 24h 成交 ${money(snap.volume24h_usd)} · 市值 ${money(snap.market_cap_usd)} · 年齡 ${ageH} · 24h ${pct(snap.chg24h_pct)}` }),
+        el("div", { text: "模型分數" }), el("div", { text: scoreLine }),
         el("div", { text: "旗標" }), el("div", { text: (e.flags || []).join(" · ") || "無" }),
-        el("div", { text: "X 證據" }), el("div", { text: `近 24h ${fmtInt(e.evidence.x_last24h)} 則 vs 之前每日 ${fmtInt(e.evidence.x_prior_daily_avg)} · 近 6h ${e.evidence.x_last6h} vs 前 6h ${e.evidence.x_prev6h} · 7 日共 ${fmtInt(e.evidence.x_7d_total)} · cashtag 樣本 ${e.evidence.cashtag_sample.posts} 則 / ${e.evidence.cashtag_sample.unique_authors} 人 · 查詢：${e.evidence.x_count_query}` })),
-      el("div", {}, (e.evidence.posts || []).map((u) => safeUrl(u) ? [el("a", { href: safeUrl(u), target: "_blank", rel: "noopener nofollow", text: "X 帖 ↗" }), " "] : "")));
+        el("div", { text: bnEv ? "證據" : "X 證據" }), el("div", { text: evidenceText })),
+      el("div", {}, (ev.posts || []).map((u) => safeUrl(u) ? [el("a", { href: safeUrl(u), target: "_blank", rel: "noopener nofollow", text: "X 帖 ↗" }), " "] : "")));
   }
 
   // ---------- 模擬倉（現貨 + 槓桿逐倉） ----------
