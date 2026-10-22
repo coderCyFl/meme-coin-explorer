@@ -1,0 +1,75 @@
+<!doctype html><html><head><style>html,body{margin:0;background:transparent}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+import * as T from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const P = new URLSearchParams(location.search);
+const S = +(P.get('s')||1024);
+const r = new T.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});
+r.setPixelRatio(1); r.setSize(S,S); r.setClearColor(0x000000,0);
+r.toneMapping = T.ACESFilmicToneMapping; r.toneMappingExposure = 1.15;
+r.outputColorSpace = T.SRGBColorSpace;
+document.body.appendChild(r.domElement);
+const scene = new T.Scene();
+const pm = new T.PMREMGenerator(r);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+const cam = new T.PerspectiveCamera(22, 1, 0.1, 100);
+cam.position.set(0,0,6.6); cam.lookAt(0,0,0);
+
+const GOLD = 0xF2A51A;  // warm amber gold
+const goldRim = new T.MeshPhysicalMaterial({color:0xF8C24E, metalness:1, roughness:0.22, envMapIntensity:2.6, clearcoat:0.5, clearcoatRoughness:0.2});
+const faceMat = new T.MeshPhysicalMaterial({color:0x140c05, metalness:0.2, roughness:0.35, clearcoat:1, clearcoatRoughness:0.25, envMapIntensity:1.2});
+const glyphMat = new T.MeshPhysicalMaterial({color:0xFFD873, metalness:1, roughness:0.16, envMapIntensity:3.0, clearcoat:1, clearcoatRoughness:0.08});
+
+const coin = new T.Group();
+// lathe profile: radius vs z (coin axis along y in lathe, rotate later)
+const R=1.0, H=0.15, rimW=0.13, face=0.09;
+const prof = [
+ [0,H-face],[R-rimW-0.02,H-face],[R-rimW,H-face+0.02],[R-rimW+0.03,H],[R-0.04,H],[R,H-0.04],
+ [R,-H+0.04],[R-0.04,-H],[R-rimW+0.03,-H],[R-rimW,-H+face-0.02],[R-rimW-0.02,-H+face],[0,-H+face]
+].map(([x,y])=>new T.Vector2(x,y));
+const lathe = new T.LatheGeometry(prof, 128);
+const body = new T.Mesh(lathe, goldRim); body.rotation.x = Math.PI/2; coin.add(body);
+// recessed face disc (darker amber) slightly above inner floor
+const faceDisc = new T.Mesh(new T.CircleGeometry(R-rimW-0.01,128), faceMat);
+faceDisc.position.z = H-face+0.001; coin.add(faceDisc);
+// glyph: rising zigzag trend + arrowhead
+const pts=[[-0.52,-0.30],[-0.18,0.04],[0.02,-0.14],[0.26,0.10]];
+const w=0.18, depth=0.06, bev=0.035;
+const ex = {depth, bevelEnabled:true, bevelThickness:bev, bevelSize:0.022, bevelOffset:-0.004, bevelSegments:6, curveSegments:24};
+// single-outline glyph: rising trend line + arrowhead (miter joins, round tail)
+function off(a,b,d){const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy);return [-dy/L*d,dx/L*d];}
+function inter(p1,d1,p2,d2){const c=d1[0]*d2[1]-d1[1]*d2[0];const t=((p2[0]-p1[0])*d2[1]-(p2[1]-p1[1])*d2[0])/c;return [p1[0]+d1[0]*t,p1[1]+d1[1]*t];}
+function side(sign){const hw=sign*(w/2);const out=[];const n=pts.length;
+  for(let i=0;i<n;i++){
+    if(i===0||i===n-1){const a=i===0?pts[0]:pts[n-2],b=i===0?pts[1]:pts[n-1];const o=off(a,b,hw);out.push([pts[i][0]+o[0],pts[i][1]+o[1]]);}
+    else{const o1=off(pts[i-1],pts[i],hw),o2=off(pts[i],pts[i+1],hw);
+      const d1=[pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]],d2=[pts[i+1][0]-pts[i][0],pts[i+1][1]-pts[i][1]];
+      out.push(inter([pts[i-1][0]+o1[0],pts[i-1][1]+o1[1]],d1,[pts[i][0]+o2[0],pts[i][1]+o2[1]],d2));}
+  }return out;}
+const Lf=side(1), Rt=side(-1);
+const a2=pts[pts.length-2], b2=pts[pts.length-1];
+const ang=Math.atan2(b2[1]-a2[1],b2[0]-a2[0]), ux=Math.cos(ang), uy=Math.sin(ang), nx=-uy, ny=ux;
+const wing=0.24, tipL=0.34;
+const sh=new T.Shape();
+const a0=Math.atan2(pts[1][1]-pts[0][1],pts[1][0]-pts[0][0]);
+sh.moveTo(Rt[0][0],Rt[0][1]);
+sh.absarc(pts[0][0],pts[0][1],w/2,a0-Math.PI/2,a0-Math.PI*1.5,true);
+for(let i=1;i<Lf.length;i++) sh.lineTo(Lf[i][0],Lf[i][1]);
+sh.lineTo(b2[0]+nx*wing,b2[1]+ny*wing);
+sh.lineTo(b2[0]+ux*tipL,b2[1]+uy*tipL);
+sh.lineTo(b2[0]-nx*wing,b2[1]-ny*wing);
+for(let i=Rt.length-1;i>=0;i--) sh.lineTo(Rt[i][0],Rt[i][1]);
+const gm=new T.Mesh(new T.ExtrudeGeometry(sh,ex),glyphMat); gm.position.z=H-face; coin.add(gm);
+coin.rotation.set(-0.22, 0.34, 0.0);
+coin.position.y = 0.04;
+scene.add(coin);
+const key = new T.DirectionalLight(0xfff0d0, 2.2); key.position.set(-3,4,5); scene.add(key);
+const rim = new T.DirectionalLight(0xffc060, 2.4); rim.position.set(5,0,1); scene.add(rim);
+const fill = new T.DirectionalLight(0xbfd4ff, 0.5); fill.position.set(3,-3,4); scene.add(fill);
+const top = new T.DirectionalLight(0xffe2a0, 1.6); top.position.set(3,5,-1); scene.add(top);
+r.render(scene,cam);
+window.__png = r.domElement.toDataURL('image/png');
+window.__done = true;
+</script></body></html>
