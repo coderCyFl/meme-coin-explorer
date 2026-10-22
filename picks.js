@@ -264,7 +264,7 @@
       pctEl.textContent = "—";
       pctEl.className = "fr-pct";
       if (pnlEl) { pnlEl.textContent = "假錢 —"; pnlEl.className = "fr-pnl"; }
-      if (stEl) stEl.textContent = "未有今批買入推薦";
+      if (stEl) stEl.innerHTML = '<span class="fr-chip fr-chip-muted">未有今批買入推薦</span>';
       if (metaEl) metaEl.textContent = "";
       return;
     }
@@ -287,12 +287,19 @@
     const per = FAKE_STAKE / list.length;
     const pnl = known.length ? known.reduce((a, b) => a + per * (b.ret / 100), 0) : null;
     const sealedAll = withRet.every((r) => r.sealed);
-    const statusBits = [
-      hz.label,
-      sealedAll ? "· 已鎖 24h 快照" : (hz.kind === "full" ? "· 即時價暫代（待快照）" : "· 即時對盤"),
-      `勝率 ${known.length ? wins + "/" + known.length : "—"}`,
-    ];
-    if (stEl) stEl.textContent = statusBits.join(" ");
+    if (stEl) {
+      const chips = [];
+      if (hz.kind === "full") {
+        chips.push(`<span class="fr-chip fr-chip-full">${hz.label}</span>`);
+      } else {
+        chips.push(`<span class="fr-chip fr-chip-mtm">${hz.label}</span>`);
+      }
+      if (sealedAll) chips.push(`<span class="fr-chip fr-chip-lock">已鎖 24h 快照</span>`);
+      else if (hz.kind === "full") chips.push(`<span class="fr-chip fr-chip-live">即時價暫代（待快照）</span>`);
+      else chips.push(`<span class="fr-chip fr-chip-live">即時對盤</span>`);
+      chips.push(`<span class="fr-chip fr-chip-win">勝率 ${known.length ? wins + "/" + known.length : "—"}</span>`);
+      stEl.innerHTML = chips.join("");
+    }
     if (metaEl) {
       metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${batchLabel(list[0].b)} · ${localTime(created)}`;
     }
