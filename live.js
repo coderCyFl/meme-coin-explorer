@@ -506,10 +506,10 @@
       add(next);
     }
 
-    // Pass 3: relax score gate, still enforce SOFT angle cap + chg24 < 8
+    // Pass 3: relax score gate, still enforce SOFT angle cap + chg24 < 8 + MEGA skip
     if (out.length < n) {
       const relaxed = scored
-        .filter((s) => (s.chg24 || 0) < 8)
+        .filter((s) => (s.chg24 || 0) < 8 && !MEGA.has(s.symbol))
         .sort((a, b) => b.setupScore - a.setupScore);
       for (const s of relaxed) {
         if (out.length >= n) break;

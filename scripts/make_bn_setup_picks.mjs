@@ -249,10 +249,12 @@ function diversifyPicks(scored, n = 6) {
   }
 
   if (out.length < n) {
+    // Same MEGA/MAJORS skip as Pass 1–2 — do not let BTC/ETH/SOL/BNB back in via relaxed fill
     const relaxed = scored.slice().sort((a, b) => b.setupScore - a.setupScore);
     for (const s of relaxed) {
       if (out.length >= n) break;
       if (used.has(s.symbol)) continue;
+      if (MAJORS.has(s.base)) continue;
       if (s.f.chg24 >= 8) continue;
       if (angN(s.angle) >= SOFT) continue;
       add(s);
