@@ -595,14 +595,37 @@
   }
 
   /** Generic dialog. opts: {modePicker, defaultMode, levDefault, preview(amt, {mode, lev})} → {amt, mode, lev} | null */
+  function disposeTradeOrb() {
+    const wrap = $("tradeOrb");
+    if (!wrap) return;
+    if (window.MCE && window.MCE.coin3d && window.MCE.coin3d.dispose) {
+      const host = wrap.querySelector(".coin3d-host") || wrap;
+      window.MCE.coin3d.dispose(host);
+    }
+    wrap.textContent = "";
+    wrap.hidden = true;
+  }
   function paintTradeOrb(symbol) {
     const wrap = $("tradeOrb");
     if (!wrap) return;
-    wrap.textContent = "";
     const base = String(symbol || "").replace(/USDT$/i, "").toUpperCase();
-    if (!base || !window.MCE || !window.MCE.buildCoinOrb) { wrap.hidden = true; return; }
+    if (!base) { disposeTradeOrb(); return; }
     wrap.hidden = false;
-    wrap.append(window.MCE.buildCoinOrb(base, 40));
+    const c3 = window.MCE && window.MCE.coin3d;
+    if (c3 && c3.mount) {
+      let host = wrap.querySelector(".coin3d-host");
+      if (!host) {
+        wrap.textContent = "";
+        host = document.createElement("div");
+        host.className = "coin3d-host";
+        host.setAttribute("aria-hidden", "true");
+        wrap.append(host);
+      }
+      c3.mount(host, { base, size: 56 }).catch(() => {});
+      return;
+    }
+    wrap.textContent = "";
+    if (window.MCE && window.MCE.buildCoinOrb) wrap.append(window.MCE.buildCoinOrb(base, 56));
   }
   function askTrade({ title, info, label, value, quick = [], preview, okLabel, modePicker = false, defaultMode = "spot", levDefault = null, callout = null, symbol = null }) {
     return new Promise((resolve) => {
@@ -686,6 +709,7 @@
         settled = true;
         dlg.onclose = null;
         try { dlg.close(); } catch (_) {}
+        disposeTradeOrb();
         $("tradeForm").onsubmit = null; $("tradeCancel").onclick = null;
         resolve(v);
       };

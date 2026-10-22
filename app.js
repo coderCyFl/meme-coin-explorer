@@ -362,19 +362,37 @@
     return top[idx].symbol;
   }
 
+  /** three.js coin host (CDN). Falls back to 2D logo if WebGL/CDN fails. */
   function buildCoinOrb(base, size = 72) {
+    const c3 = window.MCE && window.MCE.coin3d;
+    if (c3 && c3.buildHost) return c3.buildHost(base, size);
     const live = window.MCE.live;
-    const orb = el("div", { class: "coin-orb", "aria-hidden": "true" });
-    const inner = el("div", { class: "coin-orb-inner" });
-    const face = (side) => {
-      const f = el("div", { class: "coin-orb-face " + side });
-      if (live && live.coinLogoEl) f.append(live.coinLogoEl(base, "coin-logo mood-logo", size));
-      else f.append(el("span", { class: "coin-logo letter mood-logo", text: (base || "?").slice(0, 2) }));
-      return f;
-    };
-    inner.append(face("front"), face("back"), el("div", { class: "coin-orb-rim" }));
-    orb.append(inner);
-    return orb;
+    const host = el("div", { class: "coin3d-host coin3d-fallback", "aria-hidden": "true" });
+    host.style.width = size + "px";
+    host.style.height = size + "px";
+    if (live && live.coinLogoEl) host.append(live.coinLogoEl(base, "coin-logo mood-logo", Math.round(size * 0.72)));
+    else host.append(el("span", { class: "coin-logo letter mood-logo", text: (base || "?").slice(0, 2) }));
+    return host;
+  }
+
+  function ensureMoodCoin(base, size = 88) {
+    const mascot = $("moodMascot");
+    if (!mascot) return;
+    const c3 = window.MCE && window.MCE.coin3d;
+    if (c3 && c3.mount) {
+      // Keep host stable across paints — only update texture / size
+      let host = mascot.querySelector(".coin3d-host");
+      if (!host) {
+        mascot.textContent = "";
+        host = buildCoinOrb(base, size); // optimistic 2D, then three upgrades in place
+        mascot.append(host);
+        return;
+      }
+      c3.mount(host, { base, size }).catch(() => {});
+      return;
+    }
+    mascot.textContent = "";
+    mascot.append(buildCoinOrb(base, size));
   }
 
   function fmtVol(v) {
@@ -407,11 +425,7 @@
     const set = (id, t) => { const n = $(id); if (n) n.textContent = t; };
     set("moodFeel", feel.en);
     set("moodFeelZh", feel.zh);
-    const mascot = $("moodMascot");
-    if (mascot) {
-      mascot.textContent = "";
-      mascot.append(buildCoinOrb(r.base, 72));
-    }
+    ensureMoodCoin(r.base, 88);
     const hero = $("moodHero");
     if (hero) {
       hero.classList.toggle("mood-up", up);

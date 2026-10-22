@@ -1,3 +1,9 @@
+## 2026-10-23 — three.js coin (not CSS orb)
+- Replaced CSS `.coin-orb` with `coin3d.js`: procedural `CylinderGeometry` coin, logo textures both faces, gentle Y spin.
+- Mounted on Coin Mood hero + trade sheet; CDN ESM (`three@0.160.1` jsDelivr → unpkg fallback); 2D logo fallback if WebGL/CDN fails.
+- `prefers-reduced-motion` / offscreen / hidden tab → pause spin; dispose WebGL on trade dialog close.
+- Old CSS spin removed so we never double-render.
+
 # Improvements (2026-10-22)
 
 
