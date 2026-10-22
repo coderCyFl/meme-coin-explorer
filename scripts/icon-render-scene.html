@@ -19,8 +19,8 @@ cam.position.set(0,0,6.6); cam.lookAt(0,0,0);
 
 const GOLD = 0xF2A51A;  // warm amber gold
 const goldRim = new T.MeshPhysicalMaterial({color:0xF8C24E, metalness:1, roughness:0.22, envMapIntensity:2.6, clearcoat:0.5, clearcoatRoughness:0.2});
-const faceMat = new T.MeshPhysicalMaterial({color:0x140c05, metalness:0.2, roughness:0.35, clearcoat:1, clearcoatRoughness:0.25, envMapIntensity:1.2});
-const glyphMat = new T.MeshPhysicalMaterial({color:0xFFD873, metalness:1, roughness:0.16, envMapIntensity:3.0, clearcoat:1, clearcoatRoughness:0.08});
+const faceMat = new T.MeshPhysicalMaterial({color:0x1a1007, metalness:0.2, roughness:0.35, clearcoat:1, clearcoatRoughness:0.25, envMapIntensity:1.2});
+const glyphMat = new T.MeshPhysicalMaterial({color:0xFFC640, metalness:0.75, roughness:0.2, envMapIntensity:2.0, clearcoat:1, clearcoatRoughness:0.06, emissive:0xE89400, emissiveIntensity:0.5});
 
 const coin = new T.Group();
 // lathe profile: radius vs z (coin axis along y in lathe, rotate later)
