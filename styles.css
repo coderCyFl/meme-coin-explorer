@@ -11,7 +11,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 var(--font);-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
-.top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#141029,#0b0e14)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--bg)}
 .brand{display:flex;gap:12px;align-items:center}.logo{font-size:30px}
 h1{margin:0;font-size:20px}.sub{margin:0;color:var(--muted);font-size:12px}
 .status{color:var(--muted);font-size:12px;text-align:right}
@@ -219,7 +219,7 @@ body{padding-bottom:0}
 }
 
 /* ===== 孤注一擲 ===== */
-.allin-banner{margin:0 20px 12px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#3b0764,#1a0533);border:1px solid #7c3aed;color:#f5e8ff;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.allin-banner{margin:0 20px 12px;padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line-strong);color:var(--text);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .allin-title{font-weight:800;font-size:16px;margin-bottom:6px}
 .allin-live-stats{display:flex;flex-wrap:wrap;gap:12px 18px;font-size:14px}
 .allin-result{margin:0 20px 12px;padding:16px;border-radius:14px;background:#0f291a;border:1px solid #16a34a;text-align:center}
@@ -231,7 +231,7 @@ body{padding-bottom:0}
 .allin-pick-list{display:flex;flex-direction:column;gap:8px;max-height:50vh;overflow:auto;margin:10px 0}
 .allin-pick{text-align:left;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--text);min-height:52px}
 .allin-pick:hover{border-color:var(--accent)}
-.cta.hot,.primary.hot,button.hot{background:#7c3aed;border-color:#7c3aed;color:#fff}
+.cta.hot,.primary.hot,button.hot{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .cta.danger,.danger.cta{background:#7f1d1d;border-color:#7f1d1d;color:#fecaca}
 #allinDlg,#allinPickDlg{width:min(480px,96vw);background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:16px}
 #allinOk{min-height:52px;font-size:16px;font-weight:800}
@@ -245,13 +245,13 @@ body{padding-bottom:0}
 /* ===== Cartoon FX ===== */
 .fx-overlay{
   position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 50% 40%,#5b21b6ee,#0b0e14f2 70%);
+  background:radial-gradient(circle at 50% 40%,#2b2410ee,#0b0e11f2 70%);
   pointer-events:none;
 }
 .fx-overlay[hidden]{display:none!important}
 .fx-shake{text-align:center;position:relative;animation:fxSlam .55s cubic-bezier(.2,1.4,.4,1) both}
 .fx-emoji{font-size:clamp(64px,18vw,120px);line-height:1;animation:fxSpinBounce 1.1s ease both;filter:drop-shadow(0 8px 24px #0008)}
-.fx-title{font-size:clamp(32px,10vw,56px);font-weight:900;color:#fff;letter-spacing:.04em;text-shadow:0 0 24px #c084fc,0 4px 0 #4c1d95;margin-top:8px;animation:fxPop .5s .15s both}
+.fx-title{font-size:clamp(32px,10vw,56px);font-weight:900;color:#fff;letter-spacing:.04em;text-shadow:0 0 20px #f0b90b88,0 3px 0 #3a2e08;margin-top:8px;animation:fxPop .5s .15s both}
 .fx-sub{font-size:clamp(18px,5vw,28px);font-weight:800;color:#fde68a;margin-top:4px;animation:fxPop .5s .28s both}
 .fx-coin{margin-top:14px;font-size:22px;font-weight:800;color:#e9d5ff;animation:fxPop .45s .4s both}
 .fx-burst{position:absolute;inset:-40px;pointer-events:none}
@@ -495,7 +495,7 @@ img.coin-logo.mood-logo{width:72px;height:72px;border-radius:50%;box-shadow:0 8p
 }
 
 /* ===== Simple home: 今日跟買 ===== */
-.home-brief{border:1px solid #2a2150;background:linear-gradient(180deg,#141029 0%,var(--panel) 55%)}
+.home-brief{border:1px solid var(--line);background:var(--panel)}
 .home-title{margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em}
 .home-sub{margin:4px 0 0;font-size:12px;color:var(--muted)}
 .simple-card{
@@ -509,11 +509,11 @@ img.coin-logo.mood-logo{width:72px;height:72px;border-radius:50%;box-shadow:0 8p
 .simple-card .sc-why{margin:0;font-size:13px;line-height:1.45;color:#c9d0e0}
 .simple-card .sc-score{display:none!important} /* no confidence wall */
 .angle-pill{
-  display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;
-  background:#1e1a3a;color:#c4b5fd;border:1px solid #4c1d95;margin-right:6px;vertical-align:middle;
+  display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;
+  background:var(--panel2);color:var(--muted);border:1px solid var(--line);margin-right:6px;vertical-align:middle;
 }
 .sc-details{font-size:12px;color:var(--muted)}
-.sc-details summary{cursor:pointer;color:#a99bff;font-weight:600;list-style:none}
+.sc-details summary{cursor:pointer;color:var(--accent);font-weight:600;list-style:none}
 .sc-details summary::-webkit-details-marker{display:none}
 .sc-detail-body{margin-top:6px;padding:8px;border-radius:8px;background:#0f1420;line-height:1.45}
 
@@ -548,15 +548,15 @@ body.ui-simple .simbanner.lev-warn{display:none}
 body.ui-simple .allin-banner{font-size:12px;padding:8px 10px}
 body.ui-simple .howto{display:none!important}
 .bottom-nav .ico{
-  width:22px;height:22px;border-radius:8px;background:#1a2133;display:inline-flex;
-  align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#c4b5fd;
+  width:22px;height:22px;border-radius:8px;background:var(--panel2);display:inline-flex;
+  align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--muted);
 }
 
 /* ===== QA UX: glance PnL / spot vs lev / light feedback ===== */
 .pf-glance{
   display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
   margin:12px 0 14px;padding:12px;border-radius:14px;
-  background:linear-gradient(180deg,#141a2a,#101522);
+  background:var(--bg);
   border:1px solid var(--line);
 }
 .pf-glance.mini{margin-top:12px;padding:10px;text-decoration:none}
@@ -1099,4 +1099,107 @@ dialog[open]::backdrop{
   .simple-card:hover,.mood-row:hover,.more-item:hover,.news-card:hover{transform:none}
   button,.cta,a.cta,a.secondary,a.primary,.mode-card,.segbtn,.tab,.preset,
   .simple-card,.mood-row,.browse-card,.news-card,.chase-row,.more-item{transition:none!important}
+}
+
+
+/* =========================================================
+   DENSITY — exchange list, not SaaS card wall
+   ========================================================= */
+.panel,.home-brief,.buzzbar{
+  margin:0 12px 8px!important;padding:10px 12px!important;
+  border-radius:8px!important;
+}
+.home-title{font-size:15px!important;font-weight:700;letter-spacing:0!important}
+.home-sub{font-size:11px!important;margin:2px 0 8px!important}
+
+/* Picks = compact list rows */
+.simple-cards{
+  display:flex;flex-direction:column;gap:0!important;
+  border:1px solid var(--line)!important;border-radius:8px!important;
+  overflow:hidden;background:var(--bg)!important;
+}
+.simple-card{
+  margin:0!important;padding:10px 12px!important;gap:6px!important;
+  border:0!important;border-bottom:1px solid var(--line)!important;
+  border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;transform:none!important;
+}
+.simple-card:last-child{border-bottom:0!important}
+.simple-card:hover{
+  background:rgba(240,185,11,.04)!important;transform:none!important;
+  border-color:transparent!important;
+}
+.simple-card .sc-id .nm{font-size:14px!important;font-weight:700}
+.simple-card .sc-px .num,.simple-card .sc-px .live-px{font-size:15px!important;font-weight:700}
+.simple-card .sc-why{font-size:11px!important;line-height:1.35;color:var(--muted)!important;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.simple-card .sc-actions{margin-top:2px}
+.simple-card .sc-actions .primary{min-height:36px!important;font-size:13px!important;border-radius:6px!important}
+.simple-card .coin-logo{width:28px!important;height:28px!important}
+.sc-details summary{font-size:11px}
+
+/* Mood / chase as tight rows */
+.mood-row,.chase-row{
+  border-radius:0!important;border-left:0!important;border-right:0!important;
+  padding:8px 10px!important;margin:0!important;
+}
+.chase-list,.mood-list,#bnList{
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg);
+}
+.chase-row{border-color:var(--line)!important;background:transparent!important;border-bottom:1px solid var(--line)!important}
+.chase-row:last-child{border-bottom:0!important}
+.mood-hero{border-radius:8px!important;padding:14px!important}
+.mood-price{font-size:32px!important;font-weight:700;letter-spacing:-.02em}
+.mood-feel{font-size:14px!important;font-weight:600}
+
+.pf-glance{border-radius:8px!important}
+.pf-glance .pg-k{font-size:10px}
+.pf-glance .pg-v{font-size:16px!important;font-weight:700}
+
+.news-card{border-radius:8px!important;padding:12px!important}
+.more-item{border-radius:8px!important}
+
+/* Number tick (price / PnL) */
+.live-px.tick-up,.pg-v.tick-up,.num.tick-up,.mood-price.tick-up{
+  animation:tickUp .38s ease;
+}
+.live-px.tick-down,.pg-v.tick-down,.num.tick-down,.mood-price.tick-down{
+  animation:tickDown .38s ease;
+}
+@keyframes tickUp{
+  0%{transform:translateY(4px);opacity:.55;color:var(--green)}
+  100%{transform:none;opacity:1}
+}
+@keyframes tickDown{
+  0%{transform:translateY(-4px);opacity:.55;color:var(--red)}
+  100%{transform:none;opacity:1}
+}
+
+/* Soften cardIn for list density */
+.anim-in{animation:rowIn .28s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*32ms)}
+@keyframes rowIn{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:none}
+}
+.view.view-enter{animation:viewIn .26s cubic-bezier(.2,.8,.2,1) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Trade confirm emphasis */
+dialog#tradeDlg[open] .trade-actions #tradeOk{
+  animation:ctaPulse .5s ease .15s both;
+}
+@keyframes ctaPulse{
+  0%{box-shadow:0 0 0 0 rgba(240,185,11,.0)}
+  40%{box-shadow:0 0 0 4px rgba(240,185,11,.35)}
+  100%{box-shadow:0 0 0 0 rgba(240,185,11,.0)}
+}
+
+/* Kill leftover SaaS glow / purple pills */
+.angle-pill{background:var(--panel2)!important;color:var(--muted)!important;border:1px solid var(--line)!important;border-radius:4px!important}
+.sc-details summary{color:var(--accent)!important}
+
+@media (prefers-reduced-motion: reduce){
+  .live-px.tick-up,.live-px.tick-down,.pg-v.tick-up,.pg-v.tick-down,
+  .num.tick-up,.num.tick-down,.mood-price.tick-up,.mood-price.tick-down,
+  dialog#tradeDlg[open] .trade-actions #tradeOk{animation:none!important}
 }

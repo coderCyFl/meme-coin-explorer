@@ -1325,15 +1325,27 @@
     const spotN = Object.keys(P.positions).length, levN = Object.keys(P.levPositions).length;
     // Glance strip (portfolio + home mini)
     const setTxt = (id, t) => { const n = $(id); if (n) n.textContent = t; };
+    const pnlTxt = (total >= 0 ? "+" : "") + money2(total);
+    const pgPnl0 = $("pgPnl");
+    if (pgPnl0 && pgPnl0.textContent && pgPnl0.textContent !== pnlTxt) {
+      const dir = equity >= (_lastEquity == null ? equity : _lastEquity) ? "up" : "down";
+      pgPnl0.classList.remove("tick-up", "tick-down");
+      void pgPnl0.offsetWidth;
+      if (!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+        pgPnl0.classList.add(dir === "up" ? "tick-up" : "tick-down");
+        clearTimeout(pgPnl0._tickT);
+        pgPnl0._tickT = setTimeout(() => pgPnl0.classList.remove("tick-up", "tick-down"), 420);
+      }
+    }
     setTxt("pgEquity", money2(equity));
     setTxt("pgEquitySub", "起始 " + money2(P.start));
-    setTxt("pgPnl", (total >= 0 ? "+" : "") + money2(total));
+    setTxt("pgPnl", pnlTxt);
     setTxt("pgPnlPct", pct(totalPct));
     setTxt("pgCash", money2(P.cash));
     setTxt("pgPos", String(spotN + levN));
     setTxt("pgPosSub", `現貨 ${spotN} · 槓桿 ${levN}`);
     const pgPnl = $("pgPnl"), pgPct = $("pgPnlPct");
-    if (pgPnl) pgPnl.className = "pg-v " + cls(total);
+    if (pgPnl) pgPnl.className = ("pg-v " + cls(total) + (pgPnl.classList.contains("tick-up") ? " tick-up" : pgPnl.classList.contains("tick-down") ? " tick-down" : "")).trim();
     if (pgPct) pgPct.className = "pg-s " + cls(total);
     if (_lastEquity != null && Math.abs(equity - _lastEquity) / Math.max(P.start, 1) >= 0.0005) {
       flashGlance(equity >= _lastEquity ? "up" : "down");

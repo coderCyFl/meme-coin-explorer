@@ -500,12 +500,27 @@
     }
   }
 
+  function tickNum(n, dir) {
+    if (!n || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    n.classList.remove("tick-up", "tick-down");
+    void n.offsetWidth;
+    n.classList.add(dir === "up" ? "tick-up" : "tick-down");
+    clearTimeout(n._tickT);
+    n._tickT = setTimeout(() => n.classList.remove("tick-up", "tick-down"), 420);
+  }
   function patchBnDom(boardMap) {
     if (!boardMap) return;
     for (const [sym, r] of boardMap) {
       document.querySelectorAll(`[data-bn-price="${sym}"]`).forEach((n) => {
         const raw = price(r.price);
-        n.textContent = n.closest(".mood-row, .mood-hero") ? raw.replace(/^\$/, "") : raw;
+        const next = n.closest(".mood-row, .mood-hero") ? raw.replace(/^\$/, "") : raw;
+        const prev = n.textContent;
+        if (prev && prev !== next && prev !== "…" && prev !== "—") {
+          const a = parseFloat(String(prev).replace(/[^0-9.\-]/g, ""));
+          const b = parseFloat(String(next).replace(/[^0-9.\-]/g, ""));
+          if (!isNaN(a) && !isNaN(b) && a !== b) tickNum(n, b > a ? "up" : "down");
+        }
+        n.textContent = next;
       });
       document.querySelectorAll(`[data-bn-chg="${sym}"]`).forEach((n) => {
         n.textContent = pct(r.chg24);
@@ -518,7 +533,17 @@
       const r = boardMap.get(mood.selected);
       const feel = moodLabel(r.chg24);
       const set = (id, t) => { const n = $(id); if (n) n.textContent = t; };
-      set("moodPrice", price(r.price).replace(/^\$/, ""));
+      const mp = $("moodPrice");
+      if (mp) {
+        const next = price(r.price).replace(/^\$/, "");
+        const prev = mp.textContent;
+        if (prev && prev !== next && prev !== "—") {
+          const a = parseFloat(String(prev).replace(/[^0-9.\-]/g, ""));
+          const b = parseFloat(String(next).replace(/[^0-9.\-]/g, ""));
+          if (!isNaN(a) && !isNaN(b) && a !== b) tickNum(mp, b > a ? "up" : "down");
+        }
+        mp.textContent = next;
+      } else set("moodPrice", price(r.price).replace(/^\$/, ""));
       set("moodFeel", feel.en); set("moodFeelZh", feel.zh);
       set("moodVol", "Vol " + fmtVol(r.volQuote));
       const chgEl = $("moodChg");
