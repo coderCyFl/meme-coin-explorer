@@ -49,3 +49,11 @@ Review: live Pages OK; Binance REST SOL mark live; batch-004 still 6 buy / 3 avo
 
 Self-growth (docs only — no CEX redo):
 - Rewrote README intro / Features / Cost / Live pricing to **Binance-first**; Dex scan documented as full-mode optional only.
+
+## Hourly update 2026-10-22 ~20:00 Asia/Shanghai
+Review: live Pages OK; Binance SOL mark live (~$104.6); batch-004 still primary (6 setup / chase); news ~11h (within 48h); outcomes still empty (<24h since batch); no Dex hot list on home/browse; JS clean.
+
+Self-growth (UX copy, no CEX redo):
+- 「短線炒家」lens → `#browse` (Binance) instead of Dex `#explore`.
+- Howto + disclaimer + explore labels clarify Binance main path vs optional full-mode Dex scan.
+- `app.js` header comment aligned with Binance-first.

@@ -1645,11 +1645,10 @@
   function applyLens(lens) {
     document.querySelectorAll(".lens").forEach((b) => b.classList.toggle("active", b.dataset.lens === lens));
     if (lens === "scalp") {
-      location.hash = "explore";
+      location.hash = "browse";
       setTimeout(() => {
-        if ($("minLiq")) $("minLiq").value = "50000";
-        if ($("hideRisky")) { $("hideRisky").checked = false; }
-        toast("短線模式：去市場掃描，留意 📈 急升同 💧 低流動性旗標");
+        if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
+        toast("短線模式：去睇幣（Binance 現貨），急升盤當參考唔好盲目追");
       }, 200);
     } else if (lens === "careful") {
       location.hash = "picks";

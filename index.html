@@ -36,7 +36,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <button type="button" class="linkish" id="discToggle">詳情</button></div>
   <div class="disc-full" id="discFull" hidden>
     Meme coin 大多數歸零，好多係 scam / rug / honeypot。
-    DexScreener 「boosted」係<b>俾錢推廣</b>，X 熱度好易造假。
+    主線（熱門／睇幣／今日跟買）淨用 <b>Binance 公開行情</b>；完整模式「掃描」先會睇到鏈上 Dex（boosted 係俾錢推廣，X 熱度好易造假）。
     呢度係<strong>模擬倉</strong>，冇真實金錢。永遠唔好投入多過你輸得起嘅錢。
   </div>
 </div>
@@ -61,7 +61,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <div class="howto-grid">
     <button type="button" class="lens" data-lens="scalp">
       <b>短線炒家</b>
-      <span>跳去市場掃描</span>
+      <span>跳去睇幣（Binance）</span>
     </button>
     <button type="button" class="lens" data-lens="careful">
       <b>謹慎模擬倉</b>
@@ -85,9 +85,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <section class="howto-sec" id="lens-scalp">
       <h4>短線炒家</h4>
       <ul>
-        <li>去「市場掃描」，流動性 ≥ <b>$50k</b>，留意 📈 急升同 X 7 日熱度。</li>
-        <li>🚩 紅旗：💧 低流動性、🐣 &lt;24h 新盤、🌀 成交額 &gt;50× 流動性、🚀 俾錢 boost——可以睇，但唔好重倉追。</li>
-        <li><b>幾時唔好追：</b>已經 +300%／一日內、buzz 近 6 小時明顯回落、淨係 TG shill 文案——多數係接盤。</li>
+        <li>去「睇幣」睇 Binance 現貨情緒同急升／急跌；主線唔跟鏈上 Dex 熱榜。</li>
+        <li>想睇鏈上盤先開完整模式「掃描」；🚩 紅旗（低流動性、新盤、成交異常、🚀 俾錢 boost）只當參考，唔好重倉追。</li>
+        <li><b>幾時唔好追：</b>已經一日急升好多、淨係 TG／X shill——多數係接盤。跟買優先用「今日跟買」。</li>
         <li>短線都建議用<strong>現貨</strong>練手；meme 波動大，槓桿好易秒爆。</li>
       </ul>
     </section>
@@ -416,9 +416,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <!-- ===== 市場掃描 ===== -->
 <div id="view-explore" class="view" hidden>
+<p class="muted tiny" style="margin:0.5rem 1rem 0">完整模式可選 · 鏈上 Dex 掃描（唔係主線熱門／睇幣）。主產品用 Binance 公開行情。</p>
 <section class="controls">
   <div class="group">
-    <label for="source">來源</label>
+    <label for="source">來源（Dex）</label>
     <select id="source">
       <option value="boosts">熱門 boosted</option>
       <option value="profiles">最新 token profiles</option>
@@ -426,7 +427,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </select>
   </div>
   <div class="group" id="searchGroup" hidden>
-    <label for="q">搜尋 DexScreener</label>
+    <label for="q">搜尋（Dex · 可選）</label>
     <div class="row"><input id="q" type="search" placeholder="例如 pepe, bonk, wif" value="pepe"><button id="go">Go</button></div>
   </div>
   <div class="group">

@@ -1,5 +1,6 @@
 /* Meme Coin Explorer: vanilla JS, no build, no keys.
- * Market data: DexScreener public API (CORS *), cached in localStorage.
+ * Main path (hot / browse / AI picks): Binance public REST+stream (see live.js).
+ * Full-mode explore only: DexScreener public API (CORS *), cached in localStorage.
  * X buzz: static data/x_buzz.json (the site never calls X). */
 (() => {
   "use strict";
