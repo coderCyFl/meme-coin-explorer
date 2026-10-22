@@ -76,3 +76,13 @@ Review: live Pages 200; HTML/JS md5 match local `8cbbb4f`; Binance SOL mark live
 Self-growth: **docs only** (stable; no bug). No code churn; no new batch.
 
 **Next priority (unchanged):** after **2026-10-23 ~04:54 Asia/Shanghai** (≥24h on batch-004), run `scripts/snapshot_outcomes.py` via Binance public REST and append to `data/outcomes.json`. Until then: no new batch; news refresh only if >48h.
+
+## Hourly update 2026-10-22 ~23:10 Asia/Shanghai
+Review: live Pages 200; `live.js` md5 match local `ac3be3d` after Pages deploy; Binance SOL mark live (~$104.4); batch-004 still 6 buy / 3 avoid (TRUMP rotation, TIA/PYTH compression, PEPE/ARB higher_lows, UNI mean_reversion + PEOPLE/W/ENA already_up chase); news ~14h (<48h); outcomes still empty (batch-004 age ~18.2h, <24h); `node --check` clean; `qa_diversify.mjs` PASS; Dex only on full-mode explore + legacy scripts — not home/browse/AI hot path.
+
+Self-growth:
+- Confirmed earlier Pass-3 **MEGA soft-skip** (`ac3be3d`) deployed — BTC/ETH/SOL/BNB no longer re-enter 今日跟買 via relaxed Pass 3.
+- Checklist: add `node scripts/qa_diversify.mjs` gate for MEGA leak.
+- Docs note only otherwise — no CEX redo; no new batch.
+
+**Next priority (unchanged):** after **2026-10-23 ~04:54 Asia/Shanghai** (≥24h on batch-004), run `scripts/snapshot_outcomes.py` via Binance public REST and append to `data/outcomes.json`. Until then: no new batch; news refresh only if >48h.

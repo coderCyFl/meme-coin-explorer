@@ -20,6 +20,7 @@
 - [ ] 「落倉」流程：輸入金額 → 確認 → 跳去模擬倉，有冇 JS error？
 - [ ] 「跟晒今批」平均分配係咪正確？
 - [ ] 「點樣用」三個角色掣係咪仲 work？
+- [ ] AI「今日跟買」有冇 majors 漏網（BTC/ETH/SOL/BNB）？跑 `node scripts/qa_diversify.mjs`（Pass 3 都要 soft-skip MEGA）
 
 ## 4. X／成本
 - [ ] 今次有冇超過 ~15 X calls？
