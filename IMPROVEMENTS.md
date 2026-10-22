@@ -64,3 +64,10 @@ Review: live Pages 200 (HTML/JS match local `732b405`); Binance SOL mark live (~
 Self-growth: **docs only** (last hourly already shipped scalp→browse). No code churn.
 
 **Next priority (do not skip):** after **2026-10-23 ~04:54 Asia/Shanghai** (≥24h on batch-004), run `scripts/snapshot_outcomes.py` via Binance public REST and append to `data/outcomes.json`. Then weekday scorecard can start. Until then: no new batch; news refresh only if >48h.
+
+## Hourly update 2026-10-22 ~22:10 Asia/Shanghai
+Review: live Pages 200; HTML/JS md5 match local `8cbbb4f`; Binance SOL mark live (~$105.1); batch-004 still 6 buy / 3 avoid (angles: rotation / compression / higher_lows / mean_reversion + already_up chase); news ~13h (<48h); outcomes still empty (batch-004 age ~17.3h, <24h); `node --check` clean on app/picks/live; Dex only on full-mode explore + legacy scripts — not home/browse/AI hot path.
+
+Self-growth: **docs only** (stable; no bug). No code churn; no new batch.
+
+**Next priority (unchanged):** after **2026-10-23 ~04:54 Asia/Shanghai** (≥24h on batch-004), run `scripts/snapshot_outcomes.py` via Binance public REST and append to `data/outcomes.json`. Until then: no new batch; news refresh only if >48h.
