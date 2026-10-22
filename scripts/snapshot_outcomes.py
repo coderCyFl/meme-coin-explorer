@@ -7,15 +7,21 @@ has no recorded outcome yet, fetch the current price and append
 to data/outcomes.json.
 
 Pricing:
-- chain "binance" (pair_address like TRUMPUSDT): Binance public REST via
-  data-api.binance.vision (geo-friendly mirror of api.binance.com). Uses 24hr ticker
-  lastPrice + quoteVolume. Missing symbol or quoteVolume < $1k → status "dead".
+- chain "binance" (pair_address like TRUMPUSDT): Binance public REST. The horizon price is
+  the CLOSE of the 1m kline for the minute containing the due time (created_at + h), so a
+  late run still records the price AT the due time, not the run-time spot price.
+  observed_at = that kline's close time; price_source = "kline_1m_due". Benchmarks
+  (BTC/SOL) use the same due-minute kline. api.binance.com first, then the
+  data-api.binance.vision mirror if blocked. Liveness (dead/delisted) still uses the 24hr
+  ticker: missing symbol or quoteVolume < $1k → status "dead".
 - other chains (legacy Dex / Solana batch-001): DexScreener pairs API. Missing pair
   or liquidity < $1k → status "dead".
 
-If you run it late, observed_at tells you how late. Existing records are never changed.
+Dex (legacy) picks have no historical endpoint: they use run-time spot price, so for those
+observed_at tells you how late. Existing records are never changed (use --reseal-binance
+BATCH_ID[,BATCH_ID] to rewrite that batch's binance records with the kline method).
 """
-import json, os, datetime, urllib.request, collections, urllib.error
+import json, os, sys, datetime, urllib.request, collections, urllib.error
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 PICKS = os.path.join(ROOT, "data", "picks.json")
@@ -25,6 +31,7 @@ UA = {"User-Agent": "meme-coin-explorer/1.0"}
 # Prefer vision mirror — api.binance.com is geo-blocked in some regions (incl. GH Actions
 # can vary). Same public market data, no key.
 BN_BASE = "https://data-api.binance.vision"
+BN_KLINE_BASES = ("https://api.binance.com", "https://data-api.binance.vision")
 
 
 def get(u):
@@ -82,6 +89,40 @@ def bn_tickers(symbols):
     return res
 
 
+_kline_cache = {}
+
+
+def bn_kline_close(sym, due):
+    """Close of the Binance 1m kline for the minute containing `due` (aware datetime).
+    Returns {price_usd, observed_at, open_ms} or None (symbol missing / no kline yet)."""
+    sym = sym.upper()
+    minute_ms = int(due.timestamp() * 1000) // 60000 * 60000
+    key = (sym, minute_ms)
+    if key in _kline_cache:
+        return _kline_cache[key]
+    res = None
+    for base in BN_KLINE_BASES:
+        url = f"{base}/api/v3/klines?symbol={sym}&interval=1m&startTime={minute_ms}&limit=1"
+        try:
+            d = get(url)
+        except Exception:
+            continue  # geo-block (451/403) or network → try mirror
+        if not isinstance(d, list):
+            continue  # e.g. {"code":0,"msg":"restricted location"}
+        if d and int(d[0][0]) == minute_ms:
+            k = d[0]
+            close_ms = int(k[6])
+            res = {
+                "price_usd": float(k[4]),
+                "observed_at": datetime.datetime.fromtimestamp(close_ms // 1000, TZ).isoformat(),
+                "open_ms": minute_ms,
+                "source": "kline_1m_due",
+            }
+        break
+    _kline_cache[key] = res
+    return res
+
+
 def live_quote(chain, pair_address, cache_dex, cache_bn):
     if is_binance(chain, pair_address):
         return cache_bn.get(pair_address.upper())
@@ -96,6 +137,14 @@ out = (
     if os.path.exists(OUT)
     else {"description": "Append-only horizon snapshots. Never edit.", "records": []}
 )
+reseal = set()
+if "--reseal-binance" in sys.argv:
+    reseal = set(sys.argv[sys.argv.index("--reseal-binance") + 1].split(","))
+    ids = {e["id"] for b in log["batches"] if b["id"] in reseal for e in b["entries"]
+           if is_binance(e.get("chain"), e.get("pair_address"))}
+    before = len(out["records"])
+    out["records"] = [r for r in out["records"] if r["pick_id"] not in ids]
+    print(f"reseal {sorted(reseal)}: dropped {before - len(out['records'])} old records")
 done = {(r["pick_id"], r["horizon_h"]) for r in out["records"]}
 now = datetime.datetime.now(TZ).replace(microsecond=0)
 todo = []
@@ -103,7 +152,8 @@ for b in log["batches"]:
     for e in b["entries"]:
         t0 = datetime.datetime.fromisoformat(e["created_at"])
         for h in e.get("horizons_h", [24, 72, 168]):
-            if now >= t0 + datetime.timedelta(hours=h) and (e["id"], h) not in done:
+            # +1 min so the due-minute kline is closed before we seal from it
+            if now >= t0 + datetime.timedelta(hours=h, minutes=1) and (e["id"], h) not in done:
                 todo.append((b, e, h))
 if not todo:
     print("nothing due")
@@ -132,11 +182,15 @@ for ch, ps in need_dex.items():
     cache_dex.update(dex_pair_prices(ch, sorted(ps)))
 cache_bn = bn_tickers(sorted(need_bn)) if need_bn else {}
 
-def bm_ret(b, cache_dex, cache_bn, key):
+def bm_ret(b, cache_dex, cache_bn, key, due=None):
     sol = ((b.get("benchmarks") or {}).get(key)) or {}
     if not sol:
         return None
-    sq = live_quote(sol.get("chain"), sol.get("pair_address"), cache_dex, cache_bn)
+    sq = None
+    if due is not None and is_binance(sol.get("chain"), sol.get("pair_address")):
+        sq = bn_kline_close(sol["pair_address"], due)
+    if sq is None:
+        sq = live_quote(sol.get("chain"), sol.get("pair_address"), cache_dex, cache_bn)
     if sq and sol.get("price_usd"):
         try:
             return round((float(sq["price_usd"]) / float(sol["price_usd"]) - 1) * 100, 2)
@@ -148,16 +202,29 @@ for b, e, h in todo:
     q = live_quote(e.get("chain"), e.get("pair_address"), cache_dex, cache_bn)
     liq = (q or {}).get("liquidity_usd") or 0
     dead = not q or liq < 1000
+    observed_at = now.isoformat()
+    src = (q or {}).get("source")
+    due = None
+    if is_binance(e.get("chain"), e.get("pair_address")):
+        due = datetime.datetime.fromisoformat(e["created_at"]) + datetime.timedelta(hours=h)
+        if not dead:
+            kq = bn_kline_close(e["pair_address"], due)
+            if kq is None:
+                print("skip (no due kline yet)", e["id"], f"{h}h")
+                continue
+            q = dict(q, price_usd=kq["price_usd"])
+            observed_at = kq["observed_at"]
+            src = kq["source"]
     price = 0.0 if dead else float(q["price_usd"])
     entry = float(e["entry_price_usd"])
-    btc_ret = bm_ret(b, cache_dex, cache_bn, "BTC")
-    sol_ret = bm_ret(b, cache_dex, cache_bn, "SOL")
+    btc_ret = bm_ret(b, cache_dex, cache_bn, "BTC", due)
+    sol_ret = bm_ret(b, cache_dex, cache_bn, "SOL", due)
     if btc_ret is None:
         btc_ret = sol_ret  # legacy alias
     rec = {
         "pick_id": e["id"],
         "horizon_h": h,
-        "observed_at": now.isoformat(),
+        "observed_at": observed_at,
         "price_usd": price,
         "liquidity_usd": liq,
         "status": "dead" if dead else "live",
@@ -165,8 +232,12 @@ for b, e, h in todo:
         "btc_return_pct": btc_ret,
         "sol_return_pct": sol_ret if sol_ret is not None else btc_ret,
     }
+    if due is not None:
+        rec["due_at"] = due.isoformat()
+        rec["price_source"] = "kline_1m_due" if not dead else "binance-24hr"
+        rec["sealed_run_at"] = now.isoformat()
     out["records"].append(rec)
-    print("recorded", e["id"], f"{h}h", rec["return_pct"], rec["status"], (q or {}).get("source"))
+    print("recorded", e["id"], f"{h}h", rec["return_pct"], rec["status"], src, rec["observed_at"])
 
 tmp = OUT + ".tmp"
 json.dump(out, open(tmp, "w"), indent=1)

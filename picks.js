@@ -27,6 +27,17 @@
   }
 
 
+  /** Follow-report times: zh-HK 24h "10月22日 04:54" (Asia/Shanghai, no seconds). */
+  const frTime = (iso) => {
+    try {
+      const d = new Date(iso);
+      if (isNaN(d)) return iso || "";
+      const p = {};
+      new Intl.DateTimeFormat("zh-HK", { timeZone: "Asia/Shanghai", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+        .formatToParts(d).forEach((x) => { p[x.type] = x.value; });
+      return `${+p.month}月${+p.day}日 ${String(p.hour).padStart(2, "0")}:${String(p.minute).padStart(2, "0")}`;
+    } catch (_) { return iso || ""; }
+  };
   const hoursSince = (iso) => (Date.now() - new Date(iso).getTime()) / 3.6e6;
   const held = (iso) => { const h = hoursSince(iso); return h < 48 ? `${h.toFixed(1)} 小時` : `${(h / 24).toFixed(1)} 日`; };
   const cls = (v) => (v > 0 ? "pos" : v < 0 ? "neg" : "");
@@ -253,7 +264,8 @@
     const entry = el("div", { class: "muted tiny", text: "入 " + price(e.entry_price_usd) });
     if (r.sealed && r.rec) {
       const exitPx = r.rec.status === "dead" ? null : r.rec.price_usd;
-      const sealT = r.rec.observed_at ? "封盤 " + localTime(r.rec.observed_at) : "24h 已封盤";
+      const sealIso = r.rec.due_at || r.rec.observed_at;
+      const sealT = sealIso ? "封盤 " + frTime(sealIso) + (r.rec.price_source === "kline_1m_due" ? "（到期 1m K 線收市價）" : "") : "24h 已封盤";
       return el("div", { class: "fr-px", title: sealT },
         entry,
         exitPx != null
@@ -324,10 +336,10 @@
     }
     if (metaEl) {
       const bid = list[0].b && list[0].b.id ? list[0].b.id : "";
-      const sealAt = sealedAll ? withRet.map((r) => r.rec && r.rec.observed_at).filter(Boolean).sort().pop() : null;
+      const sealAt = sealedAll ? withRet.map((r) => r.rec && (r.rec.due_at || r.rec.observed_at)).filter(Boolean).sort().pop() : null;
       const head = sealedAll && bid ? bid : batchLabel(list[0].b);
-      metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${head} · 買入時間 ${localTime(created)}`
-        + (sealAt ? ` · 封盤 ${localTime(sealAt)}` : "");
+      metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${head} · 買入時間 ${frTime(created)}`
+        + (sealAt ? ` · 封盤 ${frTime(sealAt)}` : "");
     }
     const kickEl = $("followReportKicker");
     if (kickEl) {
