@@ -1,5 +1,10 @@
 # Improvements (2026-10-22)
 
+
+## 2026-10-22 ~23:00 HKT — SOL bias + 3D orb
+- Root cause: UI hard-labeled performance vs **SOL** (scorecard / portfolio / howto) from Solana-era batches; mood hero previously sticky **BNBUSDT** (not market-ranked).
+- Fix: prefer **BTC** benchmark for Binance batches; mood hero hour-rotates among liquid non-major movers (session remembers user tap).
+- UI: CSS 3D coin orb on Coin Mood hero + trade sheet; `prefers-reduced-motion` stops spin.
 ## AI layer (why not raw ticker)
 - **今日跟買** uses multi-angle Binance OHLCV (1d + 1h): volume creep, volatility compression, relative strength vs BTC, rotation/lag, calm accumulation, higher-lows structure.
 - Primary list **excludes hard 24h pumps**; those go to collapsed **已在升／勿追**.

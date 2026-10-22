@@ -10,7 +10,7 @@
 
   // Curated USDT spot bases — majors + meme-ish. Only shown if TRADING.
   const CURATED_BASES = [
-    "BTC", "ETH", "SOL", "BNB", "XRP", "ADA", "DOGE", "AVAX", "LINK", "DOT",
+    "BTC", "ETH", "BNB", "XRP", "ADA", "DOGE", "AVAX", "LINK", "DOT", "SOL",
     "NEAR", "APT", "ARB", "OP", "SUI", "INJ", "TIA", "SEI", "JUP", "PYTH",
     "W", "ENA", "EIGEN", "AAVE", "UNI", "LTC", "BCH", "ATOM", "PEPE", "SHIB",
     "FLOKI", "BONK", "WIF", "BOME", "MEME", "NEIRO", "PNUT", "ACT", "PENGU",
@@ -477,7 +477,9 @@
     const ANGLE_ORDER = ["accumulation", "rotation", "compression", "mean_reversion", "higher_lows", "relative"];
     const HARD = 1; // first pass
     const SOFT = 2; // only after every available angle has ≥1
-    const setups = scored.filter((s) => !s.alreadyUp && !s.extended && s.setupScore >= 26)
+    // Soft-skip mega majors so AI brief is not stuck on BTC/ETH/SOL/BNB
+    const MEGA = new Set(["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]);
+    const setups = scored.filter((s) => !s.alreadyUp && !s.extended && s.setupScore >= 26 && !MEGA.has(s.symbol))
       .sort((a, b) => b.setupScore - a.setupScore);
     const out = [];
     const used = new Set();

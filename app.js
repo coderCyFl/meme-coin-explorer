@@ -336,7 +336,46 @@
   const setStatus = (t) => ($("status").textContent = t);
 
   // ---------- Coin Mood / Binance browse (NO Dex hot list) ----------
-  const mood = { selected: "BNBUSDT", rows: [] };
+  const mood = { selected: null, rows: [], userPicked: false };
+  const MOOD_SEL_KEY = "mce:mood:sel";
+  const MOOD_MAJORS = new Set(["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]);
+
+  function readMoodSel() {
+    try { return sessionStorage.getItem(MOOD_SEL_KEY) || ""; } catch { return ""; }
+  }
+  function writeMoodSel(sym) {
+    try { if (sym) sessionStorage.setItem(MOOD_SEL_KEY, sym); } catch {}
+  }
+  /** Default hero: interesting liquid mover, hour-rotated — not sticky SOL/BNB. */
+  function pickMoodDefault(rows) {
+    if (!rows || !rows.length) return null;
+    const saved = readMoodSel();
+    if (saved && rows.find((r) => r.symbol === saved)) return saved;
+    const liquid = rows.slice().sort((a, b) => (b.volQuote || 0) - (a.volQuote || 0)).slice(0, 28);
+    const nonMaj = liquid.filter((r) => !MOOD_MAJORS.has(r.symbol));
+    const pool = (nonMaj.length >= 4 ? nonMaj : liquid).slice();
+    pool.sort((a, b) => Math.abs(b.chg24 || 0) - Math.abs(a.chg24 || 0));
+    const top = pool.slice(0, Math.min(8, pool.length));
+    if (!top.length) return liquid[0].symbol;
+    const now = new Date();
+    const idx = (now.getHours() + now.getDate()) % top.length;
+    return top[idx].symbol;
+  }
+
+  function buildCoinOrb(base, size = 72) {
+    const live = window.MCE.live;
+    const orb = el("div", { class: "coin-orb", "aria-hidden": "true" });
+    const inner = el("div", { class: "coin-orb-inner" });
+    const face = (side) => {
+      const f = el("div", { class: "coin-orb-face " + side });
+      if (live && live.coinLogoEl) f.append(live.coinLogoEl(base, "coin-logo mood-logo", size));
+      else f.append(el("span", { class: "coin-logo letter mood-logo", text: (base || "?").slice(0, 2) }));
+      return f;
+    };
+    inner.append(face("front"), face("back"), el("div", { class: "coin-orb-rim" }));
+    orb.append(inner);
+    return orb;
+  }
 
   function fmtVol(v) {
     if (v == null || isNaN(v)) return "–";
@@ -371,8 +410,13 @@
     const mascot = $("moodMascot");
     if (mascot) {
       mascot.textContent = "";
-      if (live && live.coinLogoEl) mascot.append(live.coinLogoEl(r.base, "coin-logo mood-logo", 72));
-      else mascot.textContent = (r.base || "?").slice(0, 2);
+      mascot.append(buildCoinOrb(r.base, 72));
+    }
+    const hero = $("moodHero");
+    if (hero) {
+      hero.classList.toggle("mood-up", up);
+      hero.classList.toggle("mood-down", !up);
+      hero.dataset.sym = r.symbol || "";
     }
     const ico = $("moodIco");
     if (ico) {
@@ -409,8 +453,13 @@
     }
   }
 
-  async function selectMood(symbol, rows) {
+  async function selectMood(symbol, rows, opts = {}) {
+    if (!symbol) return;
     mood.selected = symbol;
+    if (opts.user) {
+      mood.userPicked = true;
+      writeMoodSel(symbol);
+    }
     const live = window.MCE.live;
     let r = (rows || mood.rows).find((x) => x.symbol === symbol) || (live && live.board.get(symbol));
     if (!r) return;
@@ -451,7 +500,7 @@
         class: "mood-row anim-in" + active + flash,
         style: "--i:" + Math.min(i, 12),
         "data-bn": r.symbol,
-        onclick: () => selectMood(r.symbol, mood.rows),
+        onclick: () => selectMood(r.symbol, mood.rows, { user: true }),
       });
       const left = el("div", { class: "mood-row-left" },
         logo,
@@ -561,9 +610,12 @@
       if (!window.MCE.live) throw new Error("live.js 未載入");
       const rows = await window.MCE.live.ensureBoard(force);
       mood.rows = rows.slice();
-      if (!rows.find((r) => r.symbol === mood.selected) && rows[0]) mood.selected = rows[0].symbol;
-      // Prefer BNB if present
-      if (!force && rows.find((r) => r.symbol === "BNBUSDT")) mood.selected = "BNBUSDT";
+      const stillValid = mood.selected && rows.find((r) => r.symbol === mood.selected);
+      if (!stillValid) {
+        // Fresh / invalid: diversify hero (hour-rotated movers — not sticky SOL/BNB)
+        mood.selected = pickMoodDefault(rows) || (rows[0] && rows[0].symbol);
+        mood.userPicked = !!readMoodSel() && mood.selected === readMoodSel();
+      }
       await selectMood(mood.selected, rows);
       paintBnStrip(rows);
       if (!window.MCE.live.running) {
@@ -607,7 +659,7 @@
     ensureExplore() { if (!exploreLoaded) { exploreLoaded = true; loadBuzz().then(() => load()); } },
     ensureBrowse() { return loadBinanceBoard(!!arguments[0]); },
     loadBrowse, renderBrowse, getBrowseRows: () => mood.rows,
-    loadBinanceBoard, renderBnBoard, paintBnStrip, selectMood, mood,
+    loadBinanceBoard, renderBnBoard, paintBnStrip, selectMood, mood, buildCoinOrb,
   });
   function boot() {
     document.querySelectorAll("th[data-k]").forEach((th) => th.addEventListener("click", () => {

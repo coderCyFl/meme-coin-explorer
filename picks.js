@@ -136,19 +136,30 @@
       $("pickStats").textContent = "載入推薦失敗：" + e.message;
     }
   }
+  /** Prefer BTC (Binance-first) then SOL for legacy Solana batches. */
+  function pickBenchmark(b) {
+    const bm = (b && b.benchmarks) || {};
+    if (bm.BTC) return { key: "BTC", ...bm.BTC };
+    if (bm.SOL) return { key: "SOL", ...bm.SOL };
+    const keys = Object.keys(bm);
+    if (keys.length) return { key: keys[0], ...bm[keys[0]] };
+    return null;
+  }
   function evalEntry(b, e) {
     const li = liveInfo(e.chain, e.pair_address);
-    const sol = b.benchmarks?.SOL, sl = sol ? liveInfo(sol.chain, sol.pair_address) : { state: "unknown" };
+    const bm = pickBenchmark(b);
+    const bl = bm ? liveInfo(bm.chain, bm.pair_address) : { state: "unknown" };
     const ret = li.state === "dead" ? -100 : li.state === "live" ? (li.price / e.entry_price_usd - 1) * 100 : null;
-    const solRet = sl.state === "live" ? (sl.price / sol.price_usd - 1) * 100 : null;
+    const bmRet = bm && bl.state === "live" ? (bl.price / bm.price_usd - 1) * 100 : null;
     const liqDrop = li.state === "live" && e.entry_snapshot?.liquidity_usd ? li.liq / e.entry_snapshot.liquidity_usd : null;
-    return { e, b, li, ret, solRet, excess: ret != null && solRet != null ? ret - solRet : null, liqDrop };
+    // solRet kept as alias for older call sites / outcomes titles
+    return { e, b, li, ret, bm, bmKey: bm ? bm.key : "BTC", bmRet, solRet: bmRet, excess: ret != null && bmRet != null ? ret - bmRet : null, liqDrop };
   }
   function horizonCell(x) {
     return el("td", {}, (x.e.horizons_h || [24, 72, 168]).map((h) => {
       const rec = S.outcomes.find((o) => o.pick_id === x.e.id && o.horizon_h === h);
       const label = h === 168 ? "7日" : h + "h";
-      if (rec) return el("span", { class: "pill " + (rec.status === "dead" ? "dead" : rec.return_pct >= 0 ? "good" : "bad"), title: `快照 ${localTime(rec.observed_at)} · SOL ${pct(rec.sol_return_pct)}` }, `${label} ${pct(rec.return_pct)}`);
+      if (rec) return el("span", { class: "pill " + (rec.status === "dead" ? "dead" : rec.return_pct >= 0 ? "good" : "bad"), title: `快照 ${localTime(rec.observed_at)} · 基準 ${pct(rec.btc_return_pct != null ? rec.btc_return_pct : rec.sol_return_pct)}` }, `${label} ${pct(rec.return_pct)}`);
       const left = h - hoursSince(x.e.created_at);
       if (left > 0) return el("span", { class: "pill", title: "24h/7d 結果尚未到期" }, `${label} 尚未到期`);
       return el("span", { class: "pill", title: "期限已到但未跑 snapshot_outcomes.py" }, `${label} 待快照`);
@@ -339,8 +350,8 @@
         el("td", { class: "num", "data-label": "推薦價", text: price(x.e.entry_price_usd) }),
         el("td", { class: "num", "data-label": "而家", text: x.li.state === "live" ? price(x.li.price) : x.li.state === "dead" ? "–" : "…" }),
         retTd,
-        el("td", { class: "num " + cls(x.solRet), "data-label": "SOL", text: pct(x.solRet) }),
-        el("td", { class: "num " + cls(x.excess), "data-label": "vs SOL", text: x.excess == null ? "–" : (x.excess > 0 ? "+" : "") + x.excess.toFixed(1) + " pts" }),
+        el("td", { class: "num " + cls(x.bmRet), "data-label": x.bmKey || "BTC", text: pct(x.bmRet) }),
+        el("td", { class: "num " + cls(x.excess), "data-label": "vs " + (x.bmKey || "BTC"), text: x.excess == null ? "–" : (x.excess > 0 ? "+" : "") + x.excess.toFixed(1) + " pts" }),
         el("td", { "data-label": "持有", text: held(x.e.created_at) }),
         hz,
         el("td", { "data-label": "", class: "actions" }, el("button", { class: "primary", onclick: (ev) => { ev.stopPropagation(); openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }); } }, "落倉"), " ",
@@ -382,8 +393,8 @@
       stat("平均回報", pct(avg(rs)), "等權、即時", cls(avg(rs))),
       stat("中位回報", pct(median(rs)), "", cls(median(rs))),
       stat("最好 / 最差", best.length ? `${pct(best[0].ret)} / ${pct(best[best.length - 1].ret)}` : "–", best.length ? `$${best[0].e.symbol} / $${best[best.length - 1].e.symbol}` : ""),
-      stat("同期 SOL", pct(avg(sols)), "基準平均", cls(avg(sols))),
-      stat("平均跑贏 SOL", ex.length ? (avg(ex) > 0 ? "+" : "") + avg(ex).toFixed(1) + " pts" : "–", `${ex.filter((v) => v > 0).length}/${ex.length} 跑贏`, cls(avg(ex))),
+      stat("同期 BTC", pct(avg(sols)), "基準平均（Binance）", cls(avg(sols))),
+      stat("平均跑贏 BTC", ex.length ? (avg(ex) > 0 ? "+" : "") + avg(ex).toFixed(1) + " pts" : "–", `${ex.filter((v) => v > 0).length}/${ex.length} 跑贏`, cls(avg(ex))),
       stat("已死 / Rug", String(buys.filter((x) => x.li.state === "dead").length), "計 −100%"),
       stat("避過啱咗", avoids.length ? `${goodAvoid}/${avoids.length}` : "–", "之後價跌"));
     st.append(el("p", { class: "muted", style: "grid-column:1/-1;margin:0", text: `新批報價：Binance 即時 · 舊批可能仍係 Dex · ${new Date().toLocaleTimeString()} · 紀錄只加唔改。樣本少唔證明得咩。` }));
@@ -421,7 +432,7 @@
       e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
       el("div", { class: "kv" },
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
-        el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 SOL $${x.b.benchmarks?.SOL?.price_usd ?? "?"}` }),
+        el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 ${(x.bmKey || "BTC")} $${(x.bm && x.bm.price_usd) != null ? x.bm.price_usd : (x.b.benchmarks?.BTC?.price_usd ?? x.b.benchmarks?.SOL?.price_usd ?? "?")}` }),
         el("div", { text: "入場快照" }), el("div", { text: `流動性 ${money(snap.liquidity_usd)} · 24h 成交 ${money(snap.volume24h_usd)} · 市值 ${money(snap.market_cap_usd)} · 年齡 ${ageH} · 24h ${pct(snap.chg24h_pct)}` }),
         el("div", { text: "角度" }), el("div", { text: angleLabel + (e.tip ? " · " + e.tip : "") }),
         el("div", { text: "旗標" }), el("div", { text: (e.flags || []).join(" · ") || "無" }),
@@ -484,7 +495,7 @@
         realizedSpot: old.realized || 0, realizedLev: 0, feePct: old.feePct ?? 1,
         positions: old.positions || {}, levPositions: {}, trades: old.trades || [],
         liquidations: 0, equityPeak: old.start || START_CASH,
-        firstBuyAt: old.firstBuyAt || null, solAtFirstBuy: old.solAtFirstBuy || null,
+        firstBuyAt: old.firstBuyAt || null, solAtFirstBuy: old.solAtFirstBuy || old.bmAtFirstBuy || null, bmAtFirstBuy: old.bmAtFirstBuy || old.solAtFirstBuy || null,
         allin: null, created: old.created || new Date().toISOString(),
       };
     },
@@ -492,7 +503,7 @@
       const s = Number(start) > 0 ? Number(start) : START_CASH;
       return { v: 2, start: s, cash: s, realizedSpot: 0, realizedLev: 0, feePct: 1,
         positions: {}, levPositions: {}, trades: [], liquidations: 0, equityPeak: s,
-        firstBuyAt: null, solAtFirstBuy: null, created: new Date().toISOString() };
+        firstBuyAt: null, solAtFirstBuy: null, bmAtFirstBuy: null, created: new Date().toISOString() };
     },
     load() {
       try {
@@ -548,26 +559,52 @@
     if (li.state !== "live") throw new Error(li.state === "dead" ? "交易對已死或冇流動性，唔可以交易" : "暫時攞唔到報價");
     return li;
   }
-  async function ensureSolBenchmark() {
+  async function ensureMarketBenchmark() {
     if (!S.picks) await loadPicks();
     const last = S.picks?.batches?.[S.picks.batches.length - 1];
-    const sol = last?.benchmarks?.SOL;
-    if (!sol) return null;
-    await fetchPairs([{ chain: sol.chain, pair: sol.pair_address }], false);
-    return sol;
+    const bm = pickBenchmark(last) || { key: "BTC", chain: "binance", pair_address: "BTCUSDT", price_usd: null };
+    if (!bm.pair_address) return null;
+    // Prefer live Binance board mark when chain is binance
+    if (bm.chain === "binance" && window.MCE.live) {
+      try { await window.MCE.live.ensureBoard(false); } catch {}
+      const m = window.MCE.live.getMark("binance", bm.pair_address);
+      if (m && m.price > 0) bm.price_usd = m.price;
+    } else {
+      await fetchPairs([{ chain: bm.chain, pair: bm.pair_address }], false);
+    }
+    return bm;
   }
   async function touchFirstBuy() {
     if (P.firstBuyAt) return;
     P.firstBuyAt = new Date().toISOString();
-    const sol = await ensureSolBenchmark();
-    if (sol) {
-      const sl = liveInfo(sol.chain, sol.pair_address);
-      P.solAtFirstBuy = { chain: sol.chain, pair: sol.pair_address, price: sl.state === "live" ? sl.price : sol.price_usd };
+    const bm = await ensureMarketBenchmark();
+    if (bm) {
+      let px = bm.price_usd;
+      if (bm.chain === "binance" && window.MCE.live) {
+        const m = window.MCE.live.getMark("binance", bm.pair_address);
+        if (m && m.price > 0) px = m.price;
+      } else {
+        const sl = liveInfo(bm.chain, bm.pair_address);
+        if (sl.state === "live") px = sl.price;
+      }
+      const locked = { chain: bm.chain, pair: bm.pair_address, price: px, symbol: bm.key || "BTC" };
+      P.bmAtFirstBuy = locked;
+      // Keep legacy field so old localStorage still renders
+      P.solAtFirstBuy = locked;
     }
   }
 
   /** Generic dialog. opts: {modePicker, defaultMode, levDefault, preview(amt, {mode, lev})} → {amt, mode, lev} | null */
-  function askTrade({ title, info, label, value, quick = [], preview, okLabel, modePicker = false, defaultMode = "spot", levDefault = null, callout = null }) {
+  function paintTradeOrb(symbol) {
+    const wrap = $("tradeOrb");
+    if (!wrap) return;
+    wrap.textContent = "";
+    const base = String(symbol || "").replace(/USDT$/i, "").toUpperCase();
+    if (!base || !window.MCE || !window.MCE.buildCoinOrb) { wrap.hidden = true; return; }
+    wrap.hidden = false;
+    wrap.append(window.MCE.buildCoinOrb(base, 40));
+  }
+  function askTrade({ title, info, label, value, quick = [], preview, okLabel, modePicker = false, defaultMode = "spot", levDefault = null, callout = null, symbol = null }) {
     return new Promise((resolve) => {
       const dlg = $("tradeDlg"), inp = $("tradeAmt");
       let mode = defaultMode;
@@ -577,6 +614,7 @@
       if (riskId === "safe" && modePicker) { /* still allow choosing lev but capped */ }
       lev = Math.min(lev, maxL);
 
+      paintTradeOrb(symbol);
       $("tradeTitle").textContent = title;
       $("tradeInfo").textContent = info;
       $("tradeAmtLabel").textContent = label;
@@ -1038,6 +1076,7 @@
           ["10%現金", Math.floor(P.cash * 0.1)], ["25%現金", Math.floor(P.cash * 0.25)], ["半倉", Math.floor(P.cash / 2)],
         ].map(([t, v]) => [t, Math.min(v, Math.floor(P.cash))]),
         modePicker: true, defaultMode: defMode, levDefault: risk().defaultLev,
+        symbol: info.symbol,
         preview: (v, { mode, lev }) => {
           if (mode === "lev") {
             const n = v * lev, fee = n * P.feePct / 100, lp = liqPriceLong(li.price, lev);
@@ -1092,7 +1131,7 @@
         title: `平倉（現貨）$${pos.symbol}`,
         info: `即時價 ${price(li.price)} · 持有 ${pos.qty.toLocaleString(undefined, { maximumFractionDigits: 2 })}`,
         label: "平倉比例 %", value: 100, quick: [["25%", 25], ["50%", 50], ["100%", 100]],
-        modePicker: false,
+        modePicker: false, symbol: pos.symbol,
         preview: (v) => { const q = pos.qty * Math.min(100, v) / 100, gross = q * li.price; return `大約收回 ${money2(gross * (1 - P.feePct / 100))}（扣 ${P.feePct}%）`; },
         okLabel: "確認平倉",
       }))?.amt;
@@ -1134,7 +1173,7 @@
       title: `平倉（槓桿 ${pos.leverage}x）$${pos.symbol}`,
       info: `標記價 ${price(mark)} · 保證金 ${money2(pos.margin)} · 浮盈虧 ${money2(m.unreal)} · 爆倉價 ${price(m.liq)}`,
       label: "平倉比例 %（v1 只支援全平）", value: 100, quick: [["100%", 100]],
-      modePicker: false,
+      modePicker: false, symbol: pos.symbol,
       preview: () => {
         const closeFee = pos.qty * mark * P.feePct / 100;
         const back = pos.margin + m.unreal - closeFee;
@@ -1234,7 +1273,7 @@
       ...spotEntries.map(([, p]) => ({ chain: p.chain, pair: p.pair })),
       ...levEntries.map(([, p]) => ({ chain: p.chain, pair: p.pair })),
     ];
-    if (P.solAtFirstBuy) need.push({ chain: P.solAtFirstBuy.chain, pair: P.solAtFirstBuy.pair });
+    const _bmNeed = P.bmAtFirstBuy || P.solAtFirstBuy; if (_bmNeed) need.push({ chain: _bmNeed.chain, pair: _bmNeed.pair });
     if (fetchPrices && need.length) await fetchPairs(need, false);
 
     // prices for liq check
@@ -1316,9 +1355,16 @@
     const unrealSpot = spotValue - spotCost;
     const total = equity - P.start, totalPct = (total / P.start) * 100;
     let solRet = null;
-    if (P.solAtFirstBuy) {
-      const sl = liveInfo(P.solAtFirstBuy.chain, P.solAtFirstBuy.pair);
-      if (sl.state === "live") solRet = (sl.price / P.solAtFirstBuy.price - 1) * 100;
+    const bmLock = P.bmAtFirstBuy || P.solAtFirstBuy;
+    const bmSym = (bmLock && bmLock.symbol) || (bmLock && String(bmLock.pair || "").replace(/USDT$/, "")) || "BTC";
+    if (bmLock) {
+      if (bmLock.chain === "binance" && window.MCE.live) {
+        const m = window.MCE.live.getMark("binance", bmLock.pair);
+        if (m && m.price > 0 && bmLock.price > 0) solRet = (m.price / bmLock.price - 1) * 100;
+      } else {
+        const sl = liveInfo(bmLock.chain, bmLock.pair);
+        if (sl.state === "live") solRet = (sl.price / bmLock.price - 1) * 100;
+      }
     }
     const st = $("pfStats"); st.textContent = "";
     const stat = (k, v, s, c = "") => el("div", { class: "stat" }, el("div", { class: "k", text: k }), el("div", { class: "v " + c, text: v }), s ? el("div", { class: "s", text: s }) : "");
@@ -1386,8 +1432,8 @@
       stat("現貨已實現", money2(P.realizedSpot || 0), "", cls(P.realizedSpot)),
       stat("槓桿已實現", money2(P.realizedLev || 0), `爆倉 ${P.liquidations || 0} 次`, cls(P.realizedLev)),
       stat("最大回撤", pct(dd), `峰值 ${money2(P.equityPeak || P.start)}`, cls(dd)),
-      stat("同期 SOL", solRet == null ? "–" : pct(solRet), P.solAtFirstBuy ? `基準 $${P.solAtFirstBuy.price.toFixed(2)}` : "第一次落倉鎖定", cls(solRet)),
-      stat("跑贏 SOL", solRet == null ? "–" : (totalPct - solRet > 0 ? "+" : "") + (totalPct - solRet).toFixed(1) + " pts", "總回報 − SOL", cls(solRet == null ? 0 : totalPct - solRet)));
+      stat("同期 " + bmSym, solRet == null ? "–" : pct(solRet), bmLock ? `基準 $${Number(bmLock.price).toFixed(2)}` : "第一次落倉鎖定", cls(solRet)),
+      stat("跑贏 " + bmSym, solRet == null ? "–" : (totalPct - solRet > 0 ? "+" : "") + (totalPct - solRet).toFixed(1) + " pts", "總回報 − " + bmSym, cls(solRet == null ? 0 : totalPct - solRet)));
 
     const tb = $("tradeBody"); tb.textContent = "";
     const sideZh = { BUY: "現貨買", SELL: "現貨賣", "WRITE-OFF": "銷帳", OPEN: "開槓桿", CLOSE: "平槓桿", LIQUIDATE: "爆倉" };
@@ -1778,7 +1824,7 @@
       ...Object.values(P.positions).map((p) => ({ chain: p.chain, pair: p.pair })),
       ...Object.values(P.levPositions).map((p) => ({ chain: p.chain, pair: p.pair })),
     ];
-    if (P.solAtFirstBuy) ps.push({ chain: P.solAtFirstBuy.chain, pair: P.solAtFirstBuy.pair });
+    const _bmPs = P.bmAtFirstBuy || P.solAtFirstBuy; if (_bmPs) ps.push({ chain: _bmPs.chain, pair: _bmPs.pair });
     if (ps.length) await fetchPairs(ps, true);
     renderPortfolio(false);
   });

@@ -223,7 +223,7 @@ function scoreSetup(f) {
 function diversifyPicks(scored, n = 6) {
   const ANGLE_ORDER = ["accumulation", "rotation", "compression", "mean_reversion", "higher_lows", "relative"];
   const SOFT = 2; // never more than 2 of same angle
-  const setups = scored.filter((s) => !s.f.alreadyUp && !s.f.extended && s.setupScore >= 28)
+  const setups = scored.filter((s) => !s.f.alreadyUp && !s.f.extended && s.setupScore >= 28 && !MAJORS.has(s.base))
     .sort((a, b) => b.setupScore - a.setupScore);
   const out = [];
   const usedAngle = new Map();

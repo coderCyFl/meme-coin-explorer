@@ -95,7 +95,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <h4>謹慎模擬倉（推薦入門）</h4>
       <ul>
         <li>只喺「今日跟買」撳 <b>落倉</b>，模式選 <b>現貨</b>。或者用「跟晒今批」（<em>只支援現貨</em>，較安全）。</li>
-        <li>睇「跑贏 SOL」同勝率——樣本少（&lt;20 筆）唔好下結論。</li>
+        <li>睇「跑贏 BTC」同勝率——樣本少（&lt;20 筆）唔好下結論。</li>
         <li>一定要睇 <b>避過</b> 清單：標咗唔好追嘅，多數係 FOMO／Rug 形態。</li>
         <li>起始資金可以改，但重置會清空紀錄；當係實驗本金，唔係真錢。</li>
       </ul>
@@ -132,7 +132,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <h4>建議一日流程</h4>
       <ol class="dayflow">
         <li>睇重點新聞（有冇新 rug／監管）</li>
-        <li>睇今日跟買同避過 · 對照 SOL</li>
+        <li>睇今日跟買同避過 · 對照 BTC</li>
         <li>現貨落倉（或跟晒今批）</li>
         <li>第二天更新報價 · 睇成績 · 決定平倉定繼續</li>
       </ol>
@@ -227,12 +227,12 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <h3>買入推薦 · 撳「落倉」放入模擬倉</h3>
     <div class="tablewrap"><table class="picks"><thead><tr>
       <th>幣</th><th>推薦時間</th><th class="num">推薦價</th><th class="num">而家</th>
-      <th class="num">回報</th><th class="num">同期 SOL</th><th class="num">跑贏 SOL</th><th>持有</th><th>24h / 72h / 7d</th><th></th>
+      <th class="num">回報</th><th class="num">同期 BTC</th><th class="num">跑贏 BTC</th><th>持有</th><th>24h / 72h / 7d</th><th></th>
     </tr></thead><tbody id="picksBody"></tbody></table></div>
 
     <h3>避過建議 <span class="muted">正確＝之後跌咗</span></h3>
     <div class="tablewrap"><table class="picks"><thead><tr>
-      <th>避過</th><th>推薦時間</th><th class="num">當時價</th><th class="num">而家</th><th class="num">之後走勢</th><th class="num">SOL</th><th>持有</th><th>暫時判決</th><th></th>
+      <th>避過</th><th>推薦時間</th><th class="num">當時價</th><th class="num">而家</th><th class="num">之後走勢</th><th class="num">BTC</th><th>持有</th><th>暫時判決</th><th></th>
     </tr></thead><tbody id="avoidBody"></tbody></table></div>
   </section>
   <section class="panel full-only" id="pickDetails"></section>
@@ -250,7 +250,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
     <div class="mood-hero" id="moodHero">
       <div class="mood-title">行情</div>
-      <div class="mood-mascot" id="moodMascot" aria-hidden="true"></div>
+      <div class="mood-mascot mood-mascot-3d" id="moodMascot" aria-hidden="true"></div>
       <div class="mood-feel" id="moodFeel">Feeling…</div>
       <div class="mood-feel-zh" id="moodFeelZh">載入中</div>
       <div class="mood-pair" id="moodPair"><span class="mood-ico" id="moodIco"></span> <span id="moodSym">—</span></div>
@@ -525,6 +525,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <dialog id="tradeDlg">
   <form method="dialog" id="tradeForm">
+    <div class="trade-orb-wrap" id="tradeOrb" aria-hidden="true" hidden></div>
     <h3 id="tradeTitle">模擬交易</h3>
     <p class="muted" id="tradeInfo"></p>
     <div id="tradeModeRow" class="mode-row mode-cards-row" hidden>
