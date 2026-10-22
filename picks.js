@@ -213,7 +213,7 @@
         el("p", { class: "sc-why", text: tip }),
         details,
         el("div", { class: "sc-actions" },
-          el("button", { class: "cta primary", onclick: () => openBuy({
+          el("button", { class: "primary", onclick: () => openBuy({
             chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address,
             symbol: x.e.symbol, name: x.e.name, price: livePx,
             source: x.e.chain === "binance" ? "binance" : undefined,
@@ -309,7 +309,7 @@
         ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
         el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
-        el("button", { class: "cta primary sm", onclick: () => openBuy({
+        el("button", { class: "primary sm", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
           symbol: r.base, name: (r.base || "") + " (Binance)", price: r.price, source: "binance",
         }) }, "落倉")
@@ -343,7 +343,7 @@
         el("td", { class: "num " + cls(x.excess), "data-label": "vs SOL", text: x.excess == null ? "–" : (x.excess > 0 ? "+" : "") + x.excess.toFixed(1) + " pts" }),
         el("td", { "data-label": "持有", text: held(x.e.created_at) }),
         hz,
-        el("td", { "data-label": "", class: "actions" }, el("button", { class: "cta primary buybtn", onclick: (ev) => { ev.stopPropagation(); openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }); } }, "落倉"), " ",
+        el("td", { "data-label": "", class: "actions" }, el("button", { class: "primary", onclick: (ev) => { ev.stopPropagation(); openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }); } }, "落倉"), " ",
           href ? el("a", { href, target: "_blank", rel: "noopener", onclick: (ev) => ev.stopPropagation(), text: "↗" }) : "")));
     }
     const ab = $("avoidBody"); ab.textContent = "";
@@ -418,7 +418,7 @@
     d.append(
       el("h3", { text: `${e.type === "buy" ? "🟢 買入推薦" : "🔴 避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
       el("p", { class: "rationale", text: e.rationale }),
-      e.type === "buy" ? el("p", {}, el("button", { class: "primary buybtn", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
+      e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
       el("div", { class: "kv" },
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
         el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 SOL $${x.b.benchmarks?.SOL?.price_usd ?? "?"}` }),
@@ -1274,8 +1274,8 @@
         el("td", { class: "num live-px", "data-label": "而家", text: px == null ? "…" : price(px) }), el("td", { class: "num", "data-label": "市值", text: v == null ? "…" : money2(v) }),
         el("td", { class: "num pnl-strong " + cls(upct), "data-label": "浮盈虧%", text: upct == null ? "…" : pct(upct) }),
         el("td", { class: "num pnl-strong " + cls(u), "data-label": "浮盈虧$", text: u == null ? "…" : money2(u) }),
-        el("td", { "data-label": "", class: "actions" }, el("button", { class: "cta", onclick: () => openSell(k) }, "平倉"), " ",
-          el("button", { class: "cta primary", onclick: () => openBuy({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol, name: p.name }) }, "加倉"))));
+        el("td", { "data-label": "", class: "actions" }, el("button", { class: "secondary", onclick: () => openSell(k) }, "平倉"), " ",
+          el("button", { class: "primary", onclick: () => openBuy({ chain: p.chain, pair: p.pair, token: p.token, symbol: p.symbol, name: p.name }) }, "加倉"))));
     }
     $("holdEmpty").hidden = Object.keys(P.positions).length > 0;
 
@@ -1304,7 +1304,7 @@
         el("td", { class: "num neg", "data-label": "爆倉價", text: price(liqPriceLong(pos.entry, pos.leverage)) }),
         el("td", { class: "num pnl-strong " + cls(m?.unreal), "data-label": "浮盈虧", text: m ? `${money2(m.unreal)} (${levPnlPct == null ? "" : pct(levPnlPct)})` : "…" }),
         el("td", { class: "num " + cls(m?.equity - pos.margin), "data-label": "倉權益", text: m ? money2(m.equity) : "…" }),
-        el("td", { "data-label": "", class: "actions" }, el("button", { class: "cta", onclick: () => closeLev(id) }, "平倉"))));
+        el("td", { "data-label": "", class: "actions" }, el("button", { class: "secondary", onclick: () => closeLev(id) }, "平倉"))));
     }
     $("levEmpty").hidden = levEntries2.length > 0;
 

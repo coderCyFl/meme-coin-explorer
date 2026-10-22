@@ -6,7 +6,7 @@
 <title>模擬倉 · AI 揀幣 · Meme Coin Explorer</title>
 <meta name="description" content="個人 AI 模擬倉：用 AI + X 搵幣，模擬落倉，追蹤真實賺蝕。唔係投資建議。">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%237c5cff%22 width=%22100%22 height=%22100%22 rx=%2220%22/%3E%3Ctext x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-size=%2258%22 fill=%22white%22 font-family=%22system-ui%22%3EM%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23F0B90B%22 width=%22100%22 height=%22100%22 rx=%2218%22/%3E%3Ctext x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-size=%2258%22 fill=%22%230b0e11%22 font-family=%22system-ui%22 font-weight=%22700%22%3EM%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <script>
@@ -19,7 +19,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <span class="logo logo-mark" aria-hidden="true">M</span>
     <div>
       <h1>模擬倉 · AI 揀幣</h1>
-      <p class="sub">Binance · 多角度留意盤 · 模擬倉</p>
+      <p class="sub">模擬倉 · Binance 公開行情</p>
     </div>
   </div>
   <div class="header-right">
@@ -32,7 +32,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </header>
 
 <div class="disclaimer" role="note">
-  <div class="disc-one"><strong>⚠️ 模擬／研究，唔係投資建議。</strong> Meme 高風險 · 假錢倉
+  <div class="disc-one"><strong>模擬／研究，唔係投資建議。</strong> 假錢倉 · 高風險
     <button type="button" class="linkish" id="discToggle">詳情</button></div>
   <div class="disc-full" id="discFull" hidden>
     Meme coin 大多數歸零，好多係 scam / rug / honeypot。
@@ -168,10 +168,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <h2 class="home-title">今日跟買</h2>
         <p class="home-sub" id="setupMeta">多角度留意盤 · 唔係 24h 升幅榜</p>
       </div>
-      <div class="row wrap">
-        <button type="button" id="livePicksRefresh" class="sm">↻ 重算</button>
-        <button id="allinFromPicks" class="cta hot sm" title="孤注一擲">All-in</button>
-        <button id="picksRefresh" class="sm full-only">↻</button>
+      <div class="row wrap home-tools">
+        <button type="button" id="livePicksRefresh" class="ghost sm" title="重算">↻</button>
+        <button id="picksRefresh" class="ghost sm full-only" title="刷新">↻</button>
       </div>
     </div>
     <div id="simpleCards" class="simple-cards"></div>
@@ -201,7 +200,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="panelhead">
       <h2>完整紀錄</h2>
       <div class="row wrap">
-        <button id="followBatch" class="primary" title="跟晒今批">跟晒今批</button>
+        <button id="followBatch" class="secondary" title="跟晒今批">跟晒今批</button>
       </div>
     </div>
     <p class="honesty muted" id="sampleHonesty"></p>
@@ -250,7 +249,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
     </div>
     <div class="mood-hero" id="moodHero">
-      <div class="mood-title">Coin Mood</div>
+      <div class="mood-title">行情</div>
       <div class="mood-mascot" id="moodMascot" aria-hidden="true"></div>
       <div class="mood-feel" id="moodFeel">Feeling…</div>
       <div class="mood-feel-zh" id="moodFeelZh">載入中</div>
@@ -265,8 +264,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
       <div class="mood-vol" id="moodVol">Vol —</div>
       <div class="mood-actions">
-        <button type="button" class="cta primary" id="moodBuy">落倉</button>
-        <a class="cta" id="moodBnLink" href="#" target="_blank" rel="noopener">Binance ↗</a>
+        <button type="button" class="primary" id="moodBuy">落倉</button>
+        <a class="secondary" id="moodBnLink" href="#" target="_blank" rel="noopener">Binance ↗</a>
       </div>
     </div>
     <div class="row wrap browse-controls mood-search" id="bnSearchRow" hidden>
@@ -295,28 +294,28 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <div class="allin-title">🎰 孤注一擲進行中 · 一舖過</div>
       <div id="allinLive" class="allin-live-stats"></div>
     </div>
-    <button type="button" id="allinCloseBtn" class="cta danger">平倉／結束呢鋪</button>
+    <button type="button" id="allinCloseBtn" class="secondary danger">平倉／結束呢鋪</button>
   </div>
 
   <div id="allinResult" class="allin-result" hidden>
     <div id="allinResultBody"></div>
-    <button type="button" id="allinAgain" class="cta primary">再來一鋪</button>
+    <button type="button" id="allinAgain" class="primary">再來一鋪</button>
   </div>
 
   <section class="panel simple-only" id="simplePfPanel">
     <h2>我的模擬倉</h2>
     <div class="stats" id="simplePfStats"></div>
-    <button type="button" class="cta" id="simplePfDetail">睇持倉詳情</button>
+    <button type="button" class="secondary" id="simplePfDetail">睇持倉詳情</button>
   </section>
 
   <section class="panel">
-    <div class="allin-entry row wrap" id="allinEntryBar">
-      <button type="button" id="allinStartBtn" class="cta primary hot">🎰 開始孤注一擲</button>
+    <div class="allin-entry row wrap full-only adv-only" id="allinEntryBar">
+      <button type="button" id="allinStartBtn" class="secondary">開始孤注一擲</button>
       <span class="muted">揀一隻幣 → All-in 現貨或 50x。假錢試膽，真錢唔好。</span>
     </div>
     <div class="panelhead">
       <h2>🧪 我嘅模擬倉 <span class="en">Paper portfolio</span></h2>
-      <div class="risk-bar">
+      <div class="risk-bar full-only">
         <span class="muted">風險檔</span>
         <div class="seg risk" id="riskProfile">
           <button type="button" class="segbtn" data-risk="safe">穩陣</button>
@@ -337,8 +336,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <label class="muted" for="feePct">費%</label>
         <input id="feePct" type="number" min="0" max="20" step="0.1" value="1">
         <button id="pfRefresh" class="sm">↻ 報價</button>
-        <button id="copyPicks" class="primary">🤖 跟晒今批</button>
-        <button id="pfReset" class="danger sm">重置</button>
+        <button id="copyPicks" class="secondary full-only">跟晒今批</button>
+        <button id="pfReset" class="ghost sm danger">重置</button>
       </div>
       <p class="muted risk-hint" id="riskHint">假錢儘管試大；真錢唔好咁玩。進取檔預設最多 10x。</p>
     </div>
@@ -388,12 +387,13 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel">
     <h2>更多</h2>
     <div class="more-list">
-      <a class="more-item" href="#browse">👀 睇幣（Coin Mood · Binance）</a>
-      <a class="more-item" href="#news">📰 重點新聞</a>
-      <a class="more-item" href="#explore">🔎 市場掃描（完整 · Dex 舊工具）</a>
-      <button type="button" class="more-item" id="moreToFull">🔓 切換「完整」介面</button>
-      <button type="button" class="more-item" id="moreHowto">📖 點樣用</button>
-      <a class="more-item" href="#picks">🤖 返去揀幣</a>
+      <a class="more-item" href="#browse">睇幣 · Coin Mood</a>
+      <a class="more-item" href="#news">重點新聞</a>
+      <button type="button" class="more-item" id="allinFromPicks">孤注一擲（進階）</button>
+      <a class="more-item" href="#explore">市場掃描（完整）</a>
+      <button type="button" class="more-item" id="moreToFull">切換「完整」介面</button>
+      <button type="button" class="more-item" id="moreHowto">點樣用</button>
+      <a class="more-item" href="#picks">返去今日跟買</a>
     </div>
   </section>
 </div>
@@ -510,8 +510,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="allin-scenarios" id="allinScenarios"></div>
     <p class="simnote">確認後會鎖倉：唔可以再開其他倉，直至平倉／爆倉／重置。</p>
     <div class="row">
-      <button type="button" id="allinCancel">取消</button>
-      <button type="submit" id="allinOk" class="primary hot">我知風險 · 孤注一擲</button>
+      <button type="button" id="allinCancel" class="ghost">取消</button>
+      <button type="submit" id="allinOk" class="primary">我知風險 · 孤注一擲</button>
     </div>
   </form>
 </dialog>
@@ -569,7 +569,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="risk-callout" id="tradeCallout" hidden></div>
     <p class="muted" id="tradePreview"></p>
     <p class="simnote" id="tradeSimNote">🧪 假錢儘管試大；真錢唔好咁玩。</p>
-    <div class="row"><button value="cancel" type="button" id="tradeCancel">取消</button><button id="tradeOk" value="ok" class="primary">確認落倉</button></div>
+    <div class="row trade-actions"><button value="cancel" type="button" id="tradeCancel" class="ghost">取消</button><button id="tradeOk" value="ok" class="primary">確認落倉</button></div>
   </form>
 </dialog>
 
@@ -600,12 +600,12 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
 
 <nav class="bottom-nav" role="tablist" aria-label="主要分頁">
-  <a href="#picks" class="tab" data-view="picks"><span class="ico">买</span><span>跟買</span></a>
-  <a href="#browse" class="tab" data-view="browse"><span class="ico">市</span><span>睇幣</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico">倉</span><span>模擬倉</span></a>
-  <a href="#news" class="tab bn-full" data-view="news"><span class="ico">訊</span><span>新聞</span></a>
-  <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico">掃</span><span>掃描</span></a>
-  <a href="#more" class="tab bn-simple" data-view="more"><span class="ico">⋯</span><span>更多</span></a>
+  <a href="#picks" class="tab" data-view="picks"><span class="ico" aria-hidden="true">買</span><span class="bn-lab">跟買</span></a>
+  <a href="#browse" class="tab" data-view="browse"><span class="ico" aria-hidden="true">市</span><span class="bn-lab">睇幣</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico" aria-hidden="true">倉</span><span class="bn-lab">倉</span></a>
+  <a href="#news" class="tab bn-full" data-view="news"><span class="ico" aria-hidden="true">訊</span><span class="bn-lab">新聞</span></a>
+  <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico" aria-hidden="true">掃</span><span class="bn-lab">掃描</span></a>
+  <a href="#more" class="tab bn-simple" data-view="more"><span class="ico" aria-hidden="true">⋯</span><span class="bn-lab">更多</span></a>
 </nav>
 
 <script src="live.js"></script>
