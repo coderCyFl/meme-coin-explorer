@@ -43,3 +43,9 @@ Done this run:
 - Checklist + `daily-outcomes.yml` comment: Dex meme → Binance public.
 - Light `news.json` refresh (X search_news ×3) → `data/raw/news-002/`.
 - Batch writer auto-increment; **skipped batch-005** (same morning as 004; would likely clone).
+
+## Hourly update 2026-10-22 ~19:00 Asia/Shanghai
+Review: live Pages OK; Binance REST SOL mark live; batch-004 still 6 buy / 3 avoid Binance setups; news snapshot ~10h old (OK); outcomes empty pending ≥24h; no Dex hot list on home/browse; JS `node --check` clean.
+
+Self-growth (docs only — no CEX redo):
+- Rewrote README intro / Features / Cost / Live pricing to **Binance-first**; Dex scan documented as full-mode optional only.

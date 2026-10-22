@@ -8,28 +8,25 @@ Tabs：🤖 揀幣 · 👀 睇幣 · 🧪 模擬倉 · 📰 新聞 · 🔎 掃�
 > 用 AI + X 搵幣 → 模擬落倉 → 睇真實賺蝕。全部係模擬，冇真實金錢。
 
 
-A static website for **researching** meme coins. It combines live DEX market data from
-[DexScreener](https://docs.dexscreener.com/api/reference) with a snapshot of **buzz on X**.
-It's plain HTML, CSS and vanilla JS, with no build step, no API keys and no server, so it runs on GitHub Pages for free.
+A static website for a **personal AI paper-trading experiment** on meme / high-beta coins listed on Binance.
+**熱幣／睇幣／今日跟買** use **Binance public REST + WebSocket only** (`data-api.binance.vision` / `data-stream.binance.vision`, no key).
+Dex meme hot lists are **not** the product path. Plain HTML/CSS/JS, no build step, hosts free on GitHub Pages.
 
 > ⚠️ **Not financial advice.** Meme coins are extremely high risk. Most go to zero, and many are rugs or
-> honeypots. "Boosted" tokens are paid promotions, and X buzz is easy to fake. Use this as a research
-> starting point only.
+> honeypots. DexScreener "boosted" tokens are paid promotions, and X buzz is easy to fake. This site is simulated cash only.
 
 ![screenshot](screenshot.png)
 
-Three tabs: **🔎 Explorer** (live table), **🤖 AI Picks & Scorecard** (an honest, append-only track record of AI picks vs SOL) and **🧪 Paper Trading** (a fake $1,000 portfolio kept in your browser).
+Main path: **今日跟買** (multi-angle Binance OHLCV setups, not 24h gainers) → **落倉** into a fake portfolio → live Binance marks.
+Tabs: 揀幣 · 睇幣 (Coin Mood / Binance board) · 模擬倉 · 新聞 · optional full-mode Dex 掃描 (legacy / research only).
 
 ## Features
-- **👀 睇幣 (Browse)**: public discovery of 30–50+ meme coins (boosts + profiles + liquid search). Not AI picks.
-- **Sources**: DexScreener *Top boosted*, *Latest token profiles*, or free-text *Search* (e.g. `pepe`, `bonk`).
-- **Hybrid live pricing**: Binance WS for a few known listed assets (by contract); Dex poll for everything else. Labels show 「Binance 即時」vs「Dex 即時」.
-- **Sortable table** (click headers) with name/symbol, chain, price, 24h change, 24h volume, liquidity,
-  market cap/FDV, pair age, X mentions (7d), risk flags, and a DexScreener link.
-- **Filters**: chain, minimum liquidity (default $50k), name/symbol text, "has X buzz", "hide flagged".
-- **Risk flags**: 💧 liquidity < $50k · 🐣 pair < 24h old · 🌀 24h volume > 50× liquidity · 📉 −50% in 24h · 🚀 boosted (paid promo).
-- **Details drawer** (click a row): extra metrics, links, daily X mention bars and top X posts.
-- **X buzz bar**: tracked tickers ranked by 7-day mentions, plus 📈 spiking, ⚠️ ticker-collision and ❔ common-word markers.
+- **今日跟買**: ≥5–6 diversified Binance setups (volume creep, compression, RS vs BTC, rotation, accumulation, higher-lows). Hard 24h pumps go to collapsed 「已在升／勿追」.
+- **👀 睇幣**: Coin Mood hero + Binance USDT board with real logos, L/H, volume — public browse, not Dex boosted.
+- **🧪 模擬倉**: shared fake cash; spot + isolated leverage (tier caps 3x / 10x / 50x); All-in mode; live marks after fill.
+- **📰 新聞**: static `data/news.json` snapshot (site never calls X).
+- **完整紀錄 / Scorecard**: append-only batches vs SOL; old Dex Solana batches kept for honesty, new batches are Binance.
+- **Full-mode 市場掃描**: optional DexScreener table (boosts/search) — not home, not hot list, not AI picks.
 
 ## Run locally
 ```bash
@@ -42,26 +39,18 @@ You need a local server rather than `file://` because the page `fetch()`es `data
 ## Cost-saving design
 | Piece | Where it runs | Cost |
 |---|---|---|
-| Market data | Browser → DexScreener public API (CORS `*`, no key) | Free |
-| Live marks (most memes) | DexScreener pair REST poll ~every 4s while positions open / browse live on | Free |
-| Live marks (known CEX) | Binance public WS via `data-stream.binance.vision` (no key); only known mints | Free |
-| Repeat visits | `localStorage` cache, 3 min TTL (live loop forces refresh) | Fewer API hits |
-| Token → pair lookup | `/tokens/v1/{chain}/{a,b,c…}`, batched 30 addresses per call | ~1–4 calls per load |
-| X buzz | **Pre-computed** `data/x_buzz.json`. The site never calls X | Only when you refresh |
+| Hot / browse / AI setups | Browser → Binance public REST (`data-api.binance.vision`) | Free |
+| Live marks (paper + board) | Binance public WS (`data-stream.binance.vision`) | Free |
+| AI pick batches | Offline `scripts/make_bn_setup_picks.mjs` → `data/picks.json` | Free |
+| Outcomes snapshots | `scripts/snapshot_outcomes.py` (Binance 24hr for `*USDT`; Dex only for legacy Solana batch-001) | Free |
+| News / X buzz | Pre-computed `data/news.json` / `data/x_buzz.json`. Site never calls X | Only when you refresh |
+| Optional Dex scan | Full-mode only → DexScreener public API | Free |
 | Hosting | GitHub Pages (static) | Free |
 
-DexScreener endpoints used (tested working with CORS `access-control-allow-origin: *`):
-- `GET /token-boosts/top/v1`: top boosted tokens
-- `GET /token-profiles/latest/v1`: newest token profiles
-- `GET /latest/dex/search?q=…`: search pairs
-- `GET /tokens/v1/{chainId}/{addr1,addr2,…}`: pair data for up to 30 tokens per call
-
-Public rate limits are roughly 60 req/min for profiles/boosts and 300 req/min for pairs/search, which is plenty for one person.
-
 ## Live pricing honesty
-Most pump.fun / DexScreener memes are **not** on Binance. The app never pretends they are.
-- **Binance** (`wss://data-stream.binance.vision`, REST `https://data-api.binance.vision`): only when the token mint is in a small known map (e.g. wrapped SOL, BONK, WIF, PEPE, …) and a USDT spot pair exists.
-- **DexScreener**: everyone else — polled about every 4 seconds while you have open paper positions (or browse 「即時更新」 is on). Paused when the tab is hidden (Page Visibility API).
+Product path is **Binance spot USDT** only for 熱幣／睇幣／今日跟買.
+- **Binance** REST + WS: primary marks for new picks and the browse board.
+- **DexScreener**: legacy open positions / full-mode explorer only — never the hot list or AI primary list. Paused when the tab is hidden (Page Visibility API).
 
 
 ## How the X buzz snapshot works
