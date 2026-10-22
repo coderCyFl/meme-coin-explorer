@@ -416,7 +416,7 @@
           el("div", { class: "muted tiny", text: geekBits.join(" · ") }))
       : "";
     d.append(
-      el("h3", { text: `${e.type === "buy" ? "🟢 買入推薦" : "🔴 避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
+      el("h3", { text: `${e.type === "buy" ? "買入推薦" : "避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
       el("p", { class: "rationale", text: e.rationale }),
       e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
       el("div", { class: "kv" },
@@ -453,8 +453,8 @@
     const h = $("riskHint");
     if (h) {
       h.textContent = id === "safe" ? "穩陣：偏向現貨，槓桿最多 3x。假錢都可以慢慢玩。"
-        : id === "yolo" ? "💥 極高風險：最多 50x。假錢儘管試大；真錢唔好咁玩。跌一啲就爆倉。"
-        : id === "allin" ? "🎰 孤注一擲：一隻幣 All-in（現貨或 50x）。輸就歸零、贏就大賺。假錢試膽。"
+        : id === "yolo" ? "極高風險：最多 50x。假錢儘管試大；真錢唔好咁玩。跌一啲就爆倉。"
+        : id === "allin" ? "孤注一擲：一隻幣 All-in（現貨或 50x）。輸就歸零、贏就大賺。假錢試膽。"
         : "進取：最多 10x。假錢可以試大倉；真倉請當娛樂數據。";
       h.className = "muted risk-hint" + (id === "yolo" || id === "allin" ? " yolo" : "");
     }
@@ -582,6 +582,7 @@
       $("tradeAmtLabel").textContent = label;
       $("tradeOk").textContent = okLabel || "確認";
       $("tradeModeRow").hidden = !modePicker;
+      const trr = $("tradeRiskRow"); if (trr) trr.hidden = true; // denser ticket — risk already global
       setRisk(riskId);
       document.querySelectorAll("#tradeRisk [data-risk]").forEach((b) => {
         b.classList.toggle("active", b.dataset.risk === riskId);
@@ -590,8 +591,8 @@
       rebuildLevPresets(lev);
       $("tradeLevRow").hidden = !modePicker || mode !== "lev";
       $("tradeSimNote").textContent = mode === "lev"
-        ? "💥 槓桿模擬：假錢儘管試大；真錢唔好咁玩。保證金可以歸零。"
-        : "🧪 現貨模擬。假錢可以落大注；真錢請當娛樂。";
+        ? "槓桿模擬 · 保證金可歸零 · 假錢。"
+        : "現貨模擬 · 假錢。";
       const co = $("tradeCallout");
       const paintCallout = (text, hot) => {
         if (!text) { co.hidden = true; co.textContent = ""; return; }
@@ -605,15 +606,15 @@
         const note = $("tradeModeRiskNote");
         if (note) {
           note.textContent = mode === "lev"
-            ? "🟠 槓桿：保證金可歸零 · 假錢可試 · 真錢唔好亂開"
-            : "🟢 現貨：最多蝕晒本金 · 冇爆倉價";
+            ? "槓桿：保證金可歸零"
+            : "現貨：最多蝕晒本金";
           note.className = "mode-risk-note muted" + (mode === "lev" ? " lev" : " spot");
         }
         $("tradeLevRow").hidden = mode !== "lev";
         $("tradeAmtLabel").textContent = mode === "lev" ? "保證金 (USD)" : label;
         $("tradeSimNote").textContent = mode === "lev"
-          ? "💥 槓桿模擬：假錢儘管試大；真錢唔好咁玩。保證金可以歸零。"
-          : "🧪 現貨模擬。假錢可以落大注；真錢請當娛樂。";
+          ? "槓桿模擬 · 保證金可歸零 · 假錢。"
+          : "現貨模擬 · 假錢。";
         const ok = $("tradeOk");
         if (ok) {
           ok.classList.toggle("lev-ok", mode === "lev");
@@ -846,14 +847,14 @@
     pf.save(P);
     const modeLabel = mode === "lev" ? "50x 槓桿" : "現貨 All-in";
     await playOverlay({
-      emoji: mode === "lev" ? "🚀" : "🎰",
+      emoji: mode === "lev" ? "×" : "★",
       title: "孤注一擲！",
       sub: "一舖過",
       coin: `$${info.symbol} · ${modeLabel}`,
       kind: "",
       ms: 1600,
     });
-    toast(`🎰 孤注一擲已開始：$${info.symbol}（${mode === "lev" ? "50x" : "現貨"}）`);
+    toast(`孤注一擲已開始：$${info.symbol}（${mode === "lev" ? "50x" : "現貨"}）`);
     ensureLiveLoop(true);
     goView("portfolio");
     await renderPortfolio(true);
@@ -886,7 +887,7 @@
     box.classList.add("show-anim", bust ? "bust-theme" : win ? "win-theme" : "");
     body.textContent = "";
     body.append(
-      el("div", { class: "allin-title", text: bust ? "💥 爆倉／歸零" : win ? "今鋪贏咗 🎉" : "今鋪完結" }),
+      el("div", { class: "allin-title", text: bust ? "爆倉／歸零" : win ? "今鋪贏咗" : "今鋪完結" }),
       el("div", { class: "allin-result-pct " + cls(a.retPct), text: pct(a.retPct) }),
       el("p", { text: `$${a.symbol} · ${a.mode === "lev" ? (a.leverage || 50) + "x 槓桿" : "現貨"} · ${a.reason || ""}` }),
       el("p", { class: "muted", text: `入場 ${price(a.entry)} → 出場 ${price(a.exitPrice)} · 盈虧 ${money2(a.pnl)}` })
@@ -1052,7 +1053,7 @@
           if (mode === "lev") {
             const n = v * lev, drop = LIQ_MARGIN_FRAC / lev * 100;
             const imp = estimateImpact(n, li.liq || 0);
-            return [`若價翻倍：浮盈約 ${money2(v * lev)}（未計費／衝擊）· 若跌 ${drop.toFixed(1)}%：💥 爆倉 · ${imp.note}`, lev >= 10 || imp.impactPct >= 5];
+            return [`若價翻倍：浮盈約 ${money2(v * lev)}（未計費／衝擊）· 若跌 ${drop.toFixed(1)}%：爆倉 · ${imp.note}`, lev >= 10 || imp.impactPct >= 5];
           }
           const imp = estimateImpact(v, li.liq || 0);
           return [`若翻倍：約賺 ${money2(v)} · 若歸零：最多蝕 ${money2(v)} · ${imp.note}`, v >= P.cash * 0.25 || imp.impactPct >= 5];
@@ -1126,7 +1127,7 @@
       P.trades.unshift({ t: new Date().toISOString(), kind: "lev", side: "LIQUIDATE", chain: pos.chain, pair: pos.pair, symbol: pos.symbol, price: mark, qty: pos.qty, usd: 0, fee: 0, pnl, leverage: pos.leverage, notional: pos.notional });
       delete P.levPositions[id];
       pf.save(P);
-      toast(`💥 $${pos.symbol} ${pos.leverage}x 已爆倉，保證金 ${money2(pos.margin)} 歸零`);
+      toast(`$${pos.symbol} ${pos.leverage}x 已爆倉，保證金 ${money2(pos.margin)} 歸零`);
       return;
     }
     const res = await askTrade({
@@ -1176,7 +1177,7 @@
 
   async function copyPicks() {
     if (allinActive()) return alert("孤注一擲進行中，唔可以跟晒今批");
-    if (riskId === "allin") return alert("孤注一擲請撳「🎰 孤注一擲」揀一隻幣，唔好用跟晒");
+    if (riskId === "allin") return alert("孤注一擲請撳「孤注一擲」揀一隻幣，唔好用跟晒");
     if (!S.picks) await loadPicks();
     const last = S.picks.batches[S.picks.batches.length - 1];
     const buys = last.entries.filter((e) => e.type === "buy");
@@ -1245,7 +1246,7 @@
     }
     const liqN = checkLiquidations(levMarks);
     if (liqN) {
-      toast(`💥 ${liqN} 個槓桿倉觸發爆倉`);
+      toast(`${liqN} 個槓桿倉觸發爆倉`);
       if (P.allin && P.allin.status === "open" && P.allin.mode === "lev" && !P.levPositions[P.allin.key]) {
         const last = P.trades.find((t) => t.side === "LIQUIDATE" && t.symbol === P.allin.symbol);
         endAllinRound({ reason: "爆倉", exitPrice: last?.price ?? 0, retPct: -100, pnl: -(P.allin.cashBefore || 0) });
@@ -1389,7 +1390,7 @@
       stat("跑贏 SOL", solRet == null ? "–" : (totalPct - solRet > 0 ? "+" : "") + (totalPct - solRet).toFixed(1) + " pts", "總回報 − SOL", cls(solRet == null ? 0 : totalPct - solRet)));
 
     const tb = $("tradeBody"); tb.textContent = "";
-    const sideZh = { BUY: "現貨買", SELL: "現貨賣", "WRITE-OFF": "銷帳", OPEN: "開槓桿", CLOSE: "平槓桿", LIQUIDATE: "💥爆倉" };
+    const sideZh = { BUY: "現貨買", SELL: "現貨賣", "WRITE-OFF": "銷帳", OPEN: "開槓桿", CLOSE: "平槓桿", LIQUIDATE: "爆倉" };
     for (const t of P.trades.slice(0, 200))
       tb.append(el("tr", {},
         el("td", { text: localTime(t.t) }),
@@ -1477,7 +1478,7 @@
     return new Promise((resolve) => {
       const box = $("allinFx"); if (!box) return resolve();
       box.className = "fx-overlay" + (kind ? " " + kind : "");
-      $("allinFxEmoji").textContent = emoji || "🎰";
+      $("allinFxEmoji").textContent = emoji || "★";
       $("allinFxTitle").textContent = title || "孤注一擲！";
       $("allinFxSub").textContent = sub || "一舖過";
       $("allinFxCoin").textContent = coin || "";
