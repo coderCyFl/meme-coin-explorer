@@ -162,6 +162,22 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <!-- ===== 今日跟買 ===== -->
 <div id="view-picks" class="view" hidden>
   <!-- Simple home: brief + cards + portfolio strip -->
+  <!-- Big numbers first: paper follow report -->
+  <section class="panel follow-report" id="followReportPanel" aria-live="polite">
+    <div class="fr-head">
+      <div>
+        <div class="fr-kicker" id="followReportKicker">若跟晒今批買 · 24h</div>
+        <div class="fr-status" id="followReportStatus">載入中…</div>
+      </div>
+      <div class="fr-hero" id="followReportHero">
+        <div class="fr-pct" id="followReportPct">—</div>
+        <div class="fr-pnl" id="followReportPnl">假錢 —</div>
+      </div>
+    </div>
+    <div class="fr-meta" id="followReportMeta"></div>
+    <div class="fr-rows" id="followReportRows"></div>
+  </section>
+
   <section class="panel home-brief simple-only" id="simpleCardsPanel">
     <div class="panelhead">
       <div>
@@ -177,10 +193,15 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="simple-pf-mini pf-glance mini" id="simplePfMini" aria-live="polite"></div>
   </section>
 
-  <details class="panel chase-panel simple-only" id="chasePanel">
-    <summary>已在升／勿追 <span class="muted">對照 · 唔係推薦</span></summary>
+  <section class="panel pump-mirror simple-only" id="chasePanel">
+    <div class="panelhead">
+      <div>
+        <h3 class="pump-title">爆升對照／前兆</h3>
+        <p class="home-sub">近 1–7 日急升只做對照 · AI 跟買唔追呢啲</p>
+      </div>
+    </div>
     <div id="chaseList" class="chase-list"></div>
-  </details>
+  </section>
 
   <section class="panel simple-only" id="simpleNewsStrip" hidden>
     <a id="simpleNewsLink" class="simple-news" href="#news"><span class="k">新聞</span> <span id="simpleNewsText">載入中…</span> <span id="simpleNewsAge" class="age"></span></a>

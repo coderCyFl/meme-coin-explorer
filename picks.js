@@ -218,7 +218,12 @@
             )
           ),
           el("div", { class: "sc-px" },
-            el("div", { class: "num live-px", "data-bn-price": x.e.pair_address || "", text: livePx != null ? price(livePx) : "…" })
+            el("div", { class: "num live-px", "data-bn-price": x.e.pair_address || "", text: livePx != null ? price(livePx) : "…" }),
+            (x.ret != null
+              ? el("div", { class: "sc-ret num " + cls(x.ret), text: pct(x.ret) })
+              : (livePx != null && x.e.entry_price_usd
+                ? el("div", { class: "sc-ret num " + cls((livePx / x.e.entry_price_usd - 1) * 100), text: pct((livePx / x.e.entry_price_usd - 1) * 100) })
+                : el("div", { class: "sc-ret muted", text: "—" })))
           )
         ),
         el("p", { class: "sc-why", text: tip }),
@@ -234,23 +239,195 @@
     });
   }
 
-  function renderChaseList(chasing) {
+  const FAKE_STAKE = 1000; // equal-weight paper stake across latest buys
+
+  function followHorizonState(createdAt) {
+    const age = hoursSince(createdAt);
+    const left = 24 - age;
+    if (age >= 24) return { kind: "full", age, left: 0, label: "已滿 24h" };
+    return { kind: "mtm", age, left, label: `未滿 24h · 暫計（仲差 ${Math.max(0, left).toFixed(1)}h）` };
+  }
+
+  /** Prominent paper result: if you followed latest-batch buys equally. */
+  function renderFollowReport(buys) {
+    const panel = $("followReportPanel");
+    const rowsEl = $("followReportRows");
+    const pctEl = $("followReportPct");
+    const pnlEl = $("followReportPnl");
+    const stEl = $("followReportStatus");
+    const metaEl = $("followReportMeta");
+    if (!panel || !rowsEl || !pctEl) return;
+    const list = (buys || []).filter((x) => x && x.e && x.e.type === "buy");
+    S._followBuys = list;
+    rowsEl.textContent = "";
+    if (!list.length) {
+      pctEl.textContent = "—";
+      pctEl.className = "fr-pct";
+      if (pnlEl) { pnlEl.textContent = "假錢 —"; pnlEl.className = "fr-pnl"; }
+      if (stEl) stEl.textContent = "未有今批買入推薦";
+      if (metaEl) metaEl.textContent = "";
+      return;
+    }
+    const created = list[0].e.created_at;
+    const hz = followHorizonState(created);
+    const withRet = list.map((x) => {
+      const li = liveInfo(x.e.chain, x.e.pair_address);
+      const ret = li.state === "dead" ? -100
+        : li.state === "live" ? (li.price / x.e.entry_price_usd - 1) * 100
+        : (x.ret != null ? x.ret : null);
+      // Prefer sealed 24h outcome when due
+      const rec = S.outcomes.find((o) => o.pick_id === x.e.id && o.horizon_h === 24);
+      const sealed = hz.kind === "full" && rec ? rec.return_pct : null;
+      const use = sealed != null ? sealed : ret;
+      return { x, li, ret: use, sealed: sealed != null, entry: x.e.entry_price_usd, now: li.state === "live" ? li.price : null };
+    });
+    const known = withRet.filter((r) => r.ret != null);
+    const avgRet = known.length ? known.reduce((a, b) => a + b.ret, 0) / known.length : null;
+    const wins = known.filter((r) => r.ret > 0).length;
+    const per = FAKE_STAKE / list.length;
+    const pnl = known.length ? known.reduce((a, b) => a + per * (b.ret / 100), 0) : null;
+    const sealedAll = withRet.every((r) => r.sealed);
+    const statusBits = [
+      hz.label,
+      sealedAll ? "· 已鎖 24h 快照" : (hz.kind === "full" ? "· 即時價暫代（待快照）" : "· 即時對盤"),
+      `勝率 ${known.length ? wins + "/" + known.length : "—"}`,
+    ];
+    if (stEl) stEl.textContent = statusBits.join(" ");
+    if (metaEl) {
+      metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${batchLabel(list[0].b)} · ${localTime(created)}`;
+    }
+    if (avgRet == null) {
+      pctEl.textContent = "…";
+      pctEl.className = "fr-pct";
+      if (pnlEl) { pnlEl.textContent = "報價連接中"; pnlEl.className = "fr-pnl"; }
+    } else {
+      pctEl.textContent = (avgRet >= 0 ? "+" : "") + avgRet.toFixed(2) + "%";
+      pctEl.className = "fr-pct " + cls(avgRet);
+      if (pnlEl) {
+        pnlEl.textContent = (pnl >= 0 ? "+" : "") + money2(pnl).replace(/^\$/, (pnl < 0 ? "-$" : "$").slice(0, 0)) ;
+        // money2 already has $ sign
+        pnlEl.textContent = (pnl >= 0 ? "賺 " : "蝕 ") + ((pnl < 0 ? "-$" : "$") + Math.abs(pnl).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        pnlEl.className = "fr-pnl " + cls(pnl);
+      }
+    }
+    panel.classList.toggle("fr-pos", avgRet != null && avgRet > 0);
+    panel.classList.toggle("fr-neg", avgRet != null && avgRet < 0);
+    const liveApi = window.MCE.live;
+    for (const r of withRet) {
+      const e = r.x.e;
+      const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(e.symbol, "coin-logo", 28) : "";
+      const angle = e.angle || e.entry_snapshot?.angle || "";
+      rowsEl.append(el("div", { class: "fr-row", "data-fr-pair": e.pair_address, "data-fr-entry": String(e.entry_price_usd) },
+        logo,
+        el("div", { class: "fr-id" },
+          el("div", { class: "nm", text: e.symbol }),
+          el("div", { class: "sy" },
+            el("span", { class: "angle-pill", text: ANGLE_LABEL[angle] || "留意盤" }),
+            r.sealed ? el("span", { class: "pill", text: "24h鎖" }) : ""
+          )
+        ),
+        el("div", { class: "fr-px" },
+          el("div", { class: "muted tiny", text: "入 " + price(e.entry_price_usd) }),
+          el("div", { class: "num live-px", "data-bn-price": e.pair_address, text: r.now != null ? price(r.now) : "…" })
+        ),
+        el("div", { class: "fr-ret num " + cls(r.ret), "data-fr-ret": e.pair_address, text: r.ret == null ? "…" : pct(r.ret) })
+      ));
+    }
+  }
+
+  function refreshFollowReportLive() {
+    const list = S._followBuys;
+    if (!list || !list.length) return;
+    // Recompute from latest marks without full DOM rebuild of cards
+    renderFollowReport(list.map((x) => evalEntry(x.b, x.e)));
+  }
+
+  function renderChaseList(chasing, scored) {
     const box = $("chaseList"); if (!box) return;
     box.textContent = "";
-    const rows = (chasing || []).slice(0, 6);
+    // Build mirror: 24h pumps + any scored with big 7d / precursor echo
+    const bySym = new Map();
+    for (const r of (chasing || [])) bySym.set(r.symbol, { ...r, badge: "pump" });
+    for (const r of (scored || [])) {
+      const chg = r.chg24 || 0;
+      const ret7 = r.ret7 || 0;
+      const big7 = ret7 >= 12;
+      const pump = chg >= 6 || r.alreadyUp || r.extended;
+      if (!pump && !big7) continue;
+      const prev = bySym.get(r.symbol) || { ...r };
+      bySym.set(r.symbol, {
+        ...prev, ...r,
+        precursorEcho: r.precursorEcho || prev.precursorEcho || 0,
+        ret7: ret7 || prev.ret7,
+        badge: pump ? "pump" : "week",
+      });
+    }
+    // Cross-check paper batch + live setups
+    const setupSyms = new Set();
+    const avoidSyms = new Set();
+    if (S.picks && S.picks.batches && S.picks.batches.length) {
+      const latest = S.picks.batches[S.picks.batches.length - 1];
+      for (const e of latest.entries || []) {
+        const sym = (e.pair_address || "").toUpperCase();
+        if (e.type === "buy") setupSyms.add(sym);
+        if (e.type === "avoid") avoidSyms.add(sym);
+      }
+    }
+    const liveSetups = (window.MCE.live && window.MCE.live._lastSetupPicks) || [];
+    for (const p of liveSetups) setupSyms.add((p.symbol || "").toUpperCase());
+
+    let rows = [...bySym.values()].sort((a, b) => (b.chg24 || 0) - (a.chg24 || 0));
+    rows = rows.slice(0, 8);
+    // Red-tape day fallback: still show relative strongest + paper avoids so panel is never empty
+    if (!rows.length && window.MCE.live) {
+      const board = (window.MCE.live.getBoardRows && window.MCE.live.getBoardRows()) || [];
+      rows = board.slice().filter((r) => r.price > 0)
+        .sort((a, b) => (b.chg24 || 0) - (a.chg24 || 0))
+        .slice(0, 6)
+        .map((r) => ({ ...r, badge: "rel", soft: true }));
+    }
+    if (S.picks && S.picks.batches && S.picks.batches.length) {
+      const latest = S.picks.batches[S.picks.batches.length - 1];
+      for (const e of (latest.entries || []).filter((x) => x.type === "avoid")) {
+        const sym = (e.pair_address || "").toUpperCase();
+        if (rows.some((r) => (r.symbol || "").toUpperCase() === sym)) continue;
+        const li = liveInfo(e.chain, e.pair_address);
+        const chg = e.entry_snapshot?.chg24h_pct;
+        const nowChg = null;
+        rows.push({
+          symbol: sym, base: e.symbol, price: li.state === "live" ? li.price : e.entry_price_usd,
+          chg24: chg != null ? chg : 0, badge: "avoid_row", fromAvoid: true,
+        });
+      }
+      rows = rows.slice(0, 8);
+    }
     if (!rows.length) {
-      box.append(el("p", { class: "muted tiny", text: "暫時冇極端急升對照。" }));
+      box.append(el("p", { class: "muted tiny", text: "暫時冇極端急升對照（大盤偏弱時會顯示相對強）。" }));
       return;
     }
     const liveApi = window.MCE.live;
     for (const r of rows) {
-      const base = r.base || r.symbol;
+      const base = r.base || (r.symbol || "").replace(/USDT$/, "");
+      const sym = (r.symbol || "").toUpperCase();
       const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(base, "coin-logo", 28) : "";
+      const badges = [];
+      if (r.fromAvoid || avoidSyms.has(sym)) badges.push(el("span", { class: "pump-badge avoid", text: "今批避過" }));
+      if (r.soft || r.badge === "rel") badges.push(el("span", { class: "pump-badge soft", text: "相對強·對照" }));
+      else if ((r.chg24 || 0) >= 5 || r.alreadyUp) badges.push(el("span", { class: "pump-badge hot", text: "已急升·勿追" }));
+      else badges.push(el("span", { class: "pump-badge soft", text: "對照·勿追" }));
+      if (setupSyms.has(sym)) badges.push(el("span", { class: "pump-badge echo", text: "前兆有影" }));
+      else if ((r.precursorEcho || 0) > 0) badges.push(el("span", { class: "pump-badge soft", text: "週內有前兆型態" }));
+      const sub = [];
+      if (r.ret7 != null && Math.abs(r.ret7) >= 5) sub.push("7日 " + pct(r.ret7));
+      if ((r.precursorEcho || 0) > 0) sub.push("前兆×" + r.precursorEcho);
       box.append(el("div", { class: "chase-row" },
         logo,
-        el("span", { class: "nm", text: base }),
-        el("span", { class: "num pos", "data-bn-chg": r.symbol, text: pct(r.chg24) }),
-        el("span", { class: "muted tiny", text: "勿追" })
+        el("div", { class: "fr-id", style: "flex:1;min-width:0" },
+          el("div", { class: "nm", text: base }),
+          el("div", { class: "pump-badges" }, ...badges),
+          sub.length ? el("div", { class: "muted tiny", text: sub.join(" · ") }) : ""
+        ),
+        el("span", { class: "num " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) })
       ));
     }
   }
@@ -271,7 +448,8 @@
     }
     const picks = result.picks || [];
     const chasing = result.chasing || [];
-    renderChaseList(chasing);
+    if (window.MCE.live) window.MCE.live._lastSetupPicks = picks;
+    renderChaseList(chasing, result.all || []);
     renderHotBuysFromBn(picks); // full-mode list shows setups too
     if (meta) {
       const angles = [...new Set(picks.map((p) => p.angle).filter(Boolean))];
@@ -382,8 +560,15 @@
       sh.textContent = (n < 20 ? `⚠️ 樣本太少（買入推薦 ${n} 筆），唔好當結論。` : `樣本 ${n} 筆。`)
         + (hasOut ? "" : " 24h／7d 結果尚未到期（或未跑 snapshot）。");
     }
+    renderFollowReport(simpleBuys);
     renderSimpleCards(simpleBuys);
     loadLiveBnPicks(false);
+    // Keep WS alive so follow-report / card marks tick even with empty portfolio
+    try {
+      if (window.MCE.live) {
+        ensureLiveLoop(true);
+      }
+    } catch (_) {}
 
     const st = $("pickStats"); st.textContent = "";
     const stat = (k, v, s, c = "") => el("div", { class: "stat" }, el("div", { class: "k", text: k }), el("div", { class: "v " + c, text: v }), s ? el("div", { class: "s", text: s }) : "");
@@ -1510,8 +1695,14 @@
     if (!liveTickBound) {
       liveTickBound = true;
       window.MCE.live.onTick(() => {
-        if (liveRenderBusy) return;
         const view = (location.hash || "").slice(1);
+        if (view === "picks" || view === "" || view === "home") {
+          if (!S._frTickAt || Date.now() - S._frTickAt > 4000) {
+            S._frTickAt = Date.now();
+            try { refreshFollowReportLive(); } catch (_) {}
+          }
+        }
+        if (liveRenderBusy) return;
         if (view !== "portfolio" && view !== "picks") return;
         if (!Object.keys(P.positions).length && !Object.keys(P.levPositions).length) return;
         liveRenderBusy = true;

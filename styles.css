@@ -568,6 +568,65 @@ img.coin-logo.mood-logo{width:72px;height:72px;border-radius:50%;box-shadow:0 8p
 .chase-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--panel2);border:1px solid #3a1212}
 .chase-row .nm{font-weight:700;flex:1}
 
+/* ===== Follow report (big paper 24h numbers) ===== */
+.follow-report{
+  margin-top:0;padding:16px 16px 12px;
+  border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,#1a1608 0%,var(--panel) 48%);
+  box-shadow:inset 0 1px 0 #f0b90b33;
+}
+.follow-report.fr-pos{box-shadow:inset 0 1px 0 #0ecb8133}
+.follow-report.fr-neg{box-shadow:inset 0 1px 0 #f6465d33;background:linear-gradient(180deg,#1a0c10 0%,var(--panel) 48%)}
+.fr-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.fr-kicker{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.fr-status{margin-top:4px;font-size:12px;color:var(--muted);line-height:1.4;max-width:42ch}
+.fr-hero{text-align:right;min-width:140px}
+.fr-pct{
+  font-family:var(--font-num);font-variant-numeric:tabular-nums;
+  font-size:42px;font-weight:900;line-height:1;letter-spacing:-.03em;
+}
+.fr-pnl{margin-top:4px;font-size:15px;font-weight:800;font-family:var(--font-num)}
+.fr-meta{margin:10px 0 8px;font-size:11px;color:var(--muted)}
+.fr-rows{display:flex;flex-direction:column;gap:6px}
+.fr-row{
+  display:flex;align-items:center;gap:10px;padding:8px 10px;
+  border-radius:var(--radius);background:var(--bg);border:1px solid var(--line);
+}
+.fr-row .fr-id{flex:1;min-width:0}
+.fr-row .fr-id .nm{font-weight:800;font-size:14px}
+.fr-row .fr-px{text-align:right;min-width:88px}
+.fr-row .fr-ret{
+  min-width:72px;text-align:right;font-size:16px;font-weight:900;
+  font-family:var(--font-num);font-variant-numeric:tabular-nums;
+}
+.sc-ret{
+  margin-top:2px;font-size:15px;font-weight:900;
+  font-family:var(--font-num);font-variant-numeric:tabular-nums;
+}
+
+/* ===== Pump mirror ===== */
+.pump-mirror{padding-top:12px}
+.pump-title{margin:0;font-size:15px;font-weight:800}
+.pump-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.pump-badge{
+  display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;
+  letter-spacing:.02em;
+}
+.pump-badge.hot{background:#3a1212;color:#fda4af;border:1px solid #7f1d1d}
+.pump-badge.echo{background:#1a1608;color:var(--accent-bright);border:1px solid #5c3b0a}
+.pump-badge.soft{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
+.pump-badge.avoid{background:#0f2f1d;color:#86efac;border:1px solid #166534}
+.chase-row{align-items:flex-start}
+.chase-row .num{font-size:15px;font-weight:800;margin-top:2px}
+
+@media (max-width:700px){
+  .fr-pct{font-size:34px}
+  .follow-report{margin-left:12px;margin-right:12px}
+  .fr-hero{width:100%;text-align:left;margin-top:6px}
+  .home-brief,.pump-mirror{margin-left:12px;margin-right:12px}
+}
+
+
 .bn-chip-top{display:flex;align-items:center;gap:6px}
 .bn-chip-top img.coin-logo{width:20px;height:20px}
 

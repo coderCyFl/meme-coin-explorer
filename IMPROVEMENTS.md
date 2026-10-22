@@ -92,3 +92,9 @@ Self-growth:
 - Docs note only otherwise — no CEX redo; no new batch.
 
 **Next priority (unchanged):** after **2026-10-23 ~04:54 Asia/Shanghai** (≥24h on batch-004), run `scripts/snapshot_outcomes.py` via Binance public REST and append to `data/outcomes.json`. Until then: no new batch; news refresh only if >48h.
+
+## 2026-10-23 ~02:10 Asia/Shanghai — 24h 數字報告 + 爆升對照
+- Home 最上加 **若跟晒今批買 · 24h** 大字卡：等權假本 $1000、總 %、賺蝕 USDT、勝率、逐幣 +/-；未滿 24h 標 **暫計**，滿 24h 優先用 `outcomes.json` 快照。
+- `snapshot_outcomes.py` 仍未到期（batch-004 ~04:54）；已加 BTC 基準欄，到期即跑。
+- **爆升對照／前兆** 常顯（唔再摺埋）：24h／7日急升 + 「已急升·勿追」／「前兆有影」／「今批避過」徽章；AI 跟買仍係多角度 setup，唔變升幅榜。
+- UI：報告卡 + 卡片即時回報%、CEX 數字層級；three.js 金幣路徑不變。

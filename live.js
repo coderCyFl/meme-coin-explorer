@@ -348,22 +348,28 @@
   const avgNum = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
   const clampNum = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 
-  /** Chase / momentum score — for 「已在升／勿追」 only, NOT primary AI picks. */
+  /** Chase / momentum score — for 「爆升對照」 only, NOT primary AI picks. */
   function scoreChaseRows(rows) {
     const scored = (rows || []).map((r) => {
       const chg = r.chg24 || 0, vol = r.volQuote || 0;
       const hi = r.high || r.price, lo = r.low || r.price;
-      const mid = ((hi + lo) / 2) || r.price || 1;
       const pos = hi > lo ? (r.price - lo) / (hi - lo) : 0.5;
+      const ret7 = r.ret7 || 0;
       const score = Math.min(100,
         Math.min(40, Math.max(0, chg) * 3.5) +
         Math.min(30, Math.log10(Math.max(vol, 1)) * 4) +
-        (pos > 0.85 ? 15 : 0)
+        (pos > 0.85 ? 15 : 0) +
+        Math.min(15, Math.max(0, ret7) * 0.8)
       );
-      return { ...r, score: Math.round(score * 10) / 10, chase: true, alreadyUp: chg >= 8 };
-    }).filter((r) => r.price > 0 && (r.chg24 || 0) >= 6);
-    scored.sort((a, b) => b.score - a.score);
-    return scored.slice(0, 8);
+      return {
+        ...r, score: Math.round(score * 10) / 10, chase: true,
+        alreadyUp: chg >= 8 || r.alreadyUp, ret7,
+      };
+    }).filter((r) => r.price > 0);
+    const hot = scored.filter((r) => (r.chg24 || 0) >= 5 || (r.ret7 || 0) >= 12);
+    const pool = hot.length ? hot : scored.slice().sort((a, b) => (b.chg24 || 0) - (a.chg24 || 0)).slice(0, 8);
+    pool.sort((a, b) => b.score - a.score);
+    return pool.slice(0, 10);
   }
 
   /** Legacy alias — DO NOT use for primary AI recs (was 24h gainer bait). */

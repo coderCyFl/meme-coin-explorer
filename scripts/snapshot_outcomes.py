@@ -117,8 +117,11 @@ for b, e, h in todo:
     else:
         need_dex[e["chain"]].add(e["pair_address"])
     # SOL benchmark (prefer SOL key; fall back)
-    sol = (b.get("benchmarks") or {}).get("SOL") or {}
-    if sol:
+    bm = (b.get("benchmarks") or {})
+    for key in ("BTC", "SOL"):
+        sol = bm.get(key) or {}
+        if not sol:
+            continue
         if is_binance(sol.get("chain"), sol.get("pair_address")):
             need_bn.add(sol["pair_address"].upper())
         else:
@@ -129,20 +132,28 @@ for ch, ps in need_dex.items():
     cache_dex.update(dex_pair_prices(ch, sorted(ps)))
 cache_bn = bn_tickers(sorted(need_bn)) if need_bn else {}
 
+def bm_ret(b, cache_dex, cache_bn, key):
+    sol = ((b.get("benchmarks") or {}).get(key)) or {}
+    if not sol:
+        return None
+    sq = live_quote(sol.get("chain"), sol.get("pair_address"), cache_dex, cache_bn)
+    if sq and sol.get("price_usd"):
+        try:
+            return round((float(sq["price_usd"]) / float(sol["price_usd"]) - 1) * 100, 2)
+        except (TypeError, ValueError, ZeroDivisionError):
+            return None
+    return None
+
 for b, e, h in todo:
     q = live_quote(e.get("chain"), e.get("pair_address"), cache_dex, cache_bn)
-    sol = (b.get("benchmarks") or {}).get("SOL") or {}
-    sq = live_quote(sol.get("chain"), sol.get("pair_address"), cache_dex, cache_bn) if sol else None
     liq = (q or {}).get("liquidity_usd") or 0
     dead = not q or liq < 1000
     price = 0.0 if dead else float(q["price_usd"])
     entry = float(e["entry_price_usd"])
-    sol_ret = None
-    if sq and sol.get("price_usd"):
-        try:
-            sol_ret = round((float(sq["price_usd"]) / float(sol["price_usd"]) - 1) * 100, 2)
-        except (TypeError, ValueError, ZeroDivisionError):
-            sol_ret = None
+    btc_ret = bm_ret(b, cache_dex, cache_bn, "BTC")
+    sol_ret = bm_ret(b, cache_dex, cache_bn, "SOL")
+    if btc_ret is None:
+        btc_ret = sol_ret  # legacy alias
     rec = {
         "pick_id": e["id"],
         "horizon_h": h,
@@ -151,7 +162,8 @@ for b, e, h in todo:
         "liquidity_usd": liq,
         "status": "dead" if dead else "live",
         "return_pct": -100.0 if dead else round((price / entry - 1) * 100, 2),
-        "sol_return_pct": sol_ret,
+        "btc_return_pct": btc_ret,
+        "sol_return_pct": sol_ret if sol_ret is not None else btc_ret,
     }
     out["records"].append(rec)
     print("recorded", e["id"], f"{h}h", rec["return_pct"], rec["status"], (q or {}).get("source"))
