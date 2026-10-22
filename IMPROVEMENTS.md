@@ -29,3 +29,17 @@ Local `node --check`, http.server, headless Chrome asserts ≥6 setup picks ≠ 
 - Bottom/top tabs always route via `goView` (capture click) + sync `show`; close leftover dialogs; toast `pointer-events:none` and sits above nav (nav z-index 80).
 - `afterFillUX` no longer yanks user back if they left during fill awaits (`navGen`); highlight cancels if they leave portfolio.
 - Full history never shows raw `batch-00x` — uses 「今批」 / date-time labels.
+
+## Daily self-upgrade 2026-10-22 ~09:10 Asia/Shanghai
+Priority order for next runs:
+1. **Outcomes honesty** — `snapshot_outcomes.py` must price Binance `*USDT` via public REST (`data-api.binance.vision` 24hr ticker); keep DexScreener only for legacy solana batch-001.
+2. **Scorecard** — wait for ≥24h on batch-002..004 before any win-rate claims; append-only `outcomes.json`.
+3. **News** — refresh with ≤5 X `search_news` when `news.json` >48h; keep `why_it_matters`.
+4. **Picks** — `make_bn_setup_picks.mjs` auto-increments `batch-NNN` (no more hardcoded 004 overwrite). Only mint a new batch when setups differ meaningfully.
+5. **UX** — no CEX overhaul redo; tiny friction only.
+
+Done this run:
+- Fixed `scripts/snapshot_outcomes.py` dual path (Binance + Dex).
+- Checklist + `daily-outcomes.yml` comment: Dex meme → Binance public.
+- Light `news.json` refresh (X search_news ×3) → `data/raw/news-002/`.
+- Batch writer auto-increment; **skipped batch-005** (same morning as 004; would likely clone).

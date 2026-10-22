@@ -1,13 +1,142 @@
 {
- "fetched_at": "2026-10-22T02:51:25+08:00",
+ "fetched_at": "2026-10-22T09:12:19+08:00",
  "source": "X search_news via agent (static snapshot; site never calls X)",
  "stories": [
+  {
+   "id": "2112981239082996037",
+   "title": "鏈上研究：九成九 meme 發射後短命，只有約 1% 去到 DEX",
+   "title_en": "Most Meme Tokens Fade Fast After Easy Launches",
+   "summary": "ZeruAI 分析 3,374 次近期發射：只有 34 個有機去到 DEX（約 1%）；68.7% 開發者五分鐘內出貨；第 30 日交易活躍跌到 0.8%。",
+   "summary_en": "ZeruAI analyzed 3,374 recent token launches; only 34 reached a DEX organically (~1.01%). Devs sold within five minutes in 68.7% of cases; activity fell from 7.5% day one to 0.8% by day 30.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2112981239082996037",
+   "published_at": "2026-10-21T19:04:49.000Z",
+   "tags": [
+    "rug",
+    "market",
+    "solana"
+   ],
+   "why_it_matters": "支持我哋改用 Binance 現貨做模擬：極新鏈上盤勝率極低。AI 揀幣要睇結構同流動性，唔好追發射 FOMO。",
+   "category": "News"
+  },
+  {
+   "id": "2113067055524073563",
+   "title": "Pump.fun 推出 Pump Bridge，跨鏈買入快咗、錯誤少 92%",
+   "title_en": "Pump.fun Launches Pump Bridge for Faster Crosschain Trades",
+   "summary": "10 月 21 日上線，取代 Relay；平均完成時間約 3.88s→1.95s，錯誤率大幅下降。",
+   "summary_en": "Pump Bridge launched Oct 21 as default in-app crosschain buys, cutting errors ~92% and completion time ~3.88s to 1.95s.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113067055524073563",
+   "published_at": "2026-10-22T00:44:40.000Z",
+   "tags": [
+    "pump",
+    "infra"
+   ],
+   "why_it_matters": "平台繼續優化「入金→炒 meme」漏斗。我哋實驗仍然避開極新盤，用 CEX 現貨驗證 AI setup。",
+   "category": "News"
+  },
+  {
+   "id": "2112698387682209961",
+   "title": "Trader Kimchi 改 bio 掛 @pumpfun，$KIMCHI 急升惹質疑",
+   "title_en": "Kimchi Partners with Pump.fun Amid $KIMCHI Token Launch",
+   "summary": "平台慶祝；代幣一度 $40–44M 市值，單錢包持倉約 75% 受質疑。",
+   "summary_en": "Pump.fun celebrated; $KIMCHI hit ~$40-44M mcap with reports of ~75% supply in one wallet.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2112698387682209961",
+   "published_at": "2026-10-22T00:44:37.000Z",
+   "tags": [
+    "meme",
+    "market"
+   ],
+   "why_it_matters": "名人／KOL 敘事 + 集中持倉 = 高風險。唔好當跟買信號。",
+   "category": "Other"
+  },
+  {
+   "id": "2112695492153155777",
+   "title": "Solana 炒家炮轟 Pump.fun 變「賭場癌症」",
+   "title_en": "Solana Memecoin Traders Slam Pump.fun as Cancer to the Space",
+   "summary": "每日幾千發射、一日炒完、KOL 推完即崩；有人叫撤出平台改做可持續交易。",
+   "summary_en": "Critics say thousands of daily launches, day-one-only trading, and KOL dumps turned the space into a casino.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2112695492153155777",
+   "published_at": "2026-10-21T10:51:03.000Z",
+   "tags": [
+    "rug",
+    "market"
+   ],
+   "why_it_matters": "情緒對照：鏈上 meme 信任低。我哋用 Binance 公開行情做紙上交易更誠實可量度。",
+   "category": "Other"
+  },
+  {
+   "id": "2113005008287600641",
+   "title": "Solana「Believe in Something」同 Alpenglow：最終確認快到約 150ms",
+   "title_en": "Solana Community Rallies Around Believe Message as Alpenglow Ships",
+   "summary": "官方貼文引發社群；升級將最終確認由約 12.8 秒大幅縮短。SOL 徘徊 $108 附近。",
+   "summary_en": "Official 'believe' post coincided with Alpenglow cutting finality toward ~150ms; SOL near $108.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113005008287600641",
+   "published_at": "2026-10-21T20:40:40.000Z",
+   "tags": [
+    "solana",
+    "infra"
+   ],
+   "why_it_matters": "基建利好唔等於 meme 即升；對照我哋 SOL 基準同相對強度 setup。",
+   "category": "Other"
+  },
+  {
+   "id": "2112952165958607152",
+   "title": "Tokenized $META 上 Solana，可 24/7 交易",
+   "title_en": "Tokenized Meta Stock Launches on Solana Blockchain",
+   "summary": "Backpack Securities 發行，1:1 實股託管；Jupiter 等接入。",
+   "summary_en": "Backpack Securities issued tokenized META 1:1 backed; Jupiter and others added support.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2112952165958607152",
+   "published_at": "2026-10-21T21:05:14.000Z",
+   "tags": [
+    "rwa",
+    "solana"
+   ],
+   "why_it_matters": "敘事輪動到 RWA／股票代幣化；meme 資金可能分流，跟買要睇相對板塊而非單幣 FOMO。",
+   "category": "News"
+  },
+  {
+   "id": "2112785006955282570",
+   "title": "交易量淡，交易所轉推預測市場（含 Binance.US）",
+   "title_en": "Crypto Exchanges Launch Prediction Markets Amid Trading Slump",
+   "summary": "Blockchain.com、Binance.US 等跟住 Coinbase／Gemini 申請預測市場，補收入。",
+   "summary_en": "Exchanges including Binance.US seek prediction-market products as spot volumes soften.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2112785006955282570",
+   "published_at": "2026-10-21T06:02:17.000Z",
+   "tags": [
+    "cex",
+    "market"
+   ],
+   "why_it_matters": "現貨交投偏淡時，波動同輪動結構會變；AI setup 更要避追已急升幣。",
+   "category": "News"
+  },
+  {
+   "id": "2112656500707795365",
+   "title": "Base Meme Summit 今日直播，社群想翻身",
+   "title_en": "Base Meme Summit Returns with Live Interviews",
+   "summary": "10 月 22 日 PT 早上場；TOSHI 等社群造勢。非 Binance 現貨主線。",
+   "summary_en": "Base Meme Summit Oct 22 ~8:30am PT with interviews and community hype around TOSHI etc.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2112656500707795365",
+   "published_at": "2026-10-21T21:18:19.000Z",
+   "tags": [
+    "base",
+    "meme"
+   ],
+   "why_it_matters": "鏈上活動熱點；我哋主數據源仍係 Binance 公開行情，唔跟 Base 熱榜。",
+   "category": "Other"
+  },
   {
    "id": "2110714820937085207",
    "title": "Pump.fun 九成七炒家蝕錢，內幕同 bundler 賺走",
    "title_en": "Pump.fun Memecoin Traders Mostly Lose as Insiders Profit",
-   "summary": "過去 30 日鏈上分析：Pump.fun 97% 交易者蝕錢；bundler 約 $3M、平台團隊約 $43M。",
-   "summary_en": "Recent on-chain analysis of Pump.fun reveals 97% of traders lost money over the last 30 days, with $3 million to bundlers and $43 million to the team amid rapid pumps and dumps. Trader Anglio, linked to five side wallets that front-ran 61% of his 534 callouts, defended his quick sells as smart profit-taking. Pump.fun co-founder Alon advised focusing on quality calls that help followers win, as the",
+   "summary": "過去 30 日鏈上分析：Pump.fun 97% 交易者蝕錢；bundler／團隊賺走大部分。",
+   "summary_en": "On-chain analysis: ~97% of Pump.fun traders lost over 30 days; bundlers/team captured upside.",
    "source": "X News",
    "url": "https://x.com/i/trending/2110714820937085207",
    "published_at": "2026-10-15T22:52:33.000Z",
@@ -16,130 +145,6 @@
     "market"
    ],
    "why_it_matters": "落倉前要假設你係少數贏嘅人。模擬倉可以用嚟測試，但唔好當真實勝率。",
-   "category": "Other"
-  },
-  {
-   "id": "2111725343513993646",
-   "title": "Solana 炒家警告 Pump.fun 典型 Rug 手法",
-   "title_en": "Solana Memecoin Traders Warn of Pump.fun Rug Pull Patterns",
-   "summary": "協調錢包開盤 bundle 買入 → 推廣拉盤 → 倒貨畀後來者 → 抽走流動性。",
-   "summary_en": "On Solana's Pump.fun launches, coordinated wallets bundle buys at launch, pump the price through promotion, then dump into new buyers and rug the liquidity. On-chain data shows devs profiting hundreds of millions this way, with wallet clusters revealing the connections. While some defend bundling as a fair start against bots, frustration grows over lost trust, prompting calls for detection tools, ",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2111725343513993646",
-   "published_at": "2026-10-18T07:49:38.000Z",
-   "tags": [
-    "rug"
-   ],
-   "why_it_matters": "見到極新盤 + 急升 + 流動性同市值接近，優先當紅旗。對照我哋「避過」清單。",
-   "category": "Other"
-  },
-  {
-   "id": "2110563457120485659",
-   "title": "NBA Instagram 被 hack 推假幣，幾分鐘 rug",
-   "title_en": "NBA Instagram Hacked to Push Fake Meme Coin",
-   "summary": "假鏈接指向 Pump.fun Solana 幣，市值一度 $40k 後跌到 $3.5k。",
-   "summary_en": "The post linked to a Solana-based token on Pump.fun, briefly pumping its market cap to $40,000 before it crashed to $3,500 in a rug pull. It racked up 3,500 likes and comments on the 88-million-follower account before deletion, then the page went back to hoops highlights. This echoes a March 2025 hack of the NBA's X account for the same token name, with crypto watchers noting smarter skepticism an",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2110563457120485659",
-   "published_at": "2026-10-15T17:09:08.000Z",
-   "tags": [
-    "rug",
-    "scam"
-   ],
-   "why_it_matters": "名人／品牌「官方」推幣多數係 hack 或假 impersonation。唔好 FOMO。",
-   "category": "News"
-  },
-  {
-   "id": "2110422547858636847",
-   "title": "Neymar「官方」Solana 幣被揭係 scam 後崩潰",
-   "title_en": "Neymar Jr. Solana Token Launches as Scam and Collapses",
-   "summary": "帳號歷史可疑、改過用戶名；市場由炒作轉警告。",
-   "summary_en": "Speculation about an official Neymar Jr. token turned to warnings as people flagged the 'OFFICIAL NEYMAR JR' account's suspicious history, username changes, and ties to known scammers. Promoters pushed it via Telegram with early access promises, but on-chain data showed few holders and bundled wallets. The token launched on October 16, rugged in minutes with vanishing liquidity, leaving most buyer",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2110422547858636847",
-   "published_at": "2026-10-16T08:56:30.000Z",
-   "tags": [
-    "scam",
-    "rug"
-   ],
-   "why_it_matters": "名人幣敘事極易造假。AI 揀幣唔應跟名人熱點，除非鏈上可驗證。",
-   "category": "Other"
-  },
-  {
-   "id": "2112698387682209961",
-   "title": "Trader Kimchi 改 bio 掛 @pumpfun，$KIMCHI 急升惹質疑",
-   "title_en": "Trader Kimchi Partners with Pump.fun Amid Token Surge and Skepticism",
-   "summary": "10 月 20 日 Kimchi 更新 bio 並發幣，約一小時市值到 $40–44M，持倉結構受質疑。",
-   "summary_en": "On October 20, trader Kimchi updated his bio to @pumpfun and launched a $KIMCHI token that hit $40-44 million market cap in about an hour, with his wallet holding around 75% of the supply. Pump.fun celebrated his reported $32 million gains shortly after joining and praised him as a bridge to pop culture, while he withdrew $6.43 million in $PUMP tokens. Critics flagged the token's launch just 13 se",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112698387682209961",
-   "published_at": "2026-10-21T16:45:05.000Z",
-   "tags": [
-    "meme",
-    "market"
-   ],
-   "why_it_matters": "同我哋 batch 見到嘅 $KIMCHI 熱潮有關。急升 + 名人綁定 = 高風險，唔適合跟倉。",
-   "category": "News"
-  },
-  {
-   "id": "2112493295519617371",
-   "title": "Solana 徘徊 $104 附近，Alpenglow 升級前",
-   "title_en": "Solana Hovers Near $104 Ahead of Alpenglow Upgrade",
-   "summary": "10 月頭曾過 $120，多次試 $100，而家約 $105；預測市場只畀 33% 機會。",
-   "summary_en": "Solana started October above $120 but has tested $100 multiple times and now trades near $105, with a prediction market giving only a 33% chance of dropping below that level before the Alpenglow upgrade activates on October 21. This upgrade swaps out the old consensus for Votor to slash finality time from 12.8 seconds to about 150 milliseconds, and validators need Agave 4.3 clients ready. Strong f",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112493295519617371",
-   "published_at": "2026-10-20T10:42:08.000Z",
-   "tags": [
-    "market"
-   ],
-   "why_it_matters": "模擬倉用 SOL 做基準。大盤弱時 meme 更易連環 rug，倉位要細。",
-   "category": "Other"
-  },
-  {
-   "id": "2107869689447682381",
-   "title": "CFTC 唔等國會，自行推進加密監管框架",
-   "title_en": "CFTC Advances Crypto Rules Without Waiting for Congress",
-   "summary": "美國期貨監管機構推出交易監管、代幣分類等框架。",
-   "summary_en": "The U.S. Commodity Futures Trading Commission is rolling out its own crypto market framework, including new rules for trading oversight, tokenized assets, and blockchain tech, after Congress stalled on the Clarity Act. Selig emphasized lessons from FTX's collapse, strong self-custody rights like 'Not your keys, not your coins,' and proven controls to prevent fraud without excessive leverage. Offic",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2107869689447682381",
-   "published_at": "2026-10-08T22:25:38.000Z",
-   "tags": [
-    "regulation"
-   ],
-   "why_it_matters": "監管新聞短期影響敘事多過即時價；長線影響平台合規同流動性入口。",
-   "category": "News"
-  },
-  {
-   "id": "2112871174527238563",
-   "title": "OCC 敲定 GENIUS Act 穩定幣儲備／贖回標準",
-   "title_en": "OCC Finalizes GENIUS Act Rules for Stablecoin Standards",
-   "summary": "針對儲備、贖回、託管等定下規則。",
-   "summary_en": "The Office of the Comptroller of the Currency has finalized rules under the GENIUS Act, setting standards for reserves, redemptions, custody, and risk management for stablecoins issued by national banks and certain foreign entities. Effective January 18, 2027, the framework includes a $5 million minimum capital requirement and two-business-day redemptions, while easing restrictions on rewards prog",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112871174527238563",
-   "published_at": "2026-10-21T16:34:44.000Z",
-   "tags": [
-    "regulation"
-   ],
-   "why_it_matters": "穩定幣規則影響 USDC/USDT 進出金通道；間接影響 meme 盤流動性。",
-   "category": "News"
-  },
-  {
-   "id": "2110021429978882530",
-   "title": "炒家慨嘆 meme「長期持有文化」消失",
-   "title_en": "Crypto Traders Mourn Loss of Memecoin Holding Culture",
-   "summary": "由 2016–2023 社群持有，變成而家秒拋同 rug；先賣先贏。",
-   "summary_en": "Traders lament the shift from 2016-2023's tight-knit communities and long-term holding to quick flips and rug pulls, where selling first draws envy instead of anger. Coin Metrics data shows Solana memecoins since late 2023 hit peaks in 17 days before 95% drops, with 81% falling over 90% from highs. Some push back with projects like $TOKABU to revive original memes and community spirit, while other",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2110021429978882530",
-   "published_at": "2026-10-13T15:03:32.000Z",
-   "tags": [
-    "meme",
-    "market"
-   ],
-   "why_it_matters": "短線炒家心態主導。模擬倉要預設持倉期短、止蝕清晰。",
    "category": "Other"
   }
  ]

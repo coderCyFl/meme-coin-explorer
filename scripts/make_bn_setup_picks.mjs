@@ -334,13 +334,21 @@ async function main() {
   const hk = new Date(now.getTime() + 8 * 3600e3);
   const isoHK = hk.toISOString().replace("Z", "+08:00").replace(/\.\d{3}/, "");
   const day = isoHK.slice(0, 10).replace(/-/g, "");
-  const batchId = "batch-004";
+  // Auto-increment: never clobber an existing batch id (append-only log).
+  const picksPathEarly = path.join(ROOT, "data/picks.json");
+  const docEarly = JSON.parse(fs.readFileSync(picksPathEarly, "utf8"));
+  const existingNums = (docEarly.batches || [])
+    .map((b) => Number(String(b.id || "").replace(/^batch-/, "")))
+    .filter((n) => Number.isFinite(n));
+  const nextN = (existingNums.length ? Math.max(...existingNums) : 0) + 1;
+  const batchNum = String(nextN).padStart(3, "0");
+  const batchId = `batch-${batchNum}`;
 
   const btcPx = +tickers.get("BTCUSDT")?.lastPrice || btcDaily.at(-1)?.c;
   const solPx = +tickers.get("SOLUSDT")?.lastPrice;
 
   const entries = picks.map((p, i) => ({
-    id: `${day}-004-${p.base}`,
+    id: `${day}-${batchNum}-${p.base}`,
     batch: batchId,
     type: "buy",
     created_at: isoHK,
@@ -384,7 +392,7 @@ async function main() {
   // avoid entries = chasing (label as avoid chase)
   for (const p of chasing) {
     entries.push({
-      id: `${day}-004-AVOID-${p.base}`,
+      id: `${day}-${batchNum}-AVOID-${p.base}`,
       batch: batchId,
       type: "avoid",
       created_at: isoHK,

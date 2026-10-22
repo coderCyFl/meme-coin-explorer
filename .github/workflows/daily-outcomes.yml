@@ -1,4 +1,4 @@
-# DexScreener-only horizon snapshots. No X API / secrets.
+# Horizon snapshots via Binance public REST (binance pairs) + DexScreener (legacy solana). No X API / secrets.
 name: Daily outcomes snapshot
 on:
   schedule:
