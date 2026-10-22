@@ -440,14 +440,15 @@
       return;
     }
     const live = window.MCE.live;
-    for (const r of data) {
+    data.forEach((r, i) => {
       const up = (r.chg24 || 0) >= 0;
       const active = r.symbol === sel ? " active" : "";
       const flash = r._flash === "up" ? " tick-up" : r._flash === "down" ? " tick-down" : "";
       const logo = (live && live.coinLogoEl) ? live.coinLogoEl(r.base, "coin-logo", 40) : el("span", { class: "coin-logo letter", text: (r.base || "?").slice(0, 2) });
       const row = el("button", {
         type: "button",
-        class: "mood-row" + active + flash,
+        class: "mood-row anim-in" + active + flash,
+        style: "--i:" + Math.min(i, 12),
         "data-bn": r.symbol,
         onclick: () => selectMood(r.symbol, mood.rows),
       });
@@ -475,7 +476,7 @@
         window.MCE.paper && window.MCE.paper.openBuy(bnBuyPayload(r));
       });
       list.append(row);
-    }
+    });
     // Buy strip under list for selected
     const meta = $("bnMeta");
     if (meta) meta.textContent = `共 ${mood.rows.length} 組 USDT · Binance 公開價 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`;

@@ -180,7 +180,7 @@
     const top = (bn.length ? bn : buys || []).slice(0, 6);
     if (!top.length) { box.append(el("p", { class: "muted", text: "計緊多角度盤…稍等" })); return; }
     const liveApi = window.MCE.live;
-    for (const x of top) {
+    top.forEach((x, i) => {
       const tip = x.e.tip || (x.e.rationale || "").split("（")[0].slice(0, 72) || "多角度盤 · 唔係追 24h 升幅";
       const livePx = x.li && x.li.state === "live" ? x.li.price : (x.e.entry_price_usd || null);
       const chg = x.e.entry_snapshot?.chg24h_pct;
@@ -196,7 +196,7 @@
           el("div", { text: (x.e.rationale || "").slice(0, 160) })
         )
       );
-      box.append(el("article", { class: "simple-card", "data-angle": angle || "" },
+      box.append(el("article", { class: "simple-card anim-in", "data-angle": angle || "", style: "--i:" + i },
         el("div", { class: "sc-top" },
           logo,
           el("div", { class: "sc-id" },
@@ -220,7 +220,7 @@
           }) }, "落倉")
         )
       ));
-    }
+    });
   }
 
   function renderChaseList(chasing) {
@@ -1674,7 +1674,18 @@
     if (!allowed.includes(view)) view = "picks";
     navGen++;
     for (const v of ["explore", "picks", "browse", "portfolio", "news", "more"]) {
-      const node = $("view-" + v); if (node) node.hidden = v !== view;
+      const node = $("view-" + v);
+      if (!node) continue;
+      const on = v === view;
+      node.hidden = !on;
+      if (on) {
+        node.classList.remove("view-enter");
+        // force reflow so re-enter anim plays
+        void node.offsetWidth;
+        node.classList.add("view-enter");
+      } else {
+        node.classList.remove("view-enter");
+      }
     }
     document.querySelectorAll(".tab").forEach((a) => {
       const on = a.dataset.view === view;

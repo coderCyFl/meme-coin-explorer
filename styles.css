@@ -993,3 +993,110 @@ tbody tr:hover{background:#181a20}
 @media (prefers-reduced-motion: reduce){
   button,.cta{transition:none}
 }
+
+
+/* =========================================================
+   MOTION — exchange micro-interactions · less static AI mock
+   ========================================================= */
+.view.view-enter{
+  animation:viewIn .32s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes viewIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
+
+.anim-in{
+  animation:cardIn .38s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay:calc(var(--i, 0) * 45ms);
+}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(14px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+.simple-card,.mood-row,.browse-card,.news-card,.chase-row,.more-item,.hot-buy-row{
+  transition:border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.simple-card:hover,.mood-row:hover,.more-item:hover,.news-card:hover{
+  border-color:var(--line-strong)!important;
+  transform:translateY(-1px);
+}
+.simple-card:active,.mood-row:active,.more-item:active{
+  transform:translateY(0) scale(.995);
+}
+
+button,.cta,a.cta,a.secondary,a.primary,.mode-card,.segbtn,.tab,.preset{
+  transition:background .14s ease,border-color .14s ease,color .14s ease,
+    opacity .14s ease,transform .14s ease,box-shadow .14s ease!important;
+}
+button.primary:active,.cta.primary:active,.buybtn:active,#tradeOk:active,#moodBuy:active{
+  transform:scale(.97)!important;
+  box-shadow:0 0 0 3px rgba(240,185,11,.28);
+}
+button.secondary:active,a.secondary:active{
+  transform:scale(.98)!important;
+}
+
+.tab.active,.simple-tabs .tab.active,.bottom-nav .tab.active .ico{
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.simple-tabs .tab.active{box-shadow:0 2px 0 0 rgba(240,185,11,.35)}
+
+dialog[open]{
+  animation:sheetIn .34s cubic-bezier(.2,.9,.2,1) both;
+}
+dialog[open]::backdrop{
+  animation:fadeIn .28s ease both;
+}
+@keyframes sheetIn{
+  from{opacity:0;transform:translateY(18px) scale(.98)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media (max-width:700px){
+  dialog#tradeDlg[open],dialog#allinDlg[open],dialog#allinPickDlg[open]{
+    animation:sheetUp .36s cubic-bezier(.2,.9,.2,1) both;
+  }
+}
+@keyframes sheetUp{
+  from{opacity:0;transform:translateY(100%)}
+  to{opacity:1;transform:none}
+}
+
+.drawer:not([hidden]) .drawer-inner{
+  animation:drawerIn .3s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes drawerIn{
+  from{transform:translateX(100%)}
+  to{transform:none}
+}
+
+.live-px,.mood-price,.pg-v{
+  transition:color .15s ease;
+}
+.mood-bar i{
+  transition:left .45s cubic-bezier(.2,.8,.2,1);
+}
+.mood-chg{
+  transition:background .2s ease,color .2s ease;
+}
+
+.toast.pop{animation:toastIn .35s cubic-bezier(.2,1.2,.3,1) both}
+
+/* Shimmer skeleton while loading */
+.skel{
+  background:linear-gradient(90deg,var(--panel2) 25%,#363c45 37%,var(--panel2) 63%);
+  background-size:400% 100%;
+  animation:skel 1.2s ease infinite;
+  border-radius:6px;color:transparent!important;min-height:1em;
+}
+@keyframes skel{0%{background-position:100% 0}100%{background-position:0 0}}
+
+@media (prefers-reduced-motion: reduce){
+  .view.view-enter,.anim-in,dialog[open],dialog[open]::backdrop,
+  .drawer:not([hidden]) .drawer-inner,.skel{animation:none!important}
+  .simple-card:hover,.mood-row:hover,.more-item:hover,.news-card:hover{transform:none}
+  button,.cta,a.cta,a.secondary,a.primary,.mode-card,.segbtn,.tab,.preset,
+  .simple-card,.mood-row,.browse-card,.news-card,.chase-row,.more-item{transition:none!important}
+}

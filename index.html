@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>模擬倉 · AI 揀幣 · Meme Coin Explorer</title>
-<meta name="description" content="個人 AI 模擬倉：用 AI + X 搵幣，模擬落倉，追蹤真實賺蝕。唔係投資建議。">
+<title>模擬倉 · Meme Coin Explorer</title>
+<meta name="description" content="個人模擬倉：Binance 公開行情 · 多角度留意盤 · 模擬落倉追蹤賺蝕。唔係投資建議。">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23F0B90B%22 width=%22100%22 height=%22100%22 rx=%2218%22/%3E%3Ctext x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-size=%2258%22 fill=%22%230b0e11%22 font-family=%22system-ui%22 font-weight=%22700%22%3EM%3C/text%3E%3C/svg%3E">
 </head>
@@ -18,7 +18,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <div class="brand">
     <span class="logo logo-mark" aria-hidden="true">M</span>
     <div>
-      <h1>模擬倉 · AI 揀幣</h1>
+      <h1>模擬倉</h1>
       <p class="sub">模擬倉 · Binance 公開行情</p>
     </div>
   </div>
@@ -42,7 +42,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
-  <a href="#picks" class="tab" data-view="picks">AI 揀幣</a>
+  <a href="#picks" class="tab" data-view="picks">今日跟買</a>
   <a href="#browse" class="tab" data-view="browse">睇幣</a>
   <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
   <a href="#news" class="tab" data-view="news">新聞</a>
@@ -56,7 +56,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </nav>
 
 <details class="howto full-only" id="howto">
-  <summary>📖 點樣用 · How to use（揀角色 · 一日流程 · FAQ）</summary>
+  <summary>點樣用（角色 · 一日流程 · FAQ）</summary>
 
   <div class="howto-grid">
     <button type="button" class="lens" data-lens="scalp">
@@ -65,7 +65,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </button>
     <button type="button" class="lens" data-lens="careful">
       <b>🛡️ 謹慎模擬倉</b>
-      <span>只跟 AI · 用現貨</span>
+      <span>只跟今日盤 · 用現貨</span>
     </button>
     <button type="button" class="lens" data-lens="research">
       <b>🔬 研究型</b>
@@ -94,16 +94,16 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <section class="howto-sec" id="lens-careful">
       <h4>🛡️ 謹慎模擬倉（推薦入門）</h4>
       <ul>
-        <li>只喺「AI 揀幣」撳 <b>落倉</b>，模式選 <b>現貨</b>。或者用「跟晒今批 AI 買入」（<em>只支援現貨</em>，較安全）。</li>
+        <li>只喺「今日跟買」撳 <b>落倉</b>，模式選 <b>現貨</b>。或者用「跟晒今批」（<em>只支援現貨</em>，較安全）。</li>
         <li>睇「跑贏 SOL」同勝率——樣本少（&lt;20 筆）唔好下結論。</li>
-        <li>一定要睇 <b>避過</b> 清單：AI 叫你唔好追嘅，多數係 FOMO／Rug 形態。</li>
+        <li>一定要睇 <b>避過</b> 清單：標咗唔好追嘅，多數係 FOMO／Rug 形態。</li>
         <li>起始資金可以改，但重置會清空紀錄；當係實驗本金，唔係真錢。</li>
       </ul>
     </section>
     <section class="howto-sec" id="lens-research">
       <h4>🔬 研究型</h4>
       <ul>
-        <li>先「重點新聞」：rug／監管／大盤，再返 AI 揀幣。</li>
+        <li>先「重點新聞」：rug／監管／大盤，再返今日跟買。</li>
         <li>對照避過清單同新聞有冇呼應（例如名人幣 scam、Pump.fun 97% 蝕錢）。</li>
         <li>Scorecard 係誠實 track record：舊推薦永不刪改，錯都要留低。</li>
       </ul>
@@ -132,7 +132,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <h4>📅 建議一日流程</h4>
       <ol class="dayflow">
         <li>📰 睇重點新聞（有冇新 rug／監管）</li>
-        <li>🤖 睇 AI 揀幣同避過 · 對照 SOL</li>
+        <li>睇今日跟買同避過 · 對照 SOL</li>
         <li>🧪 現貨落倉（或跟晒今批）</li>
         <li>第二天更新報價 · 睇成績 · 決定平倉定繼續</li>
       </ol>
@@ -149,7 +149,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <dd>預設現貨平均分。進取／極高風險檔可以選「細保證金高倍」一鍵開，但會有嚇人確認。</dd>
         <dt>爆倉之後點算？</dt>
         <dd>該倉保證金唔返，記一筆已實現虧損；其他現貨／現金唔受影響（逐倉）。</dd>
-        <dt>AI 一定賺？</dt>
+        <dt>跟買一定賺？</dt>
         <dd>唔會。呢個實驗就係要驗證賺定蝕；樣本少證明唔到咩。</dd>
         <dt>孤注一擲係咩？</dt>
         <dd>假錢 All-in 一隻幣（現貨或最高 50x）。一舖過，輸就接近歸零，用來試膽同驗證信念。</dd>
@@ -159,7 +159,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </details>
 
 
-<!-- ===== AI 揀幣 ===== -->
+<!-- ===== 今日跟買 ===== -->
 <div id="view-picks" class="view" hidden>
   <!-- Simple home: brief + cards + portfolio strip -->
   <section class="panel home-brief simple-only" id="simpleCardsPanel">
@@ -195,7 +195,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <div class="arrow">→</div>
       <div class="step"><b>3</b> 追蹤賺蝕</div>
     </div>
-    <p class="intro">個人 AI 模擬：用 Binance 1d／1h OHLCV 睇<strong>量能、壓縮、相對 BTC、輪動、吸籌</strong>——推薦「之後有機會」嘅盤，唔係已經急升嗰啲。
+    <p class="intro">用 Binance 1d／1h OHLCV 睇<strong>量能、壓縮、相對 BTC、輪動、吸籌</strong>——推「之後有機會」嘅盤，唔係已經急升嗰啲。
       <span class="en">Multi-angle setups from public OHLCV — not 24h gainer rank.</span></p>
     <div class="panelhead">
       <h2>完整紀錄</h2>
@@ -361,7 +361,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
         <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
       </tr></thead><tbody id="holdBody"></tbody></table>
-      <div class="empty" id="holdEmpty">未有現貨。去「AI 揀幣」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
+      <div class="empty" id="holdEmpty">未有現貨。去「今日跟買」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
     </div>
 
     <div id="levSection" class="pos-section lev-section" hidden>
@@ -519,7 +519,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <dialog id="allinPickDlg">
   <form method="dialog" id="allinPickForm">
     <h3>揀一隻幣 · 孤注一擲</h3>
-    <p class="muted">建議用 AI 買入推薦。揀完會進入確認。</p>
+    <p class="muted">建議用今日跟買清單。揀完會進入確認。</p>
     <div id="allinPickList" class="allin-pick-list"></div>
     <div class="row"><button type="button" id="allinPickCancel">取消</button></div>
   </form>
@@ -581,7 +581,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </aside>
 
 <footer>
-  <p>睇幣／熱門／AI 揀幣（新批）：<b>淨 Binance</b> 公開 REST + WebSocket（data-api / data-stream.binance.vision，唔使 key）。
+  <p>睇幣／熱門／今日跟買（新批）：<b>淨 Binance</b> 公開 REST + WebSocket（data-api / data-stream.binance.vision，唔使 key）。
   舊批 Solana Dex 推薦只留喺完整紀錄；Dex 掃描喺完整模式先有，唔再當熱門。
   X 快照：<code>data/x_buzz.json</code>。模擬倉存 localStorage（假錢）。</p>
   <p class="legend">誠實標籤：今日跟買 = 多角度 OHLCV 留意盤（量能／壓縮／相對 BTC／輪動／吸籌），刻意唔係 24h 升幅榜。唔係保證賺錢。</p>
