@@ -248,6 +248,28 @@
     return { kind: "mtm", age, left, label: `未滿 24h · 暫計（仲差 ${Math.max(0, left).toFixed(1)}h）` };
   }
 
+  /** Price cell for a follow-report row: sealed → 入 $x → 24h $y (static); live → ticking mark. */
+  function frPxCell(r, e) {
+    const entry = el("div", { class: "muted tiny", text: "入 " + price(e.entry_price_usd) });
+    if (r.sealed && r.rec) {
+      const exitPx = r.rec.status === "dead" ? null : r.rec.price_usd;
+      const sealT = r.rec.observed_at ? "封盤 " + localTime(r.rec.observed_at) : "24h 已封盤";
+      return el("div", { class: "fr-px", title: sealT },
+        entry,
+        exitPx != null
+          ? el("div", { class: "num fr-exit " + cls(r.ret), text: "24h " + price(exitPx) })
+          : el("div", { class: "muted tiny fr-exit", text: r.rec.status === "dead" ? "已死 · " + sealT : sealT })
+      );
+    }
+    // Live: ticking price via data-bn-price; fall back to last known mark instead of a bare "…"
+    const mark = r.now != null ? r.now
+      : (r.ret != null && e.entry_price_usd ? e.entry_price_usd * (1 + r.ret / 100) : null);
+    return el("div", { class: "fr-px" },
+      entry,
+      el("div", { class: "num live-px", "data-bn-price": e.pair_address, text: mark != null ? price(mark) : "報價連接中" })
+    );
+  }
+
   /** Prominent paper result: if you followed latest-batch buys equally. */
   function renderFollowReport(buys) {
     const panel = $("followReportPanel");
@@ -279,7 +301,7 @@
       const rec = S.outcomes.find((o) => o.pick_id === x.e.id && o.horizon_h === 24);
       const sealed = hz.kind === "full" && rec ? rec.return_pct : null;
       const use = sealed != null ? sealed : ret;
-      return { x, li, ret: use, sealed: sealed != null, entry: x.e.entry_price_usd, now: li.state === "live" ? li.price : null };
+      return { x, li, ret: use, sealed: sealed != null, rec: sealed != null ? rec : null, entry: x.e.entry_price_usd, now: li.state === "live" ? li.price : null };
     });
     const known = withRet.filter((r) => r.ret != null);
     const avgRet = known.length ? known.reduce((a, b) => a + b.ret, 0) / known.length : null;
@@ -301,7 +323,16 @@
       stEl.innerHTML = chips.join("");
     }
     if (metaEl) {
-      metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${batchLabel(list[0].b)} · ${localTime(created)}`;
+      const bid = list[0].b && list[0].b.id ? list[0].b.id : "";
+      const sealAt = sealedAll ? withRet.map((r) => r.rec && r.rec.observed_at).filter(Boolean).sort().pop() : null;
+      const head = sealedAll && bid ? bid : batchLabel(list[0].b);
+      metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${head} · 買入時間 ${localTime(created)}`
+        + (sealAt ? ` · 封盤 ${localTime(sealAt)}` : "");
+    }
+    const kickEl = $("followReportKicker");
+    if (kickEl) {
+      const bid = list[0].b && list[0].b.id ? list[0].b.id : "";
+      kickEl.textContent = sealedAll && bid ? `若跟晒 ${bid} 買 · 24h 結果` : "若跟晒今批買 · 24h";
     }
     if (avgRet == null) {
       pctEl.textContent = "…";
@@ -311,9 +342,8 @@
       pctEl.textContent = (avgRet >= 0 ? "+" : "") + avgRet.toFixed(2) + "%";
       pctEl.className = "fr-pct " + cls(avgRet);
       if (pnlEl) {
-        pnlEl.textContent = (pnl >= 0 ? "+" : "") + money2(pnl).replace(/^\$/, (pnl < 0 ? "-$" : "$").slice(0, 0)) ;
-        // money2 already has $ sign
-        pnlEl.textContent = (pnl >= 0 ? "賺 " : "蝕 ") + ((pnl < 0 ? "-$" : "$") + Math.abs(pnl).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        // Verb carries the sign: 賺 $X / 蝕 $X (no "-$" after 蝕)
+        pnlEl.textContent = (pnl >= 0 ? "賺 " : "蝕 ") + "$" + Math.abs(pnl).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         pnlEl.className = "fr-pnl " + cls(pnl);
       }
     }
@@ -333,10 +363,7 @@
             r.sealed ? el("span", { class: "pill", text: "24h鎖" }) : ""
           )
         ),
-        el("div", { class: "fr-px" },
-          el("div", { class: "muted tiny", text: "入 " + price(e.entry_price_usd) }),
-          el("div", { class: "num live-px", "data-bn-price": e.pair_address, text: r.now != null ? price(r.now) : "…" })
-        ),
+        frPxCell(r, e),
         el("div", { class: "fr-ret num " + cls(r.ret), "data-fr-ret": e.pair_address, text: r.ret == null ? "…" : pct(r.ret) })
       ));
     }

@@ -1382,3 +1382,5 @@ img.logo-mark.logo-3d{
   filter:drop-shadow(0 2px 6px rgba(242,165,26,.28));
 }
 @media (max-width:360px){ img.logo-mark.logo-3d{width:30px!important;height:30px!important;flex-basis:30px} }
+
+.fr-px .fr-exit { font-weight: 600; white-space: nowrap; }
