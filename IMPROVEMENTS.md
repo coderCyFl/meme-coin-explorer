@@ -57,3 +57,10 @@ Self-growth (UX copy, no CEX redo):
 - 「短線炒家」lens → `#browse` (Binance) instead of Dex `#explore`.
 - Howto + disclaimer + explore labels clarify Binance main path vs optional full-mode Dex scan.
 - `app.js` header comment aligned with Binance-first.
+
+## Hourly update 2026-10-22 ~21:05 Asia/Shanghai
+Review: live Pages 200 (HTML/JS match local `732b405`); Binance SOL mark live (~$104.3); batch-004 still 6 buy / 3 avoid (Binance angles diversified); news ~12h (<48h); outcomes still empty (batch-004 age ~16.2h, <24h); `node --check` clean on app/picks/live; Dex only on full-mode explore + legacy scripts — not home/browse/AI hot path.
+
+Self-growth: **docs only** (last hourly already shipped scalp→browse). No code churn.
+
+**Next priority (do not skip):** after **2026-10-23 ~04:54 Asia/Shanghai** (≥24h on batch-004), run `scripts/snapshot_outcomes.py` via Binance public REST and append to `data/outcomes.json`. Then weekday scorecard can start. Until then: no new batch; news refresh only if >48h.
