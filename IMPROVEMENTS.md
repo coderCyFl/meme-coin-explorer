@@ -135,3 +135,8 @@ Next: 72h seals for batch-002..004 (~10-25); news refresh tomorrow (>48h); watch
 Review: live 200, cache-bust `20261023n1` matches main; `node --check` all JS OK; Binance live moving (BTC ~$81.9k, 24h -1.18%). BTC no longer < -2%, but breadth only 4/29 liquid USDT pairs green (~14%), so the weak-regime gate is still correctly on (banner already shows both BTC % and breadth %, so the reason is clear). No Dex on the hot/browse/AI paths.
 Done: docs only, no bug, no code churn.
 Next: watch for breadth ≥30% so picks expand back to 6; 72h seals (~10-25); news refresh tomorrow.
+
+## Hourly review 2026-10-23 ~12:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023n1` matches main (no drift vs origin); `node --check` all JS OK; Binance live moving (BTC ~$81.8k, 24h -1.34%; DOGE 0.0796). picks.json has 5 batches. Dex still only in full-mode explore, not hot/browse/AI paths.
+Done: docs only, no bug, no code churn (avoid overlap with 9am daily upgrade).
+Next: breadth still weak so gate stays on; 72h seals (~10-25); news refresh tomorrow.
