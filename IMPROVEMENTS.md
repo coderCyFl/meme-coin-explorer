@@ -233,3 +233,8 @@ Next priority:
 1. 72h seals for batch-002..004 when due (~10-25); still thin samples → no win-rate claims.
 2. News refresh when `news.json` >48h (tonight/tomorrow).
 3. When minting next batch after regime stays normal, expect 6 diversified setups (not cloning batch-005’s half-size weak set).
+
+## Hourly review 2026-10-23 ~21:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023r1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$81.7k, 24h +0.05%; DOGE ~0.0802, +1.0%). Dex refs only in legacy scripts / full-mode explore, not hot/browse/AI paths.
+Done: docs only, no bug, no code churn.
+Next: news refresh once `news.json` >48h (tomorrow); 72h seals (~10-25); next batch should be 6 diversified setups if regime stays normal.
