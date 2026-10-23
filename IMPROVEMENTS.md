@@ -1,3 +1,14 @@
+## Hourly review 2026-10-23 ~16:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023p1` matches main; `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h **-0.57%**; liquid sample breadth **21/30 = 70%** green) ⇒ weak-regime gate **off**. batch-005 still 4 half-size (minted under morning weak). News ~31h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. Logos Binance CDN → fallbacks → letter.
+
+Self-growth (checklist only — no CEX redo / no code churn):
+- `scripts/daily_review_checklist.md`: add regime-gate + 「幾時可以賣」/ exit-lock checks under UX 摩擦.
+
+Next:
+1. 72h seals for batch-002..004 (~10-25); thin samples → no win-rate claims.
+2. News refresh when `news.json` >48h (tonight/tomorrow).
+3. Next batch mint only after meaningful setup change; expect up to 6 diversified full-size while regime stays normal.
+
 ## 2026-10-23 ~14:30 Asia/Shanghai — exit lock + trade time zh-HK
 - Live 跟買卡：`stablePickMeta` 按上海日+幣+角度鎖死 `created_at`／regime／紙上 ±；有 batch 則用 batch `created_at`。Reload 唔再重開 24h。
 - 落倉寫入並持久化 `exitRegime` + suggested_exit_h / TP/SL；持倉顯示跟開倉鎖定，唔跟 `liveWeakNow()`。舊倉缺欄 → 預設 normal 24h/+8/−5 並寫返 localStorage。
