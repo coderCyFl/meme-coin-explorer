@@ -1,3 +1,10 @@
+## Hourly review 2026-10-23 ~20:10 Asia/Shanghai
+Review: live 200, cache-bust `20261023r1` matches main (index/picks md5 OK); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h **~-0.24%**; liquid top30 breadth **15/30 = 50%** green) ⇒ weak-regime gate **off**. batch-006 (~3h): 6 full-size buys (WLD/RENDER/ATOM/AAVE/1000SATS/SUI) + avoid PEPE; spot marks live (e.g. WLD ~$0.538). News ~35h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. `snapshot_outcomes.py`: nothing due this hour (72h seals ~10-25).
+
+Self-growth: docs only — no bug, no code churn (hourly short loop; leave bigger work to weekday 9am).
+
+**Next priority (unchanged):** news refresh when `news.json` >48h; 72h seals for batch-002..004 when due; keep watching regime so live stays at 6 diversified setups under normal.
+
 ## Hourly review 2026-10-23 ~19:10 Asia/Shanghai
 Review: live 200, cache-bust `20261023r1` matches main (index/picks md5 OK); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h **~-0.4%**; liquid top30 breadth **11/30 = 37%** green) ⇒ weak-regime gate **off** (≥30% / BTC > −2%). batch-006 live: 6 full-size buys (WLD/RENDER/ATOM/AAVE/1000SATS/SUI) + avoid PEPE. News ~34h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. Logos CDN→fallback→letter OK. `snapshot_outcomes.py`: nothing due.
 
