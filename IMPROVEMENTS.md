@@ -125,3 +125,8 @@ Next:
 Review: live 200, cache-bust matched main, `node --check` all JS OK, Binance price moving (DOGE 0.0791). Dex only in full-mode explore (not hot/AI lists).
 Done: live `computeSetupPicks` now applies the same weak-regime gate as the batch writer (BTC 24h < -2% or <30% green ⇒ max 4, setup ≥ 28, half size, ranked by RS vs BTC) — previously only the banner showed. Cache-bust 20261023n1.
 Next: 72h seals when due (~10-25); news refresh tomorrow.
+
+## Hourly review 2026-10-23 ~10:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023n1` matches main (in sync with origin); `node --check` all JS OK; Binance live moving (BTC ~$81.3k, 24h -2.57%; DOGE 0.0790). Regime still weak ⇒ gate (max 4, half size) correctly applies. Dex only in full-mode explore code, not hot/browse/AI paths.
+Done: docs only — no bug found, no code churn.
+Next: 72h seals for batch-002..004 (~10-25); news refresh tomorrow (>48h); watch whether regime flips back to normal (BTC > -2% and ≥30% green) and that live picks expand back to 6.
