@@ -11,8 +11,8 @@ Pricing:
   the CLOSE of the 1m kline for the minute containing the due time (created_at + h), so a
   late run still records the price AT the due time, not the run-time spot price.
   observed_at = that kline's close time; price_source = "kline_1m_due". Benchmarks
-  (BTC/SOL) use the same due-minute kline. api.binance.com first, then the
-  data-api.binance.vision mirror if blocked. Liveness (dead/delisted) still uses the 24hr
+  (BTC/SOL) use the same due-minute kline. data-api.binance.vision first, then
+  api.binance.com if the mirror fails. Liveness (dead/delisted) still uses the 24hr
   ticker: missing symbol or quoteVolume < $1k → status "dead".
 - other chains (legacy Dex / Solana batch-001): DexScreener pairs API. Missing pair
   or liquidity < $1k → status "dead".
@@ -31,7 +31,7 @@ UA = {"User-Agent": "meme-coin-explorer/1.0"}
 # Prefer vision mirror — api.binance.com is geo-blocked in some regions (incl. GH Actions
 # can vary). Same public market data, no key.
 BN_BASE = "https://data-api.binance.vision"
-BN_KLINE_BASES = ("https://api.binance.com", "https://data-api.binance.vision")
+BN_KLINE_BASES = ("https://data-api.binance.vision", "https://api.binance.com")
 
 
 def get(u):

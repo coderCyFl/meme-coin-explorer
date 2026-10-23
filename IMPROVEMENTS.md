@@ -145,3 +145,11 @@ Next: breadth still weak so gate stays on; 72h seals (~10-25); news refresh tomo
 Review: live 200, cache-bust `20261023n1` matches main; `node --check` all JS OK; Binance moving via `data-api.binance.vision` (BTC ~$81.7k, 24h -1.39%; DOGE 0.0795). Note: `api.binance.com` returns a restricted-location error from the build box, so server-side scripts should keep using `data-api.binance.vision` as the primary host. No Dex on hot/browse/AI paths.
 Done: docs only, no bug, no code churn.
 Next: 72h seals (~10-25); news refresh tomorrow; confirm browser fallback host order still prefers a reachable Binance endpoint.
+
+## Hourly review 2026-10-23 ~14:05 Asia/Shanghai
+Review: live 200, assets match local (cache-bust `20261023n1`); `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$81.8k, 24h **-1.17%**; DOGE ~0.0798). Breadth on a 30-coin liquid sample **10/30 = 33%** green ⇒ weak-regime gate **off** (BTC not < -2% and breadth ≥30%) — live `computeSetupPicks` can expand back to 6 on refresh. batch-005 (weak, 4 half-size) unchanged. News ~29h (<48h). Dex only in full-mode explore. `api.binance.com` still 451 from this box; vision 200.
+
+Self-growth (tiny script fix, not CEX redo):
+- `scripts/snapshot_outcomes.py`: put `data-api.binance.vision` **first** in `BN_KLINE_BASES` (was api.binance.com first, contradicting the “prefer vision” comment and failing with 451 here / some CI). Docstring aligned.
+
+Next: 72h seals (~10-25); news refresh when >48h; no new batch from hourly.
