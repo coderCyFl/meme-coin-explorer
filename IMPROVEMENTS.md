@@ -98,3 +98,12 @@ Self-growth:
 - `snapshot_outcomes.py` 仍未到期（batch-004 ~04:54）；已加 BTC 基準欄，到期即跑。
 - **爆升對照／前兆** 常顯（唔再摺埋）：24h／7日急升 + 「已急升·勿追」／「前兆有影」／「今批避過」徽章；AI 跟買仍係多角度 setup，唔變升幅榜。
 - UI：報告卡 + 卡片即時回報%、CEX 數字層級；three.js 金幣路徑不變。
+
+## Hourly update 2026-10-23 ~08:10 Asia/Shanghai
+Review: live Pages 200, cache-bust `20261023k1` matches local `5f5c14a`; Binance (data-api.binance.vision) SOL live ~$103.5; `node --check` clean on app/picks/live/coin3d; Dex only in full-mode explore copy — not home/browse/AI hot path. batch-002/003/004 24h all sealed (`kline_1m_due`).
+
+Scorecard (batch-004, 24h, equal-weight): 6 buys avg **≈ -8.1%** vs BTC **-4.15%**; 3 avoids avg ≈ -10.7% (avoid list did fall harder, so the avoid call was right, but buys lagged BTC in a risk-off day). batch-002/003 buys also all negative (~-4% to -11%).
+
+Self-growth: **docs only** — no bug, no code churn.
+
+**Next priority (for 9am daily upgrade, not hourly):** add a market-regime gate — when BTC 24h < -2% and breadth weak, 今日跟買 should show 「市況弱·細注／觀望」 and rank by relative strength vs BTC, instead of 6 full-size longs. Generate batch-005 then.
