@@ -1411,3 +1411,54 @@ img.logo-mark.logo-3d{
 .fr-px .fr-exit { font-weight: 600; white-space: nowrap; }
 
 .regime-banner{display:flex;flex-direction:column;gap:2px;margin:6px 0 10px;padding:10px 12px;border-radius:10px;border:1px solid rgba(246,70,93,.45);background:rgba(246,70,93,.10);color:#f6465d}.regime-banner[hidden]{display:none}.regime-banner span{color:#eaecef;opacity:.85}
+
+/* ===== Trade modal exit guide (出場參考) ===== */
+.trade-exit-guide{
+  margin:10px 0 12px;padding:12px 14px;border-radius:12px;
+  background:linear-gradient(180deg,#1a2810 0%,#121820 100%);
+  border:1px solid #2f6b2f;box-shadow:inset 0 1px 0 #22c55e33;
+}
+.trade-exit-guide.teg-due{
+  background:linear-gradient(180deg,#2a2208 0%,#18140a 100%);
+  border-color:#8a6510;
+}
+.teg-kicker{
+  font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:#86efac;margin-bottom:6px;
+}
+.trade-exit-guide.teg-due .teg-kicker{color:#f0b90b}
+.teg-main{
+  font-size:16px;font-weight:800;line-height:1.35;color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+.teg-hold{margin-top:6px;font-size:13px;font-weight:600;color:#c9d0e0;line-height:1.4}
+.teg-stop{margin-top:6px;font-size:12px;line-height:1.35}
+.pos-exit-guide{
+  margin-top:8px;padding:10px 12px;border-radius:10px;
+  background:#0f1a12;border:1px solid #1e3a28;
+}
+.pos-exit-guide .peg-main{font-size:14px;font-weight:800;line-height:1.35}
+.pos-exit-guide .peg-hold{margin-top:4px;font-size:12px;color:var(--muted)}
+.pos-exit-guide .peg-stop{margin-top:4px;font-size:11px;color:var(--muted)}
+.daily-batch-panel{margin-top:0}
+.daily-batch-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.daily-batch-table{width:100%;border-collapse:collapse;font-size:13px}
+.daily-batch-table th,.daily-batch-table td{
+  padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;
+}
+.daily-batch-table th{font-size:11px;color:var(--muted);font-weight:700;white-space:nowrap}
+.daily-batch-table .nm{font-weight:800}
+.daily-batch-table .daily-target{font-size:12px;font-weight:700;color:#86efac}
+.daily-batch-table .daily-when{font-size:12px;color:#93c5fd;white-space:nowrap}
+.daily-batch-table .size-pill{
+  display:inline-block;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;
+  border:1px solid var(--line);background:var(--panel2);color:var(--muted);
+}
+.daily-batch-table .size-pill.half{background:#3a2a08;color:#f0b90b;border-color:#8a6510}
+.daily-batch-table .size-pill.full{background:#0f2f1d;color:#86efac;border-color:#166534}
+@media (max-width:480px){
+  .teg-main{font-size:15px}
+  .daily-batch-table th:nth-child(3),.daily-batch-table td:nth-child(3){display:none} /* 24h optional hide if tight — keep for now */
+  .daily-batch-table{font-size:12px}
+  .daily-batch-table .daily-when{white-space:normal}
+}

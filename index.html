@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>模擬倉 · Meme Coin Explorer</title>
 <meta name="description" content="個人模擬倉：Binance 公開行情 · 多角度留意盤 · 模擬落倉追蹤賺蝕。唔係投資建議。">
-<link rel="stylesheet" href="styles.css?v=20261023p1">
-<link rel="icon" href="favicon.ico?v=20261023p1" sizes="48x48">
-<link rel="icon" href="favicon.svg?v=20261023p1" type="image/svg+xml">
-<link rel="icon" href="icons/icon-32.png?v=20261023p1" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-16.png?v=20261023p1" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261023p1" sizes="180x180">
-<link rel="manifest" href="site.webmanifest?v=20261023p1">
+<link rel="stylesheet" href="styles.css?v=20261023q1">
+<link rel="icon" href="favicon.ico?v=20261023q1" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=20261023q1" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png?v=20261023q1" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png?v=20261023q1" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261023q1" sizes="180x180">
+<link rel="manifest" href="site.webmanifest?v=20261023q1">
 <meta name="theme-color" content="#0b0e11">
 </head>
 <body>
@@ -22,7 +22,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261023p1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
+    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261023q1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
       <h1>模擬倉</h1>
       <p class="sub">模擬倉 · Binance 公開行情</p>
@@ -182,6 +182,25 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
     <div class="fr-meta" id="followReportMeta"></div>
     <div class="fr-rows" id="followReportRows"></div>
+  </section>
+
+  <section class="panel daily-batch-panel simple-only" id="dailyBatchPanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title">每日新留意</h2>
+        <p class="home-sub" id="dailyBatchMeta">今日批次 · 同「今日跟買」分開</p>
+      </div>
+    </div>
+    <div class="table-wrap daily-batch-wrap">
+      <table class="data daily-batch-table" id="dailyBatchTable">
+        <thead><tr>
+          <th>幣</th><th class="num">現價</th><th class="num">24h</th>
+          <th>建議賣</th><th>紙上目標</th><th>注碼</th><th></th>
+        </tr></thead>
+        <tbody id="dailyBatchBody"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="dailyBatchEmpty" hidden>未有今日批次。</div>
   </section>
 
   <section class="panel home-brief simple-only" id="simpleCardsPanel">
@@ -556,6 +575,12 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="trade-orb-wrap" id="tradeOrb" aria-hidden="true" hidden></div>
     <h3 id="tradeTitle">模擬交易</h3>
     <p class="muted" id="tradeInfo"></p>
+    <div class="trade-exit-guide" id="tradeExitGuide" hidden>
+      <div class="teg-kicker">出場參考</div>
+      <div class="teg-main" id="tradeExitMain"></div>
+      <div class="teg-hold" id="tradeExitHold"></div>
+      <div class="teg-stop muted" id="tradeExitStop"></div>
+    </div>
     <div id="tradeModeRow" class="mode-row mode-cards-row" hidden>
       <div class="mode-cards" role="group" aria-label="落倉模式">
         <button type="button" class="mode-card active" data-trademode="spot">
@@ -635,9 +660,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <a href="#more" class="tab bn-simple" data-view="more"><span class="ico" aria-hidden="true">⋯</span><span class="bn-lab">更多</span></a>
 </nav>
 
-<script src="live.js?v=20261023p1"></script>
-<script src="coin3d.js?v=20261023p1"></script>
-<script src="app.js?v=20261023p1"></script>
-<script src="picks.js?v=20261023p1"></script>
+<script src="live.js?v=20261023q1"></script>
+<script src="coin3d.js?v=20261023q1"></script>
+<script src="app.js?v=20261023q1"></script>
+<script src="picks.js?v=20261023q1"></script>
 </body>
 </html>

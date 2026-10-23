@@ -1,3 +1,10 @@
+## 2026-10-23 ~17:05 Asia/Shanghai — 落倉出場參考 + 每日新留意表
+- 落倉 modal 加顯眼「出場參考」：升到約 $X（+Y%）可考慮放現貨；未到則再 hold 至建議時間；細字紙上止蝕。
+- 模擬倉持倉改用較大 `pos-exit-guide` 文案（唔淨係細 chip）。
+- 新獨立表「每日新留意」（table，唔係跟買大卡），讀最新 batch；batch-006 已用 `make_bn_setup_picks.mjs` 產出（正常市 6 隻全注）。
+- 每日流程：平日 9am upgrade 跑 `node scripts/make_bn_setup_picks.mjs` append 新 batch。
+- cache-bust `20261023q1`。
+
 ## Hourly review 2026-10-23 ~16:05 Asia/Shanghai
 Review: live 200, cache-bust `20261023p1` matches main; `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h **-0.57%**; liquid sample breadth **21/30 = 70%** green) ⇒ weak-regime gate **off**. batch-005 still 4 half-size (minted under morning weak). News ~31h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. Logos Binance CDN → fallbacks → letter.
 

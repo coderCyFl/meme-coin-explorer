@@ -22,6 +22,9 @@
 - [ ] 「點樣用」三個角色掣係咪仲 work？
 - [ ] AI「今日跟買」有冇 majors 漏網（BTC/ETH/SOL/BNB）？跑 `node scripts/qa_diversify.mjs`（Pass 3 都要 soft-skip MEGA）
 - [ ] 市況弱閘：BTC 24h < -2% 或綠幣 <30% 時，有冇「市況弱 · 細注／觀望」banner？Live 重算係咪 max 4／半注？
+- [ ] 「每日新留意」表：同「今日跟買」卡分開；顯示最新 batch（幣／現價／建議賣／紙上目標／半注全注）
+- [ ] 平日 9am upgrade 有冇跑 `node scripts/make_bn_setup_picks.mjs` 出新 batch？（每日至少一批新可買幣）
+- [ ] 落倉 modal 「出場參考」：有冇「升到約 $X（+Y%）可考慮放現貨」同 hold／止蝕文案？
 - [ ] 「幾時可以賣」chip：跟買卡／持倉有冇建議再睇時間 + 紙上 ±%？Reload 後 exit 時間有冇鎖死（唔好重開 24h）？
 
 ## 4. X／成本
