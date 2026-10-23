@@ -5,6 +5,16 @@
 - 每日流程：平日 9am upgrade 跑 `node scripts/make_bn_setup_picks.mjs` append 新 batch。
 - cache-bust `20261023q1`。
 
+## Hourly review 2026-10-23 ~17:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023q1` on Pages (Deploy succeeded); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.8k, 24h **~0%**; liquid sample breadth **21/30 = 70%** green) ⇒ weak-regime gate **off**. batch-006 live: 6 full-size buys (WLD/RENDER/ATOM/AAVE/1000SATS/SUI) + avoid PEPE (already_up). News ~32h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. `snapshot_outcomes.py`: nothing due.
+
+Self-growth: no extra code this hour — 出場參考 + 每日新留意 + batch-006 剛上線；站點穩，唔為交差亂改。
+
+Next:
+1. News refresh when `news.json` >48h（約明早／今夜；而家 ~32h）.
+2. 72h seals for batch-002..004 when due; thin samples → no win-rate claims.
+3. Next batch mint only on meaningful setup change (平日 9am upgrade 跑 `make_bn_setup_picks.mjs`).
+
 ## Hourly review 2026-10-23 ~16:05 Asia/Shanghai
 Review: live 200, cache-bust `20261023p1` matches main; `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h **-0.57%**; liquid sample breadth **21/30 = 70%** green) ⇒ weak-regime gate **off**. batch-005 still 4 half-size (minted under morning weak). News ~31h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. Logos Binance CDN → fallbacks → letter.
 
