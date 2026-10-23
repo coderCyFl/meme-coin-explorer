@@ -836,7 +836,7 @@
       else {
         const reg = latest.regime || {};
         const weak = reg.state === "weak" || reg.sizing === "half";
-        meta.textContent = `${batchLabel(latest)} · ${frTime(latest.created_at)} · ${buys.length} 隻可買`
+        meta.textContent = `${latest.id || "batch"} · ${frTime(latest.created_at)} · ${buys.length} 隻可買`
           + (weak ? " · 弱市半注" : " · 正常注碼")
           + " · 同「今日跟買」卡分開";
       }

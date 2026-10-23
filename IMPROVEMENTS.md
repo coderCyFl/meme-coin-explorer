@@ -1,3 +1,5 @@
+## 2026-10-23 ~17:10 Asia/Shanghai — 每日新留意 meta 顯示真實 batch id（如 batch-006），唔再用「今批」；cache-bust `20261023r1`。
+
 ## 2026-10-23 ~17:05 Asia/Shanghai — 落倉出場參考 + 每日新留意表
 - 落倉 modal 加顯眼「出場參考」：升到約 $X（+Y%）可考慮放現貨；未到則再 hold 至建議時間；細字紙上止蝕。
 - 模擬倉持倉改用較大 `pos-exit-guide` 文案（唔淨係細 chip）。
