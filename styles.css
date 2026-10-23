@@ -1384,3 +1384,5 @@ img.logo-mark.logo-3d{
 @media (max-width:360px){ img.logo-mark.logo-3d{width:30px!important;height:30px!important;flex-basis:30px} }
 
 .fr-px .fr-exit { font-weight: 600; white-space: nowrap; }
+
+.regime-banner{display:flex;flex-direction:column;gap:2px;margin:6px 0 10px;padding:10px 12px;border-radius:10px;border:1px solid rgba(246,70,93,.45);background:rgba(246,70,93,.10);color:#f6465d}.regime-banner[hidden]{display:none}.regime-banner span{color:#eaecef;opacity:.85}

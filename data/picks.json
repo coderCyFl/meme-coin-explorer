@@ -1945,6 +1945,287 @@
      ]
     }
    ]
+  },
+  {
+   "id": "batch-005",
+   "created_at": "2026-10-23T09:05:35+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -3.2,
+    "breadth_up_pct": 0,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 81448
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 103.92
+    }
+   },
+   "entries": [
+    {
+     "id": "20261023-005-WLD",
+     "batch": "batch-005",
+     "type": "buy",
+     "created_at": "2026-10-23T09:05:35+08:00",
+     "chain": "binance",
+     "token_address": "binance:WLDUSDT",
+     "pair_address": "WLDUSDT",
+     "dex": "binance-spot",
+     "symbol": "WLD",
+     "name": "WLD (Binance)",
+     "url": "https://www.binance.com/en/trade/WLD_USDT",
+     "entry_price_usd": 0.5502,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 62259715.55764,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -5.981,
+      "high24h": 0.5891,
+      "low24h": 0.5182,
+      "vol_creep": 1.154,
+      "rel_vs_btc_7d": 6.52,
+      "compression": 1.849,
+      "angle": "compression"
+     },
+     "model_score": 29,
+     "score_parts": {
+      "vol_creep": 4.3011648712598,
+      "compression": 15.275207244981361,
+      "relative": 0,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.742758915268698,
+      "chase_penalty": 0
+     },
+     "conviction": 29,
+     "rationale": "近幾日波幅收窄 1.8×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 1.8×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression",
+      "regime:weak",
+      "size:half"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "WLDUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261023-005-ATOM",
+     "batch": "batch-005",
+     "type": "buy",
+     "created_at": "2026-10-23T09:05:35+08:00",
+     "chain": "binance",
+     "token_address": "binance:ATOMUSDT",
+     "pair_address": "ATOMUSDT",
+     "dex": "binance-spot",
+     "symbol": "ATOM",
+     "name": "ATOM (Binance)",
+     "url": "https://www.binance.com/en/trade/ATOM_USDT",
+     "entry_price_usd": 1.725,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 3422211.36656,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.709,
+      "high24h": 1.76,
+      "low24h": 1.688,
+      "vol_creep": 1.488,
+      "rel_vs_btc_7d": -2.55,
+      "compression": 1.658,
+      "angle": "mean_reversion"
+     },
+     "model_score": 56,
+     "score_parts": {
+      "vol_creep": 13.664457857215218,
+      "compression": 11.845869719633953,
+      "relative": 4.59576218391287,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 18,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.167883536786825,
+      "chase_penalty": 0
+     },
+     "conviction": 56,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "ATOMUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261023-005-AAVE",
+     "batch": "batch-005",
+     "type": "buy",
+     "created_at": "2026-10-23T09:05:35+08:00",
+     "chain": "binance",
+     "token_address": "binance:AAVEUSDT",
+     "pair_address": "AAVEUSDT",
+     "dex": "binance-spot",
+     "symbol": "AAVE",
+     "name": "AAVE (Binance)",
+     "url": "https://www.binance.com/en/trade/AAVE_USDT",
+     "entry_price_usd": 147.66,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 21185604.48484,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -5.06,
+      "high24h": 156.16,
+      "low24h": 144.3,
+      "vol_creep": 1.434,
+      "rel_vs_btc_7d": -4.69,
+      "compression": 0.742,
+      "angle": "mean_reversion"
+     },
+     "model_score": 30,
+     "score_parts": {
+      "vol_creep": 12.165739308340248,
+      "compression": 0,
+      "relative": 8.436108890775786,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.157551075194984,
+      "chase_penalty": 0
+     },
+     "conviction": 30,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "AAVEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    },
+    {
+     "id": "20261023-005-RENDER",
+     "batch": "batch-005",
+     "type": "buy",
+     "created_at": "2026-10-23T09:05:35+08:00",
+     "chain": "binance",
+     "token_address": "binance:RENDERUSDT",
+     "pair_address": "RENDERUSDT",
+     "dex": "binance-spot",
+     "symbol": "RENDER",
+     "name": "RENDER (Binance)",
+     "url": "https://www.binance.com/en/trade/RENDER_USDT",
+     "entry_price_usd": 1.766,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 3660725.63854,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -7.781,
+      "high24h": 1.927,
+      "low24h": 1.75,
+      "vol_creep": 1.103,
+      "rel_vs_btc_7d": -8.53,
+      "compression": 1.11,
+      "angle": "relative"
+     },
+     "model_score": 28,
+     "score_parts": {
+      "vol_creep": 2.8746205674338805,
+      "compression": 1.9773180556098633,
+      "relative": 15.353006022001598,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.204458976134305,
+      "chase_penalty": 0
+     },
+     "conviction": 28,
+     "rationale": "相對大盤偏弱後量能回 · 提早留意（角度：relative。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "相對大盤偏弱後量能回 · 提早留意",
+     "angle": "relative",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:relative",
+      "regime:weak",
+      "size:half"
+     ],
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "RENDERUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ]
+    }
+   ]
   }
  ]
 }

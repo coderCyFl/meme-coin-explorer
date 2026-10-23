@@ -385,7 +385,7 @@
     const d = daily.slice(-8), h = hourly.slice(-48);
     const volD = d.map((b) => b.qv);
     const volAvg7 = avgNum(volD.slice(0, -1)) || avgNum(volD) || 1;
-    const volToday = volD[volD.length - 1] || volQ;
+    const volToday = volQ || volD[volD.length - 1]; // rolling 24h, not partial UTC day candle
     const volCreep = volToday / volAvg7;
     const vRecent = avgNum(volD.slice(-4, -1)) || 1;
     const vPrior = avgNum(volD.slice(-7, -4)) || vRecent;
@@ -469,7 +469,7 @@
     const angle = angleScores[0][0];
     let tip = angleScores[0][2];
     if (f.alreadyUp) tip = `已急升 ${f.chg24.toFixed(1)}% · 宜勿追（只供對照）`;
-    else if (angle === "accumulation") tip = `24h 只 ${f.chg24 >= 0 ? "+" : ""}${f.chg24.toFixed(1)}%，成交較 7 日均高 ${(f.volCreep * 100 - 100).toFixed(0)}% · 靜吸`;
+    else if (angle === "accumulation") tip = `24h 只 ${f.chg24 >= 0 ? "+" : ""}${f.chg24.toFixed(1)}%，成交較 7 日均${f.volCreep >= 1 ? "高" : "低"} ${Math.abs(f.volCreep * 100 - 100).toFixed(0)}% · 靜吸`;
     else if (angle === "rotation") tip = `7 日跑輸 BTC ${(-f.relStrength).toFixed(1)} pt，量能開始回 · 輪動留意`;
     else if (angle === "compression") tip = `近幾日波幅收窄 ${f.compression.toFixed(1)}×，輕觸上沿 · 唔係已爆升`;
     else if (angle === "mean_reversion") tip = `仍近區間中低位，量回暖 · 睇反彈多過追升`;

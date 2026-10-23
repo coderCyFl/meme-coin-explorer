@@ -107,3 +107,16 @@ Scorecard (batch-004, 24h, equal-weight): 6 buys avg **≈ -8.1%** vs BTC **-4.1
 Self-growth: **docs only** — no bug, no code churn.
 
 **Next priority (for 9am daily upgrade, not hourly):** add a market-regime gate — when BTC 24h < -2% and breadth weak, 今日跟買 should show 「市況弱·細注／觀望」 and rank by relative strength vs BTC, instead of 6 full-size longs. Generate batch-005 then.
+
+## Daily self-upgrade 2026-10-23 ~09:05 Asia/Shanghai
+Review: outcomes — nothing new due (batch-002/003/004 24h sealed earlier; 72h for batch-004 due ~10-25 04:54). News 24h old (<48h) → **0 X calls**. `qa_diversify.mjs` PASS; headless render OK, no app console errors.
+
+Done:
+- **Market-regime gate** (batch writer + home): weak if BTC 24h < -2% or <30% of scanned coins green. Writer: weak ⇒ max 4 buys, no relaxed fill (setup ≥ 28 only), ranked by RS vs BTC, `regime` + `size:half` stored on batch. Home: red 「市況弱 · 細注／觀望」 banner under 今日跟買.
+- **Bug fix**: volume-creep used the partial UTC-day candle (≈1h of volume at 09:00) → tips said 「成交較 7 日均高 -98%」 and accumulation scores were wrong. Now uses rolling 24h quoteVolume (writer + live.js); tip wording handles 高/低.
+- **batch-005** (weak regime, BTC -3.2%, 0/54 green): WLD, ATOM, AAVE, RENDER, half size. No avoid list (nothing pumping).
+
+Next:
+1. 72h seals for batch-002..004 when due; still <20 samples → no win-rate claims.
+2. Live `computeSetupPicks` should also cap to 4 in weak regime (currently banner only).
+3. News refresh tomorrow (will be >48h).

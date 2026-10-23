@@ -56,7 +56,7 @@ function features(base, symbol, ticker, daily, hourly, btcDaily) {
   for (let i = 1; i < d.length; i++) retsD.push((d[i].c / d[i - 1].c - 1) * 100);
   const volD = d.map((b) => b.qv);
   const volAvg7 = avg(volD.slice(0, -1)) || avg(volD) || 1;
-  const volToday = volD[volD.length - 1] || volQ;
+  const volToday = volQ || volD[volD.length - 1]; // rolling 24h, not partial UTC day candle
   const volCreep = volToday / volAvg7;
 
   // Prior 3d avg vol vs earlier 3d
@@ -209,7 +209,7 @@ function scoreSetup(f) {
   // Forward-looking tip — why watch NOW, not because already up
   let tip = tipCore;
   if (f.alreadyUp) tip = `已急升 ${f.chg24.toFixed(1)}% · 宜勿追（只供對照）`;
-  else if (angle === "accumulation") tip = `24h 只 ${f.chg24 >= 0 ? "+" : ""}${f.chg24.toFixed(1)}%，但成交較 7 日均高 ${(f.volCreep * 100 - 100).toFixed(0)}% · 靜吸`;
+  else if (angle === "accumulation") tip = `24h 只 ${f.chg24 >= 0 ? "+" : ""}${f.chg24.toFixed(1)}%，但成交較 7 日均${f.volCreep >= 1 ? "高" : "低"} ${Math.abs(f.volCreep * 100 - 100).toFixed(0)}% · 靜吸`;
   else if (angle === "rotation") tip = `7 日跑輸 BTC ${(-f.relStrength).toFixed(1)} pt，量能開始回 · 輪動留意`;
   else if (angle === "compression") tip = `近幾日波幅收窄 ${(f.compression).toFixed(1)}×，輕觸上沿 · 唔係已爆升`;
   else if (angle === "mean_reversion") tip = `仍近區間中低位，量回暖 · 睇反彈多過追升`;
@@ -308,7 +308,21 @@ async function main() {
   }
   console.log("\n");
 
-  const picks = diversifyPicks(scored, 6);
+  // Market-regime gate: in a risk-off tape, fewer + relatively-strong longs only, half size.
+  const btcT = tickers.get("BTCUSDT");
+  const btc24 = btcT ? +btcT.priceChangePercent : 0;
+  const breadth = scored.length ? scored.filter((s) => s.f.chg24 > 0).length / scored.length : 0.5;
+  const weak = btc24 < -2 || breadth < 0.3;
+  const regime = {
+    state: weak ? "weak" : "normal",
+    btc24h_pct: +btc24.toFixed(2),
+    breadth_up_pct: +(breadth * 100).toFixed(1),
+    sizing: weak ? "half" : "full",
+    rule: "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size",
+  };
+  console.log("regime", regime);
+  let picks = diversifyPicks(scored, 6);
+  if (weak) picks = picks.filter((p) => p.setupScore >= 28).sort((a, b) => b.f.relStrength - a.f.relStrength).slice(0, 4); // no relaxed fill in weak tape
   const chasing = scored.filter((s) => s.f.alreadyUp || s.f.extended)
     .sort((a, b) => b.chaseScore - a.chaseScore)
     .slice(0, 4);
@@ -382,7 +396,7 @@ async function main() {
     rationale: p.tip + `（角度：${p.angle}。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）`,
     tip: p.tip,
     angle: p.angle,
-    flags: ["Binance USDT spot", "multi-angle setup", "not 24h gainer rank", `angle:${p.angle}`],
+    flags: ["Binance USDT spot", "multi-angle setup", "not 24h gainer rank", `angle:${p.angle}`].concat(weak ? ["regime:weak", "size:half"] : []),
     evidence: {
       source: "binance-klines-1d-1h",
       symbol: p.symbol,
@@ -434,6 +448,7 @@ async function main() {
     created_at: isoHK,
     x_window: null,
     method: "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+    regime,
     benchmarks: {
       BTC: { chain: "binance", address: "binance:BTCUSDT", pair_address: "BTCUSDT", price_usd: btcPx },
       SOL: { chain: "binance", address: "binance:SOLUSDT", pair_address: "SOLUSDT", price_usd: solPx },

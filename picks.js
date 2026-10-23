@@ -478,6 +478,24 @@
     }
   }
 
+  /** Market-regime gate: BTC 24h < -2% or <30% of board green => 市況弱·細注／觀望. */
+  function renderRegimeBanner() {
+    const box = $("regimeBanner"); if (!box || !window.MCE.live) return;
+    const rows = (window.MCE.live.getBoardRows ? window.MCE.live.getBoardRows() : []).filter((r) => r.price > 0);
+    if (!rows.length) { box.hidden = true; return; }
+    const btc = rows.find((r) => (r.symbol || "").toUpperCase() === "BTCUSDT");
+    const btc24 = btc ? (btc.chg24 || 0) : 0;
+    const breadth = rows.filter((r) => (r.chg24 || 0) > 0).length / rows.length;
+    const weak = btc24 < -2 || breadth < 0.3;
+    box.hidden = !weak;
+    if (!weak) return;
+    box.textContent = "";
+    box.append(
+      el("strong", { text: "市況弱 · 細注／觀望" }),
+      el("span", { class: "tiny", text: `BTC 24h ${pct(btc24)} · 只有 ${Math.round(breadth * 100)}% 幣升 · 跟買建議半注或者唔落，優先揀跌得少過 BTC 嘅` })
+    );
+  }
+
   /** Live multi-angle setup picks (≥6) — NOT 24h gainer rank. */
   async function loadLiveBnPicks(force) {
     if (!window.MCE.live) return [];
@@ -495,6 +513,7 @@
     const picks = result.picks || [];
     const chasing = result.chasing || [];
     if (window.MCE.live) window.MCE.live._lastSetupPicks = picks;
+    renderRegimeBanner();
     renderChaseList(chasing, result.all || []);
     renderHotBuysFromBn(picks); // full-mode list shows setups too
     if (meta) {
