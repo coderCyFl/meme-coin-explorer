@@ -166,3 +166,13 @@ Self-growth (tiny script fix, not CEX redo):
 - `scripts/snapshot_outcomes.py`: put `data-api.binance.vision` **first** in `BN_KLINE_BASES` (was api.binance.com first, contradicting the “prefer vision” comment and failing with 451 here / some CI). Docstring aligned.
 
 Next: 72h seals (~10-25); news refresh when >48h; no new batch from hourly.
+
+## Hourly review 2026-10-23 ~15:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023p1` matches main (exit-lock + 幾時可以賣); `node --check` app/live/picks/coin3d + scripts OK; Binance via `data-api.binance.vision` moving (BTC ~$81.8k, 24h **-0.82%**; DOGE ~0.080). Liquid sample breadth **14/30 = 47%** green ⇒ weak-regime gate **off** (live can show up to 6). batch-005 still 4 half-size (minted under weak). News ~30h (<48h). Dex only in full-mode explore / legacy scripts — not hot/browse/AI paths. Logo path still Binance CDN → fallbacks → letter avatar.
+
+Done: docs only — no bug, no code churn (hourly; keep 9am for bigger work).
+
+Next priority:
+1. 72h seals for batch-002..004 when due (~10-25); still thin samples → no win-rate claims.
+2. News refresh when `news.json` >48h (tonight/tomorrow).
+3. When minting next batch after regime stays normal, expect 6 diversified setups (not cloning batch-005’s half-size weak set).
