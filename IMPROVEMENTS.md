@@ -238,3 +238,8 @@ Next priority:
 Review: live 200, cache-bust `20261023r1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$81.7k, 24h +0.05%; DOGE ~0.0802, +1.0%). Dex refs only in legacy scripts / full-mode explore, not hot/browse/AI paths.
 Done: docs only, no bug, no code churn.
 Next: news refresh once `news.json` >48h (tomorrow); 72h seals (~10-25); next batch should be 6 diversified setups if regime stays normal.
+
+## Hourly review 2026-10-23 ~22:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023r1` matches main; `node --check` app/live/picks/coin3d OK; Binance via `data-api.binance.vision` moving (BTC ~$82.0k, 24h +0.23%; DOGE ~0.0805, +0.78%). Dex refs unchanged (full-mode explore only), not hot/browse/AI paths. News fetched 2026-10-22 09:12 (~37h, <48h).
+Done: docs only, no bug, no code churn.
+Next: news refresh tomorrow morning (crosses 48h ~09:12); 72h seals (~10-25); next batch 6 diversified setups if regime stays normal.
