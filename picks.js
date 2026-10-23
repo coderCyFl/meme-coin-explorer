@@ -95,11 +95,66 @@
     };
   }
 
+  /** Shanghai calendar day YYYY-MM-DD for pick-meta bucket. */
+  function shanghaiDay(d = new Date()) {
+    try {
+      return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+    } catch (_) {
+      return d.toISOString().slice(0, 10);
+    }
+  }
+
+  /**
+   * Freeze live-pick created_at + regime on first sight (per Shanghai day + symbol + angle).
+   * Reload / recompute must not restart the 24h countdown or flip paper ±.
+   */
+  function stablePickMeta(symbol, angle, { weakNow } = {}) {
+    const day = shanghaiDay();
+    const key = "mce:pickMeta:v1:" + day + ":" + String(symbol || "").toUpperCase() + ":" + String(angle || "");
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const o = JSON.parse(raw);
+        if (o && o.created_at) return o;
+      }
+    } catch (_) {}
+    const weak = !!weakNow;
+    const o = {
+      created_at: new Date().toISOString(),
+      exitRegime: weak ? "weak" : "normal",
+      suggested_exit_h: weak ? 12 : 24,
+      suggested_second_h: weak ? 24 : 72,
+      take_profit_pct: weak ? 5 : 8,
+      stop_loss_pct: weak ? 4 : 5,
+    };
+    try { localStorage.setItem(key, JSON.stringify(o)); } catch (_) {}
+    return o;
+  }
+
+  /** Exit rule snapshot at open (persist on position). */
+  function lockExitMeta({ weak } = {}) {
+    const isWeak = weak != null ? !!weak : liveWeakNow();
+    return {
+      exitRegime: isWeak ? "weak" : "normal",
+      suggested_exit_h: isWeak ? 12 : 24,
+      suggested_second_h: isWeak ? 24 : 72,
+      take_profit_pct: isWeak ? 5 : 8,
+      stop_loss_pct: isWeak ? 4 : 5,
+    };
+  }
+
   function exitPlanFromEntry(e, { weakOverride } = {}) {
     if (!e) return null;
     const flags = e.flags || [];
-    const weak = weakOverride != null ? weakOverride
-      : (flags.includes("regime:weak") || flags.includes("size:half") || e.size === "half" || liveWeakNow());
+    const locked = e.exitRegime === "weak" || e.exitRegime === "normal"
+      || e.suggested_exit_h != null || e.take_profit_pct != null;
+    let weak;
+    if (weakOverride != null) weak = !!weakOverride;
+    else if (e.exitRegime === "weak") weak = true;
+    else if (e.exitRegime === "normal") weak = false;
+    else if (flags.includes("regime:weak") || flags.includes("size:half") || e.size === "half") weak = true;
+    else if (locked) weak = false;
+    else weak = liveWeakNow();
     const snap = e.entry_snapshot || {};
     return paperExitPlan({
       createdAt: e.created_at || e.openedAt || null,
@@ -325,6 +380,9 @@
             chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address,
             symbol: x.e.symbol, name: x.e.name, price: livePx,
             source: x.e.chain === "binance" ? "binance" : undefined,
+            exitRegime: x.e.exitRegime, suggested_exit_h: x.e.suggested_exit_h,
+            suggested_second_h: x.e.suggested_second_h, take_profit_pct: x.e.take_profit_pct,
+            stop_loss_pct: x.e.stop_loss_pct, flags: x.e.flags, size: x.e.size,
           }) }, "落倉")
         )
       ));
@@ -606,28 +664,51 @@
     if (picks.length >= 4) {
       const liveWeak = !!(result.regime && result.regime.weak) || picks.some((p) => p.size === "half");
       try { if (window.MCE.live) window.MCE.live._lastSetupCache = result; } catch (_) {}
-      const nowIso = new Date().toISOString();
-      const synth = picks.slice(0, 6).map((r) => ({
-        e: {
-          chain: "binance", pair_address: r.symbol, token_address: "binance:" + r.symbol,
-          symbol: r.base, name: (r.base || "") + " (Binance)",
-          entry_price_usd: r.price, conviction: Math.round(r.setupScore || r.score),
-          model_score: Math.round(r.setupScore || r.score),
-          tip: r.tip, angle: r.angle, rationale: r.tip,
-          created_at: nowIso,
-          size: r.size || (liveWeak ? "half" : "full"),
-          flags: liveWeak || r.size === "half" ? ["regime:weak", "size:half"] : [],
-          suggested_exit_h: (liveWeak || r.size === "half") ? 12 : 24,
-          suggested_second_h: (liveWeak || r.size === "half") ? 24 : 72,
-          take_profit_pct: (liveWeak || r.size === "half") ? 5 : 8,
-          stop_loss_pct: (liveWeak || r.size === "half") ? 4 : 5,
-          entry_snapshot: {
-            chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, low24h: r.low, angle: r.angle,
+      // Prefer fixed batch created_at when symbol is in latest batch; else freeze first-sight meta.
+      const latest = S.picks && S.picks.batches && S.picks.batches[S.picks.batches.length - 1];
+      const batchBySym = new Map();
+      if (latest) {
+        for (const e of latest.entries || []) {
+          if (e.type === "buy" && e.symbol) batchBySym.set(String(e.symbol).toUpperCase(), e);
+        }
+      }
+      const synth = picks.slice(0, 6).map((r) => {
+        const half = liveWeak || r.size === "half";
+        const be = batchBySym.get(String(r.base || "").toUpperCase());
+        const meta = be && be.created_at
+          ? {
+              created_at: be.created_at,
+              exitRegime: (be.flags || []).includes("regime:weak") || be.suggested_exit_h === 12 ? "weak" : (be.exitRegime || (half ? "weak" : "normal")),
+              suggested_exit_h: be.suggested_exit_h != null ? be.suggested_exit_h : (half ? 12 : 24),
+              suggested_second_h: be.suggested_second_h != null ? be.suggested_second_h : (half ? 24 : 72),
+              take_profit_pct: be.take_profit_pct != null ? be.take_profit_pct : (half ? 5 : 8),
+              stop_loss_pct: be.stop_loss_pct != null ? be.stop_loss_pct : (half ? 4 : 5),
+            }
+          : stablePickMeta(r.symbol || r.base, r.angle, { weakNow: half });
+        const weakLocked = meta.exitRegime === "weak";
+        return {
+          e: {
+            chain: "binance", pair_address: r.symbol, token_address: "binance:" + r.symbol,
+            symbol: r.base, name: (r.base || "") + " (Binance)",
+            entry_price_usd: r.price, conviction: Math.round(r.setupScore || r.score),
+            model_score: Math.round(r.setupScore || r.score),
+            tip: r.tip, angle: r.angle, rationale: r.tip,
+            created_at: meta.created_at,
+            exitRegime: meta.exitRegime,
+            size: weakLocked ? "half" : (r.size || "full"),
+            flags: weakLocked ? ["regime:weak", "size:half"] : [],
+            suggested_exit_h: meta.suggested_exit_h,
+            suggested_second_h: meta.suggested_second_h,
+            take_profit_pct: meta.take_profit_pct,
+            stop_loss_pct: meta.stop_loss_pct,
+            entry_snapshot: {
+              chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, low24h: r.low, angle: r.angle,
+            },
           },
-        },
-        li: { state: "live", price: r.price, source: "binance" },
-        ret: null,
-      }));
+          li: { state: "live", price: r.price, source: "binance" },
+          ret: null,
+        };
+      });
       renderSimpleCards(synth);
     }
     return picks;
@@ -644,11 +725,16 @@
     const liveApi = window.MCE.live;
     for (const r of top) {
       const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: (r.base || "?").slice(0, 2) });
-      const hotWeak = r.size === "half" || liveWeakNow();
+      const hotWeakNow = r.size === "half" || liveWeakNow();
+      const hotMeta = stablePickMeta(r.symbol || r.base, r.angle, { weakNow: hotWeakNow });
       const hotPlan = paperExitPlan({
-        createdAt: new Date().toISOString(),
-        weak: hotWeak,
+        createdAt: hotMeta.created_at,
+        weak: hotMeta.exitRegime === "weak",
         high24: r.high, entryPx: r.price,
+        tpPct: hotMeta.take_profit_pct,
+        slPct: hotMeta.stop_loss_pct,
+        reviewH: hotMeta.suggested_exit_h,
+        secondH: hotMeta.suggested_second_h,
       });
       box.append(el("div", { class: "hot-buy-row" },
         el("div", { class: "tok" },
@@ -664,6 +750,9 @@
         el("button", { class: "primary sm", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
           symbol: r.base, name: (r.base || "") + " (Binance)", price: r.price, source: "binance",
+          exitRegime: hotMeta.exitRegime, suggested_exit_h: hotMeta.suggested_exit_h,
+          suggested_second_h: hotMeta.suggested_second_h, take_profit_pct: hotMeta.take_profit_pct,
+          stop_loss_pct: hotMeta.stop_loss_pct, size: hotMeta.exitRegime === "weak" ? "half" : "full",
         }) }, "落倉")
       ));
     }
@@ -1088,7 +1177,22 @@
     const qty = (usd - fee) / fillPx;
     const k = posKey(info.chain, info.pair);
     const pos = P.positions[k] || { chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name, qty: 0, cost: 0, source: info.source || (info.chain === "binance" ? "binance" : "dex") };
-    if (!pos.openedAt) pos.openedAt = new Date().toISOString();
+    if (!pos.openedAt) {
+      pos.openedAt = new Date().toISOString();
+      const weakOpen = info.exitWeak != null ? !!info.exitWeak
+        : info.exitRegime === "weak" ? true
+        : info.exitRegime === "normal" ? false
+        : (info.suggested_exit_h === 12 || (info.flags || []).includes("regime:weak") || info.size === "half")
+          ? true
+          : liveWeakNow();
+      Object.assign(pos, lockExitMeta({ weak: weakOpen }));
+      // Prefer pick-locked numbers when present
+      if (info.suggested_exit_h != null) pos.suggested_exit_h = info.suggested_exit_h;
+      if (info.suggested_second_h != null) pos.suggested_second_h = info.suggested_second_h;
+      if (info.take_profit_pct != null) pos.take_profit_pct = info.take_profit_pct;
+      if (info.stop_loss_pct != null) pos.stop_loss_pct = info.stop_loss_pct;
+      if (info.exitRegime === "weak" || info.exitRegime === "normal") pos.exitRegime = info.exitRegime;
+    }
     pos.qty += qty; pos.cost += usd; pos.source = pos.source || info.source || (info.chain === "binance" ? "binance" : "dex"); P.positions[k] = pos; P.cash -= usd;
     P.trades.unshift({ t: new Date().toISOString(), kind: "spot", side: "BUY", chain: info.chain, pair: info.pair, symbol: info.symbol, price: fillPx, qty, usd, fee, pnl: null, leverage: null, impactPct: imp.impactPct });
     pf.save(P);
@@ -1106,9 +1210,22 @@
     const fillPx = li.price * (1 + imp.impactPct / 100);
     const qty = notional / fillPx;
     const id = levKey();
+    const weakOpen = info.exitWeak != null ? !!info.exitWeak
+      : info.exitRegime === "weak" ? true
+      : info.exitRegime === "normal" ? false
+      : (info.suggested_exit_h === 12 || (info.flags || []).includes("regime:weak") || info.size === "half")
+        ? true
+        : liveWeakNow();
+    const exitLock = lockExitMeta({ weak: weakOpen });
+    if (info.suggested_exit_h != null) exitLock.suggested_exit_h = info.suggested_exit_h;
+    if (info.suggested_second_h != null) exitLock.suggested_second_h = info.suggested_second_h;
+    if (info.take_profit_pct != null) exitLock.take_profit_pct = info.take_profit_pct;
+    if (info.stop_loss_pct != null) exitLock.stop_loss_pct = info.stop_loss_pct;
+    if (info.exitRegime === "weak" || info.exitRegime === "normal") exitLock.exitRegime = info.exitRegime;
     P.levPositions[id] = {
       id, chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name,
       side: "long", leverage, margin, notional, entry: fillPx, qty, openFee: fee, openedAt: new Date().toISOString(), impactPct: imp.impactPct,
+      ...exitLock,
     };
     P.cash -= margin + fee;
     P.trades.unshift({ t: new Date().toISOString(), kind: "lev", side: "OPEN", chain: info.chain, pair: info.pair, symbol: info.symbol, price: fillPx, qty, usd: margin, fee, pnl: null, leverage, notional, impactPct: imp.impactPct });
@@ -1642,13 +1759,42 @@
     return t ? t.t : null;
   }
 
+  /** Migrate old positions missing exit lock → default normal 24h/+8/−5, persist once. */
+  function ensurePosExitLock(pos) {
+    if (!pos) return false;
+    let changed = false;
+    if (!pos.openedAt) {
+      const t = posOpenedAt(pos);
+      pos.openedAt = t || new Date().toISOString();
+      changed = true;
+    }
+    if (pos.exitRegime !== "weak" && pos.exitRegime !== "normal") {
+      Object.assign(pos, {
+        exitRegime: "normal",
+        suggested_exit_h: 24,
+        suggested_second_h: 72,
+        take_profit_pct: 8,
+        stop_loss_pct: 5,
+      });
+      changed = true;
+    }
+    return changed;
+  }
+
   function exitPlanForPosition(pos) {
-    const opened = posOpenedAt(pos);
+    if (ensurePosExitLock(pos)) {
+      try { pf.save(P); } catch (_) {}
+    }
+    const opened = pos.openedAt || posOpenedAt(pos);
     const entryPx = pos.entry != null ? pos.entry : (pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null);
     return paperExitPlan({
       createdAt: opened,
-      weak: liveWeakNow(),
+      weak: pos.exitRegime === "weak",
       entryPx,
+      tpPct: pos.take_profit_pct,
+      slPct: pos.stop_loss_pct,
+      reviewH: pos.suggested_exit_h,
+      secondH: pos.suggested_second_h,
     });
   }
 

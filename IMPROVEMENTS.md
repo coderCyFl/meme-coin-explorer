@@ -1,3 +1,9 @@
+## 2026-10-23 ~14:30 Asia/Shanghai — exit lock + trade time zh-HK
+- Live 跟買卡：`stablePickMeta` 按上海日+幣+角度鎖死 `created_at`／regime／紙上 ±；有 batch 則用 batch `created_at`。Reload 唔再重開 24h。
+- 落倉寫入並持久化 `exitRegime` + suggested_exit_h / TP/SL；持倉顯示跟開倉鎖定，唔跟 `liveWeakNow()`。舊倉缺欄 → 預設 normal 24h/+8/−5 並寫返 localStorage。
+- `localTime`（成交紀錄等）改 Asia/Shanghai zh-HK 24h「10月23日 14:24」。
+- cache-bust `20261023p1`。
+
 ## 2026-10-23 ~14:30 Asia/Shanghai — 幾時可以賣（賣出時機）
 - 今日跟買卡片／完整詳情／熱門留意盤：加短 chip「建議賣：約 {zh-HK 時間} 再睇」+「紙上 +X%／-Y%」。
 - 規則（紙上參考，唔係保證）：正常市 24h 再睇、+8/−5；弱市閘（半注）12h 提早檢視、+5/−4；可選近 24h 高位減倉提示。同 24h outcomes 封盤對齊；非弱市顯示 72h 第二檔對照。
