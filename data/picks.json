@@ -2030,6 +2030,10 @@
       "symbol": "WLDUSDT",
       "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
      },
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
      "horizons_h": [
       24,
       72,
@@ -2093,6 +2097,10 @@
       "symbol": "ATOMUSDT",
       "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
      },
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
      "horizons_h": [
       24,
       72,
@@ -2156,6 +2164,10 @@
       "symbol": "AAVEUSDT",
       "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
      },
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
      "horizons_h": [
       24,
       72,
@@ -2219,6 +2231,10 @@
       "symbol": "RENDERUSDT",
       "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
      },
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
      "horizons_h": [
       24,
       72,

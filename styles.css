@@ -561,6 +561,31 @@ img.coin-logo.mood-logo{width:72px;height:72px;border-radius:50%;box-shadow:0 8p
 .sc-details summary::-webkit-details-marker{display:none}
 .sc-detail-body{margin-top:6px;padding:8px;border-radius:8px;background:#0f1420;line-height:1.45}
 
+/* ===== Sell-timing chips (幾時可以賣) ===== */
+.sc-exit{
+  display:flex;flex-wrap:wrap;gap:5px;align-items:center;
+  margin:2px 0 0;
+}
+.sc-exit-detail{margin:8px 0 10px}
+.sc-exit-pos{margin-top:6px}
+.sc-exit-hot{margin-top:4px}
+.exit-chip{
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:700;line-height:1.25;letter-spacing:.01em;
+  padding:3px 8px;border-radius:999px;border:1px solid var(--line);
+  background:var(--panel2);color:var(--text);white-space:nowrap;
+}
+.exit-when{background:#0c1a2e;color:#93c5fd;border-color:#1e3a5f}
+.exit-when.exit-due{background:#3a2a08;color:#f0b90b;border-color:#8a6510}
+.exit-tp{background:#0f2f1d;color:#86efac;border-color:#166534}
+.exit-trim{background:#2a1a08;color:#fbbf24;border-color:#78520f}
+.hot-buy-row .sc-exit{max-width:100%}
+.hot-buy-row .exit-chip{font-size:10px;padding:2px 6px}
+@media (max-width:480px){
+  .exit-chip{white-space:normal;max-width:100%}
+  .sc-exit{gap:4px}
+}
+
 .chase-panel{margin-top:0}
 .chase-panel summary{cursor:pointer;font-weight:700;list-style:none}
 .chase-panel summary::-webkit-details-marker{display:none}

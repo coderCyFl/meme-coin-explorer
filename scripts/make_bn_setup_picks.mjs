@@ -397,6 +397,10 @@ async function main() {
     tip: p.tip,
     angle: p.angle,
     flags: ["Binance USDT spot", "multi-angle setup", "not 24h gainer rank", `angle:${p.angle}`].concat(weak ? ["regime:weak", "size:half"] : []),
+    suggested_exit_h: weak ? 12 : 24,
+    suggested_second_h: weak ? 24 : 72,
+    take_profit_pct: weak ? 5 : 8,
+    stop_loss_pct: weak ? 4 : 5,
     evidence: {
       source: "binance-klines-1d-1h",
       symbol: p.symbol,

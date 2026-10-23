@@ -1,3 +1,10 @@
+## 2026-10-23 ~14:30 Asia/Shanghai — 幾時可以賣（賣出時機）
+- 今日跟買卡片／完整詳情／熱門留意盤：加短 chip「建議賣：約 {zh-HK 時間} 再睇」+「紙上 +X%／-Y%」。
+- 規則（紙上參考，唔係保證）：正常市 24h 再睇、+8/−5；弱市閘（半注）12h 提早檢視、+5/−4；可選近 24h 高位減倉提示。同 24h outcomes 封盤對齊；非弱市顯示 72h 第二檔對照。
+- 模擬倉現貨／槓桿持倉：落倉後顯示相對 `openedAt` 嘅下次檢視時間（現貨而家會寫 `openedAt`）。
+- `make_bn_setup_picks.mjs` + batch-005 寫入 `suggested_exit_h` / `take_profit_pct` / `stop_loss_pct`。
+- cache-bust `20261023o1`。
+
 ## 2026-10-23 — three.js coin (not CSS orb)
 - Replaced CSS `.coin-orb` with `coin3d.js`: procedural `CylinderGeometry` coin, logo textures both faces, gentle Y spin.
 - Mounted on Coin Mood hero + trade sheet; CDN ESM (`three@0.160.1` jsDelivr → unpkg fallback); 2D logo fallback if WebGL/CDN fails.

@@ -44,6 +44,86 @@
   const median = (a) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
   const avg = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
   const money2 = (v) => (v == null || isNaN(v) ? "–" : (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+
+  /** Live weak-tape? Prefer regime banner, then last computeSetupPicks regime. */
+  function liveWeakNow() {
+    const box = $("regimeBanner");
+    if (box && !box.hidden) return true;
+    try {
+      const r = window.MCE.live && window.MCE.live._lastSetupCache && window.MCE.live._lastSetupCache.regime;
+      if (r && r.weak) return true;
+    } catch (_) {}
+    return false;
+  }
+
+  /**
+   * Paper sell-timing for AI picks / open positions.
+   * Fixed transparent rules (not a promise): normal 24h review +8/−5; weak 12h +5/−4.
+   * Aligns with 24h outcomes seal; 72h as second look when not weak.
+   */
+  function paperExitPlan({ createdAt, weak, high24, entryPx, tpPct, slPct, reviewH, secondH } = {}) {
+    const isWeak = !!weak;
+    const rh = reviewH != null ? reviewH : (isWeak ? 12 : 24);
+    const sh = secondH != null ? secondH : (isWeak ? 24 : 72);
+    const tp = tpPct != null ? tpPct : (isWeak ? 5 : 8);
+    const sl = slPct != null ? slPct : (isWeak ? 4 : 5);
+    const baseMs = createdAt ? new Date(createdAt).getTime() : Date.now();
+    const baseOk = !isNaN(baseMs);
+    const reviewAt = baseOk ? new Date(baseMs + rh * 3600e3) : null;
+    const secondAt = baseOk ? new Date(baseMs + sh * 3600e3) : null;
+    const pastReview = reviewAt ? Date.now() >= reviewAt.getTime() : false;
+    let whenText;
+    if (!reviewAt) {
+      whenText = `約 ${rh}h 後再睇`;
+    } else if (pastReview) {
+      whenText = isWeak
+        ? `已過 ${rh}h · 宜決定賣定留`
+        : `已過 24h · 宜決定賣定留` + (secondAt ? `（${sh}h ${frTime(secondAt)} 再對照）` : "");
+    } else {
+      whenText = `約 ${frTime(reviewAt)} 再睇`;
+    }
+    let trimNote = null;
+    if (high24 > 0 && entryPx > 0) {
+      const roomPct = (high24 / entryPx - 1) * 100;
+      if (roomPct > 0.5 && roomPct < tp) {
+        trimNote = `近 24h 高（+${roomPct.toFixed(1)}%）可減倉`;
+      }
+    }
+    return {
+      reviewAt, secondAt, reviewH: rh, secondH: sh, tp, sl, weak: isWeak, pastReview,
+      whenText, tpText: `紙上 +${tp}%／-${sl}%`, trimNote,
+    };
+  }
+
+  function exitPlanFromEntry(e, { weakOverride } = {}) {
+    if (!e) return null;
+    const flags = e.flags || [];
+    const weak = weakOverride != null ? weakOverride
+      : (flags.includes("regime:weak") || flags.includes("size:half") || e.size === "half" || liveWeakNow());
+    const snap = e.entry_snapshot || {};
+    return paperExitPlan({
+      createdAt: e.created_at || e.openedAt || null,
+      weak,
+      high24: snap.high24h ?? e.high24h,
+      entryPx: e.entry_price_usd ?? e.entry,
+      tpPct: e.take_profit_pct,
+      slPct: e.stop_loss_pct,
+      reviewH: e.suggested_exit_h,
+      secondH: e.suggested_second_h,
+    });
+  }
+
+  /** Compact chips: 建議賣：約 … 再睇 · 紙上 +X%/−Y% */
+  function exitHintRow(plan, { className = "sc-exit" } = {}) {
+    if (!plan) return "";
+    const kids = [
+      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: "建議賣：" + plan.whenText }),
+      el("span", { class: "exit-chip exit-tp", text: plan.tpText }),
+    ];
+    if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
+    return el("div", { class: className, title: "紙上參考，唔係保證。同 24h 跟買成績封盤對齊。" }, ...kids);
+  }
+
   function srcBadge(chain, pair, li) {
     const label = (window.MCE.live && window.MCE.live.sourceLabel(chain, pair))
       || (li && li.source === "binance" ? "Binance 即時" : li && li.source === "dex" ? "Dex 即時" : "");
@@ -238,6 +318,7 @@
           )
         ),
         el("p", { class: "sc-why", text: tip }),
+        exitHintRow(exitPlanFromEntry(x.e)),
         details,
         el("div", { class: "sc-actions" },
           el("button", { class: "primary", onclick: () => openBuy({
@@ -523,6 +604,9 @@
         : "未搵到足夠留意盤";
     }
     if (picks.length >= 4) {
+      const liveWeak = !!(result.regime && result.regime.weak) || picks.some((p) => p.size === "half");
+      try { if (window.MCE.live) window.MCE.live._lastSetupCache = result; } catch (_) {}
+      const nowIso = new Date().toISOString();
       const synth = picks.slice(0, 6).map((r) => ({
         e: {
           chain: "binance", pair_address: r.symbol, token_address: "binance:" + r.symbol,
@@ -530,6 +614,13 @@
           entry_price_usd: r.price, conviction: Math.round(r.setupScore || r.score),
           model_score: Math.round(r.setupScore || r.score),
           tip: r.tip, angle: r.angle, rationale: r.tip,
+          created_at: nowIso,
+          size: r.size || (liveWeak ? "half" : "full"),
+          flags: liveWeak || r.size === "half" ? ["regime:weak", "size:half"] : [],
+          suggested_exit_h: (liveWeak || r.size === "half") ? 12 : 24,
+          suggested_second_h: (liveWeak || r.size === "half") ? 24 : 72,
+          take_profit_pct: (liveWeak || r.size === "half") ? 5 : 8,
+          stop_loss_pct: (liveWeak || r.size === "half") ? 4 : 5,
           entry_snapshot: {
             chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, low24h: r.low, angle: r.angle,
           },
@@ -553,12 +644,19 @@
     const liveApi = window.MCE.live;
     for (const r of top) {
       const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: (r.base || "?").slice(0, 2) });
+      const hotWeak = r.size === "half" || liveWeakNow();
+      const hotPlan = paperExitPlan({
+        createdAt: new Date().toISOString(),
+        weak: hotWeak,
+        high24: r.high, entryPx: r.price,
+      });
       box.append(el("div", { class: "hot-buy-row" },
         el("div", { class: "tok" },
           logo,
           el("div", {},
             el("div", { class: "nm", text: r.base }),
-            el("div", { class: "sy", text: (ANGLE_LABEL[r.angle] || "留意盤") + " · " + (r.tip || "").slice(0, 36) })
+            el("div", { class: "sy", text: (ANGLE_LABEL[r.angle] || "留意盤") + " · " + (r.tip || "").slice(0, 36) }),
+            exitHintRow(hotPlan, { className: "sc-exit sc-exit-hot" })
           )
         ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
@@ -679,6 +777,7 @@
     d.append(
       el("h3", { text: `${e.type === "buy" ? "買入推薦" : "避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
       el("p", { class: "rationale", text: e.rationale }),
+      e.type === "buy" ? exitHintRow(exitPlanFromEntry(e), { className: "sc-exit sc-exit-detail" }) : "",
       e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
       el("div", { class: "kv" },
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
@@ -989,6 +1088,7 @@
     const qty = (usd - fee) / fillPx;
     const k = posKey(info.chain, info.pair);
     const pos = P.positions[k] || { chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name, qty: 0, cost: 0, source: info.source || (info.chain === "binance" ? "binance" : "dex") };
+    if (!pos.openedAt) pos.openedAt = new Date().toISOString();
     pos.qty += qty; pos.cost += usd; pos.source = pos.source || info.source || (info.chain === "binance" ? "binance" : "dex"); P.positions[k] = pos; P.cash -= usd;
     P.trades.unshift({ t: new Date().toISOString(), kind: "spot", side: "BUY", chain: info.chain, pair: info.pair, symbol: info.symbol, price: fillPx, qty, usd, fee, pnl: null, leverage: null, impactPct: imp.impactPct });
     pf.save(P);
@@ -1534,6 +1634,24 @@
     renderPortfolio(false);
   }
 
+  function posOpenedAt(pos) {
+    if (!pos) return null;
+    if (pos.openedAt) return pos.openedAt;
+    const t = (P.trades || []).find((tr) =>
+      (tr.side === "BUY" || tr.side === "OPEN") && tr.pair === pos.pair && tr.chain === pos.chain && tr.symbol === pos.symbol);
+    return t ? t.t : null;
+  }
+
+  function exitPlanForPosition(pos) {
+    const opened = posOpenedAt(pos);
+    const entryPx = pos.entry != null ? pos.entry : (pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null);
+    return paperExitPlan({
+      createdAt: opened,
+      weak: liveWeakNow(),
+      entryPx,
+    });
+  }
+
   async function renderPortfolio(fetchPrices = true) {
     $("feePct").value = P.feePct;
     $("startCash").value = P.start;
@@ -1582,7 +1700,8 @@
           el("span", { class: "kind-badge spot", text: "現貨" }), " ",
           el("b", { text: "$" + p.symbol }), " ", srcBadge(p.chain, p.pair, li),
           li.state === "dead" ? el("span", { class: "pill dead" }, "已死") : "",
-          u != null ? el("div", { class: "pnl-glance " + cls(u), text: (u >= 0 ? "+" : "") + money2(u) + " · " + (upct == null ? "" : pct(upct)) }) : ""),
+          u != null ? el("div", { class: "pnl-glance " + cls(u), text: (u >= 0 ? "+" : "") + money2(u) + " · " + (upct == null ? "" : pct(upct)) }) : "",
+          exitHintRow(exitPlanForPosition(p), { className: "sc-exit sc-exit-pos" })),
         el("td", { class: "num", "data-label": "數量", text: p.qty.toLocaleString(undefined, { maximumFractionDigits: 2 }) }),
         el("td", { class: "num", "data-label": "入場", text: price(p.cost / p.qty) }), el("td", { class: "num", "data-label": "成本", text: money2(p.cost) }),
         el("td", { class: "num live-px", "data-label": "而家", text: px == null ? "…" : price(px) }), el("td", { class: "num", "data-label": "市值", text: v == null ? "…" : money2(v) }),
@@ -1609,7 +1728,8 @@
           el("span", { class: "kind-badge lev", text: pos.leverage + "x" }), " ",
           el("b", { text: "$" + pos.symbol }), " ", srcBadge(pos.chain, pos.pair, li),
           m ? el("div", { class: "pnl-glance " + cls(m.unreal), text: (m.unreal >= 0 ? "+" : "") + money2(m.unreal) + (levPnlPct == null ? "" : " · " + pct(levPnlPct)) }) : "",
-          toLiq != null ? el("div", { class: "dist" + (toLiq < 5 ? " hot" : ""), text: `爆倉價 ${price(liqPriceLong(pos.entry, pos.leverage))} · 距 ${toLiq.toFixed(1)}%` }) : el("div", { class: "dist", text: "爆倉價 " + price(liqPriceLong(pos.entry, pos.leverage)) })),
+          toLiq != null ? el("div", { class: "dist" + (toLiq < 5 ? " hot" : ""), text: `爆倉價 ${price(liqPriceLong(pos.entry, pos.leverage))} · 距 ${toLiq.toFixed(1)}%` }) : el("div", { class: "dist", text: "爆倉價 " + price(liqPriceLong(pos.entry, pos.leverage)) }),
+          exitHintRow(exitPlanForPosition(pos), { className: "sc-exit sc-exit-pos" })),
         el("td", { class: "num", "data-label": "倍數", text: pos.leverage + "x" }),
         el("td", { class: "num", "data-label": "保證金", text: money2(pos.margin) }),
         el("td", { class: "num", "data-label": "名義", text: money2(pos.notional) }),
