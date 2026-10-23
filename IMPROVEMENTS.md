@@ -140,3 +140,8 @@ Next: watch for breadth ≥30% so picks expand back to 6; 72h seals (~10-25); ne
 Review: live 200, cache-bust `20261023n1` matches main (no drift vs origin); `node --check` all JS OK; Binance live moving (BTC ~$81.8k, 24h -1.34%; DOGE 0.0796). picks.json has 5 batches. Dex still only in full-mode explore, not hot/browse/AI paths.
 Done: docs only, no bug, no code churn (avoid overlap with 9am daily upgrade).
 Next: breadth still weak so gate stays on; 72h seals (~10-25); news refresh tomorrow.
+
+## Hourly review 2026-10-23 ~13:05 Asia/Shanghai
+Review: live 200, cache-bust `20261023n1` matches main; `node --check` all JS OK; Binance moving via `data-api.binance.vision` (BTC ~$81.7k, 24h -1.39%; DOGE 0.0795). Note: `api.binance.com` returns a restricted-location error from the build box, so server-side scripts should keep using `data-api.binance.vision` as the primary host. No Dex on hot/browse/AI paths.
+Done: docs only, no bug, no code churn.
+Next: 72h seals (~10-25); news refresh tomorrow; confirm browser fallback host order still prefers a reachable Binance endpoint.
