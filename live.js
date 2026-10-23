@@ -568,9 +568,23 @@
       }
     });
     await Promise.all(workers);
-    const picks = diversifySetups(scored, 6);
+    // Market-regime gate (same rule as batch writer + home banner):
+    // weak if BTC 24h < -2% or <30% of board green => max 4, setup >= 28, rank by RS vs BTC.
+    const boardNow = getBoardRows().filter((r) => r.price > 0);
+    const btcRow = boardNow.find((r) => r.symbol === "BTCUSDT");
+    const btc24 = btcRow ? (btcRow.chg24 || 0) : 0;
+    const breadth = boardNow.length ? boardNow.filter((r) => (r.chg24 || 0) > 0).length / boardNow.length : 1;
+    const weak = btc24 < -2 || breadth < 0.3;
+    let picks;
+    if (weak) {
+      picks = diversifySetups(scored.filter((s) => s.setupScore >= 28), 4)
+        .map((s) => ({ ...s, size: "half", rsBtc: (s.chg24 || 0) - btc24 }))
+        .sort((a, b) => b.rsBtc - a.rsBtc);
+    } else {
+      picks = diversifySetups(scored, 6);
+    }
     const chasing = scoreChaseRows(scored.length ? scored : list);
-    setupCache = { t: Date.now(), picks, chasing, all: scored };
+    setupCache = { t: Date.now(), picks, chasing, all: scored, regime: { weak, btc24, breadth } };
     return setupCache;
   }
 

@@ -120,3 +120,8 @@ Next:
 1. 72h seals for batch-002..004 when due; still <20 samples → no win-rate claims.
 2. Live `computeSetupPicks` should also cap to 4 in weak regime (currently banner only).
 3. News refresh tomorrow (will be >48h).
+
+## Hourly review 2026-10-23 ~09:10 Asia/Shanghai
+Review: live 200, cache-bust matched main, `node --check` all JS OK, Binance price moving (DOGE 0.0791). Dex only in full-mode explore (not hot/AI lists).
+Done: live `computeSetupPicks` now applies the same weak-regime gate as the batch writer (BTC 24h < -2% or <30% green ⇒ max 4, setup ≥ 28, half size, ranked by RS vs BTC) — previously only the banner showed. Cache-bust 20261023n1.
+Next: 72h seals when due (~10-25); news refresh tomorrow.
