@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD873"/><stop offset=".55" stop-color="#F2A51A"/><stop offset="1" stop-color="#B86A0C"/></linearGradient></defs><circle cx="16" cy="16" r="15.5" fill="url(#g)"/><circle cx="16" cy="16" r="12.2" fill="#1a1108"/><path d="M8.6 21.4 13.4 16.6 16.4 19.6 20.2 15.8" fill="none" stroke="#FFC640" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="miter"/><path d="M17.6 12.4H24V18.8Z" fill="#FFC640"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD873"/>
+      <stop offset=".55" stop-color="#F2A51A"/>
+      <stop offset="1" stop-color="#B86A0C"/>
+    </linearGradient>
+  </defs>
+  <circle cx="16" cy="16" r="15.5" fill="url(#g)"/>
+  <circle cx="16" cy="16" r="12.2" fill="#1a1108"/>
+  <!-- engineer at desk silhouette -->
+  <g fill="#FFC640">
+    <!-- head -->
+    <circle cx="13.2" cy="11.2" r="2.6"/>
+    <!-- body/hoodie -->
+    <path d="M10.2 14.2c1.1 1.4 2.2 2 3 2s1.9-.6 3-2l.6 5.2H9.6z"/>
+    <!-- desk -->
+    <rect x="7.2" y="20.6" width="14.2" height="1.5" rx=".4"/>
+    <!-- monitor -->
+    <rect x="17.2" y="11.5" width="6.4" height="5.2" rx=".6" fill="#2a1a08" stroke="#FFC640" stroke-width=".8"/>
+    <rect x="18.1" y="12.4" width="4.6" height="3.2" rx=".3" fill="#F2A51A"/>
+    <!-- chart arrow on screen -->
+    <path d="M18.6 14.8l1.2-.9 1 .7 1.4-1.2" fill="none" stroke="#1a1108" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- stand -->
+    <rect x="19.6" y="16.7" width="1.6" height="1.5" fill="#FFC640"/>
+  </g>
+</svg>

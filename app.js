@@ -1,7 +1,8 @@
-/* Meme Coin Explorer: vanilla JS, no build, no keys.
+/* Meme Coin Explorer / Crypto.M: vanilla JS, no build, no keys.
  * Main path (hot / browse / AI picks): Binance public REST+stream (see live.js).
  * Full-mode explore only: DexScreener public API (CORS *), cached in localStorage.
- * X buzz: static data/x_buzz.json (the site never calls X). */
+ * X buzz: static data/x_buzz.json ONLY — the site never calls X API.
+ * Refresh: scripts/fetch_x_raw.py gated ≤1/day (stamp data/raw/.x_fetch_stamp). */
 (() => {
   "use strict";
   const API = "https://api.dexscreener.com";

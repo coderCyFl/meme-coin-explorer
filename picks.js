@@ -1,4 +1,4 @@
-/* AI 揀幣 scorecard + 模擬倉. Depends on window.MCE from app.js. */
+/* AI 揀幣 scorecard + Crypto.M 紙上倉. Depends on window.MCE from app.js. */
 (() => {
   "use strict";
   const { el, money, price, pct, fmtInt, localTime, safeUrl, cachedJson, API } = window.MCE;
@@ -168,15 +168,20 @@
     });
   }
 
-  /** Compact chips: 建議賣：約 … 再睇 · 紙上 +X%/−Y% */
+  /** Compact chips: Hold 至 · 目標 +X% · 止蝕 −Y%（幾時可以放） */
   function exitHintRow(plan, { className = "sc-exit" } = {}) {
     if (!plan) return "";
+    const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
+    const holdTxt = plan.pastReview
+      ? "宜決定賣定留"
+      : ("Hold 至 " + (whenClean || plan.whenText));
     const kids = [
-      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: "建議賣：" + plan.whenText }),
-      el("span", { class: "exit-chip exit-tp", text: plan.tpText }),
+      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: holdTxt }),
+      el("span", { class: "exit-chip exit-tp", text: "目標 +" + plan.tp + "%" }),
+      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
     ];
     if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
-    return el("div", { class: className, title: "紙上參考，唔係保證。同 24h 跟買成績封盤對齊。" }, ...kids);
+    return el("div", { class: className, title: "幾時可以放 · 紙上參考唔係保證。同 24h 跟買成績封盤對齊。" }, ...kids);
   }
 
   /**
@@ -193,19 +198,19 @@
     const near = mark != null && !reached && mark >= targetPx * 0.97;
     let main;
     if (reached) {
-      main = `已到／接近目標 · 可考慮放現貨（約 ${price(targetPx)} · +${tp}%）`;
+      main = `已到目標 · ${price(targetPx)}（+${tp}%）可考慮放`;
     } else if (near) {
-      main = `接近目標 · 升到約 ${price(targetPx)}（+${tp}%）可考慮放現貨`;
+      main = `接近 · ${price(targetPx)}（+${tp}%）可考慮放`;
     } else {
-      main = `升到約 ${price(targetPx)}（+${tp}%）就可以考慮放現貨`;
+      main = `${price(targetPx)}（+${tp}%）可考慮放`;
     }
     const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
     const hold = reached
-      ? (plan.pastReview ? "已過建議檢視時間 · 宜決定賣定留" : `到目標附近可減倉；否則持有至 ${whenClean || plan.whenText} 再決定`)
+      ? (plan.pastReview ? "已過檢視時間 · 宜決定賣定留" : `到目標可減倉；否則持有至 ${whenClean || plan.whenText}`)
       : (plan.pastReview
-        ? `而家未到目標 · 已過建議檢視時間，宜決定賣定留定再 hold`
-        : `而家未到目標 · 再 hold 至 ${whenClean || plan.whenText} 再決定`);
-    const stop = `紙上止蝕約 ${price(stopPx)}（-${sl}%）· 紙上參考唔係保證`;
+        ? `未到目標 · 已過檢視時間，宜決定賣定留定再 hold`
+        : `${whenClean || plan.whenText} 再決定（而家未到目標）`);
+    const stop = `${price(stopPx)}（−${sl}%）· 紙上參考`;
     return { main, hold, stop, targetPx, stopPx, reached, pastReview: plan.pastReview, tp, sl };
   }
 
@@ -231,9 +236,16 @@
     const g = exitGuideCopy(plan, entryPx, markPx);
     if (!g) return exitHintRow(plan, { className: "sc-exit sc-exit-pos" });
     return el("div", { class: "pos-exit-guide" },
-      el("div", { class: "peg-main", text: g.main }),
-      el("div", { class: "peg-hold", text: g.hold }),
-      el("div", { class: "peg-stop", text: g.stop })
+      el("div", { class: "peg-kicker", text: "幾時可以放" }),
+      el("div", { class: "peg-row" },
+        el("span", { class: "peg-lab", text: "目標價" }),
+        el("span", { class: "peg-main", text: g.main })),
+      el("div", { class: "peg-row" },
+        el("span", { class: "peg-lab", text: "Hold 至" }),
+        el("span", { class: "peg-hold", text: g.hold })),
+      el("div", { class: "peg-row" },
+        el("span", { class: "peg-lab", text: "止蝕" }),
+        el("span", { class: "peg-stop", text: g.stop }))
     );
   }
 
@@ -872,8 +884,8 @@
         ),
         el("td", { class: "num live-px", "data-label": "現價", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
         el("td", { class: "num " + cls(chg), "data-label": "24h", text: chg != null ? pct(chg) : "—" }),
-        el("td", { class: "daily-when", "data-label": "建議賣", text: when }),
-        el("td", { class: "daily-target", "data-label": "紙上目標", text: target }),
+        el("td", { class: "daily-when", "data-label": "幾時可以放", text: when }),
+        el("td", { class: "daily-target", "data-label": "目標價", text: target }),
         el("td", { "data-label": "注碼" },
           el("span", { class: "size-pill " + (half ? "half" : "full"), text: half ? "半注" : "全注" })
         ),
@@ -1003,7 +1015,7 @@
       el("h3", { text: `${e.type === "buy" ? "買入推薦" : "避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
       el("p", { class: "rationale", text: e.rationale }),
       e.type === "buy" ? exitHintRow(exitPlanFromEntry(e), { className: "sc-exit sc-exit-detail" }) : "",
-      e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入模擬倉")) : "",
+      e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入 Crypto.M")) : "",
       el("div", { class: "kv" },
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
         el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 ${(x.bmKey || "BTC")} $${(x.bm && x.bm.price_usd) != null ? x.bm.price_usd : (x.b.benchmarks?.BTC?.price_usd ?? x.b.benchmarks?.SOL?.price_usd ?? "?")}` }),
@@ -1015,7 +1027,7 @@
       el("div", {}, (ev.posts || []).map((u) => safeUrl(u) ? [el("a", { href: safeUrl(u), target: "_blank", rel: "noopener nofollow", text: "X 帖 ↗" }), " "] : "")));
   }
 
-  // ---------- 模擬倉（現貨 + 槓桿逐倉） ----------
+  // ---------- Crypto.M 紙上倉（現貨 + 槓桿逐倉） ----------
   const PF_KEY = "mce:paper:v2";
   const PF_KEY_OLD = "mce:paper:v1";
   const START_CASH = 5000;
@@ -1450,7 +1462,7 @@
       if (allinActive()) { toast("已經有一鋪進行中"); goView("portfolio"); return; }
       // clear other positions? User should start clean — warn if has positions
       if (Object.keys(P.positions).length || Object.keys(P.levPositions).length) {
-        if (!confirm("孤注一擲會要求空倉。要重置模擬倉再開始嗎？（會清空現有倉同現金回到起始資金）")) return;
+        if (!confirm("孤注一擲會要求空倉。要重置 Crypto.M 再開始嗎？（會清空現有倉同現金回到起始資金）")) return;
         const fee = P.feePct, start = P.start; P = pf.fresh(start); P.feePct = fee; pf.save(P);
       }
       setRisk("allin");
@@ -2530,7 +2542,7 @@
   $("copyPicks").addEventListener("click", copyPicks);
   $("pfReset").addEventListener("click", () => {
     const start = parseFloat($("startCash").value) || START_CASH;
-    if (confirm(`重置模擬倉到 $${start.toLocaleString()}，並清空現貨＋槓桿＋孤注一擲？`)) {
+    if (confirm(`重置 Crypto.M 到 $${start.toLocaleString()}，並清空現貨＋槓桿＋孤注一擲？`)) {
       const fee = P.feePct; P = pf.fresh(start); P.feePct = fee; pf.save(P);
       if ($("allinResult")) $("allinResult").hidden = true;
       if ($("allinBanner")) $("allinBanner").hidden = true;

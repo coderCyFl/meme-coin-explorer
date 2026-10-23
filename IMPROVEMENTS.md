@@ -1,3 +1,10 @@
+## 2026-10-24 ~01:15 Asia/Shanghai — Crypto.M 改名 + 幾時可以放 + 工程師 icon + X≤1/day
+- **品牌**：用戶面「模擬倉」→ **Crypto.M**（nav／title／header／meta／about／持倉標題／bottom nav）；假錢紙上行為不變。
+- **幾時可以放**：落倉 modal 改 OKX 風格標籤列（目標價／Hold 至／止蝕）；跟買 chip + 持倉 `pos-exit-guide` 同步清晰化；每日新留意表頭改「幾時可以放／目標價」。
+- **Icon**：3D 工程師坐電腦桌（金框幣章）做 favicon／logo-mark／apple-touch／PWA icons（取代趨勢箭嘴）。
+- **X API**：站點仍然只讀靜態 `data/x_buzz.json`；`scripts/fetch_x_raw.py` 加 **≤1/24h** stamp gate（`data/raw/.x_fetch_stamp`；`--force` 先可 bypass）。唔新增任何頻繁 X call。
+- cache-bust `20261024a1`。
+
 ## Hourly review 2026-10-23 ~20:10 Asia/Shanghai
 Review: live 200, cache-bust `20261023r1` matches main (index/picks md5 OK); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h **~-0.24%**; liquid top30 breadth **15/30 = 50%** green) ⇒ weak-regime gate **off**. batch-006 (~3h): 6 full-size buys (WLD/RENDER/ATOM/AAVE/1000SATS/SUI) + avoid PEPE; spot marks live (e.g. WLD ~$0.538). News ~35h (<48h). Dex only in full-mode explore / legacy — not hot/browse/AI. `snapshot_outcomes.py`: nothing due this hour (72h seals ~10-25).
 

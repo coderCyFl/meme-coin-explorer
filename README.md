@@ -1,9 +1,9 @@
-# 🐸 模擬倉 · AI 揀幣 · Meme Coin Explorer
+# Crypto.M · AI 揀幣 · Meme Coin Explorer
 
 **個人 AI 模擬實驗（HK）**：用 AI + X 搵幣 → 你模擬落倉 → 追蹤真實賺蝕。
 
-預設 **「簡單」** 介面（大卡推薦 + 模擬倉摘要）；可切換 **「完整」**。  
-Tabs：🤖 揀幣 · 👀 睇幣 · 🧪 模擬倉 · 📰 新聞 · 🔎 掃描（完整）／⋯ 更多（簡單）。
+預設 **「簡單」** 介面（大卡推薦 + Crypto.M 摘要）；可切換 **「完整」**。  
+Tabs：🤖 揀幣 · 👀 睇幣 · 🧪 Crypto.M · 📰 新聞 · 🔎 掃描（完整）／⋯ 更多（簡單）。
 
 > 用 AI + X 搵幣 → 模擬落倉 → 睇真實賺蝕。全部係模擬，冇真實金錢。
 
@@ -18,12 +18,12 @@ Dex meme hot lists are **not** the product path. Plain HTML/CSS/JS, no build ste
 ![screenshot](screenshot.png)
 
 Main path: **今日跟買** (multi-angle Binance OHLCV setups, not 24h gainers) → **落倉** into a fake portfolio → live Binance marks.
-Tabs: 揀幣 · 睇幣 (Coin Mood / Binance board) · 模擬倉 · 新聞 · optional full-mode Dex 掃描 (legacy / research only).
+Tabs: 揀幣 · 睇幣 (Coin Mood / Binance board) · Crypto.M · 新聞 · optional full-mode Dex 掃描 (legacy / research only).
 
 ## Features
 - **今日跟買**: ≥5–6 diversified Binance setups (volume creep, compression, RS vs BTC, rotation, accumulation, higher-lows). Hard 24h pumps go to collapsed 「已在升／勿追」.
 - **👀 睇幣**: Coin Mood hero + Binance USDT board with real logos, L/H, volume — public browse, not Dex boosted.
-- **🧪 模擬倉**: shared fake cash; spot + isolated leverage (tier caps 3x / 10x / 50x); All-in mode; live marks after fill.
+- **🧪 Crypto.M**: shared fake cash; spot + isolated leverage (tier caps 3x / 10x / 50x); All-in mode; live marks after fill.
 - **📰 新聞**: static `data/news.json` snapshot (site never calls X).
 - **完整紀錄 / Scorecard**: append-only batches vs SOL; old Dex Solana batches kept for honesty, new batches are Binance.
 - **Full-mode 市場掃描**: optional DexScreener table (boosts/search) — not home, not hot list, not AI picks.
@@ -145,7 +145,7 @@ python3 scripts/snapshot_outcomes.py                                 # (hourly) 
 git add data && git commit -m "picks batch NNN" && git push
 ```
 
-## 🧪 模擬倉：現貨 + 槓桿
+## 🧪 Crypto.M：現貨 + 槓桿
 - **現貨**：用現金買，最多蝕晒呢筆本金，1% fee/slippage。
 - **槓桿（逐倉模擬）**：2/3/5/10/20/50x（風險檔：穩陣≤3x · 進取≤10x · 極高風險≤50x；預設進取 5x）。保證金從共用現金扣除；名義 = 保證金 × 倍數；開平倉各收名義 1% 費。
   爆倉：浮虧 ≥ 保證金約 90%（爆倉價 ≈ 入場 × (1 − 0.9/倍數)）。爆倉後保證金歸零。v1 未計 funding。

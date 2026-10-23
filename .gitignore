@@ -4,3 +4,4 @@ __pycache__/
 screenshot*.png
 reference-coin-mood.png
 data/raw/
+data/raw/.x_fetch_stamp

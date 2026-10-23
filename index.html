@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>模擬倉 · Meme Coin Explorer</title>
-<meta name="description" content="個人模擬倉：Binance 公開行情 · 多角度留意盤 · 模擬落倉追蹤賺蝕。唔係投資建議。">
-<link rel="stylesheet" href="styles.css?v=20261023r1">
-<link rel="icon" href="favicon.ico?v=20261023r1" sizes="48x48">
-<link rel="icon" href="favicon.svg?v=20261023r1" type="image/svg+xml">
-<link rel="icon" href="icons/icon-32.png?v=20261023r1" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-16.png?v=20261023r1" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261023r1" sizes="180x180">
-<link rel="manifest" href="site.webmanifest?v=20261023r1">
+<title>Crypto.M · Meme Coin Explorer</title>
+<meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。唔係投資建議。">
+<link rel="stylesheet" href="styles.css?v=20261024a1">
+<link rel="icon" href="favicon.ico?v=20261024a1" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=20261024a1" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png?v=20261024a1" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png?v=20261024a1" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261024a1" sizes="180x180">
+<link rel="manifest" href="site.webmanifest?v=20261024a1">
 <meta name="theme-color" content="#0b0e11">
 </head>
 <body>
@@ -22,10 +22,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261023r1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
+    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261024a1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
-      <h1>模擬倉</h1>
-      <p class="sub">模擬倉 · Binance 公開行情</p>
+      <h1>Crypto.M</h1>
+      <p class="sub">Crypto.M · Binance 公開行情 · 假錢紙上倉</p>
     </div>
   </div>
   <div class="header-right">
@@ -43,21 +43,21 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <div class="disc-full" id="discFull" hidden>
     Meme coin 大多數歸零，好多係 scam / rug / honeypot。
     主線（熱門／睇幣／今日跟買）淨用 <b>Binance 公開行情</b>；完整模式「掃描」先會睇到鏈上 Dex（boosted 係俾錢推廣，X 熱度好易造假）。
-    呢度係<strong>模擬倉</strong>，冇真實金錢。永遠唔好投入多過你輸得起嘅錢。
+    呢度係<strong>Crypto.M</strong>（假錢紙上倉），冇真實金錢。永遠唔好投入多過你輸得起嘅錢。
   </div>
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
   <a href="#picks" class="tab" data-view="picks">今日跟買</a>
   <a href="#browse" class="tab" data-view="browse">睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">Crypto.M</a>
   <a href="#news" class="tab" data-view="news">新聞</a>
   <a href="#explore" class="tab" data-view="explore">掃描</a>
 </nav>
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="簡單分頁">
   <a href="#picks" class="tab" data-view="picks">今日跟買</a>
   <a href="#browse" class="tab" data-view="browse">睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">Crypto.M</a>
   <a href="#more" class="tab" data-view="more">更多</a>
 </nav>
 
@@ -70,7 +70,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <span>跳去睇幣（Binance）</span>
     </button>
     <button type="button" class="lens" data-lens="careful">
-      <b>謹慎模擬倉</b>
+      <b>謹慎 Crypto.M</b>
       <span>只跟今日盤 · 用現貨</span>
     </button>
     <button type="button" class="lens" data-lens="research">
@@ -98,7 +98,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </ul>
     </section>
     <section class="howto-sec" id="lens-careful">
-      <h4>謹慎模擬倉（推薦入門）</h4>
+      <h4>謹慎 Crypto.M（推薦入門）</h4>
       <ul>
         <li>只喺「今日跟買」撳 <b>落倉</b>，模式選 <b>現貨</b>。或者用「跟晒今批」（<em>只支援現貨</em>，較安全）。</li>
         <li>睇「跑贏 BTC」同勝率——樣本少（&lt;20 筆）唔好下結論。</li>
@@ -195,7 +195,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <table class="data daily-batch-table" id="dailyBatchTable">
         <thead><tr>
           <th>幣</th><th class="num">現價</th><th class="num">24h</th>
-          <th>建議賣</th><th>紙上目標</th><th>注碼</th><th></th>
+          <th>幾時可以放</th><th>目標價</th><th>注碼</th><th></th>
         </tr></thead>
         <tbody id="dailyBatchBody"></tbody>
       </table>
@@ -271,7 +271,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   </section>
 
   <section class="panel full-only">
-    <h3>買入推薦 · 撳「落倉」放入模擬倉</h3>
+    <h3>買入推薦 · 撳「落倉」放入 Crypto.M</h3>
     <div class="tablewrap"><table class="picks"><thead><tr>
       <th>幣</th><th>推薦時間</th><th class="num">推薦價</th><th class="num">而家</th>
       <th class="num">回報</th><th class="num">同期 BTC</th><th class="num">跑贏 BTC</th><th>持有</th><th>24h / 72h / 7d</th><th></th>
@@ -324,9 +324,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   </section>
 </div>
 
-<!-- ===== 模擬倉 ===== -->
+<!-- ===== Crypto.M 紙上倉 ===== -->
 <div id="view-portfolio" class="view" hidden>
-  <div class="simbanner"><b>模擬倉 · 冇真實金錢。</b>
+  <div class="simbanner"><b>Crypto.M · 冇真實金錢。</b>
     共用一個現金池；現貨同槓桿分開顯示。槓桿係<strong>逐倉模擬</strong>（代碼上限 <b>50x</b>；穩陣≤3x · 進取≤10x · 極高風險／孤注一擲≤50x），真實永續通常有資金費同插針，會爆得更快。
     <span class="en">Simulated only · shared cash · isolated margin.</span></div>
   <div class="simbanner lev-warn"><b>槓桿模擬極高風險。</b>
@@ -358,7 +358,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <span class="muted">揀一隻幣 → All-in 現貨或 50x。假錢試膽，真錢唔好。</span>
     </div>
     <div class="panelhead">
-      <h2>我嘅模擬倉 <span class="en">Paper portfolio</span></h2>
+      <h2>我嘅 Crypto.M <span class="en">Paper portfolio</span></h2>
       <div class="risk-bar full-only">
         <span class="muted">風險檔</span>
         <div class="seg risk" id="riskProfile">
@@ -573,13 +573,25 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <dialog id="tradeDlg">
   <form method="dialog" id="tradeForm">
     <div class="trade-orb-wrap" id="tradeOrb" aria-hidden="true" hidden></div>
-    <h3 id="tradeTitle">模擬交易</h3>
+    <h3 id="tradeTitle">Crypto.M 落倉</h3>
     <p class="muted" id="tradeInfo"></p>
     <div class="trade-exit-guide" id="tradeExitGuide" hidden>
-      <div class="teg-kicker">出場參考</div>
-      <div class="teg-main" id="tradeExitMain"></div>
-      <div class="teg-hold" id="tradeExitHold"></div>
-      <div class="teg-stop muted" id="tradeExitStop"></div>
+      <div class="teg-kicker">幾時可以放</div>
+      <div class="teg-rows" aria-label="出場時機">
+        <div class="teg-row teg-target">
+          <span class="teg-lab">目標價</span>
+          <span class="teg-val" id="tradeExitMain"></span>
+        </div>
+        <div class="teg-row teg-holdrow">
+          <span class="teg-lab">Hold 至</span>
+          <span class="teg-val" id="tradeExitHold"></span>
+        </div>
+        <div class="teg-row teg-stoprow">
+          <span class="teg-lab">止蝕</span>
+          <span class="teg-val muted" id="tradeExitStop"></span>
+        </div>
+      </div>
+      <p class="teg-note muted">紙上參考 · 唔係保證 · 同 24h 跟買封盤對齊</p>
     </div>
     <div id="tradeModeRow" class="mode-row mode-cards-row" hidden>
       <div class="mode-cards" role="group" aria-label="落倉模式">
@@ -635,7 +647,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <footer>
   <p>睇幣／熱門／今日跟買（新批）：<b>淨 Binance</b> 公開 REST + WebSocket（data-api / data-stream.binance.vision，唔使 key）。
   舊批 Solana Dex 推薦只留喺完整紀錄；Dex 掃描喺完整模式先有，唔再當熱門。
-  X 快照：<code>data/x_buzz.json</code>。模擬倉存 localStorage（假錢）。</p>
+  X 快照：<code>data/x_buzz.json</code>（最多一日刷新一次）。Crypto.M 存 localStorage（假錢）。</p>
   <p class="legend">誠實標籤：今日跟買 = 多角度 OHLCV 留意盤（量能／壓縮／相對 BTC／輪動／吸籌），刻意唔係 24h 升幅榜。唔係保證賺錢。</p>
 </footer>
 
@@ -654,15 +666,15 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <nav class="bottom-nav" role="tablist" aria-label="主要分頁">
   <a href="#picks" class="tab" data-view="picks"><span class="ico" aria-hidden="true">買</span><span class="bn-lab">跟買</span></a>
   <a href="#browse" class="tab" data-view="browse"><span class="ico" aria-hidden="true">市</span><span class="bn-lab">睇幣</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico" aria-hidden="true">倉</span><span class="bn-lab">倉</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico" aria-hidden="true">C.M</span><span class="bn-lab">Crypto.M</span></a>
   <a href="#news" class="tab bn-full" data-view="news"><span class="ico" aria-hidden="true">訊</span><span class="bn-lab">新聞</span></a>
   <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico" aria-hidden="true">掃</span><span class="bn-lab">掃描</span></a>
   <a href="#more" class="tab bn-simple" data-view="more"><span class="ico" aria-hidden="true">⋯</span><span class="bn-lab">更多</span></a>
 </nav>
 
-<script src="live.js?v=20261023r1"></script>
-<script src="coin3d.js?v=20261023r1"></script>
-<script src="app.js?v=20261023r1"></script>
-<script src="picks.js?v=20261023r1"></script>
+<script src="live.js?v=20261024a1"></script>
+<script src="coin3d.js?v=20261024a1"></script>
+<script src="app.js?v=20261024a1"></script>
+<script src="picks.js?v=20261024a1"></script>
 </body>
 </html>
