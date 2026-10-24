@@ -2212,7 +2212,7 @@
         key: id, entry: li.price, startedAt: new Date().toISOString(), cashBefore, leverage: lev };
     }
     pf.save(P);
-    const modeLabel = mode === "lev" ? "50x 槓桿" : "現貨 All-in";
+    const modeLabel = mode === "lev" ? "50x 槓桿" : "現貨全倉";
     await playOverlay({
       emoji: mode === "lev" ? "×" : "★",
       title: "孤注一擲！",
@@ -3074,7 +3074,7 @@
       const p = el("i");
       p.style.setProperty("--dx", Math.cos(ang) * dist + "px");
       p.style.setProperty("--dy", Math.sin(ang) * dist + "px");
-      p.style.background = ["#fbbf24", "#c084fc", "#34d399", "#f472b6", "#60a5fa"][i % 5];
+      p.style.background = ["#F0B90B", "#c084fc", "#34d399", "#f472b6", "#60a5fa"][i % 5];
       p.style.animationDelay = (Math.random() * 0.15) + "s";
       host.append(p);
     }
