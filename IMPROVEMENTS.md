@@ -1,3 +1,8 @@
+## Hourly review 2026-10-24 ~23:07 Asia/Shanghai
+Review: live 200, cache-bust `20261024a1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$79.9k, 24h **-2.15%**; DOGE ~0.0758, **-5.40%**) — dip deepening late Sat. `snapshot_outcomes.py`: nothing due. News ~15h. Dex only in full-mode explore / legacy.
+
+Self-growth: docs only, no bug, no code churn. Note for Monday 9am remint: BTC lost $80k and DOGE -5% → keep half-size / <=4 picks, favour defensive majors + avoid list until breadth recovers.
+
 ## Hourly review 2026-10-24 ~22:06 Asia/Shanghai
 Review: live 200, cache-bust `20261024a1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$80.7k, 24h **-1.40%**; DOGE ~0.0776, **-3.28%**). `snapshot_outcomes.py` run. News ~14h. Dex only in full-mode explore / legacy.
 
