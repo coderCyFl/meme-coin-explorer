@@ -40,8 +40,10 @@
     const raw = String(base || "").toUpperCase();
     if (!raw) return [];
     const lower = (LOGO_ALIAS[raw] || raw).toLowerCase();
-    // Prefer jsDelivr cryptocurrency-icons (CORS-friendly), then Binance, then CoinCap
+    // Binance's own asset logo (data/bn_assets.json, loaded by market.js) first, then static guesses.
+    const own = window.MCE && window.MCE.market && window.MCE.market.assetLogo ? window.MCE.market.assetLogo(raw) : "";
     return [
+      ...(own ? [own] : []),
       "https://bin.bnbstatic.com/static/assets/logos/" + encodeURIComponent(raw) + ".png",
       "https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/" + encodeURIComponent(lower) + ".png",
       "https://assets.coincap.io/assets/icons/" + encodeURIComponent(lower) + "@2x.png",
@@ -982,6 +984,9 @@
     sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks, computeGainerBoard, watchExtra,
     _gb: { surgeFeats, surgeFire, early2At, early2Trigger, surgeTrigger },
     logoUrl, coinLogoEl, letterAvatar, ICON_EMOJI,
+    ensureExchangeInfo, isTokenized: (base) => bnTokenized.has(String(base || "").toUpperCase()),
+    isStable: (base) => GB_STABLE.has(String(base || "").toUpperCase()),
+    isLeveragedToken: (base) => /(UP|DOWN|BULL|BEAR)$/.test(String(base || "").toUpperCase()) && !GB_LEV_OK.has(String(base || "").toUpperCase()),
     DEX_POLL_MS, MINT_TO_BN, CURATED_BASES, BN_REST,
     get running() { return running; },
     get marks() { return marks; },
