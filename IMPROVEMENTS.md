@@ -1,3 +1,10 @@
+## Hourly review 2026-10-24 ~08:10 Asia/Shanghai
+Review: live 200, cache-bust `20261024a1` matches main (index/picks md5 OK); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$81.1k, 24h **~-0.26%**; liquid top30 breadth **7/30 = 23%** green) ⇒ weak-regime gate **would be on** if reminting now. batch-006 still live (minted under normal): WLD/RENDER/ATOM/AAVE/1000SATS/SUI + avoid PEPE. Spot marks moving (WLD ~$0.477 vs entry ~$0.548 ≈ **-13%**, past paper −5% stop — 24h seal not due yet). Dex only in full-mode explore / legacy — not hot/browse/AI. `snapshot_outcomes.py`: nothing due this hour.
+
+Self-growth: refreshed `data/news.json` (was ~47h → now `2026-10-24T08:10+08`; 9 stories incl. $KIMCHI crash／#BOYCOTTPUMPFUN／PEPE $2B／Alpenglow／SEC commodity letter). Raw kept in `data/raw/news-003/`. No app/JS churn (hourly short loop).
+
+**Next priority:** watch weak breadth — next weekday 9am upgrade remint may hit half-size/≤4; 72h seals for older Binance batches when due; thin samples → no win-rate claims.
+
 ## 2026-10-24 ~01:15 Asia/Shanghai — Crypto.M 改名 + 幾時可以放 + 工程師 icon + X≤1/day
 - **品牌**：用戶面「模擬倉」→ **Crypto.M**（nav／title／header／meta／about／持倉標題／bottom nav）；假錢紙上行為不變。
 - **幾時可以放**：落倉 modal 改 OKX 風格標籤列（目標價／Hold 至／止蝕）；跟買 chip + 持倉 `pos-exit-guide` 同步清晰化；每日新留意表頭改「幾時可以放／目標價」。

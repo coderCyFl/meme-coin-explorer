@@ -1,150 +1,154 @@
 {
- "fetched_at": "2026-10-22T09:12:19+08:00",
+ "fetched_at": "2026-10-24T08:10:00+08:00",
  "source": "X search_news via agent (static snapshot; site never calls X)",
  "stories": [
   {
+   "id": "2113375546906439809",
+   "title": "Kimchi × Pump.fun 宣傳後 $KIMCHI 崩盤約 95%",
+   "title_en": "Kimchi-Pump.fun Promo Ends in $KIMCHI Token Crash",
+   "summary": "QR／宣傳帶動後帖文消失，幣由約 $15M 急插；鏈上有人低買高賣賺逾 $385K。Pump.fun 沉默，收入亦見跌。",
+   "summary_en": "Promo QR posts vanished within ~30 minutes after pumping to ~$15M; token crashed ~95%. On-chain wallets took >$385K; Pump.fun stayed silent.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113375546906439809",
+   "published_at": "2026-10-23T21:26:40.000Z",
+   "tags": [
+    "rug",
+    "pump",
+    "meme"
+   ],
+   "why_it_matters": "KOL／平台聯動 + 帖文秒刪 = 經典接盤形態。紙上跟買永遠唔好當名人幣係安全信號。",
+   "category": "News"
+  },
+  {
+   "id": "2113733132080017823",
+   "title": "Pump.fun 宣佈獎金賽，$KIMCHI 受害者叫 #BOYCOTTPUMPFUN",
+   "title_en": "Pump.fun Faces Boycott Calls After Rug and Prize Announcement",
+   "summary": "Alon 宣佈 10/26 起 squads 競賽（頭獎約 $1.5M），正當宣傳盤由 $15M 插到約 $284K；社群炮轟冇道歉。",
+   "summary_en": "Co-founder announced a $1.5M first-place squads contest starting Oct 26 right after a promoted token collapsed from ~$15M to ~$284K; #BOYCOTTPUMPFUN trends.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113733132080017823",
+   "published_at": "2026-10-23T20:53:33.000Z",
+   "tags": [
+    "rug",
+    "pump",
+    "market"
+   ],
+   "why_it_matters": "平台抽水繼續、問責慢。我哋實驗繼續避開極新鏈上盤，用 Binance 現貨驗證 setup。",
+   "category": "News"
+  },
+  {
+   "id": "2113688923763319020",
+   "title": "PEPE 市值重上約 $20 億，24h 急升約一成",
+   "title_en": "PEPE Memecoin Surges Past $2 Billion Market Cap",
+   "summary": "大盤偏淡時 PEPE 逆市抽上約 $2.05–2.1B；有人講累積後突破，亦有 whale／名人帖推動 FOMO。",
+   "summary_en": "PEPE rose ~10–14% in 24h to roughly $2.05–2.1B mcap amid mixed majors; charts and social FOMO cited.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113688923763319020",
+   "published_at": "2026-10-23T18:36:17.000Z",
+   "tags": [
+    "meme",
+    "market"
+   ],
+   "why_it_matters": "已經大升嘅幣唔好追——我哋 batch-006 將 PEPE 標做避過（already_up），啱晒「唔追 24h 急升」。",
+   "category": "News"
+  },
+  {
+   "id": "2113138256842006826",
+   "title": "Pump.fun 再轉約 $1400 萬 SOL 去 Kraken，累計賣盤龐大",
+   "title_en": "Pump.fun Transfers $14 Million in SOL to Kraken Amid Backlash",
+   "summary": "再有大額 SOL 落交易所；平台同時推 referral／橋／名人合作。支持者讚速度，批評者話賣 SOL 壓價。",
+   "summary_en": "Another ~$14M SOL chunk to Kraken; cumulative sales since 2024 cited near hundreds of millions SOL. Upgrades and influencer deals continue amid community backlash.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113138256842006826",
+   "published_at": "2026-10-22T10:08:35.000Z",
+   "tags": [
+    "pump",
+    "solana",
+    "market"
+   ],
+   "why_it_matters": "發射台收費→賣 SOL 係結構性賣壓敘事。跟買優先睇 CEX 流動性同結構，唔跟 launchpad FOMO。",
+   "category": "News"
+  },
+  {
    "id": "2112981239082996037",
-   "title": "鏈上研究：九成九 meme 發射後短命，只有約 1% 去到 DEX",
-   "title_en": "Most Meme Tokens Fade Fast After Easy Launches",
-   "summary": "ZeruAI 分析 3,374 次近期發射：只有 34 個有機去到 DEX（約 1%）；68.7% 開發者五分鐘內出貨；第 30 日交易活躍跌到 0.8%。",
-   "summary_en": "ZeruAI analyzed 3,374 recent token launches; only 34 reached a DEX organically (~1.01%). Devs sold within five minutes in 68.7% of cases; activity fell from 7.5% day one to 0.8% by day 30.",
+   "title": "研究：九成九 meme 發射後短命，約 1% 先去到 DEX",
+   "title_en": "Most Meme Tokens Fail to Build Lasting Markets After Launch",
+   "summary": "ZeruAI 睇 3,374 次發射：只有約 1% 有機去到 DEX；多數開發者五分鐘內出貨；大量成交唔真實。",
+   "summary_en": "Of 3,374 launches, ~1% reached a DEX organically; 68.7% of devs sold within five minutes; much reported volume looked non-genuine.",
    "source": "X News",
    "url": "https://x.com/i/trending/2112981239082996037",
-   "published_at": "2026-10-21T19:04:49.000Z",
+   "published_at": "2026-10-22T17:04:01.000Z",
    "tags": [
     "rug",
     "market",
     "solana"
    ],
-   "why_it_matters": "支持我哋改用 Binance 現貨做模擬：極新鏈上盤勝率極低。AI 揀幣要睇結構同流動性，唔好追發射 FOMO。",
+   "why_it_matters": "支持主線淨用 Binance 公開行情：極新鏈上盤勝率極低，AI 要睇結構同流動性。",
    "category": "News"
   },
   {
-   "id": "2113067055524073563",
-   "title": "Pump.fun 推出 Pump Bridge，跨鏈買入快咗、錯誤少 92%",
-   "title_en": "Pump.fun Launches Pump Bridge for Faster Crosschain Trades",
-   "summary": "10 月 21 日上線，取代 Relay；平均完成時間約 3.88s→1.95s，錯誤率大幅下降。",
-   "summary_en": "Pump Bridge launched Oct 21 as default in-app crosschain buys, cutting errors ~92% and completion time ~3.88s to 1.95s.",
+   "id": "2113625024846553338",
+   "title": "Solana Alpenglow：最終確認快到約 150ms",
+   "title_en": "Solana Launches Alpenglow Upgrade for 150ms Transaction Finality",
+   "summary": "換走舊 TowerBFT；投票改離鏈證書，最終確認由約 12.8 秒大幅縮短。社群睇好 DeFi／支付用途。",
+   "summary_en": "Alpenglow activated ~Oct 21, cutting finality toward ~150ms by replacing TowerBFT with off-chain vote certificates.",
    "source": "X News",
-   "url": "https://x.com/i/trending/2113067055524073563",
-   "published_at": "2026-10-22T00:44:40.000Z",
-   "tags": [
-    "pump",
-    "infra"
-   ],
-   "why_it_matters": "平台繼續優化「入金→炒 meme」漏斗。我哋實驗仍然避開極新盤，用 CEX 現貨驗證 AI setup。",
-   "category": "News"
-  },
-  {
-   "id": "2112698387682209961",
-   "title": "Trader Kimchi 改 bio 掛 @pumpfun，$KIMCHI 急升惹質疑",
-   "title_en": "Kimchi Partners with Pump.fun Amid $KIMCHI Token Launch",
-   "summary": "平台慶祝；代幣一度 $40–44M 市值，單錢包持倉約 75% 受質疑。",
-   "summary_en": "Pump.fun celebrated; $KIMCHI hit ~$40-44M mcap with reports of ~75% supply in one wallet.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112698387682209961",
-   "published_at": "2026-10-22T00:44:37.000Z",
-   "tags": [
-    "meme",
-    "market"
-   ],
-   "why_it_matters": "名人／KOL 敘事 + 集中持倉 = 高風險。唔好當跟買信號。",
-   "category": "Other"
-  },
-  {
-   "id": "2112695492153155777",
-   "title": "Solana 炒家炮轟 Pump.fun 變「賭場癌症」",
-   "title_en": "Solana Memecoin Traders Slam Pump.fun as Cancer to the Space",
-   "summary": "每日幾千發射、一日炒完、KOL 推完即崩；有人叫撤出平台改做可持續交易。",
-   "summary_en": "Critics say thousands of daily launches, day-one-only trading, and KOL dumps turned the space into a casino.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112695492153155777",
-   "published_at": "2026-10-21T10:51:03.000Z",
-   "tags": [
-    "rug",
-    "market"
-   ],
-   "why_it_matters": "情緒對照：鏈上 meme 信任低。我哋用 Binance 公開行情做紙上交易更誠實可量度。",
-   "category": "Other"
-  },
-  {
-   "id": "2113005008287600641",
-   "title": "Solana「Believe in Something」同 Alpenglow：最終確認快到約 150ms",
-   "title_en": "Solana Community Rallies Around Believe Message as Alpenglow Ships",
-   "summary": "官方貼文引發社群；升級將最終確認由約 12.8 秒大幅縮短。SOL 徘徊 $108 附近。",
-   "summary_en": "Official 'believe' post coincided with Alpenglow cutting finality toward ~150ms; SOL near $108.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113005008287600641",
-   "published_at": "2026-10-21T20:40:40.000Z",
+   "url": "https://x.com/i/trending/2113625024846553338",
+   "published_at": "2026-10-23T20:03:35.000Z",
    "tags": [
     "solana",
     "infra"
    ],
-   "why_it_matters": "基建利好唔等於 meme 即升；對照我哋 SOL 基準同相對強度 setup。",
-   "category": "Other"
+   "why_it_matters": "基建變快唔等於 meme 會賺；結算快可以令 rug／插針更狠。紙上實驗仍然用 CEX 價誠實量度。",
+   "category": "News"
   },
   {
-   "id": "2112952165958607152",
-   "title": "Tokenized $META 上 Solana，可 24/7 交易",
-   "title_en": "Tokenized Meta Stock Launches on Solana Blockchain",
-   "summary": "Backpack Securities 發行，1:1 實股託管；Jupiter 等接入。",
-   "summary_en": "Backpack Securities issued tokenized META 1:1 backed; Jupiter and others added support.",
+   "id": "2112859560524288427",
+   "title": "多個公鏈聯署催 SEC 寫清「數位商品」規則",
+   "title_en": "Blockchain Groups Push SEC to Embed Digital Commodity Rules",
+   "summary": "Stellar／Hedera／Aptos／Ava／Cardano／Chainlink 等要求喺提案正文定義 digital commodity，唔好只靠口頭分類。",
+   "summary_en": "Major L1/infra teams urged the SEC to define digital commodity in Regulation Crypto Assets text, seeking secondary-trading clarity.",
    "source": "X News",
-   "url": "https://x.com/i/trending/2112952165958607152",
-   "published_at": "2026-10-21T21:05:14.000Z",
+   "url": "https://x.com/i/trending/2112859560524288427",
+   "published_at": "2026-10-22T01:05:07.000Z",
    "tags": [
-    "rwa",
+    "regulation",
+    "market"
+   ],
+   "why_it_matters": "監管清晰度影響大盤風險偏好；meme／山寨波動通常跟住風險情緒走。",
+   "category": "News"
+  },
+  {
+   "id": "2113401786073542943",
+   "title": "Ansem 轉謹慎：BTC／ETH／SOL 靠近支撐，寧願控風險",
+   "title_en": "Crypto Trader Ansem Shifts to Caution on Majors",
+   "summary": "有影響力交易員話寧願靈活離場，唔好硬做；SOL 約 $100–103 支撐區反覆。",
+   "summary_en": "Influential trader Ansem posted preference for risk management over forced trades as BTC/ETH/SOL sat near supports.",
+   "source": "X News",
+   "url": "https://x.com/i/trending/2113401786073542943",
+   "published_at": "2026-10-22T22:53:54.000Z",
+   "tags": [
+    "market",
+    "btc",
     "solana"
    ],
-   "why_it_matters": "敘事輪動到 RWA／股票代幣化；meme 資金可能分流，跟買要睇相對板塊而非單幣 FOMO。",
-   "category": "News"
-  },
-  {
-   "id": "2112785006955282570",
-   "title": "交易量淡，交易所轉推預測市場（含 Binance.US）",
-   "title_en": "Crypto Exchanges Launch Prediction Markets Amid Trading Slump",
-   "summary": "Blockchain.com、Binance.US 等跟住 Coinbase／Gemini 申請預測市場，補收入。",
-   "summary_en": "Exchanges including Binance.US seek prediction-market products as spot volumes soften.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112785006955282570",
-   "published_at": "2026-10-21T06:02:17.000Z",
-   "tags": [
-    "cex",
-    "market"
-   ],
-   "why_it_matters": "現貨交投偏淡時，波動同輪動結構會變；AI setup 更要避追已急升幣。",
-   "category": "News"
-  },
-  {
-   "id": "2112656500707795365",
-   "title": "Base Meme Summit 今日直播，社群想翻身",
-   "title_en": "Base Meme Summit Returns with Live Interviews",
-   "summary": "10 月 22 日 PT 早上場；TOSHI 等社群造勢。非 Binance 現貨主線。",
-   "summary_en": "Base Meme Summit Oct 22 ~8:30am PT with interviews and community hype around TOSHI etc.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112656500707795365",
-   "published_at": "2026-10-21T21:18:19.000Z",
-   "tags": [
-    "base",
-    "meme"
-   ],
-   "why_it_matters": "鏈上活動熱點；我哋主數據源仍係 Binance 公開行情，唔跟 Base 熱榜。",
+   "why_it_matters": "大盤謹慎時，弱市閘（半注／少隻）更合理；唔好當 KOL 一句就 All-in。",
    "category": "Other"
   },
   {
-   "id": "2110714820937085207",
-   "title": "Pump.fun 九成七炒家蝕錢，內幕同 bundler 賺走",
-   "title_en": "Pump.fun Memecoin Traders Mostly Lose as Insiders Profit",
-   "summary": "過去 30 日鏈上分析：Pump.fun 97% 交易者蝕錢；bundler／團隊賺走大部分。",
-   "summary_en": "On-chain analysis: ~97% of Pump.fun traders lost over 30 days; bundlers/team captured upside.",
+   "id": "2113363404802941325",
+   "title": "Pump.fun 上線 Pump Bridge：跨鏈買入更快、錯誤少約 92%",
+   "title_en": "Pump.fun Launches Pump Bridge for Faster Cross-Chain Trades",
+   "summary": "取代 Relay；平均完成時間約 3.88s→1.95s，錯誤率大降。方便入金炒 meme，亦縮短「接盤」時間窗。",
+   "summary_en": "In-house Pump Bridge cut cross-chain buy time ~3.88s→1.95s and error rate ~92%.",
    "source": "X News",
-   "url": "https://x.com/i/trending/2110714820937085207",
-   "published_at": "2026-10-15T22:52:33.000Z",
+   "url": "https://x.com/i/trending/2113363404802941325",
+   "published_at": "2026-10-22T20:22:14.000Z",
    "tags": [
-    "rug",
-    "market"
+    "pump",
+    "infra"
    ],
-   "why_it_matters": "落倉前要假設你係少數贏嘅人。模擬倉可以用嚟測試，但唔好當真實勝率。",
+   "why_it_matters": "入金漏斗愈順，FOMO 愈快。我哋仍然唔跟極新發射，只用 Binance 現貨做可量度實驗。",
    "category": "Other"
   }
  ]
