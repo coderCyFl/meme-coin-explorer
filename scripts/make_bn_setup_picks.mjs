@@ -409,6 +409,30 @@ async function main() {
     horizons_h: [24, 72, 168],
   }));
 
+  // Explicit exit plan on every buy: target price, stop price, when to review, latest sell time.
+  // Derived from the same TP/SL % and review/second hours above (no change to sizing or pick count).
+  const roundPx = (x) => +Number(x).toPrecision(6);
+  const addH = (h) => new Date(now.getTime() + h * 3600e3 + 8 * 3600e3).toISOString().replace("Z", "+08:00").replace(/\.\d{3}/, "");
+  for (const e of entries) {
+    const tp = e.take_profit_pct, sl = e.stop_loss_pct;
+    e.target_price_usd = roundPx(e.entry_price_usd * (1 + tp / 100));
+    e.stop_price_usd = roundPx(e.entry_price_usd * (1 - sl / 100));
+    e.review_at = addH(e.suggested_exit_h);
+    e.sell_by = addH(e.suggested_second_h);
+    e.exit_plan = `目標 +${tp}%（$${e.target_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
+  }
+  // Hard check: never write a buy without target, stop and sell timing.
+  for (const e of entries) {
+    const bad = ["entry_price_usd", "take_profit_pct", "stop_loss_pct", "suggested_exit_h", "suggested_second_h", "target_price_usd", "stop_price_usd"]
+      .filter((k) => !(Number.isFinite(e[k]) && e[k] > 0));
+    if (!e.review_at || !e.sell_by) bad.push("review_at/sell_by");
+    if (!(e.target_price_usd > e.entry_price_usd && e.stop_price_usd < e.entry_price_usd)) bad.push("target/stop vs entry");
+    if (bad.length) {
+      console.error("FAIL: buy entry", e.id, "missing/invalid exit fields:", bad.join(","));
+      process.exit(3);
+    }
+  }
+
   // avoid entries = chasing (label as avoid chase)
   for (const p of chasing) {
     entries.push({
@@ -464,6 +488,7 @@ async function main() {
   console.log("wrote", batchId, "buys", picks.length, "avoids", chasing.length);
 
   // summary for parent
+  fs.mkdirSync(path.join(ROOT, "data/raw"), { recursive: true }); // data/raw is gitignored → absent on CI checkout
   fs.writeFileSync(path.join(ROOT, "data/raw/setup_last.json"), JSON.stringify({
     at: isoHK,
     picks: picks.map((p) => ({ base: p.base, chg24: p.f.chg24, setup: p.setupScore, angle: p.angle, tip: p.tip })),
