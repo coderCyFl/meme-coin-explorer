@@ -1542,3 +1542,8 @@ img.logo-mark.logo-3d{
 }
 dialog#tradeDlg .trade-exit-guide.teg-momentum{border-color:#7f1d1d}
 .gb-state{font-size:13px}
+.gb-buyrow{display:flex;gap:8px;align-items:stretch}
+.gb-buyrow .gb-buy{flex:1}
+.gb-btchip{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:0 10px;border-radius:8px;border:1px solid var(--line-strong);background:#0f1420;font-size:12px;font-weight:800;white-space:nowrap}
+.gb-btchip.neg{color:var(--red);border-color:#7a2030}
+.gb-btchip.pos{color:var(--green)}

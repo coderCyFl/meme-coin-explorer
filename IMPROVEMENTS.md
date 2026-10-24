@@ -388,3 +388,5 @@ Shipped:
 Verdict: nothing passed the buy gate (test mean > 0 and +20% hit ≥ 8%). ⚡ ships as 觀察 only; 🔥 keeps paper buy (user asked for aggressive paper) with its backtest shown in-app. Grid search over vol/1h/24h/wick/72h-breakout/BTC filters overfit (train +1–2% mean → test negative).
 Examples: GTC 8 pumps (≥+25% in 4h) in 41d — ⚡ flagged 0 in the 6h before; Oct 12 (+142%) had 2–3.5× volume for 3h but on a −12% dip (not +3% candles); Sep 30 had no volume lead. BMT Oct 24 (+98%) had no volume lead (0.2–0.5×). 牛来 (牛来USDT) listed Sep 9; no ≥+25%-in-4h window after its first 26h of history.
 Next: let hourly seals accumulate; revisit rules after ≥50 live 4h seals; daily scorecard first run tonight 23:55.
+
+- 2026-10-25 00:20 Asia/Shanghai · `20261025a1`: 🔥 buy button now has a chip with the real backtest number (test half mean 4h close, read from backtest_30d via summary.json), e.g. 「回測平均 −0.9%」.

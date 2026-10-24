@@ -1012,6 +1012,16 @@
     return el("p", { class: "gb-bt tiny", text: parts.join(" ‖ ") });
   }
 
+  /** Chip beside the buy button: backtest TEST-half mean 4h close (actual number). */
+  function gbBtChip(tier) {
+    const t = gbStatic.summary && gbStatic.summary.backtest_30d && gbStatic.summary.backtest_30d.tiers && gbStatic.summary.backtest_30d.tiers[tier];
+    const te = t && t.test;
+    if (!te || te.mean_close_4h_pct == null) return el("span", { class: "gb-btchip muted", text: "回測載入中" });
+    const v = te.mean_close_4h_pct;
+    return el("span", { class: "gb-btchip " + cls(v), title: `30日回測後半段（測試）${te.fires} 次 · 4h 平均收市 · +20% 命中 ${te.hit20_4h_pct}%`,
+      text: `回測平均 ${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toFixed(1)}%` });
+  }
+
   function renderGainerBoard(rows, trig) {
     const box = $("gainerList"); if (!box) return;
     box.textContent = "";
@@ -1058,6 +1068,8 @@
               el("b", { class: "pos", text: `+${GAINER_EXIT.tp}% 賺 ${money2(usd * GAINER_EXIT.tp / 100 - fee2)}` }), " · ",
               el("b", { class: "pos", text: `+${GAINER_EXIT.tp2}% 賺 ${money2(usd * GAINER_EXIT.tp2 / 100 - fee2)}` }), " · ",
               el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * GAINER_EXIT.sl / 100 + fee2)}` }))) : ""),
+        el("div", { class: "gb-buyrow" },
+        gbBtChip("pump"),
         el("button", { class: "primary gb-buy", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
           symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
@@ -1066,7 +1078,7 @@
           stop_loss_pct: GAINER_EXIT.sl, suggested_exit_h: GAINER_EXIT.reviewH, suggested_second_h: GAINER_EXIT.secondH,
           size: "full", sizeMult: mult, forceSpot: true,
           entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high },
-        }) }, `現貨落倉 ${money2(usd)}`)
+        }) }, `現貨落倉 ${money2(usd)}`))
       ));
     }
   }
