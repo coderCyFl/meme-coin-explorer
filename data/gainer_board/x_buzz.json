@@ -46,13 +46,13 @@
    "symbol": "EPICUSDT",
    "base": "EPIC",
    "flag": "pump",
-   "trigger_at": "2026-10-25T01:15:00+08:00",
-   "checked_at": "2026-10-25T05:09:00+08:00",
+   "trigger_at": "2026-10-25T01:45:00+08:00",
+   "checked_at": "2026-10-25T05:32:00+08:00",
    "posts_last_1h": 18,
-   "posts_prev_6h_avg_per_h": 11.5,
-   "spike_ratio": 1.57,
+   "posts_prev_6h_avg_per_h": 11.33,
+   "spike_ratio": 1.59,
    "verdict": "升溫",
-   "one_line": "討論微升，多係訊號號同機械人",
+   "one_line": "討論略升，多為喊單訊號帖",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -75,10 +75,10 @@
     {
      "id": "2114031185856696702",
      "url": "https://x.com/Finora_EN/status/2114031185856696702",
-     "text": "@BillGamycho let's break down $EPIC #EPICUSDT on the daily: bias remains bearish, price well below EMA20 and EMA200, but deeply oversold",
+     "text": "let's break down $EPIC #EPICUSDT on the daily: bias remains bearish, price well below EMA20 and EMA200, but deeply oversold",
      "likes": 1,
      "author_username": "Finora_EN",
-     "author_followers": 24406
+     "author_followers": 24407
     }
    ],
    "checks_this_trigger": 1
@@ -247,15 +247,55 @@
      "author_followers": 200
     }
    ]
+  },
+  {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T01:45:00+08:00",
+   "checked_at": "2026-10-25T05:32:00+08:00",
+   "posts_last_1h": 18,
+   "posts_prev_6h_avg_per_h": 11.33,
+   "spike_ratio": 1.59,
+   "verdict": "升溫",
+   "one_line": "討論略升，多為喊單訊號帖",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114051702928413181",
+     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
+     "text": "$epic delisting pump @cz_binance send it 🚀",
+     "likes": 2,
+     "author_username": "Arlind19061040",
+     "author_followers": 7
+    },
+    {
+     "id": "2114085839533740528",
+     "url": "https://x.com/cexscan/status/2114085839533740528",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) : ↑5.09%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10593
+    },
+    {
+     "id": "2114031185856696702",
+     "url": "https://x.com/Finora_EN/status/2114031185856696702",
+     "text": "let's break down $EPIC #EPICUSDT on the daily: bias remains bearish, price well below EMA20 and EMA200, but deeply oversold",
+     "likes": 1,
+     "author_username": "Finora_EN",
+     "author_followers": 24407
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 8,
+  "calls_today": 10,
   "cap_reached": false,
-  "updated_at": "2026-10-25T05:09:10+08:00"
+  "updated_at": "2026-10-25T05:31:54+08:00"
  },
- "updated_at": "2026-10-25T05:09:10+08:00",
+ "updated_at": "2026-10-25T05:31:54+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
