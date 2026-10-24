@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto.M · Meme Coin Explorer</title>
+<title>Crypto.M</title>
+<meta name="apple-mobile-web-app-title" content="Crypto.M">
+<meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。唔係投資建議。">
-<link rel="stylesheet" href="styles.css?v=20261025g1">
-<link rel="icon" href="favicon.ico?v=20261025g1" sizes="48x48">
-<link rel="icon" href="favicon.svg?v=20261025g1" type="image/svg+xml">
-<link rel="icon" href="icons/icon-32.png?v=20261025g1" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-16.png?v=20261025g1" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261025g1" sizes="180x180">
-<link rel="manifest" href="site.webmanifest?v=20261025g1">
+<link rel="stylesheet" href="styles.css?v=20261025g2">
+<link rel="icon" href="favicon.ico?v=20261025g2" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=20261025g2" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png?v=20261025g2" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png?v=20261025g2" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261025g2" sizes="180x180">
+<link rel="manifest" href="site.webmanifest?v=20261025g2">
 <meta name="theme-color" content="#0b0e11">
 </head>
 <body>
@@ -22,7 +24,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261025g1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
+    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261025g2" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
       <h1>Crypto.M</h1>
       <p class="sub">Crypto.M · Binance 公開行情 · 假錢紙上倉</p>
@@ -38,7 +40,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </header>
 
 <div class="disclaimer" role="note">
-  <div class="disc-one"><strong>模擬／研究，唔係投資建議。</strong> 假錢倉 · 高風險
+  <div class="disc-one">假錢模擬 · 唔係投資建議
     <button type="button" class="linkish" id="discToggle">詳情</button></div>
   <div class="disc-full" id="discFull" hidden>
     Meme coin 大多數歸零，好多係 scam / rug / honeypot。
@@ -50,14 +52,14 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <nav class="tabs top-tabs full-only" role="tablist">
   <a href="#picks" class="tab" data-view="picks">今日跟買</a>
   <a href="#browse" class="tab" data-view="browse">睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">Crypto.M</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
   <a href="#news" class="tab" data-view="news">新聞</a>
   <a href="#explore" class="tab" data-view="explore">掃描</a>
 </nav>
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="簡單分頁">
   <a href="#picks" class="tab" data-view="picks">今日跟買</a>
   <a href="#browse" class="tab" data-view="browse">睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">Crypto.M</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
   <a href="#more" class="tab" data-view="more">更多</a>
 </nav>
 
@@ -169,28 +171,18 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="view-picks" class="view" hidden>
   <!-- ===== 急升榜 (high-risk, separate from AI picks; not halved by weak-market gate) ===== -->
   <section class="panel gainer-panel" id="gainerPanel" aria-live="polite">
-    <div class="panelhead">
-      <div>
-        <h2 class="home-title">急升榜 <span class="gb-risk gb-risk-lg">高風險</span></h2>
-        <p class="gb-livebar"><span class="gb-dot" id="gainerLive" aria-hidden="true"></span><span>即時</span> · <span id="gainerUpdated">連接中…</span></p>
-        <p class="home-sub" id="gainerMeta">Binance 現貨急升幣 · 同 AI 跟買分開</p>
-      </div>
-      <div class="row wrap home-tools">
-        <div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div>
-        <button type="button" id="gainerRefresh" class="ghost sm" title="重掃">↻</button>
+    <div class="panelhead gb-head">
+      <h2 class="home-title">🔥 急升 <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h2>
+      <div class="row home-tools">
+        <button type="button" id="gainerInfoBtn" class="ghost sm">詳情</button>
+        <button type="button" id="gainerRefresh" class="ghost sm" title="重掃" aria-label="重掃">↻</button>
       </div>
     </div>
-    <p class="gb-warn tiny">追升紙上玩：中 +20% 機會低（見每層 30 日回測），一定要跟止蝕。只用 Binance 公開數據。</p>
     <div class="gb-alert" id="gainerAlert" hidden></div>
-    <h3 class="gb-tier-title">🔥 急升 <span class="muted tiny">近 4h：1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%</span></h3>
-    <div id="gainerPumpBt"></div>
     <p class="tiny muted gb-xcap" id="gainerXCap" hidden>今日 X 額度用完</p>
     <div id="gainerList" class="gb-list"></div>
-    <h3 class="gb-tier-title">⚡ 早期 · 觀察 <span class="muted tiny">未 🔥 先起步（15m ≥ +2.5%，24h 波幅 ≥ 25%）或細盤急拉 · 冇買入掣</span></h3>
-    <div id="gainerEarlyBt"></div>
+    <h3 class="gb-tier-title">⚡ 早期 <span class="muted tiny">觀察</span></h3>
     <div id="earlyList" class="gb-list"></div>
-    <div class="gacc" id="gainerAcc"></div>
-    <div class="gacc" id="gainerCard"></div>
   </section>
 
   <!-- Simple home: brief + cards + portfolio strip -->
@@ -245,7 +237,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="simple-pf-mini pf-glance mini" id="simplePfMini" aria-live="polite"></div>
   </section>
 
-  <section class="panel pump-mirror simple-only" id="chasePanel">
+  <section class="panel pump-mirror full-only" id="chasePanel">
     <div class="panelhead">
       <div>
         <h3 class="pump-title">爆升對照／前兆</h3>
@@ -315,11 +307,14 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="view-browse" class="view" hidden>
   <section class="panel mood-wrap" id="moodPanel">
     <div class="mood-topbar">
-      <div class="mood-live"><span class="live-dot"></span> Live · Binance</div>
+      <div class="mood-live"><span class="live-dot"></span> 即時 · Binance</div>
       <div class="mood-tools">
         <button type="button" id="bnSearchBtn" class="iconbtn" title="搜尋" aria-label="搜尋">⌕</button>
         <button type="button" id="bnRefresh" class="iconbtn" title="刷新">↻</button>
       </div>
+    </div>
+    <div class="row wrap browse-controls mood-search" id="bnSearchRow">
+      <input id="bnFilter" type="search" placeholder="搜尋全部 Binance 幣（ANIME / PEPE）" autocomplete="off">
     </div>
     <div class="mood-hero" id="moodHero">
       <div class="mood-title">行情</div>
@@ -337,118 +332,45 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
       <div class="mood-vol" id="moodVol">Vol —</div>
       <div class="mood-actions">
-        <button type="button" class="primary" id="moodBuy">落倉</button>
+        <button type="button" class="primary" id="moodBuy">買</button>
+        <button type="button" class="allin-btn" id="moodAllin">孤注一擲</button>
         <a class="secondary" id="moodBnLink" href="#" target="_blank" rel="noopener">Binance ↗</a>
       </div>
     </div>
-    <div class="row wrap browse-controls mood-search" id="bnSearchRow" hidden>
-      <input id="bnFilter" type="search" placeholder="搜 Binance 代號（DOGE / PEPE / BNB）" autocomplete="off">
-    </div>
     <p class="muted" id="bnMeta">載入 Binance…</p>
     <div id="bnList" class="mood-list"></div>
-    <p class="muted tiny">熱門／睇幣淨用 Binance 公開 API（唔使 key）。鏈上 Dex meme 唔再出現喺呢度。</p>
   </section>
 </div>
 
 <!-- ===== Crypto.M 紙上倉 ===== -->
 <div id="view-portfolio" class="view" hidden>
-  <div class="simbanner"><b>Crypto.M · 冇真實金錢。</b>
-    共用一個現金池；現貨同槓桿分開顯示。槓桿係<strong>逐倉模擬</strong>（代碼上限 <b>50x</b>；穩陣≤3x · 進取≤10x · 極高風險／孤注一擲≤50x），真實永續通常有資金費同插針，會爆得更快。
-    <span class="en">Simulated only · shared cash · isolated margin.</span></div>
-  <div class="simbanner lev-warn"><b>槓桿模擬極高風險。</b>
-    Meme coin 波動可以一日 ±50%，高倍槓桿好易保證金歸零。呢度唔係投資建議；請先用現貨練。</div>
-  <div id="liveStrip" class="live-strip" hidden>
-    <span class="live-dot" aria-hidden="true"></span>
-    <span id="liveStripText">即時報價關閉</span>
-  </div>
-
-  <div id="allinBanner" class="allin-banner" hidden>
-    <div class="allin-live">
-      <div class="allin-title">孤注一擲進行中 · 一舖過</div>
-      <div id="allinLive" class="allin-live-stats"></div>
+  <section class="panel pf-panel">
+    <div class="pf-glance pf-hero" id="pfGlance" aria-live="polite">
+      <div class="pg-cell pg-main" data-k="equity"><div class="pg-k">總資產</div><div class="pg-v" id="pgEquity">—</div><div class="pg-s" id="pgEquitySub" hidden></div></div>
+      <div class="pg-cell" data-k="pnl"><div class="pg-k">盈虧</div><div class="pg-v" id="pgPnl">—</div><div class="pg-s" id="pgPnlPct"></div></div>
+      <div class="pg-cell" data-k="cash"><div class="pg-k">現金</div><div class="pg-v" id="pgCash">—</div></div>
+      <div class="pg-cell" data-k="pos" hidden><div class="pg-k">持倉</div><div class="pg-v" id="pgPos">—</div><div class="pg-s" id="pgPosSub"></div></div>
     </div>
-    <button type="button" id="allinCloseBtn" class="secondary danger">平倉／結束呢鋪</button>
-  </div>
-
-  <div id="allinResult" class="allin-result" hidden>
-    <div id="allinResultBody"></div>
-    <button type="button" id="allinAgain" class="primary">再來一鋪</button>
-  </div>
-
-  <!-- simplePfPanel removed: pfGlance is the single PnL strip -->
-  <div id="simplePfPanel" hidden><div id="simplePfStats"></div><button type="button" id="simplePfDetail" hidden>睇持倉詳情</button></div>
-
-  <section class="panel">
-    <div class="allin-entry row wrap full-only adv-only" id="allinEntryBar">
-      <button type="button" id="allinStartBtn" class="secondary">開始孤注一擲</button>
-      <span class="muted">揀一隻幣 → All-in 現貨或 50x。假錢試膽，真錢唔好。</span>
+    <div class="pf-actions">
+      <button type="button" id="pfBuyBtn" class="primary">＋ 買幣</button>
+      <button type="button" id="pfAllinBtn" class="allin-btn">孤注一擲</button>
+      <button type="button" id="pfInfoBtn" class="ghost">詳情</button>
     </div>
-    <div class="panelhead">
-      <h2>我嘅 Crypto.M <span class="en">Paper portfolio</span></h2>
-      <div class="risk-bar full-only">
-        <span class="muted">風險檔</span>
-        <div class="seg risk" id="riskProfile">
-          <button type="button" class="segbtn" data-risk="safe">穩陣</button>
-          <button type="button" class="segbtn active" data-risk="agg">進取</button>
-          <button type="button" class="segbtn" data-risk="yolo">極高風險</button>
-          <button type="button" class="segbtn" data-risk="allin">孤注一擲</button>
-        </div>
+
+    <div id="allinBanner" class="allin-banner" hidden>
+      <div class="allin-live">
+        <div class="allin-title">孤注一擲中</div>
+        <div id="allinLive" class="allin-live-stats"></div>
       </div>
-      <div class="row wrap capital-row">
-        <span class="muted">起始資金</span>
-        <div class="presets" id="capitalPresets">
-          <button type="button" class="sm preset" data-cap="1000">$1k</button>
-          <button type="button" class="sm preset active" data-cap="5000">$5k</button>
-          <button type="button" class="sm preset" data-cap="10000">$10k</button>
-          <button type="button" class="sm preset" data-cap="50000">$50k</button>
-        </div>
-        <input id="startCash" type="number" min="100" step="100" value="5000" title="重置時生效">
-        <label class="muted" for="feePct">費%</label>
-        <input id="feePct" type="number" min="0" max="20" step="0.1" value="1">
-        <button id="pfRefresh" class="sm">↻ 報價</button>
-        <button id="copyPicks" class="secondary full-only">跟晒今批</button>
-        <button id="pfReset" class="ghost sm danger">重置</button>
-      </div>
-      <p class="muted risk-hint" id="riskHint">假錢儘管試大；真錢唔好咁玩。進取檔預設最多 10x。</p>
+      <button type="button" id="allinCloseBtn" class="secondary danger">平倉</button>
     </div>
-    <div class="pf-glance" id="pfGlance" aria-live="polite">
-      <div class="pg-cell" data-k="equity"><div class="pg-k">總資產</div><div class="pg-v" id="pgEquity">—</div><div class="pg-s" id="pgEquitySub"></div></div>
-      <div class="pg-cell" data-k="pnl"><div class="pg-k">總盈虧</div><div class="pg-v" id="pgPnl">—</div><div class="pg-s" id="pgPnlPct"></div></div>
-      <div class="pg-cell" data-k="cash"><div class="pg-k">現金</div><div class="pg-v" id="pgCash">—</div><div class="pg-s">可落倉</div></div>
-      <div class="pg-cell" data-k="pos"><div class="pg-k">持倉</div><div class="pg-v" id="pgPos">—</div><div class="pg-s" id="pgPosSub"></div></div>
-    </div>
-    <div class="stats pf-stats-dup" id="pfStats" hidden></div>
-
-    <div class="seg pf-mode-seg" role="tablist" aria-label="倉位類型">
-      <button type="button" class="segbtn active" data-pfmode="spot">現貨</button>
-      <button type="button" class="segbtn" data-pfmode="lev">槓桿</button>
-      <button type="button" class="segbtn" data-pfmode="all">全部</button>
+    <div id="allinResult" class="allin-result" hidden>
+      <div id="allinResultBody"></div>
+      <button type="button" id="allinAgain" class="primary">再來一鋪</button>
     </div>
 
-    <div id="spotSection" class="pos-section spot-section">
-      <h3><span class="kind-badge spot">現貨</span> 持倉 <span class="en">Spot · 最多蝕晒本金</span></h3>
-      <div class="tablewrap"><table><thead><tr>
-        <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
-        <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
-      </tr></thead><tbody id="holdBody"></tbody></table>
-      <div class="empty" id="holdEmpty">未有現貨。去「今日跟買」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
-    </div>
-
-    <div id="levSection" class="pos-section lev-section" hidden>
-      <h3><span class="kind-badge lev">槓桿</span> 倉（逐倉模擬） <span class="en">Isolated · 可爆倉</span></h3>
-      <p class="muted lev-note">名義倉 = 保證金 × 倍數。浮虧 ≈ 保證金 90% → 爆倉，保證金歸零。v1 未計資金費（真實 perps 有 funding）。</p>
-      <div class="tablewrap"><table><thead><tr>
-        <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
-        <th class="num">入場</th><th class="num">標記價</th><th class="num">爆倉價</th>
-        <th class="num">浮盈虧</th><th class="num">倉權益</th><th></th>
-      </tr></thead><tbody id="levBody"></tbody></table>
-      <div class="empty" id="levEmpty">未有槓桿倉。落倉時選「槓桿」，揀 2x–50x（視風險檔）同保證金。</div></div>
-    </div>
-
-    <h3>交易紀錄 <span class="en">Trade history</span></h3>
-    <div class="tablewrap"><table><thead><tr>
-      <th>時間</th><th>類型</th><th>方向</th><th>幣</th><th class="num">價</th><th class="num">數量/名義</th><th class="num">金額</th><th class="num">手續費</th><th class="num">已實現</th>
-    </tr></thead><tbody id="tradeBody"></tbody></table></div>
+    <div id="posList" class="pos-list" aria-live="polite"></div>
+    <div class="empty pos-empty" id="posEmpty">未有持倉 · 撳「＋ 買幣」</div>
   </section>
 </div>
 
@@ -457,7 +379,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel">
     <h2>更多</h2>
     <div class="more-list">
-      <a class="more-item" href="#browse">睇幣 · Coin Mood</a>
+      <a class="more-item" href="#browse">睇幣</a>
       <a class="more-item" href="#news">重點新聞</a>
       <button type="button" class="more-item" id="allinFromPicks">孤注一擲（進階）</button>
       <a class="more-item" href="#explore">市場掃描（完整）</a>
@@ -565,75 +487,134 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </main>
 </div>
 
-<dialog id="allinDlg">
-  <form method="dialog" id="allinForm">
-    <h3>孤注一擲確認</h3>
-    <p class="allin-scary">輸就接近歸零 · 贏就大賺 · <b>假錢</b> · 唔係投資建議</p>
-    <p class="muted" id="allinInfo"></p>
-    <div class="mode-row">
-      <span class="muted">點樣 All-in</span>
-      <div class="seg mini" id="allinModeSeg">
-        <button type="button" class="segbtn active" data-allinmode="spot">現貨 All-in</button>
-        <button type="button" class="segbtn" data-allinmode="lev">槓桿 All-in 50x</button>
+<!-- ===== 詳情 sheet + parked detail sections (moved into the sheet on demand; ids keep updating) ===== -->
+<dialog id="infoSheet" class="sheet">
+  <div class="sheet-head"><b id="infoSheetTitle">詳情</b><button type="button" class="iconbtn" data-sheet-close aria-label="關閉">✕</button></div>
+  <div id="infoSheetBody" class="sheet-body"></div>
+</dialog>
+<div id="sheetPark" hidden>
+  <div id="gbDetail" data-park>
+    <p class="gb-livebar"><span>即時</span> · <span id="gainerUpdated">連接中…</span></p>
+    <p class="home-sub" id="gainerMeta">Binance 現貨急升幣 · 同 AI 跟買分開</p>
+    <div class="row wrap gb-multrow"><span class="muted tiny">注碼</span><div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div></div>
+    <p class="gb-warn tiny">追升紙上玩：中 +20% 機會低，一定要跟止蝕。只用 Binance 公開數據。</p>
+    <h4 class="gb-tier-title">🔥 規則</h4>
+    <p class="tiny muted">近 4h：1h ≥ +5% 兼成交 ≥ 3x 平均，或 15m ≥ +5%（冇 24h 下限）。唔夠 6 隻補「候補」（只觀察、冇買入）。</p>
+    <div id="gainerPumpBt"></div>
+    <h4 class="gb-tier-title">⚡ 早期</h4>
+    <p class="tiny muted">未 🔥 先起步（15m ≥ +2.5%，24h 波幅 ≥ 25%）或細盤急拉 · 只觀察，冇買入掣。</p>
+    <div id="gainerEarlyBt"></div>
+    <div class="gacc" id="gainerAcc"></div>
+    <div class="gacc" id="gainerCard"></div>
+  </div>
+  <div id="pfDetail" data-park>
+    <div class="simbanner"><b>Crypto.M · 冇真實金錢。</b>
+      共用一個現金池；槓桿係逐倉模擬（上限 50x；穩陣≤3x · 進取≤10x · 極高風險／孤注一擲≤50x）。浮虧 ≈ 保證金 90% 就爆倉。真實永續有資金費同插針，會爆得更快。</div>
+    <div id="liveStrip" class="live-strip" hidden>
+      <span class="live-dot" aria-hidden="true"></span>
+      <span id="liveStripText">即時報價關閉</span>
+    </div>
+    <div class="stats pf-stats-dup" id="pfStats"></div>
+    <div class="risk-bar">
+      <span class="muted">風險檔</span>
+      <div class="seg risk" id="riskProfile">
+        <button type="button" class="segbtn" data-risk="safe">穩陣</button>
+        <button type="button" class="segbtn active" data-risk="agg">進取</button>
+        <button type="button" class="segbtn" data-risk="yolo">極高風險</button>
+        <button type="button" class="segbtn" data-risk="allin">孤注一擲</button>
       </div>
+    </div>
+    <p class="muted risk-hint" id="riskHint"></p>
+    <div class="row wrap capital-row">
+      <span class="muted">起始資金</span>
+      <div class="presets" id="capitalPresets">
+        <button type="button" class="sm preset" data-cap="1000">$1k</button>
+        <button type="button" class="sm preset active" data-cap="5000">$5k</button>
+        <button type="button" class="sm preset" data-cap="10000">$10k</button>
+        <button type="button" class="sm preset" data-cap="50000">$50k</button>
+      </div>
+      <input id="startCash" type="number" min="100" step="100" value="5000" title="重置時生效">
+      <label class="muted" for="feePct">費%</label>
+      <input id="feePct" type="number" min="0" max="20" step="0.1" value="1">
+      <button id="pfRefresh" class="sm">↻ 報價</button>
+      <button id="copyPicks" class="secondary">跟晒今批</button>
+      <button id="pfReset" class="ghost sm danger">重置</button>
+    </div>
+    <div class="seg pf-mode-seg" role="tablist" aria-label="倉位類型">
+      <button type="button" class="segbtn" data-pfmode="spot">現貨</button>
+      <button type="button" class="segbtn" data-pfmode="lev">槓桿</button>
+      <button type="button" class="segbtn active" data-pfmode="all">全部</button>
+    </div>
+    <div id="spotSection" class="pos-section spot-section">
+      <h3><span class="kind-badge spot">現貨</span> 持倉 <span class="en">Spot · 最多蝕晒本金</span></h3>
+      <div class="tablewrap"><table><thead><tr>
+        <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
+        <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
+      </tr></thead><tbody id="holdBody"></tbody></table>
+      <div class="empty" id="holdEmpty">未有現貨。去「今日跟買」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
+    </div>
+    <div id="levSection" class="pos-section lev-section" hidden>
+      <h3><span class="kind-badge lev">槓桿</span> 倉（逐倉模擬） <span class="en">Isolated · 可爆倉</span></h3>
+      <p class="muted lev-note">名義倉 = 保證金 × 倍數。浮虧 ≈ 保證金 90% → 爆倉，保證金歸零。v1 未計資金費（真實 perps 有 funding）。</p>
+      <div class="tablewrap"><table><thead><tr>
+        <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
+        <th class="num">入場</th><th class="num">標記價</th><th class="num">爆倉價</th>
+        <th class="num">浮盈虧</th><th class="num">倉權益</th><th></th>
+      </tr></thead><tbody id="levBody"></tbody></table>
+      <div class="empty" id="levEmpty">未有槓桿倉。落倉時選「槓桿」，揀 2x–50x（視風險檔）同保證金。</div></div>
+    </div>
+    <h3>交易紀錄</h3>
+    <div class="tablewrap"><table><thead><tr>
+      <th>時間</th><th>類型</th><th>方向</th><th>幣</th><th class="num">價</th><th class="num">數量/名義</th><th class="num">金額</th><th class="num">手續費</th><th class="num">已實現</th>
+    </tr></thead><tbody id="tradeBody"></tbody></table></div>
+  </div>
+  <div id="posDetail" data-park></div>
+</div>
+
+<dialog id="coinPickDlg" class="sheet">
+  <div class="sheet-head"><b id="coinPickTitle">揀幣</b><span class="muted tiny" id="coinPickCount"></span><button type="button" class="iconbtn" id="coinPickClose" aria-label="關閉">✕</button></div>
+  <p class="tiny muted" id="coinPickHint" hidden></p>
+  <input id="coinPickQ" type="search" placeholder="搜尋 BTC / ANIME / 名" autocomplete="off" autocapitalize="characters" spellcheck="false">
+  <div id="coinPickList" class="cp-list"></div>
+</dialog>
+
+<dialog id="allinDlg" class="sheet">
+  <form method="dialog" id="allinForm">
+    <div class="trade-orb-wrap" id="allinOrb" aria-hidden="true"></div>
+    <h3 id="allinTitle">孤注一擲</h3>
+    <p class="muted" id="allinInfo"></p>
+    <div class="seg mini allin-seg" id="allinModeSeg">
+      <button type="button" class="segbtn active" data-allinmode="spot">現貨 All-in</button>
+      <button type="button" class="segbtn" data-allinmode="lev">50x 槓桿</button>
     </div>
     <div class="risk-callout hot" id="allinCallout"></div>
     <div class="allin-scenarios" id="allinScenarios"></div>
-    <p class="simnote">確認後會鎖倉：唔可以再開其他倉，直至平倉／爆倉／重置。</p>
-    <div class="row">
+    <div class="row trade-actions">
       <button type="button" id="allinCancel" class="ghost">取消</button>
-      <button type="submit" id="allinOk" class="primary">我知風險 · 孤注一擲</button>
+      <button type="submit" id="allinOk" class="primary allin-ok">孤注一擲</button>
     </div>
   </form>
 </dialog>
 
-<dialog id="allinPickDlg">
-  <form method="dialog" id="allinPickForm">
-    <h3>揀一隻幣 · 孤注一擲</h3>
-    <p class="muted">建議用今日跟買清單。揀完會進入確認。</p>
-    <div id="allinPickList" class="allin-pick-list"></div>
-    <div class="row"><button type="button" id="allinPickCancel">取消</button></div>
-  </form>
+<dialog id="allinPickDlg" hidden>
+  <form method="dialog" id="allinPickForm"><div id="allinPickList"></div><button type="button" id="allinPickCancel">取消</button></form>
 </dialog>
 
-<dialog id="tradeDlg">
+<dialog id="tradeDlg" class="sheet">
   <form method="dialog" id="tradeForm">
-    <div class="trade-orb-wrap" id="tradeOrb" aria-hidden="true" hidden></div>
-    <h3 id="tradeTitle">Crypto.M 落倉</h3>
-    <p class="muted" id="tradeInfo"></p>
-    <div class="trade-exit-guide" id="tradeExitGuide" hidden>
-      <div class="teg-kicker">幾時可以放</div>
-      <div class="teg-rows" aria-label="出場時機">
-        <div class="teg-row teg-target">
-          <span class="teg-lab">目標價</span>
-          <span class="teg-val" id="tradeExitMain"></span>
-        </div>
-        <div class="teg-row teg-holdrow">
-          <span class="teg-lab">Hold 至</span>
-          <span class="teg-val" id="tradeExitHold"></span>
-        </div>
-        <div class="teg-row teg-stoprow">
-          <span class="teg-lab">止蝕</span>
-          <span class="teg-val muted" id="tradeExitStop"></span>
-        </div>
+    <div class="trade-head">
+      <div class="trade-orb-wrap" id="tradeOrb" aria-hidden="true" hidden></div>
+      <div class="trade-headtxt">
+        <h3 id="tradeTitle">買</h3>
+        <p class="muted" id="tradeInfo"></p>
       </div>
-      <p class="teg-note muted" id="tradeExitNote">紙上參考 · 唔係保證 · 同 24h 跟買封盤對齊</p>
     </div>
-    <div id="tradeModeRow" class="mode-row mode-cards-row" hidden>
-      <div class="mode-cards" role="group" aria-label="落倉模式">
-        <button type="button" class="mode-card active" data-trademode="spot">
-          <span class="mc-title">現貨</span>
-          <span class="mc-note">最多蝕晒本金 · 冇爆倉</span>
-        </button>
-        <button type="button" class="mode-card lev" data-trademode="lev">
-          <span class="mc-title">槓桿</span>
-          <span class="mc-note">可爆倉 · 保證金可歸零</span>
-        </button>
-      </div>
-      <p class="mode-risk-note muted" id="tradeModeRiskNote">揀「現貨」較穩；「槓桿」假錢可試，真錢唔好亂開。</p>
+    <div id="tradeModeRow" class="seg mini trade-mode" role="group" aria-label="落倉模式" hidden>
+      <button type="button" class="segbtn mode-card active" data-trademode="spot">現貨</button>
+      <button type="button" class="segbtn mode-card lev" data-trademode="lev">槓桿</button>
     </div>
-    <div id="tradeRiskRow" class="mode-row">
-      <span class="muted">風險檔</span>
+    <p class="mode-risk-note muted" id="tradeModeRiskNote" hidden></p>
+    <div id="tradeRiskRow" class="mode-row" hidden>
       <div class="seg mini" id="tradeRisk">
         <button type="button" class="segbtn" data-risk="safe">穩陣</button>
         <button type="button" class="segbtn active" data-risk="agg">進取</button>
@@ -642,7 +623,6 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
     </div>
     <div id="tradeLevRow" class="mode-row" hidden>
-      <label class="muted" for="tradeLev">倍數</label>
       <div class="presets" id="tradeLevPresets"></div>
       <select id="tradeLev" hidden>
         <option value="2">2x</option>
@@ -653,13 +633,21 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <option value="50">50x</option>
       </select>
     </div>
-    <label for="tradeAmt" id="tradeAmtLabel">金額 (USD)</label>
-    <input id="tradeAmt" type="number" min="0" step="any" required>
-    <div class="row quick" id="tradeQuick"></div>
+    <label for="tradeAmt" id="tradeAmtLabel" class="tiny muted">金額 (USD)</label>
+    <input id="tradeAmt" type="number" min="0" step="any" inputmode="decimal" required>
+    <div class="row quick pct-chips" id="tradeQuick"></div>
+    <p class="trade-preview" id="tradePreview"></p>
+    <div class="trade-exit-guide" id="tradeExitGuide" hidden>
+      <span class="teg-val" id="tradeExitMain"></span>
+      <span id="tradeExitHold" hidden></span><span id="tradeExitStop" hidden></span><span id="tradeExitNote" hidden></span>
+    </div>
     <div class="risk-callout" id="tradeCallout" hidden></div>
-    <p class="muted" id="tradePreview"></p>
-    <p class="simnote" id="tradeSimNote">假錢模擬 · 唔係真倉。</p>
-    <div class="row trade-actions"><button value="cancel" type="button" id="tradeCancel" class="ghost">取消</button><button id="tradeOk" value="ok" class="primary">確認落倉</button></div>
+    <p class="simnote" id="tradeSimNote" hidden></p>
+    <div class="row trade-actions">
+      <button value="cancel" type="button" id="tradeCancel" class="ghost">取消</button>
+      <button type="button" id="tradeAllin" class="allin-btn sm" hidden>孤注一擲</button>
+      <button id="tradeOk" value="ok" class="primary">確認</button>
+    </div>
   </form>
 </dialog>
 
@@ -690,17 +678,18 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
 
 <nav class="bottom-nav" role="tablist" aria-label="主要分頁">
-  <a href="#picks" class="tab" data-view="picks"><span class="ico" aria-hidden="true">買</span><span class="bn-lab">跟買</span></a>
-  <a href="#browse" class="tab" data-view="browse"><span class="ico" aria-hidden="true">市</span><span class="bn-lab">睇幣</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><span class="ico" aria-hidden="true">C.M</span><span class="bn-lab">Crypto.M</span></a>
-  <a href="#news" class="tab bn-full" data-view="news"><span class="ico" aria-hidden="true">訊</span><span class="bn-lab">新聞</span></a>
-  <a href="#explore" class="tab bn-full" data-view="explore"><span class="ico" aria-hidden="true">掃</span><span class="bn-lab">掃描</span></a>
-  <a href="#more" class="tab bn-simple" data-view="more"><span class="ico" aria-hidden="true">⋯</span><span class="bn-lab">更多</span></a>
+  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab">首頁</span></a>
+  <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab">睇幣</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab">模擬倉</span></a>
+  <a href="#news" class="tab bn-full" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8"/></svg><span class="bn-lab">新聞</span></a>
+  <a href="#explore" class="tab bn-full" data-view="explore"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="bn-lab">掃描</span></a>
+  <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab">更多</span></a>
 </nav>
 
-<script src="live.js?v=20261025g1"></script>
-<script src="coin3d.js?v=20261025g1"></script>
-<script src="app.js?v=20261025g1"></script>
-<script src="picks.js?v=20261025g1"></script>
+<script src="live.js?v=20261025g2"></script>
+<script src="market.js?v=20261025g2"></script>
+<script src="coin3d.js?v=20261025g2"></script>
+<script src="app.js?v=20261025g2"></script>
+<script src="picks.js?v=20261025g2"></script>
 </body>
 </html>
