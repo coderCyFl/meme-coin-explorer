@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-25T01:43:05+08:00",
- "batches": 4,
+ "updated_at": "2026-10-25T01:48:20+08:00",
+ "batches": 5,
  "flags": 1,
  "horizons": {
   "4h": {
@@ -36,7 +36,7 @@
    "24h": {
     "n": 0
    },
-   "flags": 6
+   "flags": 9
   }
  },
  "latest_4h": null,
