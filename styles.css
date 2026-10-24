@@ -1752,3 +1752,4 @@ body.ui-simple footer{display:none}
 .pos-grp:first-child{margin-top:4px}
 .pos-grp-lev>span:first-child{color:#f0b90b}
 .pos-grp .pos{color:var(--green)}.pos-grp .neg{color:var(--red)}
+.gb-head .home-title.gb-tier-title{margin:0;font-size:15px}
