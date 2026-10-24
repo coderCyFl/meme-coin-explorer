@@ -363,7 +363,32 @@
     return pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null; // legacy spot (pre-20261025c1)
   }
 
-  function exitGuideCopy(plan, entryPx, markPx) {
+  const LEV_STOP_NOTE = "槓桿止蝕：計劃止蝕低過爆倉價，改用入場同爆倉中間";
+  /**
+   * Effective stop for a position. Spot (lev ≤ 1): the plan stop, unchanged.
+   * Leverage: the plan stop if it sits ABOVE the liquidation price; otherwise halfway between
+   * entry and liquidation (50x ≈ −0.9%). Target / review / latest exit are never touched.
+   */
+  function effectiveStop(planStopPx, entryPx, lev) {
+    if (!(lev > 1) || !(entryPx > 0)) return { stopPx: planStopPx, adj: false, liq: null };
+    const liq = liqPriceLong(entryPx, lev);
+    if (planStopPx > liq) return { stopPx: planStopPx, adj: false, liq };
+    return { stopPx: (entryPx + liq) / 2, adj: true, liq };
+  }
+  function exitGuideCopy(plan, entryPx, markPx, lev) {
+    const g = exitGuideCopyPlan(plan, entryPx, markPx);
+    if (!g) return g;
+    g.planStopPx = g.stopPx; g.planSl = g.sl;
+    const e = effectiveStop(g.stopPx, entryPx, lev);
+    g.liqPx = e.liq;
+    if (e.adj) {
+      g.stopPx = e.stopPx; g.levStopAdj = true;
+      g.sl = +((1 - e.stopPx / entryPx) * 100).toFixed(2);
+      g.stop = `${price(e.stopPx)}（−${g.sl.toFixed(1)}%）· 槓桿止蝕（入場同爆倉中間）`;
+    }
+    return g;
+  }
+  function exitGuideCopyPlan(plan, entryPx, markPx) {
     if (!plan || !(entryPx > 0)) return null;
     if (plan.momentum) return momentumGuideCopy(plan, entryPx, markPx);
     const tp = plan.tp, sl = plan.sl;
@@ -435,7 +460,7 @@
   function posExitGuideEl(pos, markPx) {
     const plan = exitPlanForPosition(pos);
     const entryPx = posBasisPx(pos);
-    const g = exitGuideCopy(plan, entryPx, markPx);
+    const g = exitGuideCopy(plan, entryPx, markPx, pos.leverage);
     if (!g) return exitHintRow(plan, { className: "sc-exit sc-exit-pos" });
     return el("div", { class: "pos-exit-guide", "data-sym": pos.symbol || "", "data-basis": String(g.basePx), "data-target": String(g.targetPx), "data-stop": String(g.stopPx), "data-tp": String(g.tp), "data-sl": String(g.sl) },
       el("div", { class: "peg-kicker", text: "幾時可以放" }),
@@ -2221,17 +2246,26 @@
       const cash = P.cash;
       if ($("allinTitle")) $("allinTitle").textContent = `孤注一擲 ${info.symbol}`;
       $("allinInfo").textContent = `${price(li.price)} · 現金 ${money2(cash)}`;
+      const allinPlan = exitPlanFromEntry(Object.assign({}, lockExitMetaForInfo(info), { created_at: new Date().toISOString(), entry_snapshot: info.entry_snapshot }));
+      const paintExit = (lev) => {
+        const n = $("allinExit"); if (!n) return;
+        const g = exitGuideCopy(allinPlan, li.price, li.price, lev);
+        n.textContent = g ? (lev > 1 ? `爆 ${price(g.liqPx)} · ` : "") + exitOneLine(g) + (g.levStopAdj ? `\n${LEV_STOP_NOTE}` : "") : "";
+        n.dataset.stop = g ? String(g.stopPx) : ""; n.dataset.liq = g && g.liqPx ? String(g.liqPx) : ""; n.dataset.basis = String(li.price);
+      };
       const paint = () => {
         document.querySelectorAll("#allinModeSeg .segbtn").forEach((b) => b.classList.toggle("active", b.dataset.allinmode === mode));
         if (mode === "spot") {
           $("allinCallout").textContent = `用晒 ${money2(cash)} 買 ${info.symbol} · 歸零就輸晒`;
           renderAllinScenarios("spot", cash, li.price, 50);
+          paintExit(null);
         } else {
           const lev = 50;
           const notional = calc.levOpen(calc.allinMargin(cash, lev), lev, li.price).notional;
           const drop = LIQ_MARGIN_FRAC / lev * 100;
           $("allinCallout").textContent = `${lev}x · 名義 ${money2(notional)} · 跌 ${drop.toFixed(1)}% 就爆倉`;
           renderAllinScenarios("lev", cash, li.price, lev);
+          paintExit(lev);
         }
       };
       document.querySelectorAll("#allinModeSeg .segbtn").forEach((b) => {
@@ -2408,18 +2442,20 @@
     ban.hidden = false;
     const a = P.allin;
     // Same numbers as the position row (same mark choice, same formula): value + P&L of THE position; cash separate.
-    let livePct = null, value = null, pnl = null, extra = "";
+    let livePct = null, value = null, pnl = null, extra = "", exitG = null;
     const markOf = (pos) => { const li = liveInfo(a.chain, a.pair); return li.state === "live" ? li.price : li.state === "dead" ? 0 : knownPx(pos); };
     if (a.mode === "spot") {
       const pos = P.positions[a.key];
       if (pos) {
         const px = markOf(pos);
+        exitG = exitGuideCopy(exitPlanForPosition(pos), posBasisPx(pos), px, null);
         if (px != null) { value = pos.qty * px; pnl = value - pos.cost; livePct = pos.cost ? (value / pos.cost - 1) * 100 : null; extra = `標記 ${price(px)}`; }
       }
     } else {
       const pos = P.levPositions[a.key];
       if (pos) {
         const px = markOf(pos);
+        exitG = exitGuideCopy(exitPlanForPosition(pos), posBasisPx(pos), px, pos.leverage);
         if (px != null) {
           const op = calc.levOpenPnl(pos, px);
           value = op.value; pnl = op.pnl; livePct = op.pct;
@@ -2436,6 +2472,7 @@
       el("div", {}, el("b", { text: "$" + a.symbol }), " · ", a.mode === "lev" ? (a.leverage || 50) + "x" : "現貨"),
       el("div", { class: cls(pnl), "data-allin": "pnl" }, "盈虧 ", pnl == null ? "…" : `${pnl >= 0 ? "+" : ""}${money2(pnl)} · ${pct(livePct)}`),
       el("div", { "data-allin": "value", text: "倉值 " + (value == null ? "…" : money2(value)) }),
+      exitG ? el("div", { class: "allin-exit-line", "data-allin": "exit", "data-stop": String(exitG.stopPx), text: `🎯 ${price(exitG.targetPx)} · 止 ${price(exitG.stopPx)}` + (exitG.levStopAdj ? "（槓桿）" : "") }) : "",
       el("div", { class: "muted", text: `入場 ${price(a.entry)} · ${extra}` + (P.cash >= 0.01 ? ` · 現金 ${money2(P.cash)}` : "") })
     );
     if (livePct != null) flashAllinPnl(livePct);
@@ -2460,7 +2497,7 @@
       const buyExitGuide = (amt, { mode, lev } = {}) => {
         if (mode === "lev") {
           const fill = buyFillPx(li, (amt || 0) * (lev || 1));
-          return exitGuideCopy(exitPlanFromEntry(Object.assign({}, lockExitMetaForInfo(info), { created_at: lockNow, entry_snapshot: info.entry_snapshot })), fill, li.price);
+          return exitGuideCopy(exitPlanFromEntry(Object.assign({}, lockExitMetaForInfo(info), { created_at: lockNow, entry_snapshot: info.entry_snapshot })), fill, li.price, lev || 1);
         }
         const fill = buyFillPx(li, amt || 0);
         const ex = P.positions[spotKey];
@@ -2745,7 +2782,7 @@
   function posRowExit(r) {
     const pos = r.pos;
     const plan = exitPlanForPosition(pos);
-    const g = exitGuideCopy(plan, posBasisPx(pos), r.px);
+    const g = exitGuideCopy(plan, posBasisPx(pos), r.px, r.kind === "lev" ? pos.leverage : null);
     // Two short lines, full card width: 「爆 $x · 🎯 $y」 / 「止 $z · 揸到 hh:mm」 (spot: 🎯 / 止 · 揸到)
     if (!g) return { text: "", due: false };
     const shortT = (d) => {
@@ -2758,7 +2795,7 @@
     const tgt = "🎯 " + price(g.targetPx);
     const l1 = r.kind === "lev" && r.px > 0 ? `爆 ${price(liqPriceLong(pos.entry, pos.leverage))} · ${tgt}` : tgt;
     const l2 = `止 ${price(g.stopPx)} · ${until}`;
-    return { text: l1 + "\n" + l2, due: !!(g.reached || g.pastReview) };
+    return { text: l1 + "\n" + l2, due: !!(g.reached || g.pastReview), stopPx: g.stopPx, adj: !!g.levStopAdj };
   }
   function renderPosList(rows) {
     const box = $("posList"); if (!box) return;
@@ -2802,6 +2839,7 @@
       set("pnl", r.pnl == null ? "…" : `${r.pnl >= 0 ? "+" : ""}${money2(r.pnl)} · ${pct(r.pnlPct)}`, "num pr-pnl " + cls(r.pnl));
       const ex = posRowExit(r);
       set("exit", ex.text, "pr-exit" + (ex.due ? " due" : ""));
+      { const n = row.querySelector('[data-pr="exit"]'); if (n) { n.dataset.stop = ex.stopPx != null ? String(ex.stopPx) : ""; n.dataset.levstop = ex.adj ? "1" : ""; } }
       row.classList.toggle("stale", !!r.stale);
       if (r.flash && !reduceMotion()) { row.classList.remove("tick-up", "tick-down"); void row.offsetWidth; row.classList.add(r.flash === "up" ? "tick-up" : "tick-down"); }
     }
@@ -2837,7 +2875,7 @@
     const px = li.state === "live" ? li.price : knownPx(pos);
     const kv = (k, v, c = "") => [el("div", { class: "muted", text: k }), el("div", { class: "num " + c, text: v })];
     const plan = exitPlanForPosition(pos);
-    const g = exitGuideCopy(plan, posBasisPx(pos), px);
+    const g = exitGuideCopy(plan, posBasisPx(pos), px, kind === "lev" ? pos.leverage : null);
     let rows;
     if (kind === "lev") {
       const op = calc.levOpenPnl(pos, px), m = op.m, cc = calc.levClose(pos, px);
@@ -2857,7 +2895,9 @@
     box.append(el("div", { class: "kv pd-kv" }, ...rows.flat()));
     if (g) box.append(el("div", { class: "pd-exit" },
       el("div", { class: "peg-kicker", text: "幾時可以放" }),
-      el("div", { text: g.main }), el("div", { class: "muted", text: g.hold }), el("div", { class: "muted", text: "止蝕 " + g.stop })));
+      el("div", { text: g.main }), el("div", { class: "muted", text: g.hold }),
+      el("div", { class: "muted pd-stop", "data-stop": String(g.stopPx), text: "止蝕 " + g.stop }),
+      g.levStopAdj ? el("div", { class: "pd-levstop", text: LEV_STOP_NOTE }) : ""));
     const info = { chain: pos.chain, pair: pos.pair, token: pos.token, symbol: pos.symbol, name: pos.name, source: pos.source };
     const close = () => window.MCE.market.closeSheet(false);
     box.append(kind === "lev"
@@ -3484,7 +3524,7 @@
   window.MCE.paper = {
     openBuy, openSell, copyPicks, state: () => P,
     doOpenLev, doBuySpot, closeLev, checkLiquidations, liqPriceLong, levMark,
-    calc, allinScenarios: allinScenarioHTML, coinExitMeta, withCoinExit, fees: () => ({ spot: P.feePct, fut: levFeePct() }),
+    calc, allinScenarios: allinScenarioHTML, effectiveStop, coinExitMeta, withCoinExit, fees: () => ({ spot: P.feePct, fut: levFeePct() }),
     LIQ_MARGIN_FRAC, setState(s) { P = s; pf.save(P); },
     openAllinFlow, executeAllin, allinActive, loadAllinRounds, endAllinRound, playOverlay, reduceMotion, closeAllinFromBanner, buyAnyCoin, openPosDetail,
     ingestPair, ensureLiveLoop, renderPortfolio,
