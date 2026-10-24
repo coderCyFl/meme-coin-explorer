@@ -29,6 +29,56 @@
     "MUBUSDT"
    ],
    "entries": []
+  },
+  {
+   "batch": "gb-20261025-0101",
+   "picked_at": "2026-10-25T01:01:09+08:00",
+   "universe": 91,
+   "btc_24h_pct": -1.92,
+   "universe_all": 397,
+   "excluded_tokenized": 100,
+   "top20_24h": [
+    "BMTUSDT",
+    "EPICUSDT",
+    "ANIMEUSDT",
+    "ERAUSDT",
+    "ZBTUSDT",
+    "FUSDT",
+    "LAUSDT",
+    "TREEUSDT",
+    "LUMIAUSDT",
+    "KATUSDT",
+    "REZUSDT",
+    "NILUSDT",
+    "HAEDALUSDT",
+    "AIGENSYNUSDT",
+    "QUICKUSDT",
+    "PARTIUSDT",
+    "WINUSDT",
+    "NEWTUSDT",
+    "BREVUSDT",
+    "SAHARAUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "F",
+     "pair": "FUSDT",
+     "tier": "early",
+     "picked_at": "2026-10-25T01:01:09+08:00",
+     "entry_price_usd": 0.003386,
+     "change_24h_at_pick": 9.76,
+     "rank_24h_at_pick": 6,
+     "batch": "gb-20261025-0101",
+     "score": 36.5,
+     "change_1h_at_pick": 4.33,
+     "change_4h_at_pick": 1.52,
+     "vol_x_avg": 2.61,
+     "vol_x_prev_hour": 1.59,
+     "from_24h_high_pct": -4.6,
+     "quote_volume_24h": 3668252,
+     "outcomes": {}
+    }
+   ]
   }
  ]
 }
