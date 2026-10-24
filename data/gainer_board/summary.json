@@ -1,10 +1,16 @@
 {
- "updated_at": "2026-10-25T04:14:37+08:00",
- "batches": 7,
- "flags": 3,
+ "updated_at": "2026-10-25T05:35:34+08:00",
+ "batches": 8,
+ "flags": 4,
  "horizons": {
   "4h": {
-   "n": 0
+   "n": 1,
+   "hit20": 0,
+   "hit50": 0,
+   "avg_max_gain_pct": 0.77,
+   "avg_close_pct": -5.97,
+   "avg_max_drawdown_pct": -10.4,
+   "closed_up": 0
   },
   "24h": {
    "n": 0
@@ -27,11 +33,17 @@
    "24h": {
     "n": 0
    },
-   "flags": 0
+   "flags": 1
   },
   "early": {
    "4h": {
-    "n": 0
+    "n": 1,
+    "hit20": 0,
+    "hit50": 0,
+    "avg_max_gain_pct": 0.77,
+    "avg_close_pct": -5.97,
+    "avg_max_drawdown_pct": -10.4,
+    "closed_up": 0
    },
    "24h": {
     "n": 0
@@ -40,15 +52,92 @@
   },
   "cand": {
    "4h": {
-    "n": 0
+    "n": 6,
+    "hit20": 0,
+    "hit50": 0,
+    "avg_max_gain_pct": 4.34,
+    "avg_close_pct": 0.75,
+    "avg_max_drawdown_pct": -3.4,
+    "closed_up": 3
    },
    "24h": {
     "n": 0
    },
-   "flags": 9
+   "flags": 15
   }
  },
- "latest_4h": null,
+ "latest_4h": {
+  "batch": "gb-20261025-0110",
+  "picked_at": "2026-10-25T01:10:11+08:00",
+  "entries": [
+   {
+    "symbol": "BMT",
+    "tier": "cand",
+    "entry_price_usd": 0.03778,
+    "change_24h_at_pick": 66.51,
+    "max_gain_pct": 5.13,
+    "close_pct": 1.16,
+    "max_drawdown_pct": -4.79,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "ANIME",
+    "tier": "cand",
+    "entry_price_usd": 0.00338,
+    "change_24h_at_pick": 18.18,
+    "max_gain_pct": 13.02,
+    "close_pct": 12.43,
+    "max_drawdown_pct": -2.66,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "ERA",
+    "tier": "cand",
+    "entry_price_usd": 0.0872,
+    "change_24h_at_pick": 15.04,
+    "max_gain_pct": 0.46,
+    "close_pct": -7.34,
+    "max_drawdown_pct": -7.68,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "NIL",
+    "tier": "cand",
+    "entry_price_usd": 0.08331,
+    "change_24h_at_pick": 5.83,
+    "max_gain_pct": 2.63,
+    "close_pct": 0.62,
+    "max_drawdown_pct": -1.02,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "LUMIA",
+    "tier": "cand",
+    "entry_price_usd": 0.0748,
+    "change_24h_at_pick": 6.25,
+    "max_gain_pct": 1.2,
+    "close_pct": -1.6,
+    "max_drawdown_pct": -1.74,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "LA",
+    "tier": "cand",
+    "entry_price_usd": 0.0637,
+    "change_24h_at_pick": 9.64,
+    "max_gain_pct": 3.61,
+    "close_pct": -0.78,
+    "max_drawdown_pct": -2.51,
+    "hit20": false,
+    "hit50": false
+   }
+  ]
+ },
  "backtest_30d": {
   "generated_at": "2026-10-25T01:42:56+08:00",
   "window": {

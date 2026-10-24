@@ -1,10 +1,33 @@
 {
- "updated_at": "2026-10-25T04:14:37+08:00",
- "batch": "gb-20261025-0257",
- "picked_at": "2026-10-25T02:57:45+08:00",
- "btc_24h_pct": -1.27,
- "universe": 89,
+ "updated_at": "2026-10-25T05:35:34+08:00",
+ "batch": "gb-20261025-0532",
+ "picked_at": "2026-10-25T05:32:53+08:00",
+ "btc_24h_pct": -1.17,
+ "universe": 86,
  "active": [
+  {
+   "symbol": "BMT",
+   "pair": "BMTUSDT",
+   "tier": "early2",
+   "picked_at": "2026-10-25T05:30:00+08:00",
+   "entry_price_usd": 0.03898,
+   "price_at_snapshot": 0.03862,
+   "trigger_via": "start",
+   "change_15m_at_pick": 2.52,
+   "change_24h_at_pick": 72.64,
+   "rank_24h_at_pick": 1,
+   "batch": "gb-20261025-0532",
+   "score": 14.8,
+   "change_1h_at_pick": 0.8,
+   "change_4h_at_pick": 5.32,
+   "vol_x_avg": 0.21,
+   "vol_x_prev_hour": 0.47,
+   "range_24h_pct": 134.2,
+   "from_24h_high_pct": -24.22,
+   "quote_volume_24h": 58765579,
+   "watch_only": true,
+   "outcomes": {}
+  },
   {
    "symbol": "ZBT",
    "pair": "ZBTUSDT",
@@ -65,7 +88,17 @@
    "vol_x_prev_hour": 1.59,
    "from_24h_high_pct": -4.6,
    "quote_volume_24h": 3668252,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.77,
+     "max_drawdown_pct": -10.4,
+     "close_pct": -5.97,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-25T05:32:47+08:00"
+    }
+   }
   }
  ]
 }
