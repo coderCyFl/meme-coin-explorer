@@ -6,41 +6,44 @@
    "base": "ANIME",
    "flag": "pump",
    "trigger_at": "2026-10-25T02:45:00+08:00",
-   "checked_at": "2026-10-25T04:10:00+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 4.67,
-   "spike_ratio": 1.07,
-   "verdict": "冷",
-   "one_line": "多數係掃描bot，冇真討論",
-   "shill_flag": false,
+   "checked_at": "2026-10-25T04:38:00+08:00",
+   "posts_last_1h": 17,
+   "posts_prev_6h_avg_per_h": 10.0,
+   "spike_ratio": 1.7,
+   "verdict": "升溫",
+   "one_line": "訊號群刷屏升溫，冇大V",
+   "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2114049786194411982",
-     "url": "https://x.com/max_crypto100x/status/2114049786194411982",
-     "text": "🚀 Top Crypto Gainers Today! 🔥 BMT: +62.15% ⚡ EPIC: +34.98% 🎮 ANIME: +16.08% 🟠 ERA: +15.24% 💎 ZBT: +11.65%",
-     "likes": 5,
-     "author_username": "max_crypto100x",
-     "author_followers": 6317
+     "id": "2114074235412852786",
+     "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
+     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
+     "likes": 2,
+     "author_username": "Letsmakeatradex",
+     "author_followers": 1488,
+     "created_at": "2026-10-25T03:19:09+08:00"
     },
     {
-     "id": "2114013056854270086",
-     "url": "https://x.com/cexscan/status/2114013056854270086",
-     "text": "Last 15m - Binance Futures (USDT Trades) Top 3 Gainers: $ANIME (Animecoin) : ↑6.62%",
+     "id": "2114027611684819290",
+     "url": "https://x.com/RetroOG_/status/2114027611684819290",
+     "text": "Buying $ANIME at this point Big pump coming",
      "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10594
+     "author_username": "RetroOG_",
+     "author_followers": 2367,
+     "created_at": "2026-10-25T00:13:54+08:00"
     },
     {
-     "id": "2114030052509724861",
-     "url": "https://x.com/Neon_Unlimited/status/2114030052509724861",
-     "text": "Impulses, last 4 hours: 2 up, 0 down. Strongest: $JCT +23.5% $ANIME +6.1%",
+     "id": "2114045225316561275",
+     "url": "https://x.com/Blockchainmq1/status/2114045225316561275",
+     "text": "$ANIME Don't Mis Now or Never! 🚀 Price is around $0.00343 still about 98% below its $0.186 ATH with a $27M market cap. Up 20% today",
      "likes": 1,
-     "author_username": "Neon_Unlimited",
-     "author_followers": 36
+     "author_username": "Blockchainmq1",
+     "author_followers": 200,
+     "created_at": "2026-10-25T01:23:53+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   }
  },
  "history": [
@@ -83,15 +86,58 @@
      "author_followers": 36
     }
    ]
+  },
+  {
+   "symbol": "ANIMEUSDT",
+   "base": "ANIME",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T02:45:00+08:00",
+   "checked_at": "2026-10-25T04:38:00+08:00",
+   "posts_last_1h": 17,
+   "posts_prev_6h_avg_per_h": 10.0,
+   "spike_ratio": 1.7,
+   "verdict": "升溫",
+   "one_line": "訊號群刷屏升溫，冇大V",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114074235412852786",
+     "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
+     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
+     "likes": 2,
+     "author_username": "Letsmakeatradex",
+     "author_followers": 1488,
+     "created_at": "2026-10-25T03:19:09+08:00"
+    },
+    {
+     "id": "2114027611684819290",
+     "url": "https://x.com/RetroOG_/status/2114027611684819290",
+     "text": "Buying $ANIME at this point Big pump coming",
+     "likes": 1,
+     "author_username": "RetroOG_",
+     "author_followers": 2367,
+     "created_at": "2026-10-25T00:13:54+08:00"
+    },
+    {
+     "id": "2114045225316561275",
+     "url": "https://x.com/Blockchainmq1/status/2114045225316561275",
+     "text": "$ANIME Don't Mis Now or Never! 🚀 Price is around $0.00343 still about 98% below its $0.186 ATH with a $27M market cap. Up 20% today",
+     "likes": 1,
+     "author_username": "Blockchainmq1",
+     "author_followers": 200,
+     "created_at": "2026-10-25T01:23:53+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 2,
+  "calls_today": 4,
   "cap_reached": false,
-  "updated_at": "2026-10-25T04:09:34+08:00"
+  "updated_at": "2026-10-25T04:38:19+08:00"
  },
- "updated_at": "2026-10-25T04:09:34+08:00",
+ "updated_at": "2026-10-25T04:38:19+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
