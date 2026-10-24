@@ -5,13 +5,13 @@
    "symbol": "ANIMEUSDT",
    "base": "ANIME",
    "flag": "pump",
-   "trigger_at": "2026-10-25T02:45:00+08:00",
-   "checked_at": "2026-10-25T06:33:55+08:00",
-   "posts_last_1h": 13,
-   "posts_prev_6h_avg_per_h": 12.8,
-   "spike_ratio": 1.03,
+   "trigger_at": "2026-10-25T06:00:00+08:00",
+   "checked_at": "2026-10-25T07:03:30+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 13.17,
+   "spike_ratio": 0.68,
    "verdict": "冷",
-   "one_line": "熱度持平，多係喊單訊號，未見大V",
+   "one_line": "討論回落，多數係訊號群洗版",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -21,38 +21,41 @@
      "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
      "likes": 3,
      "author_username": "Letsmakeatradex",
-     "author_followers": 1488
+     "author_followers": 1487,
+     "created_at": "2026-10-25T03:19:09+08:00"
     },
     {
-     "id": "2114090318509527205",
-     "url": "https://x.com/SceneCentral255/status/2114090318509527205",
-     "text": "New signal Coin: $ANIME/USDT Signal type: Long Entry 0.002786 Leverage: 20x",
+     "id": "2114123830473928936",
+     "url": "https://x.com/saintcryptonft/status/2114123830473928936",
+     "text": "🚨 $ANIME: BIG SPIKE, BUT CAN BULLS HOLD? The chart shows selling pressure after the initial pump.",
      "likes": 2,
-     "author_username": "SceneCentral255",
-     "author_followers": 837
+     "author_username": "saintcryptonft",
+     "author_followers": 15636,
+     "created_at": "2026-10-25T06:36:14+08:00"
     },
     {
-     "id": "2114106887432011848",
-     "url": "https://x.com/cagryanpar/status/2114106887432011848",
-     "text": "#ANIME will be pump",
-     "likes": 1,
-     "author_username": "cagryanpar",
-     "author_followers": 1686
+     "id": "2114045225316561275",
+     "url": "https://x.com/Blockchainmq1/status/2114045225316561275",
+     "text": "$ANIME Don’t Mis Now or Never! 🚀 Price is around $0.00343 still about 98% below its $0.186 ATH with a $27M market cap.",
+     "likes": 2,
+     "author_username": "Blockchainmq1",
+     "author_followers": 200,
+     "created_at": "2026-10-25T01:23:53+08:00"
     }
    ],
-   "checks_this_trigger": 5
+   "checks_this_trigger": 1
   },
   "EPICUSDT": {
    "symbol": "EPICUSDT",
    "base": "EPIC",
    "flag": "pump",
    "trigger_at": "2026-10-25T04:15:00+08:00",
-   "checked_at": "2026-10-25T06:33:55+08:00",
-   "posts_last_1h": 14,
-   "posts_prev_6h_avg_per_h": 14.26,
-   "spike_ratio": 1.01,
+   "checked_at": "2026-10-25T07:03:30+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 15.0,
+   "spike_ratio": 0.67,
    "verdict": "冷",
-   "one_line": "冇升溫，多係抄貼喊單；有人提下架",
+   "one_line": "熱度降溫，複製貼上推廣多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -60,9 +63,10 @@
      "id": "2114051702928413181",
      "url": "https://x.com/Arlind19061040/status/2114051702928413181",
      "text": "$epic delisting pump @cz_binance send it 🚀",
-     "likes": 2,
+     "likes": 3,
      "author_username": "Arlind19061040",
-     "author_followers": 7
+     "author_followers": 7,
+     "created_at": "2026-10-25T01:49:37+08:00"
     },
     {
      "id": "2114085839533740528",
@@ -70,7 +74,8 @@
      "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) : ↑5.09%",
      "likes": 1,
      "author_username": "cexscan",
-     "author_followers": 10595
+     "author_followers": 10595,
+     "created_at": "2026-10-25T04:05:16+08:00"
     },
     {
      "id": "2114082087095710074",
@@ -78,10 +83,11 @@
      "text": "Start trading cryptocurrencies and meme coins using Pionex. EPIC/USDT is currently up over 25%!",
      "likes": 1,
      "author_username": "JonArauzo",
-     "author_followers": 4024
+     "author_followers": 4024,
+     "created_at": "2026-10-25T03:50:21+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   }
  },
  "history": [
@@ -447,15 +453,101 @@
      "author_followers": 1686
     }
    ]
+  },
+  {
+   "symbol": "ANIMEUSDT",
+   "base": "ANIME",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T06:00:00+08:00",
+   "checked_at": "2026-10-25T07:03:30+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 13.17,
+   "spike_ratio": 0.68,
+   "verdict": "冷",
+   "one_line": "討論回落，多數係訊號群洗版",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114074235412852786",
+     "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
+     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
+     "likes": 3,
+     "author_username": "Letsmakeatradex",
+     "author_followers": 1487,
+     "created_at": "2026-10-25T03:19:09+08:00"
+    },
+    {
+     "id": "2114123830473928936",
+     "url": "https://x.com/saintcryptonft/status/2114123830473928936",
+     "text": "🚨 $ANIME: BIG SPIKE, BUT CAN BULLS HOLD? The chart shows selling pressure after the initial pump.",
+     "likes": 2,
+     "author_username": "saintcryptonft",
+     "author_followers": 15636,
+     "created_at": "2026-10-25T06:36:14+08:00"
+    },
+    {
+     "id": "2114045225316561275",
+     "url": "https://x.com/Blockchainmq1/status/2114045225316561275",
+     "text": "$ANIME Don’t Mis Now or Never! 🚀 Price is around $0.00343 still about 98% below its $0.186 ATH with a $27M market cap.",
+     "likes": 2,
+     "author_username": "Blockchainmq1",
+     "author_followers": 200,
+     "created_at": "2026-10-25T01:23:53+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T04:15:00+08:00",
+   "checked_at": "2026-10-25T07:03:30+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 15.0,
+   "spike_ratio": 0.67,
+   "verdict": "冷",
+   "one_line": "熱度降溫，複製貼上推廣多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114051702928413181",
+     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
+     "text": "$epic delisting pump @cz_binance send it 🚀",
+     "likes": 3,
+     "author_username": "Arlind19061040",
+     "author_followers": 7,
+     "created_at": "2026-10-25T01:49:37+08:00"
+    },
+    {
+     "id": "2114085839533740528",
+     "url": "https://x.com/cexscan/status/2114085839533740528",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) : ↑5.09%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-10-25T04:05:16+08:00"
+    },
+    {
+     "id": "2114082087095710074",
+     "url": "https://x.com/JonArauzo/status/2114082087095710074",
+     "text": "Start trading cryptocurrencies and meme coins using Pionex. EPIC/USDT is currently up over 25%!",
+     "likes": 1,
+     "author_username": "JonArauzo",
+     "author_followers": 4024,
+     "created_at": "2026-10-25T03:50:21+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 18,
+  "calls_today": 22,
   "cap_reached": false,
-  "updated_at": "2026-10-25T06:33:55+08:00"
+  "updated_at": "2026-10-25T07:03:45+08:00"
  },
- "updated_at": "2026-10-25T06:33:55+08:00",
+ "updated_at": "2026-10-25T07:03:45+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
