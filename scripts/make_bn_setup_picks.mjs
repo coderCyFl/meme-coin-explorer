@@ -263,7 +263,30 @@ function diversifyPicks(scored, n = 6) {
   return out.slice(0, n);
 }
 
+// ---- One batch per Asia/Shanghai day. `--force` (or env PICKS_FORCE=1) bypasses. ----
+const PICKS_PATH = path.join(ROOT, "data/picks.json");
+const FORCE = process.argv.includes("--force") || process.env.PICKS_FORCE === "1";
+const shDate = (d) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+/** Returns the last batch if its created_at falls on today's Asia/Shanghai date, else null. */
+function todaysBatch() {
+  const doc = JSON.parse(fs.readFileSync(PICKS_PATH, "utf8"));
+  const last = (doc.batches || []).at(-1);
+  if (!last || !last.created_at) return null;
+  const t = new Date(last.created_at);
+  if (Number.isNaN(t.getTime())) return null;
+  return shDate(t) === shDate(new Date()) ? last : null;
+}
+function skipIfToday(when) {
+  if (FORCE) return false;
+  const b = todaysBatch();
+  if (!b) return false;
+  console.log(`SKIP (${when}): today's batch already exists — ${b.id} created_at ${b.created_at} (Asia/Shanghai ${shDate(new Date())}). Nothing written. Use --force to add another.`);
+  return true;
+}
+
 async function main() {
+  if (skipIfToday("start")) return;
+  if (FORCE) console.log("--force: same-day check bypassed");
   console.log("exchangeInfo…");
   const info = await getJson(BN + "/api/v3/exchangeInfo");
   const listed = new Set(
@@ -468,9 +491,15 @@ async function main() {
     });
   }
 
-  const picksPath = path.join(ROOT, "data/picks.json");
+  // Re-read from disk right before writing (file may have changed during the ~20s fetch) and recheck.
+  if (skipIfToday("pre-write")) return;
+  const picksPath = PICKS_PATH;
   const doc = JSON.parse(fs.readFileSync(picksPath, "utf8"));
-  doc.batches = (doc.batches || []).filter((b) => b.id !== batchId);
+  if ((doc.batches || []).some((b) => b.id === batchId)) {
+    console.error(`FAIL: ${batchId} appeared in data/picks.json while fetching — not overwriting (append-only). Re-run.`);
+    process.exit(4);
+  }
+  doc.batches = doc.batches || [];
   doc.batches.push({
     id: batchId,
     created_at: isoHK,

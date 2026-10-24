@@ -1,5 +1,6 @@
 # AI 揀幣 daily batch → data/picks.json (append). Runs EVERY day incl. Sat/Sun.
 # Binance public REST only (data-api.binance.vision). No X / no secrets / no AI API.
+# One batch per Asia/Shanghai day: the script itself skips (exit 0, no writes) unless --force.
 # Commits ONLY data/picks.json; aborts if the generator touched any other tracked file.
 name: Daily AI picks batch
 on:
@@ -30,24 +31,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Skip if today's batch already exists
-        id: gate
+      - name: Generate batch (script skips with exit 0 if today's Asia/Shanghai batch exists)
         env:
           FORCE: ${{ github.event.inputs.force }}
         run: |
-          TODAY=$(TZ=Asia/Shanghai date +%F)
-          HAS=$(node -e 'const d=require("./data/picks.json");console.log((d.batches||[]).some(b=>String(b.created_at||"").startsWith(process.argv[1]))?1:0)' "$TODAY")
-          echo "today=$TODAY has_batch=$HAS force=${FORCE:-false}"
-          if [ "$HAS" = "1" ] && [ "$FORCE" != "true" ]; then echo "run=0" >> "$GITHUB_OUTPUT"; else echo "run=1" >> "$GITHUB_OUTPUT"; fi
-      - name: Generate batch
-        if: steps.gate.outputs.run == '1'
-        run: node scripts/make_bn_setup_picks.mjs
+          if [ "$FORCE" = "true" ]; then node scripts/make_bn_setup_picks.mjs --force; else node scripts/make_bn_setup_picks.mjs; fi
       - name: Commit + push (picks.json only, rebase retry)
         id: push
-        if: steps.gate.outputs.run == '1'
         run: |
           OTHER=$(git status --porcelain --untracked-files=all | grep -v ' data/picks.json$' || true)
           if [ -n "$OTHER" ]; then echo "::error::generator changed files other than data/picks.json:"; echo "$OTHER"; exit 1; fi
+          if git diff --quiet -- data/picks.json; then echo "picks.json unchanged (skipped) — nothing to commit"; echo "changed=0" >> "$GITHUB_OUTPUT"; exit 0; fi
           node -e 'const d=require("./data/picks.json");const b=d.batches.at(-1);const buys=b.entries.filter(e=>e.type==="buy");
             const bad=buys.filter(e=>!(e.target_price_usd>0&&e.stop_price_usd>0&&e.review_at&&e.sell_by));
             console.log(b.id,b.created_at,"regime",b.regime&&b.regime.state,"buys",buys.length);
