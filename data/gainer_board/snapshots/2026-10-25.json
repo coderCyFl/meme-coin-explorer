@@ -323,6 +323,37 @@
      "outcomes": {}
     }
    ]
+  },
+  {
+   "batch": "gb-20261025-0154",
+   "picked_at": "2026-10-25T01:54:33+08:00",
+   "universe": 90,
+   "btc_24h_pct": -1.58,
+   "universe_all": 397,
+   "excluded_tokenized": 100,
+   "top20_24h": [
+    "BMTUSDT",
+    "EPICUSDT",
+    "ANIMEUSDT",
+    "ERAUSDT",
+    "ZBTUSDT",
+    "REZUSDT",
+    "TREEUSDT",
+    "LAUSDT",
+    "QUICKUSDT",
+    "NILUSDT",
+    "KATUSDT",
+    "LUMIAUSDT",
+    "FUSDT",
+    "HAEDALUSDT",
+    "BIGTIMEUSDT",
+    "PARTIUSDT",
+    "AVAUSDT",
+    "USTCUSDT",
+    "AIGENSYNUSDT",
+    "REDUSDT"
+   ],
+   "entries": []
   }
  ]
 }
