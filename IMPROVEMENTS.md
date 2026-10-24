@@ -431,7 +431,7 @@ Gate still fails for both tiers → ⚡ watch-only; 🔥 chip still 「回測平
 ## 2026-10-25 ~01:50 Asia/Shanghai — new early 🔥 trigger (no 24h minimum) · `20261025e1`
 
 - **Rule** (QA proposal, thresholds not tuned): `(1h ≥ +5% AND 1h quote vol ≥ 3× prior-24h hourly avg) OR 15m ≥ +5%`, no 24h floor; rolling 15m bars (browser also checks the forming bar at the live price); liquidity floor 24h quote vol ≥ $3M; shown 4h after trigger; 🔥 always wins the top banner; card shows 「離 24h 高 x%」; banner labels 「15m 急拉 / 1h+量」. Old `24h ≥ +20% & ≤10% off high` kept only as `pump_legacy_24h20` in the backtest.
-- **EPIC timing check only**: first fire on the 15m bar closing 10-24 11:30 (15m +13.3%, 1h +19.6%, vol ×12.5, 24h only +5.6%, $0.1329) — inside the 11:00 hour QA cited. Old rule first fired 10-25 01:00 (~$0.165).
+- **EPIC timing check only**: at 10-24 11:00 (first 15m bar of that hour), with the big 15m bar at 11:15 (15m +13.3%, 1h +19.6%, vol ×11.4, 24h only +5.6%, $0.1329; verified on Binance 15m klines — earlier note wrongly used that bar's close time ~11:30). Old rule first fired 10-25 01:00 (~$0.165).
 - **Backtest, all 397 USDT crypto pairs, 30d 15m bars (2026-09-24 19:00 → 10-24 23:00, split 10-09 21:00), 4h cooldown per coin:**
 
 | rule · half | fires | +20% in 4h | +50% in 4h | mean 4h | median 4h | up @4h | median max DD |
