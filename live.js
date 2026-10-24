@@ -611,10 +611,13 @@
     "BFUSD", "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"]);
   const GB_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
   const GB_MIN_QV = 3e6;       // min 24h quote volume (USDT)
-  const GB_PUMP_C24 = 20, GB_PUMP_FH = -10;     // 🔥 rule (backtested)
-  const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits
-  const GB_POOL = 16;          // klines (1h×50) fetched only for these
-  const GB_TTL = 2 * 60_000;
+  // 🔥 surge rule (2026-10-25, mirrors scripts/gainer_core.py surge_feats/surge_fire) — NO 24h minimum:
+  //   (rolling 1h >= +5% AND 1h quote volume >= 3x the previous-24h hourly average) OR 15m candle >= +5%.
+  const GB_SURGE_C1 = 5, GB_SURGE_VR = 3, GB_SURGE_C15 = 5;
+  const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
+  const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
+  const GB_POOL = 16;          // 15m klines fetched only for these
+  const GB_TTL = 60_000;
   let gainerCache = { t: 0, rows: [] };
 
   function gainerEligible(sym, qv) {
@@ -625,46 +628,75 @@
     return qv >= GB_MIN_QV;
   }
 
-  /** Same shape as gainer_core.score(); 1h bars (last one forming). */
-  function gainerScore(t, bars) {
-    const n = bars.length;
-    const p = t.price;
-    const closed = bars.slice(0, -1);
-    const m = closed.length;
-    const c1h = m >= 1 ? (p / closed[m - 1].c - 1) * 100 : 0;
-    const c4h = m >= 4 ? (p / closed[m - 4].c - 1) * 100 : 0;
-    const prior = closed.slice(Math.max(0, m - 25), m - 1);
-    const avgQ = prior.length ? prior.reduce((x, b) => x + b.qv, 0) / prior.length : 0;
-    const volRatio = avgQ > 0 && m ? closed[m - 1].qv / avgQ : 1;
-    const prior2 = closed.slice(Math.max(0, m - 26), m - 2);
-    const avgQ2 = prior2.length ? prior2.reduce((x, b) => x + b.qv, 0) / prior2.length : 0;
-    const volRatioPrev = avgQ2 > 0 && m > 1 ? closed[m - 2].qv / avgQ2 : 1;
-    const fromHigh = t.high > 0 ? (p / t.high - 1) * 100 : 0;
-    const score =
-      clampNum(c4h * 1.2, -20, 30) + clampNum(c1h * 2, -15, 20) +
-      clampNum(Math.log2(Math.max(volRatio, 0.01)) * 8, -5, 20) +
-      clampNum(t.chg24 / 3, 0, 15) + clampNum(15 + fromHigh * 0.75, -15, 15);
-    return { c1h, c4h, volRatio, volRatioPrev, fromHigh, score: Math.round(score * 10) / 10, n };
-  }
-
-  /** Real 🔥 trigger: start of the current run of closed 1h bars meeting the rule (24h ≥ +20%, ≤10% off 24h high). */
-  function pumpTrigger(bars) {
-    const closed = bars.slice(0, -1);
-    const m = closed.length;
-    if (m < 26) return null;
-    const ok = (i) => {
-      if (i < 24) return false;
-      const c24 = (closed[i].c / closed[i - 24].c - 1) * 100;
-      let hi = 0; for (let k = i - 23; k <= i; k++) hi = Math.max(hi, closed[k].h);
-      return c24 >= GB_PUMP_C24 && (closed[i].c / hi - 1) * 100 >= GB_PUMP_FH;
+  /** Rolling surge features at 15m bar j (closed bars) — same maths as gainer_core.surge_feats. */
+  function surgeFeats(b, j) {
+    if (j < 99) return null;
+    let v1 = 0, prev = 0, hi = 0;
+    for (let k = j - 3; k <= j; k++) v1 += b[k].qv;
+    for (let k = j - 99; k <= j - 4; k++) prev += b[k].qv;
+    for (let k = j - 95; k <= j; k++) hi = Math.max(hi, b[k].h);
+    const avg = prev / 24, c = b[j].c;
+    return {
+      t: b[j].t + 15 * 60e3, price: c,
+      c15: b[j].o > 0 ? (c / b[j].o - 1) * 100 : 0, c1: (c / b[j - 4].c - 1) * 100, c4: (c / b[j - 16].c - 1) * 100,
+      vr: avg > 0 ? v1 / avg : 0, fh: hi > 0 ? (c / hi - 1) * 100 : 0,
     };
-    if (!ok(m - 1)) return null;
-    let i = m - 1;
-    while (i - 1 >= 24 && ok(i - 1)) i--;
-    return { t: closed[i].t + 3600e3, price: closed[i].c, sinceStart: i === 24 };
+  }
+  const surgeFire = (f) => !!f && ((f.c1 >= GB_SURGE_C1 && f.vr >= GB_SURGE_VR) || f.c15 >= GB_SURGE_C15);
+  const surgeVia = (f) => (f.c1 >= GB_SURGE_C1 && f.vr >= GB_SURGE_VR ? "1h+vol" : "15m");
+
+  /**
+   * Trigger = FIRST 15m bar in the last 4h whose rolling window fired (incl. the forming bar, evaluated live).
+   * bars = 15m klines (last one forming).
+   */
+  function surgeTrigger(bars, livePx) {
+    const m = bars.length;
+    if (m < 101) return null;
+    const cutoff = Date.now() - GB_TRIGGER_H * 3600e3;
+    const live = bars.slice(); // forming bar with the live price as its close
+    if (livePx > 0) live[m - 1] = { ...live[m - 1], c: livePx, h: Math.max(live[m - 1].h, livePx) };
+    for (let j = Math.max(99, m - 17); j < m; j++) {
+      const f = surgeFeats(live, j);
+      if (!f || f.t < cutoff) continue;
+      if (surgeFire(f)) return { t: j === m - 1 ? Date.now() : f.t, price: f.price, via: surgeVia(f), c1: f.c1, c15: f.c15, vr: f.vr, forming: j === m - 1 };
+    }
+    return null;
   }
 
-  /** 1 MINI 24hr ticker call + ≤16 1h-kline calls, cached 2 min. Throws on ticker failure. */
+  /** Display metrics + score from 15m bars (score = same shape as gainer_core.score). */
+  function gainerScore15(t, bars) {
+    const m = bars.length, p = t.price;
+    const ref = (k) => (m - 1 - k >= 0 ? bars[m - 1 - k].c : null);
+    const c1h = ref(4) ? (p / ref(4) - 1) * 100 : null;
+    const c4h = ref(16) ? (p / ref(16) - 1) * 100 : null;
+    let v1 = 0, prev = 0, np = 0;
+    for (let k = Math.max(0, m - 4); k < m; k++) v1 += bars[k].qv;
+    for (let k = Math.max(0, m - 100); k < m - 4; k++) { prev += bars[k].qv; np++; }
+    const volRatio = np ? v1 / (prev / np * 4) : null;
+    const fromHigh = t.high > 0 ? (p / t.high - 1) * 100 : 0;
+    const score = clampNum((c4h || 0) * 1.2, -20, 30) + clampNum((c1h || 0) * 2, -15, 20)
+      + clampNum(Math.log2(Math.max(volRatio || 0.01, 0.01)) * 8, -5, 20)
+      + clampNum(t.chg24 / 3, 0, 15) + clampNum(15 + fromHigh * 0.75, -15, 15);
+    return { c1h, c4h, volRatio, volRatioPrev: null, fromHigh, score: Math.round(score * 10) / 10 };
+  }
+
+  /** Rolling-window ticker (windowSize 4h) for the eligible list — 1 call (≤100 symbols per call). */
+  async function rollingTicker(symbols, windowSize) {
+    const out = new Map();
+    for (let i = 0; i < symbols.length; i += 100) {
+      const chunk = symbols.slice(i, i + 100);
+      const url = `${BN_REST}/api/v3/ticker?type=MINI&windowSize=${windowSize}&symbols=${encodeURIComponent(JSON.stringify(chunk))}`;
+      const r = await fetch(url, { headers: { Accept: "application/json" } });
+      if (!r.ok) throw new Error("rolling ticker " + r.status);
+      for (const x of await r.json()) out.set(x.symbol, { open: +x.openPrice, high: +x.highPrice, low: +x.lowPrice, last: +x.lastPrice, qv: +x.quoteVolume });
+    }
+    return out;
+  }
+
+  /**
+   * 1 MINI 24hr ticker + 1 rolling-4h ticker + ≤16 15m-kline calls, cached 1 min. Throws on ticker failure.
+   * 🔥 = surge in the last 4h (no 24h minimum). 候補 = 24h ≥ +5% & ≤ 30% off high (watch-only filler).
+   */
   async function computeGainerBoard({ force = false, n = 8 } = {}) {
     if (!force && gainerCache.rows.length && Date.now() - gainerCache.t < GB_TTL) return gainerCache;
     const listed = await ensureExchangeInfo();
@@ -683,26 +715,33 @@
     }
     elig.sort((a, b) => b.chg24 - a.chg24);
     elig.forEach((t, i) => { t.rank24 = i + 1; t.fromHigh = t.high > 0 ? (t.price / t.high - 1) * 100 : 0; });
-    const hits = elig.filter((t) => t.chg24 >= GB_PUMP_C24 && t.fromHigh >= GB_PUMP_FH).map((t) => ({ ...t, tier: "pump" }));
-    const cands = elig.filter((t) => !(t.chg24 >= GB_PUMP_C24 && t.fromHigh >= GB_PUMP_FH) && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH)
-      .map((t) => ({ ...t, tier: "cand" }));
-    const pool = hits.concat(cands).slice(0, GB_POOL);
+    // Screen everything with the rolling 4h window: any ≥5% 15m/1h surge in the last 4h leaves a ≥5% 4h range.
+    let r4 = new Map();
+    try { r4 = await rollingTicker(elig.map((t) => t.symbol), "4h"); } catch (e) { console.warn("rolling 4h failed", e); }
+    const range4 = (t) => { const x = r4.get(t.symbol); return x && x.low > 0 ? (x.high / x.low - 1) * 100 : 0; };
+    const c4roll = (t) => { const x = r4.get(t.symbol); return x && x.open > 0 ? (x.last / x.open - 1) * 100 : 0; };
+    const surgePool = elig.filter((t) => range4(t) >= GB_SURGE_C15).sort((a, b) => c4roll(b) - c4roll(a)).slice(0, GB_POOL - 6);
+    const inPool = new Set(surgePool.map((t) => t.symbol));
+    const candPool = elig.filter((t) => !inPool.has(t.symbol) && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH).slice(0, GB_POOL - surgePool.length);
+    const pool = surgePool.concat(candPool);
     const out = [];
     const queue = pool.slice();
     await Promise.all(Array.from({ length: 4 }, async () => {
       while (queue.length) {
         const t = queue.shift();
         let bars = [];
-        try { bars = await fetchKlineBars(t.symbol, { interval: "1h", limit: 50 }); } catch (_) {}
-        const f = bars.length >= 6 ? gainerScore(t, bars) : { c1h: null, c4h: null, volRatio: null, volRatioPrev: null, fromHigh: t.fromHigh, score: 0 };
-        const trig = t.tier === "pump" ? pumpTrigger(bars) : null;
-        out.push({ ...t, ...f, trigger: trig, spark: bars.slice(-25).map((b) => b.c).concat([t.price]), logo: logoUrl(t.base) });
+        try { bars = await fetchKlineBars(t.symbol, { interval: "15m", limit: 120, force: true }); } catch (_) {}
+        const trig = bars.length >= 101 ? surgeTrigger(bars, t.price) : null;
+        const f = bars.length >= 20 ? gainerScore15(t, bars) : { c1h: null, c4h: null, volRatio: null, volRatioPrev: null, fromHigh: t.fromHigh, score: 0 };
+        const tier = trig ? "pump" : (t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH ? "cand" : null);
+        if (!tier) continue;
+        out.push({ ...t, ...f, tier, trigger: trig, spark: bars.slice(-32).map((b) => b.c).concat([t.price]), logo: logoUrl(t.base) });
       }
     }));
-    const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.score - a.score);
+    const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.trigger.t - a.trigger.t || b.score - a.score);
     const fill = out.filter((x) => x.tier === "cand").sort((a, b) => b.score - a.score);
-    const rows = pumps.concat(fill.slice(0, Math.max(0, 6 - pumps.length))).slice(0, n);
-    gainerCache = { t: Date.now(), rows, pool: elig.length, tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.map((t) => [t.symbol, t])) };
+    const rows = pumps.concat(fill.slice(0, Math.max(0, 6 - pumps.length))).slice(0, Math.max(n, pumps.length));
+    gainerCache = { t: Date.now(), rows, pool: elig.length, screened4h: r4.size, tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.map((t) => [t.symbol, t])) };
     return gainerCache;
   }
 

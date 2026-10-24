@@ -118,7 +118,25 @@ def snapshot():
         if len(closed) < 76:
             continue
         f = g.feats(closed, len(closed) - 1)
-        t = g.tier(f)
+        t = None
+        # 🔥 surge on closed 15m bars since the previous run (~30 min = last 2 closed bars)
+        try:
+            b15 = g.klines(r["pair"], "15m", 104)[:-1]
+            time.sleep(0.05)
+        except Exception as e:  # noqa: BLE001
+            b15 = []
+            print("15m fail", r["pair"], e, file=sys.stderr)
+        if len(b15) >= 100:
+            for j in (len(b15) - 2, len(b15) - 1):
+                sf = g.surge_feats(b15, j)
+                if g.surge_fire(sf):
+                    t = "pump"
+                    f = dict(f, c1=sf["c1"], c4=sf["c4"], vr=sf["vr"], fh=sf["fh"], c15=sf["c15"],
+                             trigger_at=sf["t"], trigger_price=sf["p"],
+                             trigger_via="1h+vol" if (sf["c1"] >= g.SURGE_C1 and sf["vr"] >= g.SURGE_VR) else "15m")
+                    break
+        if not t:
+            t = g.tier(f)
         if not t and r["pair"] in cand_pairs:
             t = "cand"
         if not t or (r["pair"], t) in cool:
@@ -129,9 +147,12 @@ def snapshot():
     caps = {"pump": MAX_PER_TIER, "early": MAX_PER_TIER, "cand": CAND_MAX}
     for t in ("pump", "early", "cand"):
         for sc, r, f in sorted(fires[t], key=lambda x: -x[0])[:caps[t]]:
+            trig_at = f.get("trigger_at")
             entries.append({
-                "symbol": r["pair"][:-4], "pair": r["pair"], "tier": t, "picked_at": iso(t0),
-                "entry_price_usd": r["price"], "change_24h_at_pick": round(r["chg24"], 2),
+                "symbol": r["pair"][:-4], "pair": r["pair"], "tier": t,
+                "picked_at": iso(datetime.datetime.fromtimestamp(trig_at / 1000, t0.tzinfo)) if trig_at else iso(t0),
+                "entry_price_usd": f.get("trigger_price") or r["price"], "price_at_snapshot": r["price"],
+                "trigger_via": f.get("trigger_via"), "change_15m_at_pick": round(f["c15"], 2) if "c15" in f else None, "change_24h_at_pick": round(r["chg24"], 2),
                 "rank_24h_at_pick": r["rank"], "batch": batch, "score": sc,
                 "change_1h_at_pick": round(f["c1"], 2), "change_4h_at_pick": round(f["c4"], 2),
                 "vol_x_avg": round(f["vr"], 2), "vol_x_prev_hour": round(f["vr1"], 2),

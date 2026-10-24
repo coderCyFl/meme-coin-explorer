@@ -1106,7 +1106,7 @@
     const since = nowPx > 0 && e > 0 ? (nowPx / e - 1) * 100 : null;
     const plan = gbPlanNow();
     return el("div", exitLiveAttrs(pair, plan, nowPx, { class: "gba-grid", "data-gb-levels": "banner" }),
-      el("div", {}, el("span", { class: "k", text: trig.trigger_src === "kline" ? "觸發（1h 線）" : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發" }), el("b", { class: "num", text: frTime(trig.picked_at) })),
+      el("div", {}, el("span", { class: "k", text: (trig.trigger_src === "kline" ? (trig.forming ? "觸發（即時）" : "觸發（15m 線）") : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發") + (trig.via ? " · " + (trig.via === "15m" ? "15m 急拉" : "1h+量") : "") }), el("b", { class: "num", text: frTime(trig.picked_at) })),
       el("div", {}, el("span", { class: "k", text: "觸發價" }), el("b", { class: "num", text: price(e) })),
       el("div", {}, el("span", { class: "k", text: "觸發後" }), el("b", { class: "num " + cls(since), "data-gb-since": pair, "data-gb-entry": String(e), text: pct(since) })),
       el("div", {}, el("span", { class: "k", text: "目標（而家入）" }), exitLiveNode("b", { class: "num pos" }, "{target} / {target2}", plan, nowPx)),
@@ -1117,8 +1117,10 @@
   function renderGainerAlert(items) {
     const box = $("gainerAlert"); if (!box) return;
     box.textContent = "";
-    const best = items.filter((x) => x.trig && (x.tier === "pump" || x.tier === "early"))
-      .sort((a, b) => new Date(b.trig.picked_at) - new Date(a.trig.picked_at))[0];
+    // 🔥 surge always wins the banner (newest trigger first); ⚡ watch only when no 🔥 is live.
+    const byNew = (a, b) => new Date(b.trig.picked_at) - new Date(a.trig.picked_at);
+    const best = items.filter((x) => x.trig && x.tier === "pump").sort(byNew)[0]
+      || items.filter((x) => x.trig && x.tier === "early").sort(byNew)[0];
     if (!best) { box.hidden = true; return; }
     box.hidden = false;
     box.classList.toggle("gba-early", best.tier === "early");
@@ -1195,7 +1197,7 @@
           `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${GAINER_EXIT.tp}% 賺 ${money2(usd * GAINER_EXIT.tp / 100 - fee2)}` }), " · ",
           el("b", { class: "pos", text: `+${GAINER_EXIT.tp2}% 賺 ${money2(usd * GAINER_EXIT.tp2 / 100 - fee2)}` }), " · ",
           el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * GAINER_EXIT.sl / 100 + fee2)}` })) : "",
-        r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：未達 🔥 規則（24h ≥ +20% 兼離高 ≤ 10%），只做觀察，冇買入掣。" }) : "",
+        r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
         gbBtLine(r.tier === "cand" ? "pump" : r.tier)));
     const kids = [
       el("div", { class: "gb-top" },
@@ -1203,7 +1205,8 @@
         el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags)),
         el("div", { class: "gb-px" },
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
-          el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }))),
+          el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
+          el("div", { class: "num tiny gb-fh " + (r.fromHigh <= -10 ? "neg" : "muted"), "data-gb-fh": r.symbol, "data-gb-high": String(r.high || ""), text: `離 24h 高 ${pct(r.fromHigh)}` }))),
       el("div", exitLiveAttrs(r.symbol, plan, px, { class: "gb-min" + (watch ? " gb-min-watch" : ""), "data-gb-levels": "card" }),
         el("div", {}, el("span", { class: "k", text: "目標" }), exitLiveNode("b", { class: "num pos" }, "{target}（+{tp}%）", plan, px)),
         el("div", {}, el("span", { class: "k", text: "止蝕" }), exitLiveNode("b", { class: "num neg" }, "{stop}（−{sl}%）", plan, px)),
@@ -1296,7 +1299,7 @@
       const rows = (res.rows || []).map((r) => {
         let serverFlag = null;
         if (r.tier === "pump" && r.trigger) {
-          serverFlag = { symbol: r.base, pair: r.symbol, tier: "pump", picked_at: isoSh(new Date(r.trigger.t)), entry_price_usd: r.trigger.price, trigger_src: "kline" };
+          serverFlag = { symbol: r.base, pair: r.symbol, tier: "pump", picked_at: isoSh(new Date(r.trigger.t)), entry_price_usd: r.trigger.price, trigger_src: "kline", via: r.trigger.via, forming: r.trigger.forming };
         } else if (r.tier === "pump" && srvPump.get(r.symbol)) {
           serverFlag = { ...srvPump.get(r.symbol), trigger_src: "snapshot" };
         }
@@ -1340,6 +1343,12 @@
     if (!gbWatched.size || !board) return;
     let hit = false;
     for (const s of gbWatched) { const r = board.get(s); if (r && r.t && r.t > gbLastTick) { hit = true; gbLastTick = Math.max(gbLastTick, r.t); } }
+    document.querySelectorAll("[data-gb-fh]").forEach((n) => {
+      const r = board.get(n.dataset.gbFh); const hi0 = parseFloat(n.dataset.gbHigh);
+      if (!(r && r.price > 0 && hi0 > 0)) return;
+      const hi = Math.max(hi0, r.price); n.dataset.gbHigh = String(hi);
+      const v = (r.price / hi - 1) * 100; n.textContent = `離 24h 高 ${pct(v)}`; n.className = "num tiny gb-fh " + (v <= -10 ? "neg" : "muted");
+    });
     document.querySelectorAll("[data-gb-since]").forEach((n) => {
       const r = board.get(n.dataset.gbSince); const e = parseFloat(n.dataset.gbEntry);
       if (r && r.price > 0 && e > 0) { const v = (r.price / e - 1) * 100; n.textContent = pct(v); n.className = "num " + cls(v); }

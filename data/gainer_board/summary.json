@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T01:11:11+08:00",
+ "updated_at": "2026-10-25T01:43:05+08:00",
  "batches": 4,
  "flags": 1,
  "horizons": {
@@ -41,7 +41,7 @@
  },
  "latest_4h": null,
  "backtest_30d": {
-  "generated_at": "2026-10-25T00:38:11+08:00",
+  "generated_at": "2026-10-25T01:42:56+08:00",
   "window": {
    "start": "2026-09-24T19:00+08:00",
    "split": "2026-10-09T21:00+08:00",
@@ -50,7 +50,39 @@
   },
   "tiers": {
    "pump": {
-    "rule": "24h >= +20% 且 距 24h 高 <= 10%",
+    "rule": "(1h >= +5% 且 1h 成交 >= 3x 24h 平均) 或 15m >= +5% · 冇 24h 下限",
+    "all": {
+     "fires": 713,
+     "hit20_4h_pct": 8.56,
+     "hit50_4h_pct": 0.7,
+     "closed_up_4h_pct": 38.0,
+     "mean_close_4h_pct": -0.84,
+     "median_close_4h_pct": -1.7,
+     "median_max_drawdown_4h_pct": -5.37,
+     "dd5_4h_pct": 53.9,
+     "mean_max_gain_4h_pct": 7.57,
+     "mean_exit_tp20_sl7_pct": -0.86,
+     "mean_exit_tp20_sl10_pct": -0.64,
+     "mean_exit_tp10_sl5_pct": -0.54
+    },
+    "test": {
+     "fires": 319,
+     "hit20_4h_pct": 7.21,
+     "hit50_4h_pct": 0.63,
+     "closed_up_4h_pct": 34.2,
+     "mean_close_4h_pct": -1.31,
+     "median_close_4h_pct": -1.97,
+     "median_max_drawdown_4h_pct": -5.27,
+     "dd5_4h_pct": 54.2,
+     "mean_max_gain_4h_pct": 7.18,
+     "mean_exit_tp20_sl7_pct": -1.28,
+     "mean_exit_tp20_sl10_pct": -1.03,
+     "mean_exit_tp10_sl5_pct": -0.91
+    },
+    "passes_buy_gate": false
+   },
+   "pump_legacy_24h20": {
+    "rule": "24h >= +20% 且 距 24h 高 <= 10%（舊，已停用）",
     "all": {
      "fires": 446,
      "hit20_4h_pct": 8.3,
@@ -79,7 +111,7 @@
      "mean_exit_tp20_sl10_pct": -1.04,
      "mean_exit_tp10_sl5_pct": -0.68
     },
-    "passes_buy_gate": false
+    "passes_buy_gate": null
    },
    "early": {
     "rule": "1h 成交 >= 2x 24h 平均 且 上一個鐘 >= 1.5x（量持續升）· 1h >= +3% · 24h < +15%",

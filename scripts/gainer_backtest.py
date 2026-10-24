@@ -43,6 +43,14 @@ def load_bars(sym, cache):
     return bars
 
 
+def load_bars15(sym, cache):
+    if cache:
+        fn = os.path.join(cache, sym + ".json")
+        if os.path.exists(fn):
+            return json.load(open(fn))
+    raise FileNotFoundError(sym + " 15m not cached (run with --cache15 after fetching)")
+
+
 def stats(fires):
     n = len(fires)
     if not n:
@@ -68,6 +76,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cache", default=None)
     ap.add_argument("--days", type=int, default=30)
+    ap.add_argument("--cache15", default=None, help="dir of SYMBOL.json 15m klines (🔥 surge rule)")
     a = ap.parse_args()
     syms = g.universe()
     btc = load_bars("BTCUSDT", a.cache)
@@ -117,8 +126,61 @@ def main():
     def block(rule):
         return {"train": stats(run(rule, "train")), "test": stats(run(rule, "test")), "all": stats(run(rule))}
 
+    # ---- 🔥 surge rule on 15m bars (rolling 1h / 15m windows), entry = 15m close, 4h = next 16 bars ----
+    s_rows, base15 = [], []
+    for s in syms:
+        try:
+            b15 = load_bars15(s, a.cache15)
+        except Exception as e:  # noqa: BLE001
+            print("skip15", s, e, file=sys.stderr)
+            continue
+        for j in range(99, len(b15) - 16):
+            if b15[j][0] < start or b15[j][0] >= end + 3600000:
+                continue
+            sf = g.surge_feats(b15, j)
+            if sf["qv24"] < g.MIN_QV24:
+                continue
+            fire = g.surge_fire(sf)
+            if not fire and j % 16:
+                continue  # keep every 16th bar for the 15m baseline
+            e, fut = b15[j][4], b15[j + 1:j + 17]
+            sf["o"] = g.outcome(e, fut)
+            sf["tp20sl7"] = g.outcome(e, fut, 0.20, 0.07)["exit_rule_pct"]
+            sf["tp20sl10"] = g.outcome(e, fut, 0.20, 0.10)["exit_rule_pct"]
+            sf["tp10sl5"] = g.outcome(e, fut, 0.10, 0.05)["exit_rule_pct"]
+            sf["s"], sf["i"], sf["fire"] = s, j, fire
+            sf["via"] = "1h+vol" if (sf["c1"] >= g.SURGE_C1 and sf["vr"] >= g.SURGE_VR) else "15m"
+            (s_rows if fire else base15).append(sf)
+    s_rows.sort(key=lambda r: (r["s"], r["i"]))
+
+    def run15(sub=None, pred=lambda r: True):
+        fires, last = [], {}
+        for r in s_rows:
+            if sub == "train" and r["t"] >= split:
+                continue
+            if sub == "test" and r["t"] < split:
+                continue
+            if not pred(r):
+                continue
+            if r["s"] in last and r["i"] - last[r["s"]] < g.COOLDOWN_H * 4:
+                continue
+            last[r["s"]] = r["i"]
+            fires.append(r)
+        return fires
+
     tiers = {}
-    for t in ("pump", "early"):
+    pb = {"train": stats(run15("train")), "test": stats(run15("test")), "all": stats(run15())}
+    pb["by_trigger_all"] = {"1h+vol": stats(run15(None, lambda r: r["via"] == "1h+vol")), "15m only": stats(run15(None, lambda r: r["via"] == "15m"))}
+    pb["c24_at_fire_median"] = round(st.median(r["c24"] for r in run15()), 2) if s_rows else None
+    pb["rule"] = g.RULE_TEXT["pump"]
+    pb["bars"] = "15m"
+    te = pb["test"]
+    pb["passes_buy_gate"] = bool(te.get("fires") and te["mean_close_4h_pct"] > 0 and te["hit20_4h_pct"] >= 8)
+    tiers["pump"] = pb
+    leg = block(lambda f: g.RULES["pump_legacy_24h20"](f))
+    leg["rule"] = g.RULE_TEXT["pump_legacy_24h20"]
+    tiers["pump_legacy_24h20"] = leg
+    for t in ("early",):
         rule = lambda f, t=t: g.RULES[t](f)
         b = block(rule)
         te = b["test"]
@@ -138,12 +200,13 @@ def main():
         "universe": {"symbols_listed": len(syms), "symbols_with_bars": n_sym, "bar_count": len(rows)},
         "buy_gate": "test-half mean 4h close > 0 AND +20%-in-4h hit-rate >= 8% (≈ clearly above naive 5%)",
         "baseline_every_bar": stats(run(lambda f: True, cool=1)),
+        "baseline_15m_every_4h": stats(base15),
         "tiers": tiers,
         "candidates_rejected": {k: block(v) for k, v in CANDIDATES.items()},
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(out, open(OUT, "w"), ensure_ascii=False, indent=1)
-    print(json.dumps({k: {"all": v["all"], "test": v["test"], "gate": v["passes_buy_gate"]} for k, v in tiers.items()}, ensure_ascii=False, indent=1))
+    print(json.dumps({k: {"all": v["all"], "test": v["test"], "gate": v.get("passes_buy_gate")} for k, v in tiers.items()}, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

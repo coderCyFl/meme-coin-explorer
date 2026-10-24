@@ -137,20 +137,47 @@ def feats(bars, i):
 
 # ---------------- Tier rules (FROZEN after backtest; see data/gainer_board/backtest_30d.json) ----------------
 # Chosen after the 30d all-coins train/test backtest (scripts/gainer_backtest.py):
-#  🔥 pump : already +20% in 24h and still within 10% of the 24h high (best +20%-in-4h hit-rate found, 8%).
+#  🔥 pump (2026-10-25, QA): EARLY surge trigger, NO 24h minimum —
+#           (rolling 1h >= +5% AND 1h quote volume >= 3x the previous-24h hourly average) OR 15m candle >= +5%.
+#           Evaluated on closed 15m bars (rolling windows), entry = that 15m close. Old "24h >= +20% & near high"
+#           fired too late (e.g. EPIC 10-24 11:00 1h +30% / vol 19.9x but 24h +16.8%) and is no longer required.
 #  ⚡ early: 1h quote volume >= 2x its 24h average AND the previous hour >= 1.5x (volume keeps climbing),
 #           1h candle >= +3%, but not yet pumped (24h < +15%). Failed the buy gate -> watch-only 「觀察」.
-PUMP_C24 = 20.0
+PUMP_C24 = 20.0          # legacy (pre-2026-10-25) rule, kept only for comparison in the backtest
 PUMP_FROM_HIGH = -10.0
+SURGE_C1, SURGE_VR, SURGE_C15 = 5.0, 3.0, 5.0
 EARLY_VR, EARLY_VR1, EARLY_C1, EARLY_C24_MAX = 2.0, 1.5, 3.0, 15.0
 COOLDOWN_H = 4  # same symbol+tier not re-flagged within 4h (backtest and live)
+
+
+def surge_feats(b15, j):
+    """Rolling features at CLOSED 15m bar j (needs j >= 99). b15 = 15m bars [t,o,h,l,c,qv]."""
+    o, c, q = b15[j][1], b15[j][4], (lambda k: b15[k][5])
+    v1 = sum(q(k) for k in range(j - 3, j + 1))
+    avg = sum(q(k) for k in range(j - 99, j - 3)) / 24.0
+    hi24 = max(b15[k][2] for k in range(j - 95, j + 1))
+    return {"t": b15[j][0] + 15 * 60000, "p": c,
+            "c15": (c / o - 1) * 100 if o > 0 else 0, "c1": (c / b15[j - 4][4] - 1) * 100,
+            "c4": (c / b15[j - 16][4] - 1) * 100, "c24": (c / b15[j - 96][4] - 1) * 100,
+            "vr": v1 / avg if avg > 0 else 0, "qv24": sum(q(k) for k in range(j - 95, j + 1)),
+            "fh": (c / hi24 - 1) * 100 if hi24 > 0 else 0}
+
+
+def surge_fire(sf):
+    if sf["qv24"] < MIN_QV24:
+        return False
+    return (sf["c1"] >= SURGE_C1 and sf["vr"] >= SURGE_VR) or sf["c15"] >= SURGE_C15
+
+
 RULES = {
-    "pump": lambda f, btc24=0.0: f["c24"] >= PUMP_C24 and f["fh"] >= PUMP_FROM_HIGH,
+    "pump": lambda f, btc24=0.0: surge_fire(f),
+    "pump_legacy_24h20": lambda f, btc24=0.0: f["c24"] >= PUMP_C24 and f["fh"] >= PUMP_FROM_HIGH,
     "early": lambda f, btc24=0.0: (f["vr"] >= EARLY_VR and f["vr1"] >= EARLY_VR1 and f["c1"] >= EARLY_C1
                                    and f["c24"] < EARLY_C24_MAX),
 }
 RULE_TEXT = {
-    "pump": f"24h >= +{PUMP_C24:g}% 且 距 24h 高 <= {abs(PUMP_FROM_HIGH):g}%",
+    "pump": f"(1h >= +{SURGE_C1:g}% 且 1h 成交 >= {SURGE_VR:g}x 24h 平均) 或 15m >= +{SURGE_C15:g}% · 冇 24h 下限",
+    "pump_legacy_24h20": f"24h >= +{PUMP_C24:g}% 且 距 24h 高 <= {abs(PUMP_FROM_HIGH):g}%（舊，已停用）",
     "early": f"1h 成交 >= {EARLY_VR:g}x 24h 平均 且 上一個鐘 >= {EARLY_VR1:g}x（量持續升）· 1h >= +{EARLY_C1:g}% · 24h < +{EARLY_C24_MAX:g}%",
 }
 
@@ -159,8 +186,7 @@ def tier(f, btc24=0.0):
     """Return 'pump' (🔥), 'early' (⚡) or None."""
     if f["qv24"] < MIN_QV24:
         return None
-    if RULES["pump"](f, btc24):
-        return "pump"
+    # 🔥 is decided on 15m bars (surge_fire); this 1h path only yields ⚡ now.
     if RULES["early"](f, btc24):
         return "early"
     return None

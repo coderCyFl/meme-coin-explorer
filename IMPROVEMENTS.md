@@ -427,3 +427,19 @@ Gate still fails for both tiers → ⚡ watch-only; 🔥 chip still 「回測平
 - **急升 🔥 banner / card / 詳情**: all three are built by one template system (`exitTplText` / `exitLiveAttrs`) from the same plan + the same live price and re-filled together on each tick (banner now shows 觸發價 separately; 目標/止蝕 = 而家入). 候補 and ⚡ cards have no 幾時放 / ladder. Every hold-until / sell-by shows the date (「最遲 10月25日 13:09」).
 - **Snapshots**: server batches now also record 候補 (watch-only, `watch_only: true`) so a batch is never empty when no 🔥/⚡ fires; 候補 is excluded from the scorecard and from the headline hit-rate (own tier stats). Client backup: every scan stores a localStorage snapshot (`mce:gainer:clientSnap:v1`, ≤ 1 per 5 min) and the accuracy panel shows server-snapshot age + a warning when > 45 min old.
 - **Cron investigation**: workflow is on `main`, valid YAML, `schedule` present, Actions enabled, workflow `active`. No scheduled run has fired yet; the other scheduled workflow in this repo (`daily-outcomes`, cron 01:00 UTC) fired 4 h 43 m late on both days → GitHub schedule delay on this repo. The cron was edited at 00:29 (re-registers the schedule). `[skip ci]` commits do not affect schedules. Manual `workflow_dispatch` runs work.
+
+## 2026-10-25 ~01:50 Asia/Shanghai — new early 🔥 trigger (no 24h minimum) · `20261025e1`
+
+- **Rule** (QA proposal, thresholds not tuned): `(1h ≥ +5% AND 1h quote vol ≥ 3× prior-24h hourly avg) OR 15m ≥ +5%`, no 24h floor; rolling 15m bars (browser also checks the forming bar at the live price); liquidity floor 24h quote vol ≥ $3M; shown 4h after trigger; 🔥 always wins the top banner; card shows 「離 24h 高 x%」; banner labels 「15m 急拉 / 1h+量」. Old `24h ≥ +20% & ≤10% off high` kept only as `pump_legacy_24h20` in the backtest.
+- **EPIC timing check only**: first fire on the 15m bar closing 10-24 11:30 (15m +13.3%, 1h +19.6%, vol ×12.5, 24h only +5.6%, $0.1329) — inside the 11:00 hour QA cited. Old rule first fired 10-25 01:00 (~$0.165).
+- **Backtest, all 397 USDT crypto pairs, 30d 15m bars (2026-09-24 19:00 → 10-24 23:00, split 10-09 21:00), 4h cooldown per coin:**
+
+| rule · half | fires | +20% in 4h | +50% in 4h | mean 4h | median 4h | up @4h | median max DD |
+|---|---|---|---|---|---|---|---|
+| 🔥 new · train | 394 | 9.64% | 0.76% | -0.45% | -1.58% | 41.1% | -5.39% |
+| 🔥 new · test | 319 | 7.21% | 0.63% | -1.31% | -1.97% | 34.2% | -5.27% |
+| old 24h≥20 · train | 253 | 9.88% | 1.19% | +0.29% | -1.25% | 42.7% | -5.35% |
+| old 24h≥20 · test | 194 | 6.19% | 0.0% | -0.92% | -1.31% | 39.2% | -5.51% |
+| random 15m baseline (every 4h) | 17476 | 0.51% | 0.04% | -0.08% | -0.17% | | |
+
+By trigger (all 30d): 1h+vol 556 fires · +20% 8.09% · mean −0.61%; 15m-only 260 · 11.54% · −1.19%. Median 24h at fire +14.4% (fires ~earlier than the old rule). Gate (test mean > 0 & +20% ≥ 8%) **fails** → stays 高風險, chip 「回測平均 −1.3%」 (real test-half number). Catches big moves ~14× the base rate but the average 4h return is negative.
