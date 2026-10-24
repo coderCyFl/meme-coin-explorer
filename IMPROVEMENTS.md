@@ -1,3 +1,6 @@
+## 2026-10-25 ~03:40 Asia/Shanghai — X 熱度 on 🔥 (stamp `20261025f1`)
+Cyrus: for 爆升 coins also look at X. Site still makes 0 X calls; Grok Bot routine reads X every ~30 min and writes `data/gainer_board/x_buzz.json` via `scripts/x_buzz_targets.py` → `scripts/x_buzz_write.py` (validated, 48h history, call log `x_buzz_log.jsonl`, daily cap 60 calls, ≤8 checks per trigger, recheck 30 min). 🔥 cards get a quiet chip `X 熱 ×4.2 · 03:30` (🚩 if shill-looking) → tap for one line + ≤3 post links; nothing shown when missing/stale(>3h)/malformed. ⚡ not X-checked. Daily scorecard gets `x_split` (X 熱/升溫 vs 冷: 4h mean + hit +20%).
+
 ## Hourly review 2026-10-24 ~23:07 Asia/Shanghai
 Review: live 200, cache-bust `20261024a1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$79.9k, 24h **-2.15%**; DOGE ~0.0758, **-5.40%**) — dip deepening late Sat. `snapshot_outcomes.py`: nothing due. News ~15h. Dex only in full-mode explore / legacy.
 

@@ -1165,6 +1165,77 @@
     } catch (_) {}
   }
 
+  // ---------- X buzz chip (🔥 only). Site makes 0 X calls: reads data/gainer_board/x_buzz.json written by the
+  // Grok Bot routine (scripts/x_buzz_write.py). Same-origin only, cache-busted, refreshed every 5 min. ----------
+  const GBX_PATH = "data/gainer_board/x_buzz.json";
+  const GBX_MAX_AGE = 3 * 3600e3;   // older than 3h → show nothing
+  const GBX_REFRESH = 5 * 60_000;
+  let gbX = { t: 0, data: null };
+  const gbXOpen = new Set();
+  const shHm = (ms) => new Date(ms + 8 * 3600e3).toISOString().slice(11, 16);
+  const shDay = (ms) => new Date(ms + 8 * 3600e3).toISOString().slice(0, 10);
+  async function gbLoadX(force) {
+    if (!force && gbX.t && Date.now() - gbX.t < GBX_REFRESH) return gbX;
+    let data = null;
+    try {
+      const r = await fetch(GBX_PATH + "?t=" + Date.now(), { cache: "no-store" });
+      if (r.ok) { const j = await r.json(); if (j && typeof j === "object" && j.coins && typeof j.coins === "object") data = j; }
+    } catch (_) {}
+    gbX = { t: Date.now(), data };
+    return gbX;
+  }
+  /** Latest usable X record for a pair, or null (missing / stale / malformed). */
+  function gbXRec(sym) {
+    const c = gbX.data && gbX.data.coins && gbX.data.coins[sym];
+    if (!c || typeof c !== "object" || !["熱", "升溫", "冷"].includes(c.verdict)) return null;
+    const t = Date.parse(c.checked_at);
+    if (!(t > 0) || Date.now() - t > GBX_MAX_AGE || t - Date.now() > 10 * 60e3) return null;
+    return { ...c, _t: t };
+  }
+  function gbXChipText(c) {
+    const ratio = c.verdict === "熱" && typeof c.spike_ratio === "number" && isFinite(c.spike_ratio) && c.spike_ratio > 0 ? ` ×${c.spike_ratio.toFixed(1)}` : "";
+    return `X ${c.verdict}${ratio} · ${shHm(c._t)}`;
+  }
+  function gbXSheet(c) {
+    const box = el("div", { class: "gb-xsheet-in" });
+    const meta = [];
+    if (c.shill_flag) meta.push(el("span", { class: "gb-xflag", text: "🚩 疑似洗版" }));
+    if (Number.isInteger(c.big_accounts) && c.big_accounts > 0) meta.push(el("span", { class: "muted", text: `10萬粉+ ${c.big_accounts} 個` }));
+    box.append(el("div", { class: "gb-xline" }, el("b", { text: String(c.one_line || "").slice(0, 20) }), ...meta));
+    for (const p of (Array.isArray(c.top_posts) ? c.top_posts : []).slice(0, 3)) {
+      if (!p || !/^[0-9]{5,25}$/.test(String(p.id)) || !/^[A-Za-z0-9_]{1,15}$/.test(String(p.author_username))) continue;
+      const href = `https://x.com/${p.author_username}/status/${p.id}`;
+      box.append(el("a", { class: "gb-xpost", href, target: "_blank", rel: "noopener noreferrer" },
+        el("span", { class: "gb-xwho", text: `@${p.author_username}` + (Number(p.likes) > 0 ? ` · ♥${fmtInt ? fmtInt(p.likes) : p.likes}` : "") }),
+        el("span", { class: "gb-xtxt", text: String(p.text || "").slice(0, 140) })));
+    }
+    return box;
+  }
+  /** Paint every [data-gb-x] chip + its sheet in place (no board re-render). */
+  function paintXChips() {
+    document.querySelectorAll("[data-gb-x]").forEach((chip) => {
+      const sym = chip.dataset.gbX;
+      const sheet = document.querySelector(`[data-gb-xsheet="${sym}"]`);
+      const c = gbXRec(sym);
+      if (!c) { chip.hidden = true; if (sheet) { sheet.hidden = true; sheet.textContent = ""; } return; }
+      chip.hidden = false;
+      chip.className = "gb-xchip" + (c.verdict === "熱" ? " x-hot" : c.verdict === "冷" ? " x-cold" : "");
+      chip.textContent = gbXChipText(c);
+      if (c.shill_flag) chip.append(el("span", { class: "gb-xflag", text: " 🚩" }));
+      chip.setAttribute("aria-expanded", gbXOpen.has(sym) ? "true" : "false");
+      if (sheet) { sheet.textContent = ""; sheet.append(gbXSheet(c)); sheet.hidden = !gbXOpen.has(sym); }
+    });
+    const cap = $("gainerXCap");
+    if (cap) {
+      const k = gbX.data && gbX.data.cap;
+      cap.hidden = !(k && k.cap_reached === true && k.date === shDay(Date.now()));
+    }
+  }
+  function gbXToggle(sym) {
+    if (gbXOpen.has(sym)) gbXOpen.delete(sym); else gbXOpen.add(sym);
+    paintXChips();
+  }
+
   /** Minimal card: coin · 24h % · price · 目標 · 止蝕 · 幾時放 · buy (🔥 only). Everything else in 詳情. */
   function gbCard(r, t, { buy }) {
     const liveApi = window.MCE.live;
@@ -1202,11 +1273,13 @@
     const kids = [
       el("div", { class: "gb-top" },
         logo,
-        el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags)),
+        el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags),
+          r.tier === "pump" ? el("button", { type: "button", class: "gb-xchip", "data-gb-x": r.symbol, hidden: true, "aria-expanded": "false", onclick: () => gbXToggle(r.symbol) }) : ""),
         el("div", { class: "gb-px" },
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
           el("div", { class: "num tiny gb-fh " + (r.fromHigh <= -10 ? "neg" : "muted"), "data-gb-fh": r.symbol, "data-gb-high": String(r.high || ""), text: `離 24h 高 ${pct(r.fromHigh)}` }))),
+      r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
       el("div", exitLiveAttrs(r.symbol, plan, px, { class: "gb-min" + (watch ? " gb-min-watch" : ""), "data-gb-levels": "card" }),
         el("div", {}, el("span", { class: "k", text: "目標" }), exitLiveNode("b", { class: "num pos" }, "{target}（+{tp}%）", plan, px)),
         el("div", {}, el("span", { class: "k", text: "止蝕" }), exitLiveNode("b", { class: "num neg" }, "{stop}（−{sl}%）", plan, px)),
@@ -1316,6 +1389,8 @@
       renderGainerAlert(rows.filter((r) => r.tier === "pump").map((r) => ({ tier: "pump", base: r.base, pair: r.symbol, price: r.price, trig: trig.get(r.symbol + ":pump") }))
         .concat(early.map((e) => ({ tier: "early", base: e.symbol, pair: e.pair, price: curPx(e.pair), trig: e }))));
       renderGainerBoard(rows, trig);
+      paintXChips();
+      gbLoadX(false).then(paintXChips).catch(() => {});
       renderEarlyList(early.slice(0, 8), res);
       gbClientSnapshot(rows, early.slice(0, 8));
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
@@ -3191,6 +3266,7 @@
     if (window.MCE.live && window.MCE.live.onTick) window.MCE.live.onTick(onGainerTick);
     setInterval(() => { if (document.visibilityState === "visible") loadGainerBoard(false); }, 90_000);
     setInterval(paintGainerLive, 10_000);
+    setInterval(() => { if (document.visibilityState === "visible") gbLoadX(true).then(paintXChips).catch(() => {}); }, GBX_REFRESH);
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - gbLastScan > 90_000) loadGainerBoard(false); });
   }
   bootGainer();

@@ -12,7 +12,7 @@ Files (all under data/gainer_board/):
   latest.json                 newest batch + active flags (last 12h) for the site
   summary.json                live 4h (headline) / 24h hit-rates per tier, latest sealed 4h batch,
                               backtest digest, last 7 daily scorecards
-  daily_vs_gainers/DATE.json  daily scorecard
+  daily_vs_gainers/DATE.json  daily scorecard (+ x_split: 🔥 with X 熱/升溫 vs X 冷 — 4h mean + hit +20%)
   backtest_30d.json           from scripts/gainer_backtest.py
 
 Outcomes use Binance 1m klines from picked_at: max gain, close return, max drawdown, hit +20% / +50%.
@@ -223,6 +223,41 @@ def seal():
     print("sealed", n)
 
 
+# ---------------- X split (does X buzz add value?) ----------------
+def x_split(entries):
+    """🔥 flags split by the FIRST X check of that flag (x_buzz.json history, -30min..+4h around picked_at):
+    X 熱/升溫 vs X 冷 vs 未查. Mean 4h close return + +20% hit rate per group (sealed 4h outcomes only)."""
+    hist = jload(os.path.join(D, "x_buzz.json"), {}).get("history") or []
+    groups = {k: {"flags": 0, "n": 0, "close": [], "hit20": 0} for k in ("hot", "cold", "unchecked")}
+    for e in entries:
+        if e.get("tier") != "pump":
+            continue
+        t0 = pt(e["picked_at"])
+        cand = []
+        for h in hist:
+            try:
+                tc = datetime.datetime.fromisoformat(h["checked_at"])
+            except Exception:  # noqa: BLE001
+                continue
+            if h.get("symbol") == e["pair"] and t0 - datetime.timedelta(minutes=30) <= tc <= t0 + datetime.timedelta(hours=4):
+                cand.append((tc, h))
+        v = min(cand, key=lambda x: x[0])[1].get("verdict") if cand else None
+        k = "hot" if v in ("熱", "升溫") else "cold" if v == "冷" else "unchecked"
+        gk = groups[k]
+        gk["flags"] += 1
+        o = (e.get("outcomes") or {}).get("4h") or {}
+        if "close_pct" in o:
+            gk["n"] += 1; gk["close"].append(o["close_pct"]); gk["hit20"] += bool(o.get("hit20"))
+    out = {"rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. "
+                   "4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet."}
+    for k, gk in groups.items():
+        n = gk["n"]
+        out[k] = {"flags": gk["flags"], "sealed": n, "pending": gk["flags"] - n,
+                  "mean_4h_close_pct": round(sum(gk["close"]) / n, 2) if n else None,
+                  "hit20_pct": round(gk["hit20"] / n * 100, 1) if n else None}
+    return out
+
+
 # ---------------- scorecard ----------------
 def main_picks_on(date):
     res = []
@@ -307,6 +342,7 @@ def scorecard(date=None):
                    if r["pair"] not in caught and r["pair"] not in {x["pair"] for x in late_hits}],
         "top20": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2), "quote_volume_24h": round(r["qv"])} for r in top20],
         "flags": rows,
+        "x_split": x_split([e for b in day["batches"] for e in b.get("entries", [])]),
     }
     jsave(os.path.join(CARD, date + ".json"), card)
     print(f"scorecard {date}: flagged {len(rows)} (early {len(early_rows)} / late {len(late_rows)}), "
@@ -364,7 +400,7 @@ def summary():
         "horizons": horizons, "tiers": tiers, "latest_4h": latest4,
         "backtest_30d": {"generated_at": bt.get("generated_at"), "window": bt.get("window"), "tiers": btd},
         "scorecards": [{k: c.get(k) for k in ("date", "flagged", "early_flagged", "late_flagged", "early_hits", "late_hits",
-                                               "precision_pct", "late_precision_pct", "recall_top20_pct", "recall_top10_pct", "buyable_flagged")}
+                                               "precision_pct", "late_precision_pct", "recall_top20_pct", "recall_top10_pct", "buyable_flagged", "x_split")}
                        | {"hits": [{"symbol": h["symbol"], "flag_time": h["flag_time"], "final_rank": h["final_rank"], "lead_h": h.get("lead_h")} for h in c["hits"]],
                           "late": [{"symbol": h["symbol"], "flag_time": h["flag_time"], "rank_24h_at_flag": h.get("rank_24h_at_flag"), "final_rank": h["final_rank"]} for h in c.get("late", [])],
                           "missed": [m["symbol"] for m in c["missed"]][:10]} for c in cards],
