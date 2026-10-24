@@ -364,7 +364,7 @@ Shipped:
 - New panel on 今日跟買 (both modes): 🔥 live board (Binance REST, data-api.binance.vision), ⚡ watch-only tier from hourly Actions snapshot, alert row (觸發/觸發後%/入場/目標/止蝕), per-row money line (現貨 $X: +20% 賺 / +50% 賺 / 止蝕蝕), 1x/2x/3x size chips (default 2x, not halved by weak gate), spot-only buy modal with momentum exit block.
 - Exit: +20% 放一半 (stop → cost) / +50% 清 / −10% 止蝕 / 4h 再睇 / 最遲 12h.
 - `scripts/gainer_core.py` (shared rules), `gainer_board.py` (hourly snapshot + 4h/24h 1m-kline seal + daily 23:55 scorecard vs top-20 gainers + summary), `gainer_backtest.py`; workflow `gainer-board.yml` (hourly + 15:55 UTC, dispatches Pages deploy).
-- Error state 「暫時攔唔到數據」 + 再試 for both tiers. Off-board Binance pairs now get a REST price in `livePrice` (was throwing for coins outside the curated board).
+- Error state 「暫時攞唔到數據」 + 再試 for both tiers. Off-board Binance pairs now get a REST price in `livePrice` (was throwing for coins outside the curated board).
 
 30d all-coins backtest (1h klines, ~500 pairs, $3M rolling volume floor at signal time, 4h horizon, 4h cooldown, train = first 15d, test = last 15d):
 
@@ -390,3 +390,13 @@ Examples: GTC 8 pumps (≥+25% in 4h) in 41d — ⚡ flagged 0 in the 6h before;
 Next: let hourly seals accumulate; revisit rules after ≥50 live 4h seals; daily scorecard first run tonight 23:55.
 
 - 2026-10-25 00:20 Asia/Shanghai · `20261025a1`: 🔥 buy button now has a chip with the real backtest number (test half mean 4h close, read from backtest_30d via summary.json), e.g. 「回測平均 −0.9%」.
+
+## 2026-10-25 ~00:45 Asia/Shanghai — 急升榜 QA round 2 · `20261025b1`
+
+- WS live: gainer symbols are added to the Binance miniTicker stream (`watchExtra`), so price / 24h % / 觸發後 % / P&L tick with no refresh; board rescans every 90 s on any tab (visible) + on tab focus; live dot + 更新時間.
+- 急升榜 is the first section of 今日跟買; `loadGainerBoard` no longer runs inside `renderPicks`/`loadPicks` (own boot + timer).
+- Minimal card: coin · 24h % · price · 目標 · 止蝕 · 幾時放, buy + 「回測平均」 chip only on 🔥; the rest under 「詳情」.
+- 候補 watch-only (no buy, never in the 🔥 alert). Backtest lines / accuracy panel show the **test half**.
+- Real trigger time from closed 1h bars (start of the current qualifying run); alert labels its source.
+- Scorecard: real top 20 (all USDT spot, no volume floor, stables / leveraged / leveraged-ETF tokens excluded), early vs late separate, buyable flags + this browser's bought rows, dated by scheduled date. Cron `5,35 * * * *`.
+- Typo 攔→攞 everywhere. Backtest re-run after the leveraged-ETF exclusion: 🔥 test 195 fires, +20% 6.15%, mean 4h −0.92%; ⚡ test 109 fires, +20% 2.75%, mean +0.04% → gate still fails, ⚡ stays watch-only.

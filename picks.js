@@ -979,17 +979,19 @@
     const e = trig.entry_price_usd;
     const since = nowPx > 0 && e > 0 ? (nowPx / e - 1) * 100 : null;
     return el("div", { class: "gba-grid" },
-      el("div", {}, el("span", { class: "k", text: "觸發" }), el("b", { class: "num", text: frTime(trig.picked_at) })),
+      el("div", {}, el("span", { class: "k", text: trig.trigger_src === "kline" ? "觸發（1h 線）" : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發" }), el("b", { class: "num", text: frTime(trig.picked_at) })),
       el("div", {}, el("span", { class: "k", text: "觸發後" }), el("b", { class: "num " + cls(since), "data-gb-since": pair, "data-gb-entry": String(e), text: pct(since) })),
       el("div", {}, el("span", { class: "k", text: "入場" }), el("b", { class: "num", text: price(e) })),
       el("div", {}, el("span", { class: "k", text: "目標" }), el("b", { class: "num pos", text: `${price(gbTp(e))} / ${price(gbTp2(e))}` })),
       el("div", {}, el("span", { class: "k", text: "止蝕" }), el("b", { class: "num neg", text: price(gbSl(e)) })));
   }
 
+  /** Banner = newest REAL 🔥 (rule hit) or ⚡ trigger. 候補 never appears here. */
   function renderGainerAlert(items) {
     const box = $("gainerAlert"); if (!box) return;
     box.textContent = "";
-    const best = items.filter((x) => x.trig).sort((a, b) => new Date(b.trig.picked_at) - new Date(a.trig.picked_at))[0];
+    const best = items.filter((x) => x.trig && (x.tier === "pump" || x.tier === "early"))
+      .sort((a, b) => new Date(b.trig.picked_at) - new Date(a.trig.picked_at))[0];
     if (!best) { box.hidden = true; return; }
     box.hidden = false;
     box.classList.toggle("gba-early", best.tier === "early");
@@ -1001,14 +1003,16 @@
       gbAlertGrid(best.pair, best.trig, best.price));
   }
 
+  /** Backtest line per tier — TEST half (last 15d), plus live 4h. */
   function gbBtLine(tier) {
     const bt = gbStatic.summary && gbStatic.summary.backtest_30d && gbStatic.summary.backtest_30d.tiers && gbStatic.summary.backtest_30d.tiers[tier];
     const live = gbStatic.summary && gbStatic.summary.tiers && gbStatic.summary.tiers[tier] && gbStatic.summary.tiers[tier]["4h"];
     const parts = [];
-    if (bt && bt.all && bt.all.fires) {
-      parts.push(`30日回測 ${bt.all.fires} 次：4h 內再升 +20% ${bt.all.hit20_4h_pct}% · 平均 4h ${pct(bt.all.mean_close_4h_pct)} · 中位最大回撤 ${pct(bt.all.median_max_drawdown_4h_pct)}`);
-    } else parts.push("30日回測載入中…");
-    parts.push(live && live.n ? `實盤 4h：${live.hit20}/${live.n} 中 +20%（${Math.round(live.hit20 / live.n * 100)}%）` : "實盤 4h：未有封盤");
+    const te = bt && bt.test;
+    if (te && te.fires) {
+      parts.push(`回測（後 15 日測試）${te.fires} 次：4h 內 +20% ${te.hit20_4h_pct}% · 平均 4h ${pct(te.mean_close_4h_pct)} · 中位最大回撤 ${pct(te.median_max_drawdown_4h_pct)}`);
+    } else parts.push("回測載入中…");
+    parts.push(live && live.n ? `實盤 4h：${live.hit20}/${live.n} 中 +20%` : "實盤 4h：未有封盤");
     return el("p", { class: "gb-bt tiny", text: parts.join(" ‖ ") });
   }
 
@@ -1022,53 +1026,62 @@
       text: `回測平均 ${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toFixed(1)}%` });
   }
 
-  function renderGainerBoard(rows, trig) {
-    const box = $("gainerList"); if (!box) return;
-    box.textContent = "";
-    const bt = $("gainerPumpBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("pump")); }
-    if (!rows.length) { gbStateBox("empty", "而家冇幣夠急升（24h ≥ +5%）· 遲啲再睇"); return; }
+  function gbLogBought(r, info, res) {
+    try {
+      const log = gbLoadLog();
+      log.push({ symbol: r.base, pair: r.symbol, tier: r.tier, bought: true, picked_at: isoSh(), entry_price_usd: r.price,
+        change_24h_at_pick: Math.round(r.chg24 * 100) / 100, rank_24h_at_pick: r.rank24 || null, batch: gbBatchId(),
+        usd: res && res.amt, mode: res && res.mode, source: "web-buy" });
+      localStorage.setItem(GB_LOG_KEY, JSON.stringify(log.slice(-400)));
+    } catch (_) {}
+  }
+
+  /** Minimal card: coin · 24h % · price · 目標 · 止蝕 · 幾時放 · buy (🔥 only). Everything else in 詳情. */
+  function gbCard(r, t, { buy }) {
     const liveApi = window.MCE.live;
     const mult = gbMult();
-    for (const r of rows) {
-      const t = trig.get(r.symbol + ":" + r.tier) || { picked_at: isoSh(), entry_price_usd: r.price };
-      const usd = Math.max(0, Math.min(Math.floor(P.cash), Math.round(P.cash * 0.1 * mult)));
-      const fee2 = usd * (P.feePct || 0) / 100 * 2;
-      const plan = momentumExitPlan({ createdAt: new Date().toISOString() });
-      const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: r.base.slice(0, 2) });
-      const spark = liveApi && liveApi.sparkSvg ? liveApi.sparkSvg(r.spark || [], { w: 72, h: 28, up: (r.c4h || 0) >= 0, className: "spark-svg gb-spark" }) : null;
-      const volUp = r.volRatio != null && r.volRatio >= 1.5;
-      const px = r.price;
-      box.append(el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") },
-        el("div", { class: "gb-top" },
-          logo,
-          el("div", { class: "gb-id" },
-            el("div", { class: "nm" }, r.base, " ",
-              el("span", { class: "gb-risk", text: "高風險" }), " ",
-              el("span", { class: "gb-spot", text: "現貨" }),
-              r.tier === "cand" ? el("span", { class: "gb-cand-tag", text: "候補" }) : ""),
-            el("div", { class: "pump-badges" },
-              r.volRatio != null ? el("span", { class: "pump-badge " + (volUp ? "hot" : "soft"), text: `量 ×${r.volRatio.toFixed(1)}` + (r.volRatioPrev != null ? ` ← ×${r.volRatioPrev.toFixed(1)}` : "") }) : "",
-              el("span", { class: "pump-badge soft", text: `離高 ${pct(r.fromHigh)}` }))),
-          spark || el("span", {}),
-          el("div", { class: "gb-px" },
-            el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
-            el("div", { class: "num gb-chg " + cls(r.chg24), text: pct(r.chg24) }),
-            el("div", { class: "num tiny " + cls(r.c1h), text: "1h " + pct(r.c1h) }))),
-        gbAlertGrid(r.symbol, t, px),
-        el("div", { class: "gb-exit" },
-          el("div", { class: "gb-exit-k", text: "而家落 · 幾時可以放" }),
-          el("div", { class: "gb-exit-row" }, el("span", { class: "lab", text: "目標價" }),
-            el("span", { class: "pos", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}% 放一半）→ ${price(gbTp2(px))}（+${GAINER_EXIT.tp2}% 清）` })),
-          el("div", { class: "gb-exit-row" }, el("span", { class: "lab", text: "Hold 至" }),
-            el("span", { text: `${frTime(plan.reviewAt)} 再睇 · 最遲 ${frTime(plan.secondAt)} 走` })),
-          el("div", { class: "gb-exit-row" }, el("span", { class: "lab", text: "止蝕" }),
-            el("span", { class: "neg", text: `${price(gbSl(px))}（−${GAINER_EXIT.sl}%）· 到 +${GAINER_EXIT.tp}% 後升返成本` })),
-          usd > 0 ? el("div", { class: "gb-exit-row gb-money" }, el("span", { class: "lab", text: `現貨 ${money2(usd)}` }),
-            el("span", {},
-              el("b", { class: "pos", text: `+${GAINER_EXIT.tp}% 賺 ${money2(usd * GAINER_EXIT.tp / 100 - fee2)}` }), " · ",
-              el("b", { class: "pos", text: `+${GAINER_EXIT.tp2}% 賺 ${money2(usd * GAINER_EXIT.tp2 / 100 - fee2)}` }), " · ",
-              el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * GAINER_EXIT.sl / 100 + fee2)}` }))) : ""),
-        el("div", { class: "gb-buyrow" },
+    const usd = Math.max(0, Math.min(Math.floor(P.cash), Math.round(P.cash * 0.1 * mult)));
+    const fee2 = usd * (P.feePct || 0) / 100 * 2;
+    const plan = momentumExitPlan({ createdAt: new Date().toISOString() });
+    const px = r.price;
+    const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: r.base.slice(0, 2) });
+    const spark = liveApi && liveApi.sparkSvg ? liveApi.sparkSvg(r.spark || [], { w: 120, h: 32, up: (r.c4h || 0) >= 0, className: "spark-svg gb-spark" }) : null;
+    const tags = r.tier === "cand"
+      ? [el("span", { class: "gb-cand-tag", text: "候補" }), el("span", { class: "gb-watch", text: "觀察" })]
+      : [el("span", { class: "gb-risk", text: "高風險" }), el("span", { class: "gb-spot", text: "現貨" })];
+    const details = el("details", { class: "gb-details" },
+      el("summary", { text: "詳情" }),
+      el("div", { class: "gb-det-body" },
+        spark || "",
+        el("div", { class: "pump-badges" },
+          r.volRatio != null ? el("span", { class: "pump-badge " + (r.volRatio >= 1.5 ? "hot" : "soft"), text: `量 ×${r.volRatio.toFixed(1)}` + (r.volRatioPrev != null ? ` ← ×${r.volRatioPrev.toFixed(1)}` : "") }) : "",
+          el("span", { class: "pump-badge soft", text: `離 24h 高 ${pct(r.fromHigh)}` }),
+          r.c1h != null ? el("span", { class: "pump-badge soft", text: `1h ${pct(r.c1h)}` }) : "",
+          r.c4h != null ? el("span", { class: "pump-badge soft", text: `4h ${pct(r.c4h)}` }) : "",
+          el("span", { class: "pump-badge soft", text: `成交 ${money(r.volQuote)}` }),
+          r.rank24 ? el("span", { class: "pump-badge soft", text: `24h 升幅第 ${r.rank24} 名` }) : ""),
+        t ? gbAlertGrid(r.symbol, t, px) : "",
+        el("div", { class: "tiny muted", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}%）放一半、止蝕升返成本 → ${price(gbTp2(px))}（+${GAINER_EXIT.tp2}%）清 · ${GAINER_EXIT.reviewH}h 再睇` }),
+        buy && usd > 0 ? el("div", { class: "tiny" },
+          `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${GAINER_EXIT.tp}% 賺 ${money2(usd * GAINER_EXIT.tp / 100 - fee2)}` }), " · ",
+          el("b", { class: "pos", text: `+${GAINER_EXIT.tp2}% 賺 ${money2(usd * GAINER_EXIT.tp2 / 100 - fee2)}` }), " · ",
+          el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * GAINER_EXIT.sl / 100 + fee2)}` })) : "",
+        r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：未達 🔥 規則（24h ≥ +20% 兼離高 ≤ 10%），只做觀察，冇買入掣。" }) : "",
+        gbBtLine(r.tier === "cand" ? "pump" : r.tier)));
+    const kids = [
+      el("div", { class: "gb-top" },
+        logo,
+        el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags)),
+        el("div", { class: "gb-px" },
+          el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
+          el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }))),
+      el("div", { class: "gb-min" },
+        el("div", {}, el("span", { class: "k", text: "目標" }), el("b", { class: "num pos", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}%）` })),
+        el("div", {}, el("span", { class: "k", text: "止蝕" }), el("b", { class: "num neg", text: `${price(gbSl(px))}（−${GAINER_EXIT.sl}%）` })),
+        el("div", {}, el("span", { class: "k", text: "幾時放" }), el("b", { class: "num", text: `最遲 ${frTime(plan.secondAt).replace(/^\d+月\d+日 /, "")}` }))),
+    ];
+    if (buy) {
+      kids.push(el("div", { class: "gb-buyrow" },
         gbBtChip("pump"),
         el("button", { class: "primary gb-buy", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
@@ -1078,37 +1091,40 @@
           stop_loss_pct: GAINER_EXIT.sl, suggested_exit_h: GAINER_EXIT.reviewH, suggested_second_h: GAINER_EXIT.secondH,
           size: "full", sizeMult: mult, forceSpot: true,
           entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high },
-        }) }, `現貨落倉 ${money2(usd)}`))
-      ));
+          onFilled: (res) => gbLogBought(r, null, res),
+        }) }, `現貨落倉 ${money2(usd)}`)));
     }
+    kids.push(details);
+    return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (r.tier === "early" ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
   }
 
-  /** ⚡ watch-only rows from the hourly Actions snapshot (static JSON) + live price from the same ticker call. */
-  function renderEarlyList(early, prices) {
+  function renderGainerBoard(rows, trig) {
+    const box = $("gainerList"); if (!box) return;
+    box.textContent = "";
+    const bt = $("gainerPumpBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("pump")); }
+    if (!rows.length) { gbStateBox("empty", "而家冇幣夠急升（24h ≥ +5%）· 遲啲再睇"); return; }
+    for (const r of rows) box.append(gbCard(r, trig.get(r.symbol + ":" + r.tier) || null, { buy: r.tier === "pump" }));
+  }
+
+  /** ⚡ watch-only rows from the Actions snapshot; minimal card, no buy. */
+  function renderEarlyList(early, res) {
     const box = $("earlyList"); if (!box) return;
     box.textContent = "";
     const bt = $("gainerEarlyBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("early")); }
-    if (!gbStatic.latest) { gbStateBox("error", "暫時攔唔到 ⚡ 數據（每粒鐘快照）· 撳再試", "earlyList"); return; }
+    if (!gbStatic.latest) { gbStateBox("error", "暫時攞唔到 ⚡ 數據（每半個鐘快照）· 撳再試", "earlyList"); return; }
     if (!early.length) {
       box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: `近 12h 冇 ⚡ 訊號（最近快照 ${gbStatic.latest.picked_at ? frTime(gbStatic.latest.picked_at) : "—"}）` })));
       return;
     }
-    const liveApi = window.MCE.live;
     for (const e of early) {
-      const px = prices.get(e.pair);
-      const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(e.symbol, "coin-logo", 32) : el("span", { class: "coin-logo letter", text: e.symbol.slice(0, 2) });
-      box.append(el("div", { class: "gb-row gb-early" },
-        el("div", { class: "gb-top" },
-          logo,
-          el("div", { class: "gb-id" },
-            el("div", { class: "nm" }, e.symbol, " ", el("span", { class: "gb-watch", text: "觀察" }), " ", el("span", { class: "gb-risk", text: "高風險" })),
-            el("div", { class: "pump-badges" },
-              el("span", { class: "pump-badge hot", text: `量 ×${(e.vol_x_avg || 0).toFixed(1)} ← ×${(e.vol_x_prev_hour || 0).toFixed(1)} 持續升` }),
-              el("span", { class: "pump-badge soft", text: `觸發時 24h ${pct(e.change_24h_at_pick)} · 第 ${e.rank_24h_at_pick || "–"} 名` }))),
-          el("div", { class: "gb-px" },
-            el("div", { class: "num", text: px ? price(px) : "…" }),
-            el("div", { class: "num tiny " + cls(e.change_1h_at_pick), text: "觸發 1h " + pct(e.change_1h_at_pick) }))),
-        gbAlertGrid(e.pair, e, px)));
+      const live = res.rank && res.rank.get(e.pair);
+      const r = {
+        symbol: e.pair, base: e.symbol, tier: "early", price: (live && live.price) || e.entry_price_usd,
+        chg24: live ? live.chg24 : e.change_24h_at_pick, volQuote: live ? live.volQuote : e.quote_volume_24h,
+        fromHigh: live ? live.fromHigh : e.from_24h_high_pct, rank24: live ? live.rank24 : null,
+        c1h: e.change_1h_at_pick, c4h: e.change_4h_at_pick, volRatio: e.vol_x_avg, volRatioPrev: e.vol_x_prev_hour, spark: [],
+      };
+      box.append(gbCard(r, { ...e, trigger_src: "snapshot" }, { buy: false }));
     }
   }
 
@@ -1123,6 +1139,16 @@
     }
   }
 
+  let gbLastScan = 0, gbLastTick = 0, gbWatched = new Set();
+  function paintGainerLive() {
+    const n = $("gainerLive"); if (!n) return;
+    const t = Math.max(gbLastScan, gbLastTick);
+    const fresh = t && Date.now() - t < 3 * 60_000;
+    n.classList.toggle("on", !!fresh);
+    const tt = $("gainerUpdated");
+    if (tt) tt.textContent = t ? "更新 " + new Date(t).toLocaleTimeString("zh-HK", { hour12: false }) : "連接中…";
+  }
+
   async function loadGainerBoard(force) {
     if (!$("gainerList") || !window.MCE.live || !window.MCE.live.computeGainerBoard) return;
     if (gbBusy) return;
@@ -1131,34 +1157,62 @@
     const meta = $("gainerMeta");
     if (!$("gainerList").childElementCount || force) gbStateBox("loading", "掃緊 Binance 急升幣…");
     const staticP = gbLoadStatic(force).catch(() => gbStatic);
+    let res = null;
     try {
-      const res = await window.MCE.live.computeGainerBoard({ force: !!force, n: 8 });
+      res = await window.MCE.live.computeGainerBoard({ force: !!force, n: 8 });
       await staticP;
       const cut = Date.now() - GB_TRIGGER_WINDOW_H * 3600e3;
       const active = ((gbStatic.latest && gbStatic.latest.active) || []).filter((e) => new Date(e.picked_at).getTime() >= cut);
       const srvPump = new Map(active.filter((e) => e.tier === "pump").map((e) => [e.pair, e]));
-      const rows = (res.rows || []).map((r) => ({ ...r, serverFlag: srvPump.get(r.symbol) || null }));
+      const rows = (res.rows || []).map((r) => {
+        let serverFlag = null;
+        if (r.tier === "pump" && r.trigger) {
+          serverFlag = { symbol: r.base, pair: r.symbol, tier: "pump", picked_at: isoSh(new Date(r.trigger.t)), entry_price_usd: r.trigger.price, trigger_src: "kline" };
+        } else if (r.tier === "pump" && srvPump.get(r.symbol)) {
+          serverFlag = { ...srvPump.get(r.symbol), trigger_src: "snapshot" };
+        }
+        return { ...r, serverFlag };
+      });
       const early = [];
       const seen = new Set();
       for (const e of active.filter((x) => x.tier === "early")) { if (!seen.has(e.pair)) { seen.add(e.pair); early.push(e); } }
       const trig = gbLogSnapshot(rows.concat(early.map((e) => ({
         symbol: e.pair, base: e.symbol, tier: "early", price: e.entry_price_usd, chg24: e.change_24h_at_pick, serverFlag: e,
       }))));
-      renderGainerAlert(rows.map((r) => ({ tier: r.tier === "cand" ? "pump" : r.tier, base: r.base, pair: r.symbol, price: r.price, trig: trig.get(r.symbol + ":" + r.tier) }))
-        .concat(early.map((e) => ({ tier: "early", base: e.symbol, pair: e.pair, price: res.prices && res.prices.get(e.pair), trig: e }))));
+      for (const r of rows) { const t = trig.get(r.symbol + ":" + r.tier); if (t && !t.trigger_src) t.trigger_src = r.tier === "pump" ? "now" : "seen"; }
+      const curPx = (p) => (res.prices && res.prices.get(p)) || null;
+      renderGainerAlert(rows.filter((r) => r.tier === "pump").map((r) => ({ tier: "pump", base: r.base, pair: r.symbol, price: r.price, trig: trig.get(r.symbol + ":pump") }))
+        .concat(early.map((e) => ({ tier: "early", base: e.symbol, pair: e.pair, price: curPx(e.pair), trig: e }))));
       renderGainerBoard(rows, trig);
-      renderEarlyList(early.slice(0, 8), res.prices || new Map());
+      renderEarlyList(early.slice(0, 8), res);
+      const watch = rows.map((r) => r.symbol).concat(early.slice(0, 8).map((e) => e.pair));
+      gbWatched = new Set(watch);
+      try { window.MCE.live.watchExtra(watch); } catch (_) {}
+      gbLastScan = Date.now();
       const nPump = rows.filter((r) => r.tier === "pump").length;
-      if (meta) meta.textContent = `Binance 現貨 USDT · 掃 ${res.pool || 0} 隻 · 🔥 ${nPump} 隻達標` + (rows.length > nPump ? ` + ${rows.length - nPump} 候補` : "") + ` · ${new Date(res.t).toLocaleTimeString("zh-HK", { hour12: false })} · 弱市都唔減半 · 預設 ${gbMult()}x 注碼`;
+      if (meta) meta.textContent = `Binance 現貨 USDT · 掃 ${res.pool || 0} 隻 · 🔥 ${nPump} 隻達標` + (rows.length > nPump ? ` · ${rows.length - nPump} 隻候補（觀察）` : "") + ` · 弱市都唔減半 · 預設 ${gbMult()}x 注碼`;
     } catch (e) {
       console.warn("gainer board failed", e);
       const a = $("gainerAlert"); if (a) a.hidden = true;
-      gbStateBox("error", "暫時攔唔到數據（Binance）· 撳再試");
-      gbStateBox("error", "暫時攔唔到數據 · 撳再試", "earlyList");
-      if (meta) meta.textContent = "暫時攔唔到數據";
+      gbStateBox("error", "暫時攞唔到數據（Binance）· 撳再試");
+      gbStateBox("error", "暫時攞唔到數據 · 撳再試", "earlyList");
+      if (meta) meta.textContent = "暫時攞唔到數據";
     } finally { gbBusy = false; }
+    paintGainerLive();
     renderGainerAccuracy();
-    renderGainerScorecard();
+    renderGainerScorecard(res);
+  }
+
+  /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
+  function onGainerTick(_marks, board) {
+    if (!gbWatched.size || !board) return;
+    let hit = false;
+    for (const s of gbWatched) { const r = board.get(s); if (r && r.t && r.t > gbLastTick) { hit = true; gbLastTick = Math.max(gbLastTick, r.t); } }
+    document.querySelectorAll("[data-gb-since]").forEach((n) => {
+      const r = board.get(n.dataset.gbSince); const e = parseFloat(n.dataset.gbEntry);
+      if (r && r.price > 0 && e > 0) { const v = (r.price / e - 1) * 100; n.textContent = pct(v); n.className = "num " + cls(v); }
+    });
+    if (hit) paintGainerLive();
   }
 
   function renderGainerAccuracy() {
@@ -1166,13 +1220,14 @@
     box.textContent = "";
     const sum = gbStatic.summary;
     const head = el("div", { class: "gacc-head" }, el("strong", { text: "急升榜準繩度" }), el("span", { class: "muted tiny", text: "Binance 1m K 線封盤 · 4h 為主 · 24h 補充" }));
-    if (!sum) { box.append(head, el("p", { class: "muted tiny", text: "暫時攔唔到準繩度數據" })); return; }
+    if (!sum) { box.append(head, el("p", { class: "muted tiny", text: "暫時攞唔到準繩度數據" })); return; }
     const h4 = sum.horizons && sum.horizons["4h"];
     const h24 = sum.horizons && sum.horizons["24h"];
     const st = (k, v, c = "") => el("div", { class: "gacc-stat" }, el("div", { class: "k", text: k }), el("div", { class: "v num " + c, text: v }));
     const rate = (x, k) => (x && x.n ? Math.round((x[k] / x.n) * 100) + "%" : "–");
     const btP = sum.backtest_30d && sum.backtest_30d.tiers && sum.backtest_30d.tiers.pump;
     const btE = sum.backtest_30d && sum.backtest_30d.tiers && sum.backtest_30d.tiers.early;
+    const tP = btP && btP.test, tE = btE && btE.test;
     box.append(head);
     if (h4 && h4.n) {
       box.append(el("div", { class: "gacc-grid" },
@@ -1181,14 +1236,14 @@
         st("4h 平均收", pct(h4.avg_close_pct), cls(h4.avg_close_pct)),
         st("4h 平均最大回撤", pct(h4.avg_max_drawdown_pct), "neg")));
     } else {
-      box.append(el("p", { class: "muted tiny", text: "實盤：未有已封盤結果 · 每粒鐘自動快照，4h 後封盤。" }));
+      box.append(el("p", { class: "muted tiny", text: "實盤：未有已封盤結果 · 每半個鐘自動快照，4h 後封盤。" }));
     }
     box.append(el("div", { class: "gacc-grid gacc-bt" },
-      st("🔥 30日回測 4h +20%", btP && btP.all ? btP.all.hit20_4h_pct + "%" : "–"),
-      st("🔥 回測平均 4h", btP && btP.all ? pct(btP.all.mean_close_4h_pct) : "–", btP && btP.all ? cls(btP.all.mean_close_4h_pct) : ""),
-      st("⚡ 30日回測 4h +20%", btE && btE.all ? btE.all.hit20_4h_pct + "%" : "–"),
-      st("⚡ 回測平均 4h", btE && btE.all ? pct(btE.all.mean_close_4h_pct) : "–", btE && btE.all ? cls(btE.all.mean_close_4h_pct) : "")));
-    if (btP && btP.all) box.append(el("p", { class: "muted tiny", text: `回測：全部 Binance USDT 現貨（24h 成交 ≥ $3M）· 30 日 1h K 線 · 🔥 ${btP.all.fires} 次 / ⚡ ${btE && btE.all ? btE.all.fires : "–"} 次 · 大約 ${Math.max(1, Math.round(100 / Math.max(1, btP.all.hit20_4h_pct)))} 次先中 1 次 · 一定要設止蝕` }));
+      st(`🔥 回測測試段 4h +20%（${tP ? tP.fires : "–"} 次）`, tP ? tP.hit20_4h_pct + "%" : "–"),
+      st("🔥 測試段平均 4h", tP ? pct(tP.mean_close_4h_pct) : "–", tP ? cls(tP.mean_close_4h_pct) : ""),
+      st(`⚡ 回測測試段 4h +20%（${tE ? tE.fires : "–"} 次）`, tE ? tE.hit20_4h_pct + "%" : "–"),
+      st("⚡ 測試段平均 4h", tE ? pct(tE.mean_close_4h_pct) : "–", tE ? cls(tE.mean_close_4h_pct) : "")));
+    if (tP) box.append(el("p", { class: "muted tiny", text: `回測：全部 Binance USDT 現貨（24h 成交 ≥ $3M）· 30 日 1h K 線 · 測試段 = 後 15 日 · 🔥 大約 ${Math.max(1, Math.round(100 / Math.max(0.1, tP.hit20_4h_pct)))} 次先中 1 次 · 一定要設止蝕` }));
     if (h24 && h24.n) box.append(el("p", { class: "muted tiny", text: `24h 補充：+20% ${h24.hit20}/${h24.n}（${rate(h24, "hit20")}）· +50% ${h24.hit50}/${h24.n} · 平均最高 ${pct(h24.avg_max_gain_pct)} · 平均收 ${pct(h24.avg_close_pct)}` }));
     if (h4 && h4.n && h4.n < 20) box.append(el("p", { class: "muted tiny", text: `實盤樣本 ${h4.n} 筆 · 太少唔好當結論` }));
     const lb = sum.latest_4h;
@@ -1205,23 +1260,33 @@
     if (sum.updated_at) box.append(el("p", { class: "muted tiny", text: "更新 " + frTime(sum.updated_at) }));
   }
 
-  function renderGainerScorecard() {
+  function renderGainerScorecard(res) {
     const box = $("gainerCard"); if (!box) return;
     box.textContent = "";
     const sum = gbStatic.summary;
     const cards = (sum && sum.scorecards) || [];
-    box.append(el("div", { class: "gacc-head" }, el("strong", { text: "今日對照 Binance Gainer" }), el("span", { class: "muted tiny", text: "每晚 23:55 對 24h 升幅頭 20 名" })));
-    if (!cards.length) { box.append(el("p", { class: "muted tiny", text: "未有對照 · 今晚 23:55 第一次出。只計升之前標記（標記時唔喺頭 20、24h 未升夠 15%）。" })); return; }
+    box.append(el("div", { class: "gacc-head" }, el("strong", { text: "今日對照 Binance Gainer" }), el("span", { class: "muted tiny", text: "每晚 23:55 對全部 USDT 現貨 24h 升幅頭 20 名" })));
+    // Your bought rows today (this browser) vs live 24h rank
+    const today = isoSh().slice(0, 10);
+    const bought = gbLoadLog().filter((x) => x.bought && String(x.picked_at).startsWith(today));
+    if (bought.length) {
+      box.append(el("div", { class: "tiny" }, el("b", { text: "你今日喺急升榜買咗： " }), bought.map((b) => {
+        const live = res && res.rank && res.rank.get(b.pair);
+        return `${b.symbol}（${frTime(b.picked_at)} 買 · 當時第 ${b.rank_24h_at_pick || "–"} 名${live ? ` · 而家第 ${live.rank24} 名` : ""}）`;
+      }).join("、")));
+    }
+    if (!cards.length) { box.append(el("p", { class: "muted tiny", text: "未有對照 · 每晚 23:55 出。升前標記（標記時唔喺頭 20、24h 未升夠 15%）同遲咗嘅分開計。" })); return; }
     const c = cards[cards.length - 1];
     const w = sum.scorecard_7d || {};
+    const st = (k, v, s) => el("div", { class: "gacc-stat" }, el("div", { class: "k", text: k }), el("div", { class: "v num", text: v }), s ? el("div", { class: "tiny muted", text: s }) : "");
     box.append(el("div", { class: "gacc-grid" },
-      el("div", { class: "gacc-stat" }, el("div", { class: "k", text: `${c.date} 講中率` }), el("div", { class: "v num", text: c.precision_pct != null ? `${c.precision_pct}%` : "–" }), el("div", { class: "tiny muted", text: `${c.early_hits}/${c.flagged} 標記入頭 20` })),
-      el("div", { class: "gacc-stat" }, el("div", { class: "k", text: "捉到率" }), el("div", { class: "v num", text: `${c.recall_top20_pct}%` }), el("div", { class: "tiny muted", text: `頭 20 有幾多係升前標咗 · 頭 10：${c.recall_top10_pct}%` })),
-      el("div", { class: "gacc-stat" }, el("div", { class: "k", text: `7 日講中率` }), el("div", { class: "v num", text: w.precision_pct != null ? `${w.precision_pct}%` : "–" }), el("div", { class: "tiny muted", text: `${w.early_hits || 0}/${w.flagged || 0} · ${w.days || 0} 日` })),
-      el("div", { class: "gacc-stat" }, el("div", { class: "k", text: "7 日捉到率" }), el("div", { class: "v num", text: w.recall_top20_pct != null ? `${w.recall_top20_pct}%` : "–" }))));
+      st(`${c.date} 講中率（升前）`, c.precision_pct != null ? `${c.precision_pct}%` : "–", `${c.early_hits}/${c.early_flagged ?? c.flagged} 升前標記入頭 20`),
+      st("捉到率（升前）", `${c.recall_top20_pct}%`, `頭 20 有幾多升前標咗 · 頭 10：${c.recall_top10_pct}%`),
+      st("遲咗（已升先標）", `${c.late_hits}/${c.late_flagged ?? "–"}`, "唔計入講中／捉到"),
+      st("7 日講中／捉到", `${w.precision_pct ?? "–"}% / ${w.recall_top20_pct ?? "–"}%`, `${w.early_hits || 0}/${w.early_flagged ?? w.flagged ?? 0} · ${w.days || 0} 日`)));
     box.append(el("div", { class: "gcard-trend tiny muted", text: "7 日：" + cards.map((x) => `${x.date.slice(5)} 中${x.precision_pct ?? "–"}%/捉${x.recall_top20_pct}%`).join(" · ") }));
-    if (c.hits && c.hits.length) box.append(el("div", { class: "tiny" }, el("b", { text: "中： " }), c.hits.map((h) => `${h.symbol}（${frTime(h.flag_time)} 標 · 第 ${h.final_rank} 名${h.lead_h != null ? ` · 早 ${h.lead_h}h 到頂` : ""}）`).join("、")));
-    if (c.late_hits) box.append(el("div", { class: "tiny muted", text: `遲咗（已經升先標）：${c.late_hits} 隻` }));
+    if (c.hits && c.hits.length) box.append(el("div", { class: "tiny" }, el("b", { text: "升前中： " }), c.hits.map((h) => `${h.symbol}（${frTime(h.flag_time)} 標 · 第 ${h.final_rank} 名${h.lead_h != null ? ` · 早 ${h.lead_h}h 到頂` : ""}）`).join("、")));
+    if (c.late && c.late.length) box.append(el("div", { class: "tiny muted", text: "遲咗： " + c.late.map((h) => `${h.symbol}（${frTime(h.flag_time)} 標時已第 ${h.rank_24h_at_flag ?? "–"} 名）`).join("、") }));
     if (c.missed && c.missed.length) box.append(el("div", { class: "tiny muted", text: "走漏： " + c.missed.join("、") }));
   }
 
@@ -1356,7 +1421,6 @@
     renderDailyBatchTable();
     renderSimpleCards(simpleBuys);
     loadLiveBnPicks(false);
-    loadGainerBoard(false);
     // Keep WS alive so follow-report / card marks tick even with empty portfolio
     try {
       if (window.MCE.live) {
@@ -2168,6 +2232,7 @@
         floatPop((res.lev || "") + "x"); pfMode = "lev";
       } else {
         await doBuySpot(info, li, res.amt);
+        if (info.onFilled) { try { info.onFilled(res); } catch (_) {} }
         toast(`已現貨落倉 $${info.symbol} · ${money2(res.amt)}`, "ok");
         floatPop("✓"); pfMode = "spot";
       }
@@ -2972,7 +3037,15 @@
   };
   if ($("livePicksRefresh")) $("livePicksRefresh").addEventListener("click", () => loadLiveBnPicks(true));
   if ($("gainerRefresh")) $("gainerRefresh").addEventListener("click", () => loadGainerBoard(true));
-  setInterval(() => { if (document.visibilityState === "visible" && !$("view-picks")?.hidden) loadGainerBoard(false); }, 2 * 60_000);
+  // 急升榜: own boot + rescan every 90s on ANY tab (decoupled from loadPicks / renderPicks).
+  function bootGainer() {
+    loadGainerBoard(false);
+    if (window.MCE.live && window.MCE.live.onTick) window.MCE.live.onTick(onGainerTick);
+    setInterval(() => { if (document.visibilityState === "visible") loadGainerBoard(false); }, 90_000);
+    setInterval(paintGainerLive, 10_000);
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - gbLastScan > 90_000) loadGainerBoard(false); });
+  }
+  bootGainer();
   // Kick live BN picks ASAP for home
   loadLiveBnPicks(false);
 

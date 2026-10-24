@@ -1547,3 +1547,15 @@ dialog#tradeDlg .trade-exit-guide.teg-momentum{border-color:#7f1d1d}
 .gb-btchip{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:0 10px;border-radius:8px;border:1px solid var(--line-strong);background:#0f1420;font-size:12px;font-weight:800;white-space:nowrap}
 .gb-btchip.neg{color:var(--red);border-color:#7a2030}
 .gb-btchip.pos{color:var(--green)}
+.gb-livebar{margin:2px 0 0;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.gb-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+.gb-dot.on{background:var(--green);box-shadow:0 0 0 0 rgba(14,203,129,.6);animation:gbpulse 1.6s infinite}
+@keyframes gbpulse{0%{box-shadow:0 0 0 0 rgba(14,203,129,.55)}70%{box-shadow:0 0 0 7px rgba(14,203,129,0)}100%{box-shadow:0 0 0 0 rgba(14,203,129,0)}}
+.gb-min{display:grid;grid-template-columns:1.2fr 1.2fr .9fr;gap:6px;padding:8px;border-radius:8px;background:#0f1420}
+.gb-min > div{display:flex;flex-direction:column;min-width:0}
+.gb-min .k{font-size:10px;color:var(--muted);font-weight:700}
+.gb-min b{font-size:12px;overflow-wrap:anywhere}
+.gb-details summary{cursor:pointer;color:var(--accent);font-size:12px;font-weight:700;list-style:none}
+.gb-details summary::-webkit-details-marker{display:none}
+.gb-det-body{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.gb-row.gb-cand{opacity:.92}

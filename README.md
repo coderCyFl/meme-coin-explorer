@@ -29,16 +29,17 @@ Tabs: 揀幣 · 睇幣 (Coin Mood / Binance board) · Crypto.M · 新聞 · opti
 - **Full-mode 市場掃描**: optional DexScreener table (boosts/search) — not home, not hot list, not AI picks.
 
 ## 急升榜 (high-risk gainer board) — separate from AI picks
-- **🔥 急升** (live, client-side, Binance public REST via `data-api.binance.vision`): 1 MINI `ticker/24hr` call + ≤16 `klines` (1h×26) every 2 min.
-  Rule (backtested): 24h ≥ +20% **and** within 10% of the 24h high; if < 6 hits, fill with 「候補」 (24h ≥ +5%, ≤ 30% off high). USDT spot only,
+- **🔥 急升** (live, client-side, Binance public REST via `data-api.binance.vision`): 1 MINI `ticker/24hr` call + ≤16 `klines` (1h×50) — rescans every 90 s on **any tab** (while the page is visible), and prices / 24h % / P&L tick live via the Binance WS (`data-stream.binance.vision` miniTicker; gainer symbols are added to the stream). Live dot + 「更新 HH:MM:SS」. It is the **first section** on the home page.
+  Rule (backtested): 24h ≥ +20% **and** within 10% of the 24h high; if < 6 hits, fill with 「候補」 (24h ≥ +5%, ≤ 30% off high) — **候補 is watch-only** (no buy button, never in the 🔥 alert).
+  Card = coin · 24h % · price · 目標 · 止蝕 · 幾時放 · buy (🔥 only, with the 「回測平均 x%」 test-half chip); spark, badges, alert grid, ladder, money line and backtest sit under 「詳情」. Trigger time = start of the current run of closed 1h bars meeting the rule (real bar time). USDT spot only,
   stables / leveraged tokens excluded, 24h quote volume ≥ $3M. Paper **spot** buy, default 2× normal size (1x/2x/3x chips), **not** halved by the weak-market gate.
 - **⚡ 早期訊號 · 觀察**: 1h quote volume ≥ 2× its 24h average **and** previous hour ≥ 1.5× (volume keeps rising), 1h ≥ +3%, 24h < +15%.
   Computed hourly by GitHub Actions (needs volume for every liquid coin), read from `data/gainer_board/latest.json`. **Watch-only** — it failed the 30d buy gate (no buy button).
 - **Exit (「幾時可以放」)**: TP ladder +20% (sell half, move stop to cost) → +50% (sell rest); stop −10%; recheck 4h; hold max 12h. Locked on the position (`exitRegime: "momentum"`).
 - **Alert** row: 觸發時間 · 觸發後 % · 入場 · 目標 · 止蝕. Every view is logged in `localStorage` (`mce:gainer:log:v1`: symbol, pair, tier, picked_at, entry_price_usd, change_24h_at_pick, rank_24h_at_pick, batch, score).
 - **Accuracy pipeline** (`.github/workflows/gainer-board.yml`, no AI / no X / no secrets):
-  - hourly `scripts/gainer_board.py hourly` → seal due 4h/24h outcomes with Binance **1m** klines (max gain, close, max drawdown, hit +20/+50%), snapshot both tiers to `data/gainer_board/snapshots/YYYY-MM-DD.json`, rebuild `summary.json` + `latest.json`, then dispatch the Pages deploy.
-  - daily 23:55 Asia/Shanghai `scorecard` → `data/gainer_board/daily_vs_gainers/YYYY-MM-DD.json`: our flags (🔥/⚡/main picks) vs Binance top-20 24h gainers. 講中率 (precision) and 捉到率 (recall) count only flags made **before** the run (rank > 20 and 24h < +15% at flag time; otherwise "late"). 7-day rollup in `summary.json`.
+  - every 30 min (`5,35 * * * *`) `scripts/gainer_board.py hourly` → seal due 4h/24h outcomes with Binance **1m** klines (max gain, close, max drawdown, hit +20/+50%), snapshot both tiers to `data/gainer_board/snapshots/YYYY-MM-DD.json`, rebuild `summary.json` + `latest.json`, then dispatch the Pages deploy.
+  - daily 23:55 Asia/Shanghai `scorecard` → `data/gainer_board/daily_vs_gainers/YYYY-MM-DD.json`: our flags (🔥/⚡/main picks) vs the real Binance top-20 24h gainers (all USDT spot, stables / leveraged tokens / leveraged ETF tokens excluded, no volume floor). Dated by the **scheduled** date (a late run after midnight still files under the previous day). Early and late flags reported separately; `buyable` flags tracked; the site also lists rows this browser actually bought today. 講中率 (precision) and 捉到率 (recall) count only flags made **before** the run (rank > 20 and 24h < +15% at flag time; otherwise "late"). 7-day rollup in `summary.json`.
   - `scripts/gainer_backtest.py` → `data/gainer_board/backtest_30d.json`: all ~500 USDT pairs, 30d of 1h klines, volume floor at signal time, 4h horizon, 4h cooldown, train/test split.
 
 ## Run locally

@@ -101,6 +101,7 @@
   let lastUi = 0;
   let liveModeOn = false;
   let getPositions = () => ({ spot: [], lev: [] });
+  let extraSyms = new Set(); // e.g. 急升榜 coins outside the curated board → WS miniTicker too
 
   const keyOf = (chain, pair) => chain + ":" + pair;
   const mintKey = (chain, token) => (chain && token ? String(chain).toLowerCase() + ":" + String(token) : "");
@@ -594,17 +595,18 @@
   const GB_STABLE = new Set(["USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1",
     "BFUSD", "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"]);
   const GB_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
+  const GB_LEV_ETF = new Set(["SOXLB", "SOXSB", "SQQQB", "TQQQB", "TMFB", "UVXYB", "KORUB", "MUUB", "SNXXB", "MVLLB"]);
   const GB_MIN_QV = 3e6;       // min 24h quote volume (USDT)
   const GB_PUMP_C24 = 20, GB_PUMP_FH = -10;     // 🔥 rule (backtested)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits
-  const GB_POOL = 16;          // klines (1h×26) fetched only for these
+  const GB_POOL = 16;          // klines (1h×50) fetched only for these
   const GB_TTL = 2 * 60_000;
   let gainerCache = { t: 0, rows: [] };
 
   function gainerEligible(sym, qv) {
     if (!sym.endsWith("USDT")) return false;
     const base = sym.slice(0, -4);
-    if (GB_STABLE.has(base)) return false;
+    if (GB_STABLE.has(base) || GB_LEV_ETF.has(base)) return false;
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && !GB_LEV_OK.has(base)) return false;
     return qv >= GB_MIN_QV;
   }
@@ -629,6 +631,23 @@
       clampNum(Math.log2(Math.max(volRatio, 0.01)) * 8, -5, 20) +
       clampNum(t.chg24 / 3, 0, 15) + clampNum(15 + fromHigh * 0.75, -15, 15);
     return { c1h, c4h, volRatio, volRatioPrev, fromHigh, score: Math.round(score * 10) / 10, n };
+  }
+
+  /** Real 🔥 trigger: start of the current run of closed 1h bars meeting the rule (24h ≥ +20%, ≤10% off 24h high). */
+  function pumpTrigger(bars) {
+    const closed = bars.slice(0, -1);
+    const m = closed.length;
+    if (m < 26) return null;
+    const ok = (i) => {
+      if (i < 24) return false;
+      const c24 = (closed[i].c / closed[i - 24].c - 1) * 100;
+      let hi = 0; for (let k = i - 23; k <= i; k++) hi = Math.max(hi, closed[k].h);
+      return c24 >= GB_PUMP_C24 && (closed[i].c / hi - 1) * 100 >= GB_PUMP_FH;
+    };
+    if (!ok(m - 1)) return null;
+    let i = m - 1;
+    while (i - 1 >= 24 && ok(i - 1)) i--;
+    return { t: closed[i].t + 3600e3, price: closed[i].c, sinceStart: i === 24 };
   }
 
   /** 1 MINI 24hr ticker call + ≤16 1h-kline calls, cached 2 min. Throws on ticker failure. */
@@ -660,9 +679,10 @@
       while (queue.length) {
         const t = queue.shift();
         let bars = [];
-        try { bars = await fetchKlineBars(t.symbol, { interval: "1h", limit: 26 }); } catch (_) {}
+        try { bars = await fetchKlineBars(t.symbol, { interval: "1h", limit: 50 }); } catch (_) {}
         const f = bars.length >= 6 ? gainerScore(t, bars) : { c1h: null, c4h: null, volRatio: null, volRatioPrev: null, fromHigh: t.fromHigh, score: 0 };
-        out.push({ ...t, ...f, spark: bars.map((b) => b.c).concat([t.price]), logo: logoUrl(t.base) });
+        const trig = t.tier === "pump" ? pumpTrigger(bars) : null;
+        out.push({ ...t, ...f, trigger: trig, spark: bars.slice(-25).map((b) => b.c).concat([t.price]), logo: logoUrl(t.base) });
       }
     }));
     const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.score - a.score);
@@ -681,7 +701,7 @@
       await seedBoardRest(boardSymbols);
       boardReady = true;
       const { bnNeeded } = collectTargets();
-      const all = [...new Set([...boardSymbols, ...bnNeeded])];
+      const all = [...new Set([...boardSymbols, ...bnNeeded, ...extraSyms])];
       rebuildWs(all);
       // Warm sparklines for top / selected (non-blocking)
       warmSparks(boardSymbols, 24).then(() => notify(true));
@@ -775,7 +795,7 @@
     await ensureExchangeInfo();
     if (!boardReady) await ensureBoard(false);
     const { bnNeeded } = collectTargets();
-    const allBn = [...new Set([...boardSymbols, ...bnNeeded])];
+    const allBn = [...new Set([...boardSymbols, ...bnNeeded, ...extraSyms])];
     rebuildWs(allBn);
     if (dexTargets.length) await pollDex();
     const missing = bnNeeded.filter((s) => !(getMark("binance", s)?.price > 0) && !(board.get(s)?.price > 0));
@@ -844,11 +864,21 @@
     }
   });
 
+  /** Add symbols (e.g. 急升榜 rows) to the WS miniTicker set so price / 24h % tick without refresh. */
+  function watchExtra(list) {
+    const next = new Set((list || []).filter((s) => !bnListed || !bnListed.size || bnListed.has(s)));
+    const same = next.size === extraSyms.size && [...next].every((s) => extraSyms.has(s));
+    if (same && ws && ws.readyState <= 1) return;
+    extraSyms = next;
+    const { bnNeeded } = collectTargets();
+    rebuildWs([...new Set([...boardSymbols, ...bnNeeded, ...extraSyms])]);
+  }
+
   window.MCE = window.MCE || {};
   window.MCE.live = {
     start, stop, sync, onTick, getMark, sourceLabel, setLiveMode, classify,
     hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, fetchKlineBars, warmSparks,
-    sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks, computeGainerBoard,
+    sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks, computeGainerBoard, watchExtra,
     logoUrl, coinLogoEl, letterAvatar, ICON_EMOJI,
     DEX_POLL_MS, MINT_TO_BN, CURATED_BASES, BN_REST,
     get running() { return running; },

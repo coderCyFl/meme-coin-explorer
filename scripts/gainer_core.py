@@ -13,6 +13,8 @@ UA = {"User-Agent": "meme-coin-explorer/gainer-board"}
 STABLE = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1", "BFUSD",
           "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"}
 LEV_OK = {"JUP", "SYRUP", "SUP"}
+# Binance tokenized leveraged / inverse ETFs (xStock "…B" bases) — leveraged products, excluded like UP/DOWN.
+LEV_ETF = {"SOXLB", "SOXSB", "SQQQB", "TQQQB", "TMFB", "UVXYB", "KORUB", "MUUB", "SNXXB", "MVLLB"}
 MIN_QV24 = 3e6  # min rolling 24h quote volume (USDT)
 
 
@@ -31,7 +33,7 @@ def eligible_symbol(sym):
     if not sym.endswith("USDT"):
         return False
     base = sym[:-4]
-    if base in STABLE:
+    if base in STABLE or base in LEV_ETF:
         return False
     if re.search(r"(UP|DOWN|BULL|BEAR)$", base) and base not in LEV_OK:
         return False

@@ -62,7 +62,9 @@ def snap_files(days=None):
     return fs[-days:] if days else fs
 
 
-def eligible_tickers():
+def all_tickers():
+    """Every TRADING Binance USDT spot pair (stables / leveraged excluded), ranked by 24h % — the real
+    Binance gainer list. No volume floor here; signals apply g.MIN_QV24 separately."""
     listed = set(g.universe())
     out = []
     for x in g.get("/api/v3/ticker/24hr", {"type": "MINI"}):
@@ -70,12 +72,16 @@ def eligible_tickers():
         if s not in listed:
             continue
         last, op, qv = float(x["lastPrice"]), float(x["openPrice"]), float(x["quoteVolume"])
-        if last > 0 and op > 0 and qv >= g.MIN_QV24:
+        if last > 0 and op > 0:
             out.append({"pair": s, "price": last, "chg24": (last / op - 1) * 100, "qv": qv, "high": float(x["highPrice"])})
     out.sort(key=lambda r: -r["chg24"])
     for i, r in enumerate(out):
         r["rank"] = i + 1
     return out
+
+
+def eligible_tickers(allt=None):
+    return [r for r in (allt or all_tickers()) if r["qv"] >= g.MIN_QV24]
 
 
 # ---------------- snapshot ----------------
@@ -92,7 +98,8 @@ def recent_flags(hours):
 
 def snapshot():
     t0 = now()
-    tick = eligible_tickers()
+    allt = all_tickers()
+    tick = eligible_tickers(allt)
     btc = next((r for r in tick if r["pair"] == "BTCUSDT"), None)
     cool = {(e["pair"], e["tier"]) for e in recent_flags(g.COOLDOWN_H - 0.1)}
     fires = {"pump": [], "early": []}
@@ -128,8 +135,8 @@ def snapshot():
     day = jload(fn, {"date": t0.strftime("%Y-%m-%d"), "batches": []})
     day["batches"].append({
         "batch": batch, "picked_at": iso(t0), "universe": len(tick),
-        "btc_24h_pct": round(btc["chg24"], 2) if btc else None,
-        "top20_24h": [r["pair"] for r in tick[:20]], "entries": entries,
+        "btc_24h_pct": round(btc["chg24"], 2) if btc else None, "universe_all": len(allt),
+        "top20_24h": [r["pair"] for r in allt[:20]], "entries": entries,
     })
     jsave(fn, day)
     print(f"snapshot {batch}: {len(tick)} eligible, pump {len(fires['pump'])}, early {len(fires['early'])}")
@@ -204,12 +211,22 @@ def main_picks_on(date):
     return res
 
 
+def scheduled_date(t=None):
+    """Scorecard date = the scheduled 23:55 Asia/Shanghai day. A run GitHub delays past midnight
+    (before 12:00) still belongs to the previous day."""
+    t = t or now()
+    if t.hour < 12:
+        t = t - datetime.timedelta(days=1)
+    return t.strftime("%Y-%m-%d")
+
+
 def scorecard(date=None):
     t0 = now()
-    date = date or t0.strftime("%Y-%m-%d")
-    tick = eligible_tickers()
-    top20 = tick[:20]
+    date = date or scheduled_date(t0)
+    allt = all_tickers()           # real Binance gainers: all USDT spot, stables/leveraged excluded
+    top20 = allt[:20]
     top_pairs = [r["pair"] for r in top20]
+    by_pair = {r["pair"]: r for r in allt}
     day = jload(os.path.join(SNAP, date + ".json"), {"batches": []})
     flags = [e for b in day["batches"] for e in b.get("entries", [])] + main_picks_on(date)
     first = {}
@@ -221,10 +238,12 @@ def scorecard(date=None):
         rk, c24 = e.get("rank_24h_at_pick"), e.get("change_24h_at_pick")
         late = (rk is not None and rk <= 20) or (c24 is not None and c24 >= 15)
         in_top = pair in top_pairs
-        row = {"symbol": pair[:-4], "pair": pair, "tiers": sorted(v["tiers"]), "flag_time": e["picked_at"],
-               "rank_24h_at_flag": rk, "change_24h_at_flag": c24, "entry_price_usd": e.get("entry_price_usd"),
-               "late": bool(late), "in_top20": in_top, "final_rank": top_pairs.index(pair) + 1 if in_top else None,
-               "final_change_24h": next((round(r["chg24"], 2) for r in tick if r["pair"] == pair), None)}
+        row = {"symbol": pair[:-4], "pair": pair, "tiers": sorted(v["tiers"]),
+               "buyable": bool(v["tiers"] & {"pump", "main"}),  # rows that had a buy button
+               "flag_time": e["picked_at"], "rank_24h_at_flag": rk, "change_24h_at_flag": c24,
+               "entry_price_usd": e.get("entry_price_usd"), "late": bool(late), "in_top20": in_top,
+               "final_rank": top_pairs.index(pair) + 1 if in_top else None,
+               "final_change_24h": round(by_pair[pair]["chg24"], 2) if pair in by_pair else None}
         if in_top:
             try:
                 bars = g.klines(pair, "1h", 24)
@@ -234,25 +253,36 @@ def scorecard(date=None):
             except Exception:  # noqa: BLE001
                 pass
         rows.append(row)
-    flagged = len(rows)
-    early_hits = [r for r in rows if r["in_top20"] and not r["late"]]
-    late_hits = [r for r in rows if r["in_top20"] and r["late"]]
+    early_rows = [r for r in rows if not r["late"]]
+    late_rows = [r for r in rows if r["late"]]
+    early_hits = [r for r in early_rows if r["in_top20"]]
+    late_hits = [r for r in late_rows if r["in_top20"]]
     caught = {r["pair"] for r in early_hits}
     top10 = set(top_pairs[:10])
+    pc = lambda a, b: round(a / b * 100, 1) if b else None
     card = {
-        "date": date, "taken_at": iso(t0), "universe": len(tick),
-        "rule": "Top 20 = Binance USDT spot by 24h % at 23:55 (same filters as board). A flag counts only if made BEFORE the run: rank_24h_at_flag > 20 and 24h % < +15% at flag time; otherwise 'late'.",
-        "flagged": flagged, "early_hits": len(early_hits), "late_hits": len(late_hits),
-        "precision_pct": round(len(early_hits) / flagged * 100, 1) if flagged else None,
-        "recall_top20_pct": round(len(caught) / max(1, len(top20)) * 100, 1),
-        "recall_top10_pct": round(len(caught & top10) / max(1, min(10, len(top20))) * 100, 1),
+        "date": date, "scheduled_for": f"{date}T23:55:00+08:00", "taken_at": iso(t0), "universe_all": len(allt),
+        "rule": ("Top 20 = ALL Binance USDT spot pairs (stables / leveraged excluded, no volume floor) by 24h %, "
+                 "taken at the 23:55 Asia/Shanghai run. A flag is EARLY only if rank_24h_at_flag > 20 and 24h % < +15% "
+                 "at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately."),
+        "flagged": len(rows), "early_flagged": len(early_rows), "late_flagged": len(late_rows),
+        "early_hits": len(early_hits), "late_hits": len(late_hits),
+        "precision_pct": pc(len(early_hits), len(early_rows)),
+        "late_precision_pct": pc(len(late_hits), len(late_rows)),
+        "recall_top20_pct": pc(len(caught), len(top20)),
+        "recall_top10_pct": pc(len(caught & top10), min(10, len(top20))),
+        "late_recall_top20_pct": pc(len({r["pair"] for r in late_hits} - caught), len(top20)),
+        "buyable_flagged": sum(r["buyable"] for r in rows),
+        "buyable_early_hits": sum(r["buyable"] for r in early_hits),
         "hits": early_hits, "late": late_hits,
-        "missed": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2)} for r in top20 if r["pair"] not in caught],
-        "top20": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2)} for r in top20],
+        "missed": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2)} for r in top20
+                   if r["pair"] not in caught and r["pair"] not in {x["pair"] for x in late_hits}],
+        "top20": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2), "quote_volume_24h": round(r["qv"])} for r in top20],
         "flags": rows,
     }
     jsave(os.path.join(CARD, date + ".json"), card)
-    print(f"scorecard {date}: flagged {flagged}, early hits {len(early_hits)}, late {len(late_hits)}, recall {card['recall_top20_pct']}%")
+    print(f"scorecard {date}: flagged {len(rows)} (early {len(early_rows)} / late {len(late_rows)}), "
+          f"early hits {len(early_hits)}, late hits {len(late_hits)}, recall {card['recall_top20_pct']}%")
 
 
 # ---------------- summary ----------------
@@ -294,7 +324,7 @@ def summary():
            for t, v in (bt.get("tiers") or {}).items()}
     cards = [jload(fn, None) for fn in sorted(glob.glob(os.path.join(CARD, "*.json")))[-7:]]
     cards = [c for c in cards if c]
-    fl = sum(c["flagged"] for c in cards)
+    fl = sum(c.get("early_flagged", c["flagged"]) for c in cards)
     eh = sum(c["early_hits"] for c in cards)
     rc = sum(round(c["recall_top20_pct"] * len(c["top20"]) / 100) for c in cards)
     tt = sum(len(c["top20"]) for c in cards)
@@ -304,10 +334,13 @@ def summary():
         "updated_at": iso(now()), "batches": len(allb), "flags": len(es),
         "horizons": horizons, "tiers": tiers, "latest_4h": latest4,
         "backtest_30d": {"generated_at": bt.get("generated_at"), "window": bt.get("window"), "tiers": btd},
-        "scorecards": [{k: c[k] for k in ("date", "flagged", "early_hits", "late_hits", "precision_pct", "recall_top20_pct", "recall_top10_pct")}
+        "scorecards": [{k: c.get(k) for k in ("date", "flagged", "early_flagged", "late_flagged", "early_hits", "late_hits",
+                                               "precision_pct", "late_precision_pct", "recall_top20_pct", "recall_top10_pct", "buyable_flagged")}
                        | {"hits": [{"symbol": h["symbol"], "flag_time": h["flag_time"], "final_rank": h["final_rank"], "lead_h": h.get("lead_h")} for h in c["hits"]],
+                          "late": [{"symbol": h["symbol"], "flag_time": h["flag_time"], "rank_24h_at_flag": h.get("rank_24h_at_flag"), "final_rank": h["final_rank"]} for h in c.get("late", [])],
                           "missed": [m["symbol"] for m in c["missed"]][:10]} for c in cards],
-        "scorecard_7d": {"days": len(cards), "flagged": fl, "early_hits": eh,
+        "scorecard_7d": {"days": len(cards), "early_flagged": fl, "flagged": sum(c["flagged"] for c in cards), "early_hits": eh,
+                         "late_hits": sum(c["late_hits"] for c in cards),
                          "precision_pct": round(eh / fl * 100, 1) if fl else None,
                          "recall_top20_pct": round(rc / tt * 100, 1) if tt else None},
     }

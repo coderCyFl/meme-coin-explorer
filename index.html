@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crypto.M · Meme Coin Explorer</title>
 <meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。唔係投資建議。">
-<link rel="stylesheet" href="styles.css?v=20261025a1">
-<link rel="icon" href="favicon.ico?v=20261025a1" sizes="48x48">
-<link rel="icon" href="favicon.svg?v=20261025a1" type="image/svg+xml">
-<link rel="icon" href="icons/icon-32.png?v=20261025a1" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-16.png?v=20261025a1" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261025a1" sizes="180x180">
-<link rel="manifest" href="site.webmanifest?v=20261025a1">
+<link rel="stylesheet" href="styles.css?v=20261025b1">
+<link rel="icon" href="favicon.ico?v=20261025b1" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=20261025b1" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png?v=20261025b1" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png?v=20261025b1" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261025b1" sizes="180x180">
+<link rel="manifest" href="site.webmanifest?v=20261025b1">
 <meta name="theme-color" content="#0b0e11">
 </head>
 <body>
@@ -22,7 +22,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261025a1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
+    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261025b1" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
       <h1>Crypto.M</h1>
       <p class="sub">Crypto.M · Binance 公開行情 · 假錢紙上倉</p>
@@ -167,6 +167,32 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <!-- ===== 今日跟買 ===== -->
 <div id="view-picks" class="view" hidden>
+  <!-- ===== 急升榜 (high-risk, separate from AI picks; not halved by weak-market gate) ===== -->
+  <section class="panel gainer-panel" id="gainerPanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title">急升榜 <span class="gb-risk gb-risk-lg">高風險</span></h2>
+        <p class="gb-livebar"><span class="gb-dot" id="gainerLive" aria-hidden="true"></span><span>即時</span> · <span id="gainerUpdated">連接中…</span></p>
+        <p class="home-sub" id="gainerMeta">Binance 現貨急升幣 · 同 AI 跟買分開</p>
+      </div>
+      <div class="row wrap home-tools">
+        <div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div>
+        <button type="button" id="gainerRefresh" class="ghost sm" title="重掃">↻</button>
+      </div>
+    </div>
+    <p class="gb-warn tiny">追升紙上玩：中 +20% 機會低（見每層 30 日回測），一定要跟止蝕。只用 Binance 公開數據。</p>
+    <div class="gb-alert" id="gainerAlert" hidden></div>
+    <h3 class="gb-tier-title">🔥 急升 <span class="muted tiny">24h ≥ +20% 兼離 24h 高 ≤ 10%· 唔夠 6 隻補「候補」（只觀察、冇買入）</span></h3>
+    <div id="gainerPumpBt"></div>
+    <div id="gainerList" class="gb-list"></div>
+    <h3 class="gb-tier-title">⚡ 早期訊號 · 觀察 <span class="muted tiny">量連續 2 個鐘升（≥2x 平均）+ 1h ≥ +3% · 未急升</span></h3>
+    <p class="gb-warn tiny">⚡ 30 日回測過唔到買入門檻，所以只做觀察、冇買入掣。</p>
+    <div id="gainerEarlyBt"></div>
+    <div id="earlyList" class="gb-list"></div>
+    <div class="gacc" id="gainerAcc"></div>
+    <div class="gacc" id="gainerCard"></div>
+  </section>
+
   <!-- Simple home: brief + cards + portfolio strip -->
   <!-- Big numbers first: paper follow report -->
   <section class="panel follow-report" id="followReportPanel" aria-live="polite">
@@ -217,31 +243,6 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
     <div id="simpleCards" class="simple-cards"></div>
     <div class="simple-pf-mini pf-glance mini" id="simplePfMini" aria-live="polite"></div>
-  </section>
-
-  <!-- ===== 急升榜 (high-risk, separate from AI picks; not halved by weak-market gate) ===== -->
-  <section class="panel gainer-panel" id="gainerPanel" aria-live="polite">
-    <div class="panelhead">
-      <div>
-        <h2 class="home-title">急升榜 <span class="gb-risk gb-risk-lg">高風險</span></h2>
-        <p class="home-sub" id="gainerMeta">Binance 現貨急升幣 · 同 AI 跟買分開</p>
-      </div>
-      <div class="row wrap home-tools">
-        <div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div>
-        <button type="button" id="gainerRefresh" class="ghost sm" title="重掃">↻</button>
-      </div>
-    </div>
-    <p class="gb-warn tiny">追升紙上玩：中 +20% 機會低（見每層 30 日回測），一定要跟止蝕。只用 Binance 公開數據。</p>
-    <div class="gb-alert" id="gainerAlert" hidden></div>
-    <h3 class="gb-tier-title">🔥 急升 <span class="muted tiny">24h ≥ +20% 兼離 24h 高 ≤ 10%（唔夠 6 隻補「候補」：24h ≥ +5%）</span></h3>
-    <div id="gainerPumpBt"></div>
-    <div id="gainerList" class="gb-list"></div>
-    <h3 class="gb-tier-title">⚡ 早期訊號 · 觀察 <span class="muted tiny">量連續 2 個鐘升（≥2x 平均）+ 1h ≥ +3% · 未急升</span></h3>
-    <p class="gb-warn tiny">⚡ 30 日回測過唔到買入門檻，所以只做觀察、冇買入掣。</p>
-    <div id="gainerEarlyBt"></div>
-    <div id="earlyList" class="gb-list"></div>
-    <div class="gacc" id="gainerAcc"></div>
-    <div class="gacc" id="gainerCard"></div>
   </section>
 
   <section class="panel pump-mirror simple-only" id="chasePanel">
@@ -697,9 +698,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <a href="#more" class="tab bn-simple" data-view="more"><span class="ico" aria-hidden="true">⋯</span><span class="bn-lab">更多</span></a>
 </nav>
 
-<script src="live.js?v=20261025a1"></script>
-<script src="coin3d.js?v=20261025a1"></script>
-<script src="app.js?v=20261025a1"></script>
-<script src="picks.js?v=20261025a1"></script>
+<script src="live.js?v=20261025b1"></script>
+<script src="coin3d.js?v=20261025b1"></script>
+<script src="app.js?v=20261025b1"></script>
+<script src="picks.js?v=20261025b1"></script>
 </body>
 </html>
