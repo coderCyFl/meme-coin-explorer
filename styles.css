@@ -1819,3 +1819,13 @@ button.allin-btn.allin-btn:hover,button.allin-btn.sm:hover,button.primary.sm:hov
 .allin-exit{white-space:pre-line;font-size:12px;line-height:1.4;color:var(--muted);margin:6px 0 2px;font-variant-numeric:tabular-nums}
 .allin-exit-line{font-size:12.5px;color:#EAECEF;font-variant-numeric:tabular-nums}
 .pd-levstop{font-size:12px;color:#F0B90B;margin-top:2px}
+/* stop hit: red TEXT on dark only (no fills) */
+.pos-row .pr-exit.stop-hit,.stop-hit-txt{color:#F6465D!important;font-weight:700}
+.stop-hit-txt{font-size:13px;margin-top:2px}
+/* 360px: 50x badge never clipped — name + badge may wrap, never ellipsis */
+.pos-row .pr-id{overflow:visible!important}
+.pos-row .pr-nm{flex-wrap:wrap;row-gap:2px;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;gap:2px 5px}
+.pos-row .pr-nm b{overflow-wrap:anywhere;min-width:0}
+.pos-row .pr-lev{flex:none;white-space:nowrap}
+@media (max-width:380px){.pos-row .pr-nm{font-size:14px}.pos-row .pr-lev{font-size:10.5px;padding:0 4px}}
+#tradeExitMain{white-space:pre-line}
