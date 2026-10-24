@@ -6,12 +6,12 @@
    "base": "ANIME",
    "flag": "pump",
    "trigger_at": "2026-10-25T02:45:00+08:00",
-   "checked_at": "2026-10-25T04:38:00+08:00",
-   "posts_last_1h": 17,
+   "checked_at": "2026-10-25T05:09:00+08:00",
+   "posts_last_1h": 19,
    "posts_prev_6h_avg_per_h": 10.0,
-   "spike_ratio": 1.7,
+   "spike_ratio": 1.9,
    "verdict": "升溫",
-   "one_line": "訊號群刷屏升溫，冇大V",
+   "one_line": "帖文升緊，但多係訊號群刷屏",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -21,29 +21,67 @@
      "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
      "likes": 2,
      "author_username": "Letsmakeatradex",
-     "author_followers": 1488,
-     "created_at": "2026-10-25T03:19:09+08:00"
+     "author_followers": 1488
     },
     {
-     "id": "2114027611684819290",
-     "url": "https://x.com/RetroOG_/status/2114027611684819290",
-     "text": "Buying $ANIME at this point Big pump coming",
-     "likes": 1,
-     "author_username": "RetroOG_",
-     "author_followers": 2367,
-     "created_at": "2026-10-25T00:13:54+08:00"
+     "id": "2114090318509527205",
+     "url": "https://x.com/SceneCentral255/status/2114090318509527205",
+     "text": "New signal Coin: $ANIME/USDT Signal type: Long Entry 0.002786 Leverage: 20x",
+     "likes": 2,
+     "author_username": "SceneCentral255",
+     "author_followers": 833
     },
     {
      "id": "2114045225316561275",
      "url": "https://x.com/Blockchainmq1/status/2114045225316561275",
-     "text": "$ANIME Don't Mis Now or Never! 🚀 Price is around $0.00343 still about 98% below its $0.186 ATH with a $27M market cap. Up 20% today",
+     "text": "$ANIME Don't Mis Now or Never! 🚀 Price ~$0.00343, ~98% below ATH, $27M mcap. Up 20% today, volume nearly 2x market cap.",
      "likes": 1,
      "author_username": "Blockchainmq1",
-     "author_followers": 200,
-     "created_at": "2026-10-25T01:23:53+08:00"
+     "author_followers": 200
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
+  },
+  "EPICUSDT": {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T01:15:00+08:00",
+   "checked_at": "2026-10-25T05:09:00+08:00",
+   "posts_last_1h": 18,
+   "posts_prev_6h_avg_per_h": 11.5,
+   "spike_ratio": 1.57,
+   "verdict": "升溫",
+   "one_line": "討論微升，多係訊號號同機械人",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114051702928413181",
+     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
+     "text": "$epic delisting pump @cz_binance send it 🚀",
+     "likes": 2,
+     "author_username": "Arlind19061040",
+     "author_followers": 7
+    },
+    {
+     "id": "2114085839533740528",
+     "url": "https://x.com/cexscan/status/2114085839533740528",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) : ↑5.09%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10593
+    },
+    {
+     "id": "2114031185856696702",
+     "url": "https://x.com/Finora_EN/status/2114031185856696702",
+     "text": "@BillGamycho let's break down $EPIC #EPICUSDT on the daily: bias remains bearish, price well below EMA20 and EMA200, but deeply oversold",
+     "likes": 1,
+     "author_username": "Finora_EN",
+     "author_followers": 24406
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -129,15 +167,95 @@
      "created_at": "2026-10-25T01:23:53+08:00"
     }
    ]
+  },
+  {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T01:15:00+08:00",
+   "checked_at": "2026-10-25T05:09:00+08:00",
+   "posts_last_1h": 18,
+   "posts_prev_6h_avg_per_h": 11.5,
+   "spike_ratio": 1.57,
+   "verdict": "升溫",
+   "one_line": "討論微升，多係訊號號同機械人",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114051702928413181",
+     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
+     "text": "$epic delisting pump @cz_binance send it 🚀",
+     "likes": 2,
+     "author_username": "Arlind19061040",
+     "author_followers": 7
+    },
+    {
+     "id": "2114085839533740528",
+     "url": "https://x.com/cexscan/status/2114085839533740528",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) : ↑5.09%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10593
+    },
+    {
+     "id": "2114031185856696702",
+     "url": "https://x.com/Finora_EN/status/2114031185856696702",
+     "text": "@BillGamycho let's break down $EPIC #EPICUSDT on the daily: bias remains bearish, price well below EMA20 and EMA200, but deeply oversold",
+     "likes": 1,
+     "author_username": "Finora_EN",
+     "author_followers": 24406
+    }
+   ]
+  },
+  {
+   "symbol": "ANIMEUSDT",
+   "base": "ANIME",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T02:45:00+08:00",
+   "checked_at": "2026-10-25T05:09:00+08:00",
+   "posts_last_1h": 19,
+   "posts_prev_6h_avg_per_h": 10.0,
+   "spike_ratio": 1.9,
+   "verdict": "升溫",
+   "one_line": "帖文升緊，但多係訊號群刷屏",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114074235412852786",
+     "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
+     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
+     "likes": 2,
+     "author_username": "Letsmakeatradex",
+     "author_followers": 1488
+    },
+    {
+     "id": "2114090318509527205",
+     "url": "https://x.com/SceneCentral255/status/2114090318509527205",
+     "text": "New signal Coin: $ANIME/USDT Signal type: Long Entry 0.002786 Leverage: 20x",
+     "likes": 2,
+     "author_username": "SceneCentral255",
+     "author_followers": 833
+    },
+    {
+     "id": "2114045225316561275",
+     "url": "https://x.com/Blockchainmq1/status/2114045225316561275",
+     "text": "$ANIME Don't Mis Now or Never! 🚀 Price ~$0.00343, ~98% below ATH, $27M mcap. Up 20% today, volume nearly 2x market cap.",
+     "likes": 1,
+     "author_username": "Blockchainmq1",
+     "author_followers": 200
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 4,
+  "calls_today": 8,
   "cap_reached": false,
-  "updated_at": "2026-10-25T04:38:19+08:00"
+  "updated_at": "2026-10-25T05:09:10+08:00"
  },
- "updated_at": "2026-10-25T04:38:19+08:00",
+ "updated_at": "2026-10-25T05:09:10+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
