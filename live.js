@@ -287,7 +287,7 @@
       const closes = bars.map((b) => b.c);
       klineCache.set(key, { t: Date.now(), closes, bars });
       const row = board.get(symbol);
-      if (row) { row.spark = closes; board.set(symbol, row); }
+      if (row && interval !== "15m") { row.spark = closes; board.set(symbol, row); }
       return bars;
     } catch (e) {
       console.warn("klines failed", symbol, e);
@@ -588,6 +588,90 @@
     return setupCache;
   }
 
+  // ---------- 急升榜 (high-risk momentum board) ----------
+  // 🔥 rule mirrors scripts/gainer_core.py (24h >= +20% and within 10% of 24h high). ⚡ early tier is
+  // computed hourly by GitHub Actions (needs 1h volume for every liquid coin) and read from static JSON.
+  const GB_STABLE = new Set(["USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1",
+    "BFUSD", "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"]);
+  const GB_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
+  const GB_MIN_QV = 3e6;       // min 24h quote volume (USDT)
+  const GB_PUMP_C24 = 20, GB_PUMP_FH = -10;     // 🔥 rule (backtested)
+  const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits
+  const GB_POOL = 16;          // klines (1h×26) fetched only for these
+  const GB_TTL = 2 * 60_000;
+  let gainerCache = { t: 0, rows: [] };
+
+  function gainerEligible(sym, qv) {
+    if (!sym.endsWith("USDT")) return false;
+    const base = sym.slice(0, -4);
+    if (GB_STABLE.has(base)) return false;
+    if (/(UP|DOWN|BULL|BEAR)$/.test(base) && !GB_LEV_OK.has(base)) return false;
+    return qv >= GB_MIN_QV;
+  }
+
+  /** Same shape as gainer_core.score(); 1h bars (last one forming). */
+  function gainerScore(t, bars) {
+    const n = bars.length;
+    const p = t.price;
+    const closed = bars.slice(0, -1);
+    const m = closed.length;
+    const c1h = m >= 1 ? (p / closed[m - 1].c - 1) * 100 : 0;
+    const c4h = m >= 4 ? (p / closed[m - 4].c - 1) * 100 : 0;
+    const prior = closed.slice(Math.max(0, m - 25), m - 1);
+    const avgQ = prior.length ? prior.reduce((x, b) => x + b.qv, 0) / prior.length : 0;
+    const volRatio = avgQ > 0 && m ? closed[m - 1].qv / avgQ : 1;
+    const prior2 = closed.slice(Math.max(0, m - 26), m - 2);
+    const avgQ2 = prior2.length ? prior2.reduce((x, b) => x + b.qv, 0) / prior2.length : 0;
+    const volRatioPrev = avgQ2 > 0 && m > 1 ? closed[m - 2].qv / avgQ2 : 1;
+    const fromHigh = t.high > 0 ? (p / t.high - 1) * 100 : 0;
+    const score =
+      clampNum(c4h * 1.2, -20, 30) + clampNum(c1h * 2, -15, 20) +
+      clampNum(Math.log2(Math.max(volRatio, 0.01)) * 8, -5, 20) +
+      clampNum(t.chg24 / 3, 0, 15) + clampNum(15 + fromHigh * 0.75, -15, 15);
+    return { c1h, c4h, volRatio, volRatioPrev, fromHigh, score: Math.round(score * 10) / 10, n };
+  }
+
+  /** 1 MINI 24hr ticker call + ≤16 1h-kline calls, cached 2 min. Throws on ticker failure. */
+  async function computeGainerBoard({ force = false, n = 8 } = {}) {
+    if (!force && gainerCache.rows.length && Date.now() - gainerCache.t < GB_TTL) return gainerCache;
+    const listed = await ensureExchangeInfo();
+    const r = await fetch(BN_REST + "/api/v3/ticker/24hr?type=MINI", { headers: { Accept: "application/json" } });
+    if (!r.ok) throw new Error("ticker " + r.status);
+    const all = await r.json();
+    const elig = [];
+    const prices = new Map();
+    for (const x of all) {
+      const sym = x.symbol, qv = parseFloat(x.quoteVolume), last = parseFloat(x.lastPrice), open = parseFloat(x.openPrice);
+      if (listed.size && !listed.has(sym)) continue;
+      if (!(last > 0) || !(open > 0) || !gainerEligible(sym, qv)) continue;
+      prices.set(sym, last);
+      elig.push({ symbol: sym, base: sym.slice(0, -4), price: last, chg24: (last / open - 1) * 100, volQuote: qv,
+        high: parseFloat(x.highPrice) || null, low: parseFloat(x.lowPrice) || null, open });
+    }
+    elig.sort((a, b) => b.chg24 - a.chg24);
+    elig.forEach((t, i) => { t.rank24 = i + 1; t.fromHigh = t.high > 0 ? (t.price / t.high - 1) * 100 : 0; });
+    const hits = elig.filter((t) => t.chg24 >= GB_PUMP_C24 && t.fromHigh >= GB_PUMP_FH).map((t) => ({ ...t, tier: "pump" }));
+    const cands = elig.filter((t) => !(t.chg24 >= GB_PUMP_C24 && t.fromHigh >= GB_PUMP_FH) && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH)
+      .map((t) => ({ ...t, tier: "cand" }));
+    const pool = hits.concat(cands).slice(0, GB_POOL);
+    const out = [];
+    const queue = pool.slice();
+    await Promise.all(Array.from({ length: 4 }, async () => {
+      while (queue.length) {
+        const t = queue.shift();
+        let bars = [];
+        try { bars = await fetchKlineBars(t.symbol, { interval: "1h", limit: 26 }); } catch (_) {}
+        const f = bars.length >= 6 ? gainerScore(t, bars) : { c1h: null, c4h: null, volRatio: null, volRatioPrev: null, fromHigh: t.fromHigh, score: 0 };
+        out.push({ ...t, ...f, spark: bars.map((b) => b.c).concat([t.price]), logo: logoUrl(t.base) });
+      }
+    }));
+    const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.score - a.score);
+    const fill = out.filter((x) => x.tier === "cand").sort((a, b) => b.score - a.score);
+    const rows = pumps.concat(fill.slice(0, Math.max(0, 6 - pumps.length))).slice(0, n);
+    gainerCache = { t: Date.now(), rows, pool: elig.length, prices, rank: new Map(elig.map((t) => [t.symbol, t])) };
+    return gainerCache;
+  }
+
   async function ensureBoard(force) {
     if (boardReady && !force && board.size) return getBoardRows();
     if (boardLoading) return boardLoading;
@@ -764,7 +848,7 @@
   window.MCE.live = {
     start, stop, sync, onTick, getMark, sourceLabel, setLiveMode, classify,
     hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, fetchKlineBars, warmSparks,
-    sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks,
+    sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks, computeGainerBoard,
     logoUrl, coinLogoEl, letterAvatar, ICON_EMOJI,
     DEX_POLL_MS, MINT_TO_BN, CURATED_BASES, BN_REST,
     get running() { return running; },

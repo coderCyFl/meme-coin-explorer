@@ -1,0 +1,117 @@
+{
+ "updated_at": "2026-10-24T23:58:58+08:00",
+ "batches": 1,
+ "flags": 0,
+ "horizons": {
+  "4h": {
+   "n": 0
+  },
+  "24h": {
+   "n": 0
+  }
+ },
+ "tiers": {
+  "pump": {
+   "4h": {
+    "n": 0
+   },
+   "24h": {
+    "n": 0
+   },
+   "flags": 0
+  },
+  "early": {
+   "4h": {
+    "n": 0
+   },
+   "24h": {
+    "n": 0
+   },
+   "flags": 0
+  }
+ },
+ "latest_4h": null,
+ "backtest_30d": {
+  "generated_at": "2026-10-24T23:45:49+08:00",
+  "window": {
+   "start": "2026-09-24T19:00+08:00",
+   "split": "2026-10-09T21:00+08:00",
+   "end": "2026-10-24T23:00+08:00",
+   "days": 30
+  },
+  "tiers": {
+   "pump": {
+    "rule": "24h >= +20% 且 距 24h 高 <= 10%",
+    "all": {
+     "fires": 453,
+     "hit20_4h_pct": 8.17,
+     "hit50_4h_pct": 0.66,
+     "closed_up_4h_pct": 40.6,
+     "mean_close_4h_pct": -0.29,
+     "median_close_4h_pct": -1.25,
+     "median_max_drawdown_4h_pct": -5.3,
+     "dd5_4h_pct": 52.3,
+     "mean_max_gain_4h_pct": 7.73,
+     "mean_exit_tp20_sl7_pct": -0.18,
+     "mean_exit_tp20_sl10_pct": -0.18,
+     "mean_exit_tp10_sl5_pct": -0.35
+    },
+    "test": {
+     "fires": 201,
+     "hit20_4h_pct": 5.97,
+     "hit50_4h_pct": 0.0,
+     "closed_up_4h_pct": 38.3,
+     "mean_close_4h_pct": -0.93,
+     "median_close_4h_pct": -1.21,
+     "median_max_drawdown_4h_pct": -5.23,
+     "dd5_4h_pct": 51.7,
+     "mean_max_gain_4h_pct": 6.84,
+     "mean_exit_tp20_sl7_pct": -0.83,
+     "mean_exit_tp20_sl10_pct": -1.04,
+     "mean_exit_tp10_sl5_pct": -0.7
+    },
+    "passes_buy_gate": false
+   },
+   "early": {
+    "rule": "1h 成交 >= 2x 24h 平均 且 上一個鐘 >= 1.5x（量持續升）· 1h >= +3% · 24h < +15%",
+    "all": {
+     "fires": 236,
+     "hit20_4h_pct": 1.69,
+     "hit50_4h_pct": 0.42,
+     "closed_up_4h_pct": 49.2,
+     "mean_close_4h_pct": 0.19,
+     "median_close_4h_pct": -0.04,
+     "median_max_drawdown_4h_pct": -2.83,
+     "dd5_4h_pct": 22.5,
+     "mean_max_gain_4h_pct": 4.43,
+     "mean_exit_tp20_sl7_pct": -0.03,
+     "mean_exit_tp20_sl10_pct": 0.19,
+     "mean_exit_tp10_sl5_pct": 0.23
+    },
+    "test": {
+     "fires": 117,
+     "hit20_4h_pct": 2.56,
+     "hit50_4h_pct": 0.85,
+     "closed_up_4h_pct": 45.3,
+     "mean_close_4h_pct": 0.05,
+     "median_close_4h_pct": -0.68,
+     "median_max_drawdown_4h_pct": -2.99,
+     "dd5_4h_pct": 19.7,
+     "mean_max_gain_4h_pct": 4.49,
+     "mean_exit_tp20_sl7_pct": -0.24,
+     "mean_exit_tp20_sl10_pct": 0.14,
+     "mean_exit_tp10_sl5_pct": -0.07
+    },
+    "passes_buy_gate": false
+   }
+  }
+ },
+ "scorecards": [],
+ "scorecard_7d": {
+  "days": 0,
+  "flagged": 0,
+  "early_hits": 0,
+  "precision_pct": null,
+  "recall_top20_pct": null
+ }
+}

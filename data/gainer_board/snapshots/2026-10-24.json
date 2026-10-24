@@ -1,0 +1,34 @@
+{
+ "date": "2026-10-24",
+ "batches": [
+  {
+   "batch": "gb-20261024-2347",
+   "picked_at": "2026-10-24T23:47:27+08:00",
+   "universe": 101,
+   "btc_24h_pct": -2.4,
+   "top20_24h": [
+    "BMTUSDT",
+    "INITUSDT",
+    "ANIMEUSDT",
+    "ERAUSDT",
+    "LAUSDT",
+    "TREEUSDT",
+    "KATUSDT",
+    "REZUSDT",
+    "LUMIAUSDT",
+    "AVAUSDT",
+    "FUSDT",
+    "NILUSDT",
+    "BEAMXUSDT",
+    "REDUSDT",
+    "SAHARAUSDT",
+    "WLFIUSDT",
+    "TRXUSDT",
+    "BREVUSDT",
+    "SPCXBUSDT",
+    "BEBUSDT"
+   ],
+   "entries": []
+  }
+ ]
+}

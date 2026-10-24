@@ -1,0 +1,56 @@
+# 急升榜: hourly snapshot (🔥 pump / ⚡ early) + 4h/24h outcome seal, daily 23:55 HKT scorecard vs
+# Binance top-20 gainers. Binance public REST only (data-api.binance.vision first). No X / no secrets / no AI.
+name: Gainer board snapshot + seal
+on:
+  schedule:
+    - cron: "5 * * * *"     # hourly, just after the 1h bar closes
+    - cron: "55 15 * * *"   # 23:55 Asia/Shanghai daily scorecard
+  workflow_dispatch:
+    inputs:
+      cmd:
+        description: "hourly | scorecard | summary"
+        default: "hourly"
+
+permissions:
+  contents: write
+  actions: write   # dispatch the Pages deploy (pushes by GITHUB_TOKEN don't trigger on:push)
+
+concurrency:
+  group: gainer-board
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run
+        env:
+          SCHED: ${{ github.event.schedule }}
+          CMD: ${{ github.event.inputs.cmd }}
+        run: |
+          if [ "$SCHED" = "55 15 * * *" ]; then C=scorecard; else C=${CMD:-hourly}; fi
+          echo "cmd=$C"
+          python3 scripts/gainer_board.py "$C"
+      - name: Commit + push (rebase retry)
+        id: push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/gainer_board
+          if git diff --staged --quiet; then echo "changed=0" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git commit -m "chore(gainer-board): snapshot/seal $(date -u +%FT%H:%MZ) [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase -X theirs origin main && git push && break
+            sleep $((i*5))
+          done
+          echo "changed=1" >> "$GITHUB_OUTPUT"
+      - name: Deploy Pages
+        if: steps.push.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main || echo "pages dispatch failed (non-fatal)"

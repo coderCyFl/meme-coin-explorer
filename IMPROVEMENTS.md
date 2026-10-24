@@ -355,3 +355,36 @@ Next: news refresh tomorrow morning (crosses 48h ~09:12); 72h seals (~10-25); ne
 Review: live 200, cache-bust `20261023r1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$81.6k, 24h -0.13%; DOGE ~0.0800, +0.93%). Dex refs unchanged (full-mode explore only).
 Done: docs only, no bug, no code churn.
 Next: news refresh tomorrow 9am upgrade (crosses 48h ~09:12); 72h seals (~10-25); next batch 6 diversified setups if regime stays normal.
+
+
+## 2026-10-24 ~23:59 Asia/Shanghai — 急升榜 (🔥 急升 + ⚡ 早期訊號) · `20261024b1`
+Ask (Cyrus): separate high-risk Gainer board for short-term pumps (e.g. BMT), aggressive paper size, clear 「幾時可以放」, QA to measure accuracy from Binance.
+
+Shipped:
+- New panel on 今日跟買 (both modes): 🔥 live board (Binance REST, data-api.binance.vision), ⚡ watch-only tier from hourly Actions snapshot, alert row (觸發/觸發後%/入場/目標/止蝕), per-row money line (現貨 $X: +20% 賺 / +50% 賺 / 止蝕蝕), 1x/2x/3x size chips (default 2x, not halved by weak gate), spot-only buy modal with momentum exit block.
+- Exit: +20% 放一半 (stop → cost) / +50% 清 / −10% 止蝕 / 4h 再睇 / 最遲 12h.
+- `scripts/gainer_core.py` (shared rules), `gainer_board.py` (hourly snapshot + 4h/24h 1m-kline seal + daily 23:55 scorecard vs top-20 gainers + summary), `gainer_backtest.py`; workflow `gainer-board.yml` (hourly + 15:55 UTC, dispatches Pages deploy).
+- Error state 「暫時攔唔到數據」 + 再試 for both tiers. Off-board Binance pairs now get a REST price in `livePrice` (was throwing for coins outside the curated board).
+
+30d all-coins backtest (1h klines, ~500 pairs, $3M rolling volume floor at signal time, 4h horizon, 4h cooldown, train = first 15d, test = last 15d):
+
+| rule / split | fires | +20% in 4h | +50% in 4h | closed up 4h | mean 4h | median 4h | median max DD | DD ≥5% |
+|---|---|---|---|---|---|---|---|---|
+| 🔥 pump · train | 253 | 9.88% | 1.19% | 42.7% | +0.29% | -1.25% | -5.35% | 52.6% |
+| 🔥 pump · test | 201 | 5.97% | 0.0% | 38.3% | -0.93% | -1.21% | -5.23% | 51.7% |
+| 🔥 pump · all | 453 | 8.17% | 0.66% | 40.6% | -0.29% | -1.25% | -5.3% | 52.3% |
+| ⚡ early · train | 119 | 0.84% | 0.0% | 52.9% | +0.32% | +0.38% | -2.55% | 25.2% |
+| ⚡ early · test | 117 | 2.56% | 0.85% | 45.3% | +0.05% | -0.68% | -2.99% | 19.7% |
+| ⚡ early · all | 236 | 1.69% | 0.42% | 49.2% | +0.19% | -0.04% | -2.83% | 22.5% |
+| rejected: naive (QA 起點) vr>=2 & 1h>=+3% · test | 403 | 3.47% | 0.5% | 40.9% | -0.57% | -0.94% | -3.66% | 34.7% |
+| rejected: accumulation vr>=2.5 & |1h|<2% & 24h<5% · test | 790 | 0.25% | 0.0% | 42.7% | +0.03% | -0.17% | -1.14% | 2.3% |
+| rejected: breakout72h & vr>=2 & wick<0.3 & 24h<15% · test | 154 | 0.0% | 0.0% | 32.5% | -0.56% | -0.73% | -1.77% | 8.4% |
+| rejected: breakout72h ... + BTC24h>=0 · test | 136 | 0.0% | 0.0% | 30.1% | -0.59% | -0.77% | -1.77% | 7.4% |
+| rejected: vol build 3h & 1h 0..5% & 24h<10% · test | 386 | 0.78% | 0.26% | 49.0% | +0.29% | -0.01% | -1.27% | 5.4% |
+| rejected: pump alt 24h>=15% & from-high>=-10% · test | 327 | 3.98% | 0.31% | 36.7% | -0.98% | -1.26% | -4.44% | 45.3% |
+| rejected: pump alt 24h>=30% · test | 133 | 7.52% | 0.0% | 35.3% | -3.01% | -2.86% | -7.18% | 67.7% |
+| baseline (every bar) | 78591 | 0.55% | 0.06% | 45.5% | -0.08% | -0.13% | -1.27% | 7.4% |
+
+Verdict: nothing passed the buy gate (test mean > 0 and +20% hit ≥ 8%). ⚡ ships as 觀察 only; 🔥 keeps paper buy (user asked for aggressive paper) with its backtest shown in-app. Grid search over vol/1h/24h/wick/72h-breakout/BTC filters overfit (train +1–2% mean → test negative).
+Examples: GTC 8 pumps (≥+25% in 4h) in 41d — ⚡ flagged 0 in the 6h before; Oct 12 (+142%) had 2–3.5× volume for 3h but on a −12% dip (not +3% candles); Sep 30 had no volume lead. BMT Oct 24 (+98%) had no volume lead (0.2–0.5×). 牛来 (牛来USDT) listed Sep 9; no ≥+25%-in-4h window after its first 26h of history.
+Next: let hourly seals accumulate; revisit rules after ≥50 live 4h seals; daily scorecard first run tonight 23:55.

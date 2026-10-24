@@ -1483,3 +1483,62 @@ img.logo-mark.logo-3d{
   .daily-batch-table{font-size:12px}
   .daily-batch-table .daily-when{white-space:normal}
 }
+
+/* ===== 急升榜 (high-risk gainer board) ===== */
+.gainer-panel{border:1px solid #5a1a22}
+.gb-risk{display:inline-block;font-size:10px;font-weight:900;padding:1px 6px;border-radius:4px;background:#3a1212;color:var(--red);border:1px solid #7f1d1d;vertical-align:middle;letter-spacing:.02em}
+.gb-risk-lg{font-size:11px;padding:2px 7px}
+.gb-spot{display:inline-block;font-size:10px;font-weight:800;padding:1px 6px;border-radius:4px;background:var(--panel2);color:var(--text);border:1px solid var(--line-strong);vertical-align:middle}
+.gb-watch{display:inline-block;font-size:10px;font-weight:800;padding:1px 6px;border-radius:4px;background:#1a1608;color:var(--accent-bright);border:1px solid #5c3b0a;vertical-align:middle}
+.gb-cand-tag{display:inline-block;margin-left:4px;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;color:var(--muted);border:1px dashed var(--line-strong)}
+.gb-warn{margin:2px 0 8px;color:#fda4af}
+.gb-tier-title{margin:14px 0 4px;font-size:15px;font-weight:800}
+.gb-bt{margin:0 0 6px;color:var(--muted);line-height:1.4}
+.gb-mult{display:flex;gap:4px}
+.gb-mult .chip{min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel2);color:var(--text);font-weight:700}
+.gb-mult .chip.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.gb-list{display:flex;flex-direction:column;gap:10px}
+.gb-row{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:var(--panel2);border:1px solid #3a1212}
+.gb-row.gb-cand{border-style:dashed}
+.gb-row.gb-early{border-color:#5c3b0a}
+.gb-top{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}
+.gb-id{min-width:0}
+.gb-id .nm{font-weight:800;font-size:15px}
+.gb-px{text-align:right;line-height:1.25}
+.gb-px .live-px{font-weight:700}
+.gb-chg{font-size:17px;font-weight:900}
+.gb-spark{display:block}
+.gba-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:8px;border-radius:8px;background:#0f1420}
+.gba-grid > div{display:flex;flex-direction:column;min-width:0}
+.gba-grid .k{font-size:10px;color:var(--muted);font-weight:700}
+.gba-grid b{font-size:12px;overflow-wrap:anywhere}
+.gb-alert{margin:6px 0 4px;padding:10px;border-radius:12px;border:1px solid #7f1d1d;background:#1f0e10}
+.gb-alert.gba-early{border-color:#8a6510;background:#1a1608}
+.gba-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.gb-exit{display:flex;flex-direction:column;gap:3px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel)}
+.gb-exit-k{font-size:11px;font-weight:800;color:var(--accent)}
+.gb-exit-row{display:grid;grid-template-columns:64px 1fr;gap:6px;font-size:12px;align-items:baseline}
+.gb-exit-row .lab{color:var(--muted);font-weight:700}
+.gb-money b{font-weight:800}
+.gb-buy{width:100%;min-height:44px;font-size:15px;font-weight:800}
+.gb-state{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;border:1px dashed var(--line-strong);color:var(--muted)}
+.gb-state.gb-error{border-color:#7f1d1d;color:#fda4af}
+.gacc{margin-top:14px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--panel2)}
+.gacc-head{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.gacc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:4px 0}
+.gacc-stat{padding:6px;border-radius:8px;background:#0f1420}
+.gacc-stat .k{font-size:10px;color:var(--muted);font-weight:700}
+.gacc-stat .v{font-size:16px;font-weight:900}
+.gacc-latest{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.gacc-row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:6px;align-items:center;font-size:12px}
+.gcard-trend{margin:4px 0}
+@media (max-width:480px){
+  .gb-top{grid-template-columns:auto 1fr auto}
+  .gb-top .gb-spark{display:none}
+  .gba-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gacc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gacc-row{grid-template-columns:1fr 1fr 1fr auto}
+  .gacc-row .muted{display:none}
+}
+dialog#tradeDlg .trade-exit-guide.teg-momentum{border-color:#7f1d1d}
+.gb-state{font-size:13px}
