@@ -1,10 +1,33 @@
 {
- "updated_at": "2026-10-25T05:35:34+08:00",
- "batch": "gb-20261025-0532",
- "picked_at": "2026-10-25T05:32:53+08:00",
- "btc_24h_pct": -1.17,
- "universe": 86,
+ "updated_at": "2026-10-25T07:43:04+08:00",
+ "batch": "gb-20261025-0741",
+ "picked_at": "2026-10-25T07:41:22+08:00",
+ "btc_24h_pct": -0.15,
+ "universe": 78,
  "active": [
+  {
+   "symbol": "EPIC",
+   "pair": "EPICUSDT",
+   "tier": "pump",
+   "picked_at": "2026-10-25T07:30:00+08:00",
+   "entry_price_usd": 0.1548,
+   "price_at_snapshot": 0.1505,
+   "trigger_via": "15m",
+   "change_15m_at_pick": 6.39,
+   "change_24h_at_pick": 32.95,
+   "rank_24h_at_pick": 3,
+   "batch": "gb-20261025-0741",
+   "score": 12.0,
+   "change_1h_at_pick": 3.06,
+   "change_4h_at_pick": -0.9,
+   "vol_x_avg": 0.65,
+   "vol_x_prev_hour": 0.59,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -15.64,
+   "quote_volume_24h": 3149112,
+   "watch_only": false,
+   "outcomes": {}
+  },
   {
    "symbol": "BMT",
    "pair": "BMTUSDT",
@@ -48,7 +71,17 @@
    "from_24h_high_pct": -3.0,
    "quote_volume_24h": 4437649,
    "watch_only": true,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.4,
+     "max_drawdown_pct": -5.29,
+     "close_pct": -4.63,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-25T07:41:19+08:00"
+    }
+   }
   },
   {
    "symbol": "ANIME",
@@ -70,7 +103,17 @@
    "from_24h_high_pct": -4.37,
    "quote_volume_24h": 7178844,
    "watch_only": false,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 14.52,
+     "max_drawdown_pct": -8.6,
+     "close_pct": 1.61,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-25T07:41:19+08:00"
+    }
+   }
   },
   {
    "symbol": "F",
