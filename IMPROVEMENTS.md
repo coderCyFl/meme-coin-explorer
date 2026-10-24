@@ -1,3 +1,10 @@
+## Hourly review 2026-10-24 ~10:02 Asia/Shanghai
+Review: live 200, cache-bust `20261024a1` matches main (index/picks.md5 OK); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$80.9k, 24h **~-0.46%**; liquid top30 breadth **6/30 = 20%** green) ⇒ weak-regime gate **would be on** if reminting now. batch-006 still live (minted normal): WLD/RENDER/ATOM/AAVE/1000SATS/SUI + avoid PEPE. Spot soft (WLD ~$0.476 vs entry ~$0.548 ≈ **-13%**; paper −5% already past — 24h seal ~17:01 今日未到). News fresh (~2h, 08:10). Dex only in full-mode explore / legacy — not hot/browse/AI.
+
+Self-growth: ran `snapshot_outcomes.py` — sealed **batch-005 24h** (due ~09:05): WLD **−13.69%**, ATOM **−2.03%**, AAVE **−3.03%**, RENDER **−2.21%** (vs BTC ~−0.98%). Pushed `data/outcomes.json`. No app/JS churn (hourly short loop; weekend).
+
+**Next priority:** weak breadth 持續 → 下個平日 9am upgrade remint 預期 half-size/≤4；batch-006 24h seal ~17:01 Asia/Shanghai；thin samples → no win-rate claims.
+
 ## Hourly review 2026-10-24 ~09:00 Asia/Shanghai
 Review: live 200, cache-bust `20261024a1` matches main (picks.md5 OK); `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$80.7k, 24h **~-1.06%**; liquid top30 breadth **4/30 = 13%** green) ⇒ weak-regime gate **would be on** if reminting now. batch-006 still live (minted normal): WLD/RENDER/ATOM/AAVE/1000SATS/SUI + avoid PEPE. Spot marks soft (WLD ~$0.476 vs entry ~$0.548 ≈ **-13%**, past paper −5% — 24h seal ~17:01 今日未到). News fresh (~1h, 08:10). Dex only in full-mode explore / legacy — not hot/browse/AI. `snapshot_outcomes.py`: nothing due this hour.
 
