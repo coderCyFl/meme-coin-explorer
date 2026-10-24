@@ -1,3 +1,10 @@
+## Hourly review 2026-10-24 ~17:07 Asia/Shanghai
+Review: live 200, cache-bust `20261024a1` matches main; `node --check` app/live/picks/coin3d OK; Binance via `data-api.binance.vision` moving (BTC ~$80.6k, 24h **-1.41%**; DOGE ~0.0775, **-3.6%**). Dex only in full-mode explore / legacy — not hot/browse/AI.
+
+Self-growth: ran `snapshot_outcomes.py` → sealed **batch-006 24h** (Binance 1m kline at due 17:01). Buys: WLD -14.7%, ATOM -8.65%, AAVE -5.42%, SUI -5.18%, RENDER -4.92%, 1000SATS -2.96% → equal-weight avg **≈ -6.97%** (all 6 red, broad market down). Avoid PEPE -10.79% (avoid call correct). No JS churn.
+
+**Next priority:** weak breadth + batch-006 all red → next weekday 9am remint should lean half-size/≤4 and weigh BTC-trend gate harder; thin samples → no win-rate claims; 72h seals still pending for earlier batches.
+
 ## Hourly review 2026-10-24 ~16:08 Asia/Shanghai
 Review: live 200, cache-bust `20261024a1` matches main; `node --check` app/live/picks/coin3d OK; `qa_diversify.mjs` PASS; Binance via `data-api.binance.vision` moving (BTC ~$80.7k, 24h **~-1.12%**; DOGE ~0.0778, **-2.8%**). batch-006 still live; `snapshot_outcomes.py`: nothing due (batch-006 24h seal ~17:01, ~1h left). News fresh (08:10, ~8h). Dex only in full-mode explore / legacy — not hot/browse/AI.
 
