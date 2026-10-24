@@ -1,3 +1,8 @@
+## Hourly review 2026-10-24 ~18:10 Asia/Shanghai
+Review: live 200, cache-bust `20261024a1` matches main; `node --check` all JS OK; Binance via `data-api.binance.vision` moving (BTC ~$80.6k, 24h **-1.39%**; DOGE ~0.0773, **-3.64%**). `snapshot_outcomes.py`: nothing due. Dex only in full-mode explore / legacy — not hot/browse/AI.
+
+Self-growth: docs only — no bug, no code churn (weekend hourly loop; batch-006 already sealed at ≈-6.97%).
+
 ## Hourly review 2026-10-24 ~17:07 Asia/Shanghai
 Review: live 200, cache-bust `20261024a1` matches main; `node --check` app/live/picks/coin3d OK; Binance via `data-api.binance.vision` moving (BTC ~$80.6k, 24h **-1.41%**; DOGE ~0.0775, **-3.6%**). Dex only in full-mode explore / legacy — not hot/browse/AI.
 
