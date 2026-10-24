@@ -263,7 +263,30 @@ function diversifyPicks(scored, n = 6) {
   return out.slice(0, n);
 }
 
+// ---- One batch per Asia/Shanghai day. `--force` (or env PICKS_FORCE=1) bypasses. ----
+const PICKS_PATH = path.join(ROOT, "data/picks.json");
+const FORCE = process.argv.includes("--force") || process.env.PICKS_FORCE === "1";
+const shDate = (d) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+/** Returns the last batch if its created_at falls on today's Asia/Shanghai date, else null. */
+function todaysBatch() {
+  const doc = JSON.parse(fs.readFileSync(PICKS_PATH, "utf8"));
+  const last = (doc.batches || []).at(-1);
+  if (!last || !last.created_at) return null;
+  const t = new Date(last.created_at);
+  if (Number.isNaN(t.getTime())) return null;
+  return shDate(t) === shDate(new Date()) ? last : null;
+}
+function skipIfToday(when) {
+  if (FORCE) return false;
+  const b = todaysBatch();
+  if (!b) return false;
+  console.log(`SKIP (${when}): today's batch already exists — ${b.id} created_at ${b.created_at} (Asia/Shanghai ${shDate(new Date())}). Nothing written. Use --force to add another.`);
+  return true;
+}
+
 async function main() {
+  if (skipIfToday("start")) return;
+  if (FORCE) console.log("--force: same-day check bypassed");
   console.log("exchangeInfo…");
   const info = await getJson(BN + "/api/v3/exchangeInfo");
   const listed = new Set(
@@ -409,6 +432,30 @@ async function main() {
     horizons_h: [24, 72, 168],
   }));
 
+  // Explicit exit plan on every buy: target price, stop price, when to review, latest sell time.
+  // Derived from the same TP/SL % and review/second hours above (no change to sizing or pick count).
+  const roundPx = (x) => +Number(x).toPrecision(6);
+  const addH = (h) => new Date(now.getTime() + h * 3600e3 + 8 * 3600e3).toISOString().replace("Z", "+08:00").replace(/\.\d{3}/, "");
+  for (const e of entries) {
+    const tp = e.take_profit_pct, sl = e.stop_loss_pct;
+    e.target_price_usd = roundPx(e.entry_price_usd * (1 + tp / 100));
+    e.stop_price_usd = roundPx(e.entry_price_usd * (1 - sl / 100));
+    e.review_at = addH(e.suggested_exit_h);
+    e.sell_by = addH(e.suggested_second_h);
+    e.exit_plan = `目標 +${tp}%（$${e.target_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
+  }
+  // Hard check: never write a buy without target, stop and sell timing.
+  for (const e of entries) {
+    const bad = ["entry_price_usd", "take_profit_pct", "stop_loss_pct", "suggested_exit_h", "suggested_second_h", "target_price_usd", "stop_price_usd"]
+      .filter((k) => !(Number.isFinite(e[k]) && e[k] > 0));
+    if (!e.review_at || !e.sell_by) bad.push("review_at/sell_by");
+    if (!(e.target_price_usd > e.entry_price_usd && e.stop_price_usd < e.entry_price_usd)) bad.push("target/stop vs entry");
+    if (bad.length) {
+      console.error("FAIL: buy entry", e.id, "missing/invalid exit fields:", bad.join(","));
+      process.exit(3);
+    }
+  }
+
   // avoid entries = chasing (label as avoid chase)
   for (const p of chasing) {
     entries.push({
@@ -444,9 +491,15 @@ async function main() {
     });
   }
 
-  const picksPath = path.join(ROOT, "data/picks.json");
+  // Re-read from disk right before writing (file may have changed during the ~20s fetch) and recheck.
+  if (skipIfToday("pre-write")) return;
+  const picksPath = PICKS_PATH;
   const doc = JSON.parse(fs.readFileSync(picksPath, "utf8"));
-  doc.batches = (doc.batches || []).filter((b) => b.id !== batchId);
+  if ((doc.batches || []).some((b) => b.id === batchId)) {
+    console.error(`FAIL: ${batchId} appeared in data/picks.json while fetching — not overwriting (append-only). Re-run.`);
+    process.exit(4);
+  }
+  doc.batches = doc.batches || [];
   doc.batches.push({
     id: batchId,
     created_at: isoHK,
@@ -464,6 +517,7 @@ async function main() {
   console.log("wrote", batchId, "buys", picks.length, "avoids", chasing.length);
 
   // summary for parent
+  fs.mkdirSync(path.join(ROOT, "data/raw"), { recursive: true }); // data/raw is gitignored → absent on CI checkout
   fs.writeFileSync(path.join(ROOT, "data/raw/setup_last.json"), JSON.stringify({
     at: isoHK,
     picks: picks.map((p) => ({ base: p.base, chg24: p.f.chg24, setup: p.setupScore, angle: p.angle, tip: p.tip })),
