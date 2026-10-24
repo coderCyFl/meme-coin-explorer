@@ -14,8 +14,7 @@ stdin:
    "shill_flag": false,                 # many low-follower/new accounts, copy-paste promo, 'gem 100x' style
    "big_accounts": 1,                   # authors with >= 100k followers in the sample
    "top_posts": [{"id": "1850...", "url": "https://x.com/u/status/1850...", "text": "≤140", "likes": 10,
-                  "author_username": "u", "author_followers": 1234,
-                  "created_at": "2026-10-25T03:12:00+08:00"}]                  # up to 3; created_at optional
+                  "author_username": "u", "author_followers": 1234}]          # up to 3
  }],
  "calls": [{"ts": ISO, "symbol": "ANIMEUSDT", "tool": "counts" | "search", "query": "...", "result_count": 42}]
 }
@@ -117,18 +116,9 @@ def coin(c, t_now):
         text = _clean(text)
         if len(text) > MAX_TEXT:
             text = text[:MAX_TEXT - 1] + "…"
-        post = {"id": pid, "url": f"https://x.com/{user}/status/{pid}", "text": text,
-                "likes": _num(p.get("likes", 0), "likes", True), "author_username": user,
-                "author_followers": _num(p.get("author_followers", 0), "author_followers", True)}
-        # Optional post time (search window ≈ 7h). Missing / unparseable / future → simply omitted.
-        if p.get("created_at"):
-            try:
-                ca = xc.parse_ts(p.get("created_at"))
-                if ca - t_now <= FUTURE_SLACK:
-                    post["created_at"] = xc.iso(ca)
-            except Exception:  # noqa: BLE001
-                pass
-        tp.append(post)
+        tp.append({"id": pid, "url": f"https://x.com/{user}/status/{pid}", "text": text,
+                   "likes": _num(p.get("likes", 0), "likes", True), "author_username": user,
+                   "author_followers": _num(p.get("author_followers", 0), "author_followers", True)})
     p1 = _num(c.get("posts_last_1h"), "posts_last_1h", True)
     p6 = _num(c.get("posts_prev_6h_avg_per_h"), "posts_prev_6h_avg_per_h")
     sr = _num(c.get("spike_ratio"), "spike_ratio", allow_none=True)

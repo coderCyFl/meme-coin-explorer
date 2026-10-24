@@ -1,5 +1,5 @@
 {
-  "name": "Crypto.M",
+  "name": "Crypto.M · Meme Coin Explorer",
   "short_name": "Crypto.M",
   "start_url": "./",
   "scope": "./",
@@ -7,7 +7,7 @@
   "theme_color": "#0b0e11",
   "background_color": "#0b0e11",
   "icons": [
-    {"src": "icons/icon-192.png?v=20261025g2", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "icons/icon-512.png?v=20261025g2", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+    {"src": "icons/icon-192.png?v=20261025g1", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icons/icon-512.png?v=20261025g1", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
   ]
 }
