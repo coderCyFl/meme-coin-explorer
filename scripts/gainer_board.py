@@ -63,9 +63,10 @@ def snap_files(days=None):
 
 
 def all_tickers():
-    """Every TRADING Binance USDT spot pair (stables / leveraged excluded), ranked by 24h % — the real
-    Binance gainer list. No volume floor here; signals apply g.MIN_QV24 separately."""
+    """Every TRADING Binance USDT spot pair (stables / leveraged / tokenized stocks+ETFs excluded), ranked by
+    24h % — the real Binance crypto gainer list. No volume floor here; signals apply g.MIN_QV24 separately."""
     listed = set(g.universe())
+    g.save_tokenized_list(g.TOKENIZED, g.TOKENIZED_SOURCE)  # keep the browser's fallback list fresh
     out = []
     for x in g.get("/api/v3/ticker/24hr", {"type": "MINI"}):
         s = x["symbol"]
@@ -135,7 +136,7 @@ def snapshot():
     day = jload(fn, {"date": t0.strftime("%Y-%m-%d"), "batches": []})
     day["batches"].append({
         "batch": batch, "picked_at": iso(t0), "universe": len(tick),
-        "btc_24h_pct": round(btc["chg24"], 2) if btc else None, "universe_all": len(allt),
+        "btc_24h_pct": round(btc["chg24"], 2) if btc else None, "universe_all": len(allt), "excluded_tokenized": len(g.TOKENIZED),
         "top20_24h": [r["pair"] for r in allt[:20]], "entries": entries,
     })
     jsave(fn, day)
@@ -261,7 +262,7 @@ def scorecard(date=None):
     top10 = set(top_pairs[:10])
     pc = lambda a, b: round(a / b * 100, 1) if b else None
     card = {
-        "date": date, "scheduled_for": f"{date}T23:55:00+08:00", "taken_at": iso(t0), "universe_all": len(allt),
+        "date": date, "scheduled_for": f"{date}T23:55:00+08:00", "taken_at": iso(t0), "universe_all": len(allt), "excluded_tokenized": len(g.TOKENIZED), "tokenized_source": g.TOKENIZED_SOURCE,
         "rule": ("Top 20 = ALL Binance USDT spot pairs (stables / leveraged excluded, no volume floor) by 24h %, "
                  "taken at the 23:55 Asia/Shanghai run. A flag is EARLY only if rank_24h_at_flag > 20 and 24h % < +15% "
                  "at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately."),

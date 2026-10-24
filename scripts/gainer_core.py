@@ -6,15 +6,62 @@ mirrors FEATURES + RULES below — keep both in sync.
 
 Bars are lists [open_time_ms, o, h, l, c, quote_volume]. Features at index i use bars <= i only.
 """
-import json, math, re, time, urllib.parse, urllib.request
+import json, math, os, re, time, urllib.parse, urllib.request
 
 BN_BASES = ("https://data-api.binance.vision", "https://api.binance.com")
 UA = {"User-Agent": "meme-coin-explorer/gainer-board"}
 STABLE = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1", "BFUSD",
           "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"}
 LEV_OK = {"JUP", "SYRUP", "SUP"}
-# Binance tokenized leveraged / inverse ETFs (xStock "…B" bases) — leveraged products, excluded like UP/DOWN.
-LEV_ETF = {"SOXLB", "SOXSB", "SQQQB", "TQQQB", "TMFB", "UVXYB", "KORUB", "MUUB", "SNXXB", "MVLLB"}
+# Tokenized single stocks / ETFs ("bStocks", e.g. NVDAB, SOXSB). Detected from Binance metadata — NOT an
+# "ends with B" rule (that would wrongly drop BNB, ARB, SHIB, CKB, TRB, BB, DGB, Y …):
+#   1. exchangeInfo permissionSets marker TRD_GRP_261 (only bStocks carry it; 100/100 match on 2026-10-25)
+#   2. Binance product tag "bStocks" (binance.com bapi; best effort, may be geo-blocked)
+#   3. maintained fallback list data/gainer_board/tokenized_stocks.json (refreshed by every Actions run)
+TOKENIZED_MARKER = "TRD_GRP_261"
+TOKENIZED_LIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "gainer_board", "tokenized_stocks.json")
+TOKENIZED = set()          # bases, filled by universe()
+TOKENIZED_SOURCE = "none"
+
+
+def _load_tokenized_list():
+    try:
+        return set(json.load(open(TOKENIZED_LIST)).get("bases") or [])
+    except Exception:  # noqa: BLE001
+        return set()
+
+
+def _bstocks_tag_bases():
+    try:
+        req = urllib.request.Request("https://www.binance.com/bapi/asset/v2/public/asset-service/product/get-products", headers=UA)
+        d = json.load(urllib.request.urlopen(req, timeout=15)).get("data") or []
+        return {x["b"] for x in d if x.get("q") == "USDT" and "bStocks" in (x.get("tags") or [])}
+    except Exception:  # noqa: BLE001
+        return set()
+
+
+def detect_tokenized(ex_symbols):
+    """Return (bases, source) for tokenized stocks/ETFs from exchangeInfo symbols (+ tag cross-check)."""
+    marker = {s["baseAsset"] for s in ex_symbols
+              if any(TOKENIZED_MARKER in ps for ps in (s.get("permissionSets") or []))}
+    tag = _bstocks_tag_bases()
+    if marker or tag:
+        src = "+".join(x for x, v in (("exchangeInfo:" + TOKENIZED_MARKER, marker), ("product-tag:bStocks", tag)) if v)
+        return marker | tag, src
+    return _load_tokenized_list(), "maintained-list"
+
+
+def save_tokenized_list(bases, source):
+    out = {"updated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "source": source,
+           "marker_group": TOKENIZED_MARKER, "count": len(bases), "bases": sorted(bases)}
+    try:
+        old = json.load(open(TOKENIZED_LIST))
+        if old.get("names"):
+            out["names"] = {b: old["names"].get(b) for b in sorted(bases) if old["names"].get(b)}
+    except Exception:  # noqa: BLE001
+        pass
+    if bases:
+        json.dump(out, open(TOKENIZED_LIST, "w"), ensure_ascii=False, indent=1)
 MIN_QV24 = 3e6  # min rolling 24h quote volume (USDT)
 
 
@@ -33,7 +80,7 @@ def eligible_symbol(sym):
     if not sym.endswith("USDT"):
         return False
     base = sym[:-4]
-    if base in STABLE or base in LEV_ETF:
+    if base in STABLE or base in TOKENIZED:
         return False
     if re.search(r"(UP|DOWN|BULL|BEAR)$", base) and base not in LEV_OK:
         return False
@@ -41,7 +88,11 @@ def eligible_symbol(sym):
 
 
 def universe():
-    ex = get("/api/v3/exchangeInfo")
+    global TOKENIZED, TOKENIZED_SOURCE
+    ex = get("/api/v3/exchangeInfo", {"permissions": "SPOT", "symbolStatus": "TRADING"})
+    TOKENIZED, TOKENIZED_SOURCE = detect_tokenized(ex["symbols"])
+    if not TOKENIZED:
+        TOKENIZED = _load_tokenized_list()
     return [s["symbol"] for s in ex["symbols"]
             if s["status"] == "TRADING" and s["quoteAsset"] == "USDT" and s.get("isSpotTradingAllowed")
             and eligible_symbol(s["symbol"])]

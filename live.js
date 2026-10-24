@@ -90,6 +90,11 @@
   const klineCache = new Map(); // symbol -> { t, closes }
   const watchers = new Set();
   let bnListed = null;
+  // Tokenized single stocks / ETFs ("bStocks": NVDAB, SOXSB …) — from exchangeInfo metadata (permissionSets
+  // marker, same as scripts/gainer_core.py), else data/gainer_board/tokenized_stocks.json. Never "ends with B".
+  const BN_TOKENIZED_MARKER = "TRD_GRP_261";
+  let bnTokenized = new Set();
+  let bnTokenizedSrc = "none";
   let boardSymbols = [];
   let boardReady = false;
   let boardLoading = null;
@@ -130,6 +135,10 @@
       const r = await fetch(BN_REST + "/api/v3/exchangeInfo", { headers: { Accept: "application/json" } });
       if (!r.ok) throw new Error(r.status);
       const j = await r.json();
+      bnTokenized = new Set((j.symbols || [])
+        .filter((s) => (s.permissionSets || []).some((ps) => (ps || []).includes(BN_TOKENIZED_MARKER)))
+        .map((s) => s.baseAsset));
+      if (bnTokenized.size) bnTokenizedSrc = "exchangeInfo:" + BN_TOKENIZED_MARKER;
       bnListed = new Set(
         (j.symbols || [])
           .filter((s) => s.status === "TRADING" && s.quoteAsset === "USDT" && s.isSpotTradingAllowed)
@@ -138,6 +147,12 @@
     } catch (e) {
       console.warn("Binance exchangeInfo failed", e);
       bnListed = new Set();
+    }
+    if (!bnTokenized.size) {
+      try {
+        const r2 = await fetch("data/gainer_board/tokenized_stocks.json", { cache: "no-cache" });
+        if (r2.ok) { bnTokenized = new Set((await r2.json()).bases || []); bnTokenizedSrc = "maintained-list"; }
+      } catch (_) { /* keep empty */ }
     }
     return bnListed;
   }
@@ -595,7 +610,6 @@
   const GB_STABLE = new Set(["USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1",
     "BFUSD", "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"]);
   const GB_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
-  const GB_LEV_ETF = new Set(["SOXLB", "SOXSB", "SQQQB", "TQQQB", "TMFB", "UVXYB", "KORUB", "MUUB", "SNXXB", "MVLLB"]);
   const GB_MIN_QV = 3e6;       // min 24h quote volume (USDT)
   const GB_PUMP_C24 = 20, GB_PUMP_FH = -10;     // 🔥 rule (backtested)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits
@@ -606,7 +620,7 @@
   function gainerEligible(sym, qv) {
     if (!sym.endsWith("USDT")) return false;
     const base = sym.slice(0, -4);
-    if (GB_STABLE.has(base) || GB_LEV_ETF.has(base)) return false;
+    if (GB_STABLE.has(base) || bnTokenized.has(base)) return false;
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && !GB_LEV_OK.has(base)) return false;
     return qv >= GB_MIN_QV;
   }
@@ -688,7 +702,7 @@
     const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.score - a.score);
     const fill = out.filter((x) => x.tier === "cand").sort((a, b) => b.score - a.score);
     const rows = pumps.concat(fill.slice(0, Math.max(0, 6 - pumps.length))).slice(0, n);
-    gainerCache = { t: Date.now(), rows, pool: elig.length, prices, rank: new Map(elig.map((t) => [t.symbol, t])) };
+    gainerCache = { t: Date.now(), rows, pool: elig.length, tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.map((t) => [t.symbol, t])) };
     return gainerCache;
   }
 

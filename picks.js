@@ -174,6 +174,25 @@
     };
   }
 
+  /** Exit lock a NEW position gets from a buy request (window + doBuySpot + doOpenLev share this). */
+  function lockExitMetaForInfo(info) {
+    const weakOpen = info.exitWeak != null ? !!info.exitWeak
+      : info.exitRegime === "weak" ? true
+      : (info.exitRegime === "normal" || info.exitRegime === "momentum") ? false
+      : (info.suggested_exit_h === 12 || (info.flags || []).includes("regime:weak") || info.size === "half")
+        ? true
+        : liveWeakNow();
+    const lock = lockExitMeta({ weak: weakOpen });
+    // Prefer pick-locked numbers when present
+    if (info.suggested_exit_h != null) lock.suggested_exit_h = info.suggested_exit_h;
+    if (info.suggested_second_h != null) lock.suggested_second_h = info.suggested_second_h;
+    if (info.take_profit_pct != null) lock.take_profit_pct = info.take_profit_pct;
+    if (info.stop_loss_pct != null) lock.stop_loss_pct = info.stop_loss_pct;
+    if (info.exitRegime === "weak" || info.exitRegime === "normal" || info.exitRegime === "momentum") lock.exitRegime = info.exitRegime;
+    if (info.take_profit2_pct != null) lock.take_profit2_pct = info.take_profit2_pct;
+    return lock;
+  }
+
   function exitPlanFromEntry(e, { weakOverride } = {}) {
     if (!e) return null;
     if (e.exitRegime === "momentum") {
@@ -206,37 +225,84 @@
   }
 
   /** Compact chips: Hold 至 · 目標 +X% · 止蝕 −Y%（幾時可以放） */
-  function exitHintRow(plan, { className = "sc-exit" } = {}) {
+  function exitHintRow(plan, { className = "sc-exit", basePx = null, pair = null } = {}) {
     if (!plan) return "";
+    const L = exitLevels(plan, basePx);
     const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
     const holdTxt = plan.pastReview
       ? "宜決定賣定留"
       : ("Hold 至 " + (whenClean || plan.whenText));
     const kids = plan.momentum ? [
       el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: plan.pastReview ? plan.whenText : ((plan.pastRecheck ? "" : "") + plan.whenText) }),
-      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp + "% 放一半" }),
-      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp2 + "% 清" }),
-      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
+      el("span", { class: "exit-chip exit-tp", "data-exit-lv": "target", text: (L ? price(L.targetPx) + " " : "") + "+" + plan.tp + "% 放一半" }),
+      el("span", { class: "exit-chip exit-tp", "data-exit-lv": "target2", text: (L ? price(L.target2Px) + " " : "") + "+" + plan.tp2 + "% 清" }),
+      el("span", { class: "exit-chip exit-sl", "data-exit-lv": "stop", text: "止蝕 " + (L ? price(L.stopPx) + " " : "") + "−" + plan.sl + "%" }),
       el("span", { class: "exit-chip exit-when", text: "最遲 " + plan.secondH + "h" }),
     ] : [
       el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: holdTxt }),
-      el("span", { class: "exit-chip exit-tp", text: "目標 +" + plan.tp + "%" }),
-      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
+      el("span", { class: "exit-chip exit-tp", "data-exit-lv": "target", text: "目標 " + (L ? price(L.targetPx) + "（+" + plan.tp + "%）" : "+" + plan.tp + "%") }),
+      el("span", { class: "exit-chip exit-sl", "data-exit-lv": "stop", text: "止蝕 " + (L ? price(L.stopPx) + "（−" + plan.sl + "%）" : "−" + plan.sl + "%") }),
     ];
     if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
-    return el("div", { class: className, title: "幾時可以放 · 紙上參考唔係保證。同 24h 跟買成績封盤對齊。" }, ...kids);
+    const attrs = { class: className, title: "幾時可以放 · 紙上參考唔係保證。同 24h 跟買成績封盤對齊。目標／止蝕價 = 而家落倉嘅成交價計（同落倉窗、持倉一樣）" };
+    if (L) Object.assign(attrs, { "data-exit-tp": String(plan.tp), "data-exit-tp2": plan.tp2 != null ? String(plan.tp2) : "", "data-exit-sl": String(plan.sl), "data-basis": String(L.basePx), "data-target": String(L.targetPx), "data-stop": String(L.stopPx) });
+    if (L && pair) attrs["data-exit-pair"] = pair;
+    return el("div", attrs, ...kids);
+  }
+
+  /** Live-tick the card chips: same exitLevels() on the live fill price the buy window would use. */
+  function refreshExitChips(board) {
+    document.querySelectorAll("[data-exit-pair]").forEach((n) => {
+      const r = board && board.get(n.dataset.exitPair); if (!(r && r.price > 0)) return;
+      if (String(r.price) === n.dataset.basis) return;
+      const plan = { tp: +n.dataset.exitTp, tp2: n.dataset.exitTp2 ? +n.dataset.exitTp2 : null, sl: +n.dataset.exitSl };
+      const L = exitLevels(plan, buyFillPx({ price: r.price, source: "binance" }, 0));
+      n.dataset.basis = String(L.basePx); n.dataset.target = String(L.targetPx); n.dataset.stop = String(L.stopPx);
+      n.querySelectorAll("[data-exit-lv]").forEach((c) => {
+        const lv = c.dataset.exitLv;
+        if (n.dataset.exitFmt === "gb") { c.textContent = lv === "target" ? `${price(L.targetPx)}（+${plan.tp}%）` : `${price(L.stopPx)}（−${plan.sl}%）`; return; }
+        if (lv === "target") c.textContent = plan.tp2 != null ? `${price(L.targetPx)} +${plan.tp}% 放一半` : `目標 ${price(L.targetPx)}（+${plan.tp}%）`;
+        else if (lv === "target2") c.textContent = `${price(L.target2Px)} +${plan.tp2}% 清`;
+        else if (lv === "stop") c.textContent = plan.tp2 != null ? `止蝕 ${price(L.stopPx)} −${plan.sl}%` : `止蝕 ${price(L.stopPx)}（−${plan.sl}%）`;
+      });
+    });
   }
 
   /**
    * Human exit copy for modal / holdings.
    * entryPx = basis for target; markPx = live mark (optional).
    */
+  /**
+   * THE single source for exit price levels. Buy window, card chips, 急升 cards and the
+   * holdings 「幾時可以放」 block all call this with the same plan + basis price.
+   */
+  function exitLevels(plan, basePx) {
+    if (!plan || !(basePx > 0)) return null;
+    return {
+      basePx,
+      targetPx: basePx * (1 + plan.tp / 100),
+      target2Px: plan.tp2 != null ? basePx * (1 + plan.tp2 / 100) : null,
+      stopPx: basePx * (1 - plan.sl / 100),
+    };
+  }
+  /** Price a buy actually fills at (same impact model as doBuySpot / doOpenLev). */
+  function buyFillPx(li, notional) {
+    if (li.source === "binance") return li.price; // CEX book: no pool impact (was ~0.0005% from liq 1e12)
+    return li.price * (1 + estimateImpact(notional, li.liq || 0).impactPct / 100);
+  }
+  /** Exit basis of an open position = average FILL price (fees excluded). */
+  function posBasisPx(pos) {
+    if (!pos) return null;
+    if (pos.entry != null) return pos.entry; // lev
+    if (pos.qty > 0 && pos.fillNotional > 0) return pos.fillNotional / pos.qty;
+    return pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null; // legacy spot (pre-20261025c1)
+  }
+
   function exitGuideCopy(plan, entryPx, markPx) {
     if (!plan || !(entryPx > 0)) return null;
     if (plan.momentum) return momentumGuideCopy(plan, entryPx, markPx);
     const tp = plan.tp, sl = plan.sl;
-    const targetPx = entryPx * (1 + tp / 100);
-    const stopPx = entryPx * (1 - sl / 100);
+    const { targetPx, stopPx } = exitLevels(plan, entryPx);
     const mark = markPx != null && markPx > 0 ? markPx : null;
     const reached = mark != null && mark >= targetPx * 0.995;
     const near = mark != null && !reached && mark >= targetPx * 0.97;
@@ -255,13 +321,13 @@
         ? `未到目標 · 已過檢視時間，宜決定賣定留定再 hold`
         : `${whenClean || plan.whenText} 再決定（而家未到目標）`);
     const stop = `${price(stopPx)}（−${sl}%）· 紙上參考`;
-    return { main, hold, stop, targetPx, stopPx, reached, pastReview: plan.pastReview, tp, sl };
+    return { main, hold, stop, basePx: entryPx, targetPx, stopPx, reached, pastReview: plan.pastReview, tp, sl };
   }
 
   /** 急升倉 exit copy: ladder + stop + hard time stop. */
   function momentumGuideCopy(plan, entryPx, markPx) {
-    const t1 = entryPx * (1 + plan.tp / 100), t2 = entryPx * (1 + plan.tp2 / 100);
-    const stopPx = entryPx * (1 - plan.sl / 100);
+    const L = exitLevels(plan, entryPx);
+    const t1 = L.targetPx, t2 = L.target2Px, stopPx = L.stopPx;
     const mark = markPx != null && markPx > 0 ? markPx : null;
     const hit2 = mark != null && mark >= t2 * 0.995;
     const hit1 = mark != null && !hit2 && mark >= t1 * 0.995;
@@ -277,7 +343,7 @@
         ? `已過 ${plan.reviewH}h 檢查點 · 最遲 ${last} 走`
         : `${recheck} 再睇（${plan.reviewH}h）· 最遲 ${last} 走`);
     const stop = `${price(stopPx)}（−${plan.sl}%）· 到 +${plan.tp}% 後止蝕升返成本`;
-    return { main, hold, stop, targetPx: t1, target2Px: t2, stopPx, reached: hit1 || hit2, pastReview: plan.pastReview, tp: plan.tp, sl: plan.sl, momentum: true };
+    return { main, hold, stop, basePx: entryPx, targetPx: t1, target2Px: t2, stopPx, reached: hit1 || hit2, pastReview: plan.pastReview, tp: plan.tp, sl: plan.sl, momentum: true };
   }
 
   function paintTradeExitGuide(guide) {
@@ -296,6 +362,7 @@
     if (note) note.textContent = guide.momentum
       ? "急升榜 · 高風險紙上參考 · 追升可以好快跌返，唔係保證"
       : "紙上參考 · 唔係保證 · 同 24h 跟買封盤對齊";
+    box.dataset.basis = String(guide.basePx); box.dataset.target = String(guide.targetPx); box.dataset.stop = String(guide.stopPx);
     const m = $("tradeExitMain"); if (m) m.textContent = guide.main;
     const h = $("tradeExitHold"); if (h) h.textContent = guide.hold;
     const s = $("tradeExitStop"); if (s) s.textContent = guide.stop;
@@ -303,10 +370,10 @@
 
   function posExitGuideEl(pos, markPx) {
     const plan = exitPlanForPosition(pos);
-    const entryPx = pos.entry != null ? pos.entry : (pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null);
+    const entryPx = posBasisPx(pos);
     const g = exitGuideCopy(plan, entryPx, markPx);
     if (!g) return exitHintRow(plan, { className: "sc-exit sc-exit-pos" });
-    return el("div", { class: "pos-exit-guide" },
+    return el("div", { class: "pos-exit-guide", "data-sym": pos.symbol || "", "data-basis": String(g.basePx), "data-target": String(g.targetPx), "data-stop": String(g.stopPx), "data-tp": String(g.tp), "data-sl": String(g.sl) },
       el("div", { class: "peg-kicker", text: "幾時可以放" }),
       el("div", { class: "peg-row" },
         el("span", { class: "peg-lab", text: "目標價" }),
@@ -514,7 +581,7 @@
           )
         ),
         el("p", { class: "sc-why", text: tip }),
-        exitHintRow(exitPlanFromEntry(x.e)),
+        exitHintRow(exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
         details,
         el("div", { class: "sc-actions" },
           el("button", { class: "primary", onclick: () => openBuy({
@@ -885,7 +952,7 @@
           el("div", {},
             el("div", { class: "nm", text: r.base }),
             el("div", { class: "sy", text: (ANGLE_LABEL[r.angle] || "留意盤") + " · " + (r.tip || "").slice(0, 36) }),
-            exitHintRow(hotPlan, { className: "sc-exit sc-exit-hot" })
+            exitHintRow(hotPlan, { className: "sc-exit sc-exit-hot", basePx: r.price, pair: r.symbol })
           )
         ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
@@ -971,7 +1038,8 @@
     box.append(el("div", { class: "gb-state gb-" + kind }, ...kids));
   }
 
-  const gbTp = (e) => e * (1 + GAINER_EXIT.tp / 100), gbTp2 = (e) => e * (1 + GAINER_EXIT.tp2 / 100), gbSl = (e) => e * (1 - GAINER_EXIT.sl / 100);
+  const gbLv = (e) => exitLevels(momentumExitPlan(), e) || {};
+  const gbTp = (e) => gbLv(e).targetPx, gbTp2 = (e) => gbLv(e).target2Px, gbSl = (e) => gbLv(e).stopPx;
   const gbTierIcon = (t) => (t === "early" ? "⚡" : "🔥");
 
   /** One-glance alert grid: 觸發時間 · 觸發後 % · 入場 · 目標 · 止蝕. */
@@ -1075,9 +1143,9 @@
         el("div", { class: "gb-px" },
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }))),
-      el("div", { class: "gb-min" },
-        el("div", {}, el("span", { class: "k", text: "目標" }), el("b", { class: "num pos", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}%）` })),
-        el("div", {}, el("span", { class: "k", text: "止蝕" }), el("b", { class: "num neg", text: `${price(gbSl(px))}（−${GAINER_EXIT.sl}%）` })),
+      el("div", { class: "gb-min", "data-exit-pair": r.symbol, "data-exit-fmt": "gb", "data-exit-tp": String(GAINER_EXIT.tp), "data-exit-tp2": String(GAINER_EXIT.tp2), "data-exit-sl": String(GAINER_EXIT.sl), "data-basis": String(px), "data-target": String(gbTp(px)), "data-stop": String(gbSl(px)) },
+        el("div", {}, el("span", { class: "k", text: "目標" }), el("b", { class: "num pos", "data-exit-lv": "target", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}%）` })),
+        el("div", {}, el("span", { class: "k", text: "止蝕" }), el("b", { class: "num neg", "data-exit-lv": "stop", text: `${price(gbSl(px))}（−${GAINER_EXIT.sl}%）` })),
         el("div", {}, el("span", { class: "k", text: "幾時放" }), el("b", { class: "num", text: `最遲 ${frTime(plan.secondAt).replace(/^\d+月\d+日 /, "")}` }))),
     ];
     if (buy) {
@@ -1205,6 +1273,7 @@
 
   /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
   function onGainerTick(_marks, board) {
+    if (board) refreshExitChips(board);
     if (!gbWatched.size || !board) return;
     let hit = false;
     for (const s of gbWatched) { const r = board.get(s); if (r && r.t && r.t > gbLastTick) { hit = true; gbLastTick = Math.max(gbLastTick, r.t); } }
@@ -1693,7 +1762,7 @@
       paintTradeOrb(symbol);
       $("tradeTitle").textContent = title;
       $("tradeInfo").textContent = info;
-      paintTradeExitGuide(exitGuide);
+      paintTradeExitGuide(typeof exitGuide === "function" ? exitGuide(parseFloat(value) || 0, { mode, lev }) : exitGuide);
       $("tradeAmtLabel").textContent = label;
       $("tradeOk").textContent = okLabel || "確認";
       $("tradeModeRow").hidden = !modePicker;
@@ -1753,6 +1822,7 @@
         $("tradeLev").value = String(lev);
         const amt = parseFloat(inp.value) || 0;
         $("tradePreview").textContent = preview(amt, { mode, lev });
+        if (typeof exitGuide === "function") paintTradeExitGuide(exitGuide(amt, { mode, lev }));
         if (typeof callout === "function") paintCallout(...(callout(amt, { mode, lev }) || [null, false]));
         else paintCallout(null, false);
       };
@@ -1789,28 +1859,17 @@
     if (!(usd > 0)) throw new Error("模擬現金唔夠");
     await touchFirstBuy();
     const fee = usd * P.feePct / 100;
-    const imp = estimateImpact(usd, li.liq || 0);
-    const fillPx = li.price * (1 + imp.impactPct / 100); // buy worse
+    const imp = li.source === "binance" ? { impactPct: 0 } : estimateImpact(usd, li.liq || 0);
+    const fillPx = buyFillPx(li, usd); // buy worse (same fn as the buy window)
     const qty = (usd - fee) / fillPx;
     const k = posKey(info.chain, info.pair);
     const pos = P.positions[k] || { chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name, qty: 0, cost: 0, source: info.source || (info.chain === "binance" ? "binance" : "dex") };
     if (!pos.openedAt) {
       pos.openedAt = new Date().toISOString();
-      const weakOpen = info.exitWeak != null ? !!info.exitWeak
-        : info.exitRegime === "weak" ? true
-        : (info.exitRegime === "normal" || info.exitRegime === "momentum") ? false
-        : (info.suggested_exit_h === 12 || (info.flags || []).includes("regime:weak") || info.size === "half")
-          ? true
-          : liveWeakNow();
-      Object.assign(pos, lockExitMeta({ weak: weakOpen }));
-      // Prefer pick-locked numbers when present
-      if (info.suggested_exit_h != null) pos.suggested_exit_h = info.suggested_exit_h;
-      if (info.suggested_second_h != null) pos.suggested_second_h = info.suggested_second_h;
-      if (info.take_profit_pct != null) pos.take_profit_pct = info.take_profit_pct;
-      if (info.stop_loss_pct != null) pos.stop_loss_pct = info.stop_loss_pct;
-      if (info.exitRegime === "weak" || info.exitRegime === "normal" || info.exitRegime === "momentum") pos.exitRegime = info.exitRegime;
-      if (info.take_profit2_pct != null) pos.take_profit2_pct = info.take_profit2_pct;
+      Object.assign(pos, lockExitMetaForInfo(info));
     }
+    if (!(pos.fillNotional > 0)) pos.fillNotional = pos.qty > 0 ? pos.cost : 0; // legacy: cost basis
+    pos.fillNotional += qty * fillPx;
     pos.qty += qty; pos.cost += usd; pos.source = pos.source || info.source || (info.chain === "binance" ? "binance" : "dex"); P.positions[k] = pos; P.cash -= usd;
     P.trades.unshift({ t: new Date().toISOString(), kind: "spot", side: "BUY", chain: info.chain, pair: info.pair, symbol: info.symbol, price: fillPx, qty, usd, fee, pnl: null, leverage: null, impactPct: imp.impactPct });
     pf.save(P);
@@ -1821,26 +1880,14 @@
     leverage = Math.min(50, Math.max(2, leverage || risk().defaultLev));
     const notional = margin * leverage;
     const fee = notional * P.feePct / 100;
-    const imp = estimateImpact(notional, li.liq || 0);
+    const imp = li.source === "binance" ? { impactPct: 0 } : estimateImpact(notional, li.liq || 0);
     if (margin + fee > P.cash + 1e-9) throw new Error(`現金唔夠：要保證金 ${money2(margin)} + 開倉費 ${money2(fee)}`);
     if (!(margin > 0)) throw new Error("保證金要大於 0");
     await touchFirstBuy();
-    const fillPx = li.price * (1 + imp.impactPct / 100);
+    const fillPx = buyFillPx(li, notional);
     const qty = notional / fillPx;
     const id = levKey();
-    const weakOpen = info.exitWeak != null ? !!info.exitWeak
-      : info.exitRegime === "weak" ? true
-      : (info.exitRegime === "normal" || info.exitRegime === "momentum") ? false
-      : (info.suggested_exit_h === 12 || (info.flags || []).includes("regime:weak") || info.size === "half")
-        ? true
-        : liveWeakNow();
-    const exitLock = lockExitMeta({ weak: weakOpen });
-    if (info.suggested_exit_h != null) exitLock.suggested_exit_h = info.suggested_exit_h;
-    if (info.suggested_second_h != null) exitLock.suggested_second_h = info.suggested_second_h;
-    if (info.take_profit_pct != null) exitLock.take_profit_pct = info.take_profit_pct;
-    if (info.stop_loss_pct != null) exitLock.stop_loss_pct = info.stop_loss_pct;
-    if (info.exitRegime === "weak" || info.exitRegime === "normal" || info.exitRegime === "momentum") exitLock.exitRegime = info.exitRegime;
-    if (info.take_profit2_pct != null) exitLock.take_profit2_pct = info.take_profit2_pct;
+    const exitLock = lockExitMetaForInfo(info);
     P.levPositions[id] = {
       id, chain: info.chain, pair: info.pair, token: info.token, symbol: info.symbol, name: info.name,
       side: "long", leverage, margin, notional, entry: fillPx, qty, openFee: fee, openedAt: new Date().toISOString(), impactPct: imp.impactPct,
@@ -2176,21 +2223,25 @@
       const liqNote = info.chain === "binance" || li.source === "binance"
         ? "來源 Binance 即時"
         : `流動性 ${money(li.liq)}`;
-      const entryBasis = info.entry_price_usd || info.price || li.price;
-      const planForBuy = exitPlanFromEntry({
-        created_at: info.created_at || info.openedAt || new Date().toISOString(),
-        exitRegime: info.exitRegime,
-        take_profit2_pct: info.take_profit2_pct,
-        flags: info.flags,
-        size: info.size,
-        suggested_exit_h: info.suggested_exit_h,
-        suggested_second_h: info.suggested_second_h,
-        take_profit_pct: info.take_profit_pct,
-        stop_loss_pct: info.stop_loss_pct,
-        entry_price_usd: entryBasis,
-        entry_snapshot: info.entry_snapshot,
-      });
-      const buyExitGuide = exitGuideCopy(planForBuy, entryBasis, li.price);
+      // ROOT-CAUSE FIX (20261025c1): the window used the PICK's entry_price_usd (e.g. WLD $0.5484 → +8% = $0.5923)
+      // while the position's exit block uses the actual fill price. Now both use the fill price + the same plan.
+      const lockNow = new Date().toISOString();
+      const spotKey = posKey(info.chain, info.pair);
+      const buyExitGuide = (amt, { mode, lev } = {}) => {
+        if (mode === "lev") {
+          const fill = buyFillPx(li, (amt || 0) * (lev || 1));
+          return exitGuideCopy(exitPlanFromEntry(Object.assign({}, lockExitMetaForInfo(info), { created_at: lockNow, entry_snapshot: info.entry_snapshot })), fill, li.price);
+        }
+        const fill = buyFillPx(li, amt || 0);
+        const ex = P.positions[spotKey];
+        if (ex && ex.qty > 0 && ex.openedAt) { // adding: blended basis, keeps the position's locked plan
+          const qty = Math.max(0, (amt || 0) - (amt || 0) * P.feePct / 100) / fill;
+          const fillNotional = (ex.fillNotional > 0 ? ex.fillNotional : ex.cost) + qty * fill;
+          const merged = Object.assign({}, ex, { fillNotional, qty: ex.qty + qty });
+          return exitGuideCopy(exitPlanForPositionNoSave(merged), posBasisPx(merged), li.price);
+        }
+        return exitGuideCopy(exitPlanFromEntry(Object.assign({}, lockExitMetaForInfo(info), { created_at: lockNow, entry_snapshot: info.entry_snapshot })), fill, li.price);
+      };
       const res = await askTrade({
         title: (info.exitRegime === "momentum" ? "急升榜 · 高風險 · " : "") + `落倉 $${info.symbol}`,
         info: (info.forceSpot ? "現貨（冇槓桿、冇爆倉）· " : "") + `即時價 ${price(li.price)} · ${liqNote} · 現金 ${money2(P.cash)} · 檔：${risk().label}`,
@@ -2265,7 +2316,7 @@
       if (pctSell == null) return;
       const f = Math.min(100, pctSell) / 100, qty = pos.qty * f, gross = qty * li.price, fee = gross * P.feePct / 100, proceeds = gross - fee;
       const costPart = pos.cost * f, pnl = proceeds - costPart;
-      pos.qty -= qty; pos.cost -= costPart; P.cash += proceeds; P.realizedSpot += pnl;
+      pos.qty -= qty; pos.cost -= costPart; if (pos.fillNotional > 0) pos.fillNotional *= (1 - f); P.cash += proceeds; P.realizedSpot += pnl;
       if (f >= 0.9999 || pos.qty <= 0) delete P.positions[k];
       P.trades.unshift({ t: new Date().toISOString(), kind: "spot", side: li.writeoff ? "WRITE-OFF" : "SELL", chain: pos.chain, pair: pos.pair, symbol: pos.symbol, price: li.price, qty, usd: proceeds, fee, pnl, leverage: null });
       pf.save(P); toast(`已平倉 ${Math.round(f * 100)}% 現貨 $${pos.symbol}：${money2(pnl)}`); renderPortfolio(false);
@@ -2421,8 +2472,11 @@
     if (ensurePosExitLock(pos)) {
       try { pf.save(P); } catch (_) {}
     }
+    return exitPlanForPositionNoSave(pos);
+  }
+  function exitPlanForPositionNoSave(pos) {
     const opened = pos.openedAt || posOpenedAt(pos);
-    const entryPx = pos.entry != null ? pos.entry : (pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null);
+    const entryPx = posBasisPx(pos);
     return paperExitPlan({
       createdAt: opened,
       momentum: pos.exitRegime === "momentum",

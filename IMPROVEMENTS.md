@@ -368,6 +368,8 @@ Shipped:
 
 30d all-coins backtest (1h klines, ~500 pairs, $3M rolling volume floor at signal time, 4h horizon, 4h cooldown, train = first 15d, test = last 15d):
 
+> **Superseded (2026-10-25):** these first-run numbers still included tokenized stocks/ETFs (NVDAB, SOXSB …). Current numbers (universe 397 crypto pairs, bStocks excluded via Binance metadata) are in **「2026-10-25 ~01:10 — 今日跟買 exit fix + bStocks exclusion · `20261025c1`」** below and in `data/gainer_board/backtest_30d.json` (🔥 test 194 fires · +20% 6.19% · mean 4h −0.92%; ⚡ test 99 · 3.03% · +0.10%). The 2026-10-25 QA-round-2 figures (195 / 6.15% and 109 / 2.75%) are superseded too.
+
 | rule / split | fires | +20% in 4h | +50% in 4h | closed up 4h | mean 4h | median 4h | median max DD | DD ≥5% |
 |---|---|---|---|---|---|---|---|---|
 | 🔥 pump · train | 253 | 9.88% | 1.19% | 42.7% | +0.29% | -1.25% | -5.35% | 52.6% |
@@ -400,3 +402,21 @@ Next: let hourly seals accumulate; revisit rules after ≥50 live 4h seals; dail
 - Real trigger time from closed 1h bars (start of the current qualifying run); alert labels its source.
 - Scorecard: real top 20 (all USDT spot, no volume floor, stables / leveraged / leveraged-ETF tokens excluded), early vs late separate, buyable flags + this browser's bought rows, dated by scheduled date. Cron `5,35 * * * *`.
 - Typo 攔→攞 everywhere. Backtest re-run after the leveraged-ETF exclusion: 🔥 test 195 fires, +20% 6.15%, mean 4h −0.92%; ⚡ test 109 fires, +20% 2.75%, mean +0.04% → gate still fails, ⚡ stays watch-only.
+
+## 2026-10-25 ~01:10 Asia/Shanghai — 今日跟買 exit fix + bStocks exclusion · `20261025c1`
+
+- **Buy-window target bug (root cause):** `openBuy` built the 「幾時可以放」 block from the **pick's** `entry_price_usd` (WLD pick $0.5484 → +8% = $0.5923), while the holding's block uses the **fill price** ($0.4642 → $0.5023). Now one function `exitLevels(plan, basePx)` feeds the buy window, card chips (目標 / 止蝕 prices, live-ticked), 急升 cards and the holdings block; the basis is always the fill price (`buyFillPx`, same as `doBuySpot`/`doOpenLev`), the plan is the same lock (`lockExitMetaForInfo`), adding to a position uses the blended basis. Spot positions store `fillNotional` → exit basis = average fill price (fees excluded; legacy positions fall back to cost/qty). Binance fills have no pool-impact term.
+- **Tokenized stocks / ETFs** (Binance "bStocks", 100 pairs e.g. NVDAB, TSLAB, SOXSB) are excluded from the gainer board universe and the scorecard top 20, detected from Binance metadata: exchangeInfo `permissionSets` marker `TRD_GRP_261` (100/100 identical to Binance product tag `bStocks`), with tag cross-check in Actions and a maintained fallback list `data/gainer_board/tokenized_stocks.json` (refreshed by every Actions run). No "ends with B" rule — BNB, ARB, SHIB, CKB, TRB, BB, DGB, Y stay in.
+- Backtest re-run on the 397-pair crypto universe (old table above superseded):
+
+| rule / split | fires | +20% in 4h | +50% in 4h | closed up 4h | mean 4h | median 4h | median max DD | DD ≥5% |
+|---|---|---|---|---|---|---|---|---|
+| 🔥 pump · train | 253 | 9.88% | 1.19% | 42.7% | +0.29% | -1.25% | -5.35% | 52.6% |
+| 🔥 pump · test | 194 | 6.19% | 0.0% | 39.2% | -0.92% | -1.31% | -5.51% | 53.6% |
+| 🔥 pump · all | 446 | 8.3% | 0.67% | 41.0% | -0.28% | -1.26% | -5.38% | 53.1% |
+| ⚡ early · train | 115 | 0.87% | 0.0% | 51.3% | +0.28% | +0.31% | -2.94% | 26.1% |
+| ⚡ early · test | 99 | 3.03% | 1.01% | 47.5% | +0.1% | -0.42% | -3.08% | 22.2% |
+| ⚡ early · all | 214 | 1.87% | 0.47% | 49.5% | +0.2% | 0.0% | -2.95% | 24.3% |
+| baseline (every bar) | 70514 | 0.61% | 0.07% | 45.5% | -0.07% | -0.15% | -1.34% | 7.8% |
+
+Gate still fails for both tiers → ⚡ watch-only; 🔥 chip still 「回測平均 −0.9%」.
