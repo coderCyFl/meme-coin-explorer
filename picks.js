@@ -224,47 +224,83 @@
     });
   }
 
-  /** Compact chips: Hold 至 · 目標 +X% · 止蝕 −Y%（幾時可以放） */
-  function exitHintRow(plan, { className = "sc-exit", basePx = null, pair = null } = {}) {
-    if (!plan) return "";
-    const L = exitLevels(plan, basePx);
-    const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
-    const holdTxt = plan.pastReview
-      ? "宜決定賣定留"
-      : ("Hold 至 " + (whenClean || plan.whenText));
-    const kids = plan.momentum ? [
-      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: plan.pastReview ? plan.whenText : ((plan.pastRecheck ? "" : "") + plan.whenText) }),
-      el("span", { class: "exit-chip exit-tp", "data-exit-lv": "target", text: (L ? price(L.targetPx) + " " : "") + "+" + plan.tp + "% 放一半" }),
-      el("span", { class: "exit-chip exit-tp", "data-exit-lv": "target2", text: (L ? price(L.target2Px) + " " : "") + "+" + plan.tp2 + "% 清" }),
-      el("span", { class: "exit-chip exit-sl", "data-exit-lv": "stop", text: "止蝕 " + (L ? price(L.stopPx) + " " : "") + "−" + plan.sl + "%" }),
-      el("span", { class: "exit-chip exit-when", text: "最遲 " + plan.secondH + "h" }),
-    ] : [
-      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: holdTxt }),
-      el("span", { class: "exit-chip exit-tp", "data-exit-lv": "target", text: "目標 " + (L ? price(L.targetPx) + "（+" + plan.tp + "%）" : "+" + plan.tp + "%") }),
-      el("span", { class: "exit-chip exit-sl", "data-exit-lv": "stop", text: "止蝕 " + (L ? price(L.stopPx) + "（−" + plan.sl + "%）" : "−" + plan.sl + "%") }),
-    ];
-    if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
-    const attrs = { class: className, title: "幾時可以放 · 紙上參考唔係保證。同 24h 跟買成績封盤對齊。目標／止蝕價 = 而家落倉嘅成交價計（同落倉窗、持倉一樣）" };
-    if (L) Object.assign(attrs, { "data-exit-tp": String(plan.tp), "data-exit-tp2": plan.tp2 != null ? String(plan.tp2) : "", "data-exit-sl": String(plan.sl), "data-basis": String(L.basePx), "data-target": String(L.targetPx), "data-stop": String(L.stopPx) });
-    if (L && pair) attrs["data-exit-pair"] = pair;
-    return el("div", attrs, ...kids);
+  /**
+   * Live exit text = ONE template system for every would-be-buy surface (今日跟買 cards + table, hot buys,
+   * 急升 banner / card / 詳情). First render AND every WS tick both go through exitTplText(exitLevels(plan,
+   * buyFillPx(live))) so all of them show identical numbers to the buy window at the same live price.
+   * Placeholders: {target} {target2} {stop} {tp} {tp2} {sl} {review} {until}  (review/until = buy now + h, with date).
+   */
+  function exitTplText(tpl, L, plan, nowMs = Date.now()) {
+    const at = (h) => frTime(new Date(nowMs + h * 3600e3));
+    const map = {
+      target: () => (L ? price(L.targetPx) : "—"), target2: () => (L && L.target2Px != null ? price(L.target2Px) : "—"),
+      stop: () => (L ? price(L.stopPx) : "—"), tp: () => plan.tp, tp2: () => plan.tp2, sl: () => plan.sl,
+      review: () => at(plan.reviewH), until: () => at(plan.secondH),
+    };
+    return String(tpl).replace(/\{(\w+)\}/g, (m, k) => (map[k] ? String(map[k]()) : m));
+  }
+  /** Container attrs: which pair + which plan; children carry data-exit-tpl. */
+  function exitLiveAttrs(pair, plan, px, extra = {}) {
+    const L = exitLevels(plan, px);
+    const a = Object.assign({}, extra, {
+      "data-exit-tp": String(plan.tp), "data-exit-tp2": plan.tp2 != null ? String(plan.tp2) : "", "data-exit-sl": String(plan.sl),
+      "data-exit-rh": String(plan.reviewH), "data-exit-sh": String(plan.secondH),
+    });
+    if (pair) a["data-exit-pair"] = pair;
+    if (L) Object.assign(a, { "data-basis": String(L.basePx), "data-target": String(L.targetPx), "data-stop": String(L.stopPx), "data-target2": L.target2Px != null ? String(L.target2Px) : "" });
+    return a;
+  }
+  function exitLiveNode(tag, attrs, tpl, plan, px) {
+    return el(tag, Object.assign({}, attrs, { "data-exit-tpl": tpl, text: exitTplText(tpl, exitLevels(plan, px), plan) }));
+  }
+  /** Plan a NEW buy would lock right now (fresh window from now — same as doBuySpot / buy window). */
+  function wouldBuyPlan(info) {
+    return exitPlanFromEntry(Object.assign({}, lockExitMetaForInfo(info), { created_at: new Date().toISOString(), entry_snapshot: info.entry_snapshot }));
   }
 
-  /** Live-tick the card chips: same exitLevels() on the live fill price the buy window would use. */
-  function refreshExitChips(board) {
+  /** Compact chips: Hold 至 · 目標 · 止蝕. With {pair, basePx} = would-be buy at live price (ticks live). */
+  function exitHintRow(plan, { className = "sc-exit", basePx = null, pair = null } = {}) {
+    if (!plan) return "";
+    const live = pair && basePx > 0;
+    if (live) {
+      const chip = (c, tpl) => exitLiveNode("span", { class: "exit-chip " + c }, tpl, plan, basePx);
+      const kids = plan.momentum
+        ? [chip("exit-when", "{review} 再睇"), chip("exit-tp", "{target} +{tp}% 放一半"), chip("exit-tp", "{target2} +{tp2}% 清"),
+          chip("exit-sl", "止蝕 {stop} −{sl}%"), chip("exit-when", "最遲 {until}")]
+        : [chip("exit-when", "買入後 Hold 至 {review}"), chip("exit-tp", "目標 {target}（+{tp}%）"), chip("exit-sl", "止蝕 {stop}（−{sl}%）")];
+      return el("div", exitLiveAttrs(pair, plan, basePx, { class: className, title: "而家落倉嘅話：目標／止蝕同落倉窗、持倉用同一條公式同一個即時價；落倉會由而家起計新嘅持有時間" }), ...kids);
+    }
+    const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
+    const holdTxt = plan.pastReview ? "宜決定賣定留" : ("Hold 至 " + (whenClean || plan.whenText));
+    const kids = plan.momentum ? [
+      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: plan.whenText }),
+      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp + "% 放一半" }),
+      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp2 + "% 清" }),
+      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
+      el("span", { class: "exit-chip exit-when", text: plan.secondAt ? "最遲 " + frTime(plan.secondAt) : "最遲 " + plan.secondH + "h" }),
+    ] : [
+      el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: holdTxt }),
+      el("span", { class: "exit-chip exit-tp", text: "目標 +" + plan.tp + "%" }),
+      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
+    ];
+    if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
+    return el("div", { class: className, title: "幾時可以放 · 紙上參考唔係保證。" }, ...kids);
+  }
+
+  /** Live-tick every would-be-buy exit text (same formula + same live price as the buy window). */
+  let exitTickAt = 0;
+  function refreshExitChips(board, { force = false } = {}) {
+    const nowMs = Date.now();
+    if (!force && nowMs - exitTickAt < 400) return;
+    exitTickAt = nowMs;
     document.querySelectorAll("[data-exit-pair]").forEach((n) => {
       const r = board && board.get(n.dataset.exitPair); if (!(r && r.price > 0)) return;
-      if (String(r.price) === n.dataset.basis) return;
-      const plan = { tp: +n.dataset.exitTp, tp2: n.dataset.exitTp2 ? +n.dataset.exitTp2 : null, sl: +n.dataset.exitSl };
+      const plan = { tp: +n.dataset.exitTp, tp2: n.dataset.exitTp2 ? +n.dataset.exitTp2 : null, sl: +n.dataset.exitSl,
+        reviewH: +n.dataset.exitRh, secondH: +n.dataset.exitSh };
       const L = exitLevels(plan, buyFillPx({ price: r.price, source: "binance" }, 0));
       n.dataset.basis = String(L.basePx); n.dataset.target = String(L.targetPx); n.dataset.stop = String(L.stopPx);
-      n.querySelectorAll("[data-exit-lv]").forEach((c) => {
-        const lv = c.dataset.exitLv;
-        if (n.dataset.exitFmt === "gb") { c.textContent = lv === "target" ? `${price(L.targetPx)}（+${plan.tp}%）` : `${price(L.stopPx)}（−${plan.sl}%）`; return; }
-        if (lv === "target") c.textContent = plan.tp2 != null ? `${price(L.targetPx)} +${plan.tp}% 放一半` : `目標 ${price(L.targetPx)}（+${plan.tp}%）`;
-        else if (lv === "target2") c.textContent = `${price(L.target2Px)} +${plan.tp2}% 清`;
-        else if (lv === "stop") c.textContent = plan.tp2 != null ? `止蝕 ${price(L.stopPx)} −${plan.sl}%` : `止蝕 ${price(L.stopPx)}（−${plan.sl}%）`;
-      });
+      n.dataset.target2 = L.target2Px != null ? String(L.target2Px) : "";
+      n.querySelectorAll("[data-exit-tpl]").forEach((c) => { const t = exitTplText(c.dataset.exitTpl, L, plan, nowMs); if (c.textContent !== t) c.textContent = t; });
     });
   }
 
@@ -550,6 +586,16 @@
       const livePx = x.li && x.li.state === "live" ? x.li.price : (x.e.entry_price_usd || null);
       const chg = x.e.entry_snapshot?.chg24h_pct;
       const angle = x.e.angle || x.e.entry_snapshot?.angle || "";
+      const scInfo = {
+        chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address,
+        symbol: x.e.symbol, name: x.e.name, price: livePx,
+        source: x.e.chain === "binance" ? "binance" : undefined,
+        created_at: x.e.created_at, entry_price_usd: x.e.entry_price_usd,
+        entry_snapshot: x.e.entry_snapshot,
+        exitRegime: x.e.exitRegime, suggested_exit_h: x.e.suggested_exit_h,
+        suggested_second_h: x.e.suggested_second_h, take_profit_pct: x.e.take_profit_pct,
+        stop_loss_pct: x.e.stop_loss_pct, flags: x.e.flags, size: x.e.size,
+      };
       const logo = liveApi && liveApi.coinLogoEl
         ? liveApi.coinLogoEl(x.e.symbol, "coin-logo", 44)
         : el("span", { class: "coin-logo letter", text: String(x.e.symbol || "?").slice(0, 2) });
@@ -581,19 +627,10 @@
           )
         ),
         el("p", { class: "sc-why", text: tip }),
-        exitHintRow(exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
+        exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
         details,
         el("div", { class: "sc-actions" },
-          el("button", { class: "primary", onclick: () => openBuy({
-            chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address,
-            symbol: x.e.symbol, name: x.e.name, price: livePx,
-            source: x.e.chain === "binance" ? "binance" : undefined,
-            created_at: x.e.created_at, entry_price_usd: x.e.entry_price_usd,
-            entry_snapshot: x.e.entry_snapshot,
-            exitRegime: x.e.exitRegime, suggested_exit_h: x.e.suggested_exit_h,
-            suggested_second_h: x.e.suggested_second_h, take_profit_pct: x.e.take_profit_pct,
-            stop_loss_pct: x.e.stop_loss_pct, flags: x.e.flags, size: x.e.size,
-          }) }, "落倉")
+          el("button", { class: "primary", onclick: () => openBuy(scInfo) }, "落倉")
         )
       ));
     });
@@ -937,6 +974,14 @@
       const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: (r.base || "?").slice(0, 2) });
       const hotWeakNow = r.size === "half" || liveWeakNow();
       const hotMeta = stablePickMeta(r.symbol || r.base, r.angle, { weakNow: hotWeakNow });
+      const hotInfo = {
+        chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
+        symbol: r.base, name: (r.base || "") + " (Binance)", price: r.price, source: "binance",
+        created_at: hotMeta.created_at, entry_price_usd: r.price,
+        exitRegime: hotMeta.exitRegime, suggested_exit_h: hotMeta.suggested_exit_h,
+        suggested_second_h: hotMeta.suggested_second_h, take_profit_pct: hotMeta.take_profit_pct,
+        stop_loss_pct: hotMeta.stop_loss_pct, size: hotMeta.exitRegime === "weak" ? "half" : "full",
+      };
       const hotPlan = paperExitPlan({
         createdAt: hotMeta.created_at,
         weak: hotMeta.exitRegime === "weak",
@@ -952,19 +997,12 @@
           el("div", {},
             el("div", { class: "nm", text: r.base }),
             el("div", { class: "sy", text: (ANGLE_LABEL[r.angle] || "留意盤") + " · " + (r.tip || "").slice(0, 36) }),
-            exitHintRow(hotPlan, { className: "sc-exit sc-exit-hot", basePx: r.price, pair: r.symbol })
+            exitHintRow(wouldBuyPlan(hotInfo), { className: "sc-exit sc-exit-hot", basePx: r.price, pair: r.symbol })
           )
         ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
         el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
-        el("button", { class: "primary sm", onclick: () => openBuy({
-          chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
-          symbol: r.base, name: (r.base || "") + " (Binance)", price: r.price, source: "binance",
-          created_at: hotMeta.created_at, entry_price_usd: r.price,
-          exitRegime: hotMeta.exitRegime, suggested_exit_h: hotMeta.suggested_exit_h,
-          suggested_second_h: hotMeta.suggested_second_h, take_profit_pct: hotMeta.take_profit_pct,
-          stop_loss_pct: hotMeta.stop_loss_pct, size: hotMeta.exitRegime === "weak" ? "half" : "full",
-        }) }, "落倉")
+        el("button", { class: "primary sm", onclick: () => openBuy(hotInfo) }, "落倉")
       ));
     }
   }
@@ -1030,6 +1068,25 @@
     return trig;
   }
 
+  /**
+   * Backup when GitHub cron is late/skipped: every board scan (page load + 90 s rescans) stores a client
+   * snapshot in localStorage (symbol, tier, price, 24h %, time). Server snapshots remain the official record.
+   */
+  const GB_CLIENT_SNAP_KEY = "mce:gainer:clientSnap:v1";
+  function gbClientSnapshot(rows, early) {
+    try {
+      const list = JSON.parse(localStorage.getItem(GB_CLIENT_SNAP_KEY) || "[]");
+      const last = list[list.length - 1];
+      if (last && Date.now() - new Date(last.t).getTime() < 5 * 60e3) return list; // ≤ 1 per 5 min
+      list.push({ t: isoSh(), rows: rows.map((r) => ({ pair: r.symbol, tier: r.tier, price: r.price, chg24: Math.round(r.chg24 * 100) / 100 }))
+        .concat((early || []).map((e) => ({ pair: e.pair, tier: "early", price: e.entry_price_usd, chg24: e.change_24h_at_pick }))) });
+      const keep = list.slice(-288);
+      localStorage.setItem(GB_CLIENT_SNAP_KEY, JSON.stringify(keep));
+      return keep;
+    } catch (_) { return []; }
+  }
+  function gbClientSnaps() { try { return JSON.parse(localStorage.getItem(GB_CLIENT_SNAP_KEY) || "[]"); } catch (_) { return []; } }
+
   function gbStateBox(kind, msg, hostId = "gainerList") {
     const box = $(hostId); if (!box) return;
     box.textContent = "";
@@ -1038,20 +1095,22 @@
     box.append(el("div", { class: "gb-state gb-" + kind }, ...kids));
   }
 
-  const gbLv = (e) => exitLevels(momentumExitPlan(), e) || {};
-  const gbTp = (e) => gbLv(e).targetPx, gbTp2 = (e) => gbLv(e).target2Px, gbSl = (e) => gbLv(e).stopPx;
   const gbTierIcon = (t) => (t === "early" ? "⚡" : "🔥");
 
-  /** One-glance alert grid: 觸發時間 · 觸發後 % · 入場 · 目標 · 止蝕. */
+  /** Plan a 🔥 buy would lock NOW (fresh 4h/12h window) — same object the buy window uses. */
+  const gbPlanNow = () => momentumExitPlan({ createdAt: new Date().toISOString() });
+
+  /** One-glance alert grid: 觸發時間 · 觸發價 · 觸發後 % · 目標 · 止蝕 (目標/止蝕 = buy NOW at live price, ticks). */
   function gbAlertGrid(pair, trig, nowPx) {
     const e = trig.entry_price_usd;
     const since = nowPx > 0 && e > 0 ? (nowPx / e - 1) * 100 : null;
-    return el("div", { class: "gba-grid" },
+    const plan = gbPlanNow();
+    return el("div", exitLiveAttrs(pair, plan, nowPx, { class: "gba-grid", "data-gb-levels": "banner" }),
       el("div", {}, el("span", { class: "k", text: trig.trigger_src === "kline" ? "觸發（1h 線）" : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發" }), el("b", { class: "num", text: frTime(trig.picked_at) })),
+      el("div", {}, el("span", { class: "k", text: "觸發價" }), el("b", { class: "num", text: price(e) })),
       el("div", {}, el("span", { class: "k", text: "觸發後" }), el("b", { class: "num " + cls(since), "data-gb-since": pair, "data-gb-entry": String(e), text: pct(since) })),
-      el("div", {}, el("span", { class: "k", text: "入場" }), el("b", { class: "num", text: price(e) })),
-      el("div", {}, el("span", { class: "k", text: "目標" }), el("b", { class: "num pos", text: `${price(gbTp(e))} / ${price(gbTp2(e))}` })),
-      el("div", {}, el("span", { class: "k", text: "止蝕" }), el("b", { class: "num neg", text: price(gbSl(e)) })));
+      el("div", {}, el("span", { class: "k", text: "目標（而家入）" }), exitLiveNode("b", { class: "num pos" }, "{target} / {target2}", plan, nowPx)),
+      el("div", {}, el("span", { class: "k", text: "止蝕" }), exitLiveNode("b", { class: "num neg" }, "{stop}", plan, nowPx)));
   }
 
   /** Banner = newest REAL 🔥 (rule hit) or ⚡ trigger. 候補 never appears here. */
@@ -1110,8 +1169,9 @@
     const mult = gbMult();
     const usd = Math.max(0, Math.min(Math.floor(P.cash), Math.round(P.cash * 0.1 * mult)));
     const fee2 = usd * (P.feePct || 0) / 100 * 2;
-    const plan = momentumExitPlan({ createdAt: new Date().toISOString() });
+    const plan = gbPlanNow();
     const px = r.price;
+    const watch = !buy; // 候補 / ⚡: not bought, no buy → no 幾時放
     const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: r.base.slice(0, 2) });
     const spark = liveApi && liveApi.sparkSvg ? liveApi.sparkSvg(r.spark || [], { w: 120, h: 32, up: (r.c4h || 0) >= 0, className: "spark-svg gb-spark" }) : null;
     const tags = r.tier === "cand"
@@ -1129,7 +1189,8 @@
           el("span", { class: "pump-badge soft", text: `成交 ${money(r.volQuote)}` }),
           r.rank24 ? el("span", { class: "pump-badge soft", text: `24h 升幅第 ${r.rank24} 名` }) : ""),
         t ? gbAlertGrid(r.symbol, t, px) : "",
-        el("div", { class: "tiny muted", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}%）放一半、止蝕升返成本 → ${price(gbTp2(px))}（+${GAINER_EXIT.tp2}%）清 · ${GAINER_EXIT.reviewH}h 再睇` }),
+        watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-ladder", "data-gb-levels": "details" }),
+          exitLiveNode("span", {}, "{target}（+{tp}%）放一半、止蝕升返成本 → {target2}（+{tp2}%）清 · {review} 再睇 · 最遲 {until} 走", plan, px)),
         buy && usd > 0 ? el("div", { class: "tiny" },
           `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${GAINER_EXIT.tp}% 賺 ${money2(usd * GAINER_EXIT.tp / 100 - fee2)}` }), " · ",
           el("b", { class: "pos", text: `+${GAINER_EXIT.tp2}% 賺 ${money2(usd * GAINER_EXIT.tp2 / 100 - fee2)}` }), " · ",
@@ -1143,10 +1204,10 @@
         el("div", { class: "gb-px" },
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }))),
-      el("div", { class: "gb-min", "data-exit-pair": r.symbol, "data-exit-fmt": "gb", "data-exit-tp": String(GAINER_EXIT.tp), "data-exit-tp2": String(GAINER_EXIT.tp2), "data-exit-sl": String(GAINER_EXIT.sl), "data-basis": String(px), "data-target": String(gbTp(px)), "data-stop": String(gbSl(px)) },
-        el("div", {}, el("span", { class: "k", text: "目標" }), el("b", { class: "num pos", "data-exit-lv": "target", text: `${price(gbTp(px))}（+${GAINER_EXIT.tp}%）` })),
-        el("div", {}, el("span", { class: "k", text: "止蝕" }), el("b", { class: "num neg", "data-exit-lv": "stop", text: `${price(gbSl(px))}（−${GAINER_EXIT.sl}%）` })),
-        el("div", {}, el("span", { class: "k", text: "幾時放" }), el("b", { class: "num", text: `最遲 ${frTime(plan.secondAt).replace(/^\d+月\d+日 /, "")}` }))),
+      el("div", exitLiveAttrs(r.symbol, plan, px, { class: "gb-min" + (watch ? " gb-min-watch" : ""), "data-gb-levels": "card" }),
+        el("div", {}, el("span", { class: "k", text: "目標" }), exitLiveNode("b", { class: "num pos" }, "{target}（+{tp}%）", plan, px)),
+        el("div", {}, el("span", { class: "k", text: "止蝕" }), exitLiveNode("b", { class: "num neg" }, "{stop}（−{sl}%）", plan, px)),
+        watch ? "" : el("div", { class: "gb-when" }, el("span", { class: "k", text: "幾時放" }), exitLiveNode("b", { class: "num" }, "最遲 {until}", plan, px))),
     ];
     if (buy) {
       kids.push(el("div", { class: "gb-buyrow" },
@@ -1253,6 +1314,8 @@
         .concat(early.map((e) => ({ tier: "early", base: e.symbol, pair: e.pair, price: curPx(e.pair), trig: e }))));
       renderGainerBoard(rows, trig);
       renderEarlyList(early.slice(0, 8), res);
+      gbClientSnapshot(rows, early.slice(0, 8));
+      if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
       const watch = rows.map((r) => r.symbol).concat(early.slice(0, 8).map((e) => e.pair));
       gbWatched = new Set(watch);
       try { window.MCE.live.watchExtra(watch); } catch (_) {}
@@ -1298,6 +1361,17 @@
     const btE = sum.backtest_30d && sum.backtest_30d.tiers && sum.backtest_30d.tiers.early;
     const tP = btP && btP.test, tE = btE && btE.test;
     box.append(head);
+    {
+      const upd = sum.updated_at ? new Date(sum.updated_at) : null;
+      const ageMin = upd ? Math.round((Date.now() - upd.getTime()) / 60e3) : null;
+      const stale = ageMin == null || ageMin > 45;
+      const cs = gbClientSnaps();
+      const lastC = cs.length ? cs[cs.length - 1].t : null;
+      box.append(el("p", { class: "tiny gb-snapnote " + (stale ? "warn" : "muted"), id: "gbSnapNote",
+        text: `伺服器快照（GitHub Actions 每半個鐘）：最近 ${upd ? frTime(upd) : "—"}${ageMin != null ? `（${ageMin} 分鐘前）` : ""}`
+          + (stale ? " · GitHub 排程可能延誤／漏跑" : "")
+          + ` · 本機後備快照 ${cs.length} 次（存喺呢部機 localStorage${lastC ? "，最近 " + frTime(lastC) : ""}；只做後備，唔計入正式準繩度）` }));
+    }
     if (h4 && h4.n) {
       box.append(el("div", { class: "gacc-grid" },
         st(`實盤 4h 中 +20%（${h4.hit20}/${h4.n}）`, rate(h4, "hit20"), "pos"),
@@ -1389,20 +1463,36 @@
     if (table) table.hidden = false;
     const liveApi = window.MCE.live;
     for (const e of buys) {
-      const plan = exitPlanFromEntry(e);
-      const entry = e.entry_price_usd;
-      const g = exitGuideCopy(plan, entry, null);
       const li = liveInfo(e.chain, e.pair_address);
-      const px = li.state === "live" ? li.price : entry;
+      const bpx = e.chain === "binance" && window.MCE.live && window.MCE.live.board && window.MCE.live.board.get(e.pair_address);
+      const livePx = li.state === "live" && li.price > 0 ? li.price : (bpx && bpx.price > 0 ? bpx.price : null);
+      const isLive = livePx != null;
+      const px = isLive ? livePx : e.entry_price_usd; // 現價 cell only; exit levels never use the pick price
       const chg = e.entry_snapshot && e.entry_snapshot.chg24h_pct;
       const half = (e.flags || []).includes("size:half") || e.size === "half" || e.suggested_exit_h === 12
         || (latest.regime && latest.regime.sizing === "half");
+      // Decision (QA 127c32a): a buy ALWAYS starts a fresh exit window from now (also for rows whose pick 24h is over),
+      // so the table shows the would-be hold-until + target/stop at the CURRENT live price = buy window = holdings.
+      const rowInfo = {
+        chain: e.chain, pair: e.pair_address, token: e.token_address,
+        symbol: e.symbol, name: e.name, price: px,
+        source: e.chain === "binance" ? "binance" : undefined,
+        created_at: e.created_at, entry_price_usd: e.entry_price_usd,
+        entry_snapshot: e.entry_snapshot,
+        exitRegime: e.exitRegime || (half ? "weak" : "normal"),
+        suggested_exit_h: e.suggested_exit_h, suggested_second_h: e.suggested_second_h,
+        take_profit_pct: e.take_profit_pct, stop_loss_pct: e.stop_loss_pct,
+        flags: e.flags, size: half ? "half" : "full",
+      };
+      const plan = wouldBuyPlan(rowInfo);
+      const pickPlan = exitPlanFromEntry(e);
+      const pickOver = pickPlan && pickPlan.pastReview;
+      const lvPx = isLive ? livePx : null; // no live price yet → 「—」 until the first WS tick fills it
+      const liveAttrs = exitLiveAttrs(e.chain === "binance" ? e.pair_address : null, plan, lvPx);
       const logo = liveApi && liveApi.coinLogoEl
         ? liveApi.coinLogoEl(e.symbol, "coin-logo", 28)
         : el("span", { class: "coin-logo letter", text: String(e.symbol || "?").slice(0, 2) });
-      const when = plan ? plan.whenText : "—";
-      const target = g ? `約 ${price(g.targetPx)}（+${g.tp}%）` : (plan ? plan.tpText : "—");
-      body.append(el("tr", { class: "cardish" },
+      body.append(el("tr", Object.assign({ class: "cardish", "data-daily-sym": e.symbol }, liveAttrs),
         el("td", { "data-label": "幣" },
           el("div", { class: "tok" }, logo, el("div", {},
             el("div", { class: "nm", text: e.symbol }),
@@ -1411,26 +1501,21 @@
         ),
         el("td", { class: "num live-px", "data-label": "現價", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
         el("td", { class: "num " + cls(chg), "data-label": "24h", text: chg != null ? pct(chg) : "—" }),
-        el("td", { class: "daily-when", "data-label": "幾時可以放", text: when }),
-        el("td", { class: "daily-target", "data-label": "目標價", text: target }),
+        el("td", { class: "daily-when", "data-label": "幾時可以放" },
+          exitLiveNode("div", {}, "買入後 Hold 至 {review}", plan, lvPx),
+          pickOver ? el("div", { class: "tiny muted", text: "推薦 24h 已過 · 而家落倉由而家重新計" } ) : ""),
+        el("td", { class: "daily-target", "data-label": "目標價" },
+          exitLiveNode("div", { class: "num pos" }, "{target}（+{tp}%）", plan, lvPx),
+          exitLiveNode("div", { class: "num neg tiny" }, "止蝕 {stop}（−{sl}%）", plan, lvPx)),
         el("td", { "data-label": "注碼" },
           el("span", { class: "size-pill " + (half ? "half" : "full"), text: half ? "半注" : "全注" })
         ),
         el("td", { class: "actions", "data-label": "" },
-          el("button", { class: "primary sm", onclick: () => openBuy({
-            chain: e.chain, pair: e.pair_address, token: e.token_address,
-            symbol: e.symbol, name: e.name, price: px,
-            source: e.chain === "binance" ? "binance" : undefined,
-            created_at: e.created_at, entry_price_usd: e.entry_price_usd,
-            entry_snapshot: e.entry_snapshot,
-            exitRegime: e.exitRegime || (half ? "weak" : "normal"),
-            suggested_exit_h: e.suggested_exit_h, suggested_second_h: e.suggested_second_h,
-            take_profit_pct: e.take_profit_pct, stop_loss_pct: e.stop_loss_pct,
-            flags: e.flags, size: half ? "half" : "full",
-          }) }, "落倉")
+          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "落倉")
         )
       ));
     }
+    if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
   }
 
   function renderPicks() {

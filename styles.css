@@ -1555,7 +1555,9 @@ dialog#tradeDlg .trade-exit-guide.teg-momentum{border-color:#7f1d1d}
 .gb-min > div{display:flex;flex-direction:column;min-width:0}
 .gb-min .k{font-size:10px;color:var(--muted);font-weight:700}
 .gb-min b{font-size:12px;overflow-wrap:anywhere}
+.gb-min.gb-min-watch{grid-template-columns:1fr 1fr}
 .gb-details summary{cursor:pointer;color:var(--accent);font-size:12px;font-weight:700;list-style:none}
 .gb-details summary::-webkit-details-marker{display:none}
 .gb-det-body{display:flex;flex-direction:column;gap:6px;margin-top:6px}
 .gb-row.gb-cand{opacity:.92}
+.gb-snapnote.warn{color:#f0b90b}

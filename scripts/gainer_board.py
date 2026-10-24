@@ -28,6 +28,7 @@ SNAP = os.path.join(D, "snapshots")
 CARD = os.path.join(D, "daily_vs_gainers")
 TZ = datetime.timezone(datetime.timedelta(hours=8))
 MAX_PER_TIER = 10
+CAND_C24, CAND_FH, CAND_MAX = 5.0, -30.0, 6   # 候補 watch rows (same as live.js GB_CAND_*)
 HORIZONS = (4, 24)
 
 
@@ -103,7 +104,9 @@ def snapshot():
     tick = eligible_tickers(allt)
     btc = next((r for r in tick if r["pair"] == "BTCUSDT"), None)
     cool = {(e["pair"], e["tier"]) for e in recent_flags(g.COOLDOWN_H - 0.1)}
-    fires = {"pump": [], "early": []}
+    fires = {"pump": [], "early": [], "cand": []}
+    # 候補 (watch-only, mirrors live.js): ticker 24h >= +5% and <= 30% off the 24h high, not 🔥.
+    cand_pairs = {r["pair"] for r in tick if r["chg24"] >= CAND_C24 and r.get("high") and (r["price"] / r["high"] - 1) * 100 >= CAND_FH}
     for r in tick:
         try:
             bars = g.klines(r["pair"], "1h", 80)
@@ -116,13 +119,16 @@ def snapshot():
             continue
         f = g.feats(closed, len(closed) - 1)
         t = g.tier(f)
+        if not t and r["pair"] in cand_pairs:
+            t = "cand"
         if not t or (r["pair"], t) in cool:
             continue
         fires[t].append((g.score(f), r, f))
     batch = "gb-" + t0.strftime("%Y%m%d-%H%M")
     entries = []
-    for t in ("pump", "early"):
-        for sc, r, f in sorted(fires[t], key=lambda x: -x[0])[:MAX_PER_TIER]:
+    caps = {"pump": MAX_PER_TIER, "early": MAX_PER_TIER, "cand": CAND_MAX}
+    for t in ("pump", "early", "cand"):
+        for sc, r, f in sorted(fires[t], key=lambda x: -x[0])[:caps[t]]:
             entries.append({
                 "symbol": r["pair"][:-4], "pair": r["pair"], "tier": t, "picked_at": iso(t0),
                 "entry_price_usd": r["price"], "change_24h_at_pick": round(r["chg24"], 2),
@@ -130,7 +136,7 @@ def snapshot():
                 "change_1h_at_pick": round(f["c1"], 2), "change_4h_at_pick": round(f["c4"], 2),
                 "vol_x_avg": round(f["vr"], 2), "vol_x_prev_hour": round(f["vr1"], 2),
                 "from_24h_high_pct": round(f["fh"], 2), "quote_volume_24h": round(r["qv"]),
-                "outcomes": {},
+                "watch_only": t != "pump", "outcomes": {},
             })
     fn = os.path.join(SNAP, t0.strftime("%Y-%m-%d") + ".json")
     day = jload(fn, {"date": t0.strftime("%Y-%m-%d"), "batches": []})
@@ -140,7 +146,7 @@ def snapshot():
         "top20_24h": [r["pair"] for r in allt[:20]], "entries": entries,
     })
     jsave(fn, day)
-    print(f"snapshot {batch}: {len(tick)} eligible, pump {len(fires['pump'])}, early {len(fires['early'])}")
+    print(f"snapshot {batch}: {len(tick)} eligible, pump {len(fires['pump'])}, early {len(fires['early'])}, cand {len(fires['cand'])} → {len(entries)} records")
 
 
 # ---------------- seal ----------------
@@ -229,7 +235,7 @@ def scorecard(date=None):
     top_pairs = [r["pair"] for r in top20]
     by_pair = {r["pair"]: r for r in allt}
     day = jload(os.path.join(SNAP, date + ".json"), {"batches": []})
-    flags = [e for b in day["batches"] for e in b.get("entries", [])] + main_picks_on(date)
+    flags = [e for b in day["batches"] for e in b.get("entries", []) if e["tier"] in ("pump", "early")] + main_picks_on(date)
     first = {}
     for e in sorted(flags, key=lambda x: x["picked_at"]):
         first.setdefault(e["pair"], {"first": e, "tiers": set()})["tiers"].add(e["tier"])
@@ -303,12 +309,13 @@ def summary():
     allb = []
     for fn in snap_files():
         allb += jload(fn, {}).get("batches", [])
-    es = [e for b in allb for e in b.get("entries", [])]
+    es_all = [e for b in allb for e in b.get("entries", [])]
+    es = [e for e in es_all if e["tier"] in ("pump", "early")]  # headline = real 🔥/⚡ flags; 候補 tracked separately
     horizons, tiers = {}, {}
     for h in HORIZONS:
         horizons[f"{h}h"] = agg(es, f"{h}h")
-    for t in ("pump", "early"):
-        te = [e for e in es if e["tier"] == t]
+    for t in ("pump", "early", "cand"):
+        te = [e for e in es_all if e["tier"] == t]
         tiers[t] = {f"{h}h": agg(te, f"{h}h") for h in HORIZONS}
         tiers[t]["flags"] = len(te)
     latest4 = None

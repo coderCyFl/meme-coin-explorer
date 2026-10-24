@@ -420,3 +420,10 @@ Next: let hourly seals accumulate; revisit rules after ≥50 live 4h seals; dail
 | baseline (every bar) | 70514 | 0.61% | 0.07% | 45.5% | -0.07% | -0.15% | -1.34% | 7.8% |
 
 Gate still fails for both tiers → ⚡ watch-only; 🔥 chip still 「回測平均 −0.9%」.
+
+## 2026-10-25 ~01:15 Asia/Shanghai — one exit formula everywhere + 候補 snapshots + cron investigation · `20261025d1`
+
+- **今日跟買 table (`renderDailyBatchTable`)** no longer uses the pick price: target / stop / hold-until are computed by the same `exitLevels()` + plan a buy would lock, at the CURRENT live price (`buyFillPx`), and tick on every WS update (shows 「—」 until the first live price, never the pick price). Decision for rows whose pick 24h is over: the buy button stays and **a buy always starts a fresh exit window from now** — table, home chips and buy window all show 「買入後 Hold 至 10月26日 01:08」, the holding shows the same time. Row note 「推薦 24h 已過 · 而家落倉由而家重新計」.
+- **急升 🔥 banner / card / 詳情**: all three are built by one template system (`exitTplText` / `exitLiveAttrs`) from the same plan + the same live price and re-filled together on each tick (banner now shows 觸發價 separately; 目標/止蝕 = 而家入). 候補 and ⚡ cards have no 幾時放 / ladder. Every hold-until / sell-by shows the date (「最遲 10月25日 13:09」).
+- **Snapshots**: server batches now also record 候補 (watch-only, `watch_only: true`) so a batch is never empty when no 🔥/⚡ fires; 候補 is excluded from the scorecard and from the headline hit-rate (own tier stats). Client backup: every scan stores a localStorage snapshot (`mce:gainer:clientSnap:v1`, ≤ 1 per 5 min) and the accuracy panel shows server-snapshot age + a warning when > 45 min old.
+- **Cron investigation**: workflow is on `main`, valid YAML, `schedule` present, Actions enabled, workflow `active`. No scheduled run has fired yet; the other scheduled workflow in this repo (`daily-outcomes`, cron 01:00 UTC) fired 4 h 43 m late on both days → GitHub schedule delay on this repo. The cron was edited at 00:29 (re-registers the schedule). `[skip ci]` commits do not affect schedules. Manual `workflow_dispatch` runs work.
