@@ -151,8 +151,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <dl>
         <dt>同真倉有咩分別？</dt>
         <dd>完全模擬，錢只喺瀏覽器 localStorage。冇鏈上交易、冇錢包。</dd>
-        <dt>點解有手續費 1%？</dt>
-        <dd>粗略模擬 fee + 滑點。真盤薄池通常更差。</dd>
+        <dt>手續費幾多？</dt>
+        <dd>跟 Binance taker：現貨每邊 0.1%（買賣金額），槓桿每邊 0.1%（名義金額）。真盤薄幣有滑點，可能更差。</dd>
         <dt>「跟晒今批」可唔可以槓桿？</dt>
         <dd>預設現貨平均分。進取／極高風險檔可以選「細保證金高倍」一鍵開，但會有嚇人確認。</dd>
         <dt>爆倉之後點算？</dt>
@@ -319,8 +319,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="mood-hero" id="moodHero">
       <div class="mood-title">行情</div>
       <div class="mood-mascot mood-mascot-3d" id="moodMascot" aria-hidden="true"></div>
-      <div class="mood-feel" id="moodFeel">Feeling…</div>
-      <div class="mood-feel-zh" id="moodFeelZh">載入中</div>
+      <div class="mood-feel" id="moodFeel">載入中…</div>
+      <div class="mood-feel-zh" id="moodFeelZh" hidden></div>
       <div class="mood-pair" id="moodPair"><span class="mood-ico" id="moodIco"></span> <span id="moodSym">—</span></div>
       <div class="mood-price" id="moodPrice">—</div>
       <div class="mood-chg" id="moodChg">—</div>
@@ -535,7 +535,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
       <input id="startCash" type="number" min="100" step="100" value="5000" title="重置時生效">
       <label class="muted" for="feePct">費%</label>
-      <input id="feePct" type="number" min="0" max="20" step="0.1" value="1">
+      <input id="feePct" type="number" min="0" max="20" step="0.01" value="0.1">
       <button id="pfRefresh" class="sm">↻ 報價</button>
       <button id="copyPicks" class="secondary">跟晒今批</button>
       <button id="pfReset" class="ghost sm danger">重置</button>

@@ -1806,3 +1806,11 @@ button.allin-btn.allin-btn:hover,button.allin-btn.sm:hover,button.primary.sm:hov
 .pf-hero .pg-v{text-overflow:clip!important;overflow:visible!important;font-size:clamp(13px,3.9vw,15px)!important}
 .pf-hero .pg-main .pg-v{font-size:clamp(14px,4.3vw,17px)!important}
 .pf-hero{grid-template-columns:1.25fr 1fr .9fr!important}
+
+/* position row: exit plan = 2 short lines under the numbers, full width (no …) */
+.pos-row{grid-template-columns:36px minmax(0,1fr) auto auto!important;grid-template-rows:auto auto;row-gap:4px!important}
+.pos-row>.coin-logo-wrap,.pos-row>img.coin-logo,.pos-row>.coin-logo{grid-row:1}
+.pos-row .pr-exit{grid-column:2/-1;grid-row:2;white-space:pre-line!important;overflow:visible!important;text-overflow:clip!important;
+  font-size:11.5px;line-height:1.35;color:var(--muted);font-variant-numeric:tabular-nums}
+.pos-row .pr-exit.due{color:#F0B90B}
+.pos-row>:first-child{grid-row:1/3;align-self:center}
