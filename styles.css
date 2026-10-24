@@ -1788,3 +1788,21 @@ button.allin-btn.allin-btn:hover,button.allin-btn.sm:hover,button.primary.sm:hov
 /* red only for sell / loss: 急升 panel + alert framed neutral (yellow hairline for the hot alert) */
 .gainer-panel{border-color:#2B3139!important}
 .gb-alert{border-color:#F0B90B55!important;background:#1E2329!important}
+/* position rows: everything inside the card at 360–390px (no overflow, action never clipped) */
+.pos-list,.pos-row{min-width:0;max-width:100%;box-sizing:border-box}
+.pos-row{grid-template-columns:36px minmax(0,1fr) auto auto!important;gap:8px!important;padding:10px!important;overflow:hidden}
+.pos-row .pr-id{min-width:0;overflow:hidden}
+.pos-row .pr-nm{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pos-row .pr-exit{max-width:100%!important;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pos-row .pr-num{min-width:0;white-space:nowrap}
+.pos-row .pr-val{font-size:14px}
+.pos-row .pr-pnl{font-size:11px}
+.pos-row .pr-act{white-space:nowrap;word-break:keep-all;min-width:44px;padding:0 10px!important;flex:none}
+@media (max-width:370px){.pos-row .pr-val{font-size:13px}.pos-row .pr-pnl{font-size:10.5px}.pos-row{gap:6px!important}}
+/* rows sit on #1E2329 so the #2B3139 secondary action (賣 / 平倉) reads as a button */
+.pos-row{background:#1E2329!important;border:1px solid #2B3139}
+.pos-row .pr-act{background:#2B3139!important;border:1px solid #474D57!important;color:#fff!important}
+/* hero numbers never truncate: shrink with the viewport instead of ellipsis */
+.pf-hero .pg-v{text-overflow:clip!important;overflow:visible!important;font-size:clamp(13px,3.9vw,15px)!important}
+.pf-hero .pg-main .pg-v{font-size:clamp(14px,4.3vw,17px)!important}
+.pf-hero{grid-template-columns:1.25fr 1fr .9fr!important}

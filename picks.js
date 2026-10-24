@@ -1853,6 +1853,27 @@
     return { unreal: u, equity, liq, dead };
   }
 
+  /* ---------- ONE set of paper-trade maths: used by real open/close AND by every preview (孤注一擲 grid, 平倉 sheet). ----------
+   * Fees: spot = P.feePct % of USD each side (fee + slippage, default 1%); perps = levFeePct() % of NOTIONAL each side
+   * (default 0.1%). Binance pairs fill at the mark (no pool impact). */
+  const calc = {
+    spotBuy(usd, px, feePct = P.feePct) { const fee = usd * feePct / 100; return { usd, fee, qty: (usd - fee) / px, cost: usd }; },
+    spotSell(qty, px, feePct = P.feePct) { const gross = qty * px, fee = gross * feePct / 100; return { gross, fee, proceeds: gross - fee }; },
+    /** 孤注一擲 50x margin: largest margin (to the cent) with margin + open fee ≤ cash. */
+    allinMargin(cash, lev, fpct = levFeePct()) { return Math.floor(cash / (1 + lev * fpct / 100) * 100) / 100; },
+    levOpen(margin, lev, px, fpct = levFeePct()) { const notional = margin * lev; return { margin, leverage: lev, notional, openFee: notional * fpct / 100, qty: notional / px, entry: px }; },
+    /** Close a long at `mark`: liquidated → nothing back; else margin + unrealised − close fee. pnl includes BOTH fees. */
+    levClose(pos, mark, fpct = levFeePct(), forceLiq = false) {
+      const m = levMark(pos, mark);
+      if (forceLiq || m.dead) return { dead: true, unreal: m.unreal, closeFee: 0, back: 0, pnl: -pos.margin - (pos.openFee || 0) };
+      const closeFee = pos.qty * mark * fpct / 100;
+      return { dead: false, unreal: m.unreal, closeFee, back: pos.margin + m.unreal - closeFee, pnl: m.unreal - closeFee - (pos.openFee || 0) };
+    },
+    /** Open-position P&L shown everywhere (row, group, header, 詳情): mark equity − cash paid in (margin + open fee).
+     *  Close fee is not deducted until you actually close (same as spot: value = qty × mark, sell fee on close). */
+    levOpenPnl(pos, mark) { const m = levMark(pos, mark); const paid = pos.margin + (pos.openFee || 0); const value = Math.max(0, m.equity); return { value, paid, pnl: value - paid, pct: paid ? (value / paid - 1) * 100 : 0, m }; },
+  };
+
   async function livePrice(chain, pair) {
     if (chain === "binance") {
       if (window.MCE.live) {
@@ -2043,7 +2064,7 @@
     if (P.cash - usd < 0.01) usd = P.cash; // 全倉: spend the cents too
     if (!(usd > 0)) throw new Error("模擬現金唔夠");
     await touchFirstBuy();
-    const fee = usd * P.feePct / 100;
+    const fee = calc.spotBuy(usd, li.price).fee;
     const imp = li.source === "binance" ? { impactPct: 0 } : estimateImpact(usd, li.liq || 0);
     const fillPx = buyFillPx(li, usd); // buy worse (same fn as the buy window)
     const qty = (usd - fee) / fillPx;
@@ -2066,7 +2087,7 @@
     if (!(li && li.price > 0)) throw new Error("暫時攞唔到報價");
     leverage = Math.min(50, Math.max(2, leverage || risk().defaultLev));
     const notional = margin * leverage;
-    const fee = notional * levFeePct() / 100;
+    const fee = calc.levOpen(margin, leverage, li.price).openFee;
     const imp = li.source === "binance" ? { impactPct: 0 } : estimateImpact(notional, li.liq || 0);
     if (margin + fee > P.cash + 1e-9) throw new Error(`現金唔夠：要保證金 ${money2(margin)} + 開倉費 ${money2(fee)}`);
     if (!(margin > 0)) throw new Error("保證金要大於 0");
@@ -2098,28 +2119,26 @@
     if (allinActive()) throw new Error("孤注一擲進行中，唔可以" + action + "。請先平倉或重置。");
   }
 
+  /** 孤注一擲 preview grid = open at price0 then CLOSE at each price, through calc.* (same maths as executeAllin + 平倉).
+   *  val = cash you'd hold after closing (incl. leftover cents); ret = val / cash − 1. */
   function allinScenarioHTML(mode, cash, price0, lev) {
     const rows = [];
     if (mode === "spot") {
-      const qty = cash * (1 - P.feePct / 100) / price0;
+      const b = calc.spotBuy(cash, price0);
       for (const m of [0, 0.5, 1, 2, 5, 10]) {
-        const px = price0 * m, val = qty * px, ret = (val / cash - 1) * 100;
-        const label = m === 0 ? "歸零" : m === 0.5 ? "跌一半" : m === 1 ? "不變" : `×${m}`;
-        rows.push({ label, val, ret });
+        const val = calc.spotSell(b.qty, price0 * m).proceeds;
+        rows.push({ label: m === 0 ? "歸零" : m === 0.5 ? "跌一半" : m === 1 ? "不變" : `×${m}`, mult: m, val, ret: (val / cash - 1) * 100 });
       }
     } else {
-      const margin = cash / (1 + lev * P.feePct / 100); // leave room for open fee on notional
-      const notional = margin * lev;
-      const fee = notional * levFeePct() / 100;
-      const qty = notional / price0;
+      const margin = calc.allinMargin(cash, lev);
+      const pos = calc.levOpen(margin, lev, price0);
+      const left = cash - margin - pos.openFee;
       const lp = liqPriceLong(price0, lev);
-      rows.push({ label: "爆倉", val: 0, ret: -100, note: `價 ≤ ${price(lp)}（跌約 ${(LIQ_MARGIN_FRAC / lev * 100).toFixed(1)}%）` });
+      rows.push({ label: "爆倉", mult: null, val: left, ret: (left / cash - 1) * 100, note: `價 ≤ ${price(lp)}（跌約 ${(LIQ_MARGIN_FRAC / lev * 100).toFixed(1)}%）` });
       for (const m of [1, 2, 5, 10]) {
-        const px = price0 * m;
-        const u = qty * (px - price0);
-        const eq = margin + u; // before close fee
-        const ret = ((eq - fee) /* rough */ / cash - 1) * 100;
-        rows.push({ label: m === 1 ? "不變" : `×${m}`, val: Math.max(0, eq), ret: (eq / cash - 1) * 100 });
+        const c = calc.levClose(pos, price0 * m);
+        const val = left + c.back;
+        rows.push({ label: m === 1 ? "不變" : `×${m}`, mult: m, val, ret: (val / cash - 1) * 100 });
       }
     }
     return rows;
@@ -2205,7 +2224,7 @@
     } else {
       const lev = 50;
       // use max margin such that margin + notional*fee <= cash
-      const margin = Math.floor(P.cash / (1 + lev * levFeePct() / 100) * 100) / 100;
+      const margin = calc.allinMargin(P.cash, lev);
       if (!(margin > 1)) throw new Error("現金唔夠開槓桿");
       const id = await doOpenLev(info, li, margin, lev, { allowAllin: true });
       P.allin = { status: "open", mode: "lev", symbol: info.symbol, name: info.name, chain: info.chain, pair: info.pair, token: info.token,
@@ -2271,8 +2290,9 @@
     });
   }
 
-  async function closeAllinFromBanner() {
+  async function closeAllinFromBanner({ markPrice = null } = {}) {
     if (!allinActive()) return;
+    const priceAt = async (chain, pair) => (markPrice > 0 ? { price: markPrice, source: "binance" } : livePrice(chain, pair));
     const a = P.allin;
     try {
       if (a.mode === "spot") {
@@ -2281,9 +2301,9 @@
           await endAllinRound({ reason: "已無持倉", exitPrice: a.entry, retPct: -100, pnl: -a.cashBefore });
           renderPortfolio(false); return;
         }
-        const li = await livePrice(a.chain, a.pair).catch(() => ({ price: 0, writeoff: true }));
+        const li = await priceAt(a.chain, a.pair).catch(() => ({ price: 0, writeoff: true }));
         const pos = P.positions[k];
-        const gross = pos.qty * li.price, fee = gross * P.feePct / 100, proceeds = gross - fee;
+        const { fee, proceeds } = calc.spotSell(pos.qty, li.price);
         const pnl = proceeds - pos.cost;
         // BUG FIX (ux-fix): result % ignored leftover cash → equity after / equity before.
         const retPct = a.cashBefore ? ((P.cash + proceeds) / a.cashBefore - 1) * 100 : (pnl / pos.cost) * 100;
@@ -2302,15 +2322,13 @@
           renderPortfolio(false); return;
         }
         const pos = P.levPositions[id];
-        const li = await livePrice(pos.chain, pos.pair);
+        const li = await priceAt(pos.chain, pos.pair);
         const m = levMark(pos, li.price);
         if (m.dead) {
           await closeLev(id, { forceLiq: true, markPrice: li.price });
           await endAllinRound({ reason: "爆倉", exitPrice: li.price, retPct: a.cashBefore ? (P.cash / a.cashBefore - 1) * 100 : -100, pnl: -pos.margin - (pos.openFee || 0) });
         } else {
-          const closeFee = pos.qty * li.price * levFeePct() / 100;
-          const back = pos.margin + m.unreal - closeFee;
-          const pnl = m.unreal - closeFee - (pos.openFee || 0);
+          const { closeFee, back, pnl } = calc.levClose(pos, li.price);
           const retPct = a.cashBefore ? ((P.cash + back) / a.cashBefore - 1) * 100 : (pnl / pos.margin) * 100;
           // use closeLev path manually to avoid double dialog
           P.cash += back; P.realizedLev += pnl;
@@ -2525,7 +2543,8 @@
       mark = li ? li.price : pos.entry;
     }
     const m = levMark(pos, mark);
-    const isLiq = forceLiq || m.dead;
+    const cc = calc.levClose(pos, mark, levFeePct(), forceLiq);
+    const isLiq = cc.dead;
     if (isLiq) {
       // 保證金歸零，唔退回 cash
       const pnl = -pos.margin - (pos.openFee || 0);
@@ -2542,16 +2561,11 @@
       info: `${price(mark)} · 盈虧 ${m.unreal >= 0 ? "+" : ""}${money2(m.unreal)}`,
       label: "平倉 %", value: 100, quick: [["100%", 100]],
       modePicker: false, symbol: pos.symbol, minAmt: 99.99, maxAmt: 100,
-      preview: () => {
-        const closeFee = pos.qty * mark * levFeePct() / 100;
-        return `退回 ${money2(pos.margin + m.unreal - closeFee)} · 費 ${money2(closeFee)}`;
-      },
+      preview: () => `退回 ${money2(cc.back)} · 費 ${money2(cc.closeFee)} · 淨 ${cc.pnl >= 0 ? "+" : ""}${money2(cc.pnl)}`,
       okLabel: "平倉",
     });
     if (!res) return;
-    const closeFee = pos.qty * mark * levFeePct() / 100;
-    const back = pos.margin + m.unreal - closeFee;
-    const pnl = m.unreal - closeFee - (pos.openFee || 0);
+    const { closeFee, back, pnl } = cc;
     P.cash += back;
     P.realizedLev += pnl;
     P.trades.unshift({ t: new Date().toISOString(), kind: "lev", side: "CLOSE", chain: pos.chain, pair: pos.pair, symbol: pos.symbol, price: mark, qty: pos.qty, usd: back, fee: closeFee, pnl, leverage: pos.leverage, notional: pos.notional });
@@ -2782,13 +2796,18 @@
     const g = exitGuideCopy(plan, posBasisPx(pos), px);
     let rows;
     if (kind === "lev") {
-      const m = levMark(pos, px);
-      rows = [kv("現價", price(px)), kv("入場", price(pos.entry)), kv("保證金", money2(pos.margin)), kv("名義", money2(pos.notional)),
-        kv("盈虧", `${money2(m.unreal)} · ${pct(m.unreal / pos.margin * 100)}`, cls(m.unreal)), kv("爆倉價", price(m.liq), "neg"), kv("開倉費", money2(pos.openFee || 0))];
+      const op = calc.levOpenPnl(pos, px), m = op.m, cc = calc.levClose(pos, px);
+      rows = [kv("標記價", price(px)), kv("入場", price(pos.entry)), kv("保證金", money2(pos.margin)), kv("名義", money2(pos.notional)),
+        kv("開倉費", money2(pos.openFee || 0)), kv("倉值（保證金 + 浮盈虧）", money2(op.value)),
+        kv("盈虧（連開倉費）", `${op.pnl >= 0 ? "+" : ""}${money2(op.pnl)} · ${pct(op.pct)}`, cls(op.pnl)),
+        kv("% 基數", `保證金 + 開倉費 = ${money2(op.paid)}`),
+        kv("而家平倉：平倉費", money2(cc.closeFee)), kv("而家平倉：退回", money2(cc.back)),
+        kv("爆倉價", price(m.liq), "neg")];
     } else {
       const v = pos.qty * px, u = v - pos.cost;
       rows = [kv("現價", price(px)), kv("數量", fmtQty(pos.qty)), kv("平均入場", price(posBasisPx(pos))), kv("成本（連費）", money2(pos.cost)),
-        kv("市值", money2(v)), kv("盈虧", `${u >= 0 ? "+" : ""}${money2(u)} · ${pct(pos.cost ? (v / pos.cost - 1) * 100 : 0)}`, cls(u)),
+        kv("市值", money2(v)), kv("盈虧（連買入費）", `${u >= 0 ? "+" : ""}${money2(u)} · ${pct(pos.cost ? (v / pos.cost - 1) * 100 : 0)}`, cls(u)),
+        kv("% 基數", `成本（連費）= ${money2(pos.cost)}`), kv("而家賣：賣出費", money2(calc.spotSell(pos.qty, px).fee)), kv("而家賣：收返", money2(calc.spotSell(pos.qty, px).proceeds)),
         kv("打和價", price(pos.cost / pos.qty / (1 - P.feePct / 100)))];
     }
     box.append(el("div", { class: "kv pd-kv" }, ...rows.flat()));
@@ -2876,17 +2895,18 @@
       const m = px == null ? null : levMark(pos, px);
       if (m) { levEquity += Math.max(0, m.equity); levMargin += pos.margin; levUnreal += m.unreal; }
       else { levEquity += pos.margin; levMargin += pos.margin; }
-      listRows.push({ key: id, kind: "lev", pos, px, value: m ? Math.max(0, m.equity) : null, pnl: m ? m.unreal : null, pnlPct: m ? m.unreal / pos.margin * 100 : null, stale: li.state !== "live" && li.state !== "dead", flash: li.flash });
+      const op = px == null ? null : calc.levOpenPnl(pos, px);
+      listRows.push({ key: id, kind: "lev", pos, px, value: op ? op.value : null, pnl: op ? op.pnl : null, pnlPct: op ? op.pct : null, stale: li.state !== "live" && li.state !== "dead", flash: li.flash });
       const dropPct = px != null ? ((px / pos.entry - 1) * 100) : null;
       const toLiq = px != null ? ((px - liqPriceLong(pos.entry, pos.leverage)) / px * 100) : null;
       const flashClsL = li.flash === "up" ? " tick-up" : li.flash === "down" ? " tick-down" : "";
       // BUG FIX (ux-fix): was price% × leverage (ignored fees) → disagreed with the $ P&L. Now unrealised / margin.
-      const levPnlPct = m ? m.unreal / pos.margin * 100 : null;
+      const levPnlPct = op ? op.pct : null;
       lb.append(el("tr", { class: "cardish lev-row" + flashClsL, "data-lev": id },
         el("td", { "data-label": "幣" },
           el("span", { class: "kind-badge lev", text: pos.leverage + "x" }), " ",
           el("b", { text: "$" + pos.symbol }), " ", srcBadge(pos.chain, pos.pair, li),
-          m ? el("div", { class: "pnl-glance " + cls(m.unreal), text: (m.unreal >= 0 ? "+" : "") + money2(m.unreal) + (levPnlPct == null ? "" : " · " + pct(levPnlPct)) }) : "",
+          op ? el("div", { class: "pnl-glance " + cls(op.pnl), text: (op.pnl >= 0 ? "+" : "") + money2(op.pnl) + " · " + pct(op.pct) }) : "",
           toLiq != null ? el("div", { class: "dist" + (toLiq < 5 ? " hot" : ""), text: `爆倉價 ${price(liqPriceLong(pos.entry, pos.leverage))} · 距 ${toLiq.toFixed(1)}%` }) : el("div", { class: "dist", text: "爆倉價 " + price(liqPriceLong(pos.entry, pos.leverage)) }),
           posExitGuideEl(pos, px)),
         el("td", { class: "num", "data-label": "倍數", text: pos.leverage + "x" }),
@@ -2895,7 +2915,7 @@
         el("td", { class: "num", "data-label": "入場", text: price(pos.entry) }),
         el("td", { class: "num live-px", "data-label": "標記", text: px == null ? "…" : price(px) }),
         el("td", { class: "num neg", "data-label": "爆倉價", text: price(liqPriceLong(pos.entry, pos.leverage)) }),
-        el("td", { class: "num pnl-strong " + cls(m?.unreal), "data-label": "浮盈虧", text: m ? `${money2(m.unreal)} (${levPnlPct == null ? "" : pct(levPnlPct)})` : "…" }),
+        el("td", { class: "num pnl-strong " + cls(op?.pnl), "data-label": "盈虧（連開倉費）", text: op ? `${money2(op.pnl)} (${pct(op.pct)})` : "…" }),
         el("td", { class: "num " + cls(m?.equity - pos.margin), "data-label": "倉權益", text: m ? money2(m.equity) : "…" }),
         el("td", { "data-label": "", class: "actions" }, el("button", { class: "secondary", onclick: () => closeLev(id) }, "平倉"))));
     }
@@ -3420,6 +3440,7 @@
   window.MCE.paper = {
     openBuy, openSell, copyPicks, state: () => P,
     doOpenLev, doBuySpot, closeLev, checkLiquidations, liqPriceLong, levMark,
+    calc, allinScenarios: allinScenarioHTML,
     LIQ_MARGIN_FRAC, setState(s) { P = s; pf.save(P); },
     openAllinFlow, executeAllin, allinActive, loadAllinRounds, endAllinRound, playOverlay, reduceMotion, closeAllinFromBanner, buyAnyCoin, openPosDetail,
     ingestPair, ensureLiveLoop, renderPortfolio,
