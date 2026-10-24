@@ -1,0 +1,2 @@
+{"ts": "2026-10-25T04:09:07+08:00", "symbol": "ANIMEUSDT", "tool": "counts", "query": "($ANIME OR #ANIME) (crypto OR binance) lang:en -is:retweet", "result_count": 37}
+{"ts": "2026-10-25T04:09:10+08:00", "symbol": "ANIMEUSDT", "tool": "search", "query": "($ANIME OR #ANIME) (crypto OR binance) lang:en -is:retweet", "result_count": 19}
