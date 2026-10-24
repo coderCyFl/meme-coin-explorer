@@ -605,8 +605,7 @@
   }
 
   // ---------- 急升榜 (high-risk momentum board) ----------
-  // 🔥 rule mirrors scripts/gainer_core.py (24h >= +20% and within 10% of 24h high). ⚡ early tier is
-  // computed hourly by GitHub Actions (needs 1h volume for every liquid coin) and read from static JSON.
+  // 🔥 surge + ⚡ v2 early rules mirror scripts/gainer_core.py (surge_fire / early2_at); all computed here, live.
   const GB_STABLE = new Set(["USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1",
     "BFUSD", "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL"]);
   const GB_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
@@ -616,34 +615,68 @@
   const GB_SURGE_C1 = 5, GB_SURGE_VR = 3, GB_SURGE_C15 = 5;
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
-  const GB_POOL = 16;          // 15m klines fetched only for these
+  const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
+  // ⚡ v2 (20261025g1, mirrors gainer_core.early2_at; backtest data/gainer_board/backtest_early_30d.json), closed 15m bars:
+  //   起步: 24h vol ≥ $3M, not 🔥 yet (15m < +5% & 1h < +5%), 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
+  //   細盤: 24h vol $2M–$3M (under the 🔥 floor) with the 🔥 price/volume condition
+  //   suppressed when 🔥 (≥ $3M) fired on that coin in the 16 bars up to the signal bar.
+  const GB_E2_C15 = 2.5, GB_E2_C1_MIN = 0, GB_E2_RNG24 = 25, GB_E2_LOW_QV = 2e6;
+  // Scan pool: EVERY eligible coin passing a cheap ticker pre-filter (no top-10 cap any more):
+  //   🔥 / 細盤: rolling-4h range ≥ 5% · 起步: 24h range ≥ 25% and rolling-4h range ≥ 2.5%. Hard cap for rate safety.
+  const GB_POOL_MAX = 90;
   const GB_TTL = 60_000;
   let gainerCache = { t: 0, rows: [] };
 
-  function gainerEligible(sym, qv) {
+  function gainerEligible(sym, qv, floor = GB_MIN_QV) {
     if (!sym.endsWith("USDT")) return false;
     const base = sym.slice(0, -4);
     if (GB_STABLE.has(base) || bnTokenized.has(base)) return false;
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && !GB_LEV_OK.has(base)) return false;
-    return qv >= GB_MIN_QV;
+    return qv >= floor;
   }
 
   /** Rolling surge features at 15m bar j (closed bars) — same maths as gainer_core.surge_feats. */
   function surgeFeats(b, j) {
     if (j < 99) return null;
-    let v1 = 0, prev = 0, hi = 0;
+    let v1 = 0, prev = 0, hi = 0, q24 = 0;
     for (let k = j - 3; k <= j; k++) v1 += b[k].qv;
     for (let k = j - 99; k <= j - 4; k++) prev += b[k].qv;
-    for (let k = j - 95; k <= j; k++) hi = Math.max(hi, b[k].h);
+    for (let k = j - 95; k <= j; k++) { hi = Math.max(hi, b[k].h); q24 += b[k].qv; }
     const avg = prev / 24, c = b[j].c;
     return {
       t: b[j].t + 15 * 60e3, price: c,
       c15: b[j].o > 0 ? (c / b[j].o - 1) * 100 : 0, c1: (c / b[j - 4].c - 1) * 100, c4: (c / b[j - 16].c - 1) * 100,
-      vr: avg > 0 ? v1 / avg : 0, fh: hi > 0 ? (c / hi - 1) * 100 : 0,
+      vr: avg > 0 ? v1 / avg : 0, fh: hi > 0 ? (c / hi - 1) * 100 : 0, qv24: q24,
     };
   }
   const surgeFire = (f) => !!f && ((f.c1 >= GB_SURGE_C1 && f.vr >= GB_SURGE_VR) || f.c15 >= GB_SURGE_C15);
   const surgeVia = (f) => (f.c1 >= GB_SURGE_C1 && f.vr >= GB_SURGE_VR ? "1h+vol" : "15m");
+
+  /** ⚡ v2 leg at CLOSED 15m bar j: "start" | "thin" | null (same maths as gainer_core.early2_at). */
+  function early2At(b, j) {
+    if (j < 115) return null;
+    for (let k = j - 16; k <= j; k++) { const g = surgeFeats(b, k); if (g.qv24 >= GB_MIN_QV && surgeFire(g)) return null; }
+    const f = surgeFeats(b, j);
+    if (f.qv24 >= GB_MIN_QV) {
+      let hi = -Infinity, lo = Infinity;
+      for (let k = j - 96; k < j; k++) { hi = Math.max(hi, b[k].h); lo = Math.min(lo, b[k].l); }
+      const rng24 = lo > 0 ? (hi / lo - 1) * 100 : 0;
+      return f.c15 < GB_SURGE_C15 && f.c1 < GB_SURGE_C1 && f.c15 >= GB_E2_C15 && f.c1 >= GB_E2_C1_MIN && rng24 >= GB_E2_RNG24 ? "start" : null;
+    }
+    return f.qv24 >= GB_E2_LOW_QV && surgeFire(f) ? "thin" : null;
+  }
+  /** First ⚡ v2 fire on closed bars in the last 4h (bars = 15m klines, last one forming → excluded). */
+  function early2Trigger(bars) {
+    const m = bars.length;
+    if (m < 118) return null;
+    const cutoff = Date.now() - GB_TRIGGER_H * 3600e3;
+    for (let j = Math.max(115, m - 17); j <= m - 2; j++) {
+      if (bars[j].t + 15 * 60e3 < cutoff) continue;
+      const leg = early2At(bars, j);
+      if (leg) { const f = surgeFeats(bars, j); return { t: f.t, price: f.price, via: leg, c1: f.c1, c15: f.c15, vr: f.vr, forming: false }; }
+    }
+    return null;
+  }
 
   /**
    * Trigger = FIRST 15m bar in the last 4h whose rolling window fired (incl. the forming bar, evaluated live).
@@ -694,8 +727,9 @@
   }
 
   /**
-   * 1 MINI 24hr ticker + 1 rolling-4h ticker + ≤16 15m-kline calls, cached 1 min. Throws on ticker failure.
-   * 🔥 = surge in the last 4h (no 24h minimum). 候補 = 24h ≥ +5% & ≤ 30% off high (watch-only filler).
+   * 1 MINI 24hr ticker + rolling-4h ticker (≤100 symbols/call) + ≤ GB_POOL_MAX 15m-kline calls, cached 1 min.
+   * Throws on ticker failure. 🔥 = surge in the last 4h (no 24h minimum). ⚡ = early2 (watch-only).
+   * 候補 = 24h ≥ +5% & ≤ 30% off high (watch-only filler).
    */
   async function computeGainerBoard({ force = false, n = 8 } = {}) {
     if (!force && gainerCache.rows.length && Date.now() - gainerCache.t < GB_TTL) return gainerCache;
@@ -703,45 +737,59 @@
     const r = await fetch(BN_REST + "/api/v3/ticker/24hr?type=MINI", { headers: { Accept: "application/json" } });
     if (!r.ok) throw new Error("ticker " + r.status);
     const all = await r.json();
-    const elig = [];
+    const elig = [], thin = [];
     const prices = new Map();
     for (const x of all) {
       const sym = x.symbol, qv = parseFloat(x.quoteVolume), last = parseFloat(x.lastPrice), open = parseFloat(x.openPrice);
       if (listed.size && !listed.has(sym)) continue;
-      if (!(last > 0) || !(open > 0) || !gainerEligible(sym, qv)) continue;
+      if (!(last > 0) || !(open > 0) || !gainerEligible(sym, qv, GB_E2_LOW_QV)) continue;
       prices.set(sym, last);
-      elig.push({ symbol: sym, base: sym.slice(0, -4), price: last, chg24: (last / open - 1) * 100, volQuote: qv,
-        high: parseFloat(x.highPrice) || null, low: parseFloat(x.lowPrice) || null, open });
+      const hi = parseFloat(x.highPrice) || null, lo = parseFloat(x.lowPrice) || null;
+      const t = { symbol: sym, base: sym.slice(0, -4), price: last, chg24: (last / open - 1) * 100, volQuote: qv,
+        high: hi, low: lo, open, rng24t: hi > 0 && lo > 0 ? (hi / lo - 1) * 100 : 0, thin: qv < GB_MIN_QV };
+      (t.thin ? thin : elig).push(t);
     }
     elig.sort((a, b) => b.chg24 - a.chg24);
     elig.forEach((t, i) => { t.rank24 = i + 1; t.fromHigh = t.high > 0 ? (t.price / t.high - 1) * 100 : 0; });
-    // Screen everything with the rolling 4h window: any ≥5% 15m/1h surge in the last 4h leaves a ≥5% 4h range.
+    thin.forEach((t) => { t.rank24 = null; t.fromHigh = t.high > 0 ? (t.price / t.high - 1) * 100 : 0; });
+    // Cheap pre-filter on EVERY eligible coin (rolling 4h window): a ≥5% 15m/1h surge leaves a ≥5% 4h range;
+    // a ⚡ 起步 bar (15m ≥ +2.5%) leaves ≥2.5% and needs the 24h range ≥ 25% (ticker range ⊇ prior-24h range).
     let r4 = new Map();
-    try { r4 = await rollingTicker(elig.map((t) => t.symbol), "4h"); } catch (e) { console.warn("rolling 4h failed", e); }
+    try { r4 = await rollingTicker(elig.concat(thin).map((t) => t.symbol), "4h"); } catch (e) { console.warn("rolling 4h failed", e); }
     const range4 = (t) => { const x = r4.get(t.symbol); return x && x.low > 0 ? (x.high / x.low - 1) * 100 : 0; };
     const c4roll = (t) => { const x = r4.get(t.symbol); return x && x.open > 0 ? (x.last / x.open - 1) * 100 : 0; };
-    const surgePool = elig.filter((t) => range4(t) >= GB_SURGE_C15).sort((a, b) => c4roll(b) - c4roll(a)).slice(0, GB_POOL - 6);
+    const byC4 = (a, b) => c4roll(b) - c4roll(a);
+    const surgePool = elig.filter((t) => range4(t) >= GB_SURGE_C15).sort(byC4);
     const inPool = new Set(surgePool.map((t) => t.symbol));
-    const candPool = elig.filter((t) => !inPool.has(t.symbol) && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH).slice(0, GB_POOL - surgePool.length);
-    const pool = surgePool.concat(candPool);
-    const out = [];
+    const startPool = elig.filter((t) => !inPool.has(t.symbol) && t.rng24t >= GB_E2_RNG24 && range4(t) >= GB_E2_C15).sort(byC4);
+    startPool.forEach((t) => inPool.add(t.symbol));
+    const thinPool = thin.filter((t) => range4(t) >= GB_SURGE_C15).sort(byC4);
+    thinPool.forEach((t) => inPool.add(t.symbol));
+    const candPool = elig.filter((t) => !inPool.has(t.symbol) && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH).slice(0, GB_CAND_N);
+    const pool = surgePool.concat(startPool, thinPool).slice(0, GB_POOL_MAX).concat(candPool);
+    const out = [], early = [];
     const queue = pool.slice();
-    await Promise.all(Array.from({ length: 4 }, async () => {
+    await Promise.all(Array.from({ length: 6 }, async () => {
       while (queue.length) {
         const t = queue.shift();
         let bars = [];
         try { bars = await fetchKlineBars(t.symbol, { interval: "15m", limit: 120, force: true }); } catch (_) {}
-        const trig = bars.length >= 101 ? surgeTrigger(bars, t.price) : null;
+        const trig = !t.thin && bars.length >= 101 ? surgeTrigger(bars, t.price) : null;
+        const e2 = !trig ? early2Trigger(bars) : null;
         const f = bars.length >= 20 ? gainerScore15(t, bars) : { c1h: null, c4h: null, volRatio: null, volRatioPrev: null, fromHigh: t.fromHigh, score: 0 };
-        const tier = trig ? "pump" : (t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH ? "cand" : null);
+        const spark = bars.slice(-32).map((b) => b.c).concat([t.price]);
+        if (e2) { early.push({ ...t, ...f, tier: "early2", trigger: e2, spark, logo: logoUrl(t.base) }); continue; }
+        const tier = trig ? "pump" : (!t.thin && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH ? "cand" : null);
         if (!tier) continue;
-        out.push({ ...t, ...f, tier, trigger: trig, spark: bars.slice(-32).map((b) => b.c).concat([t.price]), logo: logoUrl(t.base) });
+        out.push({ ...t, ...f, tier, trigger: trig, spark, logo: logoUrl(t.base) });
       }
     }));
     const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.trigger.t - a.trigger.t || b.score - a.score);
     const fill = out.filter((x) => x.tier === "cand").sort((a, b) => b.score - a.score);
     const rows = pumps.concat(fill.slice(0, Math.max(0, 6 - pumps.length))).slice(0, Math.max(n, pumps.length));
-    gainerCache = { t: Date.now(), rows, pool: elig.length, screened4h: r4.size, tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.map((t) => [t.symbol, t])) };
+    early.sort((a, b) => b.trigger.t - a.trigger.t || b.score - a.score);
+    gainerCache = { t: Date.now(), rows, early, pool: elig.length + thin.length, poolThin: thin.length, scanned: pool.length, screened4h: r4.size,
+      tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.concat(thin).map((t) => [t.symbol, t])) };
     return gainerCache;
   }
 
@@ -932,6 +980,7 @@
     start, stop, sync, onTick, getMark, sourceLabel, setLiveMode, classify,
     hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, fetchKlineBars, warmSparks,
     sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks, computeGainerBoard, watchExtra,
+    _gb: { surgeFeats, surgeFire, early2At, early2Trigger, surgeTrigger },
     logoUrl, coinLogoEl, letterAvatar, ICON_EMOJI,
     DEX_POLL_MS, MINT_TO_BN, CURATED_BASES, BN_REST,
     get running() { return running; },

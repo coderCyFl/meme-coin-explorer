@@ -7,7 +7,7 @@
 
 🔥 = exactly the site's rule (live.js computeGainerBoard / gainer_core): eligible Binance USDT spot
 (stables / leveraged / tokenized stocks excluded, 24h quote volume >= $3M), screened by the rolling-4h
-range >= 5% (site: top 10 of those by rolling-4h change; here ALL of them, top-10 first), then on 15m klines (forming bar included, like the site):
+range >= 5% (site since 20261025g1: ALL of them, capped at 90 by rolling-4h change — same as here), then on 15m klines (forming bar included, like the site):
 first bar in the last 4h with (rolling 1h >= +5% AND 1h vol >= 3x prev-24h hourly avg) OR 15m >= +5%.
 ⚡ is NOT X-checked (Cyrus + QA, 2026-10-25).
 
@@ -34,14 +34,44 @@ DAILY_TOTAL_CAP = 60          # max X calls per Shanghai day (None = no cap)
 CALLS_PER_TARGET = 2          # counts + search
 MAX_TARGETS_PER_RUN = 8
 HOLD_H = 4                    # 🔥 stays on the board 4h after the trigger (= live.js GB_TRIGGER_H)
-SITE_POOL = 10                # live.js GB_POOL - 6 surge slots
+SITE_POOL = 90                # live.js GB_POOL_MAX (site scans every >=5%-range coin since 20261025g1)
 # Tickers that are everyday words / too short: add crypto context to the X query.
 AMBIGUOUS = {"ONE", "GAS", "SUN", "MOVE", "PEOPLE", "ACT", "BANANA", "ME", "AI", "HOOK", "GO", "COOKIE", "TRUMP",
              "ANIME", "EPIC", "BOME", "PIXEL", "PORTAL", "TURBO", "NOT", "DOGS", "CAT", "BIO", "LAYER", "SIGN", "HOME",
              "KERNEL", "INIT", "TREE", "RED", "MAGIC", "BOND", "FLOW", "ID", "OM", "W", "S", "T", "G", "A", "C"}
+# Common-word tickers (2026-10-25): X search drops the "$", so "($ANIME OR #ANIME) (crypto OR binance)" also matched
+# general anime posts and inflated counts. For these, REQUIRE a coin-form term ("ANIME coin" / "ANIME token" /
+# ANIMEUSDT / "$ANIME") AND a market word, and exclude obvious non-crypto senses. count_query == query.
+COMMON_WORD_TICKERS = {"ANIME", "EPIC", "GAS", "ONE", "SUN", "MOVE", "PEOPLE", "ACT", "BANANA", "ME", "AI", "HOOK", "GO",
+                       "COOKIE", "PIXEL", "PORTAL", "TURBO", "NOT", "DOGS", "CAT", "BIO", "LAYER", "SIGN", "HOME", "KERNEL",
+                       "INIT", "TREE", "RED", "MAGIC", "BOND", "FLOW", "ID", "OM", "BANK", "MASK", "GAME", "STORY", "PUMP",
+                       "TRUTH", "SOLO", "PROM", "EDU", "ERA", "NIL", "WIN", "HIGH", "CHESS", "COW", "DUSK", "FUN", "HOT", "LUNA"}
+NON_CRYPTO_EXCLUDE = {
+    "ANIME": ["manga", "episode", "season", "waifu", "cosplay", "crunchyroll", "netflix", "studio", "fanart"],
+    "EPIC": ["\"epic games\"", "fortnite", "\"epic store\"", "\"epic fail\"", "unreal"],
+    "GAS": ["petrol", "\"gas station\"", "\"gas prices\"", "diesel", "\"natural gas\"", "stove"],
+    "SUN": ["weather", "sunset", "sunscreen", "beach"],
+    "MOVE": ["movie", "football", "transfer"],
+    "PEOPLE": ["magazine", "celebrity"],
+    "COOKIE": ["recipe", "baking", "browser"],
+    "HOME": ["\"real estate\"", "mortgage", "decor"],
+    "RED": ["wine", "lipstick"],
+    "MAGIC": ["\"magic the gathering\"", "orlando", "nba"],
+    "GAME": ["playstation", "xbox", "nintendo"],
+    "CAT": ["kitten", "meow", "vet"],
+    "DOGS": ["puppy", "vet", "adopt"],
+    "BANANA": ["recipe", "smoothie"],
+    "TREE": ["garden", "christmas"],
+    "BIO": ["instagram", "\"link in bio\""],
+}
+MARKET_WORDS = "(binance OR crypto OR pump OR listing OR price OR chart OR usdt)"
 
 
 def query_for(base):
+    if base in COMMON_WORD_TICKERS:
+        coin = f'("{base} coin" OR "{base} token" OR {base}USDT OR "${base}")'
+        neg = " ".join("-" + w for w in NON_CRYPTO_EXCLUDE.get(base, []))
+        return f"{coin} {MARKET_WORDS}{' ' + neg if neg else ''} lang:en -is:retweet"
     tag = f"${base}" if re.match(r"^[A-Za-z][A-Za-z0-9_]*$", base) else f'"{base}"'
     hasht = f"#{base}" if re.match(r"^[A-Za-z][A-Za-z0-9_]*$", base) else ""
     core = f"({tag} OR {hasht})" if hasht else tag
@@ -76,8 +106,7 @@ def current_pumps():
     r4 = rolling([e["symbol"] for e in elig], "4h")
     rng = lambda e: (r4[e["symbol"]]["highPrice"] / r4[e["symbol"]]["lowPrice"] - 1) * 100 if e["symbol"] in r4 and r4[e["symbol"]]["lowPrice"] > 0 else 0
     c4 = lambda e: (r4[e["symbol"]]["lastPrice"] / r4[e["symbol"]]["openPrice"] - 1) * 100 if e["symbol"] in r4 and r4[e["symbol"]]["openPrice"] > 0 else 0
-    # Site screens the top SITE_POOL by rolling-4h change; we scan every >=5% range coin (superset, so a coin the
-    # site shows a few minutes earlier/later is still covered) and mark site_pool for priority.
+    # Site (20261025g1) screens every >=5%-range coin by rolling-4h change (cap SITE_POOL); same here.
     pool = sorted([e for e in elig if rng(e) >= g.SURGE_C15], key=lambda e: -c4(e))
     for i, e in enumerate(pool):
         e["site_pool"] = i < SITE_POOL

@@ -1578,3 +1578,6 @@ dialog#tradeDlg .trade-exit-guide.teg-momentum{border-color:#7f1d1d}
 .gb-xwho{display:block;color:var(--muted);font-weight:700;font-size:11px}
 .gb-xtxt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .gb-xcap{margin:2px 0 6px}
+/* ⚡ v2 (20261025g1): honest backtest chip row on watch-only early cards */
+.gb-e2row{justify-content:flex-start}
+.gb-btchip.gb-e2chip{color:#f0b90b;border-color:#5c3b0a;height:28px}

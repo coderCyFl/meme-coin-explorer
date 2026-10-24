@@ -1079,7 +1079,7 @@
       const last = list[list.length - 1];
       if (last && Date.now() - new Date(last.t).getTime() < 5 * 60e3) return list; // ≤ 1 per 5 min
       list.push({ t: isoSh(), rows: rows.map((r) => ({ pair: r.symbol, tier: r.tier, price: r.price, chg24: Math.round(r.chg24 * 100) / 100 }))
-        .concat((early || []).map((e) => ({ pair: e.pair, tier: "early", price: e.entry_price_usd, chg24: e.change_24h_at_pick }))) });
+        .concat((early || []).map((e) => ({ pair: e.symbol, tier: "early2", price: e.price, chg24: Math.round(e.chg24 * 100) / 100, via: e.trigger && e.trigger.via }))) });
       const keep = list.slice(-288);
       localStorage.setItem(GB_CLIENT_SNAP_KEY, JSON.stringify(keep));
       return keep;
@@ -1095,7 +1095,8 @@
     box.append(el("div", { class: "gb-state gb-" + kind }, ...kids));
   }
 
-  const gbTierIcon = (t) => (t === "early" ? "⚡" : "🔥");
+  const gbIsEarly = (t) => t === "early" || t === "early2";
+  const gbTierIcon = (t) => (gbIsEarly(t) ? "⚡" : "🔥");
 
   /** Plan a 🔥 buy would lock NOW (fresh 4h/12h window) — same object the buy window uses. */
   const gbPlanNow = () => momentumExitPlan({ createdAt: new Date().toISOString() });
@@ -1106,7 +1107,7 @@
     const since = nowPx > 0 && e > 0 ? (nowPx / e - 1) * 100 : null;
     const plan = gbPlanNow();
     return el("div", exitLiveAttrs(pair, plan, nowPx, { class: "gba-grid", "data-gb-levels": "banner" }),
-      el("div", {}, el("span", { class: "k", text: (trig.trigger_src === "kline" ? (trig.forming ? "觸發（即時）" : "觸發（15m 線）") : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發") + (trig.via ? " · " + (trig.via === "15m" ? "15m 急拉" : "1h+量") : "") }), el("b", { class: "num", text: frTime(trig.picked_at) })),
+      el("div", {}, el("span", { class: "k", text: (trig.trigger_src === "kline" ? (trig.forming ? "觸發（即時）" : "觸發（15m 線）") : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發") + (trig.via ? " · " + ({ "15m": "15m 急拉", "1h+vol": "1h+量", start: "起步", thin: "細盤" }[trig.via] || trig.via) : "") }), el("b", { class: "num", text: frTime(trig.picked_at) })),
       el("div", {}, el("span", { class: "k", text: "觸發價" }), el("b", { class: "num", text: price(e) })),
       el("div", {}, el("span", { class: "k", text: "觸發後" }), el("b", { class: "num " + cls(since), "data-gb-since": pair, "data-gb-entry": String(e), text: pct(since) })),
       el("div", {}, el("span", { class: "k", text: "目標（而家入）" }), exitLiveNode("b", { class: "num pos" }, "{target} / {target2}", plan, nowPx)),
@@ -1120,15 +1121,15 @@
     // 🔥 surge always wins the banner (newest trigger first); ⚡ watch only when no 🔥 is live.
     const byNew = (a, b) => new Date(b.trig.picked_at) - new Date(a.trig.picked_at);
     const best = items.filter((x) => x.trig && x.tier === "pump").sort(byNew)[0]
-      || items.filter((x) => x.trig && x.tier === "early").sort(byNew)[0];
+      || items.filter((x) => x.trig && gbIsEarly(x.tier)).sort(byNew)[0];
     if (!best) { box.hidden = true; return; }
     box.hidden = false;
-    box.classList.toggle("gba-early", best.tier === "early");
+    box.classList.toggle("gba-early", gbIsEarly(best.tier));
     box.append(
       el("div", { class: "gba-head" },
         el("span", { class: "gb-risk", text: "高風險" }),
         el("strong", { text: `${gbTierIcon(best.tier)} 最新觸發 ${best.base}` }),
-        el("span", { class: "gba-time muted tiny", text: best.tier === "early" ? "觀察 · 唔係買入訊號" : "現貨 · 紙上" })),
+        el("span", { class: "gba-time muted tiny", text: gbIsEarly(best.tier) ? "觀察 · 唔係買入訊號" : "現貨 · 紙上" })),
       gbAlertGrid(best.pair, best.trig, best.price));
   }
 
@@ -1143,6 +1144,17 @@
     } else parts.push("回測載入中…");
     parts.push(live && live.n ? `實盤 4h：${live.hit20}/${live.n} 中 +20%` : "實盤 4h：未有封盤");
     return el("p", { class: "gb-bt tiny", text: parts.join(" ‖ ") });
+  }
+
+  /** ⚡ v2 chip: backtest TEST half — median minutes earlier than 🔥 + +20%-in-4h hit (honest, from backtest_early_30d). */
+  function gbEarlyChip() {
+    const t = gbStatic.summary && gbStatic.summary.backtest_30d && gbStatic.summary.backtest_30d.tiers && gbStatic.summary.backtest_30d.tiers.early2;
+    const c = t && t.chip;
+    if (!c || c.hit20_4h_pct == null) return el("span", { class: "gb-btchip muted", text: "回測載入中" });
+    const lead = c.median_lead_vs_fire_min;
+    return el("span", { class: "gb-btchip gb-e2chip", "data-gb-e2chip": "1",
+      title: `30日回測後半段（測試）：同一次急升，⚡ 中位數比 🔥 早 ${lead} 分鐘；4h 內 +20% 命中 ${c.hit20_4h_pct}%；平均 4h ${c.mean_close_4h_pct}%；約 ${c.fires_per_day} 次/日。過唔到買入門檻 → 只觀察。`,
+      text: (lead > 0 ? `早 ${Math.round(lead)} 分鐘` : "唔早過 🔥") + ` · 中 +20% ${c.hit20_4h_pct}%` });
   }
 
   /** Chip beside the buy button: backtest TEST-half mean 4h close (actual number). */
@@ -1249,7 +1261,9 @@
     const spark = liveApi && liveApi.sparkSvg ? liveApi.sparkSvg(r.spark || [], { w: 120, h: 32, up: (r.c4h || 0) >= 0, className: "spark-svg gb-spark" }) : null;
     const tags = r.tier === "cand"
       ? [el("span", { class: "gb-cand-tag", text: "候補" }), el("span", { class: "gb-watch", text: "觀察" })]
-      : [el("span", { class: "gb-risk", text: "高風險" }), el("span", { class: "gb-spot", text: "現貨" })];
+      : gbIsEarly(r.tier)
+        ? [el("span", { class: "gb-watch", text: "⚡ 觀察" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "細盤" })] : [])
+        : [el("span", { class: "gb-risk", text: "高風險" }), el("span", { class: "gb-spot", text: "現貨" })];
     const details = el("details", { class: "gb-details" },
       el("summary", { text: "詳情" }),
       el("div", { class: "gb-det-body" },
@@ -1299,8 +1313,9 @@
           onFilled: (res) => gbLogBought(r, null, res),
         }) }, `現貨落倉 ${money2(usd)}`)));
     }
+    if (r.tier === "early2") kids.push(el("div", { class: "gb-buyrow gb-e2row" }, gbEarlyChip()));
     kids.push(details);
-    return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (r.tier === "early" ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
+    return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (gbIsEarly(r.tier) ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
   }
 
   function renderGainerBoard(rows, trig) {
@@ -1311,26 +1326,16 @@
     for (const r of rows) box.append(gbCard(r, trig.get(r.symbol + ":" + r.tier) || null, { buy: r.tier === "pump" }));
   }
 
-  /** ⚡ watch-only rows from the Actions snapshot; minimal card, no buy. */
-  function renderEarlyList(early, res) {
+  /** ⚡ v2 watch-only rows, computed live in the browser (live.js early2Trigger, every scan); minimal card, no buy. */
+  function renderEarlyList(early, trig) {
     const box = $("earlyList"); if (!box) return;
     box.textContent = "";
-    const bt = $("gainerEarlyBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("early")); }
-    if (!gbStatic.latest) { gbStateBox("error", "暫時攞唔到 ⚡ 數據（每半個鐘快照）· 撳再試", "earlyList"); return; }
+    const bt = $("gainerEarlyBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("early2")); }
     if (!early.length) {
-      box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: `近 12h 冇 ⚡ 訊號（最近快照 ${gbStatic.latest.picked_at ? frTime(gbStatic.latest.picked_at) : "—"}）` })));
+      box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: "近 4h 冇 ⚡" })));
       return;
     }
-    for (const e of early) {
-      const live = res.rank && res.rank.get(e.pair);
-      const r = {
-        symbol: e.pair, base: e.symbol, tier: "early", price: (live && live.price) || e.entry_price_usd,
-        chg24: live ? live.chg24 : e.change_24h_at_pick, volQuote: live ? live.volQuote : e.quote_volume_24h,
-        fromHigh: live ? live.fromHigh : e.from_24h_high_pct, rank24: live ? live.rank24 : null,
-        c1h: e.change_1h_at_pick, c4h: e.change_4h_at_pick, volRatio: e.vol_x_avg, volRatioPrev: e.vol_x_prev_hour, spark: [],
-      };
-      box.append(gbCard(r, { ...e, trigger_src: "snapshot" }, { buy: false }));
-    }
+    for (const r of early) box.append(gbCard(r, trig.get(r.symbol + ":early2") || null, { buy: false }));
   }
 
   function renderGainerMult() {
@@ -1378,28 +1383,26 @@
         }
         return { ...r, serverFlag };
       });
-      const early = [];
-      const seen = new Set();
-      for (const e of active.filter((x) => x.tier === "early")) { if (!seen.has(e.pair)) { seen.add(e.pair); early.push(e); } }
-      const trig = gbLogSnapshot(rows.concat(early.map((e) => ({
-        symbol: e.pair, base: e.symbol, tier: "early", price: e.entry_price_usd, chg24: e.change_24h_at_pick, serverFlag: e,
-      }))));
+      // ⚡ v2: live client rows (all eligible coins, closed 15m bars). Old server ⚡ (tier "early") is no longer shown.
+      const early = (res.early || []).slice(0, 8).map((r) => ({ ...r, serverFlag: { symbol: r.base, pair: r.symbol, tier: "early2",
+        picked_at: isoSh(new Date(r.trigger.t)), entry_price_usd: r.trigger.price, trigger_src: "kline", via: r.trigger.via, forming: false } }));
+      const trig = gbLogSnapshot(rows.concat(early));
       for (const r of rows) { const t = trig.get(r.symbol + ":" + r.tier); if (t && !t.trigger_src) t.trigger_src = r.tier === "pump" ? "now" : "seen"; }
       const curPx = (p) => (res.prices && res.prices.get(p)) || null;
       renderGainerAlert(rows.filter((r) => r.tier === "pump").map((r) => ({ tier: "pump", base: r.base, pair: r.symbol, price: r.price, trig: trig.get(r.symbol + ":pump") }))
-        .concat(early.map((e) => ({ tier: "early", base: e.symbol, pair: e.pair, price: curPx(e.pair), trig: e }))));
+        .concat(early.map((e) => ({ tier: "early2", base: e.base, pair: e.symbol, price: curPx(e.symbol) || e.price, trig: trig.get(e.symbol + ":early2") }))));
       renderGainerBoard(rows, trig);
       paintXChips();
       gbLoadX(false).then(paintXChips).catch(() => {});
-      renderEarlyList(early.slice(0, 8), res);
-      gbClientSnapshot(rows, early.slice(0, 8));
+      renderEarlyList(early, trig);
+      gbClientSnapshot(rows, early);
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
-      const watch = rows.map((r) => r.symbol).concat(early.slice(0, 8).map((e) => e.pair));
+      const watch = rows.map((r) => r.symbol).concat(early.map((e) => e.symbol));
       gbWatched = new Set(watch);
       try { window.MCE.live.watchExtra(watch); } catch (_) {}
       gbLastScan = Date.now();
       const nPump = rows.filter((r) => r.tier === "pump").length;
-      if (meta) meta.textContent = `Binance 現貨 USDT · 掃 ${res.pool || 0} 隻 · 🔥 ${nPump} 隻達標` + (rows.length > nPump ? ` · ${rows.length - nPump} 隻候補（觀察）` : "") + ` · 弱市都唔減半 · 預設 ${gbMult()}x 注碼`;
+      if (meta) meta.textContent = `掃全部 ${res.pool || 0} 隻 · 🔥 ${nPump} · ⚡ ${early.length}` + (rows.length > nPump ? ` · 候補 ${rows.length - nPump}` : "") + ` · ${gbMult()}x`;
     } catch (e) {
       console.warn("gainer board failed", e);
       const a = $("gainerAlert"); if (a) a.hidden = true;
@@ -1442,7 +1445,7 @@
     const st = (k, v, c = "") => el("div", { class: "gacc-stat" }, el("div", { class: "k", text: k }), el("div", { class: "v num " + c, text: v }));
     const rate = (x, k) => (x && x.n ? Math.round((x[k] / x.n) * 100) + "%" : "–");
     const btP = sum.backtest_30d && sum.backtest_30d.tiers && sum.backtest_30d.tiers.pump;
-    const btE = sum.backtest_30d && sum.backtest_30d.tiers && sum.backtest_30d.tiers.early;
+    const btE = sum.backtest_30d && sum.backtest_30d.tiers && sum.backtest_30d.tiers.early2;  // ⚡ v2 (backtest_early_30d)
     const tP = btP && btP.test, tE = btE && btE.test;
     box.append(head);
     {
@@ -1469,7 +1472,9 @@
       st(`🔥 回測測試段 4h +20%（${tP ? tP.fires : "–"} 次）`, tP ? tP.hit20_4h_pct + "%" : "–"),
       st("🔥 測試段平均 4h", tP ? pct(tP.mean_close_4h_pct) : "–", tP ? cls(tP.mean_close_4h_pct) : ""),
       st(`⚡ 回測測試段 4h +20%（${tE ? tE.fires : "–"} 次）`, tE ? tE.hit20_4h_pct + "%" : "–"),
-      st("⚡ 測試段平均 4h", tE ? pct(tE.mean_close_4h_pct) : "–", tE ? cls(tE.mean_close_4h_pct) : "")));
+      st("⚡ 測試段平均 4h", tE ? pct(tE.mean_close_4h_pct) : "–", tE ? cls(tE.mean_close_4h_pct) : ""),
+      st("⚡ 比 🔥 早（中位）", btE && btE.chip && btE.chip.median_lead_vs_fire_min != null ? `${Math.round(btE.chip.median_lead_vs_fire_min)} 分鐘` : "–"),
+      st("急升捉到率 🔥／🔥+⚡", btE && btE.chip ? `${btE.chip.fire_alone_recall_pct}%／${btE.chip.recall_with_fire_pct}%` : "–")));
     if (tP) box.append(el("p", { class: "muted tiny", text: `回測：全部 Binance USDT 現貨（24h 成交 ≥ $3M）· 30 日 1h K 線 · 測試段 = 後 15 日 · 🔥 大約 ${Math.max(1, Math.round(100 / Math.max(0.1, tP.hit20_4h_pct)))} 次先中 1 次 · 一定要設止蝕` }));
     if (h24 && h24.n) box.append(el("p", { class: "muted tiny", text: `24h 補充：+20% ${h24.hit20}/${h24.n}（${rate(h24, "hit20")}）· +50% ${h24.hit50}/${h24.n} · 平均最高 ${pct(h24.avg_max_gain_pct)} · 平均收 ${pct(h24.avg_close_pct)}` }));
     if (h4 && h4.n && h4.n < 20) box.append(el("p", { class: "muted tiny", text: `實盤樣本 ${h4.n} 筆 · 太少唔好當結論` }));

@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T02:59:49+08:00",
+ "updated_at": "2026-10-25T04:14:37+08:00",
  "batches": 7,
  "flags": 3,
  "horizons": {
@@ -19,6 +19,15 @@
     "n": 0
    },
    "flags": 1
+  },
+  "early2": {
+   "4h": {
+    "n": 0
+   },
+   "24h": {
+    "n": 0
+   },
+   "flags": 0
   },
   "early": {
    "4h": {
@@ -144,6 +153,59 @@
      "mean_exit_tp10_sl5_pct": 0.01
     },
     "passes_buy_gate": false
+   },
+   "early2": {
+    "rule": "⚡ 起步：15m >= +2.5% 且 1h >= 0 且 前 24h 波幅 >= 25%（未 🔥，24h 成交 >= $3M）或 細盤 🔥（24h 成交 $2M–$3M）· 近 4h 已 🔥 唔重報",
+    "test": {
+     "fires": 206,
+     "fires_per_day": 13.6,
+     "hit20_4h_pct": 5.83,
+     "hit10_4h_pct": 19.4,
+     "false_alarms": 166,
+     "false_alarm_pct": 80.6,
+     "mean_close_4h_pct": -1.51,
+     "median_close_4h_pct": -2.57,
+     "mean_max_gain_4h_pct": 6.64,
+     "median_max_drawdown_4h_pct": -5.11,
+     "outside_top10_pool_pct": 69.9,
+     "events": 155,
+     "caught": 36,
+     "recall_pct": 23.2,
+     "recall_with_fire_pct": 47.1,
+     "median_lead_vs_fire_min": 45.0,
+     "earlier_than_fire_pct": 96.2,
+     "caught_when_fire_missed": 10
+    },
+    "train": {
+     "fires": 242,
+     "fires_per_day": 16.0,
+     "hit20_4h_pct": 7.44,
+     "hit10_4h_pct": 23.1,
+     "false_alarms": 186,
+     "false_alarm_pct": 76.9,
+     "mean_close_4h_pct": -0.47,
+     "median_close_4h_pct": -2.08,
+     "mean_max_gain_4h_pct": 7.16,
+     "median_max_drawdown_4h_pct": -5.04,
+     "outside_top10_pool_pct": 75.6,
+     "events": 172,
+     "caught": 42,
+     "recall_pct": 24.4,
+     "recall_with_fire_pct": 62.2,
+     "median_lead_vs_fire_min": 30.0,
+     "earlier_than_fire_pct": 100.0,
+     "caught_when_fire_missed": 12
+    },
+    "passes_buy_gate": false,
+    "chip": {
+     "median_lead_vs_fire_min": 45.0,
+     "hit20_4h_pct": 5.83,
+     "mean_close_4h_pct": -1.51,
+     "fires_per_day": 13.6,
+     "recall_with_fire_pct": 47.1,
+     "fire_alone_recall_pct": 37.4
+    },
+    "generated_at": "2026-10-25T03:53:35+08:00"
    }
   }
  },

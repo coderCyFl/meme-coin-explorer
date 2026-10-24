@@ -163,10 +163,55 @@ def surge_feats(b15, j):
             "fh": (c / hi24 - 1) * 100 if hi24 > 0 else 0}
 
 
+def surge_raw(sf):
+    """🔥 price/volume condition WITHOUT the liquidity floor."""
+    return (sf["c1"] >= SURGE_C1 and sf["vr"] >= SURGE_VR) or sf["c15"] >= SURGE_C15
+
+
 def surge_fire(sf):
     if sf["qv24"] < MIN_QV24:
         return False
-    return (sf["c1"] >= SURGE_C1 and sf["vr"] >= SURGE_VR) or sf["c15"] >= SURGE_C15
+    return surge_raw(sf)
+
+
+# ---------------- ⚡ 早期 v2 (2026-10-25 g1, scripts/gainer_early_backtest.py → backtest_early_30d.json) ----------------
+# Two legs, both on CLOSED 15m bars, and only if 🔥 has NOT fired on that coin in the last 4h (bars j-16..j):
+#   (a) 起步 — 24h quote vol >= $3M, not yet 🔥 (15m < +5% and rolling 1h < +5%), 15m candle >= +2.5%,
+#       rolling 1h >= 0, and the previous 24h (96 bars, excl. this bar) high/low range >= 25% (coin already "in play").
+#   (b) 細盤 🔥 — 24h quote vol $2M..$3M (below the 🔥 floor) and the 🔥 price/volume condition (surge_raw).
+# Chosen on the TRAIN half (grid over 24h-range / 15m / 7d-vol / 1h thresholds, ≤ ~15 fires/day); test half
+# reported as-is. Test half: +20%-in-4h hit 5.8%, mean 4h −1.5% → FAILS the buy gate → watch-only 「觀察」.
+E2_C15, E2_C1_MIN, E2_RNG24, E2_LOW_QV = 2.5, 0.0, 25.0, 2e6
+
+
+def early2_feats(b15, j):
+    """surge_feats + prior-24h range (bars j-96..j-1). Needs j >= 99."""
+    sf = surge_feats(b15, j)
+    hi = max(b15[k][2] for k in range(j - 96, j))
+    lo = min(b15[k][3] for k in range(j - 96, j))
+    sf["rng24"] = (hi / lo - 1) * 100 if lo > 0 else 0
+    return sf
+
+
+def early2_leg(sf):
+    """'start' / 'thin' / None for one bar (ignores the recent-🔥 suppression)."""
+    if sf["qv24"] >= MIN_QV24:
+        if sf["c15"] < SURGE_C15 and sf["c1"] < SURGE_C1 and sf["c15"] >= E2_C15 and sf["c1"] >= E2_C1_MIN and sf["rng24"] >= E2_RNG24:
+            return "start"
+        return None
+    if sf["qv24"] >= E2_LOW_QV and surge_raw(sf):
+        return "thin"
+    return None
+
+
+def early2_at(b15, j):
+    """⚡ v2 at closed 15m bar j (needs j >= 115): leg name or None. Suppressed if 🔥 fired in bars j-16..j."""
+    if j < 115:
+        return None
+    for k in range(j - 16, j + 1):
+        if surge_fire(surge_feats(b15, k)):
+            return None
+    return early2_leg(early2_feats(b15, j))
 
 
 RULES = {
@@ -178,7 +223,8 @@ RULES = {
 RULE_TEXT = {
     "pump": f"(1h >= +{SURGE_C1:g}% 且 1h 成交 >= {SURGE_VR:g}x 24h 平均) 或 15m >= +{SURGE_C15:g}% · 冇 24h 下限",
     "pump_legacy_24h20": f"24h >= +{PUMP_C24:g}% 且 距 24h 高 <= {abs(PUMP_FROM_HIGH):g}%（舊，已停用）",
-    "early": f"1h 成交 >= {EARLY_VR:g}x 24h 平均 且 上一個鐘 >= {EARLY_VR1:g}x（量持續升）· 1h >= +{EARLY_C1:g}% · 24h < +{EARLY_C24_MAX:g}%",
+    "early2": f"⚡ 起步：15m >= +{E2_C15:g}% 且 1h >= 0 且 前 24h 波幅 >= {E2_RNG24:g}%（未 🔥，24h 成交 >= $3M）或 細盤 🔥（24h 成交 ${E2_LOW_QV/1e6:g}M–$3M）· 近 4h 已 🔥 唔重報",
+    "early": f"（舊 ⚡，網站已停用）1h 成交 >= {EARLY_VR:g}x 24h 平均 且 上一個鐘 >= {EARLY_VR1:g}x（量持續升）· 1h >= +{EARLY_C1:g}% · 24h < +{EARLY_C24_MAX:g}%",
 }
 
 

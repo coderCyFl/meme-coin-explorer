@@ -6,7 +6,8 @@
   python3 scripts/gainer_board.py summary     # rebuild data/gainer_board/summary.json only
 
 Files (all under data/gainer_board/):
-  snapshots/YYYY-MM-DD.json   hourly batches (Shanghai day). Each entry: symbol, pair, tier (pump|early),
+  snapshots/YYYY-MM-DD.json   hourly batches (Shanghai day). Each entry: symbol, pair, tier (pump|early2|early|cand;
+                              early2 = ⚡ v2 since 20261025g1, early = old ⚡ kept for history),
                               picked_at (ISO +08:00), entry_price_usd, change_24h_at_pick, rank_24h_at_pick,
                               batch, score, change_1h/4h, vol_x_avg, vol_x_prev_hour, outcomes{4h,24h}
   latest.json                 newest batch + active flags (last 12h) for the site
@@ -87,6 +88,20 @@ def eligible_tickers(allt=None):
 
 
 # ---------------- snapshot ----------------
+def early2_last(b15):
+    """⚡ v2 on the last 2 CLOSED 15m bars (b15 = closed bars only). Returns a feature dict or None."""
+    n = len(b15)
+    for j in (n - 2, n - 1):
+        if j < 115:
+            continue
+        leg = g.early2_at(b15, j)
+        if leg:
+            sf = g.early2_feats(b15, j)
+            return dict(sf, vr1=0.0, trigger_at=sf["t"], trigger_price=sf["p"], trigger_via=leg)
+    return None
+
+
+
 def recent_flags(hours):
     cut = now() - datetime.timedelta(hours=hours)
     res = []
@@ -104,7 +119,19 @@ def snapshot():
     tick = eligible_tickers(allt)
     btc = next((r for r in tick if r["pair"] == "BTCUSDT"), None)
     cool = {(e["pair"], e["tier"]) for e in recent_flags(g.COOLDOWN_H - 0.1)}
-    fires = {"pump": [], "early": [], "cand": []}
+    fires = {"pump": [], "early2": [], "early": [], "cand": []}
+    # ⚡ v2 thin leg: $2M..$3M 24h volume coins (below the 🔥 floor) — 15m klines only.
+    thin = [r for r in allt if g.E2_LOW_QV <= r["qv"] < g.MIN_QV24]
+    for r in thin:
+        try:
+            b15 = g.klines(r["pair"], "15m", 120)[:-1]
+            time.sleep(0.05)
+        except Exception as e:  # noqa: BLE001
+            print("15m fail", r["pair"], e, file=sys.stderr)
+            continue
+        f2 = early2_last(b15)
+        if f2 and (r["pair"], "early2") not in cool:
+            fires["early2"].append((g.score(f2), r, f2))
     # 候補 (watch-only, mirrors live.js): ticker 24h >= +5% and <= 30% off the 24h high, not 🔥.
     cand_pairs = {r["pair"] for r in tick if r["chg24"] >= CAND_C24 and r.get("high") and (r["price"] / r["high"] - 1) * 100 >= CAND_FH}
     for r in tick:
@@ -121,7 +148,7 @@ def snapshot():
         t = None
         # 🔥 surge on closed 15m bars since the previous run (~30 min = last 2 closed bars)
         try:
-            b15 = g.klines(r["pair"], "15m", 104)[:-1]
+            b15 = g.klines(r["pair"], "15m", 120)[:-1]
             time.sleep(0.05)
         except Exception as e:  # noqa: BLE001
             b15 = []
@@ -136,6 +163,10 @@ def snapshot():
                              trigger_via="1h+vol" if (sf["c1"] >= g.SURGE_C1 and sf["vr"] >= g.SURGE_VR) else "15m")
                     break
         if not t:
+            f2 = early2_last(b15)
+            if f2:
+                t, f = "early2", dict(f, **{k: f2[k] for k in ("c1", "c4", "vr", "fh", "c15", "trigger_at", "trigger_price", "trigger_via", "rng24")})
+        if not t:
             t = g.tier(f)
         if not t and r["pair"] in cand_pairs:
             t = "cand"
@@ -144,8 +175,8 @@ def snapshot():
         fires[t].append((g.score(f), r, f))
     batch = "gb-" + t0.strftime("%Y%m%d-%H%M")
     entries = []
-    caps = {"pump": MAX_PER_TIER, "early": MAX_PER_TIER, "cand": CAND_MAX}
-    for t in ("pump", "early", "cand"):
+    caps = {"pump": MAX_PER_TIER, "early2": MAX_PER_TIER, "early": MAX_PER_TIER, "cand": CAND_MAX}
+    for t in ("pump", "early2", "early", "cand"):
         for sc, r, f in sorted(fires[t], key=lambda x: -x[0])[:caps[t]]:
             trig_at = f.get("trigger_at")
             entries.append({
@@ -155,7 +186,8 @@ def snapshot():
                 "trigger_via": f.get("trigger_via"), "change_15m_at_pick": round(f["c15"], 2) if "c15" in f else None, "change_24h_at_pick": round(r["chg24"], 2),
                 "rank_24h_at_pick": r["rank"], "batch": batch, "score": sc,
                 "change_1h_at_pick": round(f["c1"], 2), "change_4h_at_pick": round(f["c4"], 2),
-                "vol_x_avg": round(f["vr"], 2), "vol_x_prev_hour": round(f["vr1"], 2),
+                "vol_x_avg": round(f["vr"], 2), "vol_x_prev_hour": round(f["vr1"], 2) if "vr1" in f else None,
+                "range_24h_pct": round(f["rng24"], 1) if "rng24" in f else None,
                 "from_24h_high_pct": round(f["fh"], 2), "quote_volume_24h": round(r["qv"]),
                 "watch_only": t != "pump", "outcomes": {},
             })
@@ -167,7 +199,7 @@ def snapshot():
         "top20_24h": [r["pair"] for r in allt[:20]], "entries": entries,
     })
     jsave(fn, day)
-    print(f"snapshot {batch}: {len(tick)} eligible, pump {len(fires['pump'])}, early {len(fires['early'])}, cand {len(fires['cand'])} → {len(entries)} records")
+    print(f"snapshot {batch}: {len(tick)} eligible (+{len(thin)} thin), pump {len(fires['pump'])}, early2 {len(fires['early2'])}, early {len(fires['early'])}, cand {len(fires['cand'])} → {len(entries)} records")
 
 
 # ---------------- seal ----------------
@@ -259,6 +291,21 @@ def x_split(entries):
 
 
 # ---------------- scorecard ----------------
+def by_tier(rows):
+    """Per-tier (🔥 pump / ⚡ v2 early2 / old early / main) EARLY-flag precision vs the day's Binance top 20.
+    A coin flagged by several tiers counts for each tier it had (its first flag time decides early/late)."""
+    out = {}
+    for t in ("pump", "early2", "early", "main"):
+        rs = [r for r in rows if t in r["tiers"]]
+        er = [r for r in rs if not r["late"]]
+        hit = [r for r in er if r["in_top20"]]
+        out[t] = {"flagged": len(rs), "early_flagged": len(er), "early_hits": len(hit),
+                  "precision_pct": round(len(hit) / len(er) * 100, 1) if er else None,
+                  "hits": [r["symbol"] for r in hit]}
+    return out
+
+
+
 def main_picks_on(date):
     res = []
     for b in jload(os.path.join(ROOT, "data", "picks.json"), {}).get("batches", []):
@@ -291,7 +338,7 @@ def scorecard(date=None):
     top_pairs = [r["pair"] for r in top20]
     by_pair = {r["pair"]: r for r in allt}
     day = jload(os.path.join(SNAP, date + ".json"), {"batches": []})
-    flags = [e for b in day["batches"] for e in b.get("entries", []) if e["tier"] in ("pump", "early")] + main_picks_on(date)
+    flags = [e for b in day["batches"] for e in b.get("entries", []) if e["tier"] in ("pump", "early2", "early")] + main_picks_on(date)
     first = {}
     for e in sorted(flags, key=lambda x: x["picked_at"]):
         first.setdefault(e["pair"], {"first": e, "tiers": set()})["tiers"].add(e["tier"])
@@ -342,6 +389,7 @@ def scorecard(date=None):
                    if r["pair"] not in caught and r["pair"] not in {x["pair"] for x in late_hits}],
         "top20": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2), "quote_volume_24h": round(r["qv"])} for r in top20],
         "flags": rows,
+        "by_tier": by_tier(rows),
         "x_split": x_split([e for b in day["batches"] for e in b.get("entries", [])]),
     }
     jsave(os.path.join(CARD, date + ".json"), card)
@@ -367,11 +415,11 @@ def summary():
     for fn in snap_files():
         allb += jload(fn, {}).get("batches", [])
     es_all = [e for b in allb for e in b.get("entries", [])]
-    es = [e for e in es_all if e["tier"] in ("pump", "early")]  # headline = real 🔥/⚡ flags; 候補 tracked separately
+    es = [e for e in es_all if e["tier"] in ("pump", "early2", "early")]  # headline = real 🔥/⚡ flags; 候補 tracked separately
     horizons, tiers = {}, {}
     for h in HORIZONS:
         horizons[f"{h}h"] = agg(es, f"{h}h")
-    for t in ("pump", "early", "cand"):
+    for t in ("pump", "early2", "early", "cand"):
         te = [e for e in es_all if e["tier"] == t]
         tiers[t] = {f"{h}h": agg(te, f"{h}h") for h in HORIZONS}
         tiers[t]["flags"] = len(te)
@@ -387,6 +435,11 @@ def summary():
     bt = jload(os.path.join(D, "backtest_30d.json"), {})
     btd = {t: {"rule": v.get("rule"), "all": v.get("all"), "test": v.get("test"), "passes_buy_gate": v.get("passes_buy_gate")}
            for t, v in (bt.get("tiers") or {}).items()}
+    be = jload(os.path.join(D, "backtest_early_30d.json"), {})
+    sh = (be.get("candidates") or {}).get(be.get("shipped")) if be else None
+    if sh:  # ⚡ v2 digest (same field names the site reads for 🔥)
+        btd["early2"] = {"rule": be.get("shipped_rule"), "test": sh["test"], "train": sh["train"],
+                         "passes_buy_gate": sh.get("passes_buy_gate"), "chip": be.get("chip"), "generated_at": be.get("generated_at")}
     cards = [jload(fn, None) for fn in sorted(glob.glob(os.path.join(CARD, "*.json")))[-7:]]
     cards = [c for c in cards if c]
     fl = sum(c.get("early_flagged", c["flagged"]) for c in cards)
@@ -400,7 +453,7 @@ def summary():
         "horizons": horizons, "tiers": tiers, "latest_4h": latest4,
         "backtest_30d": {"generated_at": bt.get("generated_at"), "window": bt.get("window"), "tiers": btd},
         "scorecards": [{k: c.get(k) for k in ("date", "flagged", "early_flagged", "late_flagged", "early_hits", "late_hits",
-                                               "precision_pct", "late_precision_pct", "recall_top20_pct", "recall_top10_pct", "buyable_flagged", "x_split")}
+                                               "precision_pct", "late_precision_pct", "recall_top20_pct", "recall_top10_pct", "buyable_flagged", "x_split", "by_tier")}
                        | {"hits": [{"symbol": h["symbol"], "flag_time": h["flag_time"], "final_rank": h["final_rank"], "lead_h": h.get("lead_h")} for h in c["hits"]],
                           "late": [{"symbol": h["symbol"], "flag_time": h["flag_time"], "rank_24h_at_flag": h.get("rank_24h_at_flag"), "final_rank": h["final_rank"]} for h in c.get("late", [])],
                           "missed": [m["symbol"] for m in c["missed"]][:10]} for c in cards],
