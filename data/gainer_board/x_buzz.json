@@ -6,103 +6,103 @@
    "base": "ANIME",
    "flag": "pump",
    "trigger_at": "2026-10-25T06:00:00+08:00",
-   "checked_at": "2026-10-25T08:07:00+08:00",
-   "posts_last_1h": 10,
-   "posts_prev_6h_avg_per_h": 11.67,
-   "spike_ratio": 0.86,
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 12,
+   "posts_prev_6h_avg_per_h": 11.5,
+   "spike_ratio": 1.04,
    "verdict": "冷",
-   "one_line": "熱度回落，多數係訊號群洗版",
+   "one_line": "多數係訊號群洗版,冇新熱度",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2114074235412852786",
-     "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
-     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
-     "likes": 3,
-     "author_username": "Letsmakeatradex",
-     "author_followers": 1489,
-     "created_at": "2026-10-25T03:19:09+08:00"
-    },
-    {
      "id": "2114123830473928936",
      "url": "https://x.com/saintcryptonft/status/2114123830473928936",
-     "text": "$ANIME: BIG SPIKE, BUT CAN BULLS HOLD? Sharp price surge, but the chart shows selling pressure after the initial pump.",
+     "text": "$ANIME: BIG SPIKE, BUT CAN BULLS HOLD? The chart shows selling pressure after the initial pump.",
      "likes": 2,
      "author_username": "saintcryptonft",
-     "author_followers": 15670,
+     "author_followers": 15707,
      "created_at": "2026-10-25T06:36:14+08:00"
     },
     {
-     "id": "2114090318509527205",
-     "url": "https://x.com/SceneCentral255/status/2114090318509527205",
-     "text": "New signal Coin: $ANIME/USDT Signal type: Long Entry 0.002786 Leverage 20x",
-     "likes": 2,
-     "author_username": "SceneCentral255",
-     "author_followers": 840,
-     "created_at": "2026-10-25T04:23:04+08:00"
+     "id": "2114159299312099586",
+     "url": "https://x.com/mirandaiwoegpl/status/2114159299312099586",
+     "text": "Binance Futures #ANIME/USDT All take-profit targets achieved. Profit: 416.3319%",
+     "likes": 1,
+     "author_username": "mirandaiwoegpl",
+     "author_followers": 4006,
+     "created_at": "2026-10-25T08:57:10+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 4
   },
   "EPICUSDT": {
    "symbol": "EPICUSDT",
    "base": "EPIC",
    "flag": "pump",
    "trigger_at": "2026-10-25T07:30:00+08:00",
-   "checked_at": "2026-10-25T08:33:00+08:00",
-   "posts_last_1h": 8,
-   "posts_prev_6h_avg_per_h": 14.4,
-   "spike_ratio": 0.56,
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 21,
+   "posts_prev_6h_avg_per_h": 13.33,
+   "spike_ratio": 1.58,
    "verdict": "冷",
-   "one_line": "傳28號下架，炒下架泵小心",
+   "one_line": "有帖話幣安28號下架EPIC",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2114051702928413181",
-     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
-     "text": "$epic delisting pump @cz_binance send it",
-     "likes": 3,
-     "author_username": "Arlind19061040",
-     "author_followers": 7,
-     "created_at": "2026-10-25T01:49:37+08:00"
-    },
-    {
-     "id": "2113986545589850167",
-     "url": "https://x.com/Finora_EN/status/2113986545589850167",
-     "text": "$EPIC pumps 3.5% in 15m with 1.6x volume — possible liquidity grab inside a much larger bearish context",
-     "likes": 1,
-     "author_username": "Finora_EN",
-     "author_followers": 24414,
-     "created_at": "2026-10-24T21:30:43+08:00"
-    },
-    {
-     "id": "2113898014477586900",
-     "url": "https://x.com/AIBM_WHALe/status/2113898014477586900",
-     "text": "Binance will delist EPIC and QUICK on October 28, 2026 at 03:00 UTC (spot). Withdrawals open until December 28.",
+     "id": "2114161948690649391",
+     "url": "https://x.com/mituldotbiz/status/2114161948690649391",
+     "text": "Binance Will Delist EPIC, QUICK on 2026-10-28",
      "likes": 0,
-     "author_username": "AIBM_WHALe",
-     "author_followers": 155,
-     "created_at": "2026-10-24T15:38:55+08:00"
+     "author_username": "mituldotbiz",
+     "author_followers": 2556,
+     "created_at": "2026-10-25T09:07:42+08:00"
+    },
+    {
+     "id": "2114150580075614485",
+     "url": "https://x.com/Cryptorbix/status/2114150580075614485",
+     "text": "T +53.85%, BMT +48.79%, EPIC +26.91% $0.141500 (21.7M), NIL +15.76%, ANIME +15.09%",
+     "likes": 1,
+     "author_username": "Cryptorbix",
+     "author_followers": 1594,
+     "created_at": "2026-10-25T08:22:31+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "TUSDT": {
    "symbol": "TUSDT",
    "base": "T",
    "flag": "pump",
    "trigger_at": "2026-10-25T08:15:00+08:00",
-   "checked_at": "2026-10-25T08:33:00+08:00",
-   "posts_last_1h": 34,
-   "posts_prev_6h_avg_per_h": 21.8,
-   "spike_ratio": 1.56,
-   "verdict": "冷",
-   "one_line": "得掃描bot報價，冇真討論",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 20,
+   "posts_prev_6h_avg_per_h": 23.83,
+   "spike_ratio": 0.84,
+   "verdict": "升溫",
+   "one_line": "韓國Upbit帶動,未見消息",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
+    {
+     "id": "2114150580075614485",
+     "url": "https://x.com/Cryptorbix/status/2114150580075614485",
+     "text": "T +53.85% $0.0072 (Vol 459.3M), BMT +48.79%, EPIC +26.91%, NIL +15.76%, ANIME +15.09%. Heavy flows",
+     "likes": 1,
+     "author_username": "Cryptorbix",
+     "author_followers": 1594,
+     "created_at": "2026-10-25T08:22:31+08:00"
+    },
+    {
+     "id": "2114158424795566506",
+     "url": "https://x.com/Apesuperint/status/2114158424795566506",
+     "text": "$T (Threshold) just went from flatline to +60% in about an hour. 24h volume ~$53M vs a ~$4M 30d daily average.",
+     "likes": 0,
+     "author_username": "Apesuperint",
+     "author_followers": 72,
+     "created_at": "2026-10-25T08:53:42+08:00"
+    },
     {
      "id": "2114147664300220836",
      "url": "https://x.com/cexscan/status/2114147664300220836",
@@ -111,24 +111,92 @@
      "author_username": "cexscan",
      "author_followers": 10597,
      "created_at": "2026-10-25T08:10:56+08:00"
-    },
+    }
+   ],
+   "checks_this_trigger": 2
+  },
+  "ARKUSDT": {
+   "symbol": "ARKUSDT",
+   "base": "ARK",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:45:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "X上幾乎冇人講ARK",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [],
+   "checks_this_trigger": 1
+  },
+  "GTCUSDT": {
+   "symbol": "GTCUSDT",
+   "base": "GTC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:45:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 0.5,
+   "spike_ratio": 2.0,
+   "verdict": "冷",
+   "one_line": "得掃描機械人提過,好靜",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
     {
-     "id": "2114150502623813830",
-     "url": "https://x.com/cexscan/status/2114150502623813830",
-     "text": "$T just ripped +5.13% on #Binance Futures in under a minute — 712.78K volume, price now 0.00691.",
+     "id": "2114156271355953579",
+     "url": "https://x.com/cexscan/status/2114156271355953579",
+     "text": "Last 15m - #Coinbase Spot top gainers: $MOG +11.11%, $T +8.66%, $GTC (Gitcoin) +4.17%",
      "likes": 0,
      "author_username": "cexscan",
      "author_followers": 10597,
-     "created_at": "2026-10-25T08:22:13+08:00"
+     "created_at": "2026-10-25T08:45:08+08:00"
     },
     {
-     "id": "2114147605680930885",
-     "url": "https://x.com/cexscan/status/2114147605680930885",
-     "text": "$T just ripped +7.21% on #Binance Futures in under a minute — 474.09K volume, price now 0.005847.",
+     "id": "2114085339966926999",
+     "url": "https://x.com/CryptrixLabs/status/2114085339966926999",
+     "text": "GTC just pulled back hard from $0.29 and is now sitting on a floor it's defended for days",
      "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10597,
-     "created_at": "2026-10-25T08:10:42+08:00"
+     "author_username": "CryptrixLabs",
+     "author_followers": 138,
+     "created_at": "2026-10-25T04:03:17+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "STEEMUSDT": {
+   "symbol": "STEEMUSDT",
+   "base": "STEEM",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:30:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 0.83,
+   "spike_ratio": 2.4,
+   "verdict": "冷",
+   "one_line": "得幾個訊號機械人帖,量好細",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114152185189548103",
+     "url": "https://x.com/Finora_EN/status/2114152185189548103",
+     "text": "$STEEM 9.2% 15m spike on 2.7x volume looks like a relief rally, not a chase.",
+     "likes": 0,
+     "author_username": "Finora_EN",
+     "author_followers": 24416,
+     "created_at": "2026-10-25T08:28:54+08:00"
+    },
+    {
+     "id": "2114157836938981698",
+     "url": "https://x.com/luxquantalgo/status/2114157836938981698",
+     "text": "TP4 on $STEEM filled at 0.0593, peak wick +12.76% spot from entry.",
+     "likes": 0,
+     "author_username": "luxquantalgo",
+     "author_followers": 586,
+     "created_at": "2026-10-25T08:51:22+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -841,15 +909,209 @@
      "created_at": "2026-10-24T15:38:55+08:00"
     }
    ]
+  },
+  {
+   "symbol": "ARKUSDT",
+   "base": "ARK",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:45:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "X上幾乎冇人講ARK",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": []
+  },
+  {
+   "symbol": "GTCUSDT",
+   "base": "GTC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:45:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 0.5,
+   "spike_ratio": 2.0,
+   "verdict": "冷",
+   "one_line": "得掃描機械人提過,好靜",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114156271355953579",
+     "url": "https://x.com/cexscan/status/2114156271355953579",
+     "text": "Last 15m - #Coinbase Spot top gainers: $MOG +11.11%, $T +8.66%, $GTC (Gitcoin) +4.17%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:45:08+08:00"
+    },
+    {
+     "id": "2114085339966926999",
+     "url": "https://x.com/CryptrixLabs/status/2114085339966926999",
+     "text": "GTC just pulled back hard from $0.29 and is now sitting on a floor it's defended for days",
+     "likes": 0,
+     "author_username": "CryptrixLabs",
+     "author_followers": 138,
+     "created_at": "2026-10-25T04:03:17+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "STEEMUSDT",
+   "base": "STEEM",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:30:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 0.83,
+   "spike_ratio": 2.4,
+   "verdict": "冷",
+   "one_line": "得幾個訊號機械人帖,量好細",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114152185189548103",
+     "url": "https://x.com/Finora_EN/status/2114152185189548103",
+     "text": "$STEEM 9.2% 15m spike on 2.7x volume looks like a relief rally, not a chase.",
+     "likes": 0,
+     "author_username": "Finora_EN",
+     "author_followers": 24416,
+     "created_at": "2026-10-25T08:28:54+08:00"
+    },
+    {
+     "id": "2114157836938981698",
+     "url": "https://x.com/luxquantalgo/status/2114157836938981698",
+     "text": "TP4 on $STEEM filled at 0.0593, peak wick +12.76% spot from entry.",
+     "likes": 0,
+     "author_username": "luxquantalgo",
+     "author_followers": 586,
+     "created_at": "2026-10-25T08:51:22+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TUSDT",
+   "base": "T",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:15:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 20,
+   "posts_prev_6h_avg_per_h": 23.83,
+   "spike_ratio": 0.84,
+   "verdict": "升溫",
+   "one_line": "韓國Upbit帶動,未見消息",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114150580075614485",
+     "url": "https://x.com/Cryptorbix/status/2114150580075614485",
+     "text": "T +53.85% $0.0072 (Vol 459.3M), BMT +48.79%, EPIC +26.91%, NIL +15.76%, ANIME +15.09%. Heavy flows",
+     "likes": 1,
+     "author_username": "Cryptorbix",
+     "author_followers": 1594,
+     "created_at": "2026-10-25T08:22:31+08:00"
+    },
+    {
+     "id": "2114158424795566506",
+     "url": "https://x.com/Apesuperint/status/2114158424795566506",
+     "text": "$T (Threshold) just went from flatline to +60% in about an hour. 24h volume ~$53M vs a ~$4M 30d daily average.",
+     "likes": 0,
+     "author_username": "Apesuperint",
+     "author_followers": 72,
+     "created_at": "2026-10-25T08:53:42+08:00"
+    },
+    {
+     "id": "2114147664300220836",
+     "url": "https://x.com/cexscan/status/2114147664300220836",
+     "text": "$T seeing 11x normal volume on #Binance Spot — 1.07M in 15 min. Price at 0.00604.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:10:56+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T07:30:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 21,
+   "posts_prev_6h_avg_per_h": 13.33,
+   "spike_ratio": 1.58,
+   "verdict": "冷",
+   "one_line": "有帖話幣安28號下架EPIC",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114161948690649391",
+     "url": "https://x.com/mituldotbiz/status/2114161948690649391",
+     "text": "Binance Will Delist EPIC, QUICK on 2026-10-28",
+     "likes": 0,
+     "author_username": "mituldotbiz",
+     "author_followers": 2556,
+     "created_at": "2026-10-25T09:07:42+08:00"
+    },
+    {
+     "id": "2114150580075614485",
+     "url": "https://x.com/Cryptorbix/status/2114150580075614485",
+     "text": "T +53.85%, BMT +48.79%, EPIC +26.91% $0.141500 (21.7M), NIL +15.76%, ANIME +15.09%",
+     "likes": 1,
+     "author_username": "Cryptorbix",
+     "author_followers": 1594,
+     "created_at": "2026-10-25T08:22:31+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ANIMEUSDT",
+   "base": "ANIME",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T06:00:00+08:00",
+   "checked_at": "2026-10-25T09:10:00+08:00",
+   "posts_last_1h": 12,
+   "posts_prev_6h_avg_per_h": 11.5,
+   "spike_ratio": 1.04,
+   "verdict": "冷",
+   "one_line": "多數係訊號群洗版,冇新熱度",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114123830473928936",
+     "url": "https://x.com/saintcryptonft/status/2114123830473928936",
+     "text": "$ANIME: BIG SPIKE, BUT CAN BULLS HOLD? The chart shows selling pressure after the initial pump.",
+     "likes": 2,
+     "author_username": "saintcryptonft",
+     "author_followers": 15707,
+     "created_at": "2026-10-25T06:36:14+08:00"
+    },
+    {
+     "id": "2114159299312099586",
+     "url": "https://x.com/mirandaiwoegpl/status/2114159299312099586",
+     "text": "Binance Futures #ANIME/USDT All take-profit targets achieved. Profit: 416.3319%",
+     "likes": 1,
+     "author_username": "mirandaiwoegpl",
+     "author_followers": 4006,
+     "created_at": "2026-10-25T08:57:10+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 34,
+  "calls_today": 46,
   "cap_reached": false,
-  "updated_at": "2026-10-25T08:33:51+08:00"
+  "updated_at": "2026-10-25T09:10:27+08:00"
  },
- "updated_at": "2026-10-25T08:33:51+08:00",
+ "updated_at": "2026-10-25T09:10:27+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
