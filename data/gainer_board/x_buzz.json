@@ -49,45 +49,89 @@
    "symbol": "EPICUSDT",
    "base": "EPIC",
    "flag": "pump",
-   "trigger_at": "2026-10-25T04:15:00+08:00",
-   "checked_at": "2026-10-25T08:07:00+08:00",
-   "posts_last_1h": 12,
-   "posts_prev_6h_avg_per_h": 14.17,
-   "spike_ratio": 0.85,
+   "trigger_at": "2026-10-25T07:30:00+08:00",
+   "checked_at": "2026-10-25T08:33:00+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 14.4,
+   "spike_ratio": 0.56,
    "verdict": "冷",
-   "one_line": "討論冷卻，抄貼喊單居多",
+   "one_line": "傳28號下架，炒下架泵小心",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2114085839533740528",
-     "url": "https://x.com/cexscan/status/2114085839533740528",
-     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) +5.09%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10596,
-     "created_at": "2026-10-25T04:05:16+08:00"
+     "id": "2114051702928413181",
+     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
+     "text": "$epic delisting pump @cz_binance send it",
+     "likes": 3,
+     "author_username": "Arlind19061040",
+     "author_followers": 7,
+     "created_at": "2026-10-25T01:49:37+08:00"
     },
     {
-     "id": "2114082087095710074",
-     "url": "https://x.com/JonArauzo/status/2114082087095710074",
-     "text": "EPIC/USDT is currently up over 25%! Don't miss out on early entry on these coins.",
+     "id": "2113986545589850167",
+     "url": "https://x.com/Finora_EN/status/2113986545589850167",
+     "text": "$EPIC pumps 3.5% in 15m with 1.6x volume — possible liquidity grab inside a much larger bearish context",
      "likes": 1,
-     "author_username": "JonArauzo",
-     "author_followers": 4025,
-     "created_at": "2026-10-25T03:50:21+08:00"
+     "author_username": "Finora_EN",
+     "author_followers": 24414,
+     "created_at": "2026-10-24T21:30:43+08:00"
     },
     {
-     "id": "2114108382403612842",
-     "url": "https://x.com/Leoncrypto_1/status/2114108382403612842",
-     "text": "$EPIC/USDT Result +82.81% PROFIT Achieved. Join our telegram group for more signals",
-     "likes": 1,
-     "author_username": "Leoncrypto_1",
-     "author_followers": 2125,
-     "created_at": "2026-10-25T05:34:51+08:00"
+     "id": "2113898014477586900",
+     "url": "https://x.com/AIBM_WHALe/status/2113898014477586900",
+     "text": "Binance will delist EPIC and QUICK on October 28, 2026 at 03:00 UTC (spot). Withdrawals open until December 28.",
+     "likes": 0,
+     "author_username": "AIBM_WHALe",
+     "author_followers": 155,
+     "created_at": "2026-10-24T15:38:55+08:00"
     }
    ],
-   "checks_this_trigger": 4
+   "checks_this_trigger": 1
+  },
+  "TUSDT": {
+   "symbol": "TUSDT",
+   "base": "T",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:15:00+08:00",
+   "checked_at": "2026-10-25T08:33:00+08:00",
+   "posts_last_1h": 34,
+   "posts_prev_6h_avg_per_h": 21.8,
+   "spike_ratio": 1.56,
+   "verdict": "冷",
+   "one_line": "得掃描bot報價，冇真討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114147664300220836",
+     "url": "https://x.com/cexscan/status/2114147664300220836",
+     "text": "$T seeing 11x normal volume on #Binance Spot — 1.07M in 15 min. Price at 0.00604.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:10:56+08:00"
+    },
+    {
+     "id": "2114150502623813830",
+     "url": "https://x.com/cexscan/status/2114150502623813830",
+     "text": "$T just ripped +5.13% on #Binance Futures in under a minute — 712.78K volume, price now 0.00691.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:22:13+08:00"
+    },
+    {
+     "id": "2114147605680930885",
+     "url": "https://x.com/cexscan/status/2114147605680930885",
+     "text": "$T just ripped +7.21% on #Binance Futures in under a minute — 474.09K volume, price now 0.005847.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:10:42+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -711,15 +755,101 @@
      "created_at": "2026-10-25T05:34:51+08:00"
     }
    ]
+  },
+  {
+   "symbol": "TUSDT",
+   "base": "T",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T08:15:00+08:00",
+   "checked_at": "2026-10-25T08:33:00+08:00",
+   "posts_last_1h": 34,
+   "posts_prev_6h_avg_per_h": 21.8,
+   "spike_ratio": 1.56,
+   "verdict": "冷",
+   "one_line": "得掃描bot報價，冇真討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114147664300220836",
+     "url": "https://x.com/cexscan/status/2114147664300220836",
+     "text": "$T seeing 11x normal volume on #Binance Spot — 1.07M in 15 min. Price at 0.00604.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:10:56+08:00"
+    },
+    {
+     "id": "2114150502623813830",
+     "url": "https://x.com/cexscan/status/2114150502623813830",
+     "text": "$T just ripped +5.13% on #Binance Futures in under a minute — 712.78K volume, price now 0.00691.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:22:13+08:00"
+    },
+    {
+     "id": "2114147605680930885",
+     "url": "https://x.com/cexscan/status/2114147605680930885",
+     "text": "$T just ripped +7.21% on #Binance Futures in under a minute — 474.09K volume, price now 0.005847.",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-25T08:10:42+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T07:30:00+08:00",
+   "checked_at": "2026-10-25T08:33:00+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 14.4,
+   "spike_ratio": 0.56,
+   "verdict": "冷",
+   "one_line": "傳28號下架，炒下架泵小心",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114051702928413181",
+     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
+     "text": "$epic delisting pump @cz_binance send it",
+     "likes": 3,
+     "author_username": "Arlind19061040",
+     "author_followers": 7,
+     "created_at": "2026-10-25T01:49:37+08:00"
+    },
+    {
+     "id": "2113986545589850167",
+     "url": "https://x.com/Finora_EN/status/2113986545589850167",
+     "text": "$EPIC pumps 3.5% in 15m with 1.6x volume — possible liquidity grab inside a much larger bearish context",
+     "likes": 1,
+     "author_username": "Finora_EN",
+     "author_followers": 24414,
+     "created_at": "2026-10-24T21:30:43+08:00"
+    },
+    {
+     "id": "2113898014477586900",
+     "url": "https://x.com/AIBM_WHALe/status/2113898014477586900",
+     "text": "Binance will delist EPIC and QUICK on October 28, 2026 at 03:00 UTC (spot). Withdrawals open until December 28.",
+     "likes": 0,
+     "author_username": "AIBM_WHALe",
+     "author_followers": 155,
+     "created_at": "2026-10-24T15:38:55+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 30,
+  "calls_today": 34,
   "cap_reached": false,
-  "updated_at": "2026-10-25T08:08:00+08:00"
+  "updated_at": "2026-10-25T08:33:51+08:00"
  },
- "updated_at": "2026-10-25T08:08:00+08:00",
+ "updated_at": "2026-10-25T08:33:51+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
