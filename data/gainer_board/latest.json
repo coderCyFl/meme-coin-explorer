@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-10-26T02:40:02+08:00",
- "batch": "gb-20261026-0137",
- "picked_at": "2026-10-26T01:37:16+08:00",
- "btc_24h_pct": 0.72,
- "universe": 66,
+ "updated_at": "2026-10-26T04:47:33+08:00",
+ "batch": "gb-20261026-0445",
+ "picked_at": "2026-10-26T04:45:32+08:00",
+ "btc_24h_pct": -0.1,
+ "universe": 67,
  "active": [
   {
    "symbol": "BABY",
@@ -26,7 +26,17 @@
    "from_24h_high_pct": -1.74,
    "quote_volume_24h": 4688083,
    "watch_only": true,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 1.55,
+     "max_drawdown_pct": -4.73,
+     "close_pct": -0.44,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-26T04:45:19+08:00"
+    }
+   }
   },
   {
    "symbol": "AIGENSYN",

@@ -418,6 +418,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-25T07:41:19+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 3.48,
+       "max_drawdown_pct": -17.64,
+       "close_pct": -14.04,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
       }
      }
     },
@@ -450,6 +459,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-25T07:41:19+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 12.8,
+       "max_drawdown_pct": -2.59,
+       "close_pct": 7.87,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
       }
      }
     },
@@ -482,6 +500,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-25T07:41:19+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 13.79,
+       "max_drawdown_pct": -3.84,
+       "close_pct": 12.0,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
       }
      }
     }
@@ -577,6 +604,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-25T07:41:19+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 14.52,
+       "max_drawdown_pct": -23.12,
+       "close_pct": -20.16,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
       }
      }
     },
@@ -609,6 +645,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-25T07:41:19+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 0.4,
+       "max_drawdown_pct": -12.3,
+       "close_pct": -8.99,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
       }
      }
     }
@@ -1585,7 +1630,17 @@
      "from_24h_high_pct": -1.74,
      "quote_volume_24h": 4688083,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.55,
+       "max_drawdown_pct": -4.73,
+       "close_pct": -0.44,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
+      }
+     }
     },
     {
      "symbol": "IOST",
@@ -1608,7 +1663,17 @@
      "from_24h_high_pct": -15.71,
      "quote_volume_24h": 5203178,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.01,
+       "max_drawdown_pct": -2.92,
+       "close_pct": -1.52,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
+      }
+     }
     },
     {
      "symbol": "T",
@@ -1631,7 +1696,17 @@
      "from_24h_high_pct": -27.94,
      "quote_volume_24h": 16530511,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 3.01,
+       "max_drawdown_pct": -4.61,
+       "close_pct": 1.95,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-26T04:45:19+08:00"
+      }
+     }
     }
    ]
   }

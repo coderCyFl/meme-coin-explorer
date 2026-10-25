@@ -170,6 +170,61 @@
      "outcomes": {}
     }
    ]
+  },
+  {
+   "batch": "gb-20261026-0445",
+   "picked_at": "2026-10-26T04:45:32+08:00",
+   "universe": 67,
+   "btc_24h_pct": -0.1,
+   "universe_all": 397,
+   "excluded_tokenized": 100,
+   "top20_24h": [
+    "TUSDT",
+    "REZUSDT",
+    "DODOUSDT",
+    "INITUSDT",
+    "ENAUSDT",
+    "QNTUSDT",
+    "KMNOUSDT",
+    "NILUSDT",
+    "OSMOUSDT",
+    "PYTHUSDT",
+    "INJUSDT",
+    "WINUSDT",
+    "SCUSDT",
+    "YBUSDT",
+    "IOSTUSDT",
+    "USUALUSDT",
+    "CVCUSDT",
+    "牛来USDT",
+    "MBLUSDT",
+    "GASUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "NIL",
+     "pair": "NILUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-26T04:45:32+08:00",
+     "entry_price_usd": 0.09007,
+     "price_at_snapshot": 0.09007,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 7.15,
+     "rank_24h_at_pick": 8,
+     "batch": "gb-20261026-0445",
+     "score": 8.7,
+     "change_1h_at_pick": -0.68,
+     "change_4h_at_pick": 0.0,
+     "vol_x_avg": 0.39,
+     "vol_x_prev_hour": 0.89,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.39,
+     "quote_volume_24h": 4642259,
+     "watch_only": true,
+     "outcomes": {}
+    }
+   ]
   }
  ]
 }
