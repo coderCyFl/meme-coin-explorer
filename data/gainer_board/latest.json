@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-10-25T07:43:04+08:00",
- "batch": "gb-20261025-0741",
- "picked_at": "2026-10-25T07:41:22+08:00",
- "btc_24h_pct": -0.15,
- "universe": 78,
+ "updated_at": "2026-10-25T12:33:08+08:00",
+ "batch": "gb-20261025-1230",
+ "picked_at": "2026-10-25T12:30:58+08:00",
+ "btc_24h_pct": 0.01,
+ "universe": 77,
  "active": [
   {
    "symbol": "EPIC",
@@ -26,7 +26,17 @@
    "from_24h_high_pct": -15.64,
    "quote_volume_24h": 3149112,
    "watch_only": false,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.78,
+     "max_drawdown_pct": -10.85,
+     "close_pct": -4.2,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-25T12:30:50+08:00"
+    }
+   }
   },
   {
    "symbol": "BMT",
@@ -49,7 +59,17 @@
    "from_24h_high_pct": -24.22,
    "quote_volume_24h": 58765579,
    "watch_only": true,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 5.05,
+     "max_drawdown_pct": -19.55,
+     "close_pct": -19.45,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-25T12:30:50+08:00"
+    }
+   }
   },
   {
    "symbol": "ZBT",

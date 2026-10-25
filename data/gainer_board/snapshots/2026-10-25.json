@@ -602,7 +602,17 @@
      "from_24h_high_pct": -24.22,
      "quote_volume_24h": 58765579,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 5.05,
+       "max_drawdown_pct": -19.55,
+       "close_pct": -19.45,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "ANIME",
@@ -625,7 +635,17 @@
      "from_24h_high_pct": -5.14,
      "quote_volume_24h": 8644514,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 13.0,
+       "max_drawdown_pct": -19.36,
+       "close_pct": -19.36,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "SAHARA",
@@ -648,7 +668,17 @@
      "from_24h_high_pct": -2.47,
      "quote_volume_24h": 3694629,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.35,
+       "max_drawdown_pct": -3.26,
+       "close_pct": -2.06,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "NIL",
@@ -671,7 +701,17 @@
      "from_24h_high_pct": -3.82,
      "quote_volume_24h": 4694955,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 6.96,
+       "max_drawdown_pct": -0.47,
+       "close_pct": 4.17,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "RED",
@@ -694,7 +734,17 @@
      "from_24h_high_pct": -6.62,
      "quote_volume_24h": 3626007,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.47,
+       "max_drawdown_pct": -0.54,
+       "close_pct": -0.47,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "KAT",
@@ -717,7 +767,17 @@
      "from_24h_high_pct": -28.3,
      "quote_volume_24h": 13551495,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 5.03,
+       "max_drawdown_pct": -9.19,
+       "close_pct": -8.53,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "EPIC",
@@ -740,7 +800,17 @@
      "from_24h_high_pct": -17.66,
      "quote_volume_24h": 3044879,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 3.37,
+       "max_drawdown_pct": -8.79,
+       "close_pct": -4.82,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     }
    ]
   },
@@ -795,7 +865,17 @@
      "from_24h_high_pct": -15.64,
      "quote_volume_24h": 3149112,
      "watch_only": false,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.78,
+       "max_drawdown_pct": -10.85,
+       "close_pct": -4.2,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "INIT",
@@ -818,7 +898,17 @@
      "from_24h_high_pct": -1.55,
      "quote_volume_24h": 4240696,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 6.38,
+       "max_drawdown_pct": -1.79,
+       "close_pct": 5.4,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "BMT",
@@ -841,7 +931,17 @@
      "from_24h_high_pct": -25.12,
      "quote_volume_24h": 61369505,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.77,
+       "max_drawdown_pct": -18.57,
+       "close_pct": -11.77,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
     },
     {
      "symbol": "REZ",
@@ -863,6 +963,186 @@
      "range_24h_pct": null,
      "from_24h_high_pct": -10.39,
      "quote_volume_24h": 4923334,
+     "watch_only": true,
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.18,
+       "max_drawdown_pct": -1.94,
+       "close_pct": -0.54,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-25T12:30:50+08:00"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "batch": "gb-20261025-1230",
+   "picked_at": "2026-10-25T12:30:58+08:00",
+   "universe": 77,
+   "btc_24h_pct": 0.01,
+   "universe_all": 397,
+   "excluded_tokenized": 100,
+   "top20_24h": [
+    "TUSDT",
+    "INITUSDT",
+    "IOSTUSDT",
+    "AVAUSDT",
+    "ANIMEUSDT",
+    "DODOUSDT",
+    "STEEMUSDT",
+    "NILUSDT",
+    "SOLVUSDT",
+    "EPICUSDT",
+    "CHIPUSDT",
+    "ANKRUSDT",
+    "DGBUSDT",
+    "WINUSDT",
+    "CVXUSDT",
+    "ZECUSDT",
+    "TURTLEUSDT",
+    "SAHARAUSDT",
+    "ORCAUSDT",
+    "POLYXUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "T",
+     "pair": "TUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-25T12:30:58+08:00",
+     "entry_price_usd": 0.00628,
+     "price_at_snapshot": 0.00628,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 34.76,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261025-1230",
+     "score": 42.0,
+     "change_1h_at_pick": -6.67,
+     "change_4h_at_pick": 38.79,
+     "vol_x_avg": 2.73,
+     "vol_x_prev_hour": 3.46,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -18.58,
+     "quote_volume_24h": 8668189,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "INIT",
+     "pair": "INITUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-25T12:30:58+08:00",
+     "entry_price_usd": 0.16091,
+     "price_at_snapshot": 0.16091,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 21.65,
+     "rank_24h_at_pick": 2,
+     "batch": "gb-20261025-1230",
+     "score": 36.5,
+     "change_1h_at_pick": 1.99,
+     "change_4h_at_pick": 0.76,
+     "vol_x_avg": 3.09,
+     "vol_x_prev_hour": 0.58,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -4.29,
+     "quote_volume_24h": 4636453,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "AVA",
+     "pair": "AVAUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-25T12:30:58+08:00",
+     "entry_price_usd": 0.4502,
+     "price_at_snapshot": 0.4502,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 7.27,
+     "rank_24h_at_pick": 4,
+     "batch": "gb-20261025-1230",
+     "score": 24.3,
+     "change_1h_at_pick": 3.28,
+     "change_4h_at_pick": 3.31,
+     "vol_x_avg": 0.82,
+     "vol_x_prev_hour": 0.47,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -1.11,
+     "quote_volume_24h": 5594460,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "NIL",
+     "pair": "NILUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-25T12:30:58+08:00",
+     "entry_price_usd": 0.08763,
+     "price_at_snapshot": 0.08763,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 5.11,
+     "rank_24h_at_pick": 8,
+     "batch": "gb-20261025-1230",
+     "score": 18.8,
+     "change_1h_at_pick": 1.74,
+     "change_4h_at_pick": -0.27,
+     "vol_x_avg": 1.01,
+     "vol_x_prev_hour": 0.65,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.02,
+     "quote_volume_24h": 4816623,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "STEEM",
+     "pair": "STEEMUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-25T12:30:58+08:00",
+     "entry_price_usd": 0.05353,
+     "price_at_snapshot": 0.05353,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 5.48,
+     "rank_24h_at_pick": 7,
+     "batch": "gb-20261025-1230",
+     "score": 2.8,
+     "change_1h_at_pick": -2.0,
+     "change_4h_at_pick": 7.02,
+     "vol_x_avg": 0.9,
+     "vol_x_prev_hour": 2.13,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -22.86,
+     "quote_volume_24h": 4235531,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "ANIME",
+     "pair": "ANIMEUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-25T12:30:58+08:00",
+     "entry_price_usd": 0.00315,
+     "price_at_snapshot": 0.00315,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 6.42,
+     "rank_24h_at_pick": 5,
+     "batch": "gb-20261025-1230",
+     "score": -29.0,
+     "change_1h_at_pick": 0.66,
+     "change_4h_at_pick": -16.94,
+     "vol_x_avg": 0.31,
+     "vol_x_prev_hour": 0.43,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -28.64,
+     "quote_volume_24h": 13285160,
      "watch_only": true,
      "outcomes": {}
     }
