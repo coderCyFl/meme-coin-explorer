@@ -5,8 +5,15 @@
 name: Daily AI picks batch
 on:
   schedule:
-    # 01:00 UTC = 09:00 Asia/Shanghai, every day (0-6 incl. weekends)
-    - cron: "0 1 * * *"
+    # GitHub's scheduled runs here are often hours late or dropped (gainer-board :05/:35
+    # fires every ~2-3h; daily-outcomes 01:00 UTC ran at 05:43). So: off-the-hour primary
+    # plus backups. The script's same-day check makes every later run a no-op (exit 0).
+    # Asia/Shanghai: 08:47 primary, then 09:23, 10:13, 11:43, 14:17 backups. Every day.
+    - cron: "47 0 * * *"
+    - cron: "23 1 * * *"
+    - cron: "13 2 * * *"
+    - cron: "43 3 * * *"
+    - cron: "17 6 * * *"
   workflow_dispatch:
     inputs:
       force:
