@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-10-25T21:55:59+08:00",
- "batch": "gb-20261025-2154",
- "picked_at": "2026-10-25T21:54:05+08:00",
- "btc_24h_pct": -0.4,
- "universe": 71,
+ "updated_at": "2026-10-26T01:38:54+08:00",
+ "batch": "gb-20261026-0137",
+ "picked_at": "2026-10-26T01:37:16+08:00",
+ "btc_24h_pct": 0.72,
+ "universe": 66,
  "active": [
   {
    "symbol": "BABY",
@@ -49,7 +49,17 @@
    "from_24h_high_pct": -6.97,
    "quote_volume_24h": 4438937,
    "watch_only": false,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 1.03,
+     "max_drawdown_pct": -12.66,
+     "close_pct": -5.32,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-26T01:37:04+08:00"
+    }
+   }
   }
  ]
 }
