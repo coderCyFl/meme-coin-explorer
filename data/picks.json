@@ -2704,6 +2704,251 @@
      ]
     }
    ]
+  },
+  {
+   "id": "batch-007",
+   "created_at": "2026-10-25T09:37:38+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": 0.05,
+    "breadth_up_pct": 22.2,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 80808.7
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 102.36
+    }
+   },
+   "entries": [
+    {
+     "id": "20261025-007-ANIME",
+     "batch": "batch-007",
+     "type": "buy",
+     "created_at": "2026-10-25T09:37:38+08:00",
+     "chain": "binance",
+     "token_address": "binance:ANIMEUSDT",
+     "pair_address": "ANIMEUSDT",
+     "dex": "binance-spot",
+     "symbol": "ANIME",
+     "name": "ANIME (Binance)",
+     "url": "https://www.binance.com/en/trade/ANIME_USDT",
+     "entry_price_usd": 0.00304,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 12633380.988261,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 4.11,
+      "high24h": 0.00426,
+      "low24h": 0.00289,
+      "vol_creep": 6.432,
+      "rel_vs_btc_7d": 15.88,
+      "compression": 0.341,
+      "angle": "mean_reversion"
+     },
+     "model_score": 43,
+     "score_parts": {
+      "vol_creep": 22,
+      "compression": 0,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.876899491840831,
+      "chase_penalty": 0
+     },
+     "conviction": 43,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "ANIMEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.003192,
+     "stop_price_usd": 0.0029184,
+     "review_at": "2026-10-25T21:37:38+08:00",
+     "sell_by": "2026-10-26T09:37:38+08:00",
+     "exit_plan": "目標 +5%（$0.003192）· 止蝕 −4%（$0.0029184）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261025-007-WIF",
+     "batch": "batch-007",
+     "type": "buy",
+     "created_at": "2026-10-25T09:37:38+08:00",
+     "chain": "binance",
+     "token_address": "binance:WIFUSDT",
+     "pair_address": "WIFUSDT",
+     "dex": "binance-spot",
+     "symbol": "WIF",
+     "name": "WIF (Binance)",
+     "url": "https://www.binance.com/en/trade/WIF_USDT",
+     "entry_price_usd": 0.1855,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 1664341.527484,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.956,
+      "high24h": 0.1915,
+      "low24h": 0.1778,
+      "vol_creep": 1.336,
+      "rel_vs_btc_7d": -4.77,
+      "compression": 0.596,
+      "angle": "mean_reversion"
+     },
+     "model_score": 47,
+     "score_parts": {
+      "vol_creep": 9.408104680213778,
+      "compression": 0,
+      "relative": 8.583156061054394,
+      "higher_lows": 0,
+      "rotation": 20.768420033919107,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 7.77655306191039,
+      "chase_penalty": 0
+     },
+     "conviction": 47,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "WIFUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.194775,
+     "stop_price_usd": 0.17808,
+     "review_at": "2026-10-25T21:37:38+08:00",
+     "sell_by": "2026-10-26T09:37:38+08:00",
+     "exit_plan": "目標 +5%（$0.194775）· 止蝕 −4%（$0.17808）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261025-007-AAVE",
+     "batch": "batch-007",
+     "type": "buy",
+     "created_at": "2026-10-25T09:37:38+08:00",
+     "chain": "binance",
+     "token_address": "binance:AAVEUSDT",
+     "pair_address": "AAVEUSDT",
+     "dex": "binance-spot",
+     "symbol": "AAVE",
+     "name": "AAVE (Binance)",
+     "url": "https://www.binance.com/en/trade/AAVE_USDT",
+     "entry_price_usd": 137.48,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 17073890.36685,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -4.222,
+      "high24h": 145.41,
+      "low24h": 134,
+      "vol_creep": 1.115,
+      "rel_vs_btc_7d": -7.97,
+      "compression": 0.698,
+      "angle": "rotation"
+     },
+     "model_score": 51,
+     "score_parts": {
+      "vol_creep": 3.2263704207543498,
+      "compression": 0,
+      "relative": 14.339839820236127,
+      "higher_lows": 0,
+      "rotation": 23.96657767790896,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.040415610558124,
+      "chase_penalty": 0
+     },
+     "conviction": 51,
+     "rationale": "7 日跑輸 BTC 8.0 pt，量能開始回 · 輪動留意（角度：rotation。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "7 日跑輸 BTC 8.0 pt，量能開始回 · 輪動留意",
+     "angle": "rotation",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:rotation",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "AAVEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 144.354,
+     "stop_price_usd": 131.981,
+     "review_at": "2026-10-25T21:37:38+08:00",
+     "sell_by": "2026-10-26T09:37:38+08:00",
+     "exit_plan": "目標 +5%（$144.354）· 止蝕 −4%（$131.981）· 12h 檢討 · 最遲 24h 沽"
+    }
+   ]
   }
  ]
 }
