@@ -6,88 +6,88 @@
    "base": "ANIME",
    "flag": "pump",
    "trigger_at": "2026-10-25T06:00:00+08:00",
-   "checked_at": "2026-10-25T07:35:00+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 12.6,
-   "spike_ratio": 0.71,
+   "checked_at": "2026-10-25T08:07:00+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 11.67,
+   "spike_ratio": 0.86,
    "verdict": "冷",
-   "one_line": "冇新爆點，主要係訊號群洗版",
+   "one_line": "熱度回落，多數係訊號群洗版",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2114074235412852786",
      "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
-     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20 Take Profit - 0.002850 - 0.002900 - 0.002950 - 0.003000 - 0.003054",
+     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
      "likes": 3,
      "author_username": "Letsmakeatradex",
-     "author_followers": 1488,
+     "author_followers": 1489,
      "created_at": "2026-10-25T03:19:09+08:00"
     },
     {
      "id": "2114123830473928936",
      "url": "https://x.com/saintcryptonft/status/2114123830473928936",
-     "text": "🚨 $ANIME: BIG SPIKE, BUT CAN BULLS HOLD? $ANIME has seen a sharp price surge, but the chart shows selling pressure after the initial pump.",
+     "text": "$ANIME: BIG SPIKE, BUT CAN BULLS HOLD? Sharp price surge, but the chart shows selling pressure after the initial pump.",
      "likes": 2,
      "author_username": "saintcryptonft",
-     "author_followers": 15653,
+     "author_followers": 15670,
      "created_at": "2026-10-25T06:36:14+08:00"
     },
     {
      "id": "2114090318509527205",
      "url": "https://x.com/SceneCentral255/status/2114090318509527205",
-     "text": "New signal Coin: $ANIME/USDT Signal type:Long Entry 0.002786 Take profits Targets 1) 0.002900 ... Leverage:20x Stop loss: 0.002700",
+     "text": "New signal Coin: $ANIME/USDT Signal type: Long Entry 0.002786 Leverage 20x",
      "likes": 2,
      "author_username": "SceneCentral255",
-     "author_followers": 838,
+     "author_followers": 840,
      "created_at": "2026-10-25T04:23:04+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "EPICUSDT": {
    "symbol": "EPICUSDT",
    "base": "EPIC",
    "flag": "pump",
    "trigger_at": "2026-10-25T04:15:00+08:00",
-   "checked_at": "2026-10-25T07:35:00+08:00",
-   "posts_last_1h": 10,
-   "posts_prev_6h_avg_per_h": 15.4,
-   "spike_ratio": 0.65,
+   "checked_at": "2026-10-25T08:07:00+08:00",
+   "posts_last_1h": 12,
+   "posts_prev_6h_avg_per_h": 14.17,
+   "spike_ratio": 0.85,
    "verdict": "冷",
-   "one_line": "熱度再跌，複製貼上推廣為主",
+   "one_line": "討論冷卻，抄貼喊單居多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2114051702928413181",
-     "url": "https://x.com/Arlind19061040/status/2114051702928413181",
-     "text": "$epic delisting pump @cz_binance send it 🚀",
-     "likes": 3,
-     "author_username": "Arlind19061040",
-     "author_followers": 7,
-     "created_at": "2026-10-25T01:49:37+08:00"
-    },
-    {
      "id": "2114085839533740528",
      "url": "https://x.com/cexscan/status/2114085839533740528",
-     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) : ↑5.09% $ZEC (Zcash) : ↑2.07% $DASH (Dash) : ↑1.89%",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) +5.09%",
      "likes": 1,
      "author_username": "cexscan",
      "author_followers": 10596,
      "created_at": "2026-10-25T04:05:16+08:00"
     },
     {
+     "id": "2114082087095710074",
+     "url": "https://x.com/JonArauzo/status/2114082087095710074",
+     "text": "EPIC/USDT is currently up over 25%! Don't miss out on early entry on these coins.",
+     "likes": 1,
+     "author_username": "JonArauzo",
+     "author_followers": 4025,
+     "created_at": "2026-10-25T03:50:21+08:00"
+    },
+    {
      "id": "2114108382403612842",
      "url": "https://x.com/Leoncrypto_1/status/2114108382403612842",
-     "text": "$EPIC/USDT Result✅ +82.81% PROFIT Achieved 🟢 Back to Back Big Results 🚀 Join our telegram group for more signals",
+     "text": "$EPIC/USDT Result +82.81% PROFIT Achieved. Join our telegram group for more signals",
      "likes": 1,
      "author_username": "Leoncrypto_1",
      "author_followers": 2125,
      "created_at": "2026-10-25T05:34:51+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 4
   }
  },
  "history": [
@@ -625,15 +625,101 @@
      "created_at": "2026-10-25T05:34:51+08:00"
     }
    ]
+  },
+  {
+   "symbol": "ANIMEUSDT",
+   "base": "ANIME",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T06:00:00+08:00",
+   "checked_at": "2026-10-25T08:07:00+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 11.67,
+   "spike_ratio": 0.86,
+   "verdict": "冷",
+   "one_line": "熱度回落，多數係訊號群洗版",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114074235412852786",
+     "url": "https://x.com/Letsmakeatradex/status/2114074235412852786",
+     "text": "All targets achieved $ANIME/USDT Entry: 0.002801 Long Leverage: 20",
+     "likes": 3,
+     "author_username": "Letsmakeatradex",
+     "author_followers": 1489,
+     "created_at": "2026-10-25T03:19:09+08:00"
+    },
+    {
+     "id": "2114123830473928936",
+     "url": "https://x.com/saintcryptonft/status/2114123830473928936",
+     "text": "$ANIME: BIG SPIKE, BUT CAN BULLS HOLD? Sharp price surge, but the chart shows selling pressure after the initial pump.",
+     "likes": 2,
+     "author_username": "saintcryptonft",
+     "author_followers": 15670,
+     "created_at": "2026-10-25T06:36:14+08:00"
+    },
+    {
+     "id": "2114090318509527205",
+     "url": "https://x.com/SceneCentral255/status/2114090318509527205",
+     "text": "New signal Coin: $ANIME/USDT Signal type: Long Entry 0.002786 Leverage 20x",
+     "likes": 2,
+     "author_username": "SceneCentral255",
+     "author_followers": 840,
+     "created_at": "2026-10-25T04:23:04+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "EPICUSDT",
+   "base": "EPIC",
+   "flag": "pump",
+   "trigger_at": "2026-10-25T04:15:00+08:00",
+   "checked_at": "2026-10-25T08:07:00+08:00",
+   "posts_last_1h": 12,
+   "posts_prev_6h_avg_per_h": 14.17,
+   "spike_ratio": 0.85,
+   "verdict": "冷",
+   "one_line": "討論冷卻，抄貼喊單居多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2114085839533740528",
+     "url": "https://x.com/cexscan/status/2114085839533740528",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $EPIC (Epic Chain) +5.09%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10596,
+     "created_at": "2026-10-25T04:05:16+08:00"
+    },
+    {
+     "id": "2114082087095710074",
+     "url": "https://x.com/JonArauzo/status/2114082087095710074",
+     "text": "EPIC/USDT is currently up over 25%! Don't miss out on early entry on these coins.",
+     "likes": 1,
+     "author_username": "JonArauzo",
+     "author_followers": 4025,
+     "created_at": "2026-10-25T03:50:21+08:00"
+    },
+    {
+     "id": "2114108382403612842",
+     "url": "https://x.com/Leoncrypto_1/status/2114108382403612842",
+     "text": "$EPIC/USDT Result +82.81% PROFIT Achieved. Join our telegram group for more signals",
+     "likes": 1,
+     "author_username": "Leoncrypto_1",
+     "author_followers": 2125,
+     "created_at": "2026-10-25T05:34:51+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-25",
   "daily_total_cap": 60,
-  "calls_today": 26,
+  "calls_today": 30,
   "cap_reached": false,
-  "updated_at": "2026-10-25T07:35:02+08:00"
+  "updated_at": "2026-10-25T08:08:00+08:00"
  },
- "updated_at": "2026-10-25T07:35:02+08:00",
+ "updated_at": "2026-10-25T08:08:00+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
