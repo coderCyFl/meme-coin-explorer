@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T01:38:54+08:00",
+ "updated_at": "2026-10-26T02:40:02+08:00",
  "batches": 13,
  "flags": 7,
  "horizons": {
@@ -273,14 +273,96 @@
    }
   }
  },
- "scorecards": [],
+ "scorecards": [
+  {
+   "date": "2026-10-25",
+   "flagged": 9,
+   "early_flagged": 4,
+   "late_flagged": 5,
+   "early_hits": 0,
+   "late_hits": 0,
+   "precision_pct": 0.0,
+   "late_precision_pct": 0.0,
+   "recall_top20_pct": 0.0,
+   "recall_top10_pct": 0.0,
+   "buyable_flagged": 5,
+   "x_split": {
+    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+    "hot": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "cold": {
+     "flags": 2,
+     "sealed": 2,
+     "pending": 0,
+     "mean_4h_close_pct": -1.29,
+     "hit20_pct": 0.0
+    },
+    "unchecked": {
+     "flags": 1,
+     "sealed": 1,
+     "pending": 0,
+     "mean_4h_close_pct": -5.32,
+     "hit20_pct": 0.0
+    }
+   },
+   "by_tier": {
+    "pump": {
+     "flagged": 3,
+     "early_flagged": 1,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    },
+    "early2": {
+     "flagged": 1,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "early": {
+     "flagged": 3,
+     "early_flagged": 1,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    },
+    "main": {
+     "flagged": 3,
+     "early_flagged": 2,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    }
+   },
+   "hits": [],
+   "late": [],
+   "missed": [
+    "T",
+    "ENA",
+    "INIT",
+    "REZ",
+    "QNT",
+    "OSMO",
+    "KMNO",
+    "USUAL",
+    "PYTH",
+    "WIN"
+   ]
+  }
+ ],
  "scorecard_7d": {
-  "days": 0,
-  "early_flagged": 0,
-  "flagged": 0,
+  "days": 1,
+  "early_flagged": 4,
+  "flagged": 9,
   "early_hits": 0,
   "late_hits": 0,
-  "precision_pct": null,
-  "recall_top20_pct": null
+  "precision_pct": 0.0,
+  "recall_top20_pct": 0.0
  }
 }
