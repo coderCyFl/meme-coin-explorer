@@ -2949,6 +2949,323 @@
      "exit_plan": "目標 +5%（$144.354）· 止蝕 −4%（$131.981）· 12h 檢討 · 最遲 24h 沽"
     }
    ]
+  },
+  {
+   "id": "batch-008",
+   "created_at": "2026-10-26T13:25:57+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -0.77,
+    "breadth_up_pct": 16.7,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 80220.65
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 101.4
+    }
+   },
+   "entries": [
+    {
+     "id": "20261026-008-PYTH",
+     "batch": "batch-008",
+     "type": "buy",
+     "created_at": "2026-10-26T13:25:57+08:00",
+     "chain": "binance",
+     "token_address": "binance:PYTHUSDT",
+     "pair_address": "PYTHUSDT",
+     "dex": "binance-spot",
+     "symbol": "PYTH",
+     "name": "PYTH (Binance)",
+     "url": "https://www.binance.com/en/trade/PYTH_USDT",
+     "entry_price_usd": 0.07355,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 3916777.833644,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 3.098,
+      "high24h": 0.07594,
+      "low24h": 0.06941,
+      "vol_creep": 1.018,
+      "rel_vs_btc_7d": 2.22,
+      "compression": 1.507,
+      "angle": "higher_lows"
+     },
+     "model_score": 29,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 9.132083368768674,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.241161172898313,
+      "chase_penalty": 0
+     },
+     "conviction": 29,
+     "rationale": "1h 抬高低位而 24h 未瘋 · 結構轉好（角度：higher_lows。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "1h 抬高低位而 24h 未瘋 · 結構轉好",
+     "angle": "higher_lows",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:higher_lows",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "PYTHUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.0772275,
+     "stop_price_usd": 0.070608,
+     "review_at": "2026-10-27T01:25:57+08:00",
+     "sell_by": "2026-10-27T13:25:57+08:00",
+     "exit_plan": "目標 +5%（$0.0772275）· 止蝕 −4%（$0.070608）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261026-008-1000SATS",
+     "batch": "batch-008",
+     "type": "buy",
+     "created_at": "2026-10-26T13:25:57+08:00",
+     "chain": "binance",
+     "token_address": "binance:1000SATSUSDT",
+     "pair_address": "1000SATSUSDT",
+     "dex": "binance-spot",
+     "symbol": "1000SATS",
+     "name": "1000SATS (Binance)",
+     "url": "https://www.binance.com/en/trade/1000SATS_USDT",
+     "entry_price_usd": 0.00000999,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 180021.94425296,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.866,
+      "high24h": 0.00001018,
+      "low24h": 0.00000979,
+      "vol_creep": 0.909,
+      "rel_vs_btc_7d": -1.57,
+      "compression": 1.251,
+      "angle": "accumulation"
+     },
+     "model_score": 29,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 4.517702596380783,
+      "relative": 0,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 18,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 6.569156809761686,
+      "chase_penalty": 0
+     },
+     "conviction": 29,
+     "rationale": "24h 只 -1.9%，但成交較 7 日均低 9% · 靜吸（角度：accumulation。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "24h 只 -1.9%，但成交較 7 日均低 9% · 靜吸",
+     "angle": "accumulation",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:accumulation",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "1000SATSUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.0000104895,
+     "stop_price_usd": 0.0000095904,
+     "review_at": "2026-10-27T01:25:57+08:00",
+     "sell_by": "2026-10-27T13:25:57+08:00",
+     "exit_plan": "目標 +5%（$0.0000104895）· 止蝕 −4%（$0.0000095904）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261026-008-INJ",
+     "batch": "batch-008",
+     "type": "buy",
+     "created_at": "2026-10-26T13:25:57+08:00",
+     "chain": "binance",
+     "token_address": "binance:INJUSDT",
+     "pair_address": "INJUSDT",
+     "dex": "binance-spot",
+     "symbol": "INJ",
+     "name": "INJ (Binance)",
+     "url": "https://www.binance.com/en/trade/INJ_USDT",
+     "entry_price_usd": 7.692,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 9393481.60202,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -0.363,
+      "high24h": 8.16,
+      "low24h": 7.512,
+      "vol_creep": 0.664,
+      "rel_vs_btc_7d": -8.4,
+      "compression": 1.926,
+      "angle": "compression"
+     },
+     "model_score": 31,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 16,
+      "relative": 0,
+      "higher_lows": 6,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.716033236378875,
+      "chase_penalty": 0
+     },
+     "conviction": 31,
+     "rationale": "近幾日波幅收窄 1.9×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 1.9×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "INJUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 8.0766,
+     "stop_price_usd": 7.38432,
+     "review_at": "2026-10-27T01:25:57+08:00",
+     "sell_by": "2026-10-27T13:25:57+08:00",
+     "exit_plan": "目標 +5%（$8.0766）· 止蝕 −4%（$7.38432）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261026-008-TIA",
+     "batch": "batch-008",
+     "type": "buy",
+     "created_at": "2026-10-26T13:25:57+08:00",
+     "chain": "binance",
+     "token_address": "binance:TIAUSDT",
+     "pair_address": "TIAUSDT",
+     "dex": "binance-spot",
+     "symbol": "TIA",
+     "name": "TIA (Binance)",
+     "url": "https://www.binance.com/en/trade/TIA_USDT",
+     "entry_price_usd": 0.5325,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 3521959.451892,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -0.244,
+      "high24h": 0.542,
+      "low24h": 0.5218,
+      "vol_creep": 0.367,
+      "rel_vs_btc_7d": -11.43,
+      "compression": 2.429,
+      "angle": "compression"
+     },
+     "model_score": 30,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 16,
+      "relative": 0,
+      "higher_lows": 6,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.183480439567138,
+      "chase_penalty": 0
+     },
+     "conviction": 30,
+     "rationale": "近幾日波幅收窄 2.4×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 2.4×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "TIAUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.559125,
+     "stop_price_usd": 0.5112,
+     "review_at": "2026-10-27T01:25:57+08:00",
+     "sell_by": "2026-10-27T13:25:57+08:00",
+     "exit_plan": "目標 +5%（$0.559125）· 止蝕 −4%（$0.5112）· 12h 檢討 · 最遲 24h 沽"
+    }
+   ]
   }
  ]
 }
