@@ -1,10 +1,33 @@
 {
- "updated_at": "2026-10-26T07:12:20+08:00",
- "batch": "gb-20261026-0710",
- "picked_at": "2026-10-26T07:10:50+08:00",
- "btc_24h_pct": -0.32,
- "universe": 68,
+ "updated_at": "2026-10-26T09:39:24+08:00",
+ "batch": "gb-20261026-0938",
+ "picked_at": "2026-10-26T09:38:01+08:00",
+ "btc_24h_pct": -1.19,
+ "universe": 64,
  "active": [
+  {
+   "symbol": "ERA",
+   "pair": "ERAUSDT",
+   "tier": "pump",
+   "picked_at": "2026-10-26T09:15:00+08:00",
+   "entry_price_usd": 0.0844,
+   "price_at_snapshot": 0.0864,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": -10.97,
+   "change_24h_at_pick": 18.84,
+   "rank_24h_at_pick": 2,
+   "batch": "gb-20261026-0938",
+   "score": 54.5,
+   "change_1h_at_pick": 6.97,
+   "change_4h_at_pick": 5.11,
+   "vol_x_avg": 9.55,
+   "vol_x_prev_hour": 0.87,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -13.79,
+   "quote_volume_24h": 10337861,
+   "watch_only": false,
+   "outcomes": {}
+  },
   {
    "symbol": "DODO",
    "pair": "DODOUSDT",
@@ -58,39 +81,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-10-26T04:45:19+08:00"
-    }
-   }
-  },
-  {
-   "symbol": "AIGENSYN",
-   "pair": "AIGENSYNUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-25T21:30:00+08:00",
-   "entry_price_usd": 0.01935,
-   "price_at_snapshot": 0.01768,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": -4.4,
-   "change_24h_at_pick": -5.05,
-   "rank_24h_at_pick": 361,
-   "batch": "gb-20261025-2154",
-   "score": 54.8,
-   "change_1h_at_pick": 5.97,
-   "change_4h_at_pick": 10.07,
-   "vol_x_avg": 32.07,
-   "vol_x_prev_hour": 3.97,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -6.97,
-   "quote_volume_24h": 4438937,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.03,
-     "max_drawdown_pct": -12.66,
-     "close_pct": -5.32,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-26T01:37:04+08:00"
     }
    }
   }
