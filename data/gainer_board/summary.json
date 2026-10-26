@@ -1,16 +1,16 @@
 {
- "updated_at": "2026-10-26T09:39:24+08:00",
- "batches": 16,
- "flags": 9,
+ "updated_at": "2026-10-26T15:45:27+08:00",
+ "batches": 17,
+ "flags": 10,
  "horizons": {
   "4h": {
-   "n": 7,
+   "n": 9,
    "hit20": 0,
    "hit50": 0,
-   "avg_max_gain_pct": 3.44,
-   "avg_close_pct": -5.49,
-   "avg_max_drawdown_pct": -10.3,
-   "closed_up": 1
+   "avg_max_gain_pct": 5.55,
+   "avg_close_pct": -3.93,
+   "avg_max_drawdown_pct": -9.52,
+   "closed_up": 2
   },
   "24h": {
    "n": 5,
@@ -25,13 +25,13 @@
  "tiers": {
   "pump": {
    "4h": {
-    "n": 3,
+    "n": 5,
     "hit20": 0,
     "hit50": 0,
-    "avg_max_gain_pct": 5.44,
-    "avg_close_pct": -2.64,
-    "avg_max_drawdown_pct": -10.7,
-    "closed_up": 1
+    "avg_max_gain_pct": 8.44,
+    "avg_close_pct": -0.97,
+    "avg_max_drawdown_pct": -9.13,
+    "closed_up": 2
    },
    "24h": {
     "n": 2,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -24.32,
     "closed_up": 0
    },
-   "flags": 5
+   "flags": 6
   },
   "early2": {
    "4h": {
@@ -88,38 +88,38 @@
   },
   "cand": {
    "4h": {
-    "n": 39,
+    "n": 43,
     "hit20": 0,
     "hit50": 0,
-    "avg_max_gain_pct": 3.97,
-    "avg_close_pct": -2.71,
-    "avg_max_drawdown_pct": -5.44,
+    "avg_max_gain_pct": 3.72,
+    "avg_close_pct": -2.59,
+    "avg_max_drawdown_pct": -5.23,
     "closed_up": 9
    },
    "24h": {
-    "n": 18,
+    "n": 24,
     "hit20": 1,
     "hit50": 0,
-    "avg_max_gain_pct": 8.29,
-    "avg_close_pct": -5.45,
-    "avg_max_drawdown_pct": -11.53,
-    "closed_up": 6
+    "avg_max_gain_pct": 7.81,
+    "avg_close_pct": -6.66,
+    "avg_max_drawdown_pct": -11.81,
+    "closed_up": 7
    },
-   "flags": 43
+   "flags": 49
   }
  },
  "latest_4h": {
-  "batch": "gb-20261026-0445",
-  "picked_at": "2026-10-26T04:45:32+08:00",
+  "batch": "gb-20261026-0938",
+  "picked_at": "2026-10-26T09:38:01+08:00",
   "entries": [
    {
-    "symbol": "NIL",
-    "tier": "cand",
-    "entry_price_usd": 0.09007,
-    "change_24h_at_pick": 7.15,
-    "max_gain_pct": 1.59,
-    "close_pct": -0.66,
-    "max_drawdown_pct": -1.52,
+    "symbol": "ERA",
+    "tier": "pump",
+    "entry_price_usd": 0.0844,
+    "change_24h_at_pick": 18.84,
+    "max_gain_pct": 15.4,
+    "close_pct": 9.24,
+    "max_drawdown_pct": -0.95,
     "hit20": false,
     "hit50": false
    }
