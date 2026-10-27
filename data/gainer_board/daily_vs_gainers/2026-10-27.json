@@ -1,0 +1,401 @@
+{
+ "date": "2026-10-27",
+ "scheduled_for": "2026-10-27T23:55:00+08:00",
+ "taken_at": "2026-10-28T04:22:19+08:00",
+ "universe_all": 397,
+ "excluded_tokenized": 100,
+ "tokenized_source": "exchangeInfo:TRD_GRP_261+product-tag:bStocks",
+ "rule": "Top 20 = ALL Binance USDT spot pairs (stables / leveraged excluded, no volume floor) by 24h %, taken at the 23:55 Asia/Shanghai run. A flag is EARLY only if rank_24h_at_flag > 20 and 24h % < +15% at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately.",
+ "flagged": 5,
+ "early_flagged": 5,
+ "late_flagged": 0,
+ "early_hits": 1,
+ "late_hits": 0,
+ "precision_pct": 20.0,
+ "late_precision_pct": null,
+ "recall_top20_pct": 5.0,
+ "recall_top10_pct": 10.0,
+ "late_recall_top20_pct": 0.0,
+ "buyable_flagged": 4,
+ "buyable_early_hits": 0,
+ "hits": [
+  {
+   "symbol": "INIT",
+   "pair": "INITUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-27T04:15:00+08:00",
+   "rank_24h_at_flag": 364,
+   "change_24h_at_flag": -3.31,
+   "entry_price_usd": 0.1569,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 3,
+   "final_change_24h": 18.08,
+   "peak_time": "2026-10-28T02:00:00+08:00",
+   "lead_h": 21.8
+  }
+ ],
+ "late": [],
+ "missed": [
+  {
+   "symbol": "HAEDAL",
+   "rank": 1,
+   "change_24h": 31.39
+  },
+  {
+   "symbol": "BANK",
+   "rank": 2,
+   "change_24h": 21.79
+  },
+  {
+   "symbol": "TUT",
+   "rank": 4,
+   "change_24h": 15.61
+  },
+  {
+   "symbol": "SOLV",
+   "rank": 5,
+   "change_24h": 12.64
+  },
+  {
+   "symbol": "OSMO",
+   "rank": 6,
+   "change_24h": 12.35
+  },
+  {
+   "symbol": "REZ",
+   "rank": 7,
+   "change_24h": 12.33
+  },
+  {
+   "symbol": "HUMA",
+   "rank": 8,
+   "change_24h": 10.66
+  },
+  {
+   "symbol": "牛来",
+   "rank": 9,
+   "change_24h": 9.84
+  },
+  {
+   "symbol": "CFG",
+   "rank": 10,
+   "change_24h": 9.14
+  },
+  {
+   "symbol": "BREV",
+   "rank": 11,
+   "change_24h": 8.58
+  },
+  {
+   "symbol": "AVA",
+   "rank": 12,
+   "change_24h": 8.39
+  },
+  {
+   "symbol": "RED",
+   "rank": 13,
+   "change_24h": 7.14
+  },
+  {
+   "symbol": "ZAMA",
+   "rank": 14,
+   "change_24h": 6.82
+  },
+  {
+   "symbol": "RVN",
+   "rank": 15,
+   "change_24h": 6.74
+  },
+  {
+   "symbol": "SYN",
+   "rank": 16,
+   "change_24h": 6.57
+  },
+  {
+   "symbol": "ANIME",
+   "rank": 17,
+   "change_24h": 6.52
+  },
+  {
+   "symbol": "NIL",
+   "rank": 18,
+   "change_24h": 6.52
+  },
+  {
+   "symbol": "DYDX",
+   "rank": 19,
+   "change_24h": 6.46
+  },
+  {
+   "symbol": "LSK",
+   "rank": 20,
+   "change_24h": 6.21
+  }
+ ],
+ "top20": [
+  {
+   "symbol": "HAEDAL",
+   "rank": 1,
+   "change_24h": 31.39,
+   "quote_volume_24h": 14519747
+  },
+  {
+   "symbol": "BANK",
+   "rank": 2,
+   "change_24h": 21.79,
+   "quote_volume_24h": 8016931
+  },
+  {
+   "symbol": "INIT",
+   "rank": 3,
+   "change_24h": 18.08,
+   "quote_volume_24h": 4524010
+  },
+  {
+   "symbol": "TUT",
+   "rank": 4,
+   "change_24h": 15.61,
+   "quote_volume_24h": 3133104
+  },
+  {
+   "symbol": "SOLV",
+   "rank": 5,
+   "change_24h": 12.64,
+   "quote_volume_24h": 1265710
+  },
+  {
+   "symbol": "OSMO",
+   "rank": 6,
+   "change_24h": 12.35,
+   "quote_volume_24h": 4503329
+  },
+  {
+   "symbol": "REZ",
+   "rank": 7,
+   "change_24h": 12.33,
+   "quote_volume_24h": 6468080
+  },
+  {
+   "symbol": "HUMA",
+   "rank": 8,
+   "change_24h": 10.66,
+   "quote_volume_24h": 12226334
+  },
+  {
+   "symbol": "牛来",
+   "rank": 9,
+   "change_24h": 9.84,
+   "quote_volume_24h": 3784328
+  },
+  {
+   "symbol": "CFG",
+   "rank": 10,
+   "change_24h": 9.14,
+   "quote_volume_24h": 2068330
+  },
+  {
+   "symbol": "BREV",
+   "rank": 11,
+   "change_24h": 8.58,
+   "quote_volume_24h": 4738505
+  },
+  {
+   "symbol": "AVA",
+   "rank": 12,
+   "change_24h": 8.39,
+   "quote_volume_24h": 2744540
+  },
+  {
+   "symbol": "RED",
+   "rank": 13,
+   "change_24h": 7.14,
+   "quote_volume_24h": 344679
+  },
+  {
+   "symbol": "ZAMA",
+   "rank": 14,
+   "change_24h": 6.82,
+   "quote_volume_24h": 5221204
+  },
+  {
+   "symbol": "RVN",
+   "rank": 15,
+   "change_24h": 6.74,
+   "quote_volume_24h": 950454
+  },
+  {
+   "symbol": "SYN",
+   "rank": 16,
+   "change_24h": 6.57,
+   "quote_volume_24h": 6899089
+  },
+  {
+   "symbol": "ANIME",
+   "rank": 17,
+   "change_24h": 6.52,
+   "quote_volume_24h": 3708685
+  },
+  {
+   "symbol": "NIL",
+   "rank": 18,
+   "change_24h": 6.52,
+   "quote_volume_24h": 23292577
+  },
+  {
+   "symbol": "DYDX",
+   "rank": 19,
+   "change_24h": 6.46,
+   "quote_volume_24h": 854814
+  },
+  {
+   "symbol": "LSK",
+   "rank": 20,
+   "change_24h": 6.21,
+   "quote_volume_24h": 1758619
+  }
+ ],
+ "flags": [
+  {
+   "symbol": "INIT",
+   "pair": "INITUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-27T04:15:00+08:00",
+   "rank_24h_at_flag": 364,
+   "change_24h_at_flag": -3.31,
+   "entry_price_usd": 0.1569,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 3,
+   "final_change_24h": 18.08,
+   "peak_time": "2026-10-28T02:00:00+08:00",
+   "lead_h": 21.8
+  },
+  {
+   "symbol": "XRP",
+   "pair": "XRPUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-27T13:41:05+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 0.767,
+   "entry_price_usd": 1.3003,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 2.21
+  },
+  {
+   "symbol": "DOGE",
+   "pair": "DOGEUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-27T13:41:05+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 0.454,
+   "entry_price_usd": 0.07752,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 1.41
+  },
+  {
+   "symbol": "1MBABYDOGE",
+   "pair": "1MBABYDOGEUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-27T13:41:05+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -0.947,
+   "entry_price_usd": 0.0003451,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.29
+  },
+  {
+   "symbol": "ACT",
+   "pair": "ACTUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-27T13:41:05+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -0.824,
+   "entry_price_usd": 0.00843,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 1.65
+  }
+ ],
+ "by_tier": {
+  "pump": {
+   "flagged": 0,
+   "early_flagged": 0,
+   "early_hits": 0,
+   "precision_pct": null,
+   "hits": []
+  },
+  "early2": {
+   "flagged": 1,
+   "early_flagged": 1,
+   "early_hits": 1,
+   "precision_pct": 100.0,
+   "hits": [
+    "INIT"
+   ]
+  },
+  "early": {
+   "flagged": 0,
+   "early_flagged": 0,
+   "early_hits": 0,
+   "precision_pct": null,
+   "hits": []
+  },
+  "main": {
+   "flagged": 4,
+   "early_flagged": 4,
+   "early_hits": 0,
+   "precision_pct": 0.0,
+   "hits": []
+  }
+ },
+ "x_split": {
+  "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+  "hot": {
+   "flags": 0,
+   "sealed": 0,
+   "pending": 0,
+   "mean_4h_close_pct": null,
+   "hit20_pct": null
+  },
+  "cold": {
+   "flags": 0,
+   "sealed": 0,
+   "pending": 0,
+   "mean_4h_close_pct": null,
+   "hit20_pct": null
+  },
+  "unchecked": {
+   "flags": 0,
+   "sealed": 0,
+   "pending": 0,
+   "mean_4h_close_pct": null,
+   "hit20_pct": null
+  }
+ }
+}

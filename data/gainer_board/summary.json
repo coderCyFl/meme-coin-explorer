@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T00:31:29+08:00",
+ "updated_at": "2026-10-28T04:22:24+08:00",
  "batches": 23,
  "flags": 14,
  "horizons": {
@@ -515,15 +515,105 @@
     "BABY",
     "NIGHT"
    ]
+  },
+  {
+   "date": "2026-10-27",
+   "flagged": 5,
+   "early_flagged": 5,
+   "late_flagged": 0,
+   "early_hits": 1,
+   "late_hits": 0,
+   "precision_pct": 20.0,
+   "late_precision_pct": null,
+   "recall_top20_pct": 5.0,
+   "recall_top10_pct": 10.0,
+   "buyable_flagged": 4,
+   "x_split": {
+    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+    "hot": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "cold": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "unchecked": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    }
+   },
+   "by_tier": {
+    "pump": {
+     "flagged": 0,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "early2": {
+     "flagged": 1,
+     "early_flagged": 1,
+     "early_hits": 1,
+     "precision_pct": 100.0,
+     "hits": [
+      "INIT"
+     ]
+    },
+    "early": {
+     "flagged": 0,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "main": {
+     "flagged": 4,
+     "early_flagged": 4,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    }
+   },
+   "hits": [
+    {
+     "symbol": "INIT",
+     "flag_time": "2026-10-27T04:15:00+08:00",
+     "final_rank": 3,
+     "lead_h": 21.8
+    }
+   ],
+   "late": [],
+   "missed": [
+    "HAEDAL",
+    "BANK",
+    "TUT",
+    "SOLV",
+    "OSMO",
+    "REZ",
+    "HUMA",
+    "牛来",
+    "CFG",
+    "BREV"
+   ]
   }
  ],
  "scorecard_7d": {
-  "days": 2,
-  "early_flagged": 10,
-  "flagged": 19,
-  "early_hits": 0,
+  "days": 3,
+  "early_flagged": 15,
+  "flagged": 24,
+  "early_hits": 1,
   "late_hits": 2,
-  "precision_pct": 0.0,
-  "recall_top20_pct": 0.0
+  "precision_pct": 6.7,
+  "recall_top20_pct": 1.7
  }
 }
