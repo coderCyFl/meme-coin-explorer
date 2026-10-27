@@ -61,6 +61,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T08:22:02+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 26.64,
+       "max_drawdown_pct": -4.96,
+       "close_pct": 17.92,
+       "hit20": true,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     },
@@ -94,6 +103,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T13:31:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 5.55,
+       "max_drawdown_pct": -4.56,
+       "close_pct": 4.58,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     },
@@ -127,6 +145,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T13:31:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 27.17,
+       "max_drawdown_pct": -0.39,
+       "close_pct": 23.23,
+       "hit20": true,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     },
@@ -160,6 +187,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T13:31:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 3.29,
+       "max_drawdown_pct": -4.18,
+       "close_pct": 0.18,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     },
@@ -193,6 +229,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T13:31:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 6.28,
+       "max_drawdown_pct": -3.53,
+       "close_pct": 2.68,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     },
@@ -226,6 +271,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T13:31:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 11.08,
+       "max_drawdown_pct": -4.01,
+       "close_pct": -3.42,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     },
@@ -259,6 +313,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-27T13:31:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 12.01,
+       "max_drawdown_pct": -4.85,
+       "close_pct": -3.23,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-28T04:55:32+08:00"
       }
      }
     }
