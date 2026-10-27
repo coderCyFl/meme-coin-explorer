@@ -52,7 +52,17 @@
      "from_24h_high_pct": -4.7,
      "quote_volume_24h": 2491164,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.11,
+       "max_drawdown_pct": -1.21,
+       "close_pct": -0.1,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-27T08:22:02+08:00"
+      }
+     }
     },
     {
      "symbol": "CHIP",
@@ -189,6 +199,84 @@
      "range_24h_pct": null,
      "from_24h_high_pct": -14.82,
      "quote_volume_24h": 7481272,
+     "watch_only": true,
+     "outcomes": {}
+    }
+   ]
+  },
+  {
+   "batch": "gb-20261027-0822",
+   "picked_at": "2026-10-27T08:22:17+08:00",
+   "universe": 68,
+   "btc_24h_pct": 0.03,
+   "universe_all": 397,
+   "excluded_tokenized": 100,
+   "top20_24h": [
+    "SYNUSDT",
+    "CHIPUSDT",
+    "PARTIUSDT",
+    "BEAMXUSDT",
+    "HAEDALUSDT",
+    "KATUSDT",
+    "BANKUSDT",
+    "BABYUSDT",
+    "NIGHTUSDT",
+    "LUMIAUSDT",
+    "METUSDT",
+    "QNTUSDT",
+    "SPKUSDT",
+    "SENTUSDT",
+    "ERAUSDT",
+    "NOMUSDT",
+    "ETHFIUSDT",
+    "MORPHOUSDT",
+    "WINUSDT",
+    "COMPUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "ETHFI",
+     "pair": "ETHFIUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-27T08:22:17+08:00",
+     "entry_price_usd": 0.66,
+     "price_at_snapshot": 0.66,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 5.15,
+     "rank_24h_at_pick": 17,
+     "batch": "gb-20261027-0822",
+     "score": 20.7,
+     "change_1h_at_pick": 1.89,
+     "change_4h_at_pick": 0.93,
+     "vol_x_avg": 0.98,
+     "vol_x_prev_hour": 0.5,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -0.5,
+     "quote_volume_24h": 3963876,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "QNT",
+     "pair": "QNTUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-27T08:22:17+08:00",
+     "entry_price_usd": 202.29,
+     "price_at_snapshot": 202.29,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 6.07,
+     "rank_24h_at_pick": 12,
+     "batch": "gb-20261027-0822",
+     "score": 7.7,
+     "change_1h_at_pick": 0.91,
+     "change_4h_at_pick": 0.15,
+     "vol_x_avg": 0.31,
+     "vol_x_prev_hour": 0.21,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -8.91,
+     "quote_volume_24h": 36353560,
      "watch_only": true,
      "outcomes": {}
     }
