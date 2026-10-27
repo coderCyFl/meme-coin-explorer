@@ -3266,6 +3266,323 @@
      "exit_plan": "目標 +5%（$0.559125）· 止蝕 −4%（$0.5112）· 12h 檢討 · 最遲 24h 沽"
     }
    ]
+  },
+  {
+   "id": "batch-009",
+   "created_at": "2026-10-27T13:41:05+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -0.38,
+    "breadth_up_pct": 16.7,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 79868.01
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 100.06
+    }
+   },
+   "entries": [
+    {
+     "id": "20261027-009-XRP",
+     "batch": "batch-009",
+     "type": "buy",
+     "created_at": "2026-10-27T13:41:05+08:00",
+     "chain": "binance",
+     "token_address": "binance:XRPUSDT",
+     "pair_address": "XRPUSDT",
+     "dex": "binance-spot",
+     "symbol": "XRP",
+     "name": "XRP (Binance)",
+     "url": "https://www.binance.com/en/trade/XRP_USDT",
+     "entry_price_usd": 1.3003,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 91284191.83541,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 0.767,
+      "high24h": 1.3134,
+      "low24h": 1.2734,
+      "vol_creep": 0.868,
+      "rel_vs_btc_7d": 1.15,
+      "compression": 2.285,
+      "angle": "compression"
+     },
+     "model_score": 38,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 16,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.950494468726816,
+      "chase_penalty": 0
+     },
+     "conviction": 38,
+     "rationale": "近幾日波幅收窄 2.3×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 2.3×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "XRPUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 1.36532,
+     "stop_price_usd": 1.24829,
+     "review_at": "2026-10-28T01:41:05+08:00",
+     "sell_by": "2026-10-28T13:41:05+08:00",
+     "exit_plan": "目標 +5%（$1.36532）· 止蝕 −4%（$1.24829）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261027-009-DOGE",
+     "batch": "batch-009",
+     "type": "buy",
+     "created_at": "2026-10-27T13:41:05+08:00",
+     "chain": "binance",
+     "token_address": "binance:DOGEUSDT",
+     "pair_address": "DOGEUSDT",
+     "dex": "binance-spot",
+     "symbol": "DOGE",
+     "name": "DOGE (Binance)",
+     "url": "https://www.binance.com/en/trade/DOGE_USDT",
+     "entry_price_usd": 0.07752,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 23976167.61139,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 0.454,
+      "high24h": 0.07823,
+      "low24h": 0.07627,
+      "vol_creep": 0.712,
+      "rel_vs_btc_7d": -1.52,
+      "compression": 2.026,
+      "angle": "compression"
+     },
+     "model_score": 37,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 16,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.224724707490353,
+      "chase_penalty": 0
+     },
+     "conviction": 37,
+     "rationale": "近幾日波幅收窄 2.0×，輕觸上沿 · 唔係已爆升（角度：compression。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "近幾日波幅收窄 2.0×，輕觸上沿 · 唔係已爆升",
+     "angle": "compression",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:compression",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "DOGEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.081396,
+     "stop_price_usd": 0.0744192,
+     "review_at": "2026-10-28T01:41:05+08:00",
+     "sell_by": "2026-10-28T13:41:05+08:00",
+     "exit_plan": "目標 +5%（$0.081396）· 止蝕 −4%（$0.0744192）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261027-009-1MBABYDOGE",
+     "batch": "batch-009",
+     "type": "buy",
+     "created_at": "2026-10-27T13:41:05+08:00",
+     "chain": "binance",
+     "token_address": "binance:1MBABYDOGEUSDT",
+     "pair_address": "1MBABYDOGEUSDT",
+     "dex": "binance-spot",
+     "symbol": "1MBABYDOGE",
+     "name": "1MBABYDOGE (Binance)",
+     "url": "https://www.binance.com/en/trade/1MBABYDOGE_USDT",
+     "entry_price_usd": 0.0003451,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 162260.3886665,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -0.947,
+      "high24h": 0.0003513,
+      "low24h": 0.0003437,
+      "vol_creep": 0.778,
+      "rel_vs_btc_7d": -2.57,
+      "compression": 1.378,
+      "angle": "accumulation"
+     },
+     "model_score": 37,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 6.800389483933809,
+      "relative": 0,
+      "higher_lows": 6,
+      "rotation": 0,
+      "accumulation": 18,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 6.512765639899837,
+      "chase_penalty": 0
+     },
+     "conviction": 37,
+     "rationale": "24h 只 -0.9%，但成交較 7 日均低 22% · 靜吸（角度：accumulation。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "24h 只 -0.9%，但成交較 7 日均低 22% · 靜吸",
+     "angle": "accumulation",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:accumulation",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "1MBABYDOGEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.000362355,
+     "stop_price_usd": 0.000331296,
+     "review_at": "2026-10-28T01:41:05+08:00",
+     "sell_by": "2026-10-28T13:41:05+08:00",
+     "exit_plan": "目標 +5%（$0.000362355）· 止蝕 −4%（$0.000331296）· 12h 檢討 · 最遲 24h 沽"
+    },
+    {
+     "id": "20261027-009-ACT",
+     "batch": "batch-009",
+     "type": "buy",
+     "created_at": "2026-10-27T13:41:05+08:00",
+     "chain": "binance",
+     "token_address": "binance:ACTUSDT",
+     "pair_address": "ACTUSDT",
+     "dex": "binance-spot",
+     "symbol": "ACT",
+     "name": "ACT (Binance)",
+     "url": "https://www.binance.com/en/trade/ACT_USDT",
+     "entry_price_usd": 0.00843,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 211509.801202,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -0.824,
+      "high24h": 0.00864,
+      "low24h": 0.00829,
+      "vol_creep": 1.191,
+      "rel_vs_btc_7d": -3.35,
+      "compression": 1.452,
+      "angle": "mean_reversion"
+     },
+     "model_score": 58,
+     "score_parts": {
+      "vol_creep": 5.354678867194083,
+      "compression": 8.144958391285117,
+      "relative": 6.034470451785431,
+      "higher_lows": 12,
+      "rotation": 19.35248358432524,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 6.65666312131329,
+      "chase_penalty": 0
+     },
+     "conviction": 58,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "suggested_exit_h": 12,
+     "suggested_second_h": 24,
+     "take_profit_pct": 5,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "ACTUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.0088515,
+     "stop_price_usd": 0.0080928,
+     "review_at": "2026-10-28T01:41:05+08:00",
+     "sell_by": "2026-10-28T13:41:05+08:00",
+     "exit_plan": "目標 +5%（$0.0088515）· 止蝕 −4%（$0.0080928）· 12h 檢討 · 最遲 24h 沽"
+    }
+   ]
   }
  ]
 }
