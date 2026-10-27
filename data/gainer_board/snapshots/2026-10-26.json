@@ -661,6 +661,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-26T15:43:22+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 18.6,
+       "max_drawdown_pct": -2.49,
+       "close_pct": -0.36,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-10-27T13:31:45+08:00"
       }
      }
     }

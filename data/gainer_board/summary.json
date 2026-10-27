@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-27T08:24:37+08:00",
- "batches": 20,
+ "updated_at": "2026-10-27T13:33:20+08:00",
+ "batches": 21,
  "flags": 14,
  "horizons": {
   "4h": {
@@ -13,12 +13,12 @@
    "closed_up": 4
   },
   "24h": {
-   "n": 8,
+   "n": 9,
    "hit20": 0,
    "hit50": 0,
-   "avg_max_gain_pct": 5.61,
-   "avg_close_pct": -10.34,
-   "avg_max_drawdown_pct": -16.93,
+   "avg_max_gain_pct": 7.06,
+   "avg_close_pct": -9.23,
+   "avg_max_drawdown_pct": -15.32,
    "closed_up": 1
   }
  },
@@ -34,12 +34,12 @@
     "closed_up": 4
    },
    "24h": {
-    "n": 4,
+    "n": 5,
     "hit20": 0,
     "hit50": 0,
-    "avg_max_gain_pct": 6.7,
-    "avg_close_pct": -14.21,
-    "avg_max_drawdown_pct": -19.06,
+    "avg_max_gain_pct": 9.08,
+    "avg_close_pct": -11.44,
+    "avg_max_drawdown_pct": -15.75,
     "closed_up": 0
    },
    "flags": 8
@@ -88,13 +88,13 @@
   },
   "cand": {
    "4h": {
-    "n": 55,
+    "n": 63,
     "hit20": 0,
     "hit50": 0,
-    "avg_max_gain_pct": 3.69,
-    "avg_close_pct": -2.1,
-    "avg_max_drawdown_pct": -4.72,
-    "closed_up": 13
+    "avg_max_gain_pct": 3.46,
+    "avg_close_pct": -1.89,
+    "avg_max_drawdown_pct": -4.38,
+    "closed_up": 16
    },
    "24h": {
     "n": 43,
@@ -105,21 +105,32 @@
     "avg_max_drawdown_pct": -10.44,
     "closed_up": 11
    },
-   "flags": 63
+   "flags": 69
   }
  },
  "latest_4h": {
-  "batch": "gb-20261027-0443",
-  "picked_at": "2026-10-27T04:43:50+08:00",
+  "batch": "gb-20261027-0822",
+  "picked_at": "2026-10-27T08:22:17+08:00",
   "entries": [
    {
-    "symbol": "INIT",
-    "tier": "early2",
-    "entry_price_usd": 0.1569,
-    "change_24h_at_pick": -3.31,
-    "max_gain_pct": 1.11,
-    "close_pct": -0.1,
-    "max_drawdown_pct": -1.21,
+    "symbol": "ETHFI",
+    "tier": "cand",
+    "entry_price_usd": 0.66,
+    "change_24h_at_pick": 5.15,
+    "max_gain_pct": 0.83,
+    "close_pct": -2.3,
+    "max_drawdown_pct": -2.88,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "QNT",
+    "tier": "cand",
+    "entry_price_usd": 202.29,
+    "change_24h_at_pick": 6.07,
+    "max_gain_pct": 1.56,
+    "close_pct": -0.75,
+    "max_drawdown_pct": -1.54,
     "hit20": false,
     "hit50": false
    }
