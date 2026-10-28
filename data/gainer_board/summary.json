@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-29T03:06:25+08:00",
+ "updated_at": "2026-10-29T04:43:01+08:00",
  "batches": 28,
  "flags": 17,
  "horizons": {
@@ -605,15 +605,103 @@
     "CFG",
     "BREV"
    ]
+  },
+  {
+   "date": "2026-10-28",
+   "flagged": 8,
+   "early_flagged": 6,
+   "late_flagged": 2,
+   "early_hits": 0,
+   "late_hits": 1,
+   "precision_pct": 0.0,
+   "late_precision_pct": 50.0,
+   "recall_top20_pct": 0.0,
+   "recall_top10_pct": 0.0,
+   "buyable_flagged": 7,
+   "x_split": {
+    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+    "hot": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "cold": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "unchecked": {
+     "flags": 1,
+     "sealed": 1,
+     "pending": 0,
+     "mean_4h_close_pct": -12.98,
+     "hit20_pct": 0.0
+    }
+   },
+   "by_tier": {
+    "pump": {
+     "flagged": 1,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "early2": {
+     "flagged": 1,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "early": {
+     "flagged": 0,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "main": {
+     "flagged": 6,
+     "early_flagged": 6,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    }
+   },
+   "hits": [],
+   "late": [
+    {
+     "symbol": "INIT",
+     "flag_time": "2026-10-28T21:00:00+08:00",
+     "rank_24h_at_flag": 1,
+     "final_rank": 2
+    }
+   ],
+   "missed": [
+    "BLUR",
+    "SHELL",
+    "PEPE",
+    "AT",
+    "ADX",
+    "BICO",
+    "CGPT",
+    "AWE",
+    "BB",
+    "MEGA"
+   ]
   }
  ],
  "scorecard_7d": {
-  "days": 3,
-  "early_flagged": 15,
-  "flagged": 24,
+  "days": 4,
+  "early_flagged": 21,
+  "flagged": 32,
   "early_hits": 1,
-  "late_hits": 2,
-  "precision_pct": 6.7,
-  "recall_top20_pct": 1.7
+  "late_hits": 3,
+  "precision_pct": 4.8,
+  "recall_top20_pct": 1.2
  }
 }
