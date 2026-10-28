@@ -775,7 +775,17 @@
      "from_24h_high_pct": -1.16,
      "quote_volume_24h": 3725144,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 3.14,
+       "max_drawdown_pct": -0.12,
+       "close_pct": 0.46,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-28T21:29:03+08:00"
+      }
+     }
     },
     {
      "symbol": "HUMA",
@@ -798,7 +808,17 @@
      "from_24h_high_pct": -6.18,
      "quote_volume_24h": 11357040,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.92,
+       "max_drawdown_pct": -2.13,
+       "close_pct": 1.95,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-28T21:29:03+08:00"
+      }
+     }
     },
     {
      "symbol": "BCH",
@@ -821,7 +841,17 @@
      "from_24h_high_pct": -0.13,
      "quote_volume_24h": 11084799,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.91,
+       "max_drawdown_pct": -0.84,
+       "close_pct": 0.9,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-28T21:29:03+08:00"
+      }
+     }
     },
     {
      "symbol": "INIT",
@@ -844,7 +874,17 @@
      "from_24h_high_pct": -10.97,
      "quote_volume_24h": 6411132,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 6.98,
+       "max_drawdown_pct": -2.27,
+       "close_pct": 6.2,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-28T21:29:03+08:00"
+      }
+     }
     },
     {
      "symbol": "PEPE",
@@ -867,7 +907,17 @@
      "from_24h_high_pct": -4.78,
      "quote_volume_24h": 59694057,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 5.65,
+       "max_drawdown_pct": -1.46,
+       "close_pct": 4.6,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-28T21:29:03+08:00"
+      }
+     }
     },
     {
      "symbol": "REZ",
@@ -889,6 +939,186 @@
      "range_24h_pct": null,
      "from_24h_high_pct": -6.51,
      "quote_volume_24h": 7854968,
+     "watch_only": true,
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.23,
+       "max_drawdown_pct": -4.63,
+       "close_pct": -3.54,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-28T21:29:03+08:00"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "batch": "gb-20261028-2129",
+   "picked_at": "2026-10-28T21:29:16+08:00",
+   "universe": 65,
+   "btc_24h_pct": 0.6,
+   "universe_all": 395,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "INITUSDT",
+    "SHELLUSDT",
+    "BLURUSDT",
+    "HAEDALUSDT",
+    "PEPEUSDT",
+    "SOLVUSDT",
+    "TUTUSDT",
+    "ARKUSDT",
+    "MEGAUSDT",
+    "RVNUSDT",
+    "FLUXUSDT",
+    "OPGUSDT",
+    "CHRUSDT",
+    "ATUSDT",
+    "FTTUSDT",
+    "BANDUSDT",
+    "PROVEUSDT",
+    "GMXUSDT",
+    "PARTIUSDT",
+    "ASTRUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "INIT",
+     "pair": "INITUSDT",
+     "tier": "pump",
+     "picked_at": "2026-10-28T21:00:00+08:00",
+     "entry_price_usd": 0.24995,
+     "price_at_snapshot": 0.24047,
+     "trigger_via": "1h+vol",
+     "change_15m_at_pick": 9.71,
+     "change_24h_at_pick": 41.39,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261028-2129",
+     "score": 95.6,
+     "change_1h_at_pick": 14.66,
+     "change_4h_at_pick": 35.28,
+     "vol_x_avg": 4.61,
+     "vol_x_prev_hour": 7.41,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.75,
+     "quote_volume_24h": 12464549,
+     "watch_only": false,
+     "outcomes": {}
+    },
+    {
+     "symbol": "TUT",
+     "pair": "TUTUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-28T21:29:16+08:00",
+     "entry_price_usd": 0.02006,
+     "price_at_snapshot": 0.02006,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 9.56,
+     "rank_24h_at_pick": 7,
+     "batch": "gb-20261028-2129",
+     "score": 28.8,
+     "change_1h_at_pick": -0.63,
+     "change_4h_at_pick": 5.52,
+     "vol_x_avg": 1.66,
+     "vol_x_prev_hour": 2.56,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.62,
+     "quote_volume_24h": 5824859,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "PEPE",
+     "pair": "PEPEUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-28T21:29:16+08:00",
+     "entry_price_usd": 4.84e-06,
+     "price_at_snapshot": 4.84e-06,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 11.52,
+     "rank_24h_at_pick": 5,
+     "batch": "gb-20261028-2129",
+     "score": 21.3,
+     "change_1h_at_pick": -1.6,
+     "change_4h_at_pick": -0.81,
+     "vol_x_avg": 2.04,
+     "vol_x_prev_hour": 1.03,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.77,
+     "quote_volume_24h": 84846581,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "BLUR",
+     "pair": "BLURUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-28T21:29:16+08:00",
+     "entry_price_usd": 0.00866,
+     "price_at_snapshot": 0.00866,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 18.47,
+     "rank_24h_at_pick": 3,
+     "batch": "gb-20261028-2129",
+     "score": 20.8,
+     "change_1h_at_pick": 1.59,
+     "change_4h_at_pick": -4.69,
+     "vol_x_avg": 2.43,
+     "vol_x_prev_hour": 2.32,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -8.46,
+     "quote_volume_24h": 4933758,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "MEGA",
+     "pair": "MEGAUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-28T21:29:16+08:00",
+     "entry_price_usd": 0.05009,
+     "price_at_snapshot": 0.05009,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 7.42,
+     "rank_24h_at_pick": 9,
+     "batch": "gb-20261028-2129",
+     "score": 16.2,
+     "change_1h_at_pick": -1.61,
+     "change_4h_at_pick": 0.96,
+     "vol_x_avg": 1.44,
+     "vol_x_prev_hour": 1.16,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -4.62,
+     "quote_volume_24h": 4168593,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "HAEDAL",
+     "pair": "HAEDALUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-28T21:29:16+08:00",
+     "entry_price_usd": 0.03079,
+     "price_at_snapshot": 0.03079,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 17.21,
+     "rank_24h_at_pick": 4,
+     "batch": "gb-20261028-2129",
+     "score": 14.5,
+     "change_1h_at_pick": 5.63,
+     "change_4h_at_pick": -4.56,
+     "vol_x_avg": 0.57,
+     "vol_x_prev_hour": 1.01,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -10.52,
+     "quote_volume_24h": 26778583,
      "watch_only": true,
      "outcomes": {}
     }
