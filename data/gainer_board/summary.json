@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-10-28T04:57:20+08:00",
- "batches": 24,
- "flags": 14,
+ "updated_at": "2026-10-28T08:28:58+08:00",
+ "batches": 25,
+ "flags": 15,
  "horizons": {
   "4h": {
    "n": 14,
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -15.47,
     "closed_up": 1
    },
-   "flags": 2
+   "flags": 3
   },
   "early": {
    "4h": {
@@ -97,15 +97,15 @@
     "closed_up": 23
    },
    "24h": {
-    "n": 61,
+    "n": 63,
     "hit20": 3,
     "hit50": 0,
-    "avg_max_gain_pct": 7.49,
-    "avg_close_pct": -3.08,
-    "avg_max_drawdown_pct": -8.65,
-    "closed_up": 20
+    "avg_max_gain_pct": 7.38,
+    "avg_close_pct": -2.99,
+    "avg_max_drawdown_pct": -8.47,
+    "closed_up": 21
    },
-   "flags": 87
+   "flags": 93
   }
  },
  "latest_4h": {
