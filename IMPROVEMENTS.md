@@ -1,3 +1,6 @@
+## 2026-10-29 Asia/Shanghai — 🚩 X 洗版 red label on 🔥/⚡ (stamp `20261029b`)
+QA live FAIL: INIT 🔥 showed bare 🚩 next to「X 冷」; BLUR ⚡ had no flag. Fix: dedicated red text「🚩 X 洗版」via `.shill-flag` on 🔥 pump + ⚡ early2 cards (and existing 今日跟買 / 每日新留意). No bare glyph on the X chip; sheet label「🚩 X 洗版」. Paint after early list mounts.
+
 ## 2026-10-29 Asia/Shanghai — resume after outage (stamp `20261029a`)
 Cyrus: product back up, numbers accurate, no helmet CYA copy, early gainer recall ≥10% (path to 50%).
 
