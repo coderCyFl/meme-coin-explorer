@@ -1290,7 +1290,7 @@
   function gbXSheet(c) {
     const box = el("div", { class: "gb-xsheet-in" });
     const meta = [];
-    if (c.shill_flag) meta.push(el("span", { class: "gb-xflag", text: "🚩 疑似洗版" }));
+    if (c.shill_flag) meta.push(el("span", { class: "gb-xflag", text: "🚩 X 洗版" }));
     if (Number.isInteger(c.big_accounts) && c.big_accounts > 0) meta.push(el("span", { class: "muted", text: `10萬粉+ ${c.big_accounts} 個` }));
     box.append(el("div", { class: "gb-xline" }, el("b", { text: String(c.one_line || "").slice(0, 20) }), ...meta));
     const posts = (Array.isArray(c.top_posts) ? c.top_posts : []).slice(0, 3);
@@ -1314,8 +1314,7 @@
       if (!c) { chip.hidden = true; if (sheet) { sheet.hidden = true; sheet.textContent = ""; } return; }
       chip.hidden = false;
       chip.className = "gb-xchip" + (c.verdict === "熱" ? " x-hot" : c.verdict === "冷" ? " x-cold" : "");
-      chip.textContent = gbXChipText(c);
-      if (c.shill_flag) chip.append(el("span", { class: "gb-xflag", text: " 🚩" }));
+      chip.textContent = gbXChipText(c); // shill → separate .shill-flag 「🚩 X 洗版」, not a bare 🚩 on the chip
       chip.setAttribute("aria-haspopup", "dialog");
       if (sheet) { sheet.textContent = ""; sheet.hidden = true; } // ux-fix: detail lives in the 詳情 sheet, not inline
     });
@@ -1332,8 +1331,8 @@
     if (window.MCE.market && window.MCE.market.openSheet) window.MCE.market.openSheet(`${sym.replace(/USDT$/, "")} · ${gbXChipText(c)}`, [gbXSheet(c)]);
   }
 
-  // ---------- 🚩 X 洗版 marker on AI picks (今日跟買 cards + 每日新留意 table). Reuses gbX (same x_buzz.json, 0 X calls).
-  // Display only: never removes or reorders a pick. Flag stays while the coin's LATEST X check (≤24h old) is shill_flag. ----------
+  // ---------- 🚩 X 洗版 marker (🔥/⚡ gainer cards + 今日跟買 + 每日新留意). Reuses gbX (same x_buzz.json, 0 X calls).
+  // Display only: never removes or reorders. Red text 「🚩 X 洗版」 while LATEST X check (≤24h) has shill_flag. ----------
   const GBX_FLAG_MAX_AGE = 24 * 3600e3;
   const gbPairOf = (s) => { const u = String(s || "").toUpperCase(); return u ? (u.endsWith("USDT") ? u : u + "USDT") : ""; };
   function gbXShill(pair) {
@@ -1396,6 +1395,7 @@
       el("summary", { text: "詳情" }),
       el("div", { class: "gb-det-body" },
         spark || "",
+        (r.tier === "pump" || gbIsEarly(r.tier)) ? shillLineEl(r.symbol) : null,
         el("div", { class: "pump-badges" },
           el("span", { class: "pump-badge soft gb-fh", "data-gb-fh": r.symbol, "data-gb-high": String(r.high || ""), text: `離 24h 高 ${pct(r.fromHigh)}` }),
           r.volRatio != null ? el("span", { class: "pump-badge " + (r.volRatio >= 1.5 ? "hot" : "soft"), text: `量 ×${r.volRatio.toFixed(1)}` + (r.volRatioPrev != null ? ` ← ×${r.volRatioPrev.toFixed(1)}` : "") }) : "",
@@ -1418,7 +1418,8 @@
       el("div", { class: "gb-top" },
         logo,
         el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags),
-          r.tier === "pump" ? el("button", { type: "button", class: "gb-xchip", "data-gb-x": r.symbol, hidden: true, "aria-expanded": "false", onclick: () => gbXToggle(r.symbol) }) : ""),
+          r.tier === "pump" ? el("button", { type: "button", class: "gb-xchip", "data-gb-x": r.symbol, hidden: true, "aria-expanded": "false", onclick: () => gbXToggle(r.symbol) }) : "",
+          (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
         el("div", { class: "gb-px" },
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }))),
@@ -1521,9 +1522,9 @@
       renderGainerAlert(rows.filter((r) => r.tier === "pump").map((r) => ({ tier: "pump", base: r.base, pair: r.symbol, price: r.price, trig: trig.get(r.symbol + ":pump") }))
         .concat(early.map((e) => ({ tier: "early2", base: e.base, pair: e.symbol, price: curPx(e.symbol) || e.price, trig: trig.get(e.symbol + ":early2") }))));
       renderGainerBoard(rows, trig);
-      paintXChips();
-      gbLoadX(false).then(paintXChips).catch(() => {});
       renderEarlyList(early, trig);
+      paintXChips(); // after 🔥 + ⚡ cards exist so .shill-flag nodes get painted
+      gbLoadX(false).then(paintXChips).catch(() => {});
       gbClientSnapshot(rows, early);
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
       const watch = rows.map((r) => r.symbol).concat(early.map((e) => e.symbol));

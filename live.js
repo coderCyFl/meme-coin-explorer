@@ -618,7 +618,7 @@
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
   const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
-  // ⚡ v2 (20261029a, mirrors gainer_core.early2_at): 起步 + prec + 細盤 $1.5M; watch-only.
+  // ⚡ v2 (20261029b, mirrors gainer_core.early2_at): 起步 + prec + 細盤 $1.5M; watch-only.
   //   起步: 24h vol ≥ $3M, not 🔥, 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
   //   prec: 24h vol ≥ $3M, not 🔥, 1h ≥ +2.5%, vol ≥ 2.5x, 24h % < +12%
   //   細盤: 24h vol $1.5M–$3M with the 🔥 price/volume condition
