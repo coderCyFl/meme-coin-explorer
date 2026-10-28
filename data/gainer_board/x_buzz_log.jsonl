@@ -52,3 +52,7 @@
 {"ts": "2026-10-29T02:10:40+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "(BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-10-29T02:34:30+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
 {"ts": "2026-10-29T02:34:30+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-29T03:03:40+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 66}
+{"ts": "2026-10-29T03:03:41+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-10-29T03:04:10+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 20}
+{"ts": "2026-10-29T03:04:11+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 13}

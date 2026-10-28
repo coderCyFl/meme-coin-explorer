@@ -6,88 +6,88 @@
    "base": "INIT",
    "flag": "pump",
    "trigger_at": "2026-10-29T00:30:00+08:00",
-   "checked_at": "2026-10-29T02:11:17+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 11.33,
-   "spike_ratio": 0.53,
+   "checked_at": "2026-10-29T03:04:40+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 10.5,
+   "spike_ratio": 0.29,
    "verdict": "冷",
-   "one_line": "訊號群洗版熱度跌",
+   "one_line": "聲量回落多喊單",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115422577242083740",
-     "url": "https://x.com/mrcamerontrader/status/2115422577242083740",
-     "text": "INIT/USDT LONG 25X Entry Price: 0.2010–0.1970 TP Targets: (0.2065, 0.2150, 0.2210) Stop Loss: 0.1900 #crypto",
+     "id": "2115493395032576468",
+     "url": "https://x.com/CryptoWhales55/status/2115493395032576468",
+     "text": "#INITUSDT Up by +51% profit on spot market ~Duration : less than 1day Live profits Join Us Now",
+     "likes": 54,
+     "author_username": "CryptoWhales55",
+     "author_followers": 7999,
+     "created_at": "2026-10-29T01:18:23+08:00"
+    },
+    {
+     "id": "2115497531052351724",
+     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
+     "text": "I've been exploring @MojoAI_HQ, and today I decided to test how it handles crypto market research. I gave MOJO a simple prompt: Find today'…",
+     "likes": 53,
+     "author_username": "Anthonyb_t",
+     "author_followers": 8055,
+     "created_at": "2026-10-29T01:34:50+08:00"
+    },
+    {
+     "id": "2115504238163841426",
+     "url": "https://x.com/Neon_Unlimited/status/2115504238163841426",
+     "text": "Impulses of the day: 33 up, 14 down. Strongest: $Q +51.9% $ETHW +38.5% $PREDICT +32.5% $INIT +25.5%",
      "likes": 2,
-     "author_username": "mrcamerontrader",
-     "author_followers": 441,
-     "created_at": "2026-10-28T20:36:59+08:00"
-    },
-    {
-     "id": "2115420608842367125",
-     "url": "https://x.com/renogreenish/status/2115420608842367125",
-     "text": "Binance Futures, Bitmart USDT, KuCoin Futures, Bitget Futures #INIT/USDT All take-profit targets achieved Profits: 725.2503%",
-     "likes": 1,
-     "author_username": "renogreenish",
-     "author_followers": 1309,
-     "created_at": "2026-10-28T20:29:10+08:00"
-    },
-    {
-     "id": "2115491228703752572",
-     "url": "https://x.com/x369shadow/status/2115491228703752572",
-     "text": "—From The Shadow— $INITUSDT +390% GROWTH—MEDIUM-& LONG-TERM TARGETS SURPASSED! $INIT kept building momentum",
-     "likes": 1,
-     "author_username": "x369shadow",
-     "author_followers": 394,
-     "created_at": "2026-10-29T01:09:47+08:00"
+     "author_username": "Neon_Unlimited",
+     "author_followers": 36,
+     "created_at": "2026-10-29T02:01:29+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "BLURUSDT": {
    "symbol": "BLURUSDT",
    "base": "BLUR",
    "flag": "pump",
    "trigger_at": "2026-10-29T00:15:00+08:00",
-   "checked_at": "2026-10-29T02:11:17+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "帖量略升仍偏淡",
-   "shill_flag": true,
+   "checked_at": "2026-10-29T03:04:40+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 2.99,
+   "verdict": "冷",
+   "one_line": "假熱噪音真聲少",
+   "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
+    {
+     "id": "2115500146079248521",
+     "url": "https://x.com/cexscan/status/2115500146079248521",
+     "text": "Last 15m - #Coinbase Spot (USD Trades) Top 3 Losers: ethereum:... (Blur) : ↓-4.38%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10600,
+     "created_at": "2026-10-29T01:45:13+08:00"
+    },
     {
      "id": "2115420782159376506",
      "url": "https://x.com/Standard_Expert/status/2115420782159376506",
      "text": "Binance Futures #BLUR/USDT All take-profit targets achieved Profit: 281.2052% Period: 20 Hours 35 Minutes",
      "likes": 1,
      "author_username": "Standard_Expert",
-     "author_followers": 1878,
+     "author_followers": 1903,
      "created_at": "2026-10-28T20:29:51+08:00"
     },
     {
      "id": "2115436523063857198",
      "url": "https://x.com/RadarCex/status/2115436523063857198",
-     "text": "US Open Radar | Oct 28 BTC $80,636 · ETH $2,337 · SOL $101.27 • INIT +42.0% led Binance gainers. BLUR funding hit -0.890%/8h.",
+     "text": "US Open Radar | Oct 28 BTC $80,636 · INIT +42.0% led Binance gainers. BLUR funding hit -0.890%/8h. #Crypto | NFA",
      "likes": 1,
      "author_username": "RadarCex",
      "author_followers": 264,
      "created_at": "2026-10-28T21:32:24+08:00"
-    },
-    {
-     "id": "2115491592949714989",
-     "url": "https://x.com/ZenithQuant/status/2115491592949714989",
-     "text": "Alpha check on $BLUR: Strong rally executed from $0.00826 to $0.0856, locking in +17.1% net profit. Driven by heavy whale inflow & Binance …",
-     "likes": 0,
-     "author_username": "ZenithQuant",
-     "author_followers": 1,
-     "created_at": "2026-10-29T01:11:14+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "BMTUSDT": {
    "symbol": "BMTUSDT",
@@ -250,15 +250,101 @@
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": []
+  },
+  {
+   "symbol": "INITUSDT",
+   "base": "INIT",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T00:30:00+08:00",
+   "checked_at": "2026-10-29T03:04:40+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 10.5,
+   "spike_ratio": 0.29,
+   "verdict": "冷",
+   "one_line": "聲量回落多喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115493395032576468",
+     "url": "https://x.com/CryptoWhales55/status/2115493395032576468",
+     "text": "#INITUSDT Up by +51% profit on spot market ~Duration : less than 1day Live profits Join Us Now",
+     "likes": 54,
+     "author_username": "CryptoWhales55",
+     "author_followers": 7999,
+     "created_at": "2026-10-29T01:18:23+08:00"
+    },
+    {
+     "id": "2115497531052351724",
+     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
+     "text": "I've been exploring @MojoAI_HQ, and today I decided to test how it handles crypto market research. I gave MOJO a simple prompt: Find today'…",
+     "likes": 53,
+     "author_username": "Anthonyb_t",
+     "author_followers": 8055,
+     "created_at": "2026-10-29T01:34:50+08:00"
+    },
+    {
+     "id": "2115504238163841426",
+     "url": "https://x.com/Neon_Unlimited/status/2115504238163841426",
+     "text": "Impulses of the day: 33 up, 14 down. Strongest: $Q +51.9% $ETHW +38.5% $PREDICT +32.5% $INIT +25.5%",
+     "likes": 2,
+     "author_username": "Neon_Unlimited",
+     "author_followers": 36,
+     "created_at": "2026-10-29T02:01:29+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T00:15:00+08:00",
+   "checked_at": "2026-10-29T03:04:40+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 2.99,
+   "verdict": "冷",
+   "one_line": "假熱噪音真聲少",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115500146079248521",
+     "url": "https://x.com/cexscan/status/2115500146079248521",
+     "text": "Last 15m - #Coinbase Spot (USD Trades) Top 3 Losers: ethereum:... (Blur) : ↓-4.38%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10600,
+     "created_at": "2026-10-29T01:45:13+08:00"
+    },
+    {
+     "id": "2115420782159376506",
+     "url": "https://x.com/Standard_Expert/status/2115420782159376506",
+     "text": "Binance Futures #BLUR/USDT All take-profit targets achieved Profit: 281.2052% Period: 20 Hours 35 Minutes",
+     "likes": 1,
+     "author_username": "Standard_Expert",
+     "author_followers": 1903,
+     "created_at": "2026-10-28T20:29:51+08:00"
+    },
+    {
+     "id": "2115436523063857198",
+     "url": "https://x.com/RadarCex/status/2115436523063857198",
+     "text": "US Open Radar | Oct 28 BTC $80,636 · INIT +42.0% led Binance gainers. BLUR funding hit -0.890%/8h. #Crypto | NFA",
+     "likes": 1,
+     "author_username": "RadarCex",
+     "author_followers": 264,
+     "created_at": "2026-10-28T21:32:24+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 8,
+  "calls_today": 12,
   "cap_reached": false,
-  "updated_at": "2026-10-29T02:34:30+08:00"
+  "updated_at": "2026-10-29T03:04:54+08:00"
  },
- "updated_at": "2026-10-29T02:34:30+08:00",
+ "updated_at": "2026-10-29T03:04:54+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
