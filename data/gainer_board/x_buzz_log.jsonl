@@ -44,3 +44,9 @@
 {"ts": "2026-10-25T09:09:40+08:00", "symbol": "TUSDT", "tool": "search", "query": "($T OR #T) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-10-25T09:09:40+08:00", "symbol": "EPICUSDT", "tool": "search", "query": "(\"EPIC coin\" OR \"EPIC token\" OR EPICUSDT OR \"$EPIC\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) -\"epic games\" -fortnite -\"epic store\" -\"epic fail\" -unreal lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-10-25T09:09:40+08:00", "symbol": "ANIMEUSDT", "tool": "search", "query": "(\"ANIME coin\" OR \"ANIME token\" OR ANIMEUSDT OR \"$ANIME\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) -manga -episode -season -waifu -cosplay -crunchyroll -netflix -studio -fanart lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-29T02:10:16+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-10-29T02:10:17+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
+{"ts": "2026-10-29T02:10:17+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-29T02:10:40+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR INIT) (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-29T02:10:40+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "(BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-29T02:10:40+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "(BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
