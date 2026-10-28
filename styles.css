@@ -1829,3 +1829,9 @@ button.allin-btn.allin-btn:hover,button.allin-btn.sm:hover,button.primary.sm:hov
 .pos-row .pr-lev{flex:none;white-space:nowrap}
 @media (max-width:380px){.pos-row .pr-nm{font-size:14px}.pos-row .pr-lev{font-size:10.5px;padding:0 4px}}
 #tradeExitMain{white-space:pre-line}
+
+/* 🚩 X 洗版 marker on AI picks — red text only, no fill; hidden (no space) when not flagged */
+.shill-flag{display:inline-block;font-size:11px;line-height:14px;font-weight:700;color:var(--red);background:none;white-space:nowrap;cursor:pointer;margin-top:2px}
+.shill-flag[hidden]{display:none}
+.shill-line{color:var(--red);font-size:12px;line-height:1.4}
+.shill-line[hidden]{display:none}

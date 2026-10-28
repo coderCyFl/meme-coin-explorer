@@ -618,11 +618,13 @@
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
   const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
-  // ⚡ v2 (20261025g1, mirrors gainer_core.early2_at; backtest data/gainer_board/backtest_early_30d.json), closed 15m bars:
-  //   起步: 24h vol ≥ $3M, not 🔥 yet (15m < +5% & 1h < +5%), 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
-  //   細盤: 24h vol $2M–$3M (under the 🔥 floor) with the 🔥 price/volume condition
+  // ⚡ v2 (20261029a, mirrors gainer_core.early2_at): 起步 + prec + 細盤 $1.5M; watch-only.
+  //   起步: 24h vol ≥ $3M, not 🔥, 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
+  //   prec: 24h vol ≥ $3M, not 🔥, 1h ≥ +2.5%, vol ≥ 2.5x, 24h % < +12%
+  //   細盤: 24h vol $1.5M–$3M with the 🔥 price/volume condition
   //   suppressed when 🔥 (≥ $3M) fired on that coin in the 16 bars up to the signal bar.
-  const GB_E2_C15 = 2.5, GB_E2_C1_MIN = 0, GB_E2_RNG24 = 25, GB_E2_LOW_QV = 2e6;
+  const GB_E2_C15 = 2.5, GB_E2_C1_MIN = 0, GB_E2_RNG24 = 25, GB_E2_LOW_QV = 1.5e6;
+  const GB_E2_PREC_C1 = 2.5, GB_E2_PREC_VR = 2.5, GB_E2_PREC_C24_MAX = 12;
   // Scan pool: EVERY eligible coin passing a cheap ticker pre-filter (no top-10 cap any more):
   //   🔥 / 細盤: rolling-4h range ≥ 5% · 起步: 24h range ≥ 25% and rolling-4h range ≥ 2.5%. Hard cap for rate safety.
   const GB_POOL_MAX = 90;
@@ -654,16 +656,21 @@
   const surgeFire = (f) => !!f && ((f.c1 >= GB_SURGE_C1 && f.vr >= GB_SURGE_VR) || f.c15 >= GB_SURGE_C15);
   const surgeVia = (f) => (f.c1 >= GB_SURGE_C1 && f.vr >= GB_SURGE_VR ? "1h+vol" : "15m");
 
-  /** ⚡ v2 leg at CLOSED 15m bar j: "start" | "thin" | null (same maths as gainer_core.early2_at). */
+  /** ⚡ v2 leg at CLOSED 15m bar j: "start" | "prec" | "thin" | null (same maths as gainer_core.early2_at). */
   function early2At(b, j) {
     if (j < 115) return null;
     for (let k = j - 16; k <= j; k++) { const g = surgeFeats(b, k); if (g.qv24 >= GB_MIN_QV && surgeFire(g)) return null; }
     const f = surgeFeats(b, j);
+    // c24 from the same 96-bar window as gainer_core.surge_feats
+    const c24 = (j >= 96 && b[j - 96].c > 0) ? (f.price / b[j - 96].c - 1) * 100 : 0;
     if (f.qv24 >= GB_MIN_QV) {
+      if (!(f.c15 < GB_SURGE_C15 && f.c1 < GB_SURGE_C1)) return null;
       let hi = -Infinity, lo = Infinity;
       for (let k = j - 96; k < j; k++) { hi = Math.max(hi, b[k].h); lo = Math.min(lo, b[k].l); }
       const rng24 = lo > 0 ? (hi / lo - 1) * 100 : 0;
-      return f.c15 < GB_SURGE_C15 && f.c1 < GB_SURGE_C1 && f.c15 >= GB_E2_C15 && f.c1 >= GB_E2_C1_MIN && rng24 >= GB_E2_RNG24 ? "start" : null;
+      if (f.c15 >= GB_E2_C15 && f.c1 >= GB_E2_C1_MIN && rng24 >= GB_E2_RNG24) return "start";
+      if (f.c1 >= GB_E2_PREC_C1 && f.vr >= GB_E2_PREC_VR && c24 < GB_E2_PREC_C24_MAX) return "prec";
+      return null;
     }
     return f.qv24 >= GB_E2_LOW_QV && surgeFire(f) ? "thin" : null;
   }

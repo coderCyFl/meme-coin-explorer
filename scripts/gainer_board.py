@@ -89,11 +89,17 @@ def eligible_tickers(allt=None):
 
 # ---------------- snapshot ----------------
 def early2_last(b15):
-    """⚡ v2 on the last 2 CLOSED 15m bars (b15 = closed bars only). Returns a feature dict or None."""
+    """⚡ v2: FIRST fire in the last 4h of CLOSED 15m bars (matches live.js early2Trigger).
+
+    Old code only checked the last 2 bars, so delayed Actions runs missed early fires and the
+    daily scorecard under-counted early recall. Returns a feature dict or None.
+    """
     n = len(b15)
-    for j in (n - 2, n - 1):
-        if j < 115:
-            continue
+    if n < 116:
+        return None
+    # Walk oldest→newest inside the 4h window so trigger_at is the earliest early moment.
+    start = max(115, n - 16)
+    for j in range(start, n):
         leg = g.early2_at(b15, j)
         if leg:
             sf = g.early2_feats(b15, j)
@@ -120,7 +126,7 @@ def snapshot():
     btc = next((r for r in tick if r["pair"] == "BTCUSDT"), None)
     cool = {(e["pair"], e["tier"]) for e in recent_flags(g.COOLDOWN_H - 0.1)}
     fires = {"pump": [], "early2": [], "early": [], "cand": []}
-    # ⚡ v2 thin leg: $2M..$3M 24h volume coins (below the 🔥 floor) — 15m klines only.
+    # ⚡ v2 thin leg: $1.5M..$3M 24h volume coins (below the 🔥 floor) — 15m klines only.
     thin = [r for r in allt if g.E2_LOW_QV <= r["qv"] < g.MIN_QV24]
     for r in thin:
         try:
@@ -154,18 +160,20 @@ def snapshot():
             b15 = []
             print("15m fail", r["pair"], e, file=sys.stderr)
         if len(b15) >= 100:
-            for j in (len(b15) - 2, len(b15) - 1):
+            # FIRST 🔥 in last 4h (16 closed bars), same window as live.js surgeTrigger.
+            start_j = max(99, len(b15) - 16)
+            for j in range(start_j, len(b15)):
                 sf = g.surge_feats(b15, j)
                 if g.surge_fire(sf):
                     t = "pump"
                     f = dict(f, c1=sf["c1"], c4=sf["c4"], vr=sf["vr"], fh=sf["fh"], c15=sf["c15"],
-                             trigger_at=sf["t"], trigger_price=sf["p"],
+                             c24=sf["c24"], trigger_at=sf["t"], trigger_price=sf["p"],
                              trigger_via="1h+vol" if (sf["c1"] >= g.SURGE_C1 and sf["vr"] >= g.SURGE_VR) else "15m")
                     break
         if not t:
             f2 = early2_last(b15)
             if f2:
-                t, f = "early2", dict(f, **{k: f2[k] for k in ("c1", "c4", "vr", "fh", "c15", "trigger_at", "trigger_price", "trigger_via", "rng24")})
+                t, f = "early2", dict(f, **{k: f2[k] for k in ("c1", "c4", "vr", "fh", "c15", "c24", "trigger_at", "trigger_price", "trigger_via", "rng24")})
         if not t:
             t = g.tier(f)
         if not t and r["pair"] in cand_pairs:
@@ -179,12 +187,17 @@ def snapshot():
     for t in ("pump", "early2", "early", "cand"):
         for sc, r, f in sorted(fires[t], key=lambda x: -x[0])[:caps[t]]:
             trig_at = f.get("trigger_at")
+            # Scorecard early/late uses change_24h + rank AT FLAG TIME. Prefer trigger-bar c24; if the
+            # trigger is older than ~35 min, drop live rank (it would falsely mark early fires as late).
+            c24_at = f["c24"] if "c24" in f and f["c24"] is not None else r["chg24"]
+            trig_age_min = ((t0.timestamp() * 1000) - trig_at) / 60000 if trig_at else 0
+            rank_at = None if (trig_at and trig_age_min > 35) else r["rank"]
             entries.append({
                 "symbol": r["pair"][:-4], "pair": r["pair"], "tier": t,
                 "picked_at": iso(datetime.datetime.fromtimestamp(trig_at / 1000, t0.tzinfo)) if trig_at else iso(t0),
                 "entry_price_usd": f.get("trigger_price") or r["price"], "price_at_snapshot": r["price"],
-                "trigger_via": f.get("trigger_via"), "change_15m_at_pick": round(f["c15"], 2) if "c15" in f else None, "change_24h_at_pick": round(r["chg24"], 2),
-                "rank_24h_at_pick": r["rank"], "batch": batch, "score": sc,
+                "trigger_via": f.get("trigger_via"), "change_15m_at_pick": round(f["c15"], 2) if "c15" in f else None, "change_24h_at_pick": round(c24_at, 2) if c24_at is not None else None,
+                "rank_24h_at_pick": rank_at, "batch": batch, "score": sc,
                 "change_1h_at_pick": round(f["c1"], 2), "change_4h_at_pick": round(f["c4"], 2),
                 "vol_x_avg": round(f["vr"], 2), "vol_x_prev_hour": round(f["vr1"], 2) if "vr1" in f else None,
                 "range_24h_pct": round(f["rng24"], 1) if "rng24" in f else None,

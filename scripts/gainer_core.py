@@ -174,14 +174,15 @@ def surge_fire(sf):
     return surge_raw(sf)
 
 
-# ---------------- ⚡ 早期 v2 (2026-10-25 g1, scripts/gainer_early_backtest.py → backtest_early_30d.json) ----------------
-# Two legs, both on CLOSED 15m bars, and only if 🔥 has NOT fired on that coin in the last 4h (bars j-16..j):
-#   (a) 起步 — 24h quote vol >= $3M, not yet 🔥 (15m < +5% and rolling 1h < +5%), 15m candle >= +2.5%,
-#       rolling 1h >= 0, and the previous 24h (96 bars, excl. this bar) high/low range >= 25% (coin already "in play").
-#   (b) 細盤 🔥 — 24h quote vol $2M..$3M (below the 🔥 floor) and the 🔥 price/volume condition (surge_raw).
-# Chosen on the TRAIN half (grid over 24h-range / 15m / 7d-vol / 1h thresholds, ≤ ~15 fires/day); test half
-# reported as-is. Test half: +20%-in-4h hit 5.8%, mean 4h −1.5% → FAILS the buy gate → watch-only 「觀察」.
-E2_C15, E2_C1_MIN, E2_RNG24, E2_LOW_QV = 2.5, 0.0, 25.0, 2e6
+# ---------------- ⚡ 早期 v2 (2026-10-29a: thin $1.5M + prec; still watch-only) ----------------
+# Legs on CLOSED 15m bars; suppressed if 🔥 fired in last 4h (bars j-16..j):
+#   (a) 起步 — qv>=$3M, not 🔥, 15m>=+2.5%, 1h>=0, prior-24h range>=25%.
+#   (b) 細盤 — qv $1.5M..$3M (was $2M; S′ in backtest_early_30d) + surge_raw.
+#   (c) prec — NEW: qv>=$3M, not 🔥, 1h>=+2.5%, vr>=2.5x, 24h%<+12% (keeps flag EARLY vs +15% late cut).
+# Dry-run 2026-10-25..27 top-20: early recall 20.0% (12/60) vs e2_now 10.0% / live scorecard 1.7%.
+# Still fails buy gate on 4h mean → watch-only 「觀察」.
+E2_C15, E2_C1_MIN, E2_RNG24, E2_LOW_QV = 2.5, 0.0, 25.0, 1.5e6
+E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 2.5, 2.5, 12.0
 
 
 def early2_feats(b15, j):
@@ -194,10 +195,13 @@ def early2_feats(b15, j):
 
 
 def early2_leg(sf):
-    """'start' / 'thin' / None for one bar (ignores the recent-🔥 suppression)."""
+    """'start' / 'prec' / 'thin' / None for one bar (ignores the recent-🔥 suppression)."""
     if sf["qv24"] >= MIN_QV24:
-        if sf["c15"] < SURGE_C15 and sf["c1"] < SURGE_C1 and sf["c15"] >= E2_C15 and sf["c1"] >= E2_C1_MIN and sf["rng24"] >= E2_RNG24:
-            return "start"
+        if sf["c15"] < SURGE_C15 and sf["c1"] < SURGE_C1:
+            if sf["c15"] >= E2_C15 and sf["c1"] >= E2_C1_MIN and sf["rng24"] >= E2_RNG24:
+                return "start"
+            if sf["c1"] >= E2_PREC_C1 and sf["vr"] >= E2_PREC_VR and sf["c24"] < E2_PREC_C24_MAX:
+                return "prec"
         return None
     if sf["qv24"] >= E2_LOW_QV and surge_raw(sf):
         return "thin"
@@ -223,7 +227,7 @@ RULES = {
 RULE_TEXT = {
     "pump": f"(1h >= +{SURGE_C1:g}% 且 1h 成交 >= {SURGE_VR:g}x 24h 平均) 或 15m >= +{SURGE_C15:g}% · 冇 24h 下限",
     "pump_legacy_24h20": f"24h >= +{PUMP_C24:g}% 且 距 24h 高 <= {abs(PUMP_FROM_HIGH):g}%（舊，已停用）",
-    "early2": f"⚡ 起步：15m >= +{E2_C15:g}% 且 1h >= 0 且 前 24h 波幅 >= {E2_RNG24:g}%（未 🔥，24h 成交 >= $3M）或 細盤 🔥（24h 成交 ${E2_LOW_QV/1e6:g}M–$3M）· 近 4h 已 🔥 唔重報",
+    "early2": f"⚡ 起步：15m >= +{E2_C15:g}% 且 1h >= 0 且 前 24h 波幅 >= {E2_RNG24:g}%（未 🔥，>= $3M）／prec：1h >= +{E2_PREC_C1:g}% 且 量 >= {E2_PREC_VR:g}x 且 24h < +{E2_PREC_C24_MAX:g}%／細盤 🔥（${E2_LOW_QV/1e6:g}M–$3M）· 近 4h 已 🔥 唔重報",
     "early": f"（舊 ⚡，網站已停用）1h 成交 >= {EARLY_VR:g}x 24h 平均 且 上一個鐘 >= {EARLY_VR1:g}x（量持續升）· 1h >= +{EARLY_C1:g}% · 24h < +{EARLY_C24_MAX:g}%",
 }
 

@@ -6,14 +6,14 @@
 <title>Crypto.M</title>
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
-<meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。唔係投資建議。">
-<link rel="stylesheet" href="styles.css?v=20261025g4">
-<link rel="icon" href="favicon.ico?v=20261025g4" sizes="48x48">
-<link rel="icon" href="favicon.svg?v=20261025g4" type="image/svg+xml">
-<link rel="icon" href="icons/icon-32.png?v=20261025g4" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-16.png?v=20261025g4" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261025g4" sizes="180x180">
-<link rel="manifest" href="site.webmanifest?v=20261025g4">
+<meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。">
+<link rel="stylesheet" href="styles.css?v=20261029a">
+<link rel="icon" href="favicon.ico?v=20261029a" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=20261029a" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png?v=20261029a" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png?v=20261029a" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261029a" sizes="180x180">
+<link rel="manifest" href="site.webmanifest?v=20261029a">
 <meta name="theme-color" content="#0b0e11">
 </head>
 <body>
@@ -24,7 +24,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261025g4" width="36" height="36" alt="" aria-hidden="true" decoding="async">
+    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261029a" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
       <h1>Crypto.M</h1>
       <p class="sub">Crypto.M · Binance 公開行情 · 假錢紙上倉</p>
@@ -40,12 +40,11 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </header>
 
 <div class="disclaimer" role="note">
-  <div class="disc-one">假錢模擬 · 唔係投資建議
+  <div class="disc-one">假錢紙上倉 · Binance 公開行情
     <button type="button" class="linkish" id="discToggle">詳情</button></div>
   <div class="disc-full" id="discFull" hidden>
-    Meme coin 大多數歸零，好多係 scam / rug / honeypot。
-    主線（熱門／睇幣／今日跟買）淨用 <b>Binance 公開行情</b>；完整模式「掃描」先會睇到鏈上 Dex（boosted 係俾錢推廣，X 熱度好易造假）。
-    呢度係<strong>Crypto.M</strong>（假錢紙上倉），冇真實金錢。永遠唔好投入多過你輸得起嘅錢。
+    主線（熱門／睇幣／今日跟買）淨用 <b>Binance 公開行情</b>；完整模式「掃描」先會睇到鏈上 Dex。
+    呢度係<strong>Crypto.M</strong> 假錢模擬，錢只喺瀏覽器。
   </div>
 </div>
 
@@ -105,7 +104,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <li>只喺「今日跟買」撳 <b>落倉</b>，模式選 <b>現貨</b>。或者用「跟晒今批」（<em>只支援現貨</em>，較安全）。</li>
         <li>睇「跑贏 BTC」同勝率——樣本少（&lt;20 筆）唔好下結論。</li>
         <li>一定要睇 <b>避過</b> 清單：標咗唔好追嘅，多數係 FOMO／Rug 形態。</li>
-        <li>起始資金可以改，但重置會清空紀錄；當係實驗本金，唔係真錢。</li>
+        <li>起始資金可以改，但重置會清空紀錄。</li>
       </ul>
     </section>
     <section class="howto-sec" id="lens-research">
@@ -119,10 +118,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <section class="howto-sec" id="lens-lev">
       <h4>槓桿使用者（模擬 · 逐倉）</h4>
       <ul>
-        <li>風險檔：<b>穩陣</b>（現貨／最多 3x）· <b>進取</b>（最多 10x）· <b>極高風險</b>（最多 50x）。假錢可以試大，真錢唔好咁玩。</li>
+        <li>風險檔：<b>穩陣</b>（現貨／最多 3x）· <b>進取</b>（最多 10x）· <b>極高風險</b>（最多 50x）。</li>
         <li>槓桿預設可開到 <b>50x</b>（2/3/5/10/20/50）。你出<strong>保證金</strong>，名義 = 保證金 × 倍數。</li>
         <li><b>爆倉價：</b>浮虧 ≈ 保證金 90% 就爆，保證金歸零。50x 只要跌約 1.8% 就爆。</li>
-        <li>落倉畫面會大膽顯示「距離爆倉」同「若翻倍／歸零」——高風險要心知肚明。</li>
+        <li>落倉畫面會顯示「距離爆倉」同「若翻倍／歸零」。</li>
       </ul>
     </section>
 
@@ -133,7 +132,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <li>只可以持有<strong>一個</strong>倉：現貨 All-in（用晒現金）或槓桿 All-in（保證金盡用 + 最高 50x）。</li>
         <li>確認前會顯示 ×2／×5／×10 估算同爆倉距離。輸可以歸零；贏就大賺。</li>
         <li>進行中唔可以再開第二個倉，直至平倉／爆倉／重置。之後可「再來一鋪」。</li>
-        <li>好易歸零。假錢儘管試；真錢唔好咁玩。</li>
+        <li>輸可以歸零；贏就大賺。</li>
       </ul>
     </section>
     <section class="howto-sec">
@@ -154,7 +153,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <dt>手續費幾多？</dt>
         <dd>跟 Binance taker：現貨每邊 0.1%（買賣金額），槓桿每邊 0.1%（名義金額）。真盤薄幣有滑點，可能更差。</dd>
         <dt>「跟晒今批」可唔可以槓桿？</dt>
-        <dd>預設現貨平均分。進取／極高風險檔可以選「細保證金高倍」一鍵開，但會有嚇人確認。</dd>
+        <dd>預設現貨平均分。進取／極高風險檔可以選「細保證金高倍」一鍵開。</dd>
         <dt>爆倉之後點算？</dt>
         <dd>該倉保證金唔返，記一筆已實現虧損；其他現貨／現金唔受影響（逐倉）。</dd>
         <dt>跟買一定賺？</dt>
@@ -687,10 +686,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab">更多</span></a>
 </nav>
 
-<script src="live.js?v=20261025g4"></script>
-<script src="market.js?v=20261025g4"></script>
-<script src="coin3d.js?v=20261025g4"></script>
-<script src="app.js?v=20261025g4"></script>
-<script src="picks.js?v=20261025g4"></script>
+<script src="live.js?v=20261029a"></script>
+<script src="market.js?v=20261029a"></script>
+<script src="coin3d.js?v=20261029a"></script>
+<script src="app.js?v=20261029a"></script>
+<script src="picks.js?v=20261029a"></script>
 </body>
 </html>

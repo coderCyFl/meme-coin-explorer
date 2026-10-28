@@ -1,3 +1,19 @@
+## 2026-10-29 Asia/Shanghai — resume after outage (stamp `20261029a`)
+Cyrus: product back up, numbers accurate, no helmet CYA copy, early gainer recall ≥10% (path to 50%).
+
+**Helmet:** top disclaimer shrunk to「假錢紙上倉 · Binance 公開行情」; removed「唔係投資建議／輸得起／真錢唔好咁玩／吓人確認」lecture strings. Kept 穩陣/進取/極高風險 tier buttons (leverage caps only).
+
+**🚩 shill:** cherry-picked display-only X 洗版 marker on 今日跟買 cards + 每日新留意 (from `shill-flag` 40d6a57).
+
+**Early recall (hard gate ≥10%):**
+- Root cause of 1.7% scorecard: Actions snapshot only scanned last **2** 15m bars + used live rank/chg24 at snapshot time → early fires recorded as LATE or missed.
+- Fix: lookback **16 bars / 4h** (match live.js); store trigger-bar `c24`; null rank when trigger >35 min old.
+- Rule: ⚡ thin floor **$2M→$1.5M** (S′ backtest) + new **prec** leg (1h≥+2.5%, vr≥2.5x, 24h%<+12%, not yet 🔥). Still watch-only.
+- Dry-run on `daily_vs_gainers` 2026-10-25..27 (15m klines, early = c24<15 at first fire): **recall 20.0% (12/60)** vs e2_now full-scan 10.0% (6/60) vs live scorecard **1.7% (1/60)**. Precision on live scorecard was 6.7%; expect mid-teens after merge (S′ ~16 fires/day + prec) — re-measure on next sealed days.
+- Path to 50%: add looser grind precursor (dry-run prec_e alone 55% on top20) + denser snapshots + rank-at-trigger; keep ⚡ watch-only until buy gate passes.
+
+**Number audit:** spot/perp fee 0.1% constants OK; scorecard early/late classification bug (snapshot-time rank) fixed as above; no P&L formula change this commit.
+
 ## 2026-10-25 ~04:30 Asia/Shanghai — ⚡ v2 早期 + scan every coin (stamp `20261025g1`)
 Cyrus: 早期訊號要再早啲、捉多幾隻似 BMT. Event study (`scripts/gainer_early_backtest.py`, 30d 15m klines, all ~397 USDT spot pairs, same train/test split as `backtest_30d.json`; pump event = +20% within 4h; per-fire lists in `data/gainer_board/backtest_early_30d.json`).
 Findings: (1) half the pumps start on coins with < $3M 24h volume (EPIC 10-24 $0.6M, ANIME 10-24 $1.0M, GTC 10-12 $2.0M) — the floor, not the rule, hid them; (2) "volume spike while price flat" (QA idea, all variants) fires 55–280×/day at ~0.4% +20% hit = random; (3) best predictor is a coin already "in play" (24h range ≥ 25%) starting a new 15m push before 🔥 thresholds; (4) the site only scanned the top-10 coins by 4h move → 15% of test-half 🔥 fires were on coins outside that pool.

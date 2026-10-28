@@ -685,6 +685,7 @@
       const details = el("details", { class: "sc-details" },
         el("summary", { text: "詳情" }),
         el("div", { class: "sc-detail-body muted" },
+          x.e.chain === "binance" ? shillLineEl(x.e.pair_address || x.e.symbol) : null,
           el("div", { text: tip }),
           el("div", { text: "角度：" + (ANGLE_LABEL[angle] || angle || "setup") }),
           el("div", { text: "推薦價 " + price(x.e.entry_price_usd) + (chg != null ? " · 當時 24h " + pct(chg) : "") }),
@@ -696,7 +697,7 @@
           logo,
           el("div", { class: "sc-id" },
             el("div", { class: "nm", text: x.e.symbol }),
-
+            x.e.chain === "binance" ? shillFlagEl(x.e.pair_address || x.e.symbol) : null
           ),
           el("div", { class: "sc-px" },
             el("div", { class: "num live-px", "data-bn-price": x.e.pair_address || "", text: livePx != null ? price(livePx) : "…" }),
@@ -711,7 +712,7 @@
           el("button", { class: "primary", onclick: () => openBuy(scInfo) }, "買")
         )
       ));
-    });
+    }); paintShillSoon();
   }
 
   const FAKE_STAKE = 1000; // equal-weight paper stake across latest buys
@@ -1323,11 +1324,52 @@
       const k = gbX.data && gbX.data.cap;
       cap.hidden = !(k && k.cap_reached === true && k.date === shDay(Date.now()));
     }
+    paintShillFlags();
   }
   function gbXToggle(sym) {
     const c = gbXRec(sym);
     if (!c) { paintXChips(); return; }
     if (window.MCE.market && window.MCE.market.openSheet) window.MCE.market.openSheet(`${sym.replace(/USDT$/, "")} · ${gbXChipText(c)}`, [gbXSheet(c)]);
+  }
+
+  // ---------- 🚩 X 洗版 marker on AI picks (今日跟買 cards + 每日新留意 table). Reuses gbX (same x_buzz.json, 0 X calls).
+  // Display only: never removes or reorders a pick. Flag stays while the coin's LATEST X check (≤24h old) is shill_flag. ----------
+  const GBX_FLAG_MAX_AGE = 24 * 3600e3;
+  const gbPairOf = (s) => { const u = String(s || "").toUpperCase(); return u ? (u.endsWith("USDT") ? u : u + "USDT") : ""; };
+  function gbXShill(pair) {
+    const c = gbX.data && gbX.data.coins && gbX.data.coins[pair];
+    if (!c || typeof c !== "object" || c.shill_flag !== true) return null;
+    const tt = Date.parse(c.checked_at);
+    if (!(tt > 0) || Date.now() - tt > GBX_FLAG_MAX_AGE || tt - Date.now() > 10 * 60e3) return null;
+    return { ...c, _t: tt };
+  }
+  function gbShillLine(c) {
+    const when = (shDay(c._t) === shDay(Date.now()) ? "" : shDay(c._t).slice(5) + " ") + shHm(c._t);
+    const big = Number.isInteger(c.big_accounts) && c.big_accounts > 0 ? `10萬粉+ 只得 ${c.big_accounts} 個` : "冇 10萬粉+ 大帳號";
+    return `🚩 X 多數係複製貼上推廣帖 · ${big} · ${when} 查`;
+  }
+  function shillFlagEl(sym) {
+    const pair = gbPairOf(sym);
+    return el("span", { class: "shill-flag", "data-shill": pair, role: "button", tabindex: "0", hidden: true,
+      onclick: (ev) => { ev.preventDefault(); ev.stopPropagation(); gbShillOpen(pair); },
+      onkeydown: (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); gbShillOpen(pair); } } }, "🚩 X 洗版");
+  }
+  function shillLineEl(sym) { return el("div", { class: "shill-line", "data-shill-line": gbPairOf(sym), hidden: true }); }
+  function gbShillOpen(pair) {
+    const c = gbXShill(pair);
+    if (!c) { paintShillFlags(); return; }
+    if (window.MCE.market && window.MCE.market.openSheet)
+      window.MCE.market.openSheet(`${pair.replace(/USDT$/, "")} · 🚩 X 洗版`, [el("div", { class: "shill-line", text: gbShillLine(c) })]);
+  }
+  function paintShillFlags() {
+    document.querySelectorAll("[data-shill]").forEach((n) => { n.hidden = !gbXShill(n.dataset.shill); });
+    document.querySelectorAll("[data-shill-line]").forEach((n) => {
+      const c = gbXShill(n.dataset.shillLine);
+      n.hidden = !c; n.textContent = c ? gbShillLine(c) : "";
+    });
+  }
+  function paintShillSoon() {
+    try { paintShillFlags(); gbLoadX(false).then(paintShillFlags).catch(() => {}); } catch (_) {}
   }
 
   /** Minimal card: coin · 24h % · price · 目標 · 止蝕 · 幾時放 · buy (🔥 only). Everything else in 詳情. */
@@ -1672,7 +1714,8 @@
         el("td", { "data-label": "幣" },
           el("div", { class: "tok" }, logo, el("div", {},
             el("div", { class: "nm", text: e.symbol }),
-            chg != null ? el("div", { class: "sy num tiny " + cls(chg), text: pct(chg) }) : ""
+            chg != null ? el("div", { class: "sy num tiny " + cls(chg), text: pct(chg) }) : "",
+            e.chain === "binance" ? shillFlagEl(e.pair_address || e.symbol) : null
           ))
         ),
         el("td", { class: "num live-px", "data-label": "現價", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
@@ -1690,6 +1733,7 @@
         )
       ));
     }
+    paintShillSoon();
     if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
   }
 
@@ -1844,10 +1888,10 @@
     document.querySelectorAll("[data-risk]").forEach((b) => b.classList.toggle("active", b.dataset.risk === id));
     const h = $("riskHint");
     if (h) {
-      h.textContent = id === "safe" ? "穩陣：偏向現貨，槓桿最多 3x。假錢都可以慢慢玩。"
-        : id === "yolo" ? "極高風險：最多 50x。假錢儘管試大；真錢唔好咁玩。跌一啲就爆倉。"
-        : id === "allin" ? "孤注一擲：一隻幣 All-in（現貨或 50x）。輸就歸零、贏就大賺。假錢試膽。"
-        : "進取：最多 10x。假錢可以試大倉；真倉請當娛樂數據。";
+      h.textContent = id === "safe" ? "穩陣：偏向現貨，槓桿最多 3x。"
+        : id === "yolo" ? "極高風險：最多 50x。跌約 1.8% 就爆倉。"
+        : id === "allin" ? "孤注一擲：一隻幣 All-in（現貨或 50x）。"
+        : "進取：最多 10x。";
       h.className = "muted risk-hint" + (id === "yolo" || id === "allin" ? " yolo" : "");
     }
     rebuildLevPresets(risk().defaultLev);
@@ -2733,7 +2777,7 @@
     });
     if (!res) return;
     if (res.mode === "lev") {
-      if (!confirm(`確定用 ${res.lev}x 細保證金跟晒 ${buys.length} 隻？假錢可以；真錢唔好。`)) return;
+      if (!confirm(`確定用 ${res.lev}x 細保證金跟晒 ${buys.length} 隻？`)) return;
     }
     const each = Math.min(res.amt, P.cash) / buys.length, errs = [];
     for (const b of buys) {
@@ -3407,7 +3451,7 @@
       pfMode = "lev";
       const el = document.getElementById("lens-lev");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      toast("槓桿模式：可開到 50x。假錢儘管試；建議由 5–10x 起跳");
+      toast("槓桿模式：可開到 50x");
       setTimeout(() => renderPortfolio(true), 200);
     } else if (lens === "allin") {
       goView("portfolio");
