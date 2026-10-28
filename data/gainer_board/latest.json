@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-10-29T04:43:01+08:00",
- "batch": "gb-20261029-0304",
- "picked_at": "2026-10-29T03:04:30+08:00",
- "btc_24h_pct": 0.55,
- "universe": 66,
+ "updated_at": "2026-10-29T07:12:50+08:00",
+ "batch": "gb-20261029-0710",
+ "picked_at": "2026-10-29T07:10:47+08:00",
+ "btc_24h_pct": 0.52,
+ "universe": 67,
  "active": [
   {
    "symbol": "TIA",
@@ -26,7 +26,17 @@
    "from_24h_high_pct": -0.82,
    "quote_volume_24h": 4548380,
    "watch_only": true,
-   "outcomes": {}
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 4.59,
+     "max_drawdown_pct": -0.5,
+     "close_pct": 1.17,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-29T07:10:31+08:00"
+    }
+   }
   },
   {
    "symbol": "INIT",

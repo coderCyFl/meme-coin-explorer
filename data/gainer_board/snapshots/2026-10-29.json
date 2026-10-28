@@ -52,7 +52,17 @@
      "from_24h_high_pct": -0.82,
      "quote_volume_24h": 4548380,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.59,
+       "max_drawdown_pct": -0.5,
+       "close_pct": 1.17,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-29T07:10:31+08:00"
+      }
+     }
     },
     {
      "symbol": "XPL",
@@ -75,7 +85,17 @@
      "from_24h_high_pct": -0.16,
      "quote_volume_24h": 6462021,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.41,
+       "max_drawdown_pct": -3.05,
+       "close_pct": -2.69,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-29T07:10:31+08:00"
+      }
+     }
     },
     {
      "symbol": "BLUR",
@@ -98,7 +118,17 @@
      "from_24h_high_pct": -4.84,
      "quote_volume_24h": 7040369,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.99,
+       "max_drawdown_pct": -4.18,
+       "close_pct": -4.06,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-29T07:10:31+08:00"
+      }
+     }
     },
     {
      "symbol": "PEPE",
@@ -121,7 +151,17 @@
      "from_24h_high_pct": -3.76,
      "quote_volume_24h": 90688977,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 7.61,
+       "max_drawdown_pct": -0.21,
+       "close_pct": 3.91,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-29T07:10:31+08:00"
+      }
+     }
     },
     {
      "symbol": "SHELL",
@@ -144,7 +184,17 @@
      "from_24h_high_pct": -4.56,
      "quote_volume_24h": 3090985,
      "watch_only": true,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 3.67,
+       "max_drawdown_pct": -1.76,
+       "close_pct": 2.72,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-29T07:10:31+08:00"
+      }
+     }
     },
     {
      "symbol": "INIT",
@@ -166,6 +216,163 @@
      "range_24h_pct": null,
      "from_24h_high_pct": -18.59,
      "quote_volume_24h": 19125158,
+     "watch_only": true,
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 6.7,
+       "max_drawdown_pct": -2.4,
+       "close_pct": 6.56,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-29T07:10:31+08:00"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "batch": "gb-20261029-0710",
+   "picked_at": "2026-10-29T07:10:47+08:00",
+   "universe": 67,
+   "btc_24h_pct": 0.52,
+   "universe_all": 395,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "INITUSDT",
+    "BICOUSDT",
+    "SHELLUSDT",
+    "BLURUSDT",
+    "PEPEUSDT",
+    "SOMIUSDT",
+    "BBUSDT",
+    "ATUSDT",
+    "CGPTUSDT",
+    "HUMAUSDT",
+    "AWEUSDT",
+    "PUMPUSDT",
+    "HOMEUSDT",
+    "ADXUSDT",
+    "BIGTIMEUSDT",
+    "ORCAUSDT",
+    "XPLUSDT",
+    "KATUSDT",
+    "LTCUSDT",
+    "YBUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "SHELL",
+     "pair": "SHELLUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-29T07:10:47+08:00",
+     "entry_price_usd": 0.02701,
+     "price_at_snapshot": 0.02701,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 12.68,
+     "rank_24h_at_pick": 3,
+     "batch": "gb-20261029-0710",
+     "score": 15.0,
+     "change_1h_at_pick": -0.85,
+     "change_4h_at_pick": 3.08,
+     "vol_x_avg": 0.49,
+     "vol_x_prev_hour": 0.57,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -1.62,
+     "quote_volume_24h": 3384255,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "INIT",
+     "pair": "INITUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-29T07:10:47+08:00",
+     "entry_price_usd": 0.22573,
+     "price_at_snapshot": 0.22573,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 27.46,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261029-0710",
+     "score": 14.1,
+     "change_1h_at_pick": 1.49,
+     "change_4h_at_pick": 3.27,
+     "vol_x_avg": 0.39,
+     "vol_x_prev_hour": 0.41,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -15.93,
+     "quote_volume_24h": 19629718,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "PEPE",
+     "pair": "PEPEUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-29T07:10:47+08:00",
+     "entry_price_usd": 5.07e-06,
+     "price_at_snapshot": 5.07e-06,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 10.04,
+     "rank_24h_at_pick": 5,
+     "batch": "gb-20261029-0710",
+     "score": 13.5,
+     "change_1h_at_pick": -0.79,
+     "change_4h_at_pick": 3.7,
+     "vol_x_avg": 0.29,
+     "vol_x_prev_hour": 1.22,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -3.63,
+     "quote_volume_24h": 112576390,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "HUMA",
+     "pair": "HUMAUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-29T07:10:47+08:00",
+     "entry_price_usd": 0.0273,
+     "price_at_snapshot": 0.0273,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 5.44,
+     "rank_24h_at_pick": 10,
+     "batch": "gb-20261029-0710",
+     "score": 10.7,
+     "change_1h_at_pick": 0.15,
+     "change_4h_at_pick": 1.52,
+     "vol_x_avg": 0.15,
+     "vol_x_prev_hour": 0.1,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -4.31,
+     "quote_volume_24h": 3628816,
+     "watch_only": true,
+     "outcomes": {}
+    },
+    {
+     "symbol": "BLUR",
+     "pair": "BLURUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-29T07:10:47+08:00",
+     "entry_price_usd": 0.00834,
+     "price_at_snapshot": 0.00834,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 14.5,
+     "rank_24h_at_pick": 4,
+     "batch": "gb-20261029-0710",
+     "score": -1.0,
+     "change_1h_at_pick": -2.9,
+     "change_4h_at_pick": -3.35,
+     "vol_x_avg": 0.54,
+     "vol_x_prev_hour": 0.52,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -8.02,
+     "quote_volume_24h": 8106886,
      "watch_only": true,
      "outcomes": {}
     }
