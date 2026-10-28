@@ -60,3 +60,5 @@
 {"ts": "2026-10-29T03:34:45+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 15}
 {"ts": "2026-10-29T03:34:45+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
 {"ts": "2026-10-29T03:34:45+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "(BLURUSDT OR #BLUR OR \"BLUR token\" OR \"BLUR coin\") (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-10-29T04:40:21+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 53}
+{"ts": "2026-10-29T04:40:21+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 20}

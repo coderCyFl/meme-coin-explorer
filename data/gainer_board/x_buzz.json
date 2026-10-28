@@ -5,45 +5,45 @@
    "symbol": "INITUSDT",
    "base": "INIT",
    "flag": "pump",
-   "trigger_at": "2026-10-29T00:30:00+08:00",
-   "checked_at": "2026-10-29T03:34:45+08:00",
+   "trigger_at": "2026-10-29T00:45:00+08:00",
+   "checked_at": "2026-10-29T04:40:21+08:00",
    "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 9.5,
-   "spike_ratio": 0.32,
+   "posts_prev_6h_avg_per_h": 8.0,
+   "spike_ratio": 0.38,
    "verdict": "冷",
-   "one_line": "聲量續跌多喊單",
+   "one_line": "冷卻中，多係喊單莊",
    "shill_flag": true,
-   "big_accounts": 0,
+   "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2115493395032576468",
-     "url": "https://x.com/CryptoWhales55/status/2115493395032576468",
-     "text": "#INITUSDT Up by +51% profit on spot market ~Duration : less than 1day Live profits Join Us Now",
-     "likes": 54,
-     "author_username": "CryptoWhales55",
-     "author_followers": 7999,
-     "created_at": "2026-10-29T01:18:23+08:00"
+     "id": "2115445026398552132",
+     "url": "https://x.com/Cryptobullmaker/status/2115445026398552132",
+     "text": "$Init ruling #Binance 170% in a month only up after i called We added 0.09 Current price 0.25 $Hana next will do only up Keep learning and …",
+     "likes": 189,
+     "author_username": "Cryptobullmaker",
+     "author_followers": 116662,
+     "created_at": "2026-10-28T22:06:12+08:00"
     },
     {
-     "id": "2115518543634796779",
-     "url": "https://x.com/OnTheBlokkchain/status/2115518543634796779",
-     "text": "Exploit Season. Initia went dark, Qubic got seed-jacked.. same week same lesson. Guard your keys, anon.",
-     "likes": 2,
-     "author_username": "OnTheBlokkchain",
-     "author_followers": 984,
-     "created_at": "2026-10-29T02:58:19+08:00"
+     "id": "2115497531052351724",
+     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
+     "text": "Ive been exploring MojoAI, tested crypto research on todays biggest opportunity analyse trending token price volume",
+     "likes": 60,
+     "author_username": "Anthonyb_t",
+     "author_followers": 8062,
+     "created_at": "2026-10-29T01:34:50+08:00"
     },
     {
-     "id": "2115504238163841426",
-     "url": "https://x.com/Neon_Unlimited/status/2115504238163841426",
-     "text": "Impulses of the day: 33 up, 14 down. Strongest: $Q +51.9% $ETHW +38.5% $PREDICT +32.5% $INIT +25.5%",
-     "likes": 2,
-     "author_username": "Neon_Unlimited",
-     "author_followers": 36,
-     "created_at": "2026-10-29T02:01:29+08:00"
+     "id": "2115449466807304513",
+     "url": "https://x.com/_Aiza_Xo/status/2115449466807304513",
+     "text": "$INIT waking up after long accumulation? Price reclaiming EMA 200 Base breakout in progress Major upside if momentum holds",
+     "likes": 4,
+     "author_username": "_Aiza_Xo",
+     "author_followers": 171,
+     "created_at": "2026-10-28T22:23:50+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 1
   },
   "BLURUSDT": {
    "symbol": "BLURUSDT",
@@ -386,15 +386,58 @@
      "created_at": "2026-10-29T01:11:14+08:00"
     }
    ]
+  },
+  {
+   "symbol": "INITUSDT",
+   "base": "INIT",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T00:45:00+08:00",
+   "checked_at": "2026-10-29T04:40:21+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 8.0,
+   "spike_ratio": 0.38,
+   "verdict": "冷",
+   "one_line": "冷卻中，多係喊單莊",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2115445026398552132",
+     "url": "https://x.com/Cryptobullmaker/status/2115445026398552132",
+     "text": "$Init ruling #Binance 170% in a month only up after i called We added 0.09 Current price 0.25 $Hana next will do only up Keep learning and …",
+     "likes": 189,
+     "author_username": "Cryptobullmaker",
+     "author_followers": 116662,
+     "created_at": "2026-10-28T22:06:12+08:00"
+    },
+    {
+     "id": "2115497531052351724",
+     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
+     "text": "Ive been exploring MojoAI, tested crypto research on todays biggest opportunity analyse trending token price volume",
+     "likes": 60,
+     "author_username": "Anthonyb_t",
+     "author_followers": 8062,
+     "created_at": "2026-10-29T01:34:50+08:00"
+    },
+    {
+     "id": "2115449466807304513",
+     "url": "https://x.com/_Aiza_Xo/status/2115449466807304513",
+     "text": "$INIT waking up after long accumulation? Price reclaiming EMA 200 Base breakout in progress Major upside if momentum holds",
+     "likes": 4,
+     "author_username": "_Aiza_Xo",
+     "author_followers": 171,
+     "created_at": "2026-10-28T22:23:50+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 16,
+  "calls_today": 18,
   "cap_reached": false,
-  "updated_at": "2026-10-29T03:34:45+08:00"
+  "updated_at": "2026-10-29T04:40:21+08:00"
  },
- "updated_at": "2026-10-29T03:34:45+08:00",
+ "updated_at": "2026-10-29T04:40:21+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
