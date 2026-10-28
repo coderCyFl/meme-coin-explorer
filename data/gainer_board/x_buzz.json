@@ -6,12 +6,12 @@
    "base": "INIT",
    "flag": "pump",
    "trigger_at": "2026-10-29T00:30:00+08:00",
-   "checked_at": "2026-10-29T03:04:40+08:00",
+   "checked_at": "2026-10-29T03:34:45+08:00",
    "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 10.5,
-   "spike_ratio": 0.29,
+   "posts_prev_6h_avg_per_h": 9.5,
+   "spike_ratio": 0.32,
    "verdict": "冷",
-   "one_line": "聲量回落多喊單",
+   "one_line": "聲量續跌多喊單",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -25,13 +25,13 @@
      "created_at": "2026-10-29T01:18:23+08:00"
     },
     {
-     "id": "2115497531052351724",
-     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
-     "text": "I've been exploring @MojoAI_HQ, and today I decided to test how it handles crypto market research. I gave MOJO a simple prompt: Find today'…",
-     "likes": 53,
-     "author_username": "Anthonyb_t",
-     "author_followers": 8055,
-     "created_at": "2026-10-29T01:34:50+08:00"
+     "id": "2115518543634796779",
+     "url": "https://x.com/OnTheBlokkchain/status/2115518543634796779",
+     "text": "Exploit Season. Initia went dark, Qubic got seed-jacked.. same week same lesson. Guard your keys, anon.",
+     "likes": 2,
+     "author_username": "OnTheBlokkchain",
+     "author_followers": 984,
+     "created_at": "2026-10-29T02:58:19+08:00"
     },
     {
      "id": "2115504238163841426",
@@ -43,51 +43,33 @@
      "created_at": "2026-10-29T02:01:29+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "BLURUSDT": {
    "symbol": "BLURUSDT",
    "base": "BLUR",
    "flag": "pump",
    "trigger_at": "2026-10-29T00:15:00+08:00",
-   "checked_at": "2026-10-29T03:04:40+08:00",
+   "checked_at": "2026-10-29T03:34:45+08:00",
    "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 2.99,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 3.76,
    "verdict": "冷",
    "one_line": "假熱噪音真聲少",
-   "shill_flag": false,
+   "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115500146079248521",
-     "url": "https://x.com/cexscan/status/2115500146079248521",
-     "text": "Last 15m - #Coinbase Spot (USD Trades) Top 3 Losers: ethereum:... (Blur) : ↓-4.38%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-29T01:45:13+08:00"
-    },
-    {
-     "id": "2115420782159376506",
-     "url": "https://x.com/Standard_Expert/status/2115420782159376506",
-     "text": "Binance Futures #BLUR/USDT All take-profit targets achieved Profit: 281.2052% Period: 20 Hours 35 Minutes",
-     "likes": 1,
-     "author_username": "Standard_Expert",
-     "author_followers": 1903,
-     "created_at": "2026-10-28T20:29:51+08:00"
-    },
-    {
-     "id": "2115436523063857198",
-     "url": "https://x.com/RadarCex/status/2115436523063857198",
-     "text": "US Open Radar | Oct 28 BTC $80,636 · INIT +42.0% led Binance gainers. BLUR funding hit -0.890%/8h. #Crypto | NFA",
-     "likes": 1,
-     "author_username": "RadarCex",
-     "author_followers": 264,
-     "created_at": "2026-10-28T21:32:24+08:00"
+     "id": "2115491592949714989",
+     "url": "https://x.com/ZenithQuant/status/2115491592949714989",
+     "text": "Alpha check on $BLUR: Strong rally executed from $0.00826 to $0.0856, locking in +17.1% net profit. Driven by heavy whale inflow",
+     "likes": 0,
+     "author_username": "ZenithQuant",
+     "author_followers": 1,
+     "created_at": "2026-10-29T01:11:14+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "BMTUSDT": {
    "symbol": "BMTUSDT",
@@ -336,15 +318,83 @@
      "created_at": "2026-10-28T21:32:24+08:00"
     }
    ]
+  },
+  {
+   "symbol": "INITUSDT",
+   "base": "INIT",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T00:30:00+08:00",
+   "checked_at": "2026-10-29T03:34:45+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 9.5,
+   "spike_ratio": 0.32,
+   "verdict": "冷",
+   "one_line": "聲量續跌多喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115493395032576468",
+     "url": "https://x.com/CryptoWhales55/status/2115493395032576468",
+     "text": "#INITUSDT Up by +51% profit on spot market ~Duration : less than 1day Live profits Join Us Now",
+     "likes": 54,
+     "author_username": "CryptoWhales55",
+     "author_followers": 7999,
+     "created_at": "2026-10-29T01:18:23+08:00"
+    },
+    {
+     "id": "2115518543634796779",
+     "url": "https://x.com/OnTheBlokkchain/status/2115518543634796779",
+     "text": "Exploit Season. Initia went dark, Qubic got seed-jacked.. same week same lesson. Guard your keys, anon.",
+     "likes": 2,
+     "author_username": "OnTheBlokkchain",
+     "author_followers": 984,
+     "created_at": "2026-10-29T02:58:19+08:00"
+    },
+    {
+     "id": "2115504238163841426",
+     "url": "https://x.com/Neon_Unlimited/status/2115504238163841426",
+     "text": "Impulses of the day: 33 up, 14 down. Strongest: $Q +51.9% $ETHW +38.5% $PREDICT +32.5% $INIT +25.5%",
+     "likes": 2,
+     "author_username": "Neon_Unlimited",
+     "author_followers": 36,
+     "created_at": "2026-10-29T02:01:29+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T00:15:00+08:00",
+   "checked_at": "2026-10-29T03:34:45+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 3.76,
+   "verdict": "冷",
+   "one_line": "假熱噪音真聲少",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115491592949714989",
+     "url": "https://x.com/ZenithQuant/status/2115491592949714989",
+     "text": "Alpha check on $BLUR: Strong rally executed from $0.00826 to $0.0856, locking in +17.1% net profit. Driven by heavy whale inflow",
+     "likes": 0,
+     "author_username": "ZenithQuant",
+     "author_followers": 1,
+     "created_at": "2026-10-29T01:11:14+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 12,
+  "calls_today": 16,
   "cap_reached": false,
-  "updated_at": "2026-10-29T03:04:54+08:00"
+  "updated_at": "2026-10-29T03:34:45+08:00"
  },
- "updated_at": "2026-10-29T03:04:54+08:00",
+ "updated_at": "2026-10-29T03:34:45+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
