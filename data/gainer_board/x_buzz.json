@@ -93,44 +93,16 @@
    "symbol": "BMTUSDT",
    "base": "BMT",
    "flag": "pump",
-   "trigger_at": "2026-10-28T22:15:00+08:00",
-   "checked_at": "2026-10-29T02:11:17+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 0.0,
+   "trigger_at": "2026-10-28T22:45:00+08:00",
+   "checked_at": "2026-10-29T02:34:30+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 0.5,
    "verdict": "冷",
-   "one_line": "量跌、複製貼文多",
-   "shill_flag": true,
+   "one_line": "近一小時幾乎冇聲",
+   "shill_flag": false,
    "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115447363804553478",
-     "url": "https://x.com/HubScalp/status/2115447363804553478",
-     "text": "$BMT buying here $BMT #BMT #BMTUSDT #BMTToken #Binance #Crypto #CryptoTrading #Altcoins #Bullish #Breakout",
-     "likes": 2,
-     "author_username": "HubScalp",
-     "author_followers": 143,
-     "created_at": "2026-10-28T22:15:29+08:00"
-    },
-    {
-     "id": "2115456373198905364",
-     "url": "https://x.com/HubScalp/status/2115456373198905364",
-     "text": "$BMT pump 4.5% am expect its pump hard #BMT #BMTUSDT #BMTToken #Binance #Crypto #CryptoTrading #Altcoins",
-     "likes": 1,
-     "author_username": "HubScalp",
-     "author_followers": 143,
-     "created_at": "2026-10-28T22:51:17+08:00"
-    },
-    {
-     "id": "2115505087682597195",
-     "url": "https://x.com/popmemecoin/status/2115505087682597195",
-     "text": "JUST IN: Major crypto influencers caught dumping tokens directly on retail investors. BMT reveals that key opinion leaders are leading by e…",
-     "likes": 1,
-     "author_username": "popmemecoin",
-     "author_followers": 660,
-     "created_at": "2026-10-29T02:04:51+08:00"
-    }
-   ],
+   "top_posts": [],
    "checks_this_trigger": 1
   }
  },
@@ -263,15 +235,30 @@
      "created_at": "2026-10-29T02:04:51+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-10-28T22:45:00+08:00",
+   "checked_at": "2026-10-29T02:34:30+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 0.5,
+   "verdict": "冷",
+   "one_line": "近一小時幾乎冇聲",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": []
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 6,
+  "calls_today": 8,
   "cap_reached": false,
-  "updated_at": "2026-10-29T02:11:37+08:00"
+  "updated_at": "2026-10-29T02:34:30+08:00"
  },
- "updated_at": "2026-10-29T02:11:37+08:00",
+ "updated_at": "2026-10-29T02:34:30+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
