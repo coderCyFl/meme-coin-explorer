@@ -101,6 +101,10 @@
    * TP ladder +20% (放一半, 止蝕升返成本) / +50% (清), SL −10%, recheck 4h, hold max 12h.
    */
   const GAINER_EXIT = { tp: 20, tp2: 50, sl: 10, reviewH: 4, secondH: 12 };
+  /** 🚀 續升買 (Strategy 2026-10-30): same ladder, sell_by 24h; 細盤 gets CHASE_SMALL_MULT size. Mirrors gainer_core CHASE_*. */
+  const CHASE_EXIT = { tp: 20, tp2: 50, sl: 10, reviewH: 4, secondH: 24 };
+  const CHASE_SMALL_MULT = 1.5;
+  const gbExitFor = (tier) => (tier === "chase" ? CHASE_EXIT : GAINER_EXIT);
   function momentumExitPlan({ createdAt, tpPct, tp2Pct, slPct, reviewH, secondH } = {}) {
     const tp = tpPct != null ? tpPct : GAINER_EXIT.tp;
     const tp2 = tp2Pct != null ? tp2Pct : GAINER_EXIT.tp2;
@@ -178,15 +182,20 @@
   /* Exit plan follows the COIN, not the button you came from (QA 9faccce): 🔥 board momentum plan > today's AI pick plan.
    * Same pair → same meta from the 🔥 card, the AI card, 模擬倉 search, 睇幣 or 孤注一擲. */
   const EXIT_KEYS = ["exitRegime", "exitWeak", "suggested_exit_h", "suggested_second_h", "take_profit_pct", "take_profit2_pct", "stop_loss_pct", "flags", "size"];
-  let gbPumpNow = new Set();
+  let gbPumpNow = new Set(), gbChaseNow = new Set();
   function coinExitMeta(pair) {
     if (!pair) return null;
-    if (gbPumpNow.has(pair)) {
-      return { exitRegime: "momentum", take_profit_pct: GAINER_EXIT.tp, take_profit2_pct: GAINER_EXIT.tp2, stop_loss_pct: GAINER_EXIT.sl,
-        suggested_exit_h: GAINER_EXIT.reviewH, suggested_second_h: GAINER_EXIT.secondH, size: "full" };
+    if (gbPumpNow.has(pair) || gbChaseNow.has(pair)) {
+      const X = gbPumpNow.has(pair) ? GAINER_EXIT : CHASE_EXIT;
+      return { exitRegime: "momentum", take_profit_pct: X.tp, take_profit2_pct: X.tp2, stop_loss_pct: X.sl,
+        suggested_exit_h: X.reviewH, suggested_second_h: X.secondH, size: "full" };
     }
     const latest = S.picks && S.picks.batches && S.picks.batches[S.picks.batches.length - 1];
     const e = latest && (latest.entries || []).find((x) => x.type === "buy" && x.pair_address === pair);
+    if (e && e.tier === "chase") {
+      return { exitRegime: "momentum", take_profit_pct: e.take_profit_pct, take_profit2_pct: e.take_profit2_pct, stop_loss_pct: e.stop_loss_pct,
+        suggested_exit_h: e.suggested_exit_h, suggested_second_h: e.suggested_second_h, size: "full" };
+    }
     if (e) {
       const half = (e.flags || []).includes("size:half") || e.size === "half" || e.suggested_exit_h === 12 || (latest.regime && latest.regime.sizing === "half");
       return { exitRegime: e.exitRegime || (half ? "weak" : "normal"), suggested_exit_h: e.suggested_exit_h, suggested_second_h: e.suggested_second_h,
@@ -219,6 +228,8 @@
     if (info.stop_loss_pct != null) lock.stop_loss_pct = info.stop_loss_pct;
     if (info.exitRegime === "weak" || info.exitRegime === "normal" || info.exitRegime === "momentum") lock.exitRegime = info.exitRegime;
     if (info.take_profit2_pct != null) lock.take_profit2_pct = info.take_profit2_pct;
+    if (info.exit_plan) lock.exit_plan = info.exit_plan;          // 🔥/🚀 paper buys carry their exit_plan text
+    if (info.tier === "pump" || info.tier === "chase") lock.gb_tier = info.tier;
     return lock;
   }
 
@@ -939,7 +950,8 @@
       const badges = [];
       if (r.fromAvoid || avoidSyms.has(sym)) badges.push(el("span", { class: "pump-badge avoid", text: "今批避過" }));
       if (r.soft || r.badge === "rel") badges.push(el("span", { class: "pump-badge soft", text: "相對強·對照" }));
-      else if ((r.chg24 || 0) >= 5 || r.alreadyUp) badges.push(el("span", { class: "pump-badge hot", text: "已急升·勿追" }));
+      else if (gbChaseNow.has(sym) || gbPumpNow.has(sym)) badges.push(el("span", { class: "gb-buytag", text: gbPumpNow.has(sym) ? "🔥 可追" : "🚀 續升買" }));
+      else if ((r.chg24 || 0) >= 5 || r.alreadyUp) badges.push(el("span", { class: "pump-badge hot", text: "已急升·未夠 🚀" }));
       else badges.push(el("span", { class: "pump-badge soft", text: "對照·勿追" }));
       if (setupSyms.has(sym)) badges.push(el("span", { class: "pump-badge echo", text: "前兆有影" }));
       else if ((r.precursorEcho || 0) > 0) badges.push(el("span", { class: "pump-badge soft", text: "週內有前兆型態" }));
@@ -1193,7 +1205,12 @@
   const gbTierIcon = (t) => (gbIsEarly(t) ? "⚡" : "🔥");
 
   /** Plan a 🔥 buy would lock NOW (fresh 4h/12h window) — same object the buy window uses. */
-  const gbPlanNow = () => momentumExitPlan({ createdAt: new Date().toISOString() });
+  const gbPlanNow = (X = GAINER_EXIT) => momentumExitPlan({ createdAt: new Date().toISOString(), tpPct: X.tp, tp2Pct: X.tp2, slPct: X.sl, reviewH: X.reviewH, secondH: X.secondH });
+  /** exit_plan string recorded on every 🔥/🚀 paper buy (same shape as picks.json buys). */
+  function gbExitPlanText(X, px) {
+    const r = (x) => +Number(x).toPrecision(6);
+    return `+${X.tp}% 放一半（$${r(px * (1 + X.tp / 100))}）· +${X.tp2}% 清（$${r(px * (1 + X.tp2 / 100))}）· 止蝕 −${X.sl}%（$${r(px * (1 - X.sl / 100))}）· ${X.reviewH}h 檢討 · 最遲 ${X.secondH}h 沽`;
+  }
 
   /** One-glance alert grid: 觸發時間 · 觸發價 · 觸發後 % · 目標 · 止蝕 (目標/止蝕 = buy NOW at live price, ticks). */
   function gbAlertGrid(pair, trig, nowPx) {
@@ -1264,9 +1281,14 @@
   function gbLogBought(r, info, res) {
     try {
       const log = gbLoadLog();
+      const X = gbExitFor(r.tier), now = Date.now();
       log.push({ symbol: r.base, pair: r.symbol, tier: r.tier, bought: true, picked_at: isoSh(), entry_price_usd: r.price,
         change_24h_at_pick: Math.round(r.chg24 * 100) / 100, rank_24h_at_pick: r.rank24 || null, batch: gbBatchId(),
-        usd: res && res.amt, mode: res && res.mode, source: "web-buy" });
+        usd: res && res.amt, mode: res && res.mode, source: "web-buy",
+        take_profit_pct: X.tp, take_profit2_pct: X.tp2, stop_loss_pct: X.sl, suggested_exit_h: X.reviewH, suggested_second_h: X.secondH,
+        target_price_usd: +(r.price * (1 + X.tp / 100)).toPrecision(6), stop_price_usd: +(r.price * (1 - X.sl / 100)).toPrecision(6),
+        review_at: isoSh(new Date(now + X.reviewH * 3600e3)), sell_by: isoSh(new Date(now + X.secondH * 3600e3)),
+        exit_plan: gbExitPlanText(X, r.price) });
       localStorage.setItem(GB_LOG_KEY, JSON.stringify(log.slice(-400)));
     } catch (_) {}
   }
@@ -1389,10 +1411,12 @@
   /** Minimal card: coin · 24h % · price · 目標 · 止蝕 · 幾時放 · buy (🔥 only). Everything else in 詳情. */
   function gbCard(r, t, { buy }) {
     const liveApi = window.MCE.live;
-    const mult = gbMult();
+    const X = gbExitFor(r.tier);
+    const small = r.tier === "chase" && r.trigger && r.trigger.small;
+    const mult = gbMult() * (small ? CHASE_SMALL_MULT : 1);
     const usd = Math.max(0, Math.min(Math.floor(P.cash), Math.round(P.cash * 0.1 * mult)));
     const fee2 = usd * (P.feePct || 0) / 100 * 2;
-    const plan = gbPlanNow();
+    const plan = gbPlanNow(X);
     const px = r.price;
     const watch = !buy; // 候補 / ⚡: not bought, no buy → no 幾時放
     const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: r.base.slice(0, 2) });
@@ -1401,7 +1425,9 @@
       ? [el("span", { class: "gb-watch", text: "候補" })]
       : gbIsEarly(r.tier)
         ? [el("span", { class: "gb-watch", text: "⚡ 觀察" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "細盤" })] : [])
-        : [];
+        : r.tier === "chase"
+          ? [el("span", { class: "gb-buytag", text: "🚀 續升買" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "細盤 加碼" })] : [])
+          : r.tier === "pump" ? [el("span", { class: "gb-buytag", text: "🔥 可追" })] : [];
     const bnInfo = {
       chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
       symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
@@ -1422,11 +1448,12 @@
         watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-ladder", "data-gb-levels": "details" }),
           exitLiveNode("span", {}, "{target}（+{tp}%）放一半、止蝕升返成本 → {target2}（+{tp2}%）清 · {review} 再睇 · 最遲 {until} 走", plan, px)),
         buy && usd > 0 ? el("div", { class: "tiny" },
-          `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${GAINER_EXIT.tp}% 賺 ${money2(usd * GAINER_EXIT.tp / 100 - fee2)}` }), " · ",
-          el("b", { class: "pos", text: `+${GAINER_EXIT.tp2}% 賺 ${money2(usd * GAINER_EXIT.tp2 / 100 - fee2)}` }), " · ",
-          el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * GAINER_EXIT.sl / 100 + fee2)}` })) : "",
+          `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${X.tp}% 賺 ${money2(usd * X.tp / 100 - fee2)}` }), " · ",
+          el("b", { class: "pos", text: `+${X.tp2}% 賺 ${money2(usd * X.tp2 / 100 - fee2)}` }), " · ",
+          el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * X.sl / 100 + fee2)}` })) : "",
+        r.tier === "chase" ? el("div", { class: "tiny muted", text: `🚀 續升買：24h +${10}–${30}%、離 24h 高 ≤ 2%、1h 成交 ≥ 2x 平均、1h 仲升緊 → 紙上直接跟買。` + (small ? ` 細盤（24h 成交 < $3M）注碼 ×${CHASE_SMALL_MULT}。` : "") }) : "",
         r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
-        gbBtLine(r.tier === "cand" ? "pump" : r.tier),
+        r.tier === "chase" ? "" : gbBtLine(r.tier === "cand" ? "pump" : r.tier),
         el("div", { class: "gb-det-actions" },
           el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, `孤注一擲 ${r.base}`))));
     const kids = [
@@ -1441,7 +1468,7 @@
       r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
       // 幾時放 = ONE line (same shared exit formula + live price as the buy window; ticks via refreshExitChips)
       watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "gb-min gb-exit1", "data-gb-levels": "card" }),
-        exitLiveNode("span", { class: "num" }, "🎯 {target} · 止 {stop} · {untilS}前走", plan, px)),
+        exitLiveNode("span", { class: "num" }, "半 {target} · 清 {target2} · 止 {stop} · {untilS}前走", plan, px)),
     ];
     if (buy) {
       kids.push(el("div", { class: "gb-buyrow" },
@@ -1450,12 +1477,12 @@
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
           symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
           created_at: new Date().toISOString(), entry_price_usd: r.price,
-          exitRegime: "momentum", take_profit_pct: GAINER_EXIT.tp, take_profit2_pct: GAINER_EXIT.tp2,
-          stop_loss_pct: GAINER_EXIT.sl, suggested_exit_h: GAINER_EXIT.reviewH, suggested_second_h: GAINER_EXIT.secondH,
-          size: "full", sizeMult: mult, forceSpot: true,
-          entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high },
+          exitRegime: "momentum", take_profit_pct: X.tp, take_profit2_pct: X.tp2,
+          stop_loss_pct: X.sl, suggested_exit_h: X.reviewH, suggested_second_h: X.secondH,
+          size: "full", sizeMult: mult, forceSpot: true, tier: r.tier, exit_plan: gbExitPlanText(X, r.price),
+          entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, tier: r.tier },
           onFilled: (res) => gbLogBought(r, null, res),
-        }) }, `買 $${Math.round(usd).toLocaleString()}`)));
+        }) }, `跟買 $${Math.round(usd).toLocaleString()}`)));
     }
     if (r.tier === "early2") kids.push(el("div", { class: "gb-buyrow gb-e2row" }, gbEarlyChip()));
     kids.push(details);
@@ -1466,9 +1493,10 @@
     const box = $("gainerList"); if (!box) return;
     box.textContent = "";
     gbPumpNow = new Set(rows.filter((r) => r.tier === "pump").map((r) => r.symbol));
+    gbChaseNow = new Set(rows.filter((r) => r.tier === "chase").map((r) => r.symbol));
     const bt = $("gainerPumpBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("pump")); }
     if (!rows.length) { gbStateBox("empty", "而家冇幣夠急升（24h ≥ +5%）· 遲啲再睇"); return; }
-    for (const r of rows) box.append(gbCard(r, trig.get(r.symbol + ":" + r.tier) || null, { buy: r.tier === "pump" }));
+    for (const r of rows) box.append(gbCard(r, trig.get(r.symbol + ":" + r.tier) || null, { buy: r.tier === "pump" || r.tier === "chase" }));
   }
 
   /** ⚡ v2 watch-only rows, computed live in the browser (live.js early2Trigger, every scan); minimal card, no buy. */
@@ -1546,8 +1574,9 @@
       gbWatched = new Set(watch);
       try { window.MCE.live.watchExtra(watch); } catch (_) {}
       gbLastScan = Date.now();
-      const nPump = rows.filter((r) => r.tier === "pump").length;
-      if (meta) meta.textContent = `掃全部 ${res.pool || 0} 隻 · 🔥 ${nPump} · ⚡ ${early.length}` + (rows.length > nPump ? ` · 候補 ${rows.length - nPump}` : "") + ` · ${gbMult()}x`;
+      const nPump = rows.filter((r) => r.tier === "pump").length, nChase = rows.filter((r) => r.tier === "chase").length;
+      const nCand = rows.length - nPump - nChase;
+      if (meta) meta.textContent = `掃全部 ${res.pool || 0} 隻 · 🔥 ${nPump} · 🚀 ${nChase} · ⚡ ${early.length}` + (nCand ? ` · 候補 ${nCand}` : "") + ` · ${gbMult()}x`;
     } catch (e) {
       console.warn("gainer board failed", e);
       const a = $("gainerAlert"); if (a) a.hidden = true;

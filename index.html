@@ -7,13 +7,13 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。">
-<link rel="stylesheet" href="styles.css?v=20261030b">
-<link rel="icon" href="favicon.ico?v=20261030b" sizes="48x48">
-<link rel="icon" href="favicon.svg?v=20261030b" type="image/svg+xml">
-<link rel="icon" href="icons/icon-32.png?v=20261030b" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-16.png?v=20261030b" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261030b" sizes="180x180">
-<link rel="manifest" href="site.webmanifest?v=20261030b">
+<link rel="stylesheet" href="styles.css?v=20261030c">
+<link rel="icon" href="favicon.ico?v=20261030c" sizes="48x48">
+<link rel="icon" href="favicon.svg?v=20261030c" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png?v=20261030c" type="image/png" sizes="32x32">
+<link rel="icon" href="icons/favicon-16.png?v=20261030c" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261030c" sizes="180x180">
+<link rel="manifest" href="site.webmanifest?v=20261030c">
 <meta name="theme-color" content="#0b0e11">
 </head>
 <body>
@@ -24,7 +24,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </script>
 <header class="top">
   <div class="brand">
-    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261030b" width="36" height="36" alt="" aria-hidden="true" decoding="async">
+    <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261030c" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
       <h1>Crypto.M</h1>
       <p class="sub">Crypto.M · Binance 公開行情 · 假錢紙上倉</p>
@@ -94,7 +94,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <ul>
         <li>去「睇幣」睇 Binance 現貨情緒同急升／急跌；主線唔跟鏈上 Dex 熱榜。</li>
         <li>想睇鏈上盤先開完整模式「掃描」；🚩 紅旗（低流動性、新盤、成交異常、🚀 俾錢 boost）只當參考，唔好重倉追。</li>
-        <li><b>幾時唔好追：</b>已經一日急升好多、淨係 TG／X shill——多數係接盤。跟買優先用「今日跟買」。</li>
+        <li><b>幾時追：</b>24h 已升 +10–30% 唔等於遲——貼近 24h 高位（≤5%）、1h 成交 ≥ 2x、1h 仲升緊 → 🚀 續升買，紙上照跟（+20% 放半／+50% 清／−10% 走／24h 內清）。離高位 >5% 或量散咗就唔追；淨係 TG／X shill 冇量嘅都唔追。</li>
         <li>短線都建議用<strong>現貨</strong>練手；meme 波動大，槓桿好易秒爆。</li>
       </ul>
     </section>
@@ -171,7 +171,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <!-- ===== 急升榜 (high-risk, separate from AI picks; not halved by weak-market gate) ===== -->
   <section class="panel gainer-panel" id="gainerPanel" aria-live="polite">
     <div class="panelhead gb-head">
-      <h3 class="home-title gb-tier-title gb-tier-pump">🔥 急升 <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
+      <h3 class="home-title gb-tier-title gb-tier-pump">🔥 急升 · 🚀 續升買 <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
       <div class="row home-tools">
         <button type="button" id="gainerInfoBtn" class="ghost sm">詳情</button>
         <button type="button" id="gainerRefresh" class="ghost sm" title="重掃" aria-label="重掃">↻</button>
@@ -687,10 +687,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab">更多</span></a>
 </nav>
 
-<script src="live.js?v=20261030b"></script>
-<script src="market.js?v=20261030b"></script>
-<script src="coin3d.js?v=20261030b"></script>
-<script src="app.js?v=20261030b"></script>
-<script src="picks.js?v=20261030b"></script>
+<script src="live.js?v=20261030c"></script>
+<script src="market.js?v=20261030c"></script>
+<script src="coin3d.js?v=20261030c"></script>
+<script src="app.js?v=20261030c"></script>
+<script src="picks.js?v=20261030c"></script>
 </body>
 </html>

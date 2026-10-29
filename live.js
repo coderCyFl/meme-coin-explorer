@@ -628,6 +628,10 @@
   // Scan pool: EVERY eligible coin passing a cheap ticker pre-filter (no top-10 cap any more):
   //   🔥 / 細盤: rolling-4h range ≥ 5% · 起步: 24h range ≥ 25% and rolling-4h range ≥ 2.5%. Hard cap for rate safety.
   const GB_POOL_MAX = 90;
+  // 🚀 續升買 chase (2026-10-30, Strategy BOT; mirrors gainer_core.chase_ok) — PAPER BUY, not watch-only:
+  //   24h +10%..+30% · ≤ 2% below the 24h high · rolling 1h quote vol ≥ 2x prior-24h hourly avg · 1h still up.
+  //   24h vol ≥ $1.5M; < $3M = 細盤 (bigger paper size). Separate from 🔥/⚡ and from the early-capture scorecard.
+  const GB_CH_C24_MIN = 10, GB_CH_C24_MAX = 30, GB_CH_FH = -2, GB_CH_VR = 2, GB_CH_N = 20;
   const GB_TTL = 60_000;
   let gainerCache = { t: 0, rows: [] };
 
@@ -705,6 +709,21 @@
     return null;
   }
 
+  /** 🚀 chase NOW: ticker 24h% / 24h high + rolling 1h (live forming bar, or last closed bar) vol ≥ 2x and 1h up. */
+  function chaseTrigger(bars, t) {
+    const m = bars.length;
+    if (m < 101 || !(t.price > 0)) return null;
+    if (!(t.chg24 >= GB_CH_C24_MIN && t.chg24 <= GB_CH_C24_MAX && t.fromHigh >= GB_CH_FH)) return null;
+    const live = bars.slice();
+    live[m - 1] = { ...live[m - 1], c: t.price, h: Math.max(live[m - 1].h, t.price) };
+    const fl = surgeFeats(live, m - 1), fc = surgeFeats(live, m - 2);
+    if (!fl || !(fl.c1 > 0)) return null;                       // 1h candle still up (live)
+    const vr = Math.max(fl.vr, fc ? fc.vr : 0);
+    if (!(vr >= GB_CH_VR)) return null;
+    const small = t.volQuote < GB_MIN_QV;
+    return { t: Date.now(), price: t.price, via: small ? "細盤" : "1h+vol", c1: fl.c1, vr, small, forming: true };
+  }
+
   /** Display metrics + score from 15m bars (score = same shape as gainer_core.score). */
   function gainerScore15(t, bars) {
     const m = bars.length, p = t.price;
@@ -775,7 +794,10 @@
     const thinPool = thin.filter((t) => range4(t) >= GB_SURGE_C15).sort(byC4);
     thinPool.forEach((t) => inPool.add(t.symbol));
     const candPool = elig.filter((t) => !inPool.has(t.symbol) && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH).slice(0, GB_CAND_N);
-    const pool = surgePool.concat(startPool, thinPool).slice(0, GB_POOL_MAX).concat(candPool);
+    candPool.forEach((t) => inPool.add(t.symbol));
+    const chasePool = elig.concat(thin).filter((t) => !inPool.has(t.symbol) && t.chg24 >= GB_CH_C24_MIN && t.chg24 <= GB_CH_C24_MAX
+      && t.fromHigh >= GB_CH_FH).sort((a, b) => b.chg24 - a.chg24).slice(0, GB_CH_N);
+    const pool = surgePool.concat(startPool, thinPool).slice(0, GB_POOL_MAX).concat(candPool, chasePool);
     const out = [], early = [];
     const queue = pool.slice();
     await Promise.all(Array.from({ length: 6 }, async () => {
@@ -787,15 +809,21 @@
         const e2 = !trig ? early2Trigger(bars) : null;
         const f = bars.length >= 20 ? gainerScore15(t, bars) : { c1h: null, c4h: null, volRatio: null, volRatioPrev: null, fromHigh: t.fromHigh, score: 0 };
         const spark = bars.slice(-32).map((b) => b.c).concat([t.price]);
+        // 🚀 is evaluated independently of ⚡ (a coin can be ⚡ 觀察 AND 🚀 續升買); 🔥 wins over 🚀.
+        const ch = !trig && bars.length >= 101 ? chaseTrigger(bars, t) : null;
+        if (ch) out.push({ ...t, ...f, tier: "chase", trigger: ch, spark, logo: logoUrl(t.base) });
         if (e2) { early.push({ ...t, ...f, tier: "early2", trigger: e2, spark, logo: logoUrl(t.base) }); continue; }
+        if (ch) continue;
         const tier = trig ? "pump" : (!t.thin && t.chg24 >= GB_CAND_C24 && t.fromHigh >= GB_CAND_FH ? "cand" : null);
         if (!tier) continue;
         out.push({ ...t, ...f, tier, trigger: trig, spark, logo: logoUrl(t.base) });
       }
     }));
     const pumps = out.filter((x) => x.tier === "pump").sort((a, b) => b.trigger.t - a.trigger.t || b.score - a.score);
+    const chases = out.filter((x) => x.tier === "chase").sort((a, b) => b.trigger.vr - a.trigger.vr || b.score - a.score);
     const fill = out.filter((x) => x.tier === "cand").sort((a, b) => b.score - a.score);
-    const rows = pumps.concat(fill.slice(0, Math.max(0, 6 - pumps.length))).slice(0, Math.max(n, pumps.length));
+    const buys = pumps.concat(chases);
+    const rows = buys.concat(fill.slice(0, Math.max(0, 6 - buys.length))).slice(0, Math.max(n, buys.length));
     early.sort((a, b) => b.trigger.t - a.trigger.t || b.score - a.score);
     gainerCache = { t: Date.now(), rows, early, pool: elig.length + thin.length, poolThin: thin.length, scanned: pool.length, screened4h: r4.size,
       tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.concat(thin).map((t) => [t.symbol, t])) };

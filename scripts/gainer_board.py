@@ -325,6 +325,8 @@ def main_picks_on(date):
         for e in b.get("entries", []):
             if e.get("type") != "buy" or not str(e.get("created_at", "")).startswith(date):
                 continue
+            if e.get("tier") == "chase":  # 🚀 續升買 = buy call only; never an early-capture flag (scorecard unchanged)
+                continue
             pair = (e.get("pair_address") or "").upper()
             if not pair.endswith("USDT"):
                 continue
