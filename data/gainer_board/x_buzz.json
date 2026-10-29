@@ -109,61 +109,71 @@
    "symbol": "KATUSDT",
    "base": "KAT",
    "flag": "pump",
-   "trigger_at": "2026-10-29T15:30:00+08:00",
-   "checked_at": "2026-10-29T19:08:00+08:00",
+   "trigger_at": "2026-10-29T15:45:00+08:00",
+   "checked_at": "2026-10-29T19:36:00+08:00",
    "posts_last_1h": 1,
    "posts_prev_6h_avg_per_h": 1.33,
    "spike_ratio": 0.75,
    "verdict": "冷",
-   "one_line": "幾乎無人討論",
-   "shill_flag": false,
+   "one_line": "冷清淨有細號推",
+   "shill_flag": true,
    "big_accounts": 0,
-   "top_posts": [],
-   "checks_this_trigger": 6
+   "top_posts": [
+    {
+     "id": "2115722361085272429",
+     "url": "https://x.com/jegoschy893/status/2115722361085272429",
+     "text": "$KAT is one of the fresh setups I’m watching VERY closely. Clean higher-low structure. Steady price expansion. Volume starting to wake up.",
+     "likes": 0,
+     "author_username": "jegoschy893",
+     "author_followers": 22,
+     "created_at": "2026-10-29T16:28:13+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   },
   "HYPEUSDT": {
    "symbol": "HYPEUSDT",
    "base": "HYPE",
    "flag": "pump",
    "trigger_at": "2026-10-29T18:45:00+08:00",
-   "checked_at": "2026-10-29T19:08:00+08:00",
-   "posts_last_1h": 111,
-   "posts_prev_6h_avg_per_h": 77.5,
-   "spike_ratio": 1.43,
+   "checked_at": "2026-10-29T19:36:00+08:00",
+   "posts_last_1h": 110,
+   "posts_prev_6h_avg_per_h": 72.5,
+   "spike_ratio": 1.52,
    "verdict": "升溫",
-   "one_line": "NYSE消息撐住熱度",
+   "one_line": "NYSE消息持續討論",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115761165628264872",
-     "url": "https://x.com/Big_worx001/status/2115761165628264872",
-     "text": "📚 Web3 Education — Day 24 What is a Rug Pull in Crypto? 🚨🪙 A rug pull happens when a crypto project's creators abandon the project or withd…",
-     "likes": 6,
-     "author_username": "Big_worx001",
-     "author_followers": 2054,
-     "created_at": "2026-10-29T19:02:25+08:00"
+     "id": "2115768870057480347",
+     "url": "https://x.com/zerokn0wledge_/status/2115768870057480347",
+     "text": "Hyperliquid's spot markets: failed or major opportunity? Hyperliquid won perps. HIP-3 then pulled stocks, indices and commodities onchain, …",
+     "likes": 4,
+     "author_username": "zerokn0wledge_",
+     "author_followers": 27176,
+     "created_at": "2026-10-29T19:33:02+08:00"
     },
     {
-     "id": "2115761060179288350",
-     "url": "https://x.com/cryptohouse0x/status/2115761060179288350",
-     "text": "Crypto never stops evolving. Keep learning, stay curious, manage your risk and remember that patience is often more valuable than hype.",
-     "likes": 1,
-     "author_username": "cryptohouse0x",
-     "author_followers": 26000,
-     "created_at": "2026-10-29T19:02:00+08:00"
-    },
-    {
-     "id": "2115762272425726361",
-     "url": "https://x.com/CoinliveHQ/status/2115762272425726361",
-     "text": "🚨 JUST IN: 🇺🇸 The NYSE's owner is bringing Hyperliquid's $HYPE perpetual futures to regulated US markets. 🔥 A major step toward bringing cr…",
+     "id": "2115768486387405048",
+     "url": "https://x.com/BigWolfCEO/status/2115768486387405048",
+     "text": "$HYPE is melting screens right now, pushing $86+ with a massive God candle! Who else bought too little, or are you guys actually packed? Dr…",
      "likes": 0,
-     "author_username": "CoinliveHQ",
-     "author_followers": 16009,
-     "created_at": "2026-10-29T19:06:49+08:00"
+     "author_username": "BigWolfCEO",
+     "author_followers": 317,
+     "created_at": "2026-10-29T19:31:30+08:00"
+    },
+    {
+     "id": "2115768526644400441",
+     "url": "https://x.com/RongrongBell/status/2115768526644400441",
+     "text": "Perps are coming to regulated US markets. The NYSE’s owner plans to bring Hyperliquid’s $HYPE perpetual futures to regulated US markets. Cr…",
+     "likes": 0,
+     "author_username": "RongrongBell",
+     "author_followers": 1514,
+     "created_at": "2026-10-29T19:31:40+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   }
  },
  "history": [
@@ -922,15 +932,83 @@
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": []
+  },
+  {
+   "symbol": "KATUSDT",
+   "base": "KAT",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T15:45:00+08:00",
+   "checked_at": "2026-10-29T19:36:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 0.75,
+   "verdict": "冷",
+   "one_line": "冷清淨有細號推",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115722361085272429",
+     "url": "https://x.com/jegoschy893/status/2115722361085272429",
+     "text": "$KAT is one of the fresh setups I’m watching VERY closely. Clean higher-low structure. Steady price expansion. Volume starting to wake up.",
+     "likes": 0,
+     "author_username": "jegoschy893",
+     "author_followers": 22,
+     "created_at": "2026-10-29T16:28:13+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "HYPEUSDT",
+   "base": "HYPE",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T18:45:00+08:00",
+   "checked_at": "2026-10-29T19:36:00+08:00",
+   "posts_last_1h": 110,
+   "posts_prev_6h_avg_per_h": 72.5,
+   "spike_ratio": 1.52,
+   "verdict": "升溫",
+   "one_line": "NYSE消息持續討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115768870057480347",
+     "url": "https://x.com/zerokn0wledge_/status/2115768870057480347",
+     "text": "Hyperliquid's spot markets: failed or major opportunity? Hyperliquid won perps. HIP-3 then pulled stocks, indices and commodities onchain, …",
+     "likes": 4,
+     "author_username": "zerokn0wledge_",
+     "author_followers": 27176,
+     "created_at": "2026-10-29T19:33:02+08:00"
+    },
+    {
+     "id": "2115768486387405048",
+     "url": "https://x.com/BigWolfCEO/status/2115768486387405048",
+     "text": "$HYPE is melting screens right now, pushing $86+ with a massive God candle! Who else bought too little, or are you guys actually packed? Dr…",
+     "likes": 0,
+     "author_username": "BigWolfCEO",
+     "author_followers": 317,
+     "created_at": "2026-10-29T19:31:30+08:00"
+    },
+    {
+     "id": "2115768526644400441",
+     "url": "https://x.com/RongrongBell/status/2115768526644400441",
+     "text": "Perps are coming to regulated US markets. The NYSE’s owner plans to bring Hyperliquid’s $HYPE perpetual futures to regulated US markets. Cr…",
+     "likes": 0,
+     "author_username": "RongrongBell",
+     "author_followers": 1514,
+     "created_at": "2026-10-29T19:31:40+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 43,
+  "calls_today": 49,
   "cap_reached": false,
-  "updated_at": "2026-10-29T19:08:16+08:00"
+  "updated_at": "2026-10-29T19:37:36+08:00"
  },
- "updated_at": "2026-10-29T19:08:16+08:00",
+ "updated_at": "2026-10-29T19:37:36+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
