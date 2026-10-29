@@ -1543,6 +1543,7 @@
     paintGainerLive();
     renderGainerAccuracy();
     renderGainerScorecard(res);
+    renderGainerCaptureStrip();
   }
 
   /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
@@ -1562,6 +1563,65 @@
       if (r && r.price > 0 && e > 0) { const v = (r.price / e - 1) * 100; n.textContent = pct(v); n.className = "num " + cls(v); }
     });
     if (hit) paintGainerLive();
+  }
+
+
+  /** Homepage 🔥 strip: latest sealed early-capture rate (always visible, not folded in 詳情). */
+  function renderGainerCaptureStrip() {
+    const box = $("gainerCapture"); if (!box) return;
+    box.textContent = "";
+    const sum = gbStatic.summary;
+    const cards = (sum && sum.scorecards) || [];
+    box.hidden = false;
+    if (!cards.length) {
+      box.append(
+        el("div", { class: "gbc-line" },
+          el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
+          el("span", { class: "gbc-big muted", text: "—" })),
+        el("p", { class: "gbc-sub tiny muted", text: "未有密封 · 每晚 23:55 對 Binance 頭 20" }));
+      return;
+    }
+    const c = cards[cards.length - 1];
+    const sealed = c.date || "";
+    const md = sealed.length >= 10 ? `${Number(sealed.slice(5, 7))}/${sealed.slice(8, 10)}` : sealed;
+    const today = isoSh().slice(0, 10);
+    const recall = c.recall_top20_pct;
+    const prec = c.precision_pct;
+    const earlyHits = c.early_hits != null ? c.early_hits : ((c.hits || []).length);
+    const earlyFlagged = c.early_flagged != null ? c.early_flagged : (c.flagged != null ? c.flagged : "–");
+    const pass = recall != null && Number(recall) >= 10;
+    const hitSyms = (c.hits || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
+    const lateSyms = (c.late || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
+    const missSyms = (c.missed || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
+    const w = sum.scorecard_7d || {};
+
+    const gate = el("span", {
+      class: "gbc-gate " + (pass ? "pass" : "fail"),
+      text: pass ? "PASS（≥10%）" : "FAIL（≥10%）",
+    });
+    const big = el("div", { class: "gbc-line" },
+      el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
+      el("span", { class: "gbc-big num " + (pass ? "pos" : "neg"), text: recall != null ? `${recall}%` : "—" }),
+      el("span", { class: "gbc-inline", text: `（捉到 ${earlyHits}/${earlyFlagged}）` }),
+      el("span", { class: "gbc-dot", text: "·" }),
+      el("span", { class: "gbc-inline", text: `講中率 ${prec != null ? prec + "%" : "–"}` }),
+      el("span", { class: "gbc-dot", text: "·" }),
+      gate);
+    const sealNote = el("div", { class: "gbc-seal tiny" },
+      el("span", { class: "gbc-sealchip", text: `密封 ${md}` }),
+      sealed !== today
+        ? el("span", { class: "muted", text: "（最新密封日 · 今日未封）" })
+        : el("span", { class: "muted", text: "（今日）" }),
+      el("span", { class: "muted", text: w.days ? ` · 7 日 ${w.recall_top20_pct ?? "–"}%` : "" }));
+
+    const names = (lab, syms, cls) => el("div", { class: "gbc-names " + cls },
+      el("span", { class: "gbc-lab", text: lab }),
+      el("span", { class: "gbc-syms", text: syms.length ? syms.join(" · ") : "無" }));
+
+    box.append(big, sealNote,
+      names("捉到", hitSyms, "gbc-hit"),
+      names("走漏", missSyms, "gbc-miss"));
+    if (lateSyms.length) box.append(names("遲標", lateSyms, "gbc-late"));
   }
 
   function renderGainerAccuracy() {
