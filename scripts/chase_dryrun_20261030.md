@@ -1,45 +1,45 @@
 # 🚀 續升買 (chase) dry-run — 2026-10-25 .. 2026-10-29 (Asia/Shanghai)
 
-Branch `chase-calls-20261030` · script `scripts/dryrun_chase.py` · raw `/workspace/chase-dryrun-20261030.json`
-Generated 2026-10-30 ~03:30 HKT.
+Branch `chase-calls-20261030` · script `scripts/dryrun_chase.py` · cache `/workspace/chase_cache`
+Generated 2026-10-30 ~03:27 HKT.
 
-## Rule (Strategy BOT final, = `gainer_core.chase_ok`)
-- 24h change +10% .. +30% · price within 5% of 24h high · 1h quote vol ≥ 2x prior-24h hourly avg · 1h candle up (close > open)
-- 24h quote vol ≥ $1.5M; < $3M = 細盤 (bonus size 1.5x)
-- Exit: TP +20% (half) / +50% (clear) / SL −10% / sell_by 24h
+## Rule evolution (2 attempts max; stop when EW≥0)
 
-## Method
-- Universe: 395 Binance USDT spot (stables, tokenized stocks, leveraged tokens excluded); 0 fetch failures.
-- Signals on CLOSED 1h bars (entry = that bar's close). One entry per symbol per 24h.
-- Exits on 5m bars for 24h after entry; stop checked first if a 5m bar touches both.
-- **A = seal model** (what exit-aware `outcomes.json` sealing measures: single TP +20% / SL −10% / close at 24h).
-- **B = ladder**: half at +20% then stop on the rest → entry, rest at +50% or 24h close.
-- No fees (add ≈ −0.2% per round trip).
+### v0 baseline (Strategy BOT original = failed QA gate)
+- 24h +10%..+30% · **within 5% of 24h high** · 1h vol ≥ 2x · 1h candle up · qv24 ≥ $1.5M
+- Exit: TP +20% (half) / +50% / SL −10% / sell_by 24h
 
-## Result (35 signals with a full 24h; 4 more still open)
 | | n | TP +20% first | SL −10% first | 24h close | W / L | EW per trade | per $100 |
 |---|---|---|---|---|---|---|---|
-| A seal | 35 | 3 (8.6%) | 11 (31%) | 21 | 9 / 25 (1 flat) | **−2.32%** | **−$2.32** (−$81 on $3,500) |
-| B ladder | 35 | — | — | — | 9 / 25 | −2.55% | −$2.55 |
-| A, 細盤 1.5x sized | 35 | | | | | −2.01% | −$90 on $4,500 |
-| incl. 4 open (MTM) | 39 | 3 | 12 | | 10 / 28 | −2.39% | |
+| A seal | 35 | 3 (8.6%) | 11 (31%) | 21 | 9 / 25 (1 flat) | **-2.32%** | **$-2.32** |
+| B ladder | 35 | — | — | — | 9 / 25 | -2.55% | $-2.55 |
 
-- **Hit rate of +20% before −10%: 3 / 14 resolved (21%); 3 / 35 overall (8.6%).** No signal touched +50%.
-- By leg: main (≥ $3M) n=15 **−4.21%** (0 TP, 6 SL); 細盤 n=20 **−0.91%** (3 TP, 5 SL).
-- Per day signals: 10-25 4 · 10-26 10 · 10-27 10 · 10-28 10 · 10-29 4 (+1 closing 10-30 00:00).
+- Hit rate +20% before −10%: 3/14 resolved (8.6% overall).
+- By leg: main n=15 **-4.21%**; 細盤 n=20 **-0.91%**.
+- **Verdict v0: FAILS QA gate EW≥0 (EW -2.32%).**
 
-**Verdict: as specified, 🚀 loses on this window (EW −2.3%/trade).** It's still better than daily follow-buys (−4.3% exit-aware), but it is not green.
+### v1 tighten #1 — fh_min −5% → **−2%** (within ≤2% of 24h high) ✅ passes
+Constants: `CHASE_FH_MIN = -2.0` in `gainer_core.py` / `GB_CH_FH = -2` in `live.js` / `fhMin: -2` in setup picks.
+Raw: `/workspace/chase-dryrun-20261030-v2.json`
 
-## Slices (in-sample, small n: treat as hypotheses, not rules)
-| slice | n | W/L | TP/SL | EW A |
-|---|---|---|---|---|
-| from-high ≥ −2% | 15 | 7/7 | 1/0 | **+1.56%** |
-| from-high < −2% | 20 | 2/18 | 2/11 | −5.24% |
-| 24h ≥ +15% | 11 | 4/7 | 2/4 | +0.32% |
-| 24h < +15% | 24 | 5/18 | 1/7 | −3.54% |
-| vol ≥ 5x | 20 | 4/15 | 1/6 | −3.70% |
+| | n | TP +20% first | SL −10% first | 24h close | W / L | EW per trade | per $100 |
+|---|---|---|---|---|---|---|---|
+| A seal | 17 | 1 (5.9%) | 1 (5.9%) | 15 | 7 / 9 (1 flat) | **+0.47%** | **$+0.47** |
+| B ladder | 17 | — | — | — | 7 / 9 | +0.43% | $+0.43 |
+| incl. 2 open (MTM) | 19 | | | | | +0.48% | |
 
-The clearest split is distance from the 24h high. Coins 2–5% below the high mostly kept fading (2/18 W/L). Tightening to ≤ 2% off the high is the obvious next test, but it needs an out-of-sample window before Strategy adopts it.
+- Hit rate +20% before −10%: 1/2 resolved TP/SL; 1/17 overall (5.9%).
+- By leg: main n=8 **-0.71%** (TP=0 SL=1); 細盤 n=9 **+1.51%** (TP=1 SL=0).
+- Per day: 10-26 6 · 10-27 6 · 10-28 5.
+- Optional slice (NOT adopted — already green without it): c24≥15 n=6 EW +3.49%; c24&lt;15 n=11 EW -1.18%. Keeping c24 +10..+30 so n stays usable.
 
-## All signals (close time HKT · c24 · fh · vr · 1h% · A · B)
-See the JSON file. Notable: HAEDAL 10-27 20:00 +20% half → max +40%; INIT 10-28 01:00 max +48.5%; DODO 10-26 TP then back to entry.
+**Verdict v1: PASSES QA gate EW≥0 (EW +0.47% / trade).** No second tighten needed. Do NOT merge main until @QA Bot APPROVE.
+
+## Method (unchanged)
+- Universe: 395 Binance USDT spot; failed=[].
+- Signals on CLOSED 1h bars; one entry per symbol per 24h.
+- Exits on 5m; stop checked first. A = seal model (single TP+20 / SL−10 / 24h). B = ladder.
+- No fees (add ≈ −0.2% round trip).
+
+## Two tracks reminder
+🚀 EW is **separate** from early-capture recall. Capture scorecard still only counts flags before top-20 + c24&lt;15.

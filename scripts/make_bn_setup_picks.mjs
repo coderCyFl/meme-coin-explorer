@@ -267,7 +267,7 @@ function diversifyPicks(scored, n = 6) {
 // All eligible Binance USDT spot (not just CURATED): 24h +10..+30%, ≤5% below 24h high, last CLOSED 1h quote vol
 // ≥ 2x prior-24h hourly avg, that 1h candle up, 24h vol ≥ $1.5M (< $3M = 細盤 → size:bonus). Paper BUY with
 // exit_plan +20% half / +50% clear / −10% / sell_by 24h. NOT part of the early-capture scorecard (tier:"chase").
-const CH = { c24Min: 10, c24Max: 30, fhMin: -5, vr: 2, minQv: 1.5e6, smallQv: 3e6, tp: 20, tp2: 50, sl: 10, reviewH: 4, sellH: 24, max: 6 };
+const CH = { c24Min: 10, c24Max: 30, fhMin: -2, vr: 2, minQv: 1.5e6, smallQv: 3e6, tp: 20, tp2: 50, sl: 10, reviewH: 4, sellH: 24, max: 6 };
 const CH_STABLE = new Set(["USDC","FDUSD","TUSD","USDP","DAI","BUSD","EUR","EURI","AEUR","XUSD","USD1","BFUSD","USDE","USDEB","U","FRAX","RLUSD","USDS","RWUSD","PYUSD","PAXG","XAUT","WBTC","WBETH","BNSOL"]);
 const CH_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
 async function scanChase(listed) {

@@ -1451,7 +1451,7 @@
           `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${X.tp}% 賺 ${money2(usd * X.tp / 100 - fee2)}` }), " · ",
           el("b", { class: "pos", text: `+${X.tp2}% 賺 ${money2(usd * X.tp2 / 100 - fee2)}` }), " · ",
           el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * X.sl / 100 + fee2)}` })) : "",
-        r.tier === "chase" ? el("div", { class: "tiny muted", text: `🚀 續升買：24h +${10}–${30}%、離 24h 高 ≤ 5%、1h 成交 ≥ 2x 平均、1h 仲升緊 → 紙上直接跟買。` + (small ? ` 細盤（24h 成交 < $3M）注碼 ×${CHASE_SMALL_MULT}。` : "") }) : "",
+        r.tier === "chase" ? el("div", { class: "tiny muted", text: `🚀 續升買：24h +${10}–${30}%、離 24h 高 ≤ 2%、1h 成交 ≥ 2x 平均、1h 仲升緊 → 紙上直接跟買。` + (small ? ` 細盤（24h 成交 < $3M）注碼 ×${CHASE_SMALL_MULT}。` : "") }) : "",
         r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
         r.tier === "chase" ? "" : gbBtLine(r.tier === "cand" ? "pump" : r.tier),
         el("div", { class: "gb-det-actions" },

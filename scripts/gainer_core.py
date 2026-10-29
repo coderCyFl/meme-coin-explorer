@@ -224,10 +224,10 @@ def early2_at(b15, j):
 # ---------------- 🚀 續升買 chase (2026-10-30, Strategy BOT; Cyrus: +10–20% is NOT too late) ----------------
 # Paper BUY (watch_only False). Separate from the early-capture scorecard (c24<15 rule there is UNCHANGED;
 # 🚀 is never counted as an early flag). Rule on a rolling/closed 1h window:
-#   24h +10%..+30%, price within 5% of the 24h high, 1h quote volume >= 2x the prior-24h hourly average,
+#   24h +10%..+30%, price within 2% of the 24h high, 1h quote volume >= 2x the prior-24h hourly average,
 #   1h candle still up (c1 > 0), qv24 >= $1.5M (qv24 < $3M = 細盤 → bonus size).
 # Exit plan: +20% sell half (stop → entry) / +50% clear / −10% stop / sell_by 24h.
-CHASE_C24_MIN, CHASE_C24_MAX, CHASE_FH_MIN, CHASE_VR = 10.0, 30.0, -5.0, 2.0
+CHASE_C24_MIN, CHASE_C24_MAX, CHASE_FH_MIN, CHASE_VR = 10.0, 30.0, -2.0, 2.0
 CHASE_MIN_QV, CHASE_SMALL_QV = E2_LOW_QV, MIN_QV24
 CHASE_TP, CHASE_TP2, CHASE_SL, CHASE_SELL_H, CHASE_REVIEW_H = 20.0, 50.0, 10.0, 24, 4
 CHASE_SMALL_MULT = 1.5

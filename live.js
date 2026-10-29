@@ -629,9 +629,9 @@
   //   🔥 / 細盤: rolling-4h range ≥ 5% · 起步: 24h range ≥ 25% and rolling-4h range ≥ 2.5%. Hard cap for rate safety.
   const GB_POOL_MAX = 90;
   // 🚀 續升買 chase (2026-10-30, Strategy BOT; mirrors gainer_core.chase_ok) — PAPER BUY, not watch-only:
-  //   24h +10%..+30% · ≤ 5% below the 24h high · rolling 1h quote vol ≥ 2x prior-24h hourly avg · 1h still up.
+  //   24h +10%..+30% · ≤ 2% below the 24h high · rolling 1h quote vol ≥ 2x prior-24h hourly avg · 1h still up.
   //   24h vol ≥ $1.5M; < $3M = 細盤 (bigger paper size). Separate from 🔥/⚡ and from the early-capture scorecard.
-  const GB_CH_C24_MIN = 10, GB_CH_C24_MAX = 30, GB_CH_FH = -5, GB_CH_VR = 2, GB_CH_N = 20;
+  const GB_CH_C24_MIN = 10, GB_CH_C24_MAX = 30, GB_CH_FH = -2, GB_CH_VR = 2, GB_CH_N = 20;
   const GB_TTL = 60_000;
   let gainerCache = { t: 0, rows: [] };
 
