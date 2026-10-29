@@ -359,41 +359,41 @@
    "symbol": "PARTIUSDT",
    "base": "PARTI",
    "flag": "pump",
-   "trigger_at": "2026-10-30T00:30:00+08:00",
-   "checked_at": "2026-10-30T04:20:30+08:00",
-   "posts_last_1h": 45,
-   "posts_prev_6h_avg_per_h": 21.33,
-   "spike_ratio": 2.11,
-   "verdict": "熱",
-   "one_line": "討論再升溫，但喊單居多",
+   "trigger_at": "2026-10-30T01:30:00+08:00",
+   "checked_at": "2026-10-30T05:20:00+08:00",
+   "posts_last_1h": 50,
+   "posts_prev_6h_avg_per_h": 24.67,
+   "spike_ratio": 2.03,
+   "verdict": "升溫",
+   "one_line": "討論翻倍，但多數係喊單群報捷",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115870175996375310",
-     "url": "https://x.com/Zaynnode/status/2115870175996375310",
-     "text": "$PARTI hit my TP with 60% green god candle (top gainer on Binance). Gave you $PARTI at $0.034, pumped above $0.060.",
-     "likes": 83,
-     "author_username": "Zaynnode",
-     "author_followers": 48502,
-     "created_at": "2026-10-30T02:15:35+08:00"
-    },
-    {
      "id": "2115872605211341131",
      "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
      "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
-     "likes": 5,
+     "likes": 6,
      "author_username": "GlobeOfcrypto1",
-     "author_followers": 12092,
+     "author_followers": 12093,
      "created_at": "2026-10-30T02:25:14+08:00"
+    },
+    {
+     "id": "2115866775040704808",
+     "url": "https://x.com/RoccobullboTTom/status/2115866775040704808",
+     "text": "#PREMIUM_SIGNAL $PARTI is roaring loudly in the market right now! ALREADY ACHIEVED MY FIRST TERGET 80% PROFIT",
+     "likes": 4,
+     "author_username": "RoccobullboTTom",
+     "author_followers": 49948,
+     "created_at": "2026-10-30T02:02:04+08:00"
     },
     {
      "id": "2115856032820007319",
      "url": "https://x.com/CryptoTenon/status/2115856032820007319",
-     "text": "$parti #parti target 4 done. 95% up on spot after the entry, 2375% profit with 25x",
+     "text": "$parti #parti target 4 95% up on spot after the entry 2375% profit with 25x",
      "likes": 4,
      "author_username": "CryptoTenon",
-     "author_followers": 4738,
+     "author_followers": 4739,
      "created_at": "2026-10-30T01:19:23+08:00"
     }
    ],
@@ -2098,15 +2098,58 @@
      "created_at": "2026-10-30T00:18:57+08:00"
     }
    ]
+  },
+  {
+   "symbol": "PARTIUSDT",
+   "base": "PARTI",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T01:30:00+08:00",
+   "checked_at": "2026-10-30T05:20:00+08:00",
+   "posts_last_1h": 50,
+   "posts_prev_6h_avg_per_h": 24.67,
+   "spike_ratio": 2.03,
+   "verdict": "升溫",
+   "one_line": "討論翻倍，但多數係喊單群報捷",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115872605211341131",
+     "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
+     "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
+     "likes": 6,
+     "author_username": "GlobeOfcrypto1",
+     "author_followers": 12093,
+     "created_at": "2026-10-30T02:25:14+08:00"
+    },
+    {
+     "id": "2115866775040704808",
+     "url": "https://x.com/RoccobullboTTom/status/2115866775040704808",
+     "text": "#PREMIUM_SIGNAL $PARTI is roaring loudly in the market right now! ALREADY ACHIEVED MY FIRST TERGET 80% PROFIT",
+     "likes": 4,
+     "author_username": "RoccobullboTTom",
+     "author_followers": 49948,
+     "created_at": "2026-10-30T02:02:04+08:00"
+    },
+    {
+     "id": "2115856032820007319",
+     "url": "https://x.com/CryptoTenon/status/2115856032820007319",
+     "text": "$parti #parti target 4 95% up on spot after the entry 2375% profit with 25x",
+     "likes": 4,
+     "author_username": "CryptoTenon",
+     "author_followers": 4739,
+     "created_at": "2026-10-30T01:19:23+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 42,
+  "calls_today": 44,
   "cap_reached": false,
-  "updated_at": "2026-10-30T04:20:58+08:00"
+  "updated_at": "2026-10-30T05:20:08+08:00"
  },
- "updated_at": "2026-10-30T04:20:58+08:00",
+ "updated_at": "2026-10-30T05:20:08+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

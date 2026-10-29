@@ -145,3 +145,5 @@
 {"ts": "2026-10-30T04:20:08+08:00", "symbol": "LSKUSDT", "tool": "search", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 23}
 {"ts": "2026-10-30T04:20:09+08:00", "symbol": "PARTIUSDT", "tool": "search", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-10-30T04:20:10+08:00", "symbol": "PEPEUSDT", "tool": "search", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-30T05:19:50+08:00", "symbol": "PARTIUSDT", "tool": "counts", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 204}
+{"ts": "2026-10-30T05:19:51+08:00", "symbol": "PARTIUSDT", "tool": "search", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 25}
