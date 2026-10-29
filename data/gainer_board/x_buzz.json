@@ -382,6 +382,50 @@
     }
    ],
    "checks_this_trigger": 1
+  },
+  "PARTIUSDT": {
+   "symbol": "PARTIUSDT",
+   "base": "PARTI",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T00:15:00+08:00",
+   "checked_at": "2026-10-30T00:32:40+08:00",
+   "posts_last_1h": 14,
+   "posts_prev_6h_avg_per_h": 6.5,
+   "spike_ratio": 2.15,
+   "verdict": "冷",
+   "one_line": "假陽性多真熱度低",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115830990157344914",
+     "url": "https://x.com/CuckHubz/status/2115830990157344914",
+     "text": "Swing parti",
+     "likes": 4,
+     "author_username": "CuckHubz",
+     "author_followers": 1121,
+     "created_at": "2026-10-29T23:39:52+08:00"
+    },
+    {
+     "id": "2115836066624307521",
+     "url": "https://x.com/FPAC_APFC/status/2115836066624307521",
+     "text": "Canada’s forest sector is navigating pressures from beyond our borders, but much of what will shape its future is within our control here a…",
+     "likes": 2,
+     "author_username": "FPAC_APFC",
+     "author_followers": 9636,
+     "created_at": "2026-10-30T00:00:03+08:00"
+    },
+    {
+     "id": "2115837092156559690",
+     "url": "https://x.com/Eren_Jager972/status/2115837092156559690",
+     "text": "SANJI MY FUCKING GOAT IL FAIT PARTI DES GRANDS ! #ONEPIECE1197",
+     "likes": 1,
+     "author_username": "Eren_Jager972",
+     "author_followers": 3582,
+     "created_at": "2026-10-30T00:04:07+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -1496,15 +1540,58 @@
      "created_at": "2026-10-29T19:00:33+08:00"
     }
    ]
+  },
+  {
+   "symbol": "PARTIUSDT",
+   "base": "PARTI",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T00:15:00+08:00",
+   "checked_at": "2026-10-30T00:32:40+08:00",
+   "posts_last_1h": 14,
+   "posts_prev_6h_avg_per_h": 6.5,
+   "spike_ratio": 2.15,
+   "verdict": "冷",
+   "one_line": "假陽性多真熱度低",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115830990157344914",
+     "url": "https://x.com/CuckHubz/status/2115830990157344914",
+     "text": "Swing parti",
+     "likes": 4,
+     "author_username": "CuckHubz",
+     "author_followers": 1121,
+     "created_at": "2026-10-29T23:39:52+08:00"
+    },
+    {
+     "id": "2115836066624307521",
+     "url": "https://x.com/FPAC_APFC/status/2115836066624307521",
+     "text": "Canada’s forest sector is navigating pressures from beyond our borders, but much of what will shape its future is within our control here a…",
+     "likes": 2,
+     "author_username": "FPAC_APFC",
+     "author_followers": 9636,
+     "created_at": "2026-10-30T00:00:03+08:00"
+    },
+    {
+     "id": "2115837092156559690",
+     "url": "https://x.com/Eren_Jager972/status/2115837092156559690",
+     "text": "SANJI MY FUCKING GOAT IL FAIT PARTI DES GRANDS ! #ONEPIECE1197",
+     "likes": 1,
+     "author_username": "Eren_Jager972",
+     "author_followers": 3582,
+     "created_at": "2026-10-30T00:04:07+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 10,
+  "calls_today": 12,
   "cap_reached": false,
-  "updated_at": "2026-10-30T00:06:39+08:00"
+  "updated_at": "2026-10-30T00:32:40+08:00"
  },
- "updated_at": "2026-10-30T00:06:39+08:00",
+ "updated_at": "2026-10-30T00:32:40+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
