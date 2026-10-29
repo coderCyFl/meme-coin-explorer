@@ -1,3 +1,14 @@
+## Daily upgrade 2026-10-29 ~09:15 Asia/Shanghai
+Review: live stamp `20261029a` on main (resume trial-merge); orange/`ff8a3d` = 0; Binance via `data-api.binance.vision` moving (BTC ~$81.0k, 24h **+0.4%**; liquid top30 breadth **16/30 ≈ 53%** green) ⇒ weak-regime gate **off**. batch-010 still live (minted 10/28 normal, 6 buys + avoid PEPE/BCH); **24h seal ~14:21 今日稍後**. No batch-011 yet — Actions daily-picks last success 10/28（排程遲；每小時 Update 負責檢查／手動觸發；本 routine 唔寫 picks）.
+
+Outcomes: ran `snapshot_outcomes.py` → sealed **7d** for batch-002/003/004 (Binance 1m kline at due). Buy equal-weight: batch-002 **≈ −4.5%** (n=8), batch-003 **≈ −8.3%** (n=6), batch-004 **≈ −5.7%** (n=6) → combined buys **≈ −6.0%** (n=20). AVOID calls all red (correct). batch-001 Dex 7d also recorded (GATO +88% / 兩隻 ≈−100% rug — 舊 Sol 實驗，唔入 CEX 結論). batch-008 **72h ~13:25** 同 batch-010 **24h ~14:21** 今日稍後到期.
+
+Gainer early-capture（live scorecard_7d，未計新 seal 規則全面生效）: **recall_top20 ≈ 1.2%** / precision ≈ 4.8%（4 日）— 仍低於 ≥10% 硬閘；dry-run（resume 文檔）~20% 要等新 snapshots 密封先同 live 對數。路徑：繼續 4h lookback + prec + $1.5M thin；唔改買閘。
+
+News: `news.json` 由 10/24（~5 日舊）刷新 → `2026-10-29T09:11+08`（9 則；raw `data/raw/news-004/`）。重點：Mika 誤貼私鑰／$LAUNCH 疑 rug／Calacanis BTC「死網絡」對賭／Predict.fun 第三方文件被入侵. X reads 本 run：**3**（search_news×2 + trends×1；trends 無用）.
+
+Self-growth: **docs + data only** — 無 app/JS churn. Pending QA branch：`origin/shill-label`（`3da5620`，stamp `20261029b` 🚩 紅色 label on 🔥/⚡）未合入 main；今日 @QA Bot 請驗。Next：batch-010 24h／batch-008 72h seals；live scorecard 連續密封日 ≥10% 先算過閘；唔寫 picks.
+
 ## 2026-10-29 Asia/Shanghai — resume after outage (stamp `20261029a`)
 Cyrus: product back up, numbers accurate, no helmet CYA copy, early gainer recall ≥10% (path to 50%).
 
