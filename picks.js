@@ -706,8 +706,15 @@
     // solRet kept as alias for older call sites / outcomes titles
     return { e, b, li, ret, bm, bmKey: bm ? bm.key : "BTC", bmRet, solRet: bmRet, excess: ret != null && bmRet != null ? ret - bmRet : null, liqDrop };
   }
+  // Board/detail horizons (20261030f): only 24/72/168 are displayed. The 12h seal row that snapshot_outcomes.py writes
+  // for setup_20261030e buys is read ONLY by the ¼ size gate (sealFirstH) — never shown or counted as a 2nd trade here.
+  const BOARD_HORIZONS = [24, 72, 168];
+  function boardHorizons(e) {
+    const hz = (e.horizons_h && e.horizons_h.length ? e.horizons_h : BOARD_HORIZONS).filter((h) => BOARD_HORIZONS.includes(h));
+    return hz.length ? hz : BOARD_HORIZONS;
+  }
   function horizonCell(x) {
-    return el("td", {}, (x.e.horizons_h || [24, 72, 168]).map((h) => {
+    return el("td", {}, boardHorizons(x.e).map((h) => {
       const rec = S.outcomes.find((o) => o.pick_id === x.e.id && o.horizon_h === h);
       const label = h === 168 ? "7日" : h + "h";
       if (rec) return el("span", { class: "pill " + (rec.status === "dead" ? "dead" : rec.return_pct >= 0 ? "good" : "bad"), title: `快照 ${localTime(rec.observed_at)} · 基準 ${pct(rec.btc_return_pct != null ? rec.btc_return_pct : rec.sol_return_pct)}` }, `${label} ${pct(rec.return_pct)}`);
