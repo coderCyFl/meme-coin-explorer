@@ -618,13 +618,13 @@
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
   const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
-  // ⚡ v2 (20261029b, mirrors gainer_core.early2_at): 起步 + prec + 細盤 $1.5M; watch-only.
+  // ⚡ v2 (20261030, mirrors gainer_core.early2_at): 起步 + looser grind prec_e + 細盤 $1.5M; watch-only.
   //   起步: 24h vol ≥ $3M, not 🔥, 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
-  //   prec: 24h vol ≥ $3M, not 🔥, 1h ≥ +2.5%, vol ≥ 2.5x, 24h % < +12%
+  //   prec_e (grind): 24h vol ≥ $3M, not 🔥, 1h ≥ +1.5%, vol ≥ 1.5x, 24h % < +15%
   //   細盤: 24h vol $1.5M–$3M with the 🔥 price/volume condition
   //   suppressed when 🔥 (≥ $3M) fired on that coin in the 16 bars up to the signal bar.
   const GB_E2_C15 = 2.5, GB_E2_C1_MIN = 0, GB_E2_RNG24 = 25, GB_E2_LOW_QV = 1.5e6;
-  const GB_E2_PREC_C1 = 2.5, GB_E2_PREC_VR = 2.5, GB_E2_PREC_C24_MAX = 12;
+  const GB_E2_PREC_C1 = 1.5, GB_E2_PREC_VR = 1.5, GB_E2_PREC_C24_MAX = 15;
   // Scan pool: EVERY eligible coin passing a cheap ticker pre-filter (no top-10 cap any more):
   //   🔥 / 細盤: rolling-4h range ≥ 5% · 起步: 24h range ≥ 25% and rolling-4h range ≥ 2.5%. Hard cap for rate safety.
   const GB_POOL_MAX = 90;

@@ -152,7 +152,7 @@ def snapshot():
             continue
         f = g.feats(closed, len(closed) - 1)
         t = None
-        # 🔥 surge on closed 15m bars since the previous run (~30 min = last 2 closed bars)
+        # 🔥 surge on closed 15m bars since the previous run (~15 min denser cadence; still scan last 4h / 16 bars)
         try:
             b15 = g.klines(r["pair"], "15m", 120)[:-1]
             time.sleep(0.05)

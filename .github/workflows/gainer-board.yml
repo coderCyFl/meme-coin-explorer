@@ -1,9 +1,9 @@
-# 急升榜: half-hourly snapshot (🔥 pump / ⚡ early) + 4h/24h outcome seal, daily 23:55 HKT scorecard vs
+# 急升榜: 15-min snapshot (🔥 pump / ⚡ early) + 4h/24h outcome seal, daily 23:55 HKT scorecard vs
 # Binance top-20 gainers. Binance public REST only (data-api.binance.vision first). No X / no secrets / no AI.
 name: Gainer board snapshot + seal
 on:
   schedule:
-    - cron: "5,35 * * * *"  # every 30 min (:05 just after the 1h bar closes; :35 for faster 4h seals)
+    - cron: "5,20,35,50 * * * *"  # every 15 min (denser early flags; :05/:20/:35/:50)
     - cron: "55 15 * * *"   # 23:55 Asia/Shanghai daily scorecard
   workflow_dispatch:
     inputs:

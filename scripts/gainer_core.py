@@ -174,15 +174,18 @@ def surge_fire(sf):
     return surge_raw(sf)
 
 
-# ---------------- ⚡ 早期 v2 (2026-10-29a: thin $1.5M + prec; still watch-only) ----------------
+# ---------------- ⚡ 早期 v2 (2026-10-30: looser grind prec_e; still watch-only) ----------------
 # Legs on CLOSED 15m bars; suppressed if 🔥 fired in last 4h (bars j-16..j):
 #   (a) 起步 — qv>=$3M, not 🔥, 15m>=+2.5%, 1h>=0, prior-24h range>=25%.
 #   (b) 細盤 — qv $1.5M..$3M (was $2M; S′ in backtest_early_30d) + surge_raw.
-#   (c) prec — NEW: qv>=$3M, not 🔥, 1h>=+2.5%, vr>=2.5x, 24h%<+12% (keeps flag EARLY vs +15% late cut).
-# Dry-run 2026-10-25..27 top-20: early recall 20.0% (12/60) vs e2_now 10.0% / live scorecard 1.7%.
-# Still fails buy gate on 4h mean → watch-only 「觀察」.
+#   (c) prec / grind prec_e — LOOSENED 2026-10-30: qv>=$3M, not 🔥,
+#       1h>=+1.5% (was 2.5), vr>=1.5x (was 2.5), 24h%<+15% (was 12; = EARLY cut).
+# Dry-run sealed top-20 2026-10-25..29 (scripts/dryrun_precursor.py):
+#   prec_e alone 26% (26/100); e2∪prec_e 36% (36/100); prior "prec_e ~55%" NOT reproduced on this window
+#   (loosest grid 1.0/1.5/15 alone = 28%). Live scorecard same days ~3% recall — report separately.
+# Still fails buy gate on 4h mean → watch-only 「觀察」. Do not credit live early-hit as buy signal.
 E2_C15, E2_C1_MIN, E2_RNG24, E2_LOW_QV = 2.5, 0.0, 25.0, 1.5e6
-E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 2.5, 2.5, 12.0
+E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 1.5, 1.5, 15.0
 
 
 def early2_feats(b15, j):

@@ -1,3 +1,18 @@
+## 2026-10-30 Asia/Shanghai — looser grind prec_e + denser snapshots (branch `precursor-loosen-20261030`, stamp `20261030a`)
+Strategy knife (NOT UI): widen ⚡ prec leg to grind prec_e **1h≥+1.5% / vr≥1.5x / 24h%<+15%** (was 2.5 / 2.5 / 12); Actions cron **every 15 min** (`5,20,35,50`); ⚡ early2 stays **watch-only**. Daily 今日跟買 paper opens stay **ON** (Strategy reversal — do not gate closed).
+
+**Dry-run** (`scripts/dryrun_precursor.py`, sealed top-20 2026-10-25..29, EARLY = c24<15 at first fire, full 15m scan):
+| rule | recall | caught/n |
+|---|---|---|
+| e2 shipped (start∪prec∪thin) | 22% | 22/100 |
+| prec_e alone 1.5/1.5/15 | 26% | 26/100 |
+| **e2 ∪ prec_e 1.5/1.5/15 (shipped)** | **36%** | **36/100** |
+| loosest alone 1.0/1.5/15 | 28% | 28/100 |
+| prior claim 「prec_e alone ~55%」 | **NOT reproduced** on this window | — |
+Live scorecard same days: recall 0/0/5/0/10% → ~3% 7d — report dry-run vs live separately. No merge to main until Strategy+QA ok.
+
+**Next knob if live seals <10%:** denser alone may not lift Actions miss; try rank-at-trigger store + optional 1.0/1.5/15; do not invent numbers.
+
 ## 2026-10-29 Asia/Shanghai — 🚩 X 洗版 red label on 🔥/⚡ (stamp `20261029b`)
 QA live FAIL: INIT 🔥 showed bare 🚩 next to「X 冷」; BLUR ⚡ had no flag. Fix: dedicated red text「🚩 X 洗版」via `.shill-flag` on 🔥 pump + ⚡ early2 cards (and existing 今日跟買 / 每日新留意). No bare glyph on the X chip; sheet label「🚩 X 洗版」. Paint after early list mounts.
 
