@@ -101,3 +101,5 @@
 {"ts": "2026-10-29T20:37:36+08:00", "symbol": "ZROUSDT", "tool": "search", "query": "($ZRO OR #ZRO) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
 {"ts": "2026-10-29T20:37:36+08:00", "symbol": null, "tool": "counts", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
 {"ts": "2026-10-29T20:37:36+08:00", "symbol": null, "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-29T21:05:00+08:00", "symbol": "牛来USDT", "tool": "counts", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-29T21:05:00+08:00", "symbol": "牛来USDT", "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
