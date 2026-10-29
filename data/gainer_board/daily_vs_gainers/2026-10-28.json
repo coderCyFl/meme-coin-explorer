@@ -443,5 +443,9 @@
    "mean_4h_close_pct": -12.98,
    "hit20_pct": 0.0
   }
- }
+ },
+ "sealed": true,
+ "sealed_at": "2026-10-29T04:42:58+08:00",
+ "method": "live_ticker_at_run_time (legacy)",
+ "seal_note": "舊方法封印：頭 20 用 run 當刻 live ticker；2026-10-30 起鎖定唔再改。"
 }

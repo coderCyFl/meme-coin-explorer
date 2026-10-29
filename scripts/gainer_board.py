@@ -2,7 +2,7 @@
 """急升榜 data pipeline (GitHub Actions, no AI tokens, Binance public REST only, no X).
 
   python3 scripts/gainer_board.py hourly      # seal due 4h/24h outcomes, snapshot both tiers, rebuild summary
-  python3 scripts/gainer_board.py scorecard   # daily 23:55 Asia/Shanghai: our flags vs Binance top-20 gainers
+  python3 scripts/gainer_board.py scorecard [DATE]  # seal day(s) due (23:55 Asia/Shanghai, kline as-of, write-once)
   python3 scripts/gainer_board.py summary     # rebuild data/gainer_board/summary.json only
 
 Files (all under data/gainer_board/):
@@ -18,7 +18,7 @@ Files (all under data/gainer_board/):
 
 Outcomes use Binance 1m klines from picked_at: max gain, close return, max drawdown, hit +20% / +50%.
 """
-import datetime, glob, json, os, sys, time
+import concurrent.futures, datetime, glob, json, os, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gainer_core as g  # noqa: E402
@@ -53,7 +53,18 @@ def jload(fn, default):
         return default
 
 
+class SealedError(RuntimeError):
+    """Raised when any writer tries to overwrite a sealed daily scorecard."""
+
+
+def is_sealed(fn):
+    return bool(jload(fn, {}).get("sealed"))
+
+
 def jsave(fn, obj):
+    # Guard: a sealed daily_vs_gainers/DATE.json is immutable for every writer (incl. this module).
+    if os.path.abspath(os.path.dirname(fn)) == os.path.abspath(CARD) and is_sealed(fn):
+        raise SealedError(f"refusing to overwrite sealed scorecard {os.path.basename(fn)}")
     os.makedirs(os.path.dirname(fn), exist_ok=True)
     with open(fn, "w") as f:
         json.dump(obj, f, ensure_ascii=False, indent=1)
@@ -302,9 +313,10 @@ def seal():
 
 
 # ---------------- X split (does X buzz add value?) ----------------
-def x_split(entries):
+def x_split(entries, cutoff=None):
     """🔥 flags split by the FIRST X check of that flag (x_buzz.json history, -30min..+4h around picked_at):
-    X 熱/升溫 vs X 冷 vs 未查. Mean 4h close return + +20% hit rate per group (sealed 4h outcomes only)."""
+    X 熱/升溫 vs X 冷 vs 未查. Mean 4h close return + +20% hit rate per group (sealed 4h outcomes only).
+    With cutoff (deterministic seal): only X checks at/before cutoff and 4h outcomes whose window ended by cutoff."""
     hist = jload(os.path.join(D, "x_buzz.json"), {}).get("history") or []
     groups = {k: {"flags": 0, "n": 0, "close": [], "hit20": 0} for k in ("hot", "cold", "unchecked")}
     for e in entries:
@@ -317,6 +329,8 @@ def x_split(entries):
                 tc = datetime.datetime.fromisoformat(h["checked_at"])
             except Exception:  # noqa: BLE001
                 continue
+            if cutoff is not None and tc > cutoff:
+                continue
             if h.get("symbol") == e["pair"] and t0 - datetime.timedelta(minutes=30) <= tc <= t0 + datetime.timedelta(hours=4):
                 cand.append((tc, h))
         v = min(cand, key=lambda x: x[0])[1].get("verdict") if cand else None
@@ -324,6 +338,8 @@ def x_split(entries):
         gk = groups[k]
         gk["flags"] += 1
         o = (e.get("outcomes") or {}).get("4h") or {}
+        if cutoff is not None and t0 + datetime.timedelta(hours=4) > cutoff:
+            o = {}  # 4h window not finished by the seal cutoff → pending (keeps the seal deterministic)
         if "close_pct" in o:
             gk["n"] += 1; gk["close"].append(o["close_pct"]); gk["hit20"] += bool(o.get("hit20"))
     out = {"rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. "
@@ -352,12 +368,18 @@ def by_tier(rows):
 
 
 
-def main_picks_on(date):
+def main_picks_on(date, cutoff=None):
     res = []
     for b in jload(os.path.join(ROOT, "data", "picks.json"), {}).get("batches", []):
         for e in b.get("entries", []):
             if e.get("type") != "buy" or not str(e.get("created_at", "")).startswith(date):
                 continue
+            if cutoff is not None:
+                try:
+                    if pt(e["created_at"]) >= cutoff:
+                        continue
+                except Exception:  # noqa: BLE001
+                    continue
             if e.get("tier") == "chase":  # 🚀 續升買 = buy call only; never an early-capture flag (scorecard unchanged)
                 continue
             pair = (e.get("pair_address") or "").upper()
@@ -371,27 +393,82 @@ def main_picks_on(date):
 
 def scheduled_date(t=None):
     """Scorecard date = the scheduled 23:55 Asia/Shanghai day. A run GitHub delays past midnight
-    (before 12:00) still belongs to the previous day."""
-    t = t or now()
+    (before 12:00) still belongs to the previous day. Always Asia/Shanghai, never UTC."""
+    t = (t or now()).astimezone(TZ)
     if t.hour < 12:
         t = t - datetime.timedelta(days=1)
     return t.strftime("%Y-%m-%d")
 
 
-def scorecard(date=None):
-    t0 = now()
-    date = date or scheduled_date(t0)
-    allt = all_tickers()           # real Binance gainers: all USDT spot, stables/leveraged excluded
+SEAL_HH, SEAL_MM = 23, 55
+SEAL_SINCE = "2026-10-30"   # first day sealed by the deterministic kline method (auto catch-up never goes earlier)
+CATCHUP_DAYS = 3
+KLINE_WORKERS = int(os.environ.get("GB_KLINE_WORKERS", "4"))
+
+
+def seal_cutoff(date):
+    """23:55 Asia/Shanghai on `date` — the as-of time of day D's seal."""
+    y, m, d = map(int, date.split("-"))
+    return datetime.datetime(y, m, d, SEAL_HH, SEAL_MM, tzinfo=TZ)
+
+
+def card_path(date):
+    return os.path.join(CARD, date + ".json")
+
+
+def gainers_at(cutoff, pairs=None):
+    """Deterministic Binance 24h gainer list AS OF `cutoff`: for every pair in the board universe
+    (all TRADING USDT spot; stables / leveraged / tokenized excluded, no volume floor — same as all_tickers),
+    24h % = close of the 5m bar ending at cutoff / open of the first 5m bar of [cutoff-24h, cutoff).
+    quote volume = sum over those bars. Pairs with no bar ending at cutoff (not trading then) are skipped.
+    Depends only on historical klines → identical whenever it is re-run."""
+    end_ms = int(cutoff.timestamp() * 1000)
+    start_ms = end_ms - 24 * 3600000
+    last_open = end_ms - 5 * 60000
+    if pairs is None:
+        pairs = g.universe()
+    def one(p):
+        for k in range(4):
+            try:
+                bs = g.klines(p, "5m", 1000, start=start_ms, end=end_ms - 1)
+                break
+            except Exception as e:  # noqa: BLE001
+                if k == 3:  # never seal on partial data: abort; the next cron / catch-up retries
+                    raise RuntimeError(f"5m klines failed for {p}: {e}") from e
+                time.sleep(3 * (k + 1))
+        bs = [b for b in bs if start_ms <= b[0] <= last_open]
+        if not bs or bs[-1][0] != last_open:
+            return None
+        op, last = bs[0][1], bs[-1][4]
+        if op > 0 and last > 0:
+            return {"pair": p, "price": last, "chg24": (last / op - 1) * 100, "qv": sum(b[5] for b in bs),
+                    "high": max(b[2] for b in bs)}
+        return None
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=KLINE_WORKERS) as ex:
+        out = [r for r in ex.map(one, sorted(set(pairs))) if r]
+    out.sort(key=lambda r: (-r["chg24"], r["pair"]))
+    for i, r in enumerate(out):
+        r["rank"] = i + 1
+    return out
+
+
+def build_scorecard(date, allt, day, picks_main, peak_bars=None):
+    """Pure scoring (rules unchanged): flags = 🔥/⚡ snapshot entries + main buys timestamped BEFORE 23:55 D
+    (from snapshot batches taken at/before 23:55 D); EARLY if rank_24h_at_flag > 20 and 24h % < +15% at flag
+    time, else LATE. Top 20 = `allt` (kline-based, as of 23:55 D). peak_bars(pair) → 1h bars ending at cutoff."""
+    cutoff = seal_cutoff(date)
     top20 = allt[:20]
     top_pairs = [r["pair"] for r in top20]
     by_pair = {r["pair"]: r for r in allt}
-    day = jload(os.path.join(SNAP, date + ".json"), {"batches": []})
-    flags = [e for b in day["batches"] for e in b.get("entries", []) if e["tier"] in ("pump", "early2", "early")] + main_picks_on(date)
+    batches = [b for b in day.get("batches", []) if pt(b["picked_at"]) <= cutoff]
+    ents = [e for b in batches for e in b.get("entries", []) if pt(e["picked_at"]) < cutoff]
+    flags = [e for e in ents if e["tier"] in ("pump", "early2", "early")] + picks_main
     first = {}
-    for e in sorted(flags, key=lambda x: x["picked_at"]):
+    for e in sorted(flags, key=lambda x: (pt(x["picked_at"]), x["pair"], x["tier"])):
         first.setdefault(e["pair"], {"first": e, "tiers": set()})["tiers"].add(e["tier"])
     rows = []
-    for pair, v in first.items():
+    for pair, v in sorted(first.items(), key=lambda kv: (pt(kv[1]["first"]["picked_at"]), kv[0])):
         e = v["first"]
         rk, c24 = e.get("rank_24h_at_pick"), e.get("change_24h_at_pick")
         late = (rk is not None and rk <= 20) or (c24 is not None and c24 >= 15)
@@ -402,10 +479,10 @@ def scorecard(date=None):
                "entry_price_usd": e.get("entry_price_usd"), "late": bool(late), "in_top20": in_top,
                "final_rank": top_pairs.index(pair) + 1 if in_top else None,
                "final_change_24h": round(by_pair[pair]["chg24"], 2) if pair in by_pair else None}
-        if in_top:
+        if in_top and peak_bars:
             try:
-                bars = g.klines(pair, "1h", 24)
-                pk = max(bars, key=lambda b: b[2])
+                bars = peak_bars(pair)
+                pk = max(bars, key=lambda b: (b[2], -b[0]))
                 row["peak_time"] = iso(datetime.datetime.fromtimestamp(pk[0] / 1000, TZ))
                 row["lead_h"] = round((pk[0] / 1000 - pt(e["picked_at"]).timestamp()) / 3600, 1)
             except Exception:  # noqa: BLE001
@@ -418,11 +495,15 @@ def scorecard(date=None):
     caught = {r["pair"] for r in early_hits}
     top10 = set(top_pairs[:10])
     pc = lambda a, b: round(a / b * 100, 1) if b else None
-    card = {
-        "date": date, "scheduled_for": f"{date}T23:55:00+08:00", "taken_at": iso(t0), "universe_all": len(allt), "excluded_tokenized": len(g.TOKENIZED), "tokenized_source": g.TOKENIZED_SOURCE,
-        "rule": ("Top 20 = ALL Binance USDT spot pairs (stables / leveraged excluded, no volume floor) by 24h %, "
-                 "taken at the 23:55 Asia/Shanghai run. A flag is EARLY only if rank_24h_at_flag > 20 and 24h % < +15% "
-                 "at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately."),
+    return {
+        "date": date, "scheduled_for": iso(cutoff), "taken_at": iso(cutoff), "as_of": iso(cutoff),
+        "method": "kline_asof_2355_v1",
+        "universe_all": len(allt), "excluded_tokenized": len(g.TOKENIZED), "tokenized_source": g.TOKENIZED_SOURCE,
+        "rule": ("Top 20 = ALL Binance USDT spot pairs (stables / leveraged / tokenized excluded, no volume floor) by 24h %, "
+                 "computed from Binance 5m klines AS OF 23:55 Asia/Shanghai (close of the 5m bar ending 23:55 vs open 24h "
+                 "earlier) — never the live ticker at run time, so any re-run gives the same seal. Only flags timestamped "
+                 "before 23:55 (from snapshot batches taken by 23:55) count. A flag is EARLY only if rank_24h_at_flag > 20 "
+                 "and 24h % < +15% at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately."),
         "flagged": len(rows), "early_flagged": len(early_rows), "late_flagged": len(late_rows),
         "early_hits": len(early_hits), "late_hits": len(late_hits),
         "precision_pct": pc(len(early_hits), len(early_rows)),
@@ -438,11 +519,53 @@ def scorecard(date=None):
         "top20": [{"symbol": r["pair"][:-4], "rank": r["rank"], "change_24h": round(r["chg24"], 2), "quote_volume_24h": round(r["qv"])} for r in top20],
         "flags": rows,
         "by_tier": by_tier(rows),
-        "x_split": x_split([e for b in day["batches"] for e in b.get("entries", [])]),
+        "x_split": x_split(ents, cutoff),
     }
-    jsave(os.path.join(CARD, date + ".json"), card)
-    print(f"scorecard {date}: flagged {len(rows)} (early {len(early_rows)} / late {len(late_rows)}), "
-          f"early hits {len(early_hits)}, late hits {len(late_hits)}, recall {card['recall_top20_pct']}%")
+
+
+def scorecard(date=None, t0=None):
+    """Seal day `date` (Asia/Shanghai) once. No-op if already sealed; refuses before 23:56 D.
+    Writes sealed:true + sealed_at. Output (minus sealed_at) is deterministic."""
+    t0 = t0 or now()
+    date = date or scheduled_date(t0)
+    fn = card_path(date)
+    if is_sealed(fn):
+        print(f"scorecard {date}: already sealed ({jload(fn, {}).get('sealed_at')}) — not touched")
+        return False
+    cutoff = seal_cutoff(date)
+    if t0 < cutoff + datetime.timedelta(minutes=1):
+        print(f"scorecard {date}: too early ({iso(t0)} < {iso(cutoff)} + 1m) — not sealed")
+        return False
+    end_ms = int(cutoff.timestamp() * 1000)
+    allt = gainers_at(cutoff)
+    day = jload(os.path.join(SNAP, date + ".json"), {"batches": []})
+    card = build_scorecard(date, allt, day, main_picks_on(date, cutoff),
+                           peak_bars=lambda p: g.klines(p, "1h", 24, start=end_ms - 24 * 3600000, end=end_ms - 1))
+    card["sealed"] = True
+    card["sealed_at"] = iso(t0)
+    late_min = int((t0 - cutoff).total_seconds() // 60)
+    card["seal_note"] = "準時 23:55 封印" if late_min <= 10 else f"補封印（run 遲 {late_min} 分鐘；數據照 23:55 K 線計，同準時一樣）"
+    jsave(fn, card)
+    print(f"scorecard {date}: SEALED flagged {card['flagged']} (early {card['early_flagged']} / late {card['late_flagged']}), "
+          f"early hits {card['early_hits']}, late hits {card['late_hits']}, recall {card['recall_top20_pct']}%")
+    return True
+
+
+def seal_due(t0=None):
+    """Catch-up: seal every day D in the last CATCHUP_DAYS (>= SEAL_SINCE) whose 23:55 has passed and isn't sealed.
+    Safe to run from every cron (idempotent; deterministic)."""
+    t0 = t0 or now()
+    n = 0
+    for k in range(CATCHUP_DAYS, -1, -1):
+        date = (t0.astimezone(TZ) - datetime.timedelta(days=k)).strftime("%Y-%m-%d")
+        if date < SEAL_SINCE or is_sealed(card_path(date)):
+            continue
+        if t0 >= seal_cutoff(date) + datetime.timedelta(minutes=1):
+            try:
+                n += bool(scorecard(date, t0))
+            except Exception as e:  # noqa: BLE001
+                print("seal_due fail", date, e, file=sys.stderr)
+    return n
 
 
 # ---------------- summary ----------------
@@ -523,13 +646,17 @@ def summary():
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "hourly"
     if cmd == "hourly":
-        seal(); snapshot(); summary()
+        seal(); snapshot(); seal_due(); summary()
     elif cmd == "seal":
         seal(); summary()
     elif cmd == "snapshot":
         snapshot(); summary()
     elif cmd == "scorecard":
-        scorecard(sys.argv[2] if len(sys.argv) > 2 else None); summary()
+        if len(sys.argv) > 2:
+            scorecard(sys.argv[2])
+        else:
+            seal_due()
+        summary()
     elif cmd == "summary":
         summary()
     else:

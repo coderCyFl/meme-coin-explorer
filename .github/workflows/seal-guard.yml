@@ -1,0 +1,26 @@
+# Sealed daily scorecards (data/gainer_board/daily_vs_gainers/*.json with sealed:true) are immutable.
+name: Seal guard
+on:
+  push:
+    paths: ["data/gainer_board/daily_vs_gainers/**", "scripts/gainer_board.py", "scripts/check_seals.py", "tests/**"]
+  pull_request:
+    paths: ["data/gainer_board/daily_vs_gainers/**", "scripts/gainer_board.py", "scripts/check_seals.py", "tests/**"]
+  workflow_dispatch:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Tests
+        run: python3 -m py_compile scripts/gainer_board.py scripts/check_seals.py && python3 -m unittest discover -s tests -v
+      - name: Sealed files unchanged vs base
+        run: |
+          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then BASE=HEAD~1; fi
+          python3 scripts/check_seals.py --base "$BASE"
