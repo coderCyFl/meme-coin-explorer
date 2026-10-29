@@ -103,3 +103,13 @@
 {"ts": "2026-10-29T20:37:36+08:00", "symbol": null, "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
 {"ts": "2026-10-29T21:05:00+08:00", "symbol": "牛来USDT", "tool": "counts", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
 {"ts": "2026-10-29T21:05:00+08:00", "symbol": "牛来USDT", "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "PEPEUSDT", "tool": "counts", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 20}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "PEPEUSDT", "tool": "search", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "BICOUSDT", "tool": "counts", "query": "($BICO OR #BICO) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "BICOUSDT", "tool": "search", "query": "($BICO OR #BICO) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "LSKUSDT", "tool": "counts", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "LSKUSDT", "tool": "search", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "PYTHUSDT", "tool": "counts", "query": "($PYTH OR #PYTH) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "PYTHUSDT", "tool": "search", "query": "($PYTH OR #PYTH) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "ZROUSDT", "tool": "counts", "query": "($ZRO OR #ZRO) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-10-30T00:06:39+08:00", "symbol": "ZROUSDT", "tool": "search", "query": "($ZRO OR #ZRO) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
