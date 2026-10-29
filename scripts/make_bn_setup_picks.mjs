@@ -27,28 +27,45 @@ const MAJORS = new Set(["BTC","ETH","SOL","BNB"]);
 // TP +10% / SL −4% / review 6h / sell_by 12h for normal AND weak tape (weak keeps half size).
 // Replay of the 50 sealed buys: EW −2.03% vs −3.15% (+8/−5/24h same trades). 🚀 chase keeps CH.* (unchanged).
 export const SETUP_EXIT = { tp: 10, sl: 4, reviewH: 6, sellH: 12 };
-// ¼ size gate: setup picks at ¼ until rolling 7d average sealed EW of setup buys (24h seal, non-chase) > 0.
+// ¼ size gate: setup picks at ¼ until the rolling 7d average SEALED exit-aware return of setup buys (non-chase) > 0.
+// "Sealed" = the same record snapshot_outcomes.py writes as the pick's seal: the first horizon in horizons_h
+// (record.return_pct, exit-aware: SL/TP walked on 5m bars up to min(horizon, sell_by)). New setup picks
+// (exit_rule setup_20261030e) seal at their 12h sell_by; legacy picks keep their recorded seal (24h). No 24h-only filter.
 export const QUARTER = { mult: 0.25, windowD: 7 };
+export function sealHoursOf(e) {
+  const hz = Math.min(...((e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168]));
+  const t0 = Date.parse(e.created_at), sb = e.sell_by ? Date.parse(e.sell_by) : NaN;
+  const sbH = isFinite(sb) && isFinite(t0) ? Math.round((sb - t0) / 3600e3) : null;
+  return sbH != null && sbH > 0 && sbH < hz ? sbH : hz;
+}
 export function setupSizeGate(outcomes, picksDoc, nowMs = Date.now()) {
   const idx = new Map();
   for (const b of picksDoc.batches || []) for (const e of b.entries || []) idx.set(e.id, e);
   const since = nowMs - QUARTER.windowD * 86400e3;
-  const rets = [];
+  const seal = new Map(); // pick_id → seal record (first horizon written by snapshot_outcomes)
   for (const r of (outcomes && outcomes.records) || []) {
-    if (r.horizon_h !== 24 || r.return_pct == null) continue;
+    if (r.return_pct == null) continue;
     const e = idx.get(r.pick_id);
     if (!e || e.type !== "buy" || e.tier === "chase") continue;
-    const t = Date.parse(e.created_at);
-    if (!(t >= since)) continue;
+    const firstH = Math.min(...((e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168]));
+    if (r.horizon_h !== firstH) continue;
+    if (!(Date.parse(e.created_at) >= since)) continue;
+    seal.set(r.pick_id, { r, e });
+  }
+  const rets = [], byH = {};
+  for (const { r, e } of seal.values()) {
     rets.push(+r.return_pct);
+    const h = sealHoursOf(e);
+    byH[h + "h"] = (byH[h + "h"] || 0) + 1;
   }
   const ew = rets.length ? rets.reduce((a, b) => a + b, 0) / rets.length : null;
   const on = ew != null && ew > 0;
   return {
     size: on ? "full" : "quarter",
-    rolling7d_ew_pct: ew == null ? null : +ew.toFixed(2),
+    rolling7d_sealed_ew_pct: ew == null ? null : +ew.toFixed(2),
     n: rets.length,
-    rule: "setup picks ¼ size until rolling 7d avg sealed 24h EW (non-chase buys) > 0; 🚀 chase always full",
+    seal_hours: byH,
+    rule: "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase always full",
   };
 }
 
@@ -458,7 +475,7 @@ async function main() {
   const btcPx = +tickers.get("BTCUSDT")?.lastPrice || btcDaily.at(-1)?.c;
   const solPx = +tickers.get("SOLUSDT")?.lastPrice;
 
-  let sizeGate = { size: "quarter", rolling7d_ew_pct: null, n: 0, rule: "no outcomes → ¼ (fail-safe)" };
+  let sizeGate = { size: "quarter", rolling7d_sealed_ew_pct: null, seal_hours: {}, n: 0, rule: "no outcomes → ¼ (fail-safe)" };
   try {
     const outc = JSON.parse(fs.readFileSync(path.join(ROOT, "data/outcomes.json"), "utf8"));
     sizeGate = setupSizeGate(outc, docEarly, now.getTime());

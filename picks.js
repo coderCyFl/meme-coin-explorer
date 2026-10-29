@@ -58,8 +58,8 @@
 
   /**
    * Paper sell-timing for AI picks / open positions.
-   * Fixed transparent rules (not a promise): normal 24h review +8/−5; weak 12h +5/−4.
-   * Aligns with 24h outcomes seal; 72h as second look when not weak.
+   * Fixed transparent rules (not a promise). Legacy (pre-20261030e): normal 24h review +8/−5; weak 12h +5/−4.
+   * Setup picks from 20261030e: SETUP_EXIT below (6h review / 12h sell_by = the exit-aware seal); 🚀 uses momentumExitPlan.
    */
   /** Setup-pick exit (Strategy+QA dry-run 2026-10-30, stamp 20261030e): TP +10% / SL −4% / 6h 檢討 / 最遲 12h 沽 —
    * same for normal + weak tape (weak keeps half size). Mirrors make_bn_setup_picks.mjs SETUP_EXIT. 🚀/🔥 unchanged. */
@@ -74,20 +74,24 @@
     const c = setupGateFromOutcomes();
     return c ? c.size === "quarter" : true;
   }
-  /** Mirror of make_bn_setup_picks.mjs setupSizeGate: rolling 7d avg sealed 24h return of non-chase buys > 0 → full. */
+  /** Mirror of make_bn_setup_picks.mjs setupSizeGate: rolling 7d avg SEALED exit-aware return_pct of non-chase buys > 0 → full.
+   * Seal = the pick's first-horizon outcome record (what snapshot_outcomes.py writes; 12h sell_by for setup_20261030e, legacy 24h). */
   function setupGateFromOutcomes() {
     if (!S.picks || !S.picks.batches || !Array.isArray(S.outcomes) || !S.outcomes.length) return null;
     const byId = new Map();
     for (const b of S.picks.batches) for (const e of b.entries || []) byId.set(e.id, e);
     const since = Date.now() - 7 * 86400e3;
-    const rets = [];
+    const seal = new Map();
     for (const r of S.outcomes) {
-      if (r.horizon_h !== 24 || r.return_pct == null) continue;
+      if (r.return_pct == null) continue;
       const e = byId.get(r.pick_id);
       if (!e || e.type !== "buy" || e.tier === "chase") continue;
+      const firstH = Math.min(...((e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168]));
+      if (r.horizon_h !== firstH) continue;
       if (!(Date.parse(e.created_at) >= since)) continue;
-      rets.push(+r.return_pct);
+      seal.set(r.pick_id, +r.return_pct);
     }
+    const rets = [...seal.values()];
     if (!rets.length) return { size: "quarter", ew: null, n: 0 };
     const ew = rets.reduce((x, y) => x + y, 0) / rets.length;
     return { size: ew > 0 ? "full" : "quarter", ew, n: rets.length };
@@ -103,9 +107,20 @@
     const baseOk = !isNaN(baseMs);
     const reviewAt = baseOk ? new Date(baseMs + rh * 3600e3) : null;
     const secondAt = baseOk ? new Date(baseMs + sh * 3600e3) : null;
-    const pastReview = reviewAt ? Date.now() >= reviewAt.getTime() : false;
+    // 20261030e setup plan (6h review / 12h sell_by): the 6h review is a LABEL only — never a sell/"due" signal.
+    // Only TP +10 / SL −4 / sell_by 12h close (same as snapshot_outcomes seal). pastReview therefore flips at sell_by.
+    const labelOnlyReview = rh === SETUP_EXIT.reviewH && sh === SETUP_EXIT.secondH; // weak tape too (same exit, half size)
+    const reviewPassed = reviewAt ? Date.now() >= reviewAt.getTime() : false;
+    const pastSellBy = secondAt ? Date.now() >= secondAt.getTime() : false;
+    const pastReview = labelOnlyReview ? pastSellBy : reviewPassed;
     let whenText;
-    if (!reviewAt) {
+    if (labelOnlyReview && reviewAt) {
+      whenText = pastSellBy
+        ? `已到 ${sh}h 最遲沽時間`
+        : reviewPassed
+          ? `已過 ${rh}h 檢討（只係睇，唔使沽）· 最遲 ${frTime(secondAt)} 沽`
+          : `${frTime(reviewAt)} 檢討（唔使沽）· 最遲 ${frTime(secondAt)} 沽`;
+    } else if (!reviewAt) {
       whenText = `約 ${rh}h 後再睇`;
     } else if (pastReview) {
       whenText = isWeak
@@ -122,7 +137,7 @@
       }
     }
     return {
-      reviewAt, secondAt, reviewH: rh, secondH: sh, tp, sl, weak: isWeak, pastReview,
+      reviewAt, secondAt, reviewH: rh, secondH: sh, tp, sl, weak: isWeak, pastReview, labelOnlyReview,
       whenText, tpText: `紙上 +${tp}%／-${sl}%`, trimNote,
     };
   }
@@ -347,8 +362,10 @@
         : [chip("exit-tp", "🎯 {target}"), chip("exit-sl", "止蝕 {stop}"), chip("exit-when", "揸到 {review}")];
       return el("div", exitLiveAttrs(pair, plan, basePx, { class: className, title: "而家落倉嘅話：目標／止蝕同落倉窗、持倉用同一條公式同一個即時價；落倉會由而家起計新嘅持有時間" }), ...kids);
     }
-    const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
-    const holdTxt = plan.pastReview ? "宜決定賣定留" : ("揸到 " + (whenClean || plan.whenText));
+    const whenClean = plan.labelOnlyReview && plan.secondAt
+      ? `最遲 ${frTime(plan.secondAt)}（${plan.secondH}h）`
+      : String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
+    const holdTxt = plan.pastReview ? (plan.labelOnlyReview ? "已到最遲沽時間 · 宜沽" : "宜決定賣定留") : ("揸到 " + (whenClean || plan.whenText));
     const kids = plan.momentum ? [
       el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: plan.whenText }),
       el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp + "% 放一半" }),
@@ -478,14 +495,16 @@
     } else {
       main = `${price(targetPx)}（+${tp}%）可考慮放`;
     }
-    const whenClean = String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
+    const whenClean = plan.labelOnlyReview && plan.secondAt
+      ? `最遲 ${frTime(plan.secondAt)}（${plan.secondH}h）`
+      : String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
     const hold = reached
-      ? (plan.pastReview ? "已過檢視時間 · 宜決定賣定留" : `到目標可減倉；否則持有至 ${whenClean || plan.whenText}`)
+      ? (plan.pastReview ? (plan.labelOnlyReview ? "已到最遲沽時間 · 宜沽" : "已過檢視時間 · 宜決定賣定留") : `到目標可減倉；否則持有至 ${whenClean || plan.whenText}`)
       : (plan.pastReview
-        ? `未到目標 · 已過檢視時間，宜決定賣定留定再 hold`
+        ? (plan.labelOnlyReview ? `未到目標 · 已到 ${plan.secondH}h 最遲沽時間，宜沽` : `未到目標 · 已過檢視時間，宜決定賣定留定再 hold`)
         : `${whenClean || plan.whenText} 再決定（而家未到目標）`);
     const stop = `${price(stopPx)}（−${sl}%）· 紙上參考`;
-    const untilText = plan.pastReview ? "宜決定" : (whenClean ? "揸到 " + whenClean : "");
+    const untilText = plan.pastReview ? (plan.labelOnlyReview ? "宜沽" : "宜決定") : (whenClean ? "揸到 " + whenClean : "");
     return { main, hold, stop, basePx: entryPx, targetPx, stopPx, reached, pastReview: plan.pastReview, tp, sl, untilText };
   }
 
@@ -3051,7 +3070,7 @@
       const hm = sh(ms).slice(11, 16), day = sh(ms).slice(0, 10), today = sh(Date.now()).slice(0, 10), tmr = sh(Date.now() + 86400e3).slice(0, 10);
       return day === today ? hm : day === tmr ? "明 " + hm : `${+day.slice(5, 7)}/${+day.slice(8, 10)} ${hm}`;
     };
-    const until = plan.pastReview ? "宜決定" : plan.momentum ? `最遲 ${shortT(plan.secondAt || plan.reviewAt)}` : `揸到 ${shortT(plan.reviewAt)}`;
+    const until = plan.pastReview ? (plan.labelOnlyReview ? "宜沽" : "宜決定") : plan.momentum ? `最遲 ${shortT(plan.secondAt || plan.reviewAt)}` : `揸到 ${shortT(plan.labelOnlyReview ? (plan.secondAt || plan.reviewAt) : plan.reviewAt)}`;
     const tgt = "🎯 " + price(g.targetPx);
     const l1 = r.kind === "lev" && r.px > 0 ? `爆 ${price(liqPriceLong(pos.entry, pos.leverage))} · ${tgt}` : tgt;
     const l2 = g.stopHit ? `止 ${price(g.stopPx)} · ${STOP_HIT_TXT}` : `止 ${price(g.stopPx)} · ${until}`;
