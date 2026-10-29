@@ -1,155 +1,158 @@
 {
- "fetched_at": "2026-10-24T08:10:00+08:00",
- "source": "X search_news via agent (static snapshot; site never calls X)",
- "stories": [
-  {
-   "id": "2113375546906439809",
-   "title": "Kimchi × Pump.fun 宣傳後 $KIMCHI 崩盤約 95%",
-   "title_en": "Kimchi-Pump.fun Promo Ends in $KIMCHI Token Crash",
-   "summary": "QR／宣傳帶動後帖文消失，幣由約 $15M 急插；鏈上有人低買高賣賺逾 $385K。Pump.fun 沉默，收入亦見跌。",
-   "summary_en": "Promo QR posts vanished within ~30 minutes after pumping to ~$15M; token crashed ~95%. On-chain wallets took >$385K; Pump.fun stayed silent.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113375546906439809",
-   "published_at": "2026-10-23T21:26:40.000Z",
-   "tags": [
-    "rug",
-    "pump",
-    "meme"
-   ],
-   "why_it_matters": "KOL／平台聯動 + 帖文秒刪 = 經典接盤形態。紙上跟買永遠唔好當名人幣係安全信號。",
-   "category": "News"
-  },
-  {
-   "id": "2113733132080017823",
-   "title": "Pump.fun 宣佈獎金賽，$KIMCHI 受害者叫 #BOYCOTTPUMPFUN",
-   "title_en": "Pump.fun Faces Boycott Calls After Rug and Prize Announcement",
-   "summary": "Alon 宣佈 10/26 起 squads 競賽（頭獎約 $1.5M），正當宣傳盤由 $15M 插到約 $284K；社群炮轟冇道歉。",
-   "summary_en": "Co-founder announced a $1.5M first-place squads contest starting Oct 26 right after a promoted token collapsed from ~$15M to ~$284K; #BOYCOTTPUMPFUN trends.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113733132080017823",
-   "published_at": "2026-10-23T20:53:33.000Z",
-   "tags": [
-    "rug",
-    "pump",
-    "market"
-   ],
-   "why_it_matters": "平台抽水繼續、問責慢。我哋實驗繼續避開極新鏈上盤，用 Binance 現貨驗證 setup。",
-   "category": "News"
-  },
-  {
-   "id": "2113688923763319020",
-   "title": "PEPE 市值重上約 $20 億，24h 急升約一成",
-   "title_en": "PEPE Memecoin Surges Past $2 Billion Market Cap",
-   "summary": "大盤偏淡時 PEPE 逆市抽上約 $2.05–2.1B；有人講累積後突破，亦有 whale／名人帖推動 FOMO。",
-   "summary_en": "PEPE rose ~10–14% in 24h to roughly $2.05–2.1B mcap amid mixed majors; charts and social FOMO cited.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113688923763319020",
-   "published_at": "2026-10-23T18:36:17.000Z",
-   "tags": [
-    "meme",
-    "market"
-   ],
-   "why_it_matters": "已經大升嘅幣唔好追——我哋 batch-006 將 PEPE 標做避過（already_up），啱晒「唔追 24h 急升」。",
-   "category": "News"
-  },
-  {
-   "id": "2113138256842006826",
-   "title": "Pump.fun 再轉約 $1400 萬 SOL 去 Kraken，累計賣盤龐大",
-   "title_en": "Pump.fun Transfers $14 Million in SOL to Kraken Amid Backlash",
-   "summary": "再有大額 SOL 落交易所；平台同時推 referral／橋／名人合作。支持者讚速度，批評者話賣 SOL 壓價。",
-   "summary_en": "Another ~$14M SOL chunk to Kraken; cumulative sales since 2024 cited near hundreds of millions SOL. Upgrades and influencer deals continue amid community backlash.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113138256842006826",
-   "published_at": "2026-10-22T10:08:35.000Z",
-   "tags": [
-    "pump",
-    "solana",
-    "market"
-   ],
-   "why_it_matters": "發射台收費→賣 SOL 係結構性賣壓敘事。跟買優先睇 CEX 流動性同結構，唔跟 launchpad FOMO。",
-   "category": "News"
-  },
-  {
-   "id": "2112981239082996037",
-   "title": "研究：九成九 meme 發射後短命，約 1% 先去到 DEX",
-   "title_en": "Most Meme Tokens Fail to Build Lasting Markets After Launch",
-   "summary": "ZeruAI 睇 3,374 次發射：只有約 1% 有機去到 DEX；多數開發者五分鐘內出貨；大量成交唔真實。",
-   "summary_en": "Of 3,374 launches, ~1% reached a DEX organically; 68.7% of devs sold within five minutes; much reported volume looked non-genuine.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112981239082996037",
-   "published_at": "2026-10-22T17:04:01.000Z",
-   "tags": [
-    "rug",
-    "market",
-    "solana"
-   ],
-   "why_it_matters": "支持主線淨用 Binance 公開行情：極新鏈上盤勝率極低，AI 要睇結構同流動性。",
-   "category": "News"
-  },
-  {
-   "id": "2113625024846553338",
-   "title": "Solana Alpenglow：最終確認快到約 150ms",
-   "title_en": "Solana Launches Alpenglow Upgrade for 150ms Transaction Finality",
-   "summary": "換走舊 TowerBFT；投票改離鏈證書，最終確認由約 12.8 秒大幅縮短。社群睇好 DeFi／支付用途。",
-   "summary_en": "Alpenglow activated ~Oct 21, cutting finality toward ~150ms by replacing TowerBFT with off-chain vote certificates.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113625024846553338",
-   "published_at": "2026-10-23T20:03:35.000Z",
-   "tags": [
-    "solana",
-    "infra"
-   ],
-   "why_it_matters": "基建變快唔等於 meme 會賺；結算快可以令 rug／插針更狠。紙上實驗仍然用 CEX 價誠實量度。",
-   "category": "News"
-  },
-  {
-   "id": "2112859560524288427",
-   "title": "多個公鏈聯署催 SEC 寫清「數位商品」規則",
-   "title_en": "Blockchain Groups Push SEC to Embed Digital Commodity Rules",
-   "summary": "Stellar／Hedera／Aptos／Ava／Cardano／Chainlink 等要求喺提案正文定義 digital commodity，唔好只靠口頭分類。",
-   "summary_en": "Major L1/infra teams urged the SEC to define digital commodity in Regulation Crypto Assets text, seeking secondary-trading clarity.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2112859560524288427",
-   "published_at": "2026-10-22T01:05:07.000Z",
-   "tags": [
-    "regulation",
-    "market"
-   ],
-   "why_it_matters": "監管清晰度影響大盤風險偏好；meme／山寨波動通常跟住風險情緒走。",
-   "category": "News"
-  },
-  {
-   "id": "2113401786073542943",
-   "title": "Ansem 轉謹慎：BTC／ETH／SOL 靠近支撐，寧願控風險",
-   "title_en": "Crypto Trader Ansem Shifts to Caution on Majors",
-   "summary": "有影響力交易員話寧願靈活離場，唔好硬做；SOL 約 $100–103 支撐區反覆。",
-   "summary_en": "Influential trader Ansem posted preference for risk management over forced trades as BTC/ETH/SOL sat near supports.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113401786073542943",
-   "published_at": "2026-10-22T22:53:54.000Z",
-   "tags": [
-    "market",
-    "btc",
-    "solana"
-   ],
-   "why_it_matters": "大盤謹慎時，弱市閘（半注／少隻）更合理；唔好當 KOL 一句就 All-in。",
-   "category": "Other"
-  },
-  {
-   "id": "2113363404802941325",
-   "title": "Pump.fun 上線 Pump Bridge：跨鏈買入更快、錯誤少約 92%",
-   "title_en": "Pump.fun Launches Pump Bridge for Faster Cross-Chain Trades",
-   "summary": "取代 Relay；平均完成時間約 3.88s→1.95s，錯誤率大降。方便入金炒 meme，亦縮短「接盤」時間窗。",
-   "summary_en": "In-house Pump Bridge cut cross-chain buy time ~3.88s→1.95s and error rate ~92%.",
-   "source": "X News",
-   "url": "https://x.com/i/trending/2113363404802941325",
-   "published_at": "2026-10-22T20:22:14.000Z",
-   "tags": [
-    "pump",
-    "infra"
-   ],
-   "why_it_matters": "入金漏斗愈順，FOMO 愈快。我哋仍然唔跟極新發射，只用 Binance 現貨做可量度實驗。",
-   "category": "Other"
-  }
- ]
+  "fetched_at": "2026-10-29T09:11:27+08:00",
+  "source": "X search_news via agent (static snapshot; site never calls X)",
+  "stories": [
+    {
+      "id": "2115519152639332849",
+      "title": "網紅 Mika 誤貼私鑰，$MIKA 開發錢包被掃約 $4 萬",
+      "title_en": "Crypto Influencer Mika Accidentally Posts Private Key, Loses $40K",
+      "summary": "10/28 發幣時貼錯私鑰，約 5 億枚 $MIKA 秒被搬走換約 380 SOL（~$4 萬）。鏈上量急升急跌，社區爭論係失手定操作。",
+      "summary_en": "During an Oct 28 memecoin launch, influencer Mika pasted a private key; ~500M $MIKA (~380 SOL / $38–40K) drained in seconds.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115519152639332849",
+      "published_at": "2026-10-29T00:01:30.000Z",
+      "tags": [
+        "rug",
+        "ops-risk",
+        "meme"
+      ],
+      "why_it_matters": "紙上跟買亦要當私鑰／合約地址係高風險；名人發幣唔等於安全，合約同金鑰操作失誤會即時爆倉。",
+      "category": "News"
+    },
+    {
+      "id": "2115453670053531864",
+      "title": "$LAUNCH 一小時由 $4M 跌到 ~$10 萬，疑似 rug",
+      "title_en": "$LAUNCH Crashes from $4M to $100K in One Hour",
+      "summary": "Solana launchpad uselaunch.fun 代幣 10/28 急崩；鏈上兩錢包提前套現，官帳同網站隨後消失，社區指 rug。",
+      "summary_en": "$LAUNCH for uselaunch.fun fell ~$4M→$100–200K on Oct 28; two wallets cashed out early; X/site vanished after a 'giving up' post.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115453670053531864",
+      "published_at": "2026-10-28T23:07:00.000Z",
+      "tags": [
+        "rug",
+        "launchpad",
+        "solana"
+      ],
+      "why_it_matters": "新 launchpad 幣極易一日內歸零；模擬倉跟買應避開「平台幣／自家盤」同開發者可任意撤帳嘅項目。",
+      "category": "News"
+    },
+    {
+      "id": "2115590355596792076",
+      "title": "Calacanis 稱 Bitcoin「死網絡」，粉絲開出 $300 萬對賭",
+      "title_en": "Jason Calacanis Calls Bitcoin Dead Network; $3M Betting Challenges",
+      "summary": "10/28 BTC 約 $81k（離高位低約 35%），Calacanis 預測 12 個月內到 $57k；Cardone 等各開 $100 萬對賭會再創新高。",
+      "summary_en": "With BTC near $81k, Calacanis called it a dead network and eyed $57k in 12 months; fans offered ~$3M in public bets it reclaims ATH.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115590355596792076",
+      "published_at": "2026-10-28T23:51:32.000Z",
+      "tags": [
+        "btc",
+        "macro",
+        "sentiment"
+      ],
+      "why_it_matters": "大盤情緒同 BTC 趨勢直接影響弱市閘同半注規則；跟買批次要睇 breadth／BTC 24h，唔好當名人言論係入場信號。",
+      "category": "News"
+    },
+    {
+      "id": "2115531686226391203",
+      "title": "大選後傳 Netanyahu 或推「Bibicoin」Solana meme",
+      "title_en": "Rumors of Netanyahu Memecoin After Close Election",
+      "summary": "以色列大選後網上熱傳「Bibicoin」；對照 $TRUMP 先例，但官方未確認，低市值仿盤已有。",
+      "summary_en": "After close election tallies, talk of a Netanyahu Solana memecoin spiked; parallels to $TRUMP, no confirmation, low-cap clones already exist.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115531686226391203",
+      "published_at": "2026-10-28T19:59:38.000Z",
+      "tags": [
+        "meme",
+        "politics",
+        "solana"
+      ],
+      "why_it_matters": "政治名人幣波動極大、仿盤眾多；紙上實驗可觀察，但唔適合當 AI 主推跟買。",
+      "category": "News"
+    },
+    {
+      "id": "2115473675747287460",
+      "title": "12 平台數據：平均 88.5% 交易者蝕錢",
+      "title_en": "88.5% of Crypto Traders Lose Money Across 12 Platforms",
+      "summary": "涵蓋約 3500 萬用戶，Pump.fun 蝕錢率約 97%、Binance Futures 約 80%；開發者從 Pump.fun 幣抽走約 $5.79 億。",
+      "summary_en": "Across 12 venues (~35M users) avg loss rate 88.5% (Pump.fun ~97%, Binance Futures ~80%); ~$579M pulled by devs from Pump.fun tokens.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115473675747287460",
+      "published_at": "2026-10-28T16:09:14.000Z",
+      "tags": [
+        "risk",
+        "retail",
+        "stats"
+      ],
+      "why_it_matters": "驗證我哋「假錢紙上倉」實驗嘅價值：用真實行情量度 AI 跟買勝率，先於真倉。",
+      "category": "News"
+    },
+    {
+      "id": "2115068555171438881",
+      "title": "Predict.fun 第三方文件被入侵，約 40 萬 USDT 被掃",
+      "title_en": "Predict.fun Hit by Unauthorized Wallet Drains (~400k USDT)",
+      "summary": "10/27 約 29 個連結錢包被掃；平台指第三方 API 文件站注入惡意腳本，承諾賠償，核心合約聲稱未中招。",
+      "summary_en": "~400k USDT drained from 29 wallets via compromised third-party API docs; Predict.fun pledged reimbursements; core contracts said intact.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115068555171438881",
+      "published_at": "2026-10-27T20:44:46.000Z",
+      "tags": [
+        "hack",
+        "security",
+        "cex-adjacent"
+      ],
+      "why_it_matters": "連結錢包／第三方文件都係攻擊面；模擬倉用戶亦應避免隨意授權不明 DApp。",
+      "category": "News"
+    },
+    {
+      "id": "2115042106884399281",
+      "title": "BNB Chain 代幣化資產 Q3 供應近 $50 億",
+      "title_en": "BNB Chain Tokenized Assets Surge in Q3 2026",
+      "summary": "RWA 供應升約 24% 至 $49.6 億；代幣化股票借貸爆發，持有人數由約 50 萬跳到 530 萬。",
+      "summary_en": "BNB Chain RWA supply +24% to $4.96B in Q3; tokenized equity lending surged; holders ~502k→5.3M.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115042106884399281",
+      "published_at": "2026-10-27T11:28:59.000Z",
+      "tags": [
+        "bnb",
+        "rwa",
+        "cex"
+      ],
+      "why_it_matters": "CEX／公鏈叙事轉移會改變熱錢流向；爆升表應繼續分開「現貨急升」同「長線叙事幣」。",
+      "category": "News"
+    },
+    {
+      "id": "2115019560730390580",
+      "title": "Binance 向巴西央行申請加密牌照",
+      "title_en": "Binance Applies for Brazil Crypto License",
+      "summary": "經 BBrasil 申請；巴西用戶已限制貸款／槓桿，並下架 22 個幣，現貨同穩定幣暫保留。",
+      "summary_en": "Binance filed via BBrasil; restricted loans/margin and delisted 22 tokens for BR users while spot/stables continue during review.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115019560730390580",
+      "published_at": "2026-10-27T18:05:23.000Z",
+      "tags": [
+        "binance",
+        "regulation"
+      ],
+      "why_it_matters": "監管落地會改變可交易池；我哋紙上盤只跟 Binance 公開 USDT 現貨，要留意下架名單。",
+      "category": "News"
+    },
+    {
+      "id": "2115228362104807889",
+      "title": "Litecoin 發「Doge 寶寶」雞圖，帶起一輪 meme",
+      "title_en": "Litecoin Posts Fluffy Chicken as Dogecoin Baby",
+      "summary": "官方 X 貼 Chikun／Doge 聯動圖，社區喊 Arise Chikun；鏈上出現 Dogecock、CHIMKEM、LITEDOGE 等跟風幣。",
+      "summary_en": "Litecoin's official account posted a Chikun×Doge baby meme; fans revived Arise Chikun; copycat memecoins launched quickly.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115228362104807889",
+      "published_at": "2026-10-27T23:51:29.000Z",
+      "tags": [
+        "meme",
+        "ltc",
+        "doge"
+      ],
+      "why_it_matters": "官帳 meme 可短暫帶熱；跟風幣多數一日幣，唔應入 AI 主推表。",
+      "category": "News"
+    }
+  ]
 }
