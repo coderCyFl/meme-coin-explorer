@@ -10,7 +10,11 @@
    "status": "live",
    "return_pct": -20.79,
    "btc_return_pct": -4.02,
-   "sol_return_pct": -4.83
+   "sol_return_pct": -4.83,
+   "return_pct_eod": -20.79,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0006309
   },
   {
    "pick_id": "20261022-001-GATO",
@@ -21,7 +25,11 @@
    "status": "live",
    "return_pct": 24.36,
    "btc_return_pct": -4.02,
-   "sol_return_pct": -4.83
+   "sol_return_pct": -4.83,
+   "return_pct_eod": 24.36,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.003425
   },
   {
    "pick_id": "20261022-001-GLITCH",
@@ -32,7 +40,11 @@
    "status": "live",
    "return_pct": -11.46,
    "btc_return_pct": -4.02,
-   "sol_return_pct": -4.83
+   "sol_return_pct": -4.83,
+   "return_pct_eod": -11.46,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.001784
   },
   {
    "pick_id": "20261022-001-POKECITY",
@@ -43,7 +55,11 @@
    "status": "live",
    "return_pct": -99.83,
    "btc_return_pct": -4.02,
-   "sol_return_pct": -4.83
+   "sol_return_pct": -4.83,
+   "return_pct_eod": -99.83,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2.276e-06
   },
   {
    "pick_id": "20261022-001-CHUD",
@@ -54,7 +70,11 @@
    "status": "live",
    "return_pct": -99.81,
    "btc_return_pct": -4.02,
-   "sol_return_pct": -4.83
+   "sol_return_pct": -4.83,
+   "return_pct_eod": -99.81,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2.227e-06
   },
   {
    "pick_id": "20261022-001-CBUCKS",
@@ -65,7 +85,11 @@
    "status": "live",
    "return_pct": -10.13,
    "btc_return_pct": -4.02,
-   "sol_return_pct": -4.83
+   "sol_return_pct": -4.83,
+   "return_pct_eod": -10.13,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0009733
   },
   {
    "pick_id": "20261022-002-XRP",
@@ -79,7 +103,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -6.5,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.3008
   },
   {
    "pick_id": "20261022-002-ETH",
@@ -93,7 +121,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -4.38,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2383.31
   },
   {
    "pick_id": "20261022-002-PEOPLE",
@@ -107,7 +139,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.41,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00799
   },
   {
    "pick_id": "20261022-002-ANIME",
@@ -121,7 +157,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -4.84,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00275
   },
   {
    "pick_id": "20261022-002-BONK",
@@ -135,7 +175,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -6.5,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 3.02e-06
   },
   {
    "pick_id": "20261022-002-BOME",
@@ -149,7 +193,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -7.29,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0005989
   },
   {
    "pick_id": "20261022-002-W",
@@ -163,7 +211,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -11.36,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01311
   },
   {
    "pick_id": "20261022-002-ENA",
@@ -177,7 +229,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -7.91,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1991
   },
   {
    "pick_id": "20261022-002-AVOID-WLD",
@@ -191,7 +247,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -4.07,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5467
   },
   {
    "pick_id": "20261022-002-AVOID-TIA",
@@ -205,7 +265,11 @@
    "sol_return_pct": -4.34,
    "due_at": "2026-10-23T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.64,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5603
   },
   {
    "pick_id": "20261022-003-TRUMP",
@@ -219,7 +283,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -7.81,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.724
   },
   {
    "pick_id": "20261022-003-TIA",
@@ -233,7 +301,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.85,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5601
   },
   {
    "pick_id": "20261022-003-PEPE",
@@ -247,7 +319,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -6.41,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.38e-06
   },
   {
    "pick_id": "20261022-003-PYTH",
@@ -261,7 +337,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.15,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.07295
   },
   {
    "pick_id": "20261022-003-SEI",
@@ -275,7 +355,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -10.71,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.05688
   },
   {
    "pick_id": "20261022-003-ARB",
@@ -289,7 +373,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.1,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1787
   },
   {
    "pick_id": "20261022-003-AVOID-ENA",
@@ -303,7 +391,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.16,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1984
   },
   {
    "pick_id": "20261022-003-AVOID-PEOPLE",
@@ -317,7 +409,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -10.25,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00788
   },
   {
    "pick_id": "20261022-003-AVOID-W",
@@ -331,7 +427,11 @@
    "sol_return_pct": -4.92,
    "due_at": "2026-10-23T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -12.42,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01304
   },
   {
    "pick_id": "20261022-004-TRUMP",
@@ -345,7 +445,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -7.77,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.721
   },
   {
    "pick_id": "20261022-004-TIA",
@@ -359,7 +463,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.34,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5617
   },
   {
    "pick_id": "20261022-004-PEPE",
@@ -373,7 +481,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -6.02,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.37e-06
   },
   {
    "pick_id": "20261022-004-PYTH",
@@ -387,7 +499,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -9.13,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.07295
   },
   {
    "pick_id": "20261022-004-ARB",
@@ -401,7 +517,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -8.44,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.179
   },
   {
    "pick_id": "20261022-004-UNI",
@@ -415,7 +535,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -8.01,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 6.986
   },
   {
    "pick_id": "20261022-004-AVOID-PEOPLE",
@@ -429,7 +553,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -10.97,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00787
   },
   {
    "pick_id": "20261022-004-AVOID-W",
@@ -443,7 +571,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -12.29,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01306
   },
   {
    "pick_id": "20261022-004-AVOID-ENA",
@@ -457,7 +589,11 @@
    "sol_return_pct": -4.61,
    "due_at": "2026-10-23T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-23T05:17:29+08:00"
+   "sealed_run_at": "2026-10-23T05:17:29+08:00",
+   "return_pct_eod": -8.87,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1983
   },
   {
    "pick_id": "20261023-005-WLD",
@@ -466,12 +602,16 @@
    "price_usd": 0.4749,
    "liquidity_usd": 66333740.22319,
    "status": "live",
-   "return_pct": -13.69,
+   "return_pct": -4.0,
    "btc_return_pct": -0.98,
    "sol_return_pct": -1.51,
    "due_at": "2026-10-24T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T10:02:53+08:00"
+   "sealed_run_at": "2026-10-24T10:02:53+08:00",
+   "return_pct_eod": -13.69,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.528192
   },
   {
    "pick_id": "20261023-005-ATOM",
@@ -480,12 +620,16 @@
    "price_usd": 1.69,
    "liquidity_usd": 3869397.96559,
    "status": "live",
-   "return_pct": -2.03,
+   "return_pct": 5.0,
    "btc_return_pct": -0.98,
    "sol_return_pct": -1.51,
    "due_at": "2026-10-24T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T10:02:53+08:00"
+   "sealed_run_at": "2026-10-24T10:02:53+08:00",
+   "return_pct_eod": -2.03,
+   "exit_reason": "take_profit",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.8112500000000002
   },
   {
    "pick_id": "20261023-005-AAVE",
@@ -499,7 +643,11 @@
    "sol_return_pct": -1.51,
    "due_at": "2026-10-24T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T10:02:53+08:00"
+   "sealed_run_at": "2026-10-24T10:02:53+08:00",
+   "return_pct_eod": -3.03,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 143.18
   },
   {
    "pick_id": "20261023-005-RENDER",
@@ -513,7 +661,11 @@
    "sol_return_pct": -1.51,
    "due_at": "2026-10-24T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T10:02:53+08:00"
+   "sealed_run_at": "2026-10-24T10:02:53+08:00",
+   "return_pct_eod": -2.21,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 1.727
   },
   {
    "pick_id": "20261023-006-WLD",
@@ -522,12 +674,16 @@
    "price_usd": 0.4678,
    "liquidity_usd": 79789389.63896,
    "status": "live",
-   "return_pct": -14.7,
+   "return_pct": -5.0,
    "btc_return_pct": -1.3,
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -14.7,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.52098
   },
   {
    "pick_id": "20261023-006-RENDER",
@@ -536,12 +692,16 @@
    "price_usd": 1.7,
    "liquidity_usd": 3228361.16655,
    "status": "live",
-   "return_pct": -4.92,
+   "return_pct": -5.0,
    "btc_return_pct": -1.3,
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -4.92,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.6985999999999999
   },
   {
    "pick_id": "20261023-006-ATOM",
@@ -550,12 +710,16 @@
    "price_usd": 1.647,
    "liquidity_usd": 3155595.4386,
    "status": "live",
-   "return_pct": -8.65,
+   "return_pct": -5.0,
    "btc_return_pct": -1.3,
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -8.65,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.7128499999999998
   },
   {
    "pick_id": "20261023-006-AAVE",
@@ -564,12 +728,16 @@
    "price_usd": 140.79,
    "liquidity_usd": 13452173.11881,
    "status": "live",
-   "return_pct": -5.42,
+   "return_pct": -5.0,
    "btc_return_pct": -1.3,
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -5.42,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 141.417
   },
   {
    "pick_id": "20261023-006-1000SATS",
@@ -583,7 +751,11 @@
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -2.96,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 1.016e-05
   },
   {
    "pick_id": "20261023-006-SUI",
@@ -592,12 +764,16 @@
    "price_usd": 0.9458,
    "liquidity_usd": 31673190.4725,
    "status": "live",
-   "return_pct": -5.18,
+   "return_pct": -5.0,
    "btc_return_pct": -1.3,
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -5.18,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.947625
   },
   {
    "pick_id": "20261023-006-AVOID-PEPE",
@@ -611,7 +787,11 @@
    "sol_return_pct": -2.55,
    "due_at": "2026-10-24T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-24T17:07:04+08:00"
+   "sealed_run_at": "2026-10-24T17:07:04+08:00",
+   "return_pct_eod": -10.79,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.38e-06
   },
   {
    "pick_id": "20261022-001-LARPCHECK",
@@ -622,7 +802,11 @@
    "status": "live",
    "return_pct": -17.66,
    "btc_return_pct": -5.31,
-   "sol_return_pct": -6.97
+   "sol_return_pct": -6.97,
+   "return_pct_eod": -17.66,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0006558
   },
   {
    "pick_id": "20261022-001-GATO",
@@ -633,7 +817,11 @@
    "status": "live",
    "return_pct": 20.26,
    "btc_return_pct": -5.31,
-   "sol_return_pct": -6.97
+   "sol_return_pct": -6.97,
+   "return_pct_eod": 20.26,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.003312
   },
   {
    "pick_id": "20261022-001-GLITCH",
@@ -644,7 +832,11 @@
    "status": "live",
    "return_pct": 14.64,
    "btc_return_pct": -5.31,
-   "sol_return_pct": -6.97
+   "sol_return_pct": -6.97,
+   "return_pct_eod": 14.64,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00231
   },
   {
    "pick_id": "20261022-001-POKECITY",
@@ -655,7 +847,11 @@
    "status": "live",
    "return_pct": -99.83,
    "btc_return_pct": -5.31,
-   "sol_return_pct": -6.97
+   "sol_return_pct": -6.97,
+   "return_pct_eod": -99.83,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2.204e-06
   },
   {
    "pick_id": "20261022-001-CHUD",
@@ -666,7 +862,11 @@
    "status": "live",
    "return_pct": -99.82,
    "btc_return_pct": -5.31,
-   "sol_return_pct": -6.97
+   "sol_return_pct": -6.97,
+   "return_pct_eod": -99.82,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2.059e-06
   },
   {
    "pick_id": "20261022-001-CBUCKS",
@@ -677,7 +877,11 @@
    "status": "live",
    "return_pct": 12.93,
    "btc_return_pct": -5.31,
-   "sol_return_pct": -6.97
+   "sol_return_pct": -6.97,
+   "return_pct_eod": 12.93,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.001223
   },
   {
    "pick_id": "20261022-002-XRP",
@@ -691,7 +895,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -6.97,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.2943
   },
   {
    "pick_id": "20261022-002-ETH",
@@ -705,7 +913,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -5.84,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2346.81
   },
   {
    "pick_id": "20261022-002-PEOPLE",
@@ -719,7 +931,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.06,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00758
   },
   {
    "pick_id": "20261022-002-ANIME",
@@ -733,7 +949,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": 23.53,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00357
   },
   {
    "pick_id": "20261022-002-BONK",
@@ -747,7 +967,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -5.26,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 3.06e-06
   },
   {
    "pick_id": "20261022-002-BOME",
@@ -761,7 +985,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -2.8,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0006279
   },
   {
    "pick_id": "20261022-002-W",
@@ -775,7 +1003,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -17.04,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01227
   },
   {
    "pick_id": "20261022-002-ENA",
@@ -789,7 +1021,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -12.07,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1901
   },
   {
    "pick_id": "20261022-002-AVOID-WLD",
@@ -803,7 +1039,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -17.56,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.4698
   },
   {
    "pick_id": "20261022-002-AVOID-TIA",
@@ -817,7 +1057,11 @@
    "sol_return_pct": -5.95,
    "due_at": "2026-10-25T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.34,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5312
   },
   {
    "pick_id": "20261022-003-TRUMP",
@@ -831,7 +1075,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -10.75,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.669
   },
   {
    "pick_id": "20261022-003-TIA",
@@ -845,7 +1093,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.81,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5293
   },
   {
    "pick_id": "20261022-003-PEPE",
@@ -859,7 +1111,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -3.85,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.5e-06
   },
   {
    "pick_id": "20261022-003-PYTH",
@@ -873,7 +1129,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -12.37,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.07037
   },
   {
    "pick_id": "20261022-003-SEI",
@@ -887,7 +1147,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -15.54,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0538
   },
   {
    "pick_id": "20261022-003-ARB",
@@ -901,7 +1165,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.7,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1677
   },
   {
    "pick_id": "20261022-003-AVOID-ENA",
@@ -915,7 +1183,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -13.0,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.19
   },
   {
    "pick_id": "20261022-003-AVOID-PEOPLE",
@@ -929,7 +1201,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -13.44,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0076
   },
   {
    "pick_id": "20261022-003-AVOID-W",
@@ -943,7 +1219,11 @@
    "sol_return_pct": -6.45,
    "due_at": "2026-10-25T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -17.8,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01224
   },
   {
    "pick_id": "20261022-004-TRUMP",
@@ -957,7 +1237,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -10.61,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.668
   },
   {
    "pick_id": "20261022-004-TIA",
@@ -971,7 +1255,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.12,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5321
   },
   {
    "pick_id": "20261022-004-PEPE",
@@ -985,7 +1273,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -3.23,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.5e-06
   },
   {
    "pick_id": "20261022-004-PYTH",
@@ -999,7 +1291,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -12.36,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.07036
   },
   {
    "pick_id": "20261022-004-ARB",
@@ -1013,7 +1309,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.02,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1681
   },
   {
    "pick_id": "20261022-004-UNI",
@@ -1027,7 +1327,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -10.21,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 6.819
   },
   {
    "pick_id": "20261022-004-AVOID-PEOPLE",
@@ -1041,7 +1345,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -14.14,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00759
   },
   {
    "pick_id": "20261022-004-AVOID-W",
@@ -1055,7 +1363,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -17.93,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01222
   },
   {
    "pick_id": "20261022-004-AVOID-ENA",
@@ -1069,7 +1381,11 @@
    "sol_return_pct": -6.06,
    "due_at": "2026-10-25T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -12.41,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1906
   },
   {
    "pick_id": "20261023-005-WLD",
@@ -1078,12 +1394,16 @@
    "price_usd": 0.446,
    "liquidity_usd": 30490066.53949,
    "status": "live",
-   "return_pct": -18.94,
+   "return_pct": -4.0,
    "btc_return_pct": -1.63,
    "sol_return_pct": -2.52,
    "due_at": "2026-10-26T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -18.94,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.528192
   },
   {
    "pick_id": "20261023-005-ATOM",
@@ -1092,12 +1412,16 @@
    "price_usd": 1.639,
    "liquidity_usd": 1339969.88073,
    "status": "live",
-   "return_pct": -4.99,
+   "return_pct": 5.0,
    "btc_return_pct": -1.63,
    "sol_return_pct": -2.52,
    "due_at": "2026-10-26T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -4.99,
+   "exit_reason": "take_profit",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.8112500000000002
   },
   {
    "pick_id": "20261023-005-AAVE",
@@ -1106,12 +1430,16 @@
    "price_usd": 135.58,
    "liquidity_usd": 10423763.19346,
    "status": "live",
-   "return_pct": -8.18,
+   "return_pct": -4.0,
    "btc_return_pct": -1.63,
    "sol_return_pct": -2.52,
    "due_at": "2026-10-26T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -8.18,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 141.75359999999998
   },
   {
    "pick_id": "20261023-005-RENDER",
@@ -1120,12 +1448,16 @@
    "price_usd": 1.719,
    "liquidity_usd": 1901538.54118,
    "status": "live",
-   "return_pct": -2.66,
+   "return_pct": -4.0,
    "btc_return_pct": -1.63,
    "sol_return_pct": -2.52,
    "due_at": "2026-10-26T09:05:35+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -2.66,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.69536
   },
   {
    "pick_id": "20261025-007-ANIME",
@@ -1134,12 +1466,16 @@
    "price_usd": 0.00288,
    "liquidity_usd": 1892666.477001,
    "status": "live",
-   "return_pct": -5.26,
+   "return_pct": -4.0,
    "btc_return_pct": -1.21,
    "sol_return_pct": -1.33,
    "due_at": "2026-10-26T09:37:38+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -5.26,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.0029184
   },
   {
    "pick_id": "20261025-007-WIF",
@@ -1148,12 +1484,16 @@
    "price_usd": 0.1769,
    "liquidity_usd": 1353685.734197,
    "status": "live",
-   "return_pct": -4.64,
+   "return_pct": -4.0,
    "btc_return_pct": -1.21,
    "sol_return_pct": -1.33,
    "due_at": "2026-10-26T09:37:38+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -4.64,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.17808
   },
   {
    "pick_id": "20261025-007-AAVE",
@@ -1167,7 +1507,11 @@
    "sol_return_pct": -1.33,
    "due_at": "2026-10-26T09:37:38+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-26T13:45:42+08:00"
+   "sealed_run_at": "2026-10-26T13:45:42+08:00",
+   "return_pct_eod": -2.05,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 134.66
   },
   {
    "pick_id": "20261023-006-WLD",
@@ -1176,12 +1520,16 @@
    "price_usd": 0.4406,
    "liquidity_usd": 28029832.15461,
    "status": "live",
-   "return_pct": -19.66,
+   "return_pct": -5.0,
    "btc_return_pct": -1.87,
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -19.66,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.52098
   },
   {
    "pick_id": "20261023-006-RENDER",
@@ -1190,12 +1538,16 @@
    "price_usd": 1.708,
    "liquidity_usd": 2185893.17538,
    "status": "live",
-   "return_pct": -4.47,
+   "return_pct": -5.0,
    "btc_return_pct": -1.87,
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -4.47,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.6985999999999999
   },
   {
    "pick_id": "20261023-006-ATOM",
@@ -1204,12 +1556,16 @@
    "price_usd": 1.643,
    "liquidity_usd": 1482590.24994,
    "status": "live",
-   "return_pct": -8.87,
+   "return_pct": -5.0,
    "btc_return_pct": -1.87,
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -8.87,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 1.7128499999999998
   },
   {
    "pick_id": "20261023-006-AAVE",
@@ -1218,12 +1574,16 @@
    "price_usd": 135.3,
    "liquidity_usd": 15056664.95384,
    "status": "live",
-   "return_pct": -9.11,
+   "return_pct": -5.0,
    "btc_return_pct": -1.87,
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -9.11,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 141.417
   },
   {
    "pick_id": "20261023-006-1000SATS",
@@ -1232,12 +1592,16 @@
    "price_usd": 9.97e-06,
    "liquidity_usd": 111573.08301441,
    "status": "live",
-   "return_pct": -4.78,
+   "return_pct": -5.0,
    "btc_return_pct": -1.87,
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -4.78,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 9.946499999999999e-06
   },
   {
    "pick_id": "20261023-006-SUI",
@@ -1246,12 +1610,16 @@
    "price_usd": 0.9152,
    "liquidity_usd": 28962516.88687,
    "status": "live",
-   "return_pct": -8.25,
+   "return_pct": -5.0,
    "btc_return_pct": -1.87,
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -8.25,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.947625
   },
   {
    "pick_id": "20261023-006-AVOID-PEPE",
@@ -1265,7 +1633,11 @@
    "sol_return_pct": -3.36,
    "due_at": "2026-10-26T17:01:46+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -10.18,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.41e-06
   },
   {
    "pick_id": "20261026-008-PYTH",
@@ -1279,7 +1651,11 @@
    "sol_return_pct": -1.29,
    "due_at": "2026-10-27T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -0.76,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.07299
   },
   {
    "pick_id": "20261026-008-1000SATS",
@@ -1293,7 +1669,11 @@
    "sol_return_pct": -1.29,
    "due_at": "2026-10-27T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -0.8,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 9.91e-06
   },
   {
    "pick_id": "20261026-008-INJ",
@@ -1302,12 +1682,16 @@
    "price_usd": 7.788,
    "liquidity_usd": 8709070.26411,
    "status": "live",
-   "return_pct": 1.25,
+   "return_pct": 5.0,
    "btc_return_pct": -0.5,
    "sol_return_pct": -1.29,
    "due_at": "2026-10-27T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": 1.25,
+   "exit_reason": "take_profit",
+   "exit_method": "path_5m",
+   "exit_price_usd": 8.0766
   },
   {
    "pick_id": "20261026-008-TIA",
@@ -1316,12 +1700,16 @@
    "price_usd": 0.5253,
    "liquidity_usd": 7186919.070013,
    "status": "live",
-   "return_pct": -1.35,
+   "return_pct": -4.0,
    "btc_return_pct": -0.5,
    "sol_return_pct": -1.29,
    "due_at": "2026-10-27T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-27T13:58:23+08:00"
+   "sealed_run_at": "2026-10-27T13:58:23+08:00",
+   "return_pct_eod": -1.35,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.5112
   },
   {
    "pick_id": "20261025-007-ANIME",
@@ -1330,12 +1718,16 @@
    "price_usd": 0.00311,
    "liquidity_usd": 4365135.788879,
    "status": "live",
-   "return_pct": 2.3,
+   "return_pct": -4.0,
    "btc_return_pct": 0.12,
    "sol_return_pct": -0.75,
    "due_at": "2026-10-28T09:37:38+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": 2.3,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.0029184
   },
   {
    "pick_id": "20261025-007-WIF",
@@ -1344,12 +1736,16 @@
    "price_usd": 0.1814,
    "liquidity_usd": 1331923.970292,
    "status": "live",
-   "return_pct": -2.21,
+   "return_pct": -4.0,
    "btc_return_pct": 0.12,
    "sol_return_pct": -0.75,
    "due_at": "2026-10-28T09:37:38+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": -2.21,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.17808
   },
   {
    "pick_id": "20261025-007-AAVE",
@@ -1363,7 +1759,11 @@
    "sol_return_pct": -0.75,
    "due_at": "2026-10-28T09:37:38+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": -2.17,
+   "exit_reason": "hold_sell_by",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 134.49
   },
   {
    "pick_id": "20261027-009-XRP",
@@ -1377,7 +1777,11 @@
    "sol_return_pct": 1.86,
    "due_at": "2026-10-28T13:41:05+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": 2.1,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 1.3276
   },
   {
    "pick_id": "20261027-009-DOGE",
@@ -1391,7 +1795,11 @@
    "sol_return_pct": 1.86,
    "due_at": "2026-10-28T13:41:05+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": 2.76,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.07966
   },
   {
    "pick_id": "20261027-009-1MBABYDOGE",
@@ -1405,7 +1813,11 @@
    "sol_return_pct": 1.86,
    "due_at": "2026-10-28T13:41:05+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": 1.19,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.0003492
   },
   {
    "pick_id": "20261027-009-ACT",
@@ -1419,7 +1831,11 @@
    "sol_return_pct": 1.86,
    "due_at": "2026-10-28T13:41:05+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-28T14:36:46+08:00"
+   "sealed_run_at": "2026-10-28T14:36:46+08:00",
+   "return_pct_eod": 3.8,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.00875
   },
   {
    "pick_id": "20261022-001-LARPCHECK",
@@ -1430,7 +1846,11 @@
    "status": "live",
    "return_pct": -9.54,
    "btc_return_pct": -4.45,
-   "sol_return_pct": -6.75
+   "sol_return_pct": -6.75,
+   "return_pct_eod": -9.54,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0007205
   },
   {
    "pick_id": "20261022-001-GATO",
@@ -1441,7 +1861,11 @@
    "status": "live",
    "return_pct": 87.58,
    "btc_return_pct": -4.45,
-   "sol_return_pct": -6.75
+   "sol_return_pct": -6.75,
+   "return_pct_eod": 87.58,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.005166
   },
   {
    "pick_id": "20261022-001-GLITCH",
@@ -1452,7 +1876,11 @@
    "status": "live",
    "return_pct": 48.98,
    "btc_return_pct": -4.45,
-   "sol_return_pct": -6.75
+   "sol_return_pct": -6.75,
+   "return_pct_eod": 48.98,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.003002
   },
   {
    "pick_id": "20261022-001-POKECITY",
@@ -1463,7 +1891,11 @@
    "status": "live",
    "return_pct": -99.83,
    "btc_return_pct": -4.45,
-   "sol_return_pct": -6.75
+   "sol_return_pct": -6.75,
+   "return_pct_eod": -99.83,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2.23e-06
   },
   {
    "pick_id": "20261022-001-CHUD",
@@ -1474,7 +1906,11 @@
    "status": "live",
    "return_pct": -99.82,
    "btc_return_pct": -4.45,
-   "sol_return_pct": -6.75
+   "sol_return_pct": -6.75,
+   "return_pct_eod": -99.82,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2.111e-06
   },
   {
    "pick_id": "20261022-001-CBUCKS",
@@ -1485,7 +1921,11 @@
    "status": "live",
    "return_pct": 4.16,
    "btc_return_pct": -4.45,
-   "sol_return_pct": -6.75
+   "sol_return_pct": -6.75,
+   "return_pct_eod": 4.16,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.001128
   },
   {
    "pick_id": "20261022-002-XRP",
@@ -1499,7 +1939,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -4.49,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.3288
   },
   {
    "pick_id": "20261022-002-ETH",
@@ -1513,7 +1957,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -5.24,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 2361.82
   },
   {
    "pick_id": "20261022-002-PEOPLE",
@@ -1527,7 +1975,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -11.45,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00781
   },
   {
    "pick_id": "20261022-002-ANIME",
@@ -1541,7 +1993,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": 3.11,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00298
   },
   {
    "pick_id": "20261022-002-BONK",
@@ -1555,7 +2011,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -1.55,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 3.18e-06
   },
   {
    "pick_id": "20261022-002-BOME",
@@ -1569,7 +2029,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": 0.45,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.0006489
   },
   {
    "pick_id": "20261022-002-W",
@@ -1583,7 +2047,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -13.39,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01281
   },
   {
    "pick_id": "20261022-002-ENA",
@@ -1597,7 +2065,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -3.47,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.2087
   },
   {
    "pick_id": "20261022-002-AVOID-WLD",
@@ -1611,7 +2083,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -22.76,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.4402
   },
   {
    "pick_id": "20261022-002-AVOID-TIA",
@@ -1625,7 +2101,11 @@
    "sol_return_pct": -5.19,
    "due_at": "2026-10-29T04:18:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -10.53,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5548
   },
   {
    "pick_id": "20261022-003-TRUMP",
@@ -1639,7 +2119,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -7.7,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.726
   },
   {
    "pick_id": "20261022-003-TIA",
@@ -1653,7 +2137,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -10.33,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5571
   },
   {
    "pick_id": "20261022-003-PEPE",
@@ -1667,7 +2155,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": 5.98,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.96e-06
   },
   {
    "pick_id": "20261022-003-PYTH",
@@ -1681,7 +2173,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -10.12,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.07217
   },
   {
    "pick_id": "20261022-003-SEI",
@@ -1695,7 +2191,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -15.98,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.05352
   },
   {
    "pick_id": "20261022-003-ARB",
@@ -1709,7 +2209,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -11.65,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1737
   },
   {
    "pick_id": "20261022-003-AVOID-ENA",
@@ -1723,7 +2227,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -5.08,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.2073
   },
   {
    "pick_id": "20261022-003-AVOID-PEOPLE",
@@ -1737,7 +2245,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -11.85,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00774
   },
   {
    "pick_id": "20261022-003-AVOID-W",
@@ -1751,7 +2263,11 @@
    "sol_return_pct": -5.78,
    "due_at": "2026-10-29T04:42:34+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -14.78,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01269
   },
   {
    "pick_id": "20261022-004-TRUMP",
@@ -1765,7 +2281,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -7.13,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 1.733
   },
   {
    "pick_id": "20261022-004-TIA",
@@ -1779,7 +2299,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -9.8,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.5589
   },
   {
    "pick_id": "20261022-004-PEPE",
@@ -1793,7 +2317,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": 7.31,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 4.99e-06
   },
   {
    "pick_id": "20261022-004-PYTH",
@@ -1807,7 +2335,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -9.7,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.07249
   },
   {
    "pick_id": "20261022-004-ARB",
@@ -1821,7 +2353,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -10.28,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.1754
   },
   {
    "pick_id": "20261022-004-UNI",
@@ -1835,7 +2371,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -4.85,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 7.226
   },
   {
    "pick_id": "20261022-004-AVOID-PEOPLE",
@@ -1849,7 +2389,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -11.99,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.00778
   },
   {
    "pick_id": "20261022-004-AVOID-W",
@@ -1863,7 +2407,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -14.51,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.01273
   },
   {
    "pick_id": "20261022-004-AVOID-ENA",
@@ -1877,7 +2425,11 @@
    "sol_return_pct": -5.32,
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T09:10:28+08:00"
+   "sealed_run_at": "2026-10-29T09:10:28+08:00",
+   "return_pct_eod": -3.58,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 0.2098
   },
   {
    "pick_id": "20261026-008-PYTH",
@@ -1891,7 +2443,11 @@
    "sol_return_pct": -0.84,
    "due_at": "2026-10-29T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -3.55,
+   "exit_reason": "hold_sell_by",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.07094
   },
   {
    "pick_id": "20261026-008-1000SATS",
@@ -1905,7 +2461,11 @@
    "sol_return_pct": -0.84,
    "due_at": "2026-10-29T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": 0.6,
+   "exit_reason": "hold_sell_by",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 1.005e-05
   },
   {
    "pick_id": "20261026-008-INJ",
@@ -1914,12 +2474,16 @@
    "price_usd": 7.671,
    "liquidity_usd": 11563857.33253,
    "status": "live",
-   "return_pct": -0.27,
+   "return_pct": 5.0,
    "btc_return_pct": 0.21,
    "sol_return_pct": -0.84,
    "due_at": "2026-10-29T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -0.27,
+   "exit_reason": "take_profit",
+   "exit_method": "path_5m",
+   "exit_price_usd": 8.0766
   },
   {
    "pick_id": "20261026-008-TIA",
@@ -1928,12 +2492,16 @@
    "price_usd": 0.5358,
    "liquidity_usd": 8516159.738681,
    "status": "live",
-   "return_pct": 0.62,
+   "return_pct": -4.0,
    "btc_return_pct": 0.21,
    "sol_return_pct": -0.84,
    "due_at": "2026-10-29T13:25:57+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": 0.62,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 0.5112
   },
   {
    "pick_id": "20261028-010-1MBABYDOGE",
@@ -1947,7 +2515,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -1.49,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.000344
   },
   {
    "pick_id": "20261028-010-PNUT",
@@ -1961,7 +2533,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -2.63,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.0408
   },
   {
    "pick_id": "20261028-010-FET",
@@ -1975,7 +2551,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -1.82,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.178
   },
   {
    "pick_id": "20261028-010-XRP",
@@ -1989,7 +2569,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -2.63,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 1.294
   },
   {
    "pick_id": "20261028-010-AAVE",
@@ -1998,12 +2582,16 @@
    "price_usd": 130.84,
    "liquidity_usd": 15440094.01781,
    "status": "live",
-   "return_pct": -3.37,
+   "return_pct": -5.0,
    "btc_return_pct": -1.14,
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -3.37,
+   "exit_reason": "stop",
+   "exit_method": "path_5m",
+   "exit_price_usd": 128.63
   },
   {
    "pick_id": "20261028-010-SUI",
@@ -2017,7 +2605,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -2.85,
+   "exit_reason": "hold_horizon",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.9123
   },
   {
    "pick_id": "20261028-010-AVOID-PEPE",
@@ -2031,7 +2623,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": 4.58,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 5.02e-06
   },
   {
    "pick_id": "20261028-010-AVOID-BCH",
@@ -2045,7 +2641,11 @@
    "sol_return_pct": -2.17,
    "due_at": "2026-10-29T14:21:47+08:00",
    "price_source": "kline_1m_due",
-   "sealed_run_at": "2026-10-29T14:44:49+08:00"
+   "sealed_run_at": "2026-10-29T14:44:49+08:00",
+   "return_pct_eod": -6.68,
+   "exit_reason": "hold_horizon",
+   "exit_method": "none",
+   "exit_price_usd": 279.5
   }
  ]
 }

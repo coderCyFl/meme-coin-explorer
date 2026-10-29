@@ -841,7 +841,22 @@
           )
         ),
         frPxCell(r, e),
-        el("div", { class: "fr-ret num " + cls(r.ret), "data-fr-ret": e.pair_address, text: r.ret == null ? "…" : pct(r.ret) })
+        el("div", { class: "fr-ret-wrap" },
+          el("div", { class: "fr-ret num " + cls(r.ret), "data-fr-ret": e.pair_address, text: r.ret == null ? "…" : pct(r.ret) }),
+          r.sealed && r.rec && r.rec.exit_reason && r.rec.exit_reason !== "hold_horizon" && r.rec.exit_reason !== "none"
+            ? el("div", { class: "tiny muted", text:
+                (r.rec.exit_reason === "stop" ? "止蝕" : r.rec.exit_reason === "take_profit" ? "止賺" : r.rec.exit_reason)
+                + (r.rec.return_pct_eod != null && Math.abs(r.rec.return_pct_eod - r.ret) > 0.05
+                  ? ` · EOD ${pct(r.rec.return_pct_eod)}` : "")
+              })
+            : (e.sell_by || e.stop_loss_pct != null
+              ? el("div", { class: "tiny muted", text:
+                  (e.take_profit_pct != null ? `止賺 +${e.take_profit_pct}%` : "")
+                  + (e.stop_loss_pct != null ? ` · 止蝕 −${e.stop_loss_pct}%` : "")
+                  + (e.sell_by ? ` · 最遲 ${frTime(e.sell_by)}` : "")
+                })
+              : "")
+        )
       ));
     }
   }
