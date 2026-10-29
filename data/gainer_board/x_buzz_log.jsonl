@@ -131,3 +131,11 @@
 {"ts": "2026-10-30T02:23:06+08:00", "symbol": "PARTIUSDT", "tool": "search", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-10-30T02:23:06+08:00", "symbol": "BICOUSDT", "tool": "counts", "query": "($BICO OR #BICO) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
 {"ts": "2026-10-30T02:23:06+08:00", "symbol": "BICOUSDT", "tool": "search", "query": "($BICO OR #BICO) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-10-30T03:16:52+08:00", "symbol": "LSKUSDT", "tool": "counts", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 35}
+{"ts": "2026-10-30T03:16:53+08:00", "symbol": "PARTIUSDT", "tool": "counts", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 146}
+{"ts": "2026-10-30T03:16:54+08:00", "symbol": "PEPEUSDT", "tool": "counts", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 135}
+{"ts": "2026-10-30T03:16:56+08:00", "symbol": "BICOUSDT", "tool": "counts", "query": "($BICO OR #BICO) (crypto OR binance) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-10-30T03:17:30+08:00", "symbol": "LSKUSDT", "tool": "search", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 23}
+{"ts": "2026-10-30T03:17:30+08:00", "symbol": "PARTIUSDT", "tool": "search", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-30T03:17:30+08:00", "symbol": "PEPEUSDT", "tool": "search", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-30T03:17:30+08:00", "symbol": "BICOUSDT", "tool": "search", "query": "($BICO OR #BICO) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
