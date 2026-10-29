@@ -110,12 +110,12 @@
    "base": "KAT",
    "flag": "pump",
    "trigger_at": "2026-10-29T15:30:00+08:00",
-   "checked_at": "2026-10-29T17:32:40+08:00",
+   "checked_at": "2026-10-29T18:04:46+08:00",
    "posts_last_1h": 2,
    "posts_prev_6h_avg_per_h": 1.33,
    "spike_ratio": 1.5,
    "verdict": "冷",
-   "one_line": "量細，多喊單莊",
+   "one_line": "冷清，似叫單居多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -138,7 +138,7 @@
      "created_at": "2026-10-29T14:22:13+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 4
   }
  },
  "history": [
@@ -771,15 +771,49 @@
      "created_at": "2026-10-29T14:22:13+08:00"
     }
    ]
+  },
+  {
+   "symbol": "KATUSDT",
+   "base": "KAT",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T15:30:00+08:00",
+   "checked_at": "2026-10-29T18:04:46+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 1.5,
+   "verdict": "冷",
+   "one_line": "冷清，似叫單居多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115722361085272429",
+     "url": "https://x.com/jegoschy893/status/2115722361085272429",
+     "text": "$KAT is one of the fresh setups I’m watching VERY closely. Clean higher-low structure. Steady price expansion. Volume starting to wake up.",
+     "likes": 0,
+     "author_username": "jegoschy893",
+     "author_followers": 22,
+     "created_at": "2026-10-29T16:28:13+08:00"
+    },
+    {
+     "id": "2115690651123634237",
+     "url": "https://x.com/KaarlyMoon/status/2115690651123634237",
+     "text": "If you followed me for years You know I’ve been repeating the same shit. I’ll tell you why. No one has more patience in #crypto than me.",
+     "likes": 0,
+     "author_username": "KaarlyMoon",
+     "author_followers": 2064,
+     "created_at": "2026-10-29T14:22:13+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 35,
+  "calls_today": 37,
   "cap_reached": false,
-  "updated_at": "2026-10-29T17:34:25+08:00"
+  "updated_at": "2026-10-29T18:04:46+08:00"
  },
- "updated_at": "2026-10-29T17:34:25+08:00",
+ "updated_at": "2026-10-29T18:04:46+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
