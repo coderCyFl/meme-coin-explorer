@@ -70,3 +70,5 @@
 {"ts": "2026-10-29T14:04:50+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-10-29T14:39:00+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 34}
 {"ts": "2026-10-29T14:39:00+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 19}
+{"ts": "2026-10-29T15:11:21+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 80}
+{"ts": "2026-10-29T15:11:21+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 6}

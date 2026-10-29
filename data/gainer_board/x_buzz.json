@@ -50,44 +50,44 @@
    "base": "BLUR",
    "flag": "pump",
    "trigger_at": "2026-10-29T12:00:00+08:00",
-   "checked_at": "2026-10-29T14:39:00+08:00",
-   "posts_last_1h": 34,
-   "posts_prev_6h_avg_per_h": 2.5,
-   "spike_ratio": 13.6,
-   "verdict": "升溫",
-   "one_line": "量仍高惟多喊單",
+   "checked_at": "2026-10-29T15:11:21+08:00",
+   "posts_last_1h": 15,
+   "posts_prev_6h_avg_per_h": 12.91,
+   "spike_ratio": 1.16,
+   "verdict": "冷",
+   "one_line": "爆後冷卻，多喊單",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115682692478193902",
-     "url": "https://x.com/aitradebotx/status/2115682692478193902",
-     "text": "Funding Spread Alert +0.21765% funding spread | ~+5.22% estimated daily On ethereum Blur between Binance and Bybit",
+     "id": "2115691752044859793",
+     "url": "https://x.com/rab4745/status/2115691752044859793",
+     "text": "Top gainers in binance spot $INIT $BLUR $WENB Which one are you holding?",
      "likes": 2,
-     "author_username": "aitradebotx",
-     "author_followers": 981,
-     "created_at": "2026-10-29T13:50:36+08:00"
+     "author_username": "rab4745",
+     "author_followers": 18087,
+     "created_at": "2026-10-29T14:26:35+08:00"
     },
     {
-     "id": "2115686103399149841",
-     "url": "https://x.com/WilhemCrypto/status/2115686103399149841",
-     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
-     "likes": 1,
-     "author_username": "WilhemCrypto",
-     "author_followers": 1768,
-     "created_at": "2026-10-29T14:04:09+08:00"
+     "id": "2115693384576929971",
+     "url": "https://x.com/mrcamerontrader/status/2115693384576929971",
+     "text": "Buy #BLUR and give your children a future full of opportunities. #crypto",
+     "likes": 2,
+     "author_username": "mrcamerontrader",
+     "author_followers": 437,
+     "created_at": "2026-10-29T14:33:05+08:00"
     },
     {
-     "id": "2115682541105476050",
-     "url": "https://x.com/Micheleagnela/status/2115682541105476050",
+     "id": "2115696373190246537",
+     "url": "https://x.com/apostilaweb/status/2115696373190246537",
      "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
      "likes": 1,
-     "author_username": "Micheleagnela",
-     "author_followers": 2190,
-     "created_at": "2026-10-29T13:49:59+08:00"
+     "author_username": "apostilaweb",
+     "author_followers": 1030,
+     "created_at": "2026-10-29T14:44:57+08:00"
     }
    ],
-   "checks_this_trigger": 4
+   "checks_this_trigger": 5
   },
   "BMTUSDT": {
    "symbol": "BMTUSDT",
@@ -619,15 +619,58 @@
      "created_at": "2026-10-29T13:49:59+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T12:00:00+08:00",
+   "checked_at": "2026-10-29T15:11:21+08:00",
+   "posts_last_1h": 15,
+   "posts_prev_6h_avg_per_h": 12.91,
+   "spike_ratio": 1.16,
+   "verdict": "冷",
+   "one_line": "爆後冷卻，多喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115691752044859793",
+     "url": "https://x.com/rab4745/status/2115691752044859793",
+     "text": "Top gainers in binance spot $INIT $BLUR $WENB Which one are you holding?",
+     "likes": 2,
+     "author_username": "rab4745",
+     "author_followers": 18087,
+     "created_at": "2026-10-29T14:26:35+08:00"
+    },
+    {
+     "id": "2115693384576929971",
+     "url": "https://x.com/mrcamerontrader/status/2115693384576929971",
+     "text": "Buy #BLUR and give your children a future full of opportunities. #crypto",
+     "likes": 2,
+     "author_username": "mrcamerontrader",
+     "author_followers": 437,
+     "created_at": "2026-10-29T14:33:05+08:00"
+    },
+    {
+     "id": "2115696373190246537",
+     "url": "https://x.com/apostilaweb/status/2115696373190246537",
+     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
+     "likes": 1,
+     "author_username": "apostilaweb",
+     "author_followers": 1030,
+     "created_at": "2026-10-29T14:44:57+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 26,
+  "calls_today": 28,
   "cap_reached": false,
-  "updated_at": "2026-10-29T14:39:00+08:00"
+  "updated_at": "2026-10-29T15:11:21+08:00"
  },
- "updated_at": "2026-10-29T14:39:00+08:00",
+ "updated_at": "2026-10-29T15:11:21+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
