@@ -1,8 +1,9 @@
-## 2026-10-30 ~00:50 Asia/Shanghai — homepage 🔥 capture strip · `20261030a`
+## 2026-10-30 — homepage 🔥 capture strip · `20261030b`
 
-- 急升板頂（homepage，唔喺「詳情」摺埋）常駐顯示最新密封日：**今日早標捕捉率 X%（捉到 A/B）· 講中率 Y% · PASS/FAIL（≥10%）**，下附短名單「捉到／走漏／遲標」。
-- 數據：`summary.json` `scorecards[-1]`（冇就顯示未密封）；密封日唔係今日會標「密封 M/D（最新密封日 · 今日未封）」。
-- UI：Binance 黃 `#F0B90B` + 黑字規則；無橙色／無 helmet CYA。stamp `20261030a`。
+- QA FAIL `c8b6f29`/`20261030a`：括號「捉到」誤用 `early_flagged`（講中分母）。已改 **捉到 early_hits/20**；講中率旁顯示 early_hits/early_flagged。
+- `#gainerCapture` 常駐急升標題下：捕捉率 + PASS/FAIL≥10% + 捉到／走漏／遲標；無摺詳情。
+- UI：Binance 黃 `#F0B90B` + 黑字；無 helmet CYA。stamp `20261030b`。
+
 ## 2026-10-29 Asia/Shanghai — 🚩 X 洗版 red label on 🔥/⚡ (stamp `20261029b`)
 QA live FAIL: INIT 🔥 showed bare 🚩 next to「X 冷」; BLUR ⚡ had no flag. Fix: dedicated red text「🚩 X 洗版」via `.shill-flag` on 🔥 pump + ⚡ early2 cards (and existing 今日跟買 / 每日新留意). No bare glyph on the X chip; sheet label「🚩 X 洗版」. Paint after early list mounts.
 

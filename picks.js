@@ -1602,9 +1602,9 @@
     const big = el("div", { class: "gbc-line" },
       el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
       el("span", { class: "gbc-big num " + (pass ? "pos" : "neg"), text: recall != null ? `${recall}%` : "—" }),
-      el("span", { class: "gbc-inline", text: `（捉到 ${earlyHits}/${earlyFlagged}）` }),
+      el("span", { class: "gbc-inline", text: `（捉到 ${earlyHits}/20）` }),
       el("span", { class: "gbc-dot", text: "·" }),
-      el("span", { class: "gbc-inline", text: `講中率 ${prec != null ? prec + "%" : "–"}` }),
+      el("span", { class: "gbc-inline", text: `講中率 ${prec != null ? prec + "%" : "–"}（${earlyHits}/${earlyFlagged}）` }),
       el("span", { class: "gbc-dot", text: "·" }),
       gate);
     const sealNote = el("div", { class: "gbc-seal tiny" },
