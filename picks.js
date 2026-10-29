@@ -792,7 +792,7 @@
           )
         ),
         exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
-        (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: "注碼 ¼ · 近 7d 跟買平均未轉正，轉正先回全注" }) : null,
+        (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: setupQuarterNow() ? "注碼 ¼ · 近 7d 跟買平均未轉正，轉正先回全注" : "注碼 ¼ · 結構類近期未轉正" }) : null,
         details,
         el("div", { class: "sc-actions" },
           el("button", { type: "button", class: "allin-btn", onclick: () => openAllinFlow(scInfo) }, "孤注"),
@@ -1124,8 +1124,9 @@
             tip: r.tip, angle: r.angle, rationale: r.tip,
             created_at: meta.created_at,
             exitRegime: meta.exitRegime,
-            size: setupQuarterNow() ? "quarter" : weakLocked ? "half" : (r.size || "full"),
-            flags: (weakLocked ? ["regime:weak", "size:half"] : []).concat(setupQuarterNow() ? ["size:quarter"] : []),
+            size: (setupQuarterNow() || r.angle === "higher_lows") ? "quarter" : weakLocked ? "half" : (r.size || "full"),
+            flags: (weakLocked ? ["regime:weak", "size:half"] : []).concat((setupQuarterNow() || r.angle === "higher_lows") ? ["size:quarter"] : [])
+              .concat(r.angle === "higher_lows" ? ["size:quarter_angle"] : []),
             suggested_exit_h: meta.suggested_exit_h,
             suggested_second_h: meta.suggested_second_h,
             take_profit_pct: meta.take_profit_pct,

@@ -277,11 +277,17 @@ function scoreSetup(f) {
   return { setupScore: Math.round(setupScore * 10) / 10, chaseScore: Math.round(chaseScore * 10) / 10, angle, tip, parts };
 }
 
+/** 20261030g: angles never issued as setup buys (rotation 0W/7L sealed). */
+const STOPPED_ANGLES = new Set(["rotation"]);
+/** 20261030g: angles bought at ¼ size regardless of the 7d gate (higher_lows 1W/5L, 12h replay EW −2.43%). */
+const QUARTER_ANGLES = new Set(["higher_lows"]);
+
 /** Diversify: hard multi-angle mix — max 1 per angle first, never pad same angle via catch-all. */
 function diversifyPicks(scored, n = 6) {
-  const ANGLE_ORDER = ["accumulation", "rotation", "compression", "mean_reversion", "higher_lows", "relative"];
+  // 20261030g (Strategy+QA): rotation stopped as a buy angle — sealed 0W/7L (12h replay EW −2.11%). Dropped, not padded.
+  const ANGLE_ORDER = ["accumulation", "compression", "mean_reversion", "higher_lows", "relative"];
   const SOFT = 2; // never more than 2 of same angle
-  const setups = scored.filter((s) => !s.f.alreadyUp && !s.f.extended && s.setupScore >= 28 && !MAJORS.has(s.base))
+  const setups = scored.filter((s) => !s.f.alreadyUp && !s.f.extended && s.setupScore >= 28 && !MAJORS.has(s.base) && !STOPPED_ANGLES.has(s.angle))
     .sort((a, b) => b.setupScore - a.setupScore);
   const out = [];
   const usedAngle = new Map();
@@ -313,6 +319,7 @@ function diversifyPicks(scored, n = 6) {
       if (out.length >= n) break;
       if (used.has(s.symbol)) continue;
       if (MAJORS.has(s.base)) continue;
+      if (STOPPED_ANGLES.has(s.angle)) continue;
       if (s.f.chg24 >= 8) continue;
       if (angN(s.angle) >= SOFT) continue;
       add(s);
@@ -494,6 +501,7 @@ async function main() {
   } catch (e) { console.warn("size gate: outcomes unreadable, default ¼:", e.message); }
   console.log("setup size gate", sizeGate);
 
+  const qtrOf = (p) => sizeGate.size === "quarter" || QUARTER_ANGLES.has(p.angle);
   const entries = picks.map((p, i) => ({
     id: `${day}-${batchNum}-${p.base}`,
     batch: batchId,
@@ -529,8 +537,9 @@ async function main() {
     angle: p.angle,
     flags: ["Binance USDT spot", "multi-angle setup", "not 24h gainer rank", `angle:${p.angle}`]
       .concat(weak ? ["regime:weak", "size:half"] : [])
-      .concat(sizeGate.size === "quarter" ? ["size:quarter"] : []),
-    size: sizeGate.size === "quarter" ? "quarter" : (weak ? "half" : "full"),
+      .concat(qtrOf(p) ? ["size:quarter"] : [])
+      .concat(QUARTER_ANGLES.has(p.angle) ? ["size:quarter_angle"] : []),
+    size: qtrOf(p) ? "quarter" : (weak ? "half" : "full"),
     exitRegime: weak ? "weak" : "normal",
     exit_rule: "setup_20261030e",
     suggested_exit_h: SETUP_EXIT.reviewH,
@@ -579,7 +588,7 @@ async function main() {
     e.review_at = addH(e.suggested_exit_h);
     e.sell_by = addH(e.suggested_second_h);
     e.exit_plan = `目標 +${tp}%（$${e.target_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
-    if (e.size === "quarter") e.exit_plan += " · ¼注（近 7d 跟買未轉正）";
+    if (e.size === "quarter") e.exit_plan += (e.flags || []).includes("size:quarter_angle") && sizeGate.size !== "quarter" ? " · ¼注（結構類未轉正）" : " · ¼注（近 7d 跟買未轉正）";
     if (e.tier === "chase") {
       e.target2_price_usd = roundPx(e.entry_price_usd * (1 + e.take_profit2_pct / 100));
       e.exit_plan = `+${tp}% 放一半（$${e.target_price_usd}）· +${e.take_profit2_pct}% 清（$${e.target2_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
@@ -645,7 +654,7 @@ async function main() {
     id: batchId,
     created_at: isoHK,
     x_window: null,
-    method: "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
+    method: "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, accumulation); rotation stopped + higher_lows ¼ (20261030g); excludes hard 24h pumps from primary",
     regime,
     setup_size_gate: sizeGate,
     setup_exit: SETUP_EXIT,

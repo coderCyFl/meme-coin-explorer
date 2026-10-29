@@ -498,12 +498,14 @@
 
   function diversifySetups(scored, n = 6) {
     // Hard diversify: ≥3 angles for 6 picks; max 1 per angle first, never pad same angle via catch-all.
-    const ANGLE_ORDER = ["accumulation", "rotation", "compression", "mean_reversion", "higher_lows", "relative"];
+    // 20261030g: rotation stopped as a buy angle (mirror make_bn_setup_picks.mjs STOPPED_ANGLES).
+    const ANGLE_ORDER = ["accumulation", "compression", "mean_reversion", "higher_lows", "relative"];
+    const STOPPED = new Set(["rotation"]);
     const HARD = 1; // first pass
     const SOFT = 2; // only after every available angle has ≥1
     // Soft-skip mega majors so AI brief is not stuck on BTC/ETH/SOL/BNB
     const MEGA = new Set(["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]);
-    const setups = scored.filter((s) => !s.alreadyUp && !s.extended && s.setupScore >= 26 && !MEGA.has(s.symbol))
+    const setups = scored.filter((s) => !s.alreadyUp && !s.extended && s.setupScore >= 26 && !MEGA.has(s.symbol) && !STOPPED.has(s.angle))
       .sort((a, b) => b.setupScore - a.setupScore);
     const out = [];
     const used = new Set();
@@ -533,7 +535,7 @@
     // Pass 3: relax score gate, still enforce SOFT angle cap + chg24 < 8 + MEGA skip
     if (out.length < n) {
       const relaxed = scored
-        .filter((s) => (s.chg24 || 0) < 8 && !MEGA.has(s.symbol))
+        .filter((s) => (s.chg24 || 0) < 8 && !MEGA.has(s.symbol) && !STOPPED.has(s.angle))
         .sort((a, b) => b.setupScore - a.setupScore);
       for (const s of relaxed) {
         if (out.length >= n) break;
