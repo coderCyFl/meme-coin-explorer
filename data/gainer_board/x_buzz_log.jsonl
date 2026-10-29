@@ -93,3 +93,7 @@
 {"ts": "2026-10-29T19:36:10+08:00", "symbol": null, "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
 {"ts": "2026-10-29T19:36:11+08:00", "symbol": "KATUSDT", "tool": "search", "query": "(KAT OR #KAT) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
 {"ts": "2026-10-29T19:36:12+08:00", "symbol": "HYPEUSDT", "tool": "search", "query": "(HYPE OR #HYPE) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-29T20:11:30+08:00", "symbol": null, "tool": "counts", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-29T20:11:30+08:00", "symbol": "HYPEUSDT", "tool": "counts", "query": "($HYPE OR #HYPE) (crypto OR binance) lang:en -is:retweet", "result_count": 749}
+{"ts": "2026-10-29T20:12:00+08:00", "symbol": null, "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-10-29T20:12:00+08:00", "symbol": "HYPEUSDT", "tool": "search", "query": "(HYPE OR #HYPE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
