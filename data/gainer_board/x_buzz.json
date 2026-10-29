@@ -50,44 +50,44 @@
    "base": "BLUR",
    "flag": "pump",
    "trigger_at": "2026-10-29T12:00:00+08:00",
-   "checked_at": "2026-10-29T13:10:41+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 2.67,
-   "spike_ratio": 1.12,
-   "verdict": "冷",
-   "one_line": "帖少無真實討論",
+   "checked_at": "2026-10-29T14:05:30+08:00",
+   "posts_last_1h": 56,
+   "posts_prev_6h_avg_per_h": 1.6,
+   "spike_ratio": 35.0,
+   "verdict": "升溫",
+   "one_line": "量暴升惟多係喊單",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115665380358414426",
-     "url": "https://x.com/GirlZubyCrypto/status/2115665380358414426",
-     "text": "CRYPTO ALERT: BLUR Is Exploding! Memecoins Are Heating Up—Is the Next Big Move Coming?",
-     "likes": 0,
-     "author_username": "GirlZubyCrypto",
-     "author_followers": 95,
-     "created_at": "2026-10-29T12:41:48+08:00"
+     "id": "2115682692478193902",
+     "url": "https://x.com/aitradebotx/status/2115682692478193902",
+     "text": "Funding Spread Alert +0.21765% funding spread | ~+5.22% estimated daily On ethereum Blur between Binance and Bybit",
+     "likes": 2,
+     "author_username": "aitradebotx",
+     "author_followers": 981,
+     "created_at": "2026-10-29T13:50:36+08:00"
     },
     {
-     "id": "2115661206119723075",
-     "url": "https://x.com/cexscan/status/2115661206119723075",
-     "text": "Last 15m - #Bybit Spot (USDT Trades) Top 3 Gainers / Losers (scanner dump)",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-29T12:25:13+08:00"
+     "id": "2115686103399149841",
+     "url": "https://x.com/WilhemCrypto/status/2115686103399149841",
+     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
+     "likes": 1,
+     "author_username": "WilhemCrypto",
+     "author_followers": 1768,
+     "created_at": "2026-10-29T14:04:09+08:00"
     },
     {
-     "id": "2115658927576944736",
-     "url": "https://x.com/yepzXBT/status/2115658927576944736",
-     "text": "In the era of Binance Agentic Wallets, the line between traders and software is starting to blur.",
-     "likes": 0,
-     "author_username": "yepzXBT",
-     "author_followers": 1342,
-     "created_at": "2026-10-29T12:16:10+08:00"
+     "id": "2115682541105476050",
+     "url": "https://x.com/Micheleagnela/status/2115682541105476050",
+     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
+     "likes": 1,
+     "author_username": "Micheleagnela",
+     "author_followers": 2190,
+     "created_at": "2026-10-29T13:49:59+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "BMTUSDT": {
    "symbol": "BMTUSDT",
@@ -533,15 +533,58 @@
      "created_at": "2026-10-29T12:16:10+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T12:00:00+08:00",
+   "checked_at": "2026-10-29T14:05:30+08:00",
+   "posts_last_1h": 56,
+   "posts_prev_6h_avg_per_h": 1.6,
+   "spike_ratio": 35.0,
+   "verdict": "升溫",
+   "one_line": "量暴升惟多係喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115682692478193902",
+     "url": "https://x.com/aitradebotx/status/2115682692478193902",
+     "text": "Funding Spread Alert +0.21765% funding spread | ~+5.22% estimated daily On ethereum Blur between Binance and Bybit",
+     "likes": 2,
+     "author_username": "aitradebotx",
+     "author_followers": 981,
+     "created_at": "2026-10-29T13:50:36+08:00"
+    },
+    {
+     "id": "2115686103399149841",
+     "url": "https://x.com/WilhemCrypto/status/2115686103399149841",
+     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
+     "likes": 1,
+     "author_username": "WilhemCrypto",
+     "author_followers": 1768,
+     "created_at": "2026-10-29T14:04:09+08:00"
+    },
+    {
+     "id": "2115682541105476050",
+     "url": "https://x.com/Micheleagnela/status/2115682541105476050",
+     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
+     "likes": 1,
+     "author_username": "Micheleagnela",
+     "author_followers": 2190,
+     "created_at": "2026-10-29T13:49:59+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 22,
+  "calls_today": 24,
   "cap_reached": false,
-  "updated_at": "2026-10-29T13:10:48+08:00"
+  "updated_at": "2026-10-29T14:06:05+08:00"
  },
- "updated_at": "2026-10-29T13:10:48+08:00",
+ "updated_at": "2026-10-29T14:06:05+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
