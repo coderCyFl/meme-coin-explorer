@@ -221,6 +221,27 @@ def early2_at(b15, j):
     return early2_leg(early2_feats(b15, j))
 
 
+# ---------------- 🚀 續升買 chase (2026-10-30, Strategy BOT; Cyrus: +10–20% is NOT too late) ----------------
+# Paper BUY (watch_only False). Separate from the early-capture scorecard (c24<15 rule there is UNCHANGED;
+# 🚀 is never counted as an early flag). Rule on a rolling/closed 1h window:
+#   24h +10%..+30%, price within 5% of the 24h high, 1h quote volume >= 2x the prior-24h hourly average,
+#   1h candle still up (c1 > 0), qv24 >= $1.5M (qv24 < $3M = 細盤 → bonus size).
+# Exit plan: +20% sell half (stop → entry) / +50% clear / −10% stop / sell_by 24h.
+CHASE_C24_MIN, CHASE_C24_MAX, CHASE_FH_MIN, CHASE_VR = 10.0, 30.0, -5.0, 2.0
+CHASE_MIN_QV, CHASE_SMALL_QV = E2_LOW_QV, MIN_QV24
+CHASE_TP, CHASE_TP2, CHASE_SL, CHASE_SELL_H, CHASE_REVIEW_H = 20.0, 50.0, 10.0, 24, 4
+CHASE_SMALL_MULT = 1.5
+
+
+def chase_ok(c24, fh, vr, c1, qv24):
+    """🚀 續升買 condition. Returns 'small' (細盤 bonus), 'main', or None."""
+    if qv24 is None or qv24 < CHASE_MIN_QV:
+        return None
+    if not (CHASE_C24_MIN <= c24 <= CHASE_C24_MAX and fh >= CHASE_FH_MIN and vr >= CHASE_VR and c1 > 0):
+        return None
+    return "small" if qv24 < CHASE_SMALL_QV else "main"
+
+
 RULES = {
     "pump": lambda f, btc24=0.0: surge_fire(f),
     "pump_legacy_24h20": lambda f, btc24=0.0: f["c24"] >= PUMP_C24 and f["fh"] >= PUMP_FROM_HIGH,

@@ -263,6 +263,44 @@ function diversifyPicks(scored, n = 6) {
   return out.slice(0, n);
 }
 
+// ---- 🚀 續升買 chase (Strategy BOT 2026-10-30; mirrors scripts/gainer_core.py chase_ok) ----
+// All eligible Binance USDT spot (not just CURATED): 24h +10..+30%, ≤5% below 24h high, last CLOSED 1h quote vol
+// ≥ 2x prior-24h hourly avg, that 1h candle up, 24h vol ≥ $1.5M (< $3M = 細盤 → size:bonus). Paper BUY with
+// exit_plan +20% half / +50% clear / −10% / sell_by 24h. NOT part of the early-capture scorecard (tier:"chase").
+const CH = { c24Min: 10, c24Max: 30, fhMin: -5, vr: 2, minQv: 1.5e6, smallQv: 3e6, tp: 20, tp2: 50, sl: 10, reviewH: 4, sellH: 24, max: 6 };
+const CH_STABLE = new Set(["USDC","FDUSD","TUSD","USDP","DAI","BUSD","EUR","EURI","AEUR","XUSD","USD1","BFUSD","USDE","USDEB","U","FRAX","RLUSD","USDS","RWUSD","PYUSD","PAXG","XAUT","WBTC","WBETH","BNSOL"]);
+const CH_LEV_OK = new Set(["JUP", "SYRUP", "SUP"]);
+async function scanChase(listed) {
+  let tokenized = new Set();
+  try { tokenized = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, "data/gainer_board/tokenized_stocks.json"), "utf8")).bases || []); } catch (_) {}
+  const all = await getJson(BN + "/api/v3/ticker/24hr");
+  const cands = [];
+  for (const x of all) {
+    const sym = x.symbol;
+    if (!sym.endsWith("USDT") || !listed.has(sym)) continue;
+    const base = sym.slice(0, -4);
+    if (CH_STABLE.has(base) || tokenized.has(base) || (/(UP|DOWN|BULL|BEAR)$/.test(base) && !CH_LEV_OK.has(base))) continue;
+    const last = +x.lastPrice, hi = +x.highPrice, qv = +x.quoteVolume, chg = +x.priceChangePercent;
+    if (!(last > 0 && hi > 0) || qv < CH.minQv) continue;
+    const fh = (last / hi - 1) * 100;
+    if (chg >= CH.c24Min && chg <= CH.c24Max && fh >= CH.fhMin) cands.push({ symbol: sym, base, last, hi, lo: +x.lowPrice, qv, chg, fh });
+  }
+  const out = [];
+  for (const c of cands.sort((a, b) => b.chg - a.chg).slice(0, 30)) {
+    try {
+      const h = parseKlines(await getJson(BN + `/api/v3/klines?symbol=${c.symbol}&interval=1h&limit=26`));
+      await sleep(60);
+      if (h.length < 26) continue;
+      const j = h.length - 2;                     // last CLOSED 1h bar (h[j+1] is forming)
+      const prev = h.slice(j - 24, j).map((b) => b.qv);
+      const vr = h[j].qv / (avg(prev) || Infinity);
+      const up = h[j].c > h[j].o && c.last >= h[j].o;
+      if (vr >= CH.vr && up) out.push({ ...c, vr, c1: (h[j].c / h[j].o - 1) * 100, small: c.qv < CH.smallQv });
+    } catch (e) { console.warn("chase kline fail", c.symbol, e.message); }
+  }
+  return out.sort((a, b) => b.vr - a.vr).slice(0, CH.max);
+}
+
 // ---- One batch per Asia/Shanghai day. `--force` (or env PICKS_FORCE=1) bypasses. ----
 const PICKS_PATH = path.join(ROOT, "data/picks.json");
 const FORCE = process.argv.includes("--force") || process.env.PICKS_FORCE === "1";
@@ -346,7 +384,12 @@ async function main() {
   console.log("regime", regime);
   let picks = diversifyPicks(scored, 6);
   if (weak) picks = picks.filter((p) => p.setupScore >= 28).sort((a, b) => b.f.relStrength - a.f.relStrength).slice(0, 4); // no relaxed fill in weak tape
-  const chasing = scored.filter((s) => s.f.alreadyUp || s.f.extended)
+  let chaseHits = [];
+  try { chaseHits = await scanChase(listed); } catch (e) { console.warn("chase scan failed (non-fatal):", e.message); }
+  console.log("=== 🚀 續升買 ===");
+  for (const c of chaseHits) console.log(c.base, "chg24", c.chg.toFixed(2), "fh", c.fh.toFixed(2), "vr", c.vr.toFixed(2), c.small ? "細盤" : "");
+  const chaseSyms = new Set(chaseHits.map((c) => c.symbol));
+  const chasing = scored.filter((s) => (s.f.alreadyUp || s.f.extended) && !chaseSyms.has(s.symbol))
     .sort((a, b) => b.chaseScore - a.chaseScore)
     .slice(0, 4);
 
@@ -432,6 +475,29 @@ async function main() {
     horizons_h: [24, 72, 168],
   }));
 
+  // 🚀 續升買 entries — paper BUY (not watch-only), momentum exit, not halved by the weak-tape gate.
+  for (const c of chaseHits) {
+    if (entries.some((e) => e.pair_address === c.symbol)) continue;
+    entries.push({
+      id: `${day}-${batchNum}-CHASE-${c.base}`, batch: batchId, type: "buy", tier: "chase", exitRegime: "momentum",
+      created_at: isoHK, chain: "binance", token_address: "binance:" + c.symbol, pair_address: c.symbol, dex: "binance-spot",
+      symbol: c.base, name: c.base + " (Binance)", url: `https://www.binance.com/en/trade/${c.base}_USDT`,
+      entry_price_usd: c.last,
+      entry_snapshot: { liquidity_usd: 1e12, volume24h_usd: c.qv, market_cap_usd: null, fdv_usd: null, pair_age_h: null,
+        chg24h_pct: +c.chg.toFixed(3), high24h: c.hi, low24h: c.lo, from_high_pct: +c.fh.toFixed(2), vol_ratio_1h: +c.vr.toFixed(2),
+        c1h_pct: +c.c1.toFixed(2), angle: "chase", tier: "chase" },
+      model_score: null, score_parts: null, conviction: null,
+      rationale: `🚀 續升買：24h +${c.chg.toFixed(1)}%、離 24h 高 ${c.fh.toFixed(1)}%、1h 成交 ${c.vr.toFixed(1)}x、1h 仲升緊 → 紙上跟買。`,
+      tip: "🚀 續升買 · 可追", angle: "chase",
+      flags: ["Binance USDT spot", "tier:chase", "angle:chase", c.small ? "size:bonus" : "size:full"],
+      size: c.small ? "bonus" : "full",
+      suggested_exit_h: CH.reviewH, suggested_second_h: CH.sellH,
+      take_profit_pct: CH.tp, take_profit2_pct: CH.tp2, stop_loss_pct: CH.sl,
+      evidence: { source: "binance-24hr-ticker+klines-1h", symbol: c.symbol, note: "gainer_core.chase_ok mirror; separate from early-capture scorecard" },
+      horizons_h: [24, 72, 168],
+    });
+  }
+
   // Explicit exit plan on every buy: target price, stop price, when to review, latest sell time.
   // Derived from the same TP/SL % and review/second hours above (no change to sizing or pick count).
   const roundPx = (x) => +Number(x).toPrecision(6);
@@ -443,6 +509,10 @@ async function main() {
     e.review_at = addH(e.suggested_exit_h);
     e.sell_by = addH(e.suggested_second_h);
     e.exit_plan = `目標 +${tp}%（$${e.target_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
+    if (e.tier === "chase") {
+      e.target2_price_usd = roundPx(e.entry_price_usd * (1 + e.take_profit2_pct / 100));
+      e.exit_plan = `+${tp}% 放一半（$${e.target_price_usd}）· +${e.take_profit2_pct}% 清（$${e.target2_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
+    }
   }
   // Hard check: never write a buy without target, stop and sell timing.
   for (const e of entries) {
@@ -514,7 +584,7 @@ async function main() {
   });
   doc.description = "Append-only AI pick log. batch-003+ = multi-angle Binance setup (not 24h gainer rank).";
   fs.writeFileSync(picksPath, JSON.stringify(doc, null, 1) + "\n");
-  console.log("wrote", batchId, "buys", picks.length, "avoids", chasing.length);
+  console.log("wrote", batchId, "buys", picks.length, "chase", chaseHits.length, "avoids", chasing.length);
 
   // summary for parent
   fs.mkdirSync(path.join(ROOT, "data/raw"), { recursive: true }); // data/raw is gitignored → absent on CI checkout

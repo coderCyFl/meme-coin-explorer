@@ -1864,3 +1864,9 @@ button.allin-btn.allin-btn:hover,button.allin-btn.sm:hover,button.primary.sm:hov
 .shill-flag[hidden]{display:none}
 .shill-line{color:var(--red);font-size:12px;line-height:1.4}
 .shill-line[hidden]{display:none}
+/* 🔥 可追 / 🚀 續升買 buy tags (20261030c): Binance yellow, black text */
+.gb-buytag{display:inline-block;font-size:10px;font-weight:800;padding:1px 6px;border-radius:4px;background:#F0B90B;color:#0B0E11;margin-left:6px;vertical-align:middle}
+.gb-buytag.soft{background:transparent;color:#F0B90B;border:1px solid #F0B90B}
+.gb-row[data-gb-tier="chase"]{border-color:#F0B90B55}
+.gb-buyrow .primary.gb-buy{background:#F0B90B;border-color:#F0B90B;color:#0B0E11;font-weight:800}
+.gb-row[data-gb-tier="pump"] .gb-exit1,.gb-row[data-gb-tier="chase"] .gb-exit1{white-space:normal}
