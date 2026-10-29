@@ -174,18 +174,21 @@ def surge_fire(sf):
     return surge_raw(sf)
 
 
-# ---------------- ⚡ 早期 v2 (2026-10-30: looser grind prec_e; still watch-only) ----------------
+# ---------------- ⚡ 早期 v2 (2026-10-30b x-early: modest widen + X 熱度早標; still watch-only) ----------------
 # Legs on CLOSED 15m bars; suppressed if 🔥 fired in last 4h (bars j-16..j):
 #   (a) 起步 — qv>=$3M, not 🔥, 15m>=+2.5%, 1h>=0, prior-24h range>=25%.
-#   (b) 細盤 — qv $1.5M..$3M (was $2M; S′ in backtest_early_30d) + surge_raw.
-#   (c) prec / grind prec_e — LOOSENED 2026-10-30: qv>=$3M, not 🔥,
-#       1h>=+1.5% (was 2.5), vr>=1.5x (was 2.5), 24h%<+15% (was 12; = EARLY cut).
-# Dry-run sealed top-20 2026-10-25..29 (scripts/dryrun_precursor.py):
-#   prec_e alone 26% (26/100); e2∪prec_e 36% (36/100); prior "prec_e ~55%" NOT reproduced on this window
-#   (loosest grid 1.0/1.5/15 alone = 28%). Live scorecard same days ~3% recall — report separately.
-# Still fails buy gate on 4h mean → watch-only 「觀察」. Do not credit live early-hit as buy signal.
+#   (b) 細盤 — qv $1.5M..$3M + surge_raw.
+#   (c) prec / grind prec_e — MODEST WIDEN 2026-10-30b: qv>=$3M, not 🔥,
+#       1h>=+1.2% (was 1.5), vr>=1.5x, 24h%<+15%. Target ~+2–5 early flags/day, not FP explode.
+#   (d) X 熱度早標 (x_early_ok) — when x_buzz flips 熱/升溫 AND c24<+15 AND not top-20 AND
+#       1h vol≥1.5x → emit ⚡ via=x_buzz (can coexist with prec). Keep 🚩 shill. X stays hourly.
+# Capture scorecard UNCHANGED: early = before top20 + c24<15. X is never a buy signal by itself.
+# Still fails buy gate on 4h mean → watch-only 「觀察」.
 E2_C15, E2_C1_MIN, E2_RNG24, E2_LOW_QV = 2.5, 0.0, 25.0, 1.5e6
-E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 1.5, 1.5, 15.0
+E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 1.2, 1.5, 15.0
+# X 熱度早標 thresholds (Strategy/QA lock 2026-10-30)
+X_EARLY_VERDICTS = ("熱", "升溫")
+X_EARLY_C24_MAX, X_EARLY_VR = 15.0, 1.5
 
 
 def early2_feats(b15, j):
@@ -221,6 +224,29 @@ def early2_at(b15, j):
     return early2_leg(early2_feats(b15, j))
 
 
+def x_early_ok(verdict, c24, vr, rank24=None):
+    """X 熱度早標: 熱/升溫 while still early (c24<15, not top-20, 1h vol≥1.5x).
+    Returns True if this X check should emit a ⚡ early flag (via=x_buzz). Shill is display-only."""
+    if verdict not in X_EARLY_VERDICTS:
+        return False
+    if c24 is None or c24 >= X_EARLY_C24_MAX:
+        return False
+    if vr is None or vr < X_EARLY_VR:
+        return False
+    if rank24 is not None and rank24 <= 20:
+        return False
+    return True
+
+
+# Default exit_plan for ⚡/🔥 paper cards (must appear on every early/🚀 card).
+EARLY_EXIT = {"tp": 20.0, "tp2": 50.0, "sl": 10.0, "review_h": 4, "sell_by_h": 12}
+
+
+def exit_plan_for(tier):
+    """Attach to every early2/pump/chase card. ⚡ stays watch_only; plan is for paper if user taps."""
+    return dict(EARLY_EXIT)
+
+
 RULES = {
     "pump": lambda f, btc24=0.0: surge_fire(f),
     "pump_legacy_24h20": lambda f, btc24=0.0: f["c24"] >= PUMP_C24 and f["fh"] >= PUMP_FROM_HIGH,
@@ -230,7 +256,7 @@ RULES = {
 RULE_TEXT = {
     "pump": f"(1h >= +{SURGE_C1:g}% 且 1h 成交 >= {SURGE_VR:g}x 24h 平均) 或 15m >= +{SURGE_C15:g}% · 冇 24h 下限",
     "pump_legacy_24h20": f"24h >= +{PUMP_C24:g}% 且 距 24h 高 <= {abs(PUMP_FROM_HIGH):g}%（舊，已停用）",
-    "early2": f"⚡ 起步：15m >= +{E2_C15:g}% 且 1h >= 0 且 前 24h 波幅 >= {E2_RNG24:g}%（未 🔥，>= $3M）／prec：1h >= +{E2_PREC_C1:g}% 且 量 >= {E2_PREC_VR:g}x 且 24h < +{E2_PREC_C24_MAX:g}%／細盤 🔥（${E2_LOW_QV/1e6:g}M–$3M）· 近 4h 已 🔥 唔重報",
+    "early2": f"⚡ 起步：15m >= +{E2_C15:g}% 且 1h >= 0 且 前 24h 波幅 >= {E2_RNG24:g}%（未 🔥，>= $3M）／prec：1h >= +{E2_PREC_C1:g}% 且 量 >= {E2_PREC_VR:g}x 且 24h < +{E2_PREC_C24_MAX:g}%／細盤 🔥（${E2_LOW_QV/1e6:g}M–$3M）／X熱度早標：X 熱|升溫 且 24h < +{X_EARLY_C24_MAX:g}% 且 量 >= {X_EARLY_VR:g}x 且未入 top20 · 近 4h 已 🔥 唔重報",
     "early": f"（舊 ⚡，網站已停用）1h 成交 >= {EARLY_VR:g}x 24h 平均 且 上一個鐘 >= {EARLY_VR1:g}x（量持續升）· 1h >= +{EARLY_C1:g}% · 24h < +{EARLY_C24_MAX:g}%",
 }
 

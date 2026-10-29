@@ -1271,7 +1271,7 @@
     } catch (_) {}
   }
 
-  // ---------- X buzz chip (🔥 only). Site makes 0 X calls: reads data/gainer_board/x_buzz.json written by the
+  // ---------- X buzz chip (🔥 + ⚡ X-early). Site makes 0 X calls: reads data/gainer_board/x_buzz.json written by the
   // Grok Bot routine (scripts/x_buzz_write.py). Same-origin only, cache-busted, refreshed every 5 min. ----------
   const GBX_PATH = "data/gainer_board/x_buzz.json";
   const GBX_MAX_AGE = 3 * 3600e3;   // older than 3h → show nothing
@@ -1457,7 +1457,13 @@
           onFilled: (res) => gbLogBought(r, null, res),
         }) }, `買 $${Math.round(usd).toLocaleString()}`)));
     }
-    if (r.tier === "early2") kids.push(el("div", { class: "gb-buyrow gb-e2row" }, gbEarlyChip()));
+    if (r.tier === "early2") {
+      const viaX = (r.trigger && r.trigger.via === "x_buzz") || (r.serverFlag && r.serverFlag.via === "x_buzz");
+      kids.push(el("div", { class: "gb-buyrow gb-e2row" }, gbEarlyChip(),
+        viaX ? el("span", { class: "gb-buytag soft", text: "X 熱度早標" }) : null));
+      kids.push(el("div", { class: "tiny muted",
+        text: `觀察出場參考：+${GAINER_EXIT.tp}% / +${GAINER_EXIT.tp2}% · 止蝕 −${GAINER_EXIT.sl}% · ${GAINER_EXIT.reviewH}h 複盤（唔係買入訊號）` }));
+    }
     kids.push(details);
     return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (gbIsEarly(r.tier) ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
   }
@@ -1529,8 +1535,36 @@
         return { ...r, serverFlag };
       });
       // ⚡ v2: live client rows (all eligible coins, closed 15m bars). Old server ⚡ (tier "early") is no longer shown.
-      const early = (res.early || []).slice(0, 8).map((r) => ({ ...r, serverFlag: { symbol: r.base, pair: r.symbol, tier: "early2",
+      // X 熱度早標: if gbX has 熱/升溫 on a coin still early (c24<15, vr≥1.5, rank>20) and not already 🔥/⚡, promote to ⚡ via=x_buzz.
+      let early = (res.early || []).slice(0, 8).map((r) => ({ ...r, serverFlag: { symbol: r.base, pair: r.symbol, tier: "early2",
         picked_at: isoSh(new Date(r.trigger.t)), entry_price_usd: r.trigger.price, trigger_src: "kline", via: r.trigger.via, forming: false } }));
+      try {
+        await gbLoadX(false);
+        const xOk = window.MCE.live && window.MCE.live._gb && window.MCE.live._gb.xEarlyOk;
+        const have = new Set(early.map((e) => e.symbol).concat(rows.filter((r) => r.tier === "pump").map((r) => r.symbol)));
+        const rankMap = res.rank || new Map();
+        const extras = [];
+        for (const [sym, coin] of Object.entries((gbX.data && gbX.data.coins) || {})) {
+          if (have.has(sym)) continue;
+          const rec = gbXRec(sym); if (!rec) continue;
+          const tick = rankMap.get(sym) || {};
+          const vr = tick.volRatio != null ? tick.volRatio : null;
+          const c24 = tick.chg24 != null ? tick.chg24 : null;
+          const rk = tick.rank24 != null ? tick.rank24 : (tick.rank != null ? tick.rank : null);
+          if (!xOk || !xOk(rec, c24, vr, rk)) continue;
+          const base = sym.endsWith("USDT") ? sym.slice(0, -4) : sym;
+          extras.push({
+            symbol: sym, base, price: tick.price || coin.price, chg24: c24 || 0, tier: "early2",
+            volRatio: vr, fromHigh: tick.fromHigh, score: tick.score || 0,
+            trigger: { t: rec._t, price: tick.price || coin.price, via: "x_buzz", c1: tick.c1h, c15: null, vr, forming: false },
+            serverFlag: { symbol: base, pair: sym, tier: "early2", picked_at: isoSh(new Date(rec._t)),
+              entry_price_usd: tick.price || coin.price, trigger_src: "x_buzz", via: "x_buzz", forming: false,
+              x_verdict: rec.verdict, shill_flag: !!rec.shill_flag },
+            spark: [], logo: (window.MCE.live && window.MCE.live.logoUrl && window.MCE.live.logoUrl(base)) || "",
+          });
+        }
+        if (extras.length) early = early.concat(extras).slice(0, 10);
+      } catch (_) {}
       const trig = gbLogSnapshot(rows.concat(early));
       for (const r of rows) { const t = trig.get(r.symbol + ":" + r.tier); if (t && !t.trigger_src) t.trigger_src = r.tier === "pump" ? "now" : "seen"; }
       const curPx = (p) => (res.prices && res.prices.get(p)) || null;
