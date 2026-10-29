@@ -83,3 +83,7 @@
 {"ts": "2026-10-29T18:04:46+08:00", "symbol": "KATUSDT", "tool": "search", "query": "($KAT OR #KAT) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
 {"ts": "2026-10-29T18:37:29+08:00", "symbol": "KATUSDT", "tool": "counts", "query": "($KAT OR #KAT) (crypto OR binance) lang:en -is:retweet", "result_count": 11}
 {"ts": "2026-10-29T18:37:29+08:00", "symbol": "KATUSDT", "tool": "search", "query": "($KAT OR #KAT) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
+{"ts": "2026-10-29T19:07:19+08:00", "symbol": "HYPEUSDT", "tool": "counts", "query": "($HYPE OR #HYPE) (crypto OR binance) lang:en -is:retweet", "result_count": 605}
+{"ts": "2026-10-29T19:07:19+08:00", "symbol": "KATUSDT", "tool": "counts", "query": "($KAT OR #KAT) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-29T19:07:30+08:00", "symbol": "HYPEUSDT", "tool": "search", "query": "($HYPE OR #HYPE) (crypto OR binance) lang:en -is:retweet", "result_count": 20}
+{"ts": "2026-10-29T19:07:30+08:00", "symbol": "KATUSDT", "tool": "search", "query": "($KAT OR #KAT) (crypto OR binance) lang:en -is:retweet", "result_count": 0}

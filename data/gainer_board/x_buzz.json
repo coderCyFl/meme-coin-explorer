@@ -110,35 +110,60 @@
    "base": "KAT",
    "flag": "pump",
    "trigger_at": "2026-10-29T15:30:00+08:00",
-   "checked_at": "2026-10-29T18:37:29+08:00",
-   "posts_last_1h": 2,
+   "checked_at": "2026-10-29T19:08:00+08:00",
+   "posts_last_1h": 1,
    "posts_prev_6h_avg_per_h": 1.33,
-   "spike_ratio": 1.5,
+   "spike_ratio": 0.75,
    "verdict": "冷",
-   "one_line": "仍然冷清，多喊單",
-   "shill_flag": true,
+   "one_line": "幾乎無人討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [],
+   "checks_this_trigger": 6
+  },
+  "HYPEUSDT": {
+   "symbol": "HYPEUSDT",
+   "base": "HYPE",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T18:45:00+08:00",
+   "checked_at": "2026-10-29T19:08:00+08:00",
+   "posts_last_1h": 111,
+   "posts_prev_6h_avg_per_h": 77.5,
+   "spike_ratio": 1.43,
+   "verdict": "升溫",
+   "one_line": "NYSE消息撐住熱度",
+   "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115722361085272429",
-     "url": "https://x.com/jegoschy893/status/2115722361085272429",
-     "text": "$KAT is one of the fresh setups I'm watching VERY closely. Clean higher-low structure. Steady price expansion. Volume starting to wake up.",
-     "likes": 0,
-     "author_username": "jegoschy893",
-     "author_followers": 22,
-     "created_at": "2026-10-29T16:28:13+08:00"
+     "id": "2115761165628264872",
+     "url": "https://x.com/Big_worx001/status/2115761165628264872",
+     "text": "📚 Web3 Education — Day 24 What is a Rug Pull in Crypto? 🚨🪙 A rug pull happens when a crypto project's creators abandon the project or withd…",
+     "likes": 6,
+     "author_username": "Big_worx001",
+     "author_followers": 2054,
+     "created_at": "2026-10-29T19:02:25+08:00"
     },
     {
-     "id": "2115690651123634237",
-     "url": "https://x.com/KaarlyMoon/status/2115690651123634237",
-     "text": "If you followed me for years You know I've been repeating the same shit. I'll tell you why. No one has more patience in #crypto than me.",
+     "id": "2115761060179288350",
+     "url": "https://x.com/cryptohouse0x/status/2115761060179288350",
+     "text": "Crypto never stops evolving. Keep learning, stay curious, manage your risk and remember that patience is often more valuable than hype.",
+     "likes": 1,
+     "author_username": "cryptohouse0x",
+     "author_followers": 26000,
+     "created_at": "2026-10-29T19:02:00+08:00"
+    },
+    {
+     "id": "2115762272425726361",
+     "url": "https://x.com/CoinliveHQ/status/2115762272425726361",
+     "text": "🚨 JUST IN: 🇺🇸 The NYSE's owner is bringing Hyperliquid's $HYPE perpetual futures to regulated US markets. 🔥 A major step toward bringing cr…",
      "likes": 0,
-     "author_username": "KaarlyMoon",
-     "author_followers": 2064,
-     "created_at": "2026-10-29T14:22:13+08:00"
+     "author_username": "CoinliveHQ",
+     "author_followers": 16009,
+     "created_at": "2026-10-29T19:06:49+08:00"
     }
    ],
-   "checks_this_trigger": 5
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -839,15 +864,73 @@
      "created_at": "2026-10-29T14:22:13+08:00"
     }
    ]
+  },
+  {
+   "symbol": "HYPEUSDT",
+   "base": "HYPE",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T18:45:00+08:00",
+   "checked_at": "2026-10-29T19:08:00+08:00",
+   "posts_last_1h": 111,
+   "posts_prev_6h_avg_per_h": 77.5,
+   "spike_ratio": 1.43,
+   "verdict": "升溫",
+   "one_line": "NYSE消息撐住熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115761165628264872",
+     "url": "https://x.com/Big_worx001/status/2115761165628264872",
+     "text": "📚 Web3 Education — Day 24 What is a Rug Pull in Crypto? 🚨🪙 A rug pull happens when a crypto project's creators abandon the project or withd…",
+     "likes": 6,
+     "author_username": "Big_worx001",
+     "author_followers": 2054,
+     "created_at": "2026-10-29T19:02:25+08:00"
+    },
+    {
+     "id": "2115761060179288350",
+     "url": "https://x.com/cryptohouse0x/status/2115761060179288350",
+     "text": "Crypto never stops evolving. Keep learning, stay curious, manage your risk and remember that patience is often more valuable than hype.",
+     "likes": 1,
+     "author_username": "cryptohouse0x",
+     "author_followers": 26000,
+     "created_at": "2026-10-29T19:02:00+08:00"
+    },
+    {
+     "id": "2115762272425726361",
+     "url": "https://x.com/CoinliveHQ/status/2115762272425726361",
+     "text": "🚨 JUST IN: 🇺🇸 The NYSE's owner is bringing Hyperliquid's $HYPE perpetual futures to regulated US markets. 🔥 A major step toward bringing cr…",
+     "likes": 0,
+     "author_username": "CoinliveHQ",
+     "author_followers": 16009,
+     "created_at": "2026-10-29T19:06:49+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "KATUSDT",
+   "base": "KAT",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T15:30:00+08:00",
+   "checked_at": "2026-10-29T19:08:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 0.75,
+   "verdict": "冷",
+   "one_line": "幾乎無人討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": []
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 39,
+  "calls_today": 43,
   "cap_reached": false,
-  "updated_at": "2026-10-29T18:37:44+08:00"
+  "updated_at": "2026-10-29T19:08:16+08:00"
  },
- "updated_at": "2026-10-29T18:37:44+08:00",
+ "updated_at": "2026-10-29T19:08:16+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
