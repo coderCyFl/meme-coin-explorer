@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Record horizon outcomes for picks (append-only). Run on a schedule, e.g. hourly.
 
-For each entry in data/picks.json and each horizon (24h/72h/168h) that has passed and
+For each entry in data/picks.json and each horizon (24h/72h/168h; +12h for setup_20261030e sell_by) that has passed and
 has no recorded outcome yet, fetch the current price and append a record to
 data/outcomes.json.
 
@@ -225,6 +225,42 @@ def pick_exit_levels(e):
     return sl, tp, stop_px, tp_px
 
 
+
+DEFAULT_HORIZONS = [24, 72, 168]
+SETUP_12H_RULE = "setup_20261030e"
+
+
+def seal_horizons(e):
+    """Horizons to seal for one pick (20261030f: 12h seal for setup sell_by).
+
+    Legacy picks: their own horizons_h (default 24/72/168), unchanged — no 12h row is ever added,
+    so the ¼ gate (first horizon per pick) keeps reading their 24h seal.
+    setup_20261030e non-chase buys: sell_by hours (12h) is added as the FIRST horizon so the
+    seal lands at sell_by instead of waiting for the 24h horizon. Covers picks written before
+    the generator started putting 12 into horizons_h.
+    """
+    hz = list(e.get("horizons_h") or DEFAULT_HORIZONS)
+    if (
+        e.get("exit_rule") == SETUP_12H_RULE
+        and e.get("tier") != "chase"
+        and e.get("type", "buy") == "buy"
+        and e.get("sell_by")
+    ):
+        try:
+            t0 = datetime.datetime.fromisoformat(e["created_at"])
+            sb = datetime.datetime.fromisoformat(e["sell_by"])
+            if sb.tzinfo is None:
+                sb = sb.replace(tzinfo=TZ)
+            if t0.tzinfo is None:
+                t0 = t0.replace(tzinfo=TZ)
+            sbh = round((sb - t0).total_seconds() / 3600)
+            if 0 < sbh < min(hz) and sbh not in hz:
+                hz = [sbh] + hz
+        except (TypeError, ValueError, KeyError):
+            pass
+    return sorted(set(hz))
+
+
 def hold_end(e, due):
     """End of exit-check window: min(due, sell_by) when sell_by parses."""
     end = due
@@ -350,6 +386,16 @@ def resolve_exit(e, entry, eod_price, eod_ret, due, dead, want_path=True):
         out["exit_price_usd"] = eod_price
         if e.get("sell_by") and due and hold_end(e, due) < due and reason == "hold_horizon":
             out["exit_reason"] = "hold_sell_by"
+        elif (
+            reason == "hold_horizon"
+            and e.get("exit_rule") == SETUP_12H_RULE
+            and e.get("tier") != "chase"
+            and e.get("sell_by")
+            and due
+            and hold_end(e, due) == due
+        ):
+            # 12h seal row: horizon == sell_by, so the due 1m close IS the sell_by exit.
+            out["exit_reason"] = "hold_sell_by"
     return out
 
 
@@ -454,7 +500,7 @@ todo = []
 for b in log["batches"]:
     for e in b["entries"]:
         t0 = datetime.datetime.fromisoformat(e["created_at"])
-        for h in e.get("horizons_h", [24, 72, 168]):
+        for h in seal_horizons(e):
             if now >= t0 + datetime.timedelta(hours=h, minutes=1) and (e["id"], h) not in done:
                 todo.append((b, e, h))
 if not todo:

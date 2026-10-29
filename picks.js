@@ -76,6 +76,17 @@
   }
   /** Mirror of make_bn_setup_picks.mjs setupSizeGate: rolling 7d avg SEALED exit-aware return_pct of non-chase buys > 0 → full.
    * Seal = the pick's first-horizon outcome record (what snapshot_outcomes.py writes; 12h sell_by for setup_20261030e, legacy 24h). */
+  /** Mirror of snapshot_outcomes.py seal_horizons() first horizon: legacy = min(horizons_h); setup_20261030e buy = sell_by hours (12h). */
+  function sealFirstH(e) {
+    const hz = (e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168];
+    const m = Math.min(...hz);
+    if (e.exit_rule === "setup_20261030e" && e.tier !== "chase" && (e.type || "buy") === "buy" && e.sell_by) {
+      const t0 = Date.parse(e.created_at), sb = Date.parse(e.sell_by);
+      const sbH = isFinite(sb) && isFinite(t0) ? Math.round((sb - t0) / 3600e3) : null;
+      if (sbH != null && sbH > 0 && sbH < m) return sbH;
+    }
+    return m;
+  }
   function setupGateFromOutcomes() {
     if (!S.picks || !S.picks.batches || !Array.isArray(S.outcomes) || !S.outcomes.length) return null;
     const byId = new Map();
@@ -86,7 +97,7 @@
       if (r.return_pct == null) continue;
       const e = byId.get(r.pick_id);
       if (!e || e.type !== "buy" || e.tier === "chase") continue;
-      const firstH = Math.min(...((e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168]));
+      const firstH = sealFirstH(e);
       if (r.horizon_h !== firstH) continue;
       if (!(Date.parse(e.created_at) >= since)) continue;
       seal.set(r.pick_id, +r.return_pct);

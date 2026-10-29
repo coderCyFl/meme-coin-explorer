@@ -38,6 +38,18 @@ export function sealHoursOf(e) {
   const sbH = isFinite(sb) && isFinite(t0) ? Math.round((sb - t0) / 3600e3) : null;
   return sbH != null && sbH > 0 && sbH < hz ? sbH : hz;
 }
+// First seal horizon per pick — mirrors snapshot_outcomes.py seal_horizons(): legacy picks = min(horizons_h) (24h);
+// setup_20261030e non-chase buys add their sell_by hours (12h) as the first seal, so the gate reads the 12h row.
+export function sealFirstH(e) {
+  const hz = (e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168];
+  const m = Math.min(...hz);
+  if (e.exit_rule === "setup_20261030e" && e.tier !== "chase" && (e.type || "buy") === "buy" && e.sell_by) {
+    const t0 = Date.parse(e.created_at), sb = Date.parse(e.sell_by);
+    const sbH = isFinite(sb) && isFinite(t0) ? Math.round((sb - t0) / 3600e3) : null;
+    if (sbH != null && sbH > 0 && sbH < m) return sbH;
+  }
+  return m;
+}
 export function setupSizeGate(outcomes, picksDoc, nowMs = Date.now()) {
   const idx = new Map();
   for (const b of picksDoc.batches || []) for (const e of b.entries || []) idx.set(e.id, e);
@@ -47,7 +59,7 @@ export function setupSizeGate(outcomes, picksDoc, nowMs = Date.now()) {
     if (r.return_pct == null) continue;
     const e = idx.get(r.pick_id);
     if (!e || e.type !== "buy" || e.tier === "chase") continue;
-    const firstH = Math.min(...((e.horizons_h && e.horizons_h.length) ? e.horizons_h : [24, 72, 168]));
+    const firstH = sealFirstH(e);
     if (r.horizon_h !== firstH) continue;
     if (!(Date.parse(e.created_at) >= since)) continue;
     seal.set(r.pick_id, { r, e });
@@ -530,7 +542,7 @@ async function main() {
       symbol: p.symbol,
       note: "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps.",
     },
-    horizons_h: [24, 72, 168],
+    horizons_h: [SETUP_EXIT.sellH, 24, 72, 168], // 12h seal at sell_by (20261030f); 24/72/168 kept for the board
   }));
 
   // 🚀 續升買 entries — paper BUY (not watch-only), momentum exit, not halved by the weak-tape gate.
