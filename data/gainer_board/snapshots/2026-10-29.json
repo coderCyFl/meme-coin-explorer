@@ -642,7 +642,17 @@
      "from_24h_high_pct": -0.44,
      "quote_volume_24h": 3305534,
      "watch_only": false,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.46,
+       "max_drawdown_pct": -2.0,
+       "close_pct": 1.08,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-30T00:52:21+08:00"
+      }
+     }
     },
     {
      "symbol": "ZRO",
@@ -665,7 +675,17 @@
      "from_24h_high_pct": -1.41,
      "quote_volume_24h": 8930318,
      "watch_only": false,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.62,
+       "max_drawdown_pct": -3.25,
+       "close_pct": -0.17,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-30T00:52:21+08:00"
+      }
+     }
     },
     {
      "symbol": "HYPE",
@@ -822,7 +842,17 @@
      "from_24h_high_pct": -0.03,
      "quote_volume_24h": 81823568,
      "watch_only": false,
-     "outcomes": {}
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 8.78,
+       "max_drawdown_pct": -1.17,
+       "close_pct": 7.92,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-10-30T00:52:21+08:00"
+      }
+     }
     },
     {
      "symbol": "PYTH",
