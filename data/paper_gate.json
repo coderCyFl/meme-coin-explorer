@@ -1,13 +1,13 @@
 {
-  "open_buys": false,
-  "mode": "watch_only",
-  "reason": "cum sealed 24h EW paper P&L ≤ −5% (Strategy gate 2026-10-30); new 今日跟買 watch-only until precursor dry-run ≥10% AND P&L gate recovers",
-  "set_at": "2026-10-30T00:47:51+08:00",
+  "open_buys": true,
+  "mode": "paper_open",
+  "reason": "Strategy+QA+Cyrus 2026-10-30: 模擬倉繼續開倉驗證；硬閘=exit_plan 封印＋每2h對數，唔係停開倉",
+  "set_at": "2026-10-30T00:48:24+08:00",
   "set_by": "strategy",
   "thresholds": {
-    "cum_ew_24h_pct_min": -5.0,
-    "sealed_7d_ew_24h_pct_min": 0.0,
+    "require_exit_plan": true,
+    "report_every_h": 2,
     "capture_7d_recall_min": 10.0
   },
-  "workflow": "Daily AI picks batch disabled while open_buys false"
+  "workflow": "Daily AI picks batch re-enabled"
 }
