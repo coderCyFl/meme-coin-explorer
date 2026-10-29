@@ -295,11 +295,13 @@ def resolve_exit(e, entry, eod_price, eod_ret, due, dead, want_path=True):
         return out
 
     path_hit = None
+    path_ok = False
     if want_path and is_binance(e.get("chain"), e.get("pair_address")):
         t0 = datetime.datetime.fromisoformat(e["created_at"])
         end = hold_end(e, due)
         bars = bn_klines_range(e["pair_address"], t0, end, interval="5m")
         if bars is not None:
+            path_ok = True
             path_hit = apply_exit_path(entry, sl, tp, stop_px, tp_px, bars)
         # bars is None → fetch failed; fall through to EOD clip
 
@@ -313,6 +315,27 @@ def resolve_exit(e, entry, eod_price, eod_ret, due, dead, want_path=True):
         if reason == "hold_horizon" and e.get("sell_by"):
             out["exit_reason"] = "hold_sell_by"
         return out
+
+    # sell_by before horizon, path walked with no touch → mark at the sell_by 1m close (20261030e: setup sell_by 12h).
+    # Only picks stamped exit_rule=setup_20261030e (no retro change to older seals); 🚀 chase untouched (Strategy lock: chase keeps its own exit / seal path).
+    if (
+        path_ok
+        and e.get("exit_rule") == "setup_20261030e"
+        and e.get("tier") != "chase"
+        and is_binance(e.get("chain"), e.get("pair_address"))
+        and due is not None
+        and e.get("sell_by")
+    ):
+        end = hold_end(e, due)
+        if end < due and datetime.datetime.now(TZ) >= end + datetime.timedelta(minutes=1):
+            kq = bn_kline_close(e["pair_address"], end)
+            if kq and kq.get("price_usd"):
+                px = float(kq["price_usd"])
+                out["return_pct"] = round((px / entry - 1) * 100, 2)
+                out["exit_reason"] = "hold_sell_by"
+                out["exit_method"] = "sell_by_1m"
+                out["exit_price_usd"] = px
+                return out
 
     # EOD clip (Dex, or Binance path unavailable / no touch)
     ret, reason, method = apply_exit_eod_clip(eod_ret, sl, tp)

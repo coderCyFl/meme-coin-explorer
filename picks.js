@@ -61,13 +61,44 @@
    * Fixed transparent rules (not a promise): normal 24h review +8/−5; weak 12h +5/−4.
    * Aligns with 24h outcomes seal; 72h as second look when not weak.
    */
+  /** Setup-pick exit (Strategy+QA dry-run 2026-10-30, stamp 20261030e): TP +10% / SL −4% / 6h 檢討 / 最遲 12h 沽 —
+   * same for normal + weak tape (weak keeps half size). Mirrors make_bn_setup_picks.mjs SETUP_EXIT. 🚀/🔥 unchanged. */
+  const SETUP_EXIT = { tp: 10, sl: 4, reviewH: 6, secondH: 12 };
+  /** ¼ size gate: setup picks ¼ 注 until rolling 7d sealed setup EW > 0 (batch.setup_size_gate). */
+  const QUARTER_MULT = 0.25;
+  function setupQuarterNow() {
+    const latest = S.picks && S.picks.batches && S.picks.batches[S.picks.batches.length - 1];
+    const g = latest && latest.setup_size_gate;
+    if (g && g.size) return g.size === "quarter";
+    // Older batches (pre-20261030e) carry no gate → compute the same rule client-side from sealed outcomes.
+    const c = setupGateFromOutcomes();
+    return c ? c.size === "quarter" : true;
+  }
+  /** Mirror of make_bn_setup_picks.mjs setupSizeGate: rolling 7d avg sealed 24h return of non-chase buys > 0 → full. */
+  function setupGateFromOutcomes() {
+    if (!S.picks || !S.picks.batches || !Array.isArray(S.outcomes) || !S.outcomes.length) return null;
+    const byId = new Map();
+    for (const b of S.picks.batches) for (const e of b.entries || []) byId.set(e.id, e);
+    const since = Date.now() - 7 * 86400e3;
+    const rets = [];
+    for (const r of S.outcomes) {
+      if (r.horizon_h !== 24 || r.return_pct == null) continue;
+      const e = byId.get(r.pick_id);
+      if (!e || e.type !== "buy" || e.tier === "chase") continue;
+      if (!(Date.parse(e.created_at) >= since)) continue;
+      rets.push(+r.return_pct);
+    }
+    if (!rets.length) return { size: "quarter", ew: null, n: 0 };
+    const ew = rets.reduce((x, y) => x + y, 0) / rets.length;
+    return { size: ew > 0 ? "full" : "quarter", ew, n: rets.length };
+  }
   function paperExitPlan({ createdAt, weak, high24, entryPx, tpPct, slPct, reviewH, secondH, momentum, tp2Pct } = {}) {
     if (momentum) return momentumExitPlan({ createdAt, tpPct, tp2Pct, slPct, reviewH, secondH });
     const isWeak = !!weak;
-    const rh = reviewH != null ? reviewH : (isWeak ? 12 : 24);
-    const sh = secondH != null ? secondH : (isWeak ? 24 : 72);
-    const tp = tpPct != null ? tpPct : (isWeak ? 5 : 8);
-    const sl = slPct != null ? slPct : (isWeak ? 4 : 5);
+    const rh = reviewH != null ? reviewH : SETUP_EXIT.reviewH;
+    const sh = secondH != null ? secondH : SETUP_EXIT.secondH;
+    const tp = tpPct != null ? tpPct : SETUP_EXIT.tp;
+    const sl = slPct != null ? slPct : SETUP_EXIT.sl;
     const baseMs = createdAt ? new Date(createdAt).getTime() : Date.now();
     const baseOk = !isNaN(baseMs);
     const reviewAt = baseOk ? new Date(baseMs + rh * 3600e3) : null;
@@ -145,7 +176,7 @@
    */
   function stablePickMeta(symbol, angle, { weakNow } = {}) {
     const day = shanghaiDay();
-    const key = "mce:pickMeta:v1:" + day + ":" + String(symbol || "").toUpperCase() + ":" + String(angle || "");
+    const key = "mce:pickMeta:v2:" + day + ":" + String(symbol || "").toUpperCase() + ":" + String(angle || "");
     try {
       const raw = localStorage.getItem(key);
       if (raw) {
@@ -157,10 +188,10 @@
     const o = {
       created_at: new Date().toISOString(),
       exitRegime: weak ? "weak" : "normal",
-      suggested_exit_h: weak ? 12 : 24,
-      suggested_second_h: weak ? 24 : 72,
-      take_profit_pct: weak ? 5 : 8,
-      stop_loss_pct: weak ? 4 : 5,
+      suggested_exit_h: SETUP_EXIT.reviewH,
+      suggested_second_h: SETUP_EXIT.secondH,
+      take_profit_pct: SETUP_EXIT.tp,
+      stop_loss_pct: SETUP_EXIT.sl,
     };
     try { localStorage.setItem(key, JSON.stringify(o)); } catch (_) {}
     return o;
@@ -171,10 +202,10 @@
     const isWeak = weak != null ? !!weak : liveWeakNow();
     return {
       exitRegime: isWeak ? "weak" : "normal",
-      suggested_exit_h: isWeak ? 12 : 24,
-      suggested_second_h: isWeak ? 24 : 72,
-      take_profit_pct: isWeak ? 5 : 8,
-      stop_loss_pct: isWeak ? 4 : 5,
+      suggested_exit_h: SETUP_EXIT.reviewH,
+      suggested_second_h: SETUP_EXIT.secondH,
+      take_profit_pct: SETUP_EXIT.tp,
+      stop_loss_pct: SETUP_EXIT.sl,
     };
   }
 
@@ -199,9 +230,15 @@
     if (e) {
       const half = (e.flags || []).includes("size:half") || e.size === "half" || e.suggested_exit_h === 12 || (latest.regime && latest.regime.sizing === "half");
       return { exitRegime: e.exitRegime || (half ? "weak" : "normal"), suggested_exit_h: e.suggested_exit_h, suggested_second_h: e.suggested_second_h,
-        take_profit_pct: e.take_profit_pct, stop_loss_pct: e.stop_loss_pct, take_profit2_pct: e.take_profit2_pct, flags: e.flags, size: half ? "half" : "full" };
+        take_profit_pct: e.take_profit_pct, stop_loss_pct: e.stop_loss_pct, take_profit2_pct: e.take_profit2_pct, flags: e.flags,
+        size: isQuarter(e, latest) ? "quarter" : (half ? "half" : "full"), sizeMult: isQuarter(e, latest) ? QUARTER_MULT : undefined };
     }
     return null;
+  }
+  function isQuarter(e, batch) {
+    if (!e || e.tier === "chase") return false;
+    return (e.flags || []).includes("size:quarter") || e.size === "quarter"
+      || setupQuarterNow();
   }
   function withCoinExit(info) {
     if (!info) return info;
@@ -689,6 +726,7 @@
         exitRegime: x.e.exitRegime, suggested_exit_h: x.e.suggested_exit_h,
         suggested_second_h: x.e.suggested_second_h, take_profit_pct: x.e.take_profit_pct,
         stop_loss_pct: x.e.stop_loss_pct, flags: x.e.flags, size: x.e.size,
+        sizeMult: (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? QUARTER_MULT : undefined,
       };
       const logo = liveApi && liveApi.coinLogoEl
         ? liveApi.coinLogoEl(x.e.symbol, "coin-logo", 44)
@@ -717,6 +755,7 @@
           )
         ),
         exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
+        (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: "注碼 ¼ · 近 7d 跟買平均未轉正，轉正先回全注" }) : null,
         details,
         el("div", { class: "sc-actions" },
           el("button", { type: "button", class: "allin-btn", onclick: () => openAllinFlow(scInfo) }, "孤注"),
@@ -1032,10 +1071,10 @@
           ? {
               created_at: be.created_at,
               exitRegime: (be.flags || []).includes("regime:weak") || be.suggested_exit_h === 12 ? "weak" : (be.exitRegime || (half ? "weak" : "normal")),
-              suggested_exit_h: be.suggested_exit_h != null ? be.suggested_exit_h : (half ? 12 : 24),
-              suggested_second_h: be.suggested_second_h != null ? be.suggested_second_h : (half ? 24 : 72),
-              take_profit_pct: be.take_profit_pct != null ? be.take_profit_pct : (half ? 5 : 8),
-              stop_loss_pct: be.stop_loss_pct != null ? be.stop_loss_pct : (half ? 4 : 5),
+              suggested_exit_h: be.suggested_exit_h != null ? be.suggested_exit_h : SETUP_EXIT.reviewH,
+              suggested_second_h: be.suggested_second_h != null ? be.suggested_second_h : SETUP_EXIT.secondH,
+              take_profit_pct: be.take_profit_pct != null ? be.take_profit_pct : SETUP_EXIT.tp,
+              stop_loss_pct: be.stop_loss_pct != null ? be.stop_loss_pct : SETUP_EXIT.sl,
             }
           : stablePickMeta(r.symbol || r.base, r.angle, { weakNow: half });
         const weakLocked = meta.exitRegime === "weak";
@@ -1048,8 +1087,8 @@
             tip: r.tip, angle: r.angle, rationale: r.tip,
             created_at: meta.created_at,
             exitRegime: meta.exitRegime,
-            size: weakLocked ? "half" : (r.size || "full"),
-            flags: weakLocked ? ["regime:weak", "size:half"] : [],
+            size: setupQuarterNow() ? "quarter" : weakLocked ? "half" : (r.size || "full"),
+            flags: (weakLocked ? ["regime:weak", "size:half"] : []).concat(setupQuarterNow() ? ["size:quarter"] : []),
             suggested_exit_h: meta.suggested_exit_h,
             suggested_second_h: meta.suggested_second_h,
             take_profit_pct: meta.take_profit_pct,
@@ -1807,7 +1846,7 @@
         const reg = latest.regime || {};
         const weak = reg.state === "weak" || reg.sizing === "half";
         meta.textContent = `${latest.id || "batch"} · ${frTime(latest.created_at)} · ${buys.length} 隻可買`
-          + (weak ? " · 弱市半注" : " · 正常注碼")
+          + (setupQuarterNow() ? " · ¼注（近 7d 跟買未轉正）" : weak ? " · 弱市半注" : " · 正常注碼")
           + " · 同「今日跟買」卡分開";
       }
     }
@@ -1828,6 +1867,7 @@
       const chg = e.entry_snapshot && e.entry_snapshot.chg24h_pct;
       const half = (e.flags || []).includes("size:half") || e.size === "half" || e.suggested_exit_h === 12
         || (latest.regime && latest.regime.sizing === "half");
+      const qtr = isQuarter(e, latest);
       // Decision (QA 127c32a): a buy ALWAYS starts a fresh exit window from now (also for rows whose pick 24h is over),
       // so the table shows the would-be hold-until + target/stop at the CURRENT live price = buy window = holdings.
       const rowInfo = {
@@ -1839,7 +1879,7 @@
         exitRegime: e.exitRegime || (half ? "weak" : "normal"),
         suggested_exit_h: e.suggested_exit_h, suggested_second_h: e.suggested_second_h,
         take_profit_pct: e.take_profit_pct, stop_loss_pct: e.stop_loss_pct,
-        flags: e.flags, size: half ? "half" : "full",
+        flags: e.flags, size: qtr ? "quarter" : half ? "half" : "full", sizeMult: qtr ? QUARTER_MULT : undefined,
       };
       const plan = wouldBuyPlan(rowInfo);
       const pickPlan = exitPlanFromEntry(e);
@@ -1863,9 +1903,10 @@
           exitLiveNode("div", {}, "揸到 {review}", plan, lvPx)),
         el("td", { class: "daily-target", "data-label": "目標價" },
           exitLiveNode("div", { class: "num pos" }, "{target}（+{tp}%）", plan, lvPx),
-          exitLiveNode("div", { class: "num neg tiny" }, "止蝕 {stop}（−{sl}%）", plan, lvPx)),
+          exitLiveNode("div", { class: "num neg tiny" }, "止蝕 {stop}（−{sl}%）", plan, lvPx),
+          qtr ? el("div", { class: "muted tiny", text: "¼注" }) : null),
         el("td", { "data-label": "注碼" },
-          el("span", { class: "size-pill " + (half ? "half" : "full"), text: half ? "半注" : "全注" })
+          el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼注" : half ? "半注" : "全注" })
         ),
         el("td", { class: "actions", "data-label": "" },
           el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "買")

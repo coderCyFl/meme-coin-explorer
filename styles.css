@@ -1477,6 +1477,7 @@ img.logo-mark.logo-3d{
 }
 .daily-batch-table .size-pill.half{background:#2B3139;color:#f0b90b;border-color:#8a6510}
 .daily-batch-table .size-pill.full{background:#0f2f1d;color:#86efac;border-color:#166534}
+.daily-batch-table .size-pill.quarter{background:#2B3139;color:#EAECEF;border-color:#474D57}
 @media (max-width:480px){
   .teg-main{font-size:15px}
   .daily-batch-table th:nth-child(3),.daily-batch-table td:nth-child(3){display:none} /* 24h optional hide if tight — keep for now */

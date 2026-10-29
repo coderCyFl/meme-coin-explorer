@@ -23,6 +23,35 @@ const CURATED = [
 const MEME = new Set(["DOGE","PEPE","SHIB","FLOKI","BONK","WIF","BOME","MEME","NEIRO","PNUT","ACT","PENGU","TRUMP","TURBO","ORDI","NOT","HMSTR","PEOPLE","ANIME","1000SATS","1MBABYDOGE"]);
 const MAJORS = new Set(["BTC","ETH","SOL","BNB"]);
 
+// Setup-pick exit (Strategy+QA dry-run 2026-10-30, stamp 20261030e; /workspace/setup-exit-dryrun-20261030.md):
+// TP +10% / SL −4% / review 6h / sell_by 12h for normal AND weak tape (weak keeps half size).
+// Replay of the 50 sealed buys: EW −2.03% vs −3.15% (+8/−5/24h same trades). 🚀 chase keeps CH.* (unchanged).
+export const SETUP_EXIT = { tp: 10, sl: 4, reviewH: 6, sellH: 12 };
+// ¼ size gate: setup picks at ¼ until rolling 7d average sealed EW of setup buys (24h seal, non-chase) > 0.
+export const QUARTER = { mult: 0.25, windowD: 7 };
+export function setupSizeGate(outcomes, picksDoc, nowMs = Date.now()) {
+  const idx = new Map();
+  for (const b of picksDoc.batches || []) for (const e of b.entries || []) idx.set(e.id, e);
+  const since = nowMs - QUARTER.windowD * 86400e3;
+  const rets = [];
+  for (const r of (outcomes && outcomes.records) || []) {
+    if (r.horizon_h !== 24 || r.return_pct == null) continue;
+    const e = idx.get(r.pick_id);
+    if (!e || e.type !== "buy" || e.tier === "chase") continue;
+    const t = Date.parse(e.created_at);
+    if (!(t >= since)) continue;
+    rets.push(+r.return_pct);
+  }
+  const ew = rets.length ? rets.reduce((a, b) => a + b, 0) / rets.length : null;
+  const on = ew != null && ew > 0;
+  return {
+    size: on ? "full" : "quarter",
+    rolling7d_ew_pct: ew == null ? null : +ew.toFixed(2),
+    n: rets.length,
+    rule: "setup picks ¼ size until rolling 7d avg sealed 24h EW (non-chase buys) > 0; 🚀 chase always full",
+  };
+}
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function getJson(url) {
   const r = await fetch(url, { headers: { Accept: "application/json" } });
@@ -429,6 +458,13 @@ async function main() {
   const btcPx = +tickers.get("BTCUSDT")?.lastPrice || btcDaily.at(-1)?.c;
   const solPx = +tickers.get("SOLUSDT")?.lastPrice;
 
+  let sizeGate = { size: "quarter", rolling7d_ew_pct: null, n: 0, rule: "no outcomes → ¼ (fail-safe)" };
+  try {
+    const outc = JSON.parse(fs.readFileSync(path.join(ROOT, "data/outcomes.json"), "utf8"));
+    sizeGate = setupSizeGate(outc, docEarly, now.getTime());
+  } catch (e) { console.warn("size gate: outcomes unreadable, default ¼:", e.message); }
+  console.log("setup size gate", sizeGate);
+
   const entries = picks.map((p, i) => ({
     id: `${day}-${batchNum}-${p.base}`,
     batch: batchId,
@@ -462,11 +498,16 @@ async function main() {
     rationale: p.tip + `（角度：${p.angle}。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）`,
     tip: p.tip,
     angle: p.angle,
-    flags: ["Binance USDT spot", "multi-angle setup", "not 24h gainer rank", `angle:${p.angle}`].concat(weak ? ["regime:weak", "size:half"] : []),
-    suggested_exit_h: weak ? 12 : 24,
-    suggested_second_h: weak ? 24 : 72,
-    take_profit_pct: weak ? 5 : 8,
-    stop_loss_pct: weak ? 4 : 5,
+    flags: ["Binance USDT spot", "multi-angle setup", "not 24h gainer rank", `angle:${p.angle}`]
+      .concat(weak ? ["regime:weak", "size:half"] : [])
+      .concat(sizeGate.size === "quarter" ? ["size:quarter"] : []),
+    size: sizeGate.size === "quarter" ? "quarter" : (weak ? "half" : "full"),
+    exitRegime: weak ? "weak" : "normal",
+    exit_rule: "setup_20261030e",
+    suggested_exit_h: SETUP_EXIT.reviewH,
+    suggested_second_h: SETUP_EXIT.sellH,
+    take_profit_pct: SETUP_EXIT.tp,
+    stop_loss_pct: SETUP_EXIT.sl,
     evidence: {
       source: "binance-klines-1d-1h",
       symbol: p.symbol,
@@ -509,6 +550,7 @@ async function main() {
     e.review_at = addH(e.suggested_exit_h);
     e.sell_by = addH(e.suggested_second_h);
     e.exit_plan = `目標 +${tp}%（$${e.target_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
+    if (e.size === "quarter") e.exit_plan += " · ¼注（近 7d 跟買未轉正）";
     if (e.tier === "chase") {
       e.target2_price_usd = roundPx(e.entry_price_usd * (1 + e.take_profit2_pct / 100));
       e.exit_plan = `+${tp}% 放一半（$${e.target_price_usd}）· +${e.take_profit2_pct}% 清（$${e.target2_price_usd}）· 止蝕 −${sl}%（$${e.stop_price_usd}）· ${e.suggested_exit_h}h 檢討 · 最遲 ${e.suggested_second_h}h 沽`;
@@ -576,6 +618,8 @@ async function main() {
     x_window: null,
     method: "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, rotation, accumulation); excludes hard 24h pumps from primary",
     regime,
+    setup_size_gate: sizeGate,
+    setup_exit: SETUP_EXIT,
     benchmarks: {
       BTC: { chain: "binance", address: "binance:BTCUSDT", pair_address: "BTCUSDT", price_usd: btcPx },
       SOL: { chain: "binance", address: "binance:SOLUSDT", pair_address: "SOLUSDT", price_usd: solPx },
