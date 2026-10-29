@@ -377,6 +377,61 @@
      "outcomes": {}
     }
    ]
+  },
+  {
+   "batch": "gb-20261029-1047",
+   "picked_at": "2026-10-29T10:47:53+08:00",
+   "universe": 71,
+   "btc_24h_pct": -1.4,
+   "universe_all": 395,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "INITUSDT",
+    "SHELLUSDT",
+    "BLURUSDT",
+    "BICOUSDT",
+    "ATUSDT",
+    "HUMAUSDT",
+    "KATUSDT",
+    "AWEUSDT",
+    "ADXUSDT",
+    "BBUSDT",
+    "HOMEUSDT",
+    "AIUSDT",
+    "币安人生USDT",
+    "CGPTUSDT",
+    "JSTUSDT",
+    "FLUXUSDT",
+    "BEAMXUSDT",
+    "SOMIUSDT",
+    "GENIUSUSDT",
+    "ARKUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "KAT",
+     "pair": "KATUSDT",
+     "tier": "cand",
+     "picked_at": "2026-10-29T10:47:53+08:00",
+     "entry_price_usd": 0.00457,
+     "price_at_snapshot": 0.00457,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 2.54,
+     "rank_24h_at_pick": 7,
+     "batch": "gb-20261029-1047",
+     "score": 14.9,
+     "change_1h_at_pick": -1.99,
+     "change_4h_at_pick": 1.83,
+     "vol_x_avg": 1.62,
+     "vol_x_prev_hour": 2.93,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -6.33,
+     "quote_volume_24h": 3283253,
+     "watch_only": true,
+     "outcomes": {}
+    }
+   ]
   }
  ]
 }

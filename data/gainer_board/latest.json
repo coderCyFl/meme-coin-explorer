@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-10-29T07:12:50+08:00",
- "batch": "gb-20261029-0710",
- "picked_at": "2026-10-29T07:10:47+08:00",
- "btc_24h_pct": 0.52,
- "universe": 67,
+ "updated_at": "2026-10-29T10:49:33+08:00",
+ "batch": "gb-20261029-1047",
+ "picked_at": "2026-10-29T10:47:53+08:00",
+ "btc_24h_pct": -1.4,
+ "universe": 71,
  "active": [
   {
    "symbol": "TIA",
@@ -35,39 +35,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-10-29T07:10:31+08:00"
-    }
-   }
-  },
-  {
-   "symbol": "INIT",
-   "pair": "INITUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-28T21:00:00+08:00",
-   "entry_price_usd": 0.24995,
-   "price_at_snapshot": 0.24047,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 9.71,
-   "change_24h_at_pick": 41.39,
-   "rank_24h_at_pick": 1,
-   "batch": "gb-20261028-2129",
-   "score": 95.6,
-   "change_1h_at_pick": 14.66,
-   "change_4h_at_pick": 35.28,
-   "vol_x_avg": 4.61,
-   "vol_x_prev_hour": 7.41,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -2.75,
-   "quote_volume_24h": 12464549,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 3.19,
-     "max_drawdown_pct": -23.78,
-     "close_pct": -12.98,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-29T03:04:14+08:00"
     }
    }
   }
