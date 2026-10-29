@@ -20,7 +20,7 @@ TZ = datetime.timezone(datetime.timedelta(hours=8))
 H, M5 = 3_600_000, 300_000
 
 
-def _get_retry(path, q, tries=5):
+def _get_retry(path, q, tries=8):
     for k in range(tries):
         try:
             return g.get(path, q)
@@ -94,7 +94,19 @@ def main():
     t0 = int(datetime.datetime.strptime(a.d0, "%Y-%m-%d").replace(tzinfo=TZ).timestamp() * 1000)
     t1 = int((datetime.datetime.strptime(a.d1, "%Y-%m-%d").replace(tzinfo=TZ) + datetime.timedelta(days=1)).timestamp() * 1000)
     now = int(time.time() * 1000)
-    syms = g.universe()
+    uf = os.path.join(a.cache, "universe.json")
+    if os.path.exists(uf):
+        syms = json.load(open(uf))
+    else:
+        for k in range(6):
+            try:
+                syms = g.universe(); break
+            except Exception:  # noqa: BLE001
+                if k == 5:
+                    raise
+                time.sleep(3 * (k + 1))
+        os.makedirs(a.cache, exist_ok=True)
+        json.dump(syms, open(uf, "w"))
     print("universe", len(syms), "tokenized excluded", len(g.TOKENIZED), file=sys.stderr)
     fs, fe = t0 - 26 * H, t1
     sigs = []
