@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-30T00:54:07+08:00",
+ "updated_at": "2026-10-30T04:47:31+08:00",
  "batch": "gb-20261030-0052",
  "picked_at": "2026-10-30T00:52:23+08:00",
  "btc_24h_pct": 1.01,
@@ -485,39 +485,6 @@
      "max_gain_pct": 11.32,
      "max_drawdown_pct": 0.11,
      "close_pct": 3.37,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-29T21:08:45+08:00"
-    }
-   }
-  },
-  {
-   "symbol": "KAT",
-   "pair": "KATUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-29T15:30:00+08:00",
-   "entry_price_usd": 0.00489,
-   "price_at_snapshot": 0.00463,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 4.04,
-   "change_24h_at_pick": 12.93,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261029-1749",
-   "score": 53.7,
-   "change_1h_at_pick": 5.84,
-   "change_4h_at_pick": 6.07,
-   "vol_x_avg": 3.79,
-   "vol_x_prev_hour": 11.27,
-   "range_24h_pct": null,
-   "from_24h_high_pct": 0.0,
-   "quote_volume_24h": 4805197,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 4.29,
-     "max_drawdown_pct": -10.43,
-     "close_pct": -6.54,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
