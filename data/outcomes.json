@@ -1878,6 +1878,62 @@
    "due_at": "2026-10-29T04:54:57+08:00",
    "price_source": "kline_1m_due",
    "sealed_run_at": "2026-10-29T09:10:28+08:00"
+  },
+  {
+   "pick_id": "20261026-008-PYTH",
+   "horizon_h": 72,
+   "observed_at": "2026-10-29T13:25:59+08:00",
+   "price_usd": 0.07094,
+   "liquidity_usd": 2316529.764661,
+   "status": "live",
+   "return_pct": -3.55,
+   "btc_return_pct": 0.21,
+   "sol_return_pct": -0.84,
+   "due_at": "2026-10-29T13:25:57+08:00",
+   "price_source": "kline_1m_due",
+   "sealed_run_at": "2026-10-29T14:07:35+08:00"
+  },
+  {
+   "pick_id": "20261026-008-1000SATS",
+   "horizon_h": 72,
+   "observed_at": "2026-10-29T13:25:59+08:00",
+   "price_usd": 1.005e-05,
+   "liquidity_usd": 234963.8765049,
+   "status": "live",
+   "return_pct": 0.6,
+   "btc_return_pct": 0.21,
+   "sol_return_pct": -0.84,
+   "due_at": "2026-10-29T13:25:57+08:00",
+   "price_source": "kline_1m_due",
+   "sealed_run_at": "2026-10-29T14:07:35+08:00"
+  },
+  {
+   "pick_id": "20261026-008-INJ",
+   "horizon_h": 72,
+   "observed_at": "2026-10-29T13:25:59+08:00",
+   "price_usd": 7.671,
+   "liquidity_usd": 11371610.34681,
+   "status": "live",
+   "return_pct": -0.27,
+   "btc_return_pct": 0.21,
+   "sol_return_pct": -0.84,
+   "due_at": "2026-10-29T13:25:57+08:00",
+   "price_source": "kline_1m_due",
+   "sealed_run_at": "2026-10-29T14:07:35+08:00"
+  },
+  {
+   "pick_id": "20261026-008-TIA",
+   "horizon_h": 72,
+   "observed_at": "2026-10-29T13:25:59+08:00",
+   "price_usd": 0.5358,
+   "liquidity_usd": 8436612.356798,
+   "status": "live",
+   "return_pct": 0.62,
+   "btc_return_pct": 0.21,
+   "sol_return_pct": -0.84,
+   "due_at": "2026-10-29T13:25:57+08:00",
+   "price_source": "kline_1m_due",
+   "sealed_run_at": "2026-10-29T14:07:35+08:00"
   }
  ]
 }

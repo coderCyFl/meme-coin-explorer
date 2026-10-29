@@ -1,3 +1,12 @@
+## Hourly review 2026-10-29 ~14:09 Asia/Shanghai
+Review: live 200 stamp `20261029b`（🚩 shill label 已上 main）; orange/`ff8a3d` = 0; JS `node --check` OK; Binance BTC ~$80.3k 24h **≈−0.8%**, liquid top30 breadth **5/30 ≈ 17%** green ⇒ weak-regime gate **on**（<30%）. batch-010 still live（24h seal ~14:21 約十餘分鐘後）; **今日仍未有 batch-011**（Actions daily-picks 最後成功 10/28；14:17 後備未到，14:45 後仍無先手動 `workflow_dispatch`）. Dex only full-mode/legacy.
+
+Outcomes: `snapshot_outcomes.py` sealed **batch-008 72h** — PYTH −3.55% / 1000SATS +0.6% / INJ −0.27% / TIA +0.62% → equal-weight **≈ −0.65%** (n=4).
+
+Gainer live scorecard_7d（未到 23:55 新密封日）: recall_top20 **≈ 1.2%** / precision **≈ 4.8%**（4 日；10/28 當日 recall 0%）— 仍低於 ≥10% 試跑閘；dry-run 同 live 分開報.
+
+Self-growth: **data only**（outcomes seal）— 無 app/JS churn；outcomes 交 branch 唔直接 push main.
+
 ## 2026-10-29 Asia/Shanghai — 🚩 X 洗版 red label on 🔥/⚡ (stamp `20261029b`)
 QA live FAIL: INIT 🔥 showed bare 🚩 next to「X 冷」; BLUR ⚡ had no flag. Fix: dedicated red text「🚩 X 洗版」via `.shill-flag` on 🔥 pump + ⚡ early2 cards (and existing 今日跟買 / 每日新留意). No bare glyph on the X chip; sheet label「🚩 X 洗版」. Paint after early list mounts.
 
