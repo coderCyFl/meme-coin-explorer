@@ -239,13 +239,13 @@
    "symbol": "PEPEUSDT",
    "base": "PEPE",
    "flag": "pump",
-   "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 14,
-   "posts_prev_6h_avg_per_h": 19.33,
-   "spike_ratio": 0.72,
+   "trigger_at": "2026-10-30T00:30:00+08:00",
+   "checked_at": "2026-10-30T04:20:30+08:00",
+   "posts_last_1h": 21,
+   "posts_prev_6h_avg_per_h": 19.5,
+   "spike_ratio": 1.08,
    "verdict": "冷",
-   "one_line": "帖量回落，冇新熱度",
+   "one_line": "討論平穩，冇明顯升溫",
    "shill_flag": false,
    "big_accounts": 1,
    "top_posts": [
@@ -253,31 +253,31 @@
      "id": "2115810211596316876",
      "url": "https://x.com/MichealResearch/status/2115810211596316876",
      "text": "$PEPE dipped 0.61% this hour, yet its 24h turned to +0.45% as yesterday's lows rolled off. Rolling-window math, not fresh buying.",
-     "likes": 28,
+     "likes": 31,
      "author_username": "MichealResearch",
-     "author_followers": 1382,
+     "author_followers": 1383,
      "created_at": "2026-10-29T22:17:18+08:00"
+    },
+    {
+     "id": "2115840892779233717",
+     "url": "https://x.com/WhaleAlertDesk/status/2115840892779233717",
+     "text": "$PEPE weekly chart looking dangerous. Big range, clean structure, and a massive arrow pointing higher.",
+     "likes": 22,
+     "author_username": "WhaleAlertDesk",
+     "author_followers": 107092,
+     "created_at": "2026-10-30T00:19:13+08:00"
     },
     {
      "id": "2115840824491770222",
      "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
      "text": "$YEE : Major Opportunity? YouTube video. #Crypto #Altcoins #Memecoins #Binance $PEPE $DOGE",
-     "likes": 14,
+     "likes": 16,
      "author_username": "CryptoNowNever",
      "author_followers": 4259,
      "created_at": "2026-10-30T00:18:57+08:00"
-    },
-    {
-     "id": "2115840892779233717",
-     "url": "https://x.com/WhaleAlertDesk/status/2115840892779233717",
-     "text": "$PEPE weekly chart looking dangerous. Big range, clean structure, and a massive arrow pointing higher. Is the frog about to send it?",
-     "likes": 12,
-     "author_username": "WhaleAlertDesk",
-     "author_followers": 107085,
-     "created_at": "2026-10-30T00:19:13+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 1
   },
   "BICOUSDT": {
    "symbol": "BICOUSDT",
@@ -299,30 +299,30 @@
    "symbol": "LSKUSDT",
    "base": "LSK",
    "flag": "pump",
-   "trigger_at": "2026-10-29T23:30:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 8,
-   "posts_prev_6h_avg_per_h": 4.33,
-   "spike_ratio": 1.85,
-   "verdict": "升溫",
-   "one_line": "討論升溫，多為喊單群推廣",
+   "trigger_at": "2026-10-30T01:15:00+08:00",
+   "checked_at": "2026-10-30T04:20:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.35,
+   "verdict": "冷",
+   "one_line": "討論退潮，多數係喊單群",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2115870543610327440",
      "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
-     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — a major holder with 71M $LSK sent 3.5M $LSK to a second wallet moving toward exch…",
-     "likes": 8,
+     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — major holder with 71M $LSK sent 3.5M $LSK to a second wallet moving toward exchan…",
+     "likes": 11,
      "author_username": "ArslanOnChain",
-     "author_followers": 4914,
+     "author_followers": 4915,
      "created_at": "2026-10-30T02:17:03+08:00"
     },
     {
      "id": "2115854611064176911",
      "url": "https://x.com/insider__Alpha/status/2115854611064176911",
-     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR, ROLLING #BINANCE TOP GAINER NO 1. JOIN PREMIUM DM",
-     "likes": 8,
+     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR, $LSK ROLLING #BINANCE TOP GAINER NO 1. JOIN PREMIUM DM",
+     "likes": 10,
      "author_username": "insider__Alpha",
      "author_followers": 2679,
      "created_at": "2026-10-30T01:13:44+08:00"
@@ -330,7 +330,7 @@
     {
      "id": "2115847760343912852",
      "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
-     "text": "#LSK/USDT All take-profit targets achieved, Profits: 550.23%. Click on the link below to join our free signals group",
+     "text": "#LSK/USDT All take-profit targets achieved, Profits: 550.23% (20x). Join our free signals group.",
      "likes": 3,
      "author_username": "FedeGonzalgh",
      "author_followers": 1528,
@@ -359,33 +359,33 @@
    "symbol": "PARTIUSDT",
    "base": "PARTI",
    "flag": "pump",
-   "trigger_at": "2026-10-30T00:15:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 46,
-   "posts_prev_6h_avg_per_h": 15.17,
-   "spike_ratio": 3.03,
+   "trigger_at": "2026-10-30T00:30:00+08:00",
+   "checked_at": "2026-10-30T04:20:30+08:00",
+   "posts_last_1h": 45,
+   "posts_prev_6h_avg_per_h": 21.33,
+   "spike_ratio": 2.11,
    "verdict": "熱",
-   "one_line": "帖量急升三倍，喊單報捷居多",
+   "one_line": "討論再升溫，但喊單居多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2115870175996375310",
      "url": "https://x.com/Zaynnode/status/2115870175996375310",
-     "text": "$PARTI hit my TP with 60% green god candle (Top gainer on Binance). I gave you $PARTI at $0.034, it pumped above $0.060",
-     "likes": 69,
+     "text": "$PARTI hit my TP with 60% green god candle (top gainer on Binance). Gave you $PARTI at $0.034, pumped above $0.060.",
+     "likes": 83,
      "author_username": "Zaynnode",
-     "author_followers": 48505,
+     "author_followers": 48502,
      "created_at": "2026-10-30T02:15:35+08:00"
     },
     {
-     "id": "2115866775040704808",
-     "url": "https://x.com/RoccobullboTTom/status/2115866775040704808",
-     "text": "#PREMIUM_SIGNAL $PARTI is roaring loudly in the market right now! ALREADY ACHIEVED MY FIRST TARGET 80% PROFIT",
-     "likes": 4,
-     "author_username": "RoccobullboTTom",
-     "author_followers": 49943,
-     "created_at": "2026-10-30T02:02:04+08:00"
+     "id": "2115872605211341131",
+     "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
+     "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
+     "likes": 5,
+     "author_username": "GlobeOfcrypto1",
+     "author_followers": 12092,
+     "created_at": "2026-10-30T02:25:14+08:00"
     },
     {
      "id": "2115856032820007319",
@@ -397,7 +397,7 @@
      "created_at": "2026-10-30T01:19:23+08:00"
     }
    ],
-   "checks_this_trigger": 4
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -1969,15 +1969,144 @@
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": []
+  },
+  {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T01:15:00+08:00",
+   "checked_at": "2026-10-30T04:20:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.35,
+   "verdict": "冷",
+   "one_line": "討論退潮，多數係喊單群",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115870543610327440",
+     "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
+     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — major holder with 71M $LSK sent 3.5M $LSK to a second wallet moving toward exchan…",
+     "likes": 11,
+     "author_username": "ArslanOnChain",
+     "author_followers": 4915,
+     "created_at": "2026-10-30T02:17:03+08:00"
+    },
+    {
+     "id": "2115854611064176911",
+     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
+     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR, $LSK ROLLING #BINANCE TOP GAINER NO 1. JOIN PREMIUM DM",
+     "likes": 10,
+     "author_username": "insider__Alpha",
+     "author_followers": 2679,
+     "created_at": "2026-10-30T01:13:44+08:00"
+    },
+    {
+     "id": "2115847760343912852",
+     "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
+     "text": "#LSK/USDT All take-profit targets achieved, Profits: 550.23% (20x). Join our free signals group.",
+     "likes": 3,
+     "author_username": "FedeGonzalgh",
+     "author_followers": 1528,
+     "created_at": "2026-10-30T00:46:31+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PARTIUSDT",
+   "base": "PARTI",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T00:30:00+08:00",
+   "checked_at": "2026-10-30T04:20:30+08:00",
+   "posts_last_1h": 45,
+   "posts_prev_6h_avg_per_h": 21.33,
+   "spike_ratio": 2.11,
+   "verdict": "熱",
+   "one_line": "討論再升溫，但喊單居多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115870175996375310",
+     "url": "https://x.com/Zaynnode/status/2115870175996375310",
+     "text": "$PARTI hit my TP with 60% green god candle (top gainer on Binance). Gave you $PARTI at $0.034, pumped above $0.060.",
+     "likes": 83,
+     "author_username": "Zaynnode",
+     "author_followers": 48502,
+     "created_at": "2026-10-30T02:15:35+08:00"
+    },
+    {
+     "id": "2115872605211341131",
+     "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
+     "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
+     "likes": 5,
+     "author_username": "GlobeOfcrypto1",
+     "author_followers": 12092,
+     "created_at": "2026-10-30T02:25:14+08:00"
+    },
+    {
+     "id": "2115856032820007319",
+     "url": "https://x.com/CryptoTenon/status/2115856032820007319",
+     "text": "$parti #parti target 4 done. 95% up on spot after the entry, 2375% profit with 25x",
+     "likes": 4,
+     "author_username": "CryptoTenon",
+     "author_followers": 4738,
+     "created_at": "2026-10-30T01:19:23+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "base": "PEPE",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T00:30:00+08:00",
+   "checked_at": "2026-10-30T04:20:30+08:00",
+   "posts_last_1h": 21,
+   "posts_prev_6h_avg_per_h": 19.5,
+   "spike_ratio": 1.08,
+   "verdict": "冷",
+   "one_line": "討論平穩，冇明顯升溫",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2115810211596316876",
+     "url": "https://x.com/MichealResearch/status/2115810211596316876",
+     "text": "$PEPE dipped 0.61% this hour, yet its 24h turned to +0.45% as yesterday's lows rolled off. Rolling-window math, not fresh buying.",
+     "likes": 31,
+     "author_username": "MichealResearch",
+     "author_followers": 1383,
+     "created_at": "2026-10-29T22:17:18+08:00"
+    },
+    {
+     "id": "2115840892779233717",
+     "url": "https://x.com/WhaleAlertDesk/status/2115840892779233717",
+     "text": "$PEPE weekly chart looking dangerous. Big range, clean structure, and a massive arrow pointing higher.",
+     "likes": 22,
+     "author_username": "WhaleAlertDesk",
+     "author_followers": 107092,
+     "created_at": "2026-10-30T00:19:13+08:00"
+    },
+    {
+     "id": "2115840824491770222",
+     "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
+     "text": "$YEE : Major Opportunity? YouTube video. #Crypto #Altcoins #Memecoins #Binance $PEPE $DOGE",
+     "likes": 16,
+     "author_username": "CryptoNowNever",
+     "author_followers": 4259,
+     "created_at": "2026-10-30T00:18:57+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 36,
+  "calls_today": 42,
   "cap_reached": false,
-  "updated_at": "2026-10-30T03:17:42+08:00"
+  "updated_at": "2026-10-30T04:20:58+08:00"
  },
- "updated_at": "2026-10-30T03:17:42+08:00",
+ "updated_at": "2026-10-30T04:20:58+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
