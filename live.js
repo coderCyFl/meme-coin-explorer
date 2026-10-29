@@ -618,13 +618,15 @@
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
   const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
-  // ⚡ v2 (20261030, mirrors gainer_core.early2_at): 起步 + looser grind prec_e + 細盤 $1.5M; watch-only.
+  // ⚡ v2 (20261030d, mirrors gainer_core.early2_at): 起步 + prec_e 1.2/1.5/15 + 細盤 + X熱度早標; watch-only.
   //   起步: 24h vol ≥ $3M, not 🔥, 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
   //   prec_e (grind): 24h vol ≥ $3M, not 🔥, 1h ≥ +1.5%, vol ≥ 1.5x, 24h % < +15%
   //   細盤: 24h vol $1.5M–$3M with the 🔥 price/volume condition
   //   suppressed when 🔥 (≥ $3M) fired on that coin in the 16 bars up to the signal bar.
   const GB_E2_C15 = 2.5, GB_E2_C1_MIN = 0, GB_E2_RNG24 = 25, GB_E2_LOW_QV = 1.5e6;
-  const GB_E2_PREC_C1 = 1.5, GB_E2_PREC_VR = 1.5, GB_E2_PREC_C24_MAX = 15;
+  const GB_E2_PREC_C1 = 1.2, GB_E2_PREC_VR = 1.5, GB_E2_PREC_C24_MAX = 15;
+  // X 熱度早標 (Strategy/QA 2026-10-30): 熱/升溫 + c24<15 + vr≥1.5 + not top20 → ⚡ via=x_buzz
+  const GB_X_EARLY_C24_MAX = 15, GB_X_EARLY_VR = 1.5;
   // Scan pool: EVERY eligible coin passing a cheap ticker pre-filter (no top-10 cap any more):
   //   🔥 / 細盤: rolling-4h range ≥ 5% · 起步: 24h range ≥ 25% and rolling-4h range ≥ 2.5%. Hard cap for rate safety.
   const GB_POOL_MAX = 90;
@@ -689,6 +691,14 @@
       if (leg) { const f = surgeFeats(bars, j); return { t: f.t, price: f.price, via: leg, c1: f.c1, c15: f.c15, vr: f.vr, forming: false }; }
     }
     return null;
+  }
+  /** X 熱度早標 — mirrors gainer_core.x_early_ok. buzz = {verdict, shill_flag?, checked_at?}. */
+  function xEarlyOk(buzz, c24, vr, rank24) {
+    if (!buzz || (buzz.verdict !== "熱" && buzz.verdict !== "升溫")) return false;
+    if (c24 == null || c24 >= GB_X_EARLY_C24_MAX) return false;
+    if (vr == null || vr < GB_X_EARLY_VR) return false;
+    if (rank24 != null && rank24 <= 20) return false;
+    return true;
   }
 
   /**
@@ -1017,7 +1027,7 @@
     start, stop, sync, onTick, getMark, sourceLabel, setLiveMode, classify,
     hasOpenPositions, ensureBoard, getBoardRows, fetchKlines, fetchKlineBars, warmSparks,
     sparkSvg, sparkPath, scoreBoardRows, scoreChaseRows, computeSetupPicks, computeGainerBoard, watchExtra,
-    _gb: { surgeFeats, surgeFire, early2At, early2Trigger, surgeTrigger },
+    _gb: { surgeFeats, surgeFire, early2At, early2Trigger, surgeTrigger, xEarlyOk },
     logoUrl, coinLogoEl, letterAvatar, ICON_EMOJI,
     ensureExchangeInfo, isTokenized: (base) => bnTokenized.has(String(base || "").toUpperCase()),
     isStable: (base) => GB_STABLE.has(String(base || "").toUpperCase()),

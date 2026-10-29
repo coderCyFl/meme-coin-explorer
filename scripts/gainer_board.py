@@ -107,6 +107,21 @@ def early2_last(b15):
     return None
 
 
+def x_buzz_early_flag(pair, f, rank24, buzz_coins):
+    """If latest X check is 熱/升溫 and still early → ⚡ via=x_buzz features (or None)."""
+    c = (buzz_coins or {}).get(pair) or {}
+    if not g.x_early_ok(c.get("verdict"), f.get("c24"), f.get("vr"), rank24):
+        return None
+    try:
+        checked = pt(c["checked_at"])
+    except Exception:  # noqa: BLE001
+        return None
+    # Only use X checks from the last 3h (same freshness as site chip)
+    if now() - checked > datetime.timedelta(hours=3):
+        return None
+    return dict(f, trigger_at=int(checked.timestamp() * 1000), trigger_price=f.get("p") or f.get("price"),
+                trigger_via="x_buzz", x_verdict=c.get("verdict"), shill_flag=bool(c.get("shill_flag")))
+
 
 def recent_flags(hours):
     cut = now() - datetime.timedelta(hours=hours)
@@ -126,6 +141,7 @@ def snapshot():
     btc = next((r for r in tick if r["pair"] == "BTCUSDT"), None)
     cool = {(e["pair"], e["tier"]) for e in recent_flags(g.COOLDOWN_H - 0.1)}
     fires = {"pump": [], "early2": [], "early": [], "cand": []}
+    buzz_coins = jload(os.path.join(D, "x_buzz.json"), {}).get("coins") or {}
     # ⚡ v2 thin leg: $1.5M..$3M 24h volume coins (below the 🔥 floor) — 15m klines only.
     thin = [r for r in allt if g.E2_LOW_QV <= r["qv"] < g.MIN_QV24]
     for r in thin:
@@ -174,6 +190,19 @@ def snapshot():
             f2 = early2_last(b15)
             if f2:
                 t, f = "early2", dict(f, **{k: f2[k] for k in ("c1", "c4", "vr", "fh", "c15", "c24", "trigger_at", "trigger_price", "trigger_via", "rng24")})
+        # X 熱度早標: can coexist as early2 even if prec already fired (prefer earlier trigger_at).
+        # If no early2 yet, X alone can open the ⚡ flag.
+        xf = x_buzz_early_flag(r["pair"], f, r.get("rank"), buzz_coins)
+        if xf:
+            if t == "early2":
+                # keep whichever fired first; tag x_coexist
+                if xf["trigger_at"] <= f.get("trigger_at", xf["trigger_at"]):
+                    f = dict(f, **{k: xf[k] for k in ("trigger_at", "trigger_price", "trigger_via") if k in xf},
+                             x_verdict=xf.get("x_verdict"), shill_flag=xf.get("shill_flag"), x_coexist=True)
+                else:
+                    f = dict(f, x_verdict=xf.get("x_verdict"), shill_flag=xf.get("shill_flag"), x_coexist=True)
+            elif not t:
+                t, f = "early2", xf
         if not t:
             t = g.tier(f)
         if not t and r["pair"] in cand_pairs:
@@ -192,6 +221,7 @@ def snapshot():
             c24_at = f["c24"] if "c24" in f and f["c24"] is not None else r["chg24"]
             trig_age_min = ((t0.timestamp() * 1000) - trig_at) / 60000 if trig_at else 0
             rank_at = None if (trig_at and trig_age_min > 35) else r["rank"]
+            ep = g.exit_plan_for(t)
             entries.append({
                 "symbol": r["pair"][:-4], "pair": r["pair"], "tier": t,
                 "picked_at": iso(datetime.datetime.fromtimestamp(trig_at / 1000, t0.tzinfo)) if trig_at else iso(t0),
@@ -203,6 +233,9 @@ def snapshot():
                 "range_24h_pct": round(f["rng24"], 1) if "rng24" in f else None,
                 "from_24h_high_pct": round(f["fh"], 2), "quote_volume_24h": round(r["qv"]),
                 "watch_only": t != "pump", "outcomes": {},
+                "exit_plan": {"take_profit_pct": ep["tp"], "take_profit2_pct": ep["tp2"], "stop_loss_pct": ep["sl"],
+                              "suggested_exit_h": ep["review_h"], "suggested_second_h": ep["sell_by_h"]},
+                "x_verdict": f.get("x_verdict"), "shill_flag": f.get("shill_flag"),
             })
     fn = os.path.join(SNAP, t0.strftime("%Y-%m-%d") + ".json")
     day = jload(fn, {"date": t0.strftime("%Y-%m-%d"), "batches": []})
