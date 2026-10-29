@@ -50,44 +50,44 @@
    "base": "BLUR",
    "flag": "pump",
    "trigger_at": "2026-10-29T12:00:00+08:00",
-   "checked_at": "2026-10-29T12:10:26+08:00",
-   "posts_last_1h": 2,
+   "checked_at": "2026-10-29T13:10:41+08:00",
+   "posts_last_1h": 3,
    "posts_prev_6h_avg_per_h": 2.67,
-   "spike_ratio": 0.75,
+   "spike_ratio": 1.12,
    "verdict": "冷",
-   "one_line": "熱度淡，多掃描bot",
+   "one_line": "帖少無真實討論",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115631397293486373",
-     "url": "https://x.com/familii_guy/status/2115631397293486373",
-     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
+     "id": "2115665380358414426",
+     "url": "https://x.com/GirlZubyCrypto/status/2115665380358414426",
+     "text": "CRYPTO ALERT: BLUR Is Exploding! Memecoins Are Heating Up—Is the Next Big Move Coming?",
      "likes": 0,
-     "author_username": "familii_guy",
-     "author_followers": 509,
-     "created_at": "2026-10-29T10:26:46+08:00"
+     "author_username": "GirlZubyCrypto",
+     "author_followers": 95,
+     "created_at": "2026-10-29T12:41:48+08:00"
     },
     {
-     "id": "2115604694844555668",
-     "url": "https://x.com/RadarCex/status/2115604694844555668",
-     "text": "Asia Open Radar | Oct 29 BTC $81,202 · ETH $2,356 · SOL $102.24 · BNB $760.81 • INIT +32.6% led Binance gainers; NIL -12.9% led losers. BLU…",
-     "likes": 0,
-     "author_username": "RadarCex",
-     "author_followers": 264,
-     "created_at": "2026-10-29T08:40:39+08:00"
-    },
-    {
-     "id": "2115581931744010675",
-     "url": "https://x.com/cexscan/status/2115581931744010675",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: MEET48 ↑6.93% $BULLA ↑5.34% Initia ↑4.49% Top 3 Losers: Blur ↓-3.55%",
+     "id": "2115661206119723075",
+     "url": "https://x.com/cexscan/status/2115661206119723075",
+     "text": "Last 15m - #Bybit Spot (USDT Trades) Top 3 Gainers / Losers (scanner dump)",
      "likes": 0,
      "author_username": "cexscan",
      "author_followers": 10600,
-     "created_at": "2026-10-29T07:10:12+08:00"
+     "created_at": "2026-10-29T12:25:13+08:00"
+    },
+    {
+     "id": "2115658927576944736",
+     "url": "https://x.com/yepzXBT/status/2115658927576944736",
+     "text": "In the era of Binance Agentic Wallets, the line between traders and software is starting to blur.",
+     "likes": 0,
+     "author_username": "yepzXBT",
+     "author_followers": 1342,
+     "created_at": "2026-10-29T12:16:10+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "BMTUSDT": {
    "symbol": "BMTUSDT",
@@ -490,15 +490,58 @@
      "created_at": "2026-10-29T07:10:12+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T12:00:00+08:00",
+   "checked_at": "2026-10-29T13:10:41+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.67,
+   "spike_ratio": 1.12,
+   "verdict": "冷",
+   "one_line": "帖少無真實討論",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115665380358414426",
+     "url": "https://x.com/GirlZubyCrypto/status/2115665380358414426",
+     "text": "CRYPTO ALERT: BLUR Is Exploding! Memecoins Are Heating Up—Is the Next Big Move Coming?",
+     "likes": 0,
+     "author_username": "GirlZubyCrypto",
+     "author_followers": 95,
+     "created_at": "2026-10-29T12:41:48+08:00"
+    },
+    {
+     "id": "2115661206119723075",
+     "url": "https://x.com/cexscan/status/2115661206119723075",
+     "text": "Last 15m - #Bybit Spot (USDT Trades) Top 3 Gainers / Losers (scanner dump)",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10600,
+     "created_at": "2026-10-29T12:25:13+08:00"
+    },
+    {
+     "id": "2115658927576944736",
+     "url": "https://x.com/yepzXBT/status/2115658927576944736",
+     "text": "In the era of Binance Agentic Wallets, the line between traders and software is starting to blur.",
+     "likes": 0,
+     "author_username": "yepzXBT",
+     "author_followers": 1342,
+     "created_at": "2026-10-29T12:16:10+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-29",
   "daily_total_cap": 60,
-  "calls_today": 20,
+  "calls_today": 22,
   "cap_reached": false,
-  "updated_at": "2026-10-29T12:10:47+08:00"
+  "updated_at": "2026-10-29T13:10:48+08:00"
  },
- "updated_at": "2026-10-29T12:10:47+08:00",
+ "updated_at": "2026-10-29T13:10:48+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
