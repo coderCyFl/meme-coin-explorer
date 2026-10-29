@@ -284,70 +284,60 @@
    "base": "BICO",
    "flag": "pump",
    "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T01:17:23+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 0.54,
-   "spike_ratio": 1.85,
+   "checked_at": "2026-10-30T02:23:06+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 0.67,
+   "spike_ratio": 0.0,
    "verdict": "冷",
    "one_line": "幾乎無人講",
    "shill_flag": false,
    "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115850566123274256",
-     "url": "https://x.com/Crypto_Trends_/status/2115850566123274256",
-     "text": "My 2027 BULL RUN PEAK PRICE TARGETS! #crypto $BTC $ETH $SOL $LINK $BNB $ICP $TAO $ADA $INJ $RNDR $DOT $ONDO $XRP $DOGE",
-     "likes": 0,
-     "author_username": "Crypto_Trends_",
-     "author_followers": 13328,
-     "created_at": "2026-10-30T00:57:40+08:00"
-    }
-   ],
-   "checks_this_trigger": 2
+   "top_posts": [],
+   "checks_this_trigger": 3
   },
   "LSKUSDT": {
    "symbol": "LSKUSDT",
    "base": "LSK",
    "flag": "pump",
-   "trigger_at": "2026-10-29T22:15:00+08:00",
-   "checked_at": "2026-10-30T01:17:23+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 2.18,
-   "spike_ratio": 4.13,
-   "verdict": "熱",
-   "one_line": "急升，多喊單莊",
+   "trigger_at": "2026-10-29T22:30:00+08:00",
+   "checked_at": "2026-10-30T02:23:06+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 3.17,
+   "spike_ratio": 2.21,
+   "verdict": "升溫",
+   "one_line": "升溫但多喊單莊",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115847760343912852",
-     "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
-     "text": "Binance Futures, Bitmart USDT, KuCoin Futures, Bitget Futures #LSK/USDT All take-profit targets achieved Profits: 550.2300% Period: 8 hr 22…",
-     "likes": 2,
-     "author_username": "FedeGonzalgh",
-     "author_followers": 1527,
-     "created_at": "2026-10-30T00:46:31+08:00"
-    },
-    {
      "id": "2115854611064176911",
      "url": "https://x.com/insider__Alpha/status/2115854611064176911",
-     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 47% WITHIN 1HR $CROC 37% WITHIN 2HR $LSK ROLLING #BINANCE TOP GAI…",
-     "likes": 2,
+     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 47% WITHIN 1HR $LSK ROLLING BINANCE TOP GAINER",
+     "likes": 6,
      "author_username": "insider__Alpha",
-     "author_followers": 2673,
+     "author_followers": 2677,
      "created_at": "2026-10-30T01:13:44+08:00"
     },
     {
      "id": "2115848135951941827",
      "url": "https://x.com/FedeGonzalgh/status/2115848135951941827",
      "text": "#LSK/USDT Profit: +550.84% Click on the link below to join our free signals group",
-     "likes": 2,
+     "likes": 3,
      "author_username": "FedeGonzalgh",
-     "author_followers": 1527,
+     "author_followers": 1528,
      "created_at": "2026-10-30T00:48:00+08:00"
+    },
+    {
+     "id": "2115870543610327440",
+     "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
+     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — AND THE WALLET MOVEMENTS ARE WORTH WATCHING. A major holder with 71M $LSK",
+     "likes": 3,
+     "author_username": "ArslanOnChain",
+     "author_followers": 4912,
+     "created_at": "2026-10-30T02:17:03+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "PYTHUSDT": {
    "symbol": "PYTHUSDT",
@@ -370,44 +360,44 @@
    "base": "PARTI",
    "flag": "pump",
    "trigger_at": "2026-10-30T00:15:00+08:00",
-   "checked_at": "2026-10-30T01:17:23+08:00",
-   "posts_last_1h": 26,
-   "posts_prev_6h_avg_per_h": 7.79,
-   "spike_ratio": 3.34,
+   "checked_at": "2026-10-30T02:23:06+08:00",
+   "posts_last_1h": 36,
+   "posts_prev_6h_avg_per_h": 11.0,
+   "spike_ratio": 3.27,
    "verdict": "熱",
-   "one_line": "急升但多喊單莊",
+   "one_line": "急升喊單刷屏中",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115845816674078962",
-     "url": "https://x.com/cryptocandy24x/status/2115845816674078962",
-     "text": "$Parti its 2x+ Keep printing.. just follow our strategy Booked 50% in 3 days ..rest riding well.",
-     "likes": 6,
-     "author_username": "cryptocandy24x",
-     "author_followers": 42009,
-     "created_at": "2026-10-30T00:38:47+08:00"
+     "id": "2115870175996375310",
+     "url": "https://x.com/Zaynnode/status/2115870175996375310",
+     "text": "$PARTI hit my TP with 60% green god candle (Zayn Call In the Top gainer on Binance). I gave you $PARTI at $0.034 it pumped above $0.060",
+     "likes": 34,
+     "author_username": "Zaynnode",
+     "author_followers": 48487,
+     "created_at": "2026-10-30T02:15:35+08:00"
     },
     {
-     "id": "2115849655787704510",
-     "url": "https://x.com/luxquantalgo/status/2115849655787704510",
-     "text": "$PARTI reached TP4, +20.5% spot from entry. Entry signals and the full toolkit are in our bio. #PARTI #PARTIUSDT #LuxQuant",
-     "likes": 1,
-     "author_username": "luxquantalgo",
-     "author_followers": 648,
-     "created_at": "2026-10-30T00:54:03+08:00"
+     "id": "2115866152245383400",
+     "url": "https://x.com/VexeCrypto/status/2115866152245383400",
+     "text": "$PARTI and $GNS are dominating the top gainers list. The market is really slow but seeing these gains makes me happy.",
+     "likes": 22,
+     "author_username": "VexeCrypto",
+     "author_followers": 34494,
+     "created_at": "2026-10-30T01:59:36+08:00"
     },
     {
-     "id": "2115852343438680573",
-     "url": "https://x.com/_TheNewGuy__/status/2115852343438680573",
-     "text": "While markets have been down lately, #PARTI has been pushing hard since we spotted the bulllish divergence. It just completed the trade wit…",
-     "likes": 1,
-     "author_username": "_TheNewGuy__",
-     "author_followers": 301,
-     "created_at": "2026-10-30T01:04:43+08:00"
+     "id": "2115864367946408065",
+     "url": "https://x.com/CoinQTS/status/2115864367946408065",
+     "text": "$Parti Pumped over 70% Another successful profitable trade All short time target points achieved",
+     "likes": 4,
+     "author_username": "CoinQTS",
+     "author_followers": 52471,
+     "created_at": "2026-10-30T01:52:30+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   }
  },
  "history": [
@@ -1734,15 +1724,116 @@
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": []
+  },
+  {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T22:30:00+08:00",
+   "checked_at": "2026-10-30T02:23:06+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 3.17,
+   "spike_ratio": 2.21,
+   "verdict": "升溫",
+   "one_line": "升溫但多喊單莊",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115854611064176911",
+     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
+     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 47% WITHIN 1HR $LSK ROLLING BINANCE TOP GAINER",
+     "likes": 6,
+     "author_username": "insider__Alpha",
+     "author_followers": 2677,
+     "created_at": "2026-10-30T01:13:44+08:00"
+    },
+    {
+     "id": "2115848135951941827",
+     "url": "https://x.com/FedeGonzalgh/status/2115848135951941827",
+     "text": "#LSK/USDT Profit: +550.84% Click on the link below to join our free signals group",
+     "likes": 3,
+     "author_username": "FedeGonzalgh",
+     "author_followers": 1528,
+     "created_at": "2026-10-30T00:48:00+08:00"
+    },
+    {
+     "id": "2115870543610327440",
+     "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
+     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — AND THE WALLET MOVEMENTS ARE WORTH WATCHING. A major holder with 71M $LSK",
+     "likes": 3,
+     "author_username": "ArslanOnChain",
+     "author_followers": 4912,
+     "created_at": "2026-10-30T02:17:03+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PARTIUSDT",
+   "base": "PARTI",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T00:15:00+08:00",
+   "checked_at": "2026-10-30T02:23:06+08:00",
+   "posts_last_1h": 36,
+   "posts_prev_6h_avg_per_h": 11.0,
+   "spike_ratio": 3.27,
+   "verdict": "熱",
+   "one_line": "急升喊單刷屏中",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115870175996375310",
+     "url": "https://x.com/Zaynnode/status/2115870175996375310",
+     "text": "$PARTI hit my TP with 60% green god candle (Zayn Call In the Top gainer on Binance). I gave you $PARTI at $0.034 it pumped above $0.060",
+     "likes": 34,
+     "author_username": "Zaynnode",
+     "author_followers": 48487,
+     "created_at": "2026-10-30T02:15:35+08:00"
+    },
+    {
+     "id": "2115866152245383400",
+     "url": "https://x.com/VexeCrypto/status/2115866152245383400",
+     "text": "$PARTI and $GNS are dominating the top gainers list. The market is really slow but seeing these gains makes me happy.",
+     "likes": 22,
+     "author_username": "VexeCrypto",
+     "author_followers": 34494,
+     "created_at": "2026-10-30T01:59:36+08:00"
+    },
+    {
+     "id": "2115864367946408065",
+     "url": "https://x.com/CoinQTS/status/2115864367946408065",
+     "text": "$Parti Pumped over 70% Another successful profitable trade All short time target points achieved",
+     "likes": 4,
+     "author_username": "CoinQTS",
+     "author_followers": 52471,
+     "created_at": "2026-10-30T01:52:30+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BICOUSDT",
+   "base": "BICO",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T23:45:00+08:00",
+   "checked_at": "2026-10-30T02:23:06+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 0.67,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "幾乎無人講",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": []
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 22,
+  "calls_today": 28,
   "cap_reached": false,
-  "updated_at": "2026-10-30T01:17:23+08:00"
+  "updated_at": "2026-10-30T02:23:06+08:00"
  },
- "updated_at": "2026-10-30T01:17:23+08:00",
+ "updated_at": "2026-10-30T02:23:06+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
