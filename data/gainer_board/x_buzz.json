@@ -240,192 +240,174 @@
    "base": "PEPE",
    "flag": "pump",
    "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T00:06:39+08:00",
-   "posts_last_1h": 20,
-   "posts_prev_6h_avg_per_h": 21.33,
-   "spike_ratio": 0.94,
-   "verdict": "冷",
-   "one_line": "基線量平穩無爆",
-   "shill_flag": false,
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 32,
+   "posts_prev_6h_avg_per_h": 19.41,
+   "spike_ratio": 1.65,
+   "verdict": "升溫",
+   "one_line": "略升溫，有喊單",
+   "shill_flag": true,
    "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2115835346696974537",
-     "url": "https://x.com/theunipcs/status/2115835346696974537",
-     "text": "i currently hold no $PEPE, but the strength this has been showing whenever $BTC pumps even a little is incredible i think $PEPE is going to…",
-     "likes": 94,
-     "author_username": "theunipcs",
-     "author_followers": 339472,
-     "created_at": "2026-10-29T23:57:11+08:00"
+     "id": "2115840824491770222",
+     "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
+     "text": "$YEE : Major Opportunity?!?! Do You See What's Happening?!?! #Crypto #Altcoins #Memecoins #Binance #Coinbase $PEPE $DOGE $CASHCAT $SPX $GTA…",
+     "likes": 8,
+     "author_username": "CryptoNowNever",
+     "author_followers": 4260,
+     "created_at": "2026-10-30T00:18:57+08:00"
     },
     {
-     "id": "2115833049204068832",
-     "url": "https://x.com/CoinCodex/status/2115833049204068832",
-     "text": "Today's top #crypto performers: $HYPE (+17%) $PEPE (+10%) $ENA (+8%) $TWT (+7%) $PUMP (+6%)",
-     "likes": 1,
-     "author_username": "CoinCodex",
-     "author_followers": 28920,
-     "created_at": "2026-10-29T23:48:03+08:00"
+     "id": "2115843335210586135",
+     "url": "https://x.com/AltwolfCrypto/status/2115843335210586135",
+     "text": "$PEPE 42%+ Delivered so far #PEPE #PEPEUSDT #Crypto #Alts",
+     "likes": 3,
+     "author_username": "AltwolfCrypto",
+     "author_followers": 6564,
+     "created_at": "2026-10-30T00:28:56+08:00"
     },
     {
-     "id": "2115837041782976714",
-     "url": "https://x.com/ItsCrapto/status/2115837041782976714",
-     "text": "@offdutycab I sold all of my Shib I had been holding since 2022 so I could put it all into Pepe at .00X7 so it would be cool to see that fa…",
-     "likes": 1,
-     "author_username": "ItsCrapto",
-     "author_followers": 2565,
-     "created_at": "2026-10-30T00:03:55+08:00"
+     "id": "2115854260550397965",
+     "url": "https://x.com/TinYCragi_01/status/2115854260550397965",
+     "text": "The next bull run could belong to $PEPE! When meme culture meets a powerful community, the possibilities are exciting. Keep your eyes on th…",
+     "likes": 3,
+     "author_username": "TinYCragi_01",
+     "author_followers": 1473,
+     "created_at": "2026-10-30T01:12:21+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "BICOUSDT": {
    "symbol": "BICOUSDT",
    "base": "BICO",
    "flag": "pump",
    "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T00:06:39+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 0.0,
-   "spike_ratio": 3.0,
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 0.54,
+   "spike_ratio": 1.85,
    "verdict": "冷",
-   "one_line": "幾乎無人傾",
+   "one_line": "幾乎無人講",
    "shill_flag": false,
    "big_accounts": 0,
-   "top_posts": [],
-   "checks_this_trigger": 1
+   "top_posts": [
+    {
+     "id": "2115850566123274256",
+     "url": "https://x.com/Crypto_Trends_/status/2115850566123274256",
+     "text": "My 2027 BULL RUN PEAK PRICE TARGETS! #crypto $BTC $ETH $SOL $LINK $BNB $ICP $TAO $ADA $INJ $RNDR $DOT $ONDO $XRP $DOGE",
+     "likes": 0,
+     "author_username": "Crypto_Trends_",
+     "author_followers": 13328,
+     "created_at": "2026-10-30T00:57:40+08:00"
+    }
+   ],
+   "checks_this_trigger": 2
   },
   "LSKUSDT": {
    "symbol": "LSKUSDT",
    "base": "LSK",
    "flag": "pump",
    "trigger_at": "2026-10-29T22:15:00+08:00",
-   "checked_at": "2026-10-30T00:06:39+08:00",
-   "posts_last_1h": 7,
-   "posts_prev_6h_avg_per_h": 0.83,
-   "spike_ratio": 8.43,
-   "verdict": "升溫",
-   "one_line": "掃機喊單帶量升",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 2.18,
+   "spike_ratio": 4.13,
+   "verdict": "熱",
+   "one_line": "急升，多喊單莊",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115822274209341840",
-     "url": "https://x.com/insider__Alpha/status/2115822274209341840",
-     "text": "INSIDERALPHA PREMIUM CALL $LSK 25% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 30% WITHIN 1HR $LSK ROLLING #BINANCE TOP GAINER NO 1 JOIN PREMIUM…",
-     "likes": 1,
+     "id": "2115847760343912852",
+     "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
+     "text": "Binance Futures, Bitmart USDT, KuCoin Futures, Bitget Futures #LSK/USDT All take-profit targets achieved Profits: 550.2300% Period: 8 hr 22…",
+     "likes": 2,
+     "author_username": "FedeGonzalgh",
+     "author_followers": 1527,
+     "created_at": "2026-10-30T00:46:31+08:00"
+    },
+    {
+     "id": "2115854611064176911",
+     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
+     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 47% WITHIN 1HR $CROC 37% WITHIN 2HR $LSK ROLLING #BINANCE TOP GAI…",
+     "likes": 2,
      "author_username": "insider__Alpha",
-     "author_followers": 2670,
-     "created_at": "2026-10-29T23:05:14+08:00"
+     "author_followers": 2673,
+     "created_at": "2026-10-30T01:13:44+08:00"
     },
     {
-     "id": "2115810897696608693",
-     "url": "https://x.com/CryptoJackXBT/status/2115810897696608693",
-     "text": "$HYPE 70%+ Done — Ruling on #Binance Top Gainers No. 1 Like & Rt! $lsk $huma $asts $secz",
-     "likes": 1,
-     "author_username": "CryptoJackXBT",
-     "author_followers": 2299,
-     "created_at": "2026-10-29T22:20:02+08:00"
-    },
-    {
-     "id": "2115823538959462710",
-     "url": "https://x.com/cexscan/status/2115823538959462710",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $BEAT : ↑11.01% $LSK (Lisk) : ↑7.49% $CYPH : ↑6.84%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-29T23:10:16+08:00"
+     "id": "2115848135951941827",
+     "url": "https://x.com/FedeGonzalgh/status/2115848135951941827",
+     "text": "#LSK/USDT Profit: +550.84% Click on the link below to join our free signals group",
+     "likes": 2,
+     "author_username": "FedeGonzalgh",
+     "author_followers": 1527,
+     "created_at": "2026-10-30T00:48:00+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "PYTHUSDT": {
    "symbol": "PYTHUSDT",
    "base": "PYTH",
    "flag": "pump",
    "trigger_at": "2026-10-29T21:30:00+08:00",
-   "checked_at": "2026-10-30T00:06:39+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 3.5,
-   "spike_ratio": 0.86,
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 3.33,
+   "spike_ratio": 0.0,
    "verdict": "冷",
-   "one_line": "有料但量冇爆",
+   "one_line": "近一小時冇聲",
    "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115818149623070961",
-     "url": "https://x.com/ahas1978/status/2115818149623070961",
-     "text": "Crypto was supposed to save us from boring finance. Now @PythNetwork adds 14 US Treasury indices to Pyth Pro and suddenly the pigeon has op…",
-     "likes": 24,
-     "author_username": "ahas1978",
-     "author_followers": 1408,
-     "created_at": "2026-10-29T22:48:51+08:00"
-    },
-    {
-     "id": "2115822925437636959",
-     "url": "https://x.com/baileycMETA/status/2115822925437636959",
-     "text": "Most people have never heard of @PythNetwork Yet 9 in 10 tokenised stock and commodity trades on crypto use Pyth’s prices Revenue is also u…",
-     "likes": 13,
-     "author_username": "baileycMETA",
-     "author_followers": 8048,
-     "created_at": "2026-10-29T23:07:50+08:00"
-    },
-    {
-     "id": "2115831565380932074",
-     "url": "https://x.com/digiii/status/2115831565380932074",
-     "text": "Genia from Pyth Network breaks down the price layer running under almost every app, exchange and trading venue you already use. Not just an…",
-     "likes": 6,
-     "author_username": "digiii",
-     "author_followers": 104003,
-     "created_at": "2026-10-29T23:42:10+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
+   "big_accounts": 0,
+   "top_posts": [],
+   "checks_this_trigger": 2
   },
   "PARTIUSDT": {
    "symbol": "PARTIUSDT",
    "base": "PARTI",
    "flag": "pump",
    "trigger_at": "2026-10-30T00:15:00+08:00",
-   "checked_at": "2026-10-30T00:32:40+08:00",
-   "posts_last_1h": 14,
-   "posts_prev_6h_avg_per_h": 6.5,
-   "spike_ratio": 2.15,
-   "verdict": "冷",
-   "one_line": "假陽性多真熱度低",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 26,
+   "posts_prev_6h_avg_per_h": 7.79,
+   "spike_ratio": 3.34,
+   "verdict": "熱",
+   "one_line": "急升但多喊單莊",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115830990157344914",
-     "url": "https://x.com/CuckHubz/status/2115830990157344914",
-     "text": "Swing parti",
-     "likes": 4,
-     "author_username": "CuckHubz",
-     "author_followers": 1121,
-     "created_at": "2026-10-29T23:39:52+08:00"
+     "id": "2115845816674078962",
+     "url": "https://x.com/cryptocandy24x/status/2115845816674078962",
+     "text": "$Parti its 2x+ Keep printing.. just follow our strategy Booked 50% in 3 days ..rest riding well.",
+     "likes": 6,
+     "author_username": "cryptocandy24x",
+     "author_followers": 42009,
+     "created_at": "2026-10-30T00:38:47+08:00"
     },
     {
-     "id": "2115836066624307521",
-     "url": "https://x.com/FPAC_APFC/status/2115836066624307521",
-     "text": "Canada’s forest sector is navigating pressures from beyond our borders, but much of what will shape its future is within our control here a…",
-     "likes": 2,
-     "author_username": "FPAC_APFC",
-     "author_followers": 9636,
-     "created_at": "2026-10-30T00:00:03+08:00"
-    },
-    {
-     "id": "2115837092156559690",
-     "url": "https://x.com/Eren_Jager972/status/2115837092156559690",
-     "text": "SANJI MY FUCKING GOAT IL FAIT PARTI DES GRANDS ! #ONEPIECE1197",
+     "id": "2115849655787704510",
+     "url": "https://x.com/luxquantalgo/status/2115849655787704510",
+     "text": "$PARTI reached TP4, +20.5% spot from entry. Entry signals and the full toolkit are in our bio. #PARTI #PARTIUSDT #LuxQuant",
      "likes": 1,
-     "author_username": "Eren_Jager972",
-     "author_followers": 3582,
-     "created_at": "2026-10-30T00:04:07+08:00"
+     "author_username": "luxquantalgo",
+     "author_followers": 648,
+     "created_at": "2026-10-30T00:54:03+08:00"
+    },
+    {
+     "id": "2115852343438680573",
+     "url": "https://x.com/_TheNewGuy__/status/2115852343438680573",
+     "text": "While markets have been down lately, #PARTI has been pushing hard since we spotted the bulllish divergence. It just completed the trade wit…",
+     "likes": 1,
+     "author_username": "_TheNewGuy__",
+     "author_followers": 301,
+     "created_at": "2026-10-30T01:04:43+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   }
  },
  "history": [
@@ -1583,15 +1565,184 @@
      "created_at": "2026-10-30T00:04:07+08:00"
     }
    ]
+  },
+  {
+   "symbol": "PARTIUSDT",
+   "base": "PARTI",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T00:15:00+08:00",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 26,
+   "posts_prev_6h_avg_per_h": 7.79,
+   "spike_ratio": 3.34,
+   "verdict": "熱",
+   "one_line": "急升但多喊單莊",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115845816674078962",
+     "url": "https://x.com/cryptocandy24x/status/2115845816674078962",
+     "text": "$Parti its 2x+ Keep printing.. just follow our strategy Booked 50% in 3 days ..rest riding well.",
+     "likes": 6,
+     "author_username": "cryptocandy24x",
+     "author_followers": 42009,
+     "created_at": "2026-10-30T00:38:47+08:00"
+    },
+    {
+     "id": "2115849655787704510",
+     "url": "https://x.com/luxquantalgo/status/2115849655787704510",
+     "text": "$PARTI reached TP4, +20.5% spot from entry. Entry signals and the full toolkit are in our bio. #PARTI #PARTIUSDT #LuxQuant",
+     "likes": 1,
+     "author_username": "luxquantalgo",
+     "author_followers": 648,
+     "created_at": "2026-10-30T00:54:03+08:00"
+    },
+    {
+     "id": "2115852343438680573",
+     "url": "https://x.com/_TheNewGuy__/status/2115852343438680573",
+     "text": "While markets have been down lately, #PARTI has been pushing hard since we spotted the bulllish divergence. It just completed the trade wit…",
+     "likes": 1,
+     "author_username": "_TheNewGuy__",
+     "author_followers": 301,
+     "created_at": "2026-10-30T01:04:43+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "base": "PEPE",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T23:45:00+08:00",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 32,
+   "posts_prev_6h_avg_per_h": 19.41,
+   "spike_ratio": 1.65,
+   "verdict": "升溫",
+   "one_line": "略升溫，有喊單",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2115840824491770222",
+     "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
+     "text": "$YEE : Major Opportunity?!?! Do You See What's Happening?!?! #Crypto #Altcoins #Memecoins #Binance #Coinbase $PEPE $DOGE $CASHCAT $SPX $GTA…",
+     "likes": 8,
+     "author_username": "CryptoNowNever",
+     "author_followers": 4260,
+     "created_at": "2026-10-30T00:18:57+08:00"
+    },
+    {
+     "id": "2115843335210586135",
+     "url": "https://x.com/AltwolfCrypto/status/2115843335210586135",
+     "text": "$PEPE 42%+ Delivered so far #PEPE #PEPEUSDT #Crypto #Alts",
+     "likes": 3,
+     "author_username": "AltwolfCrypto",
+     "author_followers": 6564,
+     "created_at": "2026-10-30T00:28:56+08:00"
+    },
+    {
+     "id": "2115854260550397965",
+     "url": "https://x.com/TinYCragi_01/status/2115854260550397965",
+     "text": "The next bull run could belong to $PEPE! When meme culture meets a powerful community, the possibilities are exciting. Keep your eyes on th…",
+     "likes": 3,
+     "author_username": "TinYCragi_01",
+     "author_followers": 1473,
+     "created_at": "2026-10-30T01:12:21+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BICOUSDT",
+   "base": "BICO",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T23:45:00+08:00",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 0.54,
+   "spike_ratio": 1.85,
+   "verdict": "冷",
+   "one_line": "幾乎無人講",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115850566123274256",
+     "url": "https://x.com/Crypto_Trends_/status/2115850566123274256",
+     "text": "My 2027 BULL RUN PEAK PRICE TARGETS! #crypto $BTC $ETH $SOL $LINK $BNB $ICP $TAO $ADA $INJ $RNDR $DOT $ONDO $XRP $DOGE",
+     "likes": 0,
+     "author_username": "Crypto_Trends_",
+     "author_followers": 13328,
+     "created_at": "2026-10-30T00:57:40+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T22:15:00+08:00",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 2.18,
+   "spike_ratio": 4.13,
+   "verdict": "熱",
+   "one_line": "急升，多喊單莊",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115847760343912852",
+     "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
+     "text": "Binance Futures, Bitmart USDT, KuCoin Futures, Bitget Futures #LSK/USDT All take-profit targets achieved Profits: 550.2300% Period: 8 hr 22…",
+     "likes": 2,
+     "author_username": "FedeGonzalgh",
+     "author_followers": 1527,
+     "created_at": "2026-10-30T00:46:31+08:00"
+    },
+    {
+     "id": "2115854611064176911",
+     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
+     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 47% WITHIN 1HR $CROC 37% WITHIN 2HR $LSK ROLLING #BINANCE TOP GAI…",
+     "likes": 2,
+     "author_username": "insider__Alpha",
+     "author_followers": 2673,
+     "created_at": "2026-10-30T01:13:44+08:00"
+    },
+    {
+     "id": "2115848135951941827",
+     "url": "https://x.com/FedeGonzalgh/status/2115848135951941827",
+     "text": "#LSK/USDT Profit: +550.84% Click on the link below to join our free signals group",
+     "likes": 2,
+     "author_username": "FedeGonzalgh",
+     "author_followers": 1527,
+     "created_at": "2026-10-30T00:48:00+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PYTHUSDT",
+   "base": "PYTH",
+   "flag": "pump",
+   "trigger_at": "2026-10-29T21:30:00+08:00",
+   "checked_at": "2026-10-30T01:17:23+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 3.33,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "近一小時冇聲",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": []
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 12,
+  "calls_today": 22,
   "cap_reached": false,
-  "updated_at": "2026-10-30T00:32:40+08:00"
+  "updated_at": "2026-10-30T01:17:23+08:00"
  },
- "updated_at": "2026-10-30T00:32:40+08:00",
+ "updated_at": "2026-10-30T01:17:23+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
