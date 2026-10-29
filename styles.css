@@ -1485,6 +1485,35 @@ img.logo-mark.logo-3d{
 }
 
 /* ===== 急升榜 (high-risk gainer board) ===== */
+/* ===== 急升 homepage capture strip (always-visible; not folded in 詳情) ===== */
+.gb-capture{
+  margin:6px 0 10px;padding:10px 12px;border-radius:12px;
+  border:1px solid #F0B90B66;background:#1E2329;
+}
+.gbc-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 8px}
+.gbc-kicker{font-size:12px;font-weight:800;letter-spacing:.03em;color:#F0B90B}
+.gbc-big{font-size:28px;font-weight:900;font-family:var(--font-num);line-height:1}
+.gbc-inline{font-size:13px;font-weight:700;color:var(--text)}
+.gbc-dot{color:var(--muted);font-weight:700}
+.gbc-gate{
+  display:inline-block;font-size:11px;font-weight:900;padding:2px 8px;border-radius:999px;
+  letter-spacing:.02em;vertical-align:middle;
+}
+.gbc-gate.pass{background:#0f2f1d;color:#0ecb81;border:1px solid #166534}
+.gbc-gate.fail{background:#2a1216;color:#f6465d;border:1px solid #7f1d1d}
+.gbc-seal{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gbc-sealchip{
+  display:inline-block;font-size:11px;font-weight:800;padding:1px 7px;border-radius:999px;
+  background:#2B3139;color:#F0B90B;border:1px solid #8a6510;
+}
+.gbc-names{display:flex;gap:8px;align-items:baseline;margin-top:5px;font-size:13px;line-height:1.4}
+.gbc-lab{flex:0 0 auto;font-weight:800;min-width:2.6em;color:var(--muted)}
+.gbc-hit .gbc-lab{color:#0ecb81}
+.gbc-miss .gbc-lab{color:#f6465d}
+.gbc-late .gbc-lab{color:#F0B90B}
+.gbc-syms{font-weight:700;word-break:break-word}
+.gbc-sub{margin:6px 0 0}
+
 .gainer-panel{border:1px solid #5a1a22}
 .gb-risk{display:inline-block;font-size:10px;font-weight:900;padding:1px 6px;border-radius:4px;background:#3a1212;color:var(--red);border:1px solid #7f1d1d;vertical-align:middle;letter-spacing:.02em}
 .gb-risk-lg{font-size:11px;padding:2px 7px}
