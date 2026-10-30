@@ -1,23 +1,151 @@
 {
-  "fetched_at": "2026-10-30T15:15:00+08:00",
+  "fetched_at": "2026-10-30T16:11:15+08:00",
   "source": "X search_news via agent (static snapshot; site never calls X)",
-  "x_fetched_at": "2026-10-30T15:15:00+08:00",
-  "x_job": "unknown",
   "stories": [
     {
       "id": "2116063292150218854",
       "title": "Binance 熱錢包被盜約 $60 億：DevOps 工程師手提電腦失守",
       "title_en": "Binance cryptocurrency exchange hacked with approximately $6 billion stolen from hot wallets via compromised DevOps engineer's laptop",
-      "summary": "黑客經 DevOps 工程師電腦攞到權限，由熱錢包提走約 $60 億 BTC／ETH 等資產。",
+      "summary": "黑客經 DevOps 工程師電腦攞權限，約 20 分鐘由熱錢包提走約 $63 億；約 $30 億已凍結，Binance 話用 SAFU 同公司資金全額賠，預計 48 小時內開始恢復提款；TRM Labs、Chainalysis 指向北韓 TraderTraitor。",
       "summary_en": "Hackers compromised a Binance DevOps engineer's laptop, enabling unauthorized withdrawals of around $6 billion in cryptocurrencies including Bitcoin, Ethereum, USDT, and USDC across blockchains such a",
       "source": "X News",
       "url": "https://x.com/i/trending/2116063292150218854",
-      "published_at": "2026-10-30T07:08:24.000Z",
+      "published_at": "2026-10-30T07:46:35.000Z",
       "tags": [
         "binance",
         "security"
       ],
       "why_it_matters": "Binance 充提同行情可能持續波動，跟買 Binance 幣要預咗點差同插針。",
+      "category": "News"
+    },
+    {
+      "id": "2116072545044820401",
+      "title": "Trezor 警告：經代理買嘅 Safe 5 疑被植入晶片",
+      "title_en": "Trezor Warns of Suspected Hardware Implant in Safe 5 from Reseller",
+      "summary": "有用家拆開新 Safe 5 發現多咗塊電路板，可經流動網絡偷助記詞；Trezor 叫大家只喺官方渠道買。",
+      "summary_en": "A Trezor customer spotted something alarming inside a new Safe 5 wallet: an extra circuit board that could steal recovery phrases over a mobile network.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116072545044820401",
+      "published_at": "2026-10-30T07:46:16.000Z",
+      "tags": [
+        "security",
+        "wallet"
+      ],
+      "why_it_matters": "剛剛先有 Ledger 改裝警告，硬件錢包一定要官方買，助記詞唔好俾任何裝置拍照。",
+      "category": "News"
+    },
+    {
+      "id": "2116072548190548276",
+      "title": "網民 meme 叫 Binance 黑客「下一站 Pump.fun」",
+      "title_en": "Users Urge Binance Hackers to Target Pump.fun in Meme Wave",
+      "summary": "Binance 被盜後，X 上一堆 meme 用蝙蝠燈召喚黑客去搞 Pump.fun。",
+      "summary_en": "After Binance's massive $6.3 billion hack, folks online lit up with memes summoning the hackers to Pump.fun next, complete with Bat signal images.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116072548190548276",
+      "published_at": "2026-10-30T07:46:22.000Z",
+      "tags": [
+        "memecoin",
+        "pumpfun",
+        "binance"
+      ],
+      "why_it_matters": "meme 圈情緒仍圍繞被盜事件，Pump.fun 新盤熱度可能短暫受影響。",
+      "category": "News"
+    },
+    {
+      "id": "2116072545900478900",
+      "title": "TxFlow 永續合約平台被指未到強平價就爆倉",
+      "title_en": "Traders Report Sudden Liquidations on TxFlow Perps Platform",
+      "summary": "有交易員話倉位喺未到標示強平價前已被平，一次蒸發 $2.4 萬。",
+      "summary_en": "Traders like OMG.var watched in frustration as $24,000 vanished from their accounts, with positions closing well before the listed liquidation prices hit.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116072545900478900",
+      "published_at": "2026-10-30T07:46:13.000Z",
+      "tags": [
+        "perps",
+        "liquidation"
+      ],
+      "why_it_matters": "小型合約平台風險高，模擬盤以外真倉要留意平台強平機制。",
+      "category": "News"
+    },
+    {
+      "id": "2116067081896484880",
+      "title": "馬斯克：將來 AI agent 會自己黑金融系統搵錢",
+      "title_en": "Musk Warns AI Agents Will Hack Finance for Themselves After Binance Theft",
+      "summary": "Binance 被盜後，馬斯克預言超級 AI 有日會做類似事去資助自己目標。",
+      "summary_en": "Binance just faced its biggest security scare ever, with $6.3 billion in assets hit by a hack from a compromised engineer's laptop. Elon Musk chimed in, predicting superintelligent AI will one day pul",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116067081896484880",
+      "published_at": "2026-10-30T07:23:14.000Z",
+      "tags": [
+        "ai",
+        "binance"
+      ],
+      "why_it_matters": "AI 題材幣可能借勢炒作，但純屬話題，唔係基本面。",
+      "category": "News"
+    },
+    {
+      "id": "2116063287549075492",
+      "title": "Solana 開發者逆向 Pump.fun 合約，收律師信",
+      "title_en": "Solana Developer Faces Cease-and-Desist for Reverse-Engineering Pump.fun Contracts",
+      "summary": "開發者 Shaw 貼出 cease-and-desist 信，話「I poked the bear」，同 Pump.fun 對峙。",
+      "summary_en": "A Solana developer named Shaw shared a cease-and-desist letter on X with the cheeky caption, 'I poked the bear.' His effort to decode Pump.fun's closed-source smart contracts has sparked a tense legal",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116063287549075492",
+      "published_at": "2026-10-30T07:10:47.000Z",
+      "tags": [
+        "solana",
+        "pumpfun",
+        "memecoin"
+      ],
+      "why_it_matters": "Pump.fun 合約閉源爭議再起，Solana meme 發射台嘅信任度受關注。",
+      "category": "News"
+    },
+    {
+      "id": "2115867041815289909",
+      "title": "Polymarket 第三方漏洞被盜約 $250 萬，已修補",
+      "title_en": "Polymarket Fixes Third-Party Hack After $2.5M Theft",
+      "summary": "攻擊者一小時內將用家倉位低價拋售，資金轉去同一錢包；Polymarket 已修復。",
+      "summary_en": "Traders watched in horror as their positions sold off at deep discounts, funds vanishing to a single attacker wallet in under an hour.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115867041815289909",
+      "published_at": "2026-10-30T06:01:58.000Z",
+      "tags": [
+        "security",
+        "polymarket"
+      ],
+      "why_it_matters": "一日內兩單被盜，市場風險胃納偏低，追升要更揀強勢幣。",
+      "category": "News"
+    },
+    {
+      "id": "2116036410289406421",
+      "title": "麻吉大哥 Hyperliquid 帳戶八次爆倉剩 $1.50",
+      "title_en": "Machi Big Brother's Hyperliquid Account Wiped to $1.50 After Eight Liquidations",
+      "summary": "黃立成六個鐘內連環被強平，帳戶歸零。",
+      "summary_en": "Jeffrey Huang, the crypto trader and ex-L.A. Boyz rapper known as Machi Big Brother, watched his Hyperliquid account drain to just $1.50 over six wild hours.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116036410289406421",
+      "published_at": "2026-10-30T05:21:32.000Z",
+      "tags": [
+        "hyperliquid",
+        "liquidation"
+      ],
+      "why_it_matters": "高槓桿喺急跌市好易清零，模擬倉要守止蝕。",
+      "category": "News"
+    },
+    {
+      "id": "2115908517395837140",
+      "title": "Coinbase Q3 賺 $7.19 億，收入輕微下跌",
+      "title_en": "Coinbase Posts $719 Million Profit Despite Revenue Dip in Q3 2026",
+      "summary": "Coinbase 第三季盈利 $7.19 億，雖然收入回落。",
+      "summary_en": "Coinbase swung back to a strong $719 million profit this quarter, even as revenue fell short of expectations amid quiet crypto markets.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115908517395837140",
+      "published_at": "2026-10-30T03:10:48.000Z",
+      "tags": [
+        "coinbase",
+        "earnings"
+      ],
+      "why_it_matters": "交易所盈利仍強，被盜事件後資金或部分流向 Coinbase。",
       "category": "News"
     },
     {
@@ -373,5 +501,7 @@
       "why_it_matters": "澳洲散戶入金渠道收緊，影響有限但偏淡。",
       "category": "News"
     }
-  ]
+  ],
+  "x_fetched_at": "2026-10-30T16:11:15+08:00",
+  "x_job": "manual-hour16"
 }
