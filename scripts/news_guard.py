@@ -29,12 +29,18 @@ Sources checked for "already pulled":
   * data/x_calls_log.jsonl                                    — committed call log
   * <git-common-dir>/x_news_calls.jsonl  (flock'ed)           — shared by ALL worktrees on the box,
     catches a job that has claimed/pulled but not pushed yet.
-Rule: skip if the last pull is in the same Asia/Shanghai clock hour OR less than 55 min ago.
+Rule: the deciding rule is "at most one pull per Asia/Shanghai clock hour" (HH:00–HH:59 +08:00).
+On top of that, a pull less than MIN_GAP_MINUTES (10) before `now` also blocks, but only to catch two
+jobs straddling an hour boundary (e.g. 16:58 + 17:02). It is deliberately small: the hourly routine
+fires once per hour within ±15 min of :00, so consecutive scheduled runs are always >= 30 min apart
+and a 10-min gap can never make a scheduled run lose its hour. (The old 55-min gap did: 15:15 pull ->
+16:02 run SKIPped, leaving hour 16 empty on 2026-10-30.)
 """
 import argparse, datetime as dt, fcntl, json, os, subprocess, sys
 
 TZ = dt.timezone(dt.timedelta(hours=8))  # Asia/Shanghai (no DST)
-MIN_GAP = dt.timedelta(minutes=55)
+MIN_GAP_MINUTES = 10  # boundary-straddle guard only; must stay < 30 (min spacing of ±15-min hourly runs)
+MIN_GAP = dt.timedelta(minutes=MIN_GAP_MINUTES)
 CLAIM_TTL = dt.timedelta(minutes=30)  # an un-finalised claim blocks for at most 30 min
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
@@ -122,7 +128,7 @@ def remote_news(args):
 
 
 def same_window(a, b):
-    """True if pulls at a and b count as 'the same hour'."""
+    """True if b must be blocked by a: same Asia/Shanghai clock hour, or < MIN_GAP apart."""
     if a is None or b is None:
         return False
     a, b = a.astimezone(TZ), b.astimezone(TZ)
@@ -196,9 +202,9 @@ def cmd_status(args):
     now = now_sh(args)
     b = blocking(args, now)
     if b:
-        print(f"NEWS_GUARD: SKIP — X news already pulled at {iso(b[0])} ({b[1]}, job={b[2]}) in this hour")
+        print(f"NEWS_GUARD: SKIP — X news already pulled at {iso(b[0])} ({b[1]}, job={b[2]}) in this hour or <{MIN_GAP_MINUTES} min ago")
     else:
-        print(f"NEWS_GUARD: GO — no X news pull in hour {now:%Y-%m-%d %H}:00 +08:00 / last 55 min")
+        print(f"NEWS_GUARD: GO — no X news pull in hour {now:%Y-%m-%d %H}:00 +08:00 / last {MIN_GAP_MINUTES} min")
     return 0
 
 
@@ -207,7 +213,7 @@ def cmd_begin(args):
     with Locked(args.lock):
         b = blocking(args, now)
         if b:
-            return skip(args, f"X news already pulled/claimed at {iso(b[0])} by job={b[2]} ({b[1]}), same Asia/Shanghai hour or <55 min")
+            return skip(args, f"X news already pulled/claimed at {iso(b[0])} by job={b[2]} ({b[1]}), same Asia/Shanghai hour or <{MIN_GAP_MINUTES} min")
         claim_id = f"{args.job}@{iso(now)}"
         append_jsonl(args.lock, {"event": "claimed", "at": iso(now), "job": args.job, "claim_id": claim_id})
     print(f"NEWS_GUARD: GO — claimed X news pull for {now:%Y-%m-%d %H}:00 +08:00 (claim_id={claim_id}). "

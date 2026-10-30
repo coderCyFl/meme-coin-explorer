@@ -53,12 +53,43 @@ class NewsGuardTest(unittest.TestCase):
         _, out = self.run_guard("begin", "--job", "daily-upgrade", now="2026-10-30T09:10:01+08:00")
         self.assertIn("SKIP", out)
 
-    def test_55_minute_rule_across_hour_boundary(self):
-        self.write_news({"x_fetched_at": "2026-10-30T09:50:00+08:00", "stories": stories(20)})
-        _, out = self.run_guard("status", now="2026-10-30T10:20:00+08:00")
-        self.assertIn("SKIP", out)
-        _, out = self.run_guard("status", now="2026-10-30T10:46:00+08:00")
-        self.assertIn("GO", out)
+    def test_min_gap_constant_is_small(self):
+        # Hourly routine fires within ±15 min of :00 -> consecutive runs >= 30 min apart.
+        self.assertLess(news_guard.MIN_GAP_MINUTES, 30)
+        self.assertEqual(news_guard.MIN_GAP, news_guard.dt.timedelta(minutes=news_guard.MIN_GAP_MINUTES))
+
+    def _prev_then(self, prev, now):
+        self.write_news({"x_fetched_at": prev, "stories": stories(20)})
+        _, out = self.run_guard("begin", "--job", "hourly-update", now=now)
+        return out
+
+    def test_late_previous_run_does_not_eat_next_hour(self):
+        """Replays 2026-10-30: 15:00-hour pull at 15:15, 16:00-hour run at 16:02 must GO."""
+        self.assertIn("NEWS_GUARD: GO", self._prev_then("2026-10-30T15:15:00+08:00", "2026-10-30T16:02:00+08:00"))
+
+    def test_same_clock_hour_skips(self):
+        self.assertIn("NEWS_GUARD: SKIP", self._prev_then("2026-10-30T16:02:00+08:00", "2026-10-30T16:40:00+08:00"))
+
+    def test_15_min_across_boundary_goes(self):
+        """16:50 -> 17:05 is 15 min, > MIN_GAP (10): GO, so hour 17 is not left empty."""
+        self.assertIn("NEWS_GUARD: GO", self._prev_then("2026-10-30T16:50:00+08:00", "2026-10-30T17:05:00+08:00"))
+
+    def test_boundary_straddle_within_min_gap_skips(self):
+        """Two jobs at 16:55 and 17:02 (7 min) are a double pull, not two hourly pulls."""
+        self.assertIn("NEWS_GUARD: SKIP", self._prev_then("2026-10-30T16:55:00+08:00", "2026-10-30T17:02:00+08:00"))
+        self.assertIn("NEWS_GUARD: GO", self._prev_then("2026-10-30T16:55:00+08:00", "2026-10-30T17:05:00+08:00"))
+
+    def test_any_hourly_schedule_within_15_min_jitter_never_skips(self):
+        """Consecutive scheduled runs (jitter -15..+15 min) in different clock hours -> never blocked."""
+        base_prev = news_guard.parse_ts("2026-10-30T16:00:00+08:00")
+        base_now = news_guard.parse_ts("2026-10-30T17:00:00+08:00")
+        for e_prev in range(-15, 16):
+            for e_now in range(-15, 16):
+                prev = base_prev + news_guard.dt.timedelta(minutes=e_prev)
+                now = base_now + news_guard.dt.timedelta(minutes=e_now)
+                if prev.hour == now.hour:
+                    continue  # both landed in one clock hour: same-hour SKIP is correct
+                self.assertFalse(news_guard.same_window(prev, now), (prev, now))
 
     def test_write_adds_x_fetched_at_and_logs(self):
         _, out = self.run_guard("begin", "--job", "hourly-update", now="2026-10-30T09:08:00+08:00")
