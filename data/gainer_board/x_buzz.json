@@ -404,19 +404,19 @@
    "base": "GTC",
    "flag": "pump",
    "trigger_at": "2026-10-30T08:12:04+08:00",
-   "checked_at": "2026-10-30T09:12:30+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 2.0,
-   "verdict": "冷",
-   "one_line": "黑客持大量GTC，有拋壓",
+   "checked_at": "2026-10-30T10:19:00+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 1.83,
+   "spike_ratio": 3.27,
+   "verdict": "熱",
+   "one_line": "幣安黑客拋售GTC，負面熱議",
    "shill_flag": false,
    "big_accounts": 1,
    "top_posts": [
     {
      "id": "2115913250898641371",
      "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
-     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total for this tx: ~$2.5B",
+     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total ~$2.5B",
      "likes": 34,
      "author_username": "vinibarbosabr",
      "author_followers": 12176,
@@ -425,8 +425,8 @@
     {
      "id": "2115940780204228787",
      "url": "https://x.com/alertachart/status/2115940780204228787",
-     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M, USDC $823M, TRX $239.59M ...",
-     "likes": 14,
+     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M ...",
+     "likes": 15,
      "author_username": "alertachart",
      "author_followers": 626,
      "created_at": "2026-10-30T06:56:08+08:00"
@@ -435,13 +435,13 @@
      "id": "2115925451805986968",
      "url": "https://x.com/owocki/status/2115925451805986968",
      "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
-     "likes": 12,
+     "likes": 13,
      "author_username": "owocki",
-     "author_followers": 134356,
+     "author_followers": 134352,
      "created_at": "2026-10-30T05:55:14+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "TRXUSDT": {
    "symbol": "TRXUSDT",
@@ -491,13 +491,13 @@
    "symbol": "RUNEUSDT",
    "base": "RUNE",
    "flag": "pump",
-   "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T09:12:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 1.33,
+   "trigger_at": "2026-10-30T06:30:00+08:00",
+   "checked_at": "2026-10-30T10:19:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.6,
    "verdict": "冷",
-   "one_line": "討論少，黑客經THOR洗錢",
+   "one_line": "討論好少，冇明顯升溫",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
@@ -505,7 +505,7 @@
      "id": "2115936828637536556",
      "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
      "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
-     "likes": 21,
+     "likes": 31,
      "author_username": "Shft_Ctrl",
      "author_followers": 1205,
      "created_at": "2026-10-30T06:40:26+08:00"
@@ -513,7 +513,7 @@
     {
      "id": "2115945507491324352",
      "url": "https://x.com/ksamemsol/status/2115945507491324352",
-     "text": "$rune and $xmr buy fuck binance karma is a bitch",
+     "text": "$rune and $xmr buy",
      "likes": 1,
      "author_username": "ksamemsol",
      "author_followers": 138,
@@ -522,14 +522,14 @@
     {
      "id": "2115929227136553291",
      "url": "https://x.com/cexscan/status/2115929227136553291",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) up 5.72%, $TRX (TRON) up 3.96%",
+     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) +5.72%",
      "likes": 0,
      "author_username": "cexscan",
-     "author_followers": 10600,
+     "author_followers": 10601,
      "created_at": "2026-10-30T06:10:14+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -2531,15 +2531,101 @@
      "created_at": "2026-10-30T05:55:14+08:00"
     }
    ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T06:30:00+08:00",
+   "checked_at": "2026-10-30T10:19:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.6,
+   "verdict": "冷",
+   "one_line": "討論好少，冇明顯升溫",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115936828637536556",
+     "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
+     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
+     "likes": 31,
+     "author_username": "Shft_Ctrl",
+     "author_followers": 1205,
+     "created_at": "2026-10-30T06:40:26+08:00"
+    },
+    {
+     "id": "2115945507491324352",
+     "url": "https://x.com/ksamemsol/status/2115945507491324352",
+     "text": "$rune and $xmr buy",
+     "likes": 1,
+     "author_username": "ksamemsol",
+     "author_followers": 138,
+     "created_at": "2026-10-30T07:14:56+08:00"
+    },
+    {
+     "id": "2115929227136553291",
+     "url": "https://x.com/cexscan/status/2115929227136553291",
+     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) +5.72%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10601,
+     "created_at": "2026-10-30T06:10:14+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "GTCUSDT",
+   "base": "GTC",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T08:12:04+08:00",
+   "checked_at": "2026-10-30T10:19:00+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 1.83,
+   "spike_ratio": 3.27,
+   "verdict": "熱",
+   "one_line": "幣安黑客拋售GTC，負面熱議",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2115913250898641371",
+     "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
+     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total ~$2.5B",
+     "likes": 34,
+     "author_username": "vinibarbosabr",
+     "author_followers": 12176,
+     "created_at": "2026-10-30T05:06:45+08:00"
+    },
+    {
+     "id": "2115940780204228787",
+     "url": "https://x.com/alertachart/status/2115940780204228787",
+     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M ...",
+     "likes": 15,
+     "author_username": "alertachart",
+     "author_followers": 626,
+     "created_at": "2026-10-30T06:56:08+08:00"
+    },
+    {
+     "id": "2115925451805986968",
+     "url": "https://x.com/owocki/status/2115925451805986968",
+     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
+     "likes": 13,
+     "author_username": "owocki",
+     "author_followers": 134352,
+     "created_at": "2026-10-30T05:55:14+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 56,
-  "cap_reached": false,
-  "updated_at": "2026-10-30T09:13:05+08:00"
+  "calls_today": 60,
+  "cap_reached": true,
+  "updated_at": "2026-10-30T10:19:30+08:00"
  },
- "updated_at": "2026-10-30T09:13:05+08:00",
+ "updated_at": "2026-10-30T10:19:30+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
