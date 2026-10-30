@@ -5,6 +5,7 @@ on:
   schedule:
     # Snapshot: primary 15-min + offset backup 15-min (2026-10-30 primary stalled ~09:22–13:06 HKT).
     # Seal: primary 23:55 + near backup 23:58 + late catch-up 00:40; every snapshot also seal_due().
+    # External 2nd-line backup (not GH schedule): see docs/seal-external-backup.md
     - cron: "5,20,35,50 * * * *"   # primary 15-min snapshot (denser early flags)
     - cron: "10,25,40,55 * * * *"  # offset backup 15-min (when primary slots drop for hours)
     - cron: "55 15 * * *"   # 23:55 Asia/Shanghai daily seal (GH cron is UTC: 15:55Z = 23:55 UTC+8)
