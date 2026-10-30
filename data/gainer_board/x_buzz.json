@@ -1,91 +1,93 @@
 {
  "version": 1,
  "coins": {
-  "BMTUSDT": {
-   "symbol": "BMTUSDT",
-   "base": "BMT",
-   "flag": "pump",
-   "trigger_at": "2026-10-28T22:45:00+08:00",
-   "checked_at": "2026-10-29T02:34:30+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.0,
-   "spike_ratio": 0.5,
-   "verdict": "冷",
-   "one_line": "近一小時幾乎冇聲",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [],
-   "checks_this_trigger": 1
-  },
   "INITUSDT": {
    "symbol": "INITUSDT",
    "base": "INIT",
    "flag": "pump",
    "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 0.46,
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 2.5,
+   "spike_ratio": 0.0,
    "verdict": "冷",
-   "one_line": "幾乎靜、剩bot文",
+   "one_line": "近一小時靜晒",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2116214855203971429",
-     "url": "https://x.com/GreenCandleTr/status/2116214855203971429",
-     "text": "$INIT price move alert +5.5% in the last hour Price $0.1865 24h -15.4% Binance Futures Spot OKX",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T01:05:13+08:00"
+     "id": "2116179682047529084",
+     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
+     "text": "$INIT Bullish run completed — all TPs achieved. Maintaining discipline and strong risk management.",
+     "likes": 2,
+     "author_username": "Randy_Austin1",
+     "author_followers": 1160,
+     "created_at": "2026-10-30T22:45:27+08:00"
+    },
+    {
+     "id": "2116201343257924020",
+     "url": "https://x.com/cryptodeepapp/status/2116201343257924020",
+     "text": "CryptoDeep Supported Assets Update Removed include INIT among others.",
+     "likes": 2,
+     "author_username": "cryptodeepapp",
+     "author_followers": 1511,
+     "created_at": "2026-10-31T00:11:32+08:00"
+    },
+    {
+     "id": "2116193089182192077",
+     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
+     "text": "New signal Coin: $INIT/USDT Long Entry 0.15995 leverage 25x Stop loss 0.15000",
+     "likes": 1,
+     "author_username": "ZaraVinkaqz",
+     "author_followers": 0,
+     "created_at": "2026-10-30T23:38:44+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "BLURUSDT": {
    "symbol": "BLURUSDT",
    "base": "BLUR",
    "flag": "pump",
-   "trigger_at": "2026-10-29T12:00:00+08:00",
-   "checked_at": "2026-10-29T15:11:21+08:00",
-   "posts_last_1h": 15,
-   "posts_prev_6h_avg_per_h": 12.91,
-   "spike_ratio": 1.16,
+   "trigger_at": "2026-10-31T02:45:00+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.17,
+   "spike_ratio": 1.38,
    "verdict": "冷",
-   "one_line": "爆後冷卻，多喊單",
+   "one_line": "一小時幾條bot",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115691752044859793",
-     "url": "https://x.com/rab4745/status/2115691752044859793",
-     "text": "Top gainers in binance spot $INIT $BLUR $WENB Which one are you holding?",
-     "likes": 2,
-     "author_username": "rab4745",
-     "author_followers": 18087,
-     "created_at": "2026-10-29T14:26:35+08:00"
+     "id": "2116241942816166326",
+     "url": "https://x.com/GreenCandleTr/status/2116241942816166326",
+     "text": "$BLUR up another +11.7% since our last alert +15.8% in the last hour Price $0.0100 24h +25.0% Binance",
+     "likes": 0,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T02:52:51+08:00"
     },
     {
-     "id": "2115693384576929971",
-     "url": "https://x.com/mrcamerontrader/status/2115693384576929971",
-     "text": "Buy #BLUR and give your children a future full of opportunities. #crypto",
-     "likes": 2,
-     "author_username": "mrcamerontrader",
-     "author_followers": 437,
-     "created_at": "2026-10-29T14:33:05+08:00"
+     "id": "2116237331367661706",
+     "url": "https://x.com/GreenCandleTr/status/2116237331367661706",
+     "text": "$BLUR price move alert +8.6% in the last hour Price $0.009 24h +12.1% Binance Spot OKX Spot",
+     "likes": 0,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T02:34:32+08:00"
     },
     {
-     "id": "2115696373190246537",
-     "url": "https://x.com/apostilaweb/status/2115696373190246537",
-     "text": "Binance Futures, ByBit USDT #BLUR/USDT All take-profit targets achieved Profit: 462.8751% Period: 9 Hours 58 Minutes",
-     "likes": 1,
-     "author_username": "apostilaweb",
-     "author_followers": 1030,
-     "created_at": "2026-10-29T14:44:57+08:00"
+     "id": "2116245049608450315",
+     "url": "https://x.com/cexscan/status/2116245049608450315",
+     "text": "Last 15m Binance Spot Top gainers SOPH GTC XPL; Blur among losers -2.72%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10599,
+     "created_at": "2026-10-31T03:05:12+08:00"
     }
    ],
-   "checks_this_trigger": 5
+   "checks_this_trigger": 1
   },
   "KATUSDT": {
    "symbol": "KATUSDT",
@@ -517,45 +519,45 @@
    "symbol": "SOPHUSDT",
    "base": "SOPH",
    "flag": "pump",
-   "trigger_at": "2026-10-30T22:45:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 11,
-   "posts_prev_6h_avg_per_h": 3.0,
-   "spike_ratio": 3.67,
-   "verdict": "升溫",
-   "one_line": "量升但多喊單",
+   "trigger_at": "2026-10-30T23:15:00+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 4.83,
+   "spike_ratio": 0.62,
+   "verdict": "冷",
+   "one_line": "熱度回落剩bot",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2116228446221115569",
-     "url": "https://x.com/Lucas_M3046/status/2116228446221115569",
-     "text": "$SOPH Bullish run completed — all TPs achieved PnL +933.81%",
-     "likes": 2,
+     "id": "2116177910365139453",
+     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
+     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform. #SOPH #Crypto",
+     "likes": 3,
+     "author_username": "FantasyWhales",
+     "author_followers": 1098,
+     "created_at": "2026-10-30T22:38:25+08:00"
+    },
+    {
+     "id": "2116222259677233601",
+     "url": "https://x.com/Lucas_M3046/status/2116222259677233601",
+     "text": "Binance Futures #SOPH/USDT All take-profit targets achieved Profit: 779.6156% Period: 4 hr 39 min",
+     "likes": 1,
      "author_username": "Lucas_M3046",
-     "author_followers": 1550,
-     "created_at": "2026-10-31T01:59:13+08:00"
+     "author_followers": 1551,
+     "created_at": "2026-10-31T01:34:38+08:00"
     },
     {
      "id": "2116228706058571876",
      "url": "https://x.com/cexscan/status/2116228706058571876",
-     "text": "Last 60m - #Binance Spot (USDT Trades) Top 3 Gainers: $SOPH (Sophon) : ↑16.04%",
+     "text": "Last 60m Binance Spot Top 3 Gainers: $SOPH (Sophon) +16.04% particle-network +5.01% $SENT +3.75%",
      "likes": 1,
      "author_username": "cexscan",
-     "author_followers": 10598,
+     "author_followers": 10599,
      "created_at": "2026-10-31T02:00:15+08:00"
-    },
-    {
-     "id": "2116223831916380603",
-     "url": "https://x.com/Matthew_Her2/status/2116223831916380603",
-     "text": "Binance Futures, Bitget Futures #SOPH/USDT All take-profit targets achieved Profit: 890.6518%",
-     "likes": 1,
-     "author_username": "Matthew_Her2",
-     "author_followers": 322,
-     "created_at": "2026-10-31T01:40:53+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 1
   },
   "BEAMXUSDT": {
    "symbol": "BEAMXUSDT",
@@ -650,139 +652,38 @@
    "base": "KERNEL",
    "flag": "pump",
    "trigger_at": "2026-10-30T23:15:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
    "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 3.33,
-   "spike_ratio": 0.6,
+   "posts_prev_6h_avg_per_h": 3.5,
+   "spike_ratio": 0.57,
    "verdict": "冷",
-   "one_line": "噪音多、無真討論",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116215486362845325",
-     "url": "https://x.com/chrismbalz_code/status/2116215486362845325",
-     "text": "With the $pls price down, wondering like me what a home-based PulseChain Validator Node can really do?!",
-     "likes": 1,
-     "author_username": "chrismbalz_code",
-     "author_followers": 242,
-     "created_at": "2026-10-31T01:07:43+08:00"
-    },
-    {
-     "id": "2116232724348309677",
-     "url": "https://x.com/polyexlabs/status/2116232724348309677",
-     "text": "13/ The human factor can't be patched. People err, laptops get infected, and critical CVEs in everyday software, from the Linux kernel to G…",
-     "likes": 0,
-     "author_username": "polyexlabs",
-     "author_followers": 298,
-     "created_at": "2026-10-31T02:16:13+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  }
- },
- "history": [
-  {
-   "symbol": "BMTUSDT",
-   "base": "BMT",
-   "flag": "pump",
-   "trigger_at": "2026-10-28T22:45:00+08:00",
-   "checked_at": "2026-10-29T02:34:30+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.0,
-   "spike_ratio": 0.5,
-   "verdict": "冷",
-   "one_line": "近一小時幾乎冇聲",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": []
-  },
-  {
-   "symbol": "INITUSDT",
-   "base": "INIT",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T00:30:00+08:00",
-   "checked_at": "2026-10-29T03:04:40+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 10.5,
-   "spike_ratio": 0.29,
-   "verdict": "冷",
-   "one_line": "聲量回落多喊單",
+   "one_line": "幾乎冇真討論",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115493395032576468",
-     "url": "https://x.com/CryptoWhales55/status/2115493395032576468",
-     "text": "#INITUSDT Up by +51% profit on spot market ~Duration : less than 1day Live profits Join Us Now",
-     "likes": 54,
-     "author_username": "CryptoWhales55",
-     "author_followers": 7999,
-     "created_at": "2026-10-29T01:18:23+08:00"
+     "id": "2116201181093446038",
+     "url": "https://x.com/GreenCandleTr/status/2116201181093446038",
+     "text": "$KERNEL price move alert +7.9% in the last hour Price $0.0545 24h +13.8% Binance Futures Spot",
+     "likes": 1,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T00:10:53+08:00"
     },
     {
-     "id": "2115497531052351724",
-     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
-     "text": "I've been exploring @MojoAI_HQ, and today I decided to test how it handles crypto market research. I gave MOJO a simple prompt: Find today'…",
-     "likes": 53,
-     "author_username": "Anthonyb_t",
-     "author_followers": 8055,
-     "created_at": "2026-10-29T01:34:50+08:00"
-    },
-    {
-     "id": "2115504238163841426",
-     "url": "https://x.com/Neon_Unlimited/status/2115504238163841426",
-     "text": "Impulses of the day: 33 up, 14 down. Strongest: $Q +51.9% $ETHW +38.5% $PREDICT +32.5% $INIT +25.5%",
-     "likes": 2,
-     "author_username": "Neon_Unlimited",
-     "author_followers": 36,
-     "created_at": "2026-10-29T02:01:29+08:00"
+     "id": "2116246033525092566",
+     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
+     "text": "Todays Top 5 Gainers SOPH BEAMX BLUR DOOD KERNEL +10.7% Binance",
+     "likes": 0,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T03:09:06+08:00"
     }
-   ]
-  },
-  {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T00:15:00+08:00",
-   "checked_at": "2026-10-29T03:04:40+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 2.99,
-   "verdict": "冷",
-   "one_line": "假熱噪音真聲少",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115500146079248521",
-     "url": "https://x.com/cexscan/status/2115500146079248521",
-     "text": "Last 15m - #Coinbase Spot (USD Trades) Top 3 Losers: ethereum:... (Blur) : ↓-4.38%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-29T01:45:13+08:00"
-    },
-    {
-     "id": "2115420782159376506",
-     "url": "https://x.com/Standard_Expert/status/2115420782159376506",
-     "text": "Binance Futures #BLUR/USDT All take-profit targets achieved Profit: 281.2052% Period: 20 Hours 35 Minutes",
-     "likes": 1,
-     "author_username": "Standard_Expert",
-     "author_followers": 1903,
-     "created_at": "2026-10-28T20:29:51+08:00"
-    },
-    {
-     "id": "2115436523063857198",
-     "url": "https://x.com/RadarCex/status/2115436523063857198",
-     "text": "US Open Radar | Oct 28 BTC $80,636 · INIT +42.0% led Binance gainers. BLUR funding hit -0.890%/8h. #Crypto | NFA",
-     "likes": 1,
-     "author_username": "RadarCex",
-     "author_followers": 264,
-     "created_at": "2026-10-28T21:32:24+08:00"
-    }
-   ]
-  },
+   ],
+   "checks_this_trigger": 2
+  }
+ },
+ "history": [
   {
    "symbol": "INITUSDT",
    "base": "INIT",
@@ -3040,15 +2941,178 @@
      "created_at": "2026-10-31T01:40:53+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T02:45:00+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.17,
+   "spike_ratio": 1.38,
+   "verdict": "冷",
+   "one_line": "一小時幾條bot",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116241942816166326",
+     "url": "https://x.com/GreenCandleTr/status/2116241942816166326",
+     "text": "$BLUR up another +11.7% since our last alert +15.8% in the last hour Price $0.0100 24h +25.0% Binance",
+     "likes": 0,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T02:52:51+08:00"
+    },
+    {
+     "id": "2116237331367661706",
+     "url": "https://x.com/GreenCandleTr/status/2116237331367661706",
+     "text": "$BLUR price move alert +8.6% in the last hour Price $0.009 24h +12.1% Binance Spot OKX Spot",
+     "likes": 0,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T02:34:32+08:00"
+    },
+    {
+     "id": "2116245049608450315",
+     "url": "https://x.com/cexscan/status/2116245049608450315",
+     "text": "Last 15m Binance Spot Top gainers SOPH GTC XPL; Blur among losers -2.72%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10599,
+     "created_at": "2026-10-31T03:05:12+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "SOPHUSDT",
+   "base": "SOPH",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T23:15:00+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 4.83,
+   "spike_ratio": 0.62,
+   "verdict": "冷",
+   "one_line": "熱度回落剩bot",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116177910365139453",
+     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
+     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform. #SOPH #Crypto",
+     "likes": 3,
+     "author_username": "FantasyWhales",
+     "author_followers": 1098,
+     "created_at": "2026-10-30T22:38:25+08:00"
+    },
+    {
+     "id": "2116222259677233601",
+     "url": "https://x.com/Lucas_M3046/status/2116222259677233601",
+     "text": "Binance Futures #SOPH/USDT All take-profit targets achieved Profit: 779.6156% Period: 4 hr 39 min",
+     "likes": 1,
+     "author_username": "Lucas_M3046",
+     "author_followers": 1551,
+     "created_at": "2026-10-31T01:34:38+08:00"
+    },
+    {
+     "id": "2116228706058571876",
+     "url": "https://x.com/cexscan/status/2116228706058571876",
+     "text": "Last 60m Binance Spot Top 3 Gainers: $SOPH (Sophon) +16.04% particle-network +5.01% $SENT +3.75%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10599,
+     "created_at": "2026-10-31T02:00:15+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "INITUSDT",
+   "base": "INIT",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T00:30:00+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 2.5,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "近一小時靜晒",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116179682047529084",
+     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
+     "text": "$INIT Bullish run completed — all TPs achieved. Maintaining discipline and strong risk management.",
+     "likes": 2,
+     "author_username": "Randy_Austin1",
+     "author_followers": 1160,
+     "created_at": "2026-10-30T22:45:27+08:00"
+    },
+    {
+     "id": "2116201343257924020",
+     "url": "https://x.com/cryptodeepapp/status/2116201343257924020",
+     "text": "CryptoDeep Supported Assets Update Removed include INIT among others.",
+     "likes": 2,
+     "author_username": "cryptodeepapp",
+     "author_followers": 1511,
+     "created_at": "2026-10-31T00:11:32+08:00"
+    },
+    {
+     "id": "2116193089182192077",
+     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
+     "text": "New signal Coin: $INIT/USDT Long Entry 0.15995 leverage 25x Stop loss 0.15000",
+     "likes": 1,
+     "author_username": "ZaraVinkaqz",
+     "author_followers": 0,
+     "created_at": "2026-10-30T23:38:44+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "KERNELUSDT",
+   "base": "KERNEL",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T23:15:00+08:00",
+   "checked_at": "2026-10-31T03:17:07+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 3.5,
+   "spike_ratio": 0.57,
+   "verdict": "冷",
+   "one_line": "幾乎冇真討論",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116201181093446038",
+     "url": "https://x.com/GreenCandleTr/status/2116201181093446038",
+     "text": "$KERNEL price move alert +7.9% in the last hour Price $0.0545 24h +13.8% Binance Futures Spot",
+     "likes": 1,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T00:10:53+08:00"
+    },
+    {
+     "id": "2116246033525092566",
+     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
+     "text": "Todays Top 5 Gainers SOPH BEAMX BLUR DOOD KERNEL +10.7% Binance",
+     "likes": 0,
+     "author_username": "GreenCandleTr",
+     "author_followers": 2,
+     "created_at": "2026-10-31T03:09:06+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-31",
   "daily_total_cap": 60,
-  "calls_today": 20,
+  "calls_today": 28,
   "cap_reached": false,
-  "updated_at": "2026-10-31T02:19:06+08:00"
+  "updated_at": "2026-10-31T03:17:07+08:00"
  },
- "updated_at": "2026-10-31T02:19:06+08:00",
+ "updated_at": "2026-10-31T03:17:07+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

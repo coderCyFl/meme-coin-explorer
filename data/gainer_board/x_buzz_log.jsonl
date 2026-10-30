@@ -183,3 +183,11 @@
 {"ts": "2026-10-31T02:18:30+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 1}
 {"ts": "2026-10-31T02:18:30+08:00", "symbol": "SOPHUSDT", "tool": "counts", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 32}
 {"ts": "2026-10-31T02:18:30+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "(SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 16}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "SOPHUSDT", "tool": "counts", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 32}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 11}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "KERNELUSDT", "tool": "counts", "query": "(\"KERNEL coin\" OR \"KERNEL token\" OR KERNELUSDT OR \"$KERNEL\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 23}
+{"ts": "2026-10-31T03:17:07+08:00", "symbol": "KERNELUSDT", "tool": "search", "query": "(\"KERNEL coin\" OR \"KERNEL token\" OR KERNELUSDT OR \"$KERNEL\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 15}
