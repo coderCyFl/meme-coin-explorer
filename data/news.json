@@ -1,342 +1,308 @@
 {
-  "fetched_at": "2026-10-30T09:08:30+08:00",
+  "fetched_at": "2026-10-30T09:10:01+08:00",
   "source": "X search_news via agent (static snapshot; site never calls X)",
   "stories": [
     {
       "id": "2115911595712729182",
-      "title": "Binance 熱錢包疑被盜 $56 億，暫停充提",
+      "title": "幣安熱錢包疑被盜 逾 $56 億異常轉出",
       "title_en": "Binance Faces Potential Hack with $5.6 Billion in Stolen Crypto",
-      "summary": "鏈上見逾 $56 億 BTC／ETH／穩定幣異常流出；CZ 話用戶資金安全、交易所會全額補償，充提暫停做安全檢查。Tether 凍結 $15 億 USDT、Circle 封鎖數億 USDC，BTC 一度跌穿 $78,500。",
-      "summary_en": "Blockchain data revealed suspicious transfers of over $5.6 billion in Bitcoin, Ethereum, and stablecoins from Binance hot wallets Thursday. Binance founder CZ confirmed user funds are safe, with the exchange promising to",
+      "summary": "鏈上見 BTC／ETH／穩定幣由幣安熱錢包大額轉出；CZ 稱用戶資金安全、會全數補償，充提暫停做安全檢查。Tether 凍結 15 億 USDT、Circle 封鎖數億 USDC；BTC 一度跌穿 $78.5k。",
+      "summary_en": "Blockchain data revealed suspicious transfers of over $5.6 billion in Bitcoin, Ethereum, and stablecoins from Binance hot wallets Thursday. Binance founder CZ confirmed user funds are safe, with the exchange promising to cover all losses and suspending deposits and withdrawals during security checks. Tether froze $1.5 billion in USDT and Circle blocked hundreds of millions in USDC, while $2.54 bil",
       "source": "X News",
       "url": "https://x.com/i/trending/2115911595712729182",
       "published_at": "2026-10-30T01:00:48.000Z",
       "tags": [
         "binance",
         "hack",
-        "security",
         "btc"
       ],
-      "why_it_matters": "我哋全部行情來自 Binance：充提暫停期間價格可能偏離其他所、波動放大；模擬倉照開但止蝕要守緊，急升榜要提防恐慌反彈假訊號。",
+      "why_it_matters": "本站行情同模擬倉全部用幣安價：充提暫停期間價差／插針風險大，止蝕可能滑價；今日弱市閘應當觸發。",
       "category": "News"
     },
     {
-      "id": "2115892615585341679",
-      "title": "HYPE 24h 急升 14%：ICE 夥拍 Hyperliquid 技術",
-      "title_en": "Hyperliquid's HYPE Token Surges 14% on ICE Partnership News",
-      "summary": "NYSE 母公司 ICE 同 Trade[XYZ] 用 Hyperliquid 技術起受監管美國永續合約，HYPE 升穿 $90、接近 $98，市值逾 $230 億，日成交過 $10 億。",
-      "summary_en": "The token climbed more than 14% in 24 hours, hitting near $98 and pushing its market cap above $23 billion, fueled by Intercontinental Exchange (ICE)—parent of the NYSE—and Trade[XYZ] agreeing to build regulated U.S. per",
+      "id": "2115967483983409265",
+      "title": "Ripple Swell 2026：XRP 仍係核心",
+      "title_en": "Ripple Leaders Highlight XRP's Central Role at Swell 2026",
+      "summary": "Garlinghouse 話 XRP 驅動支付、託管同庫房業務，唔會轉向 RLUSD；Schwartz 預測 3–5 年大規模普及。",
+      "summary_en": "Garlinghouse told Bloomberg that XRP drives Ripple's payments, custody, and treasury services, dismissing any shift to its RLUSD stablecoin. Schwartz predicted blockchain's mass retail adoption in three to five years, calling XRP the gold standard for institutional rails, and shared a fun photo of an XRP-branded subway train with the caption 'Time to get on the @XRP train!' Community reactions spl",
       "source": "X News",
-      "url": "https://x.com/i/trending/2115892615585341679",
-      "published_at": "2026-10-29T19:52:23.000Z",
+      "url": "https://x.com/i/trending/2115967483983409265",
+      "published_at": "2026-10-30T00:51:58.000Z",
       "tags": [
-        "hype",
-        "catalyst",
-        "perp"
+        "xrp"
       ],
-      "why_it_matters": "HYPE 係 10/29 密封日嘅早標捉到幣之一；催化劑型急升可作 🚀 追買參考，但要跟 TP/SL 出場。",
+      "why_it_matters": "同上，XRP 話題熱度可留意但唔等於急升。",
       "category": "News"
+    },
+    {
+      "id": "2115717341136765410",
+      "title": "新加坡警方警告：零售店有被改裝嘅 Ledger",
+      "title_en": "Singapore Police Warn of Tampered Ledger Wallets with S$3.5M Losses",
+      "summary": "自 9 月 10 日起至少兩宗，損失約 S$350 萬，植入裝置盜取助記詞。",
+      "summary_en": "Since September 10, 2026, at least two cases emerged of tampered Ledger hardware wallets sold at local retail stores, leading to about S$3.5 million in losses as implants captured recovery phrases and private keys. The Singapore Police Force issued an advisory on October 28, staying in touch with Ledger, which suspended sales in Southeast Asia and Hong Kong amid its supply chain probe. Community d",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115717341136765410",
+      "published_at": "2026-10-29T22:57:30.000Z",
+      "tags": [
+        "security"
+      ],
+      "why_it_matters": "資安提醒，對價格影響細。",
+      "category": "News"
+    },
+    {
+      "id": "2115813822527426922",
+      "title": "Ondo 喺 Solana 推七個 BlackRock 組合",
+      "title_en": "Ondo Finance Launches Seven BlackRock-Powered Portfolios on Solana",
+      "summary": "涵蓋 5%／8% 收益、AI 龍頭、科技七雄加加密等組合代幣。",
+      "summary_en": "The seven Intelligent Portfolios cover income targets like 5% and 8%, AI leaders, Magnificent 7 stocks with crypto, and BlackRock strategies for high income, growth, and diversified exposure. Each token combines assets with transparent holdings and automatic rebalancing via smart contracts, usable in DeFi apps through partners like 1inch and Jumper. Building on Ondo's $500 million in tokenized ass",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115813822527426922",
+      "published_at": "2026-10-29T22:56:32.000Z",
+      "tags": [
+        "rwa",
+        "solana"
+      ],
+      "why_it_matters": "RWA 敘事延續，ONDO 有消息面。",
+      "category": "News"
+    },
+    {
+      "id": "2115516008689697145",
+      "title": "SPX6900 社區全球聚會",
+      "title_en": "SPX6900 Fans Organize Global Meetups and Share Long-Term Commitment",
+      "summary": "墨爾本、奧斯汀、倫敦等地有持有人聚會，強調長線持有。",
+      "summary_en": "The SPX6900 memecoin community, launched in August 2023 as a satirical take on the S&P 500, is buzzing with meetups in cities like Melbourne, Austin, London, Barcelona, Los Angeles, and more. Holders show dedication through daily dollar-cost averaging over hundreds of days, onboarding friends and family, and optimism for a massive bull run. Prominent backer Murad Mahmudov sees it as part of tokeni",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115516008689697145",
+      "published_at": "2026-10-29T22:44:58.000Z",
+      "tags": [
+        "meme",
+        "spx"
+      ],
+      "why_it_matters": "社區型 meme 熱度指標，可配合 X 熱度睇。",
+      "category": "Other"
+    },
+    {
+      "id": "2115497447732445567",
+      "title": "聯儲 10–2 票維持利率 3.75%–4.00%",
+      "title_en": "Fed Holds Rates Steady at 3.75%-4.00% Amid Elevated Inflation",
+      "summary": "聯儲指經濟擴張、通脹仍偏高，維持利率不變；兩名理事反對。",
+      "summary_en": "The Fed kept the federal funds rate at 3.75% to 4.00% in a 10-2 decision, describing the economy as expanding strongly with steady job gains and robust spending, while inflation remains elevated. Governors Lisa Cook and Cleveland Fed President Beth Hammack dissented, pushing for a quarter-point increase. Chair Kevin Warsh stressed the bank's commitment to the 2% inflation target and announced a sc",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115497447732445567",
+      "published_at": "2026-10-29T22:22:20.000Z",
+      "tags": [
+        "macro",
+        "fed"
+      ],
+      "why_it_matters": "宏觀無驚喜但無減息，加上幣安事件，風險資產短線壓力未除。",
+      "category": "News"
+    },
+    {
+      "id": "2115837481815851238",
+      "title": "富蘭克林鄧普頓推「股息再投資 BTC」ETF",
+      "title_en": "Franklin Templeton Launches ETFs That Reinvest Stock Dividends into Bitcoin",
+      "summary": "FBEQ／FIBT 主要持美股，並將股息轉投比特幣。",
+      "summary_en": "The $1.8 trillion asset manager introduced the Franklin U.S. Equity Bitcoin DRIP Index ETF (FBEQ) and Franklin U.S. Innovation Bitcoin DRIP Index ETF (FIBT) on October 29. These funds hold mostly U.S. stocks—FBEQ tracks 500 large-caps, FIBT follows 100 innovative Nasdaq companies—and automatically channel dividends into Bitcoin-linked investments, keeping crypto at about 5% with quarterly reviews.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115837481815851238",
+      "published_at": "2026-10-29T21:44:43.000Z",
+      "tags": [
+        "etf",
+        "btc"
+      ],
+      "why_it_matters": "機構慢錢持續入場，屬中長線背景，唔影響短線揀幣。",
+      "category": "News"
+    },
+    {
+      "id": "2115886222404968540",
+      "title": "Shopify 商戶經 Coinbase 協議收咗 $4,200 萬 USDC",
+      "title_en": "Shopify Merchants Settle $42 Million in USDC Payments via Coinbase Protocol",
+      "summary": "Shopify 同 Coinbase 喺 Base 建開源支付協議，商戶收穩定幣再定期換本幣。",
+      "summary_en": "Shopify and Coinbase built an open-source Commerce Payments Protocol on the Base network, making it simple for eligible merchants to accept stablecoin payments while converting funds to local currency on regular schedules. Shoppers use their wallets seamlessly, as Coinbase handles execution and covers network costs. The milestone highlights stablecoins moving from easy transfers to everyday spendi",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115886222404968540",
+      "published_at": "2026-10-29T19:25:43.000Z",
+      "tags": [
+        "stablecoin",
+        "base"
+      ],
+      "why_it_matters": "Base 生態實際使用增加，Base 系幣有敘事支持。",
+      "category": "News"
+    },
+    {
+      "id": "2115824331423179257",
+      "title": "巴西 Mercado Bitcoin 接入 Sui",
+      "title_en": "Mercado Bitcoin Opens Sui Blockchain to 4.5 Million Brazilian Users",
+      "summary": "450 萬用戶可直接鏈上買賣、轉賬 SUI、USDC 同 USDsui。",
+      "summary_en": "Mercado Bitcoin, Brazil's largest crypto exchange with 4.5 million clients, has integrated the Sui network, allowing users to buy, sell, send, and receive SUI, USDC, and USDsui directly on-chain. This marks the first such support on a Brazilian platform and immediately enables USDsui as collateral in lending products, with plans for deeper ties like Bitcoin integration and tokenized real-world ass",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115824331423179257",
+      "published_at": "2026-10-29T18:37:26.000Z",
+      "tags": [
+        "sui",
+        "adoption"
+      ],
+      "why_it_matters": "SUI 有實際分發渠道消息，可留意 SUI 系幣。",
+      "category": "Other"
     },
     {
       "id": "2115870740109004839",
-      "title": "BTC 主導率跌至約 60.1%，資金疑轉入山寨",
+      "title": "BTC 市佔跌至約 60.1%，山寨幣市佔上升",
       "title_en": "Bitcoin Dominance Dips as Altcoins Show Signs of Surge",
-      "summary": "分析師指 BTC 主導率回落、山寨主導率 MACD 金叉，但 altseason 指數仍中性 56–59。",
-      "summary_en": "Bitcoin dominance has dropped to around 60.1%, while altcoin dominance climbs sharply, prompting talk of money rotating from Bitcoin to smaller coins. Ash Crypto noted the shift bluntly: 'BITCOIN DOMINANCE IS DUMPING MON",
+      "summary": "交易員指資金由 BTC 轉向細幣；山寨幣市佔 MACD 金叉，但山寨季指數仍中性 56–59。",
+      "summary_en": "Bitcoin dominance has dropped to around 60.1%, while altcoin dominance climbs sharply, prompting talk of money rotating from Bitcoin to smaller coins. Ash Crypto noted the shift bluntly: 'BITCOIN DOMINANCE IS DUMPING MONEY IS ROTATING TO ALTCOINS.' Max Crypto pointed to a bullish MACD crossover on altcoin dominance, and historical charts show similar patterns leading to altcoin gains, though the a",
       "source": "X News",
       "url": "https://x.com/i/trending/2115870740109004839",
       "published_at": "2026-10-29T18:26:20.000Z",
       "tags": [
-        "btc",
-        "altcoin",
+        "altcoins",
         "rotation"
       ],
-      "why_it_matters": "山寨輪動有利急升榜同早標捕捉；主導率續跌可放寬追買，反彈就收緊。",
-      "category": "News"
-    },
-    {
-      "id": "2115895706687004764",
-      "title": "BTC 喺區塊 973,728 分叉出 eCash（ECX）",
-      "title_en": "Bitcoin Forks at Block 973,728 to Launch eCash (ECX) with Drivechains",
-      "summary": "Paul Sztorc 帶頭以 BIP 300/301 啟動 Drivechains，自管 BTC 持有人 1:1 得新幣；已有細交易所開始交易，社群提醒小心詐騙錢包。",
-      "summary_en": "The fork, led by Paul Sztorc of LayerTwo Labs, activates Drivechains via BIP 300 and 301, enabling opt-in sidechains for privacy, payments, and prediction markets without altering Bitcoin's core rules. Seven sidechains l",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115895706687004764",
-      "published_at": "2026-10-29T20:06:37.000Z",
-      "tags": [
-        "btc",
-        "fork",
-        "scam-risk"
-      ],
-      "why_it_matters": "分叉幣唔喺 Binance 上，不入我哋榜；但「領空投」釣魚會增加。",
-      "category": "News"
-    },
-    {
-      "id": "2115776142418559131",
-      "title": "Chainlink 推 24/7 股票／RWA 報價，Aave 首用",
-      "title_en": "Chainlink Launches 24/7 Pricing Feeds at Link:NYC Event",
-      "summary": "Link:NYC 發佈全天候代幣化股票、商品、RWA 報價，Aave Horizon 首個採用；DTCC 前一日開通約 $30 萬億證券代幣化服務。",
-      "summary_en": "At the Link:NYC event on October 29, Chainlink unveiled its 24/7 service for continuous pricing on tokenized stocks, commodities, and real-world assets, filling gaps with perpetual futures data for trading, settlement, a",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115776142418559131",
-      "published_at": "2026-10-30T00:52:42.000Z",
-      "tags": [
-        "link",
-        "rwa",
-        "infra"
-      ],
-      "why_it_matters": "LINK 有實質催化劑；RWA 敘事幣（LINK／ONDO）可入觀察。",
-      "category": "News"
+      "why_it_matters": "輪動訊號利好急升榜細幣，但要配合今日幣安事件後嘅弱市一齊睇。",
+      "category": "Other"
     },
     {
       "id": "2115733284638597205",
-      "title": "代幣化股票市值達 $46.3 億，Binance bStocks 領頭",
+      "title": "代幣化股票市值達 $46.3 億",
       "title_en": "Tokenized Stocks Hit $4.63 Billion Milestone Echoing Early Stablecoins",
-      "summary": "由年初不足 $10 億升至 $46.3 億，bStocks、Ondo、xStocks 佔 81%，BNB Chain 承載最多。",
-      "summary_en": "The sector has surged from under $1 billion at the start of the year, led by issuers like Binance’s bStocks, Ondo, and xStocks, which control 81 percent of the market. BNB Chain hosts the most value, with Ethereum and So",
+      "summary": "年初不足 $10 億；幣安 bStocks、Ondo、xStocks 佔 81%，BNB Chain 承載最多。",
+      "summary_en": "The sector has surged from under $1 billion at the start of the year, led by issuers like Binance’s bStocks, Ondo, and xStocks, which control 81 percent of the market. BNB Chain hosts the most value, with Ethereum and Solana following, and tokenized ETFs leading by asset type. While some see parallels to stablecoins' boom, others note challenges like competing with traditional brokerages on liquid",
       "source": "X News",
       "url": "https://x.com/i/trending/2115733284638597205",
       "published_at": "2026-10-29T17:45:36.000Z",
       "tags": [
         "rwa",
-        "binance",
-        "bnb"
+        "binance"
       ],
-      "why_it_matters": "BNB 鏈生態受惠；代幣化股票敘事持續升溫。",
-      "category": "News"
-    },
-    {
-      "id": "2115766737673068567",
-      "title": "Ansem 繼續睇淡：沽空 ETH，BTC 約 $81k",
-      "title_en": "Ansem Shares Bearish Crypto Trading Breakdown Video",
-      "summary": "KOL Ansem 話 FOMC 冇料到，維持看淡 BTC／ETH／大型股，等再回調先復甦；粉絲順勢推 Solana meme。",
-      "summary_en": "He called the recent FOMC meeting a nothing burger, outlined a Monday high/low playbook, and shared an Ethereum short amid Bitcoin near $81,000, Ethereum at $2,360, and Solana around $102. Ansem sticks to his bearish sta",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115766737673068567",
-      "published_at": "2026-10-29T15:12:46.000Z",
-      "tags": [
-        "kol",
-        "eth",
-        "sentiment"
-      ],
-      "why_it_matters": "大 KOL 睇淡 + 交易所事故，短線情緒偏弱；留意 KOL 叫單 meme 屬 🚩 喊單。",
-      "category": "News"
-    },
-    {
-      "id": "2115376695796715626",
-      "title": "AI Agent 鏈上互相聘用：TermiX 市場上線",
-      "title_en": "AI Agents Hire Each Other Through TermiX On-Chain Marketplace",
-      "summary": "TermiX 用 USDC／USDT 託管，讓 AI agent 接審計等任務，完成先放款。",
-      "summary_en": "On TermiX, powered by the Agent Autonomous Commerce Protocol at agent.family, buyers post requests or browse listings for tasks like code audits, with escrow in USDC or USDT locking funds until delivery. Agents handle un",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115376695796715626",
-      "published_at": "2026-10-30T00:27:05.000Z",
-      "tags": [
-        "ai",
-        "agents"
-      ],
-      "why_it_matters": "AI agent 敘事幣仍有熱度，可作題材參考。",
-      "category": "News"
-    },
-    {
-      "id": "2115953872153776190",
-      "title": "AI 驅動網攻襲七國金融機構，竊 $3,600 萬",
-      "title_en": "AI-Powered Cyberattacks Hit Financial Firms in Seven Countries",
-      "summary": "報道指南韓、拉美、意大利、印度等金融機構遭 AI 工具輔助攻擊，洩露數據並偷走約 $3,600 萬。",
-      "summary_en": "Reports detail AI-driven attacks on financial institutions across South Korea, Latin America, Italy, India, and beyond, using tools like Artex, Claude, and Grok to expose data, siphon $36 million in India, and trick tran",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115953872153776190",
-      "published_at": "2026-10-29T23:55:14.000Z",
-      "tags": [
-        "security",
-        "ai"
-      ],
-      "why_it_matters": "加上 Binance 事件，安全題材當道；釣魚風險上升。",
-      "category": "News"
-    },
-    {
-      "id": "2115717341136765410",
-      "title": "新加坡警方：零售店有被改裝 Ledger，損失 S$350 萬",
-      "title_en": "Singapore Police Warn of Tampered Ledger Wallets with S$3.5M Losses",
-      "summary": "9 月起至少兩宗零售買到被植入裝置嘅 Ledger，助記詞被截取。",
-      "summary_en": "Since September 10, 2026, at least two cases emerged of tampered Ledger hardware wallets sold at local retail stores, leading to about S$3.5 million in losses as implants captured recovery phrases and private keys. The S",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115717341136765410",
-      "published_at": "2026-10-29T22:57:30.000Z",
-      "tags": [
-        "security",
-        "wallet"
-      ],
-      "why_it_matters": "只喺官方渠道買硬件錢包。",
-      "category": "News"
-    },
-    {
-      "id": "2115497447732445567",
-      "title": "聯儲 10–2 票維持利率 3.75%–4.00%",
-      "title_en": "Fed Holds Rates Steady at 3.75%-4.00% in 10-2 Vote",
-      "summary": "多數票暫停加息；兩名委員反對要求加息。會議後 BTC 曾跌穿 $80k，加密市場出現約 $3.35 億清算。",
-      "summary_en": "Fed held 3.75%–4.00% in 10-2 vote; BTC dipped below $80k with ~$335M crypto liquidations.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115497447732445567",
-      "published_at": "2026-10-29T16:12:16.000Z",
-      "tags": [
-        "macro",
-        "fed",
-        "btc"
-      ],
-      "why_it_matters": "宏觀決議直接驅動弱市閘；利率／清算潮期間應優先半倉同避高槓杆叙事。",
-      "category": "News"
-    },
-    {
-      "id": "2115837481815851238",
-      "title": "Franklin Templeton 推兩隻「股息買 BTC」混合 ETF",
-      "title_en": "Franklin Templeton Launches Bitcoin-Equity Hybrid ETFs on Nasdaq",
-      "summary": "10/29 FBEQ／FIBT 上市：約 95% 美股＋5% 比特币，股息自動再投入 BTC；費率約 0.09%／0.19%。機構又多一條「被動加碼 BTC」通道。",
-      "summary_en": "FBEQ/FIBT listed Oct 29: ~95% U.S. equities + 5% Bitcoin with dividends reinvested into BTC; fees 0.09%/0.19%.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115837481815851238",
-      "published_at": "2026-10-29T16:11:27.000Z",
-      "tags": [
-        "btc",
-        "etf",
-        "tradfi"
-      ],
-      "why_it_matters": "傳統資金持續把 BTC 當配置；弱市閘仍要睇 breadth／現貨，唔好當 ETF 上架＝即日爆升。",
-      "category": "News"
-    },
-    {
-      "id": "2115675509099258274",
-      "title": "zkLink Nova 橋被攻擊，約 $78.6 萬被抽走",
-      "title_en": "Attacker Drains $786,000 from zkLink Nova Ethereum Bridge",
-      "summary": "10/28 攻擊者經公共 relayer 注入偽造 batch root，從 L1 escrow 提走約 22.43 ETH 等；團隊暫停出塊／提款，開 20% 白帽賞金。",
-      "summary_en": "Oct 28 exploit via forged batch root drained ~$786k; zkLink paused production/withdrawals, offered 20% white-hat bounty.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115675509099258274",
-      "published_at": "2026-10-29T15:50:25.000Z",
-      "tags": [
-        "hack",
-        "security",
-        "bridge"
-      ],
-      "why_it_matters": "跨鏈橋仍係高風險；模擬倉唔跟橋相關新幣，亦提醒用戶撤銷不明授權。",
-      "category": "News"
-    },
-    {
-      "id": "2115826679688126844",
-      "title": "鏈上拆穿網紅「月賺廿萬」：跟單多數蝕",
-      "title_en": "X Users Expose Memecoin Trading Myths on Pump.fun",
-      "summary": "有人模擬跟網紅 15 個叫單，$100 持有變 ~$54–89；另見串行部署者一日發幾百個幣、成功率 <1%。Pump.fun 跟單獎勵被指助長洗版。",
-      "summary_en": "Simulated follows of an influencer's 15 calls turned $100 into ~$54–89; serial deployers launch hundreds/day with <1% success.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115826679688126844",
-      "published_at": "2026-10-29T15:31:04.000Z",
-      "tags": [
-        "meme",
-        "pumpfun",
-        "shill",
-        "risk"
-      ],
-      "why_it_matters": "直接支持「紙上倉＋捕捉率」實驗：KOL 截圖唔等於可複製勝率；洗版標籤同避開名單要繼續硬。",
-      "category": "News"
-    },
-    {
-      "id": "2115813822527426922",
-      "title": "Ondo 喺 Solana 推 BlackRock 策略代幣組合",
-      "title_en": "Ondo Finance Launches BlackRock-Powered Portfolios on Solana",
-      "summary": "七個 Intelligent Portfolios 上 Solana（含三個 BlackRock 模型），合資格非美用戶可當單一代幣轉帳；建基於鏈上約 $5 億既有資產。",
-      "summary_en": "Seven Ondo Intelligent Portfolios on Solana incl. BlackRock model strategies for eligible non-U.S. investors.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115813822527426922",
-      "published_at": "2026-10-29T14:39:03.000Z",
-      "tags": [
-        "solana",
-        "rwa",
-        "tradfi"
-      ],
-      "why_it_matters": "RWA／機構產品分流資金；爆升表仍應分開「現貨急升 meme」同「長線叙事幣」，唔好混一齊跟買。",
-      "category": "News"
-    },
-    {
-      "id": "2115519152639332849",
-      "title": "網紅 Mika 誤貼私鑰，$MIKA 開發錢包被掃約 $4 萬",
-      "title_en": "Crypto Influencer Mika Accidentally Posts Private Key, Loses $40K",
-      "summary": "10/28 發幣時貼錯私鑰，約 5 億枚 $MIKA 秒被搬走換約 380 SOL（~$4 萬）。鏈上量急升急跌，社區爭論係失手定操作。",
-      "summary_en": "During an Oct 28 memecoin launch, influencer Mika pasted a private key; ~500M $MIKA (~380 SOL / $38–40K) drained in seconds.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115519152639332849",
-      "published_at": "2026-10-29T14:38:49.000Z",
-      "tags": [
-        "rug",
-        "ops-risk",
-        "meme"
-      ],
-      "why_it_matters": "紙上跟買亦要當私鑰／合約地址係高風險；名人發幣唔等於安全，合約同金鑰操作失誤會即時爆倉。",
-      "category": "News"
-    },
-    {
-      "id": "2115772932240880066",
-      "title": "俄羅斯央行批出首個加密交易所自律組織",
-      "title_en": "Russia Registers First Self-Regulatory Body for Crypto Exchanges",
-      "summary": "10/29 批 NAUFOR 監管加密所／數字存管；註冊營運商須 90 日內加入，資本門檻起跳約 1500 萬盧布。",
-      "summary_en": "Bank of Russia approved NAUFOR as first SRO for crypto exchanges/depositories; operators must join in 90 days.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115772932240880066",
-      "published_at": "2026-10-29T14:28:23.000Z",
-      "tags": [
-        "regulation",
-        "macro"
-      ],
-      "why_it_matters": "各地合規框架加快會影響跨境流動；策略面仍以 Binance 公開數據為準，唔靠單一國政策炒。",
+      "why_it_matters": "同本站代幣化股票篩走邏輯有關：呢類幣唔應該當 meme 計捕捉率。",
       "category": "News"
     },
     {
       "id": "2115811357878526418",
-      "title": "英國 FCA 迫 HTX（前 Huobi）撤出至 2031",
-      "title_en": "FCA Secures Settlement Forcing HTX Out of UK Market",
-      "summary": "10/29 高院和解：禁向英國消費者推廣至 2031；停新開戶／入金，現有用戶被引導提款。海外所合規壓力再加。",
-      "summary_en": "FCA High Court settlement bars HTX from promoting to UK consumers until 2031; no new sign-ups/deposits.",
+      "title": "英國 FCA 與 HTX（火幣）達成和解",
+      "title_en": "FCA Secures Settlement with HTX Over Unlawful UK Crypto Promotions",
+      "summary": "HTX 承諾封鎖英國新用戶等，了結違規推廣指控。",
+      "summary_en": "The Financial Conduct Authority reached a High Court settlement with HTX, formerly Huobi, after accusing it of repeated breaches of financial promotion rules since October 2025. HTX agreed to undertakings blocking new UK registrations and deposits, with existing users given 48 hours to withdraw assets; the firm is now fully out of the UK market. FCA's Steve Smart emphasized that overseas crypto fi",
       "source": "X News",
       "url": "https://x.com/i/trending/2115811357878526418",
-      "published_at": "2026-10-29T14:28:18.000Z",
+      "published_at": "2026-10-29T17:08:37.000Z",
       "tags": [
         "regulation",
-        "cex"
+        "exchange"
       ],
-      "why_it_matters": "監管收緊會改流動性同上架池；我哋紙上盤只跟 Binance 公開 USDT 現貨，要留意下架／地區限制外溢。",
+      "why_it_matters": "交易所監管收緊，對 HT／TRX 系敘事屬負面。",
       "category": "News"
     },
     {
-      "id": "2115760745766105477",
-      "title": "美現貨 BTC ETF 連續三日淨流入，BlackRock 帶頭",
-      "title_en": "BlackRock Bitcoin ETF Leads $137 Million Inflows on October 28",
-      "summary": "10/28 美現貨 BTC ETF 淨流入約 $1.37 億（三日累計近 $4.24 億），IBIT 幾乎包辦；ETH ETF 同日流出約 $2140 萬。",
-      "summary_en": "U.S. spot BTC ETFs ~$137M net inflow Oct 28 (~$424M over 3 days), mostly IBIT; ETH ETFs ~$21.4M outflow.",
+      "id": "2115470862212006327",
+      "title": "Calacanis 預測 BTC 重測 $57k，有人各押 $100 萬對賭",
+      "title_en": "Jason Calacanis Bets Against Bitcoin ATH as $3M Challenges Emerge",
+      "summary": "Calacanis 以 ETF 資金流出為由睇淡；Cardone 等人押 BTC 2028 年前破 $126k 新高；Bitwise 調高 2036 目標至 $160 萬。",
+      "summary_en": "Venture capitalist Jason Calacanis forecasted Bitcoin retesting $57,000 amid ETF outflows and AI's rise, prompting real estate investor Grant Cardone, Fred Krueger, and Terence Michael to each offer $1 million wagers it surpasses its $126,000 all-time high by late 2028. Calacanis responded enthusiastically, asking for escrow details to lock in the bets. Meanwhile, Bitwise raised its Bitcoin target",
       "source": "X News",
-      "url": "https://x.com/i/trending/2115760745766105477",
-      "published_at": "2026-10-29T13:39:25.000Z",
+      "url": "https://x.com/i/trending/2115470862212006327",
+      "published_at": "2026-10-29T16:35:06.000Z",
       "tags": [
         "btc",
-        "etf",
-        "flows"
+        "sentiment"
       ],
-      "why_it_matters": "機構吸 BTC、山寨失血時弱市閘應保持；半倉規則同廣度檢查比「ETF 流入」口號更實際。",
+      "why_it_matters": "多空分歧大，反映市場情緒仍未定方向。",
       "category": "News"
     },
     {
-      "id": "2115453670053531864",
-      "title": "$LAUNCH 一小時急崩九成，疑似 rug",
-      "title_en": "$LAUNCH Token Crashes in Alleged Rug Pull",
-      "summary": "自稱改進 Pump.fun 嘅 $LAUNCH 曾觸 $400 萬市值，10/28 一小時內暴跌；兩錢包提前套現，社區指開發者舊案重演。",
-      "summary_en": "$LAUNCH hit ~$4M then crashed >90% Oct 28; two wallets cashed out early; community alleged repeat rug pattern.",
+      "id": "2115821542940528811",
+      "title": "Coinbase 上架 Ripple RLUSD 穩定幣",
+      "title_en": "Coinbase Lists Ripple's RLUSD Stablecoin for U.S. Users",
+      "summary": "10 月 28 日起美國用戶可 1:1 兌換，支援 XRPL、以太坊同 Base。",
+      "summary_en": "Coinbase added RLUSD to its retail app, exchange, and Prime platform on October 28, enabling 1:1 conversions from dollars or other stablecoins across XRP Ledger, Ethereum, and Base networks. The stablecoin, launched in December 2024, now boasts a $2.6 billion market cap, strong Moody’s ratings for its U.S. government-backed reserves, and over $1 billion in net inflows over the past 90 days. These ",
       "source": "X News",
-      "url": "https://x.com/i/trending/2115453670053531864",
-      "published_at": "2026-10-29T13:38:28.000Z",
+      "url": "https://x.com/i/trending/2115821542940528811",
+      "published_at": "2026-10-29T15:13:39.000Z",
       "tags": [
-        "rug",
-        "launchpad",
-        "solana"
+        "xrp",
+        "stablecoin"
       ],
-      "why_it_matters": "新 launchpad 幣極易一日內歸零；模擬倉跟買應避開「平台幣／自家盤」同開發者可任意撤帳嘅項目。",
+      "why_it_matters": "XRP 生態消息集中，XRP 短線或有話題。",
+      "category": "News"
+    },
+    {
+      "id": "2115766737673068567",
+      "title": "Ansem 發片繼續睇淡，持 ETH 淡倉",
+      "title_en": "Ansem Shares Bearish Crypto Trading Breakdown Video",
+      "summary": "Ansem 話 FOMC 無料到，分享星期一高低位玩法同 ETH 淡倉；當時 BTC ~$81k、ETH ~$2,360、SOL ~$102。",
+      "summary_en": "He called the recent FOMC meeting a nothing burger, outlined a Monday high/low playbook, and shared an Ethereum short amid Bitcoin near $81,000, Ethereum at $2,360, and Solana around $102. Ansem sticks to his bearish stance on Bitcoin, Ethereum, and large-cap stocks, predicting more pullbacks before recovery. Fans praised the practical advice, with some pushing Solana-based $CATE meme coin and req",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115766737673068567",
+      "published_at": "2026-10-29T15:12:46.000Z",
+      "tags": [
+        "sentiment",
+        "eth"
+      ],
+      "why_it_matters": "頭部 meme 交易員睇淡，細幣追高要更嚴守止蝕。",
+      "category": "Other"
+    },
+    {
+      "id": "2115731926464319522",
+      "title": "CFTC 主席談 AI 代理自行交易甚至發 meme 幣",
+      "title_en": "CFTC Chair Envisions Fridge Trading Crypto for Groceries",
+      "summary": "Selig 喺 Frontier Forum 提出 AI 代理登記、責任同「認識你嘅代理」規則問題。",
+      "summary_en": "At the CFTC's first Frontier Forum on October 28 in Washington, D.C., Selig described autonomous AI agents that could hold assets, trade crypto, and even launch memecoins without human oversight. He raised key questions like who registers these agents, who's liable if they go rogue, and whether regulators need 'know-your-agent' rules since current laws assume human participants. While AI might bri",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115731926464319522",
+      "published_at": "2026-10-29T12:56:51.000Z",
+      "tags": [
+        "regulation",
+        "ai"
+      ],
+      "why_it_matters": "AI 代理／meme 監管討論開始，長線風險，短線影響細。",
+      "category": "News"
+    },
+    {
+      "id": "2115768197890572734",
+      "title": "PEPE 突破兩年下降趨勢，巨鯨吸籌",
+      "title_en": "PEPE Meme Coin Breaks Two-Year Downtrend Amid Whale Buys",
+      "summary": "PEPE 約 $0.00000493、市值 $20.7 億、24h 成交逾 $8 億；鏈上見孫宇晨相關錢包提走約 $5,100 萬。",
+      "summary_en": "PEPE trades near $0.00000493 with a $2.07 billion market cap and over $800 million in 24-hour volume, signaling strong interest despite mixed broader markets. On-chain data shows wallets tied to Justin Sun withdrawing $51 million worth, boosting accumulation by smart money. Analysts call the setup ultra bullish, with posts eyeing new highs and PEPE leading the memecoin charge, though some warn of ",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115768197890572734",
+      "published_at": "2026-10-29T11:34:11.000Z",
+      "tags": [
+        "meme",
+        "pepe"
+      ],
+      "why_it_matters": "大型 meme 領漲時細 meme 通常跟風；但今朝 PEPE 已跟大市跌約 8%，突破未確認。",
+      "category": "Other"
+    },
+    {
+      "id": "2115638533842948574",
+      "title": "Arthur Hayes 問下一隻買乜，meme 討論分化",
+      "title_en": "Arthur Hayes Asks Crypto Traders for Next Buy Amid Memecoin Buzz",
+      "summary": "有人鬧協同割韭菜，有人撐社區驅動嘅 meme，貓系 meme 熱；Robinhood Chain 被視為較有結構嘅選擇。",
+      "summary_en": "Hayes's post sparked a lively split in the community: some vented frustration over what they call coordinated grifts targeting retail traders, while others championed memecoins' community-driven runs and cat-themed tokens dominating visuals like armored kittens and Bitcoin-wearing tabbies. Robinhood Chain, an AI-native Ethereum Layer-2 launched in July 2026, drew praise as a structured alternative",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115638533842948574",
+      "published_at": "2026-10-29T05:40:18.000Z",
+      "tags": [
+        "meme",
+        "sentiment"
+      ],
+      "why_it_matters": "KOL 帶話題容易做出短線 X 熱度，要配合 🚩 喊單標記睇。",
+      "category": "Other"
+    },
+    {
+      "id": "2115262479601484050",
+      "title": "10 月 28 日多間交易所及金融機構資料外洩",
+      "title_en": "Multiple Data Leaks Hit Crypto Exchanges and Finance Firms on October 28",
+      "summary": "Coinbase 一個供應商洩漏部分客戶聯絡資料（核心系統同資金冇事），韓國 Bithumb 等亦中招。",
+      "summary_en": "Incidents included a vendor leak affecting some Coinbase customer contact data, confirmed as not involving the exchange's core systems or funds, alongside breaches at South Korean firms Bithumb, Daishin Securities, and Mirae Asset Global Investments. Binance founder CZ highlighted the pattern, listing the four leaks and advising users to use unique email aliases, hardware keys over SMS 2FA, withdr",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115262479601484050",
+      "published_at": "2026-10-28T23:39:11.000Z",
+      "tags": [
+        "security",
+        "exchange"
+      ],
+      "why_it_matters": "連同幣安事件，交易所安全成本週焦點，恐慌賣壓可能延續。",
       "category": "News"
     }
   ]
