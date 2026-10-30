@@ -404,20 +404,20 @@
    "base": "GTC",
    "flag": "pump",
    "trigger_at": "2026-10-30T08:12:04+08:00",
-   "checked_at": "2026-10-30T08:16:19+08:00",
-   "posts_last_1h": 0,
+   "checked_at": "2026-10-30T09:12:30+08:00",
+   "posts_last_1h": 3,
    "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 0.0,
+   "spike_ratio": 2.0,
    "verdict": "冷",
-   "one_line": "幣安黑客揸16%GTC，驚砸盤",
+   "one_line": "黑客持大量GTC，有拋壓",
    "shill_flag": false,
    "big_accounts": 1,
    "top_posts": [
     {
      "id": "2115913250898641371",
      "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
-     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx ~$2.5B moved",
-     "likes": 33,
+     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total for this tx: ~$2.5B",
+     "likes": 34,
      "author_username": "vinibarbosabr",
      "author_followers": 12176,
      "created_at": "2026-10-30T05:06:45+08:00"
@@ -425,7 +425,7 @@
     {
      "id": "2115940780204228787",
      "url": "https://x.com/alertachart/status/2115940780204228787",
-     "text": "Binance Hacker Wallet – Full Holdings: USDT, BTC, ETH, USDC, TRX, SOL...",
+     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M, USDC $823M, TRX $239.59M ...",
      "likes": 14,
      "author_username": "alertachart",
      "author_followers": 626,
@@ -434,80 +434,80 @@
     {
      "id": "2115925451805986968",
      "url": "https://x.com/owocki/status/2115925451805986968",
-     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situatio",
+     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
      "likes": 12,
      "author_username": "owocki",
-     "author_followers": 134352,
+     "author_followers": 134356,
      "created_at": "2026-10-30T05:55:14+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "TRXUSDT": {
    "symbol": "TRXUSDT",
    "base": "TRX",
    "flag": "pump",
    "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T08:16:19+08:00",
-   "posts_last_1h": 96,
-   "posts_prev_6h_avg_per_h": 59.33,
-   "spike_ratio": 1.62,
+   "checked_at": "2026-10-30T09:12:30+08:00",
+   "posts_last_1h": 101,
+   "posts_prev_6h_avg_per_h": 72.33,
+   "spike_ratio": 1.4,
    "verdict": "升溫",
-   "one_line": "幣安被黑新聞帶動，多數複製貼",
-   "shill_flag": false,
-   "big_accounts": 1,
+   "one_line": "幣安被黑新聞帶起，多為轉貼",
+   "shill_flag": true,
+   "big_accounts": 0,
    "top_posts": [
     {
      "id": "2115951202773164276",
      "url": "https://x.com/Jessica6aka/status/2115951202773164276",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $234 million $TRX ...",
+     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
      "likes": 143,
      "author_username": "Jessica6aka",
      "author_followers": 719,
      "created_at": "2026-10-30T07:37:33+08:00"
     },
     {
-     "id": "2115925549235556539",
-     "url": "https://x.com/Nafis_4v/status/2115925549235556539",
-     "text": "It's not over !! Binance 14 is still being drained. Binance hacked with over $5.6 billion stolen ... $234 million $TRX",
-     "likes": 10,
-     "author_username": "Nafis_4v",
-     "author_followers": 38989,
-     "created_at": "2026-10-30T05:55:37+08:00"
+     "id": "2115925949812244563",
+     "url": "https://x.com/BitElite17/status/2115925949812244563",
+     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
+     "likes": 22,
+     "author_username": "BitElite17",
+     "author_followers": 28053,
+     "created_at": "2026-10-30T05:57:13+08:00"
     },
     {
      "id": "2115924578019008644",
      "url": "https://x.com/SamAlpha_/status/2115924578019008644",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen ... $234 million $TRX",
+     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
      "likes": 8,
      "author_username": "SamAlpha_",
      "author_followers": 19575,
      "created_at": "2026-10-30T05:51:46+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "RUNEUSDT": {
    "symbol": "RUNEUSDT",
    "base": "RUNE",
    "flag": "pump",
    "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T08:16:19+08:00",
+   "checked_at": "2026-10-30T09:12:30+08:00",
    "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 1.17,
-   "spike_ratio": 1.71,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 1.33,
    "verdict": "冷",
-   "one_line": "討論少，炒黑客錢走THORChain",
+   "one_line": "討論少，黑客經THOR洗錢",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2115936828637536556",
      "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
-     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $XM",
-     "likes": 12,
+     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
+     "likes": 21,
      "author_username": "Shft_Ctrl",
-     "author_followers": 1206,
+     "author_followers": 1205,
      "created_at": "2026-10-30T06:40:26+08:00"
     },
     {
@@ -516,20 +516,20 @@
      "text": "$rune and $xmr buy fuck binance karma is a bitch",
      "likes": 1,
      "author_username": "ksamemsol",
-     "author_followers": 139,
+     "author_followers": 138,
      "created_at": "2026-10-30T07:14:56+08:00"
     },
     {
      "id": "2115929227136553291",
      "url": "https://x.com/cexscan/status/2115929227136553291",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) +5.72%, $TRX (TRON) +3.96%",
+     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) up 5.72%, $TRX (TRON) up 3.96%",
      "likes": 0,
      "author_username": "cexscan",
      "author_followers": 10600,
      "created_at": "2026-10-30T06:10:14+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   }
  },
  "history": [
@@ -2402,15 +2402,144 @@
      "created_at": "2026-10-30T06:10:14+08:00"
     }
    ]
+  },
+  {
+   "symbol": "TRXUSDT",
+   "base": "TRX",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T05:45:00+08:00",
+   "checked_at": "2026-10-30T09:12:30+08:00",
+   "posts_last_1h": 101,
+   "posts_prev_6h_avg_per_h": 72.33,
+   "spike_ratio": 1.4,
+   "verdict": "升溫",
+   "one_line": "幣安被黑新聞帶起，多為轉貼",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115951202773164276",
+     "url": "https://x.com/Jessica6aka/status/2115951202773164276",
+     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
+     "likes": 143,
+     "author_username": "Jessica6aka",
+     "author_followers": 719,
+     "created_at": "2026-10-30T07:37:33+08:00"
+    },
+    {
+     "id": "2115925949812244563",
+     "url": "https://x.com/BitElite17/status/2115925949812244563",
+     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
+     "likes": 22,
+     "author_username": "BitElite17",
+     "author_followers": 28053,
+     "created_at": "2026-10-30T05:57:13+08:00"
+    },
+    {
+     "id": "2115924578019008644",
+     "url": "https://x.com/SamAlpha_/status/2115924578019008644",
+     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
+     "likes": 8,
+     "author_username": "SamAlpha_",
+     "author_followers": 19575,
+     "created_at": "2026-10-30T05:51:46+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T05:45:00+08:00",
+   "checked_at": "2026-10-30T09:12:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 1.33,
+   "verdict": "冷",
+   "one_line": "討論少，黑客經THOR洗錢",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2115936828637536556",
+     "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
+     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
+     "likes": 21,
+     "author_username": "Shft_Ctrl",
+     "author_followers": 1205,
+     "created_at": "2026-10-30T06:40:26+08:00"
+    },
+    {
+     "id": "2115945507491324352",
+     "url": "https://x.com/ksamemsol/status/2115945507491324352",
+     "text": "$rune and $xmr buy fuck binance karma is a bitch",
+     "likes": 1,
+     "author_username": "ksamemsol",
+     "author_followers": 138,
+     "created_at": "2026-10-30T07:14:56+08:00"
+    },
+    {
+     "id": "2115929227136553291",
+     "url": "https://x.com/cexscan/status/2115929227136553291",
+     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) up 5.72%, $TRX (TRON) up 3.96%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10600,
+     "created_at": "2026-10-30T06:10:14+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "GTCUSDT",
+   "base": "GTC",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T08:12:04+08:00",
+   "checked_at": "2026-10-30T09:12:30+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 2.0,
+   "verdict": "冷",
+   "one_line": "黑客持大量GTC，有拋壓",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2115913250898641371",
+     "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
+     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total for this tx: ~$2.5B",
+     "likes": 34,
+     "author_username": "vinibarbosabr",
+     "author_followers": 12176,
+     "created_at": "2026-10-30T05:06:45+08:00"
+    },
+    {
+     "id": "2115940780204228787",
+     "url": "https://x.com/alertachart/status/2115940780204228787",
+     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M, USDC $823M, TRX $239.59M ...",
+     "likes": 14,
+     "author_username": "alertachart",
+     "author_followers": 626,
+     "created_at": "2026-10-30T06:56:08+08:00"
+    },
+    {
+     "id": "2115925451805986968",
+     "url": "https://x.com/owocki/status/2115925451805986968",
+     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
+     "likes": 12,
+     "author_username": "owocki",
+     "author_followers": 134356,
+     "created_at": "2026-10-30T05:55:14+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-30",
   "daily_total_cap": 60,
-  "calls_today": 50,
+  "calls_today": 56,
   "cap_reached": false,
-  "updated_at": "2026-10-30T08:16:19+08:00"
+  "updated_at": "2026-10-30T09:13:05+08:00"
  },
- "updated_at": "2026-10-30T08:16:19+08:00",
+ "updated_at": "2026-10-30T09:13:05+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

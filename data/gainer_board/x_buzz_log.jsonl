@@ -153,3 +153,9 @@
 {"ts": "2026-10-30T08:16:19+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-10-30T08:16:19+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
 {"ts": "2026-10-30T08:16:19+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-10-30T09:12:21+08:00", "symbol": "TRXUSDT", "tool": "counts", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 552}
+{"ts": "2026-10-30T09:12:22+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 11}
+{"ts": "2026-10-30T09:12:24+08:00", "symbol": "GTCUSDT", "tool": "counts", "query": "($GTC OR #GTC) (crypto OR binance) lang:en -is:retweet", "result_count": 12}
+{"ts": "2026-10-30T09:12:25+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-30T09:12:26+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
+{"ts": "2026-10-30T09:12:27+08:00", "symbol": "GTCUSDT", "tool": "search", "query": "($GTC OR #GTC) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
