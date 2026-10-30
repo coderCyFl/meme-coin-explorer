@@ -1,262 +1,254 @@
 {
-  "fetched_at": "2026-10-30T14:05:00+08:00",
+  "fetched_at": "2026-10-30T15:15:00+08:00",
   "source": "X search_news via agent (static snapshot; site never calls X)",
+  "x_fetched_at": "2026-10-30T15:15:00+08:00",
+  "x_job": "unknown",
   "stories": [
     {
-      "id": "2116034431941300383",
-      "title": "BTC 跌穿 $80,000：Binance 保安事件觸發大額流出",
-      "title_en": "Bitcoin Drops Below $80,000 Amid Binance Security Concerns",
-      "summary": "Binance 疑似保安事故引發大額提幣、暫停提款，全網爆倉逾 $8 億，BTC 跌穿 $80K。",
-      "summary_en": "On October 30, 2026, Bitcoin tumbled sharply due to a suspected security incident at Binance, which triggered large outflows, withdrawal halts, and over $800 million in mostly long-position liquidatio",
+      "id": "2116063292150218854",
+      "title": "Binance 熱錢包被盜約 $60 億：DevOps 工程師手提電腦失守",
+      "title_en": "Binance cryptocurrency exchange hacked with approximately $6 billion stolen from hot wallets via compromised DevOps engineer's laptop",
+      "summary": "黑客經 DevOps 工程師電腦攞到權限，由熱錢包提走約 $60 億 BTC／ETH 等資產。",
+      "summary_en": "Hackers compromised a Binance DevOps engineer's laptop, enabling unauthorized withdrawals of around $6 billion in cryptocurrencies including Bitcoin, Ethereum, USDT, and USDC across blockchains such a",
       "source": "X News",
-      "url": "https://x.com/i/trending/2116034431941300383",
-      "published_at": "2026-10-30T05:14:37.000Z",
-      "tags": [
-        "btc",
-        "binance",
-        "market"
-      ],
-      "why_it_matters": "Binance 充提受影響期間，我哋行情嘅波動同點差會放大；模擬倉止蝕要守緊。",
-      "category": "News"
-    },
-    {
-      "id": "2115911595712729182",
-      "title": "Binance 確認被盜約 $63 億：源頭係工程師手提電腦",
-      "title_en": "Binance Confirms $6.3 Billion Crypto Security Breach from Compromised Laptop",
-      "summary": "黑客經被入侵嘅 DevOps 工程師電腦取得服務容器權限，提走約 $14.5 億 BTC、$8.75 億 ETH 等；Binance 承諾用 SAFU 補償。",
-      "summary_en": "Binance revealed the breach stemmed from unauthorized access to a service container, leading to withdrawals including $1.45 billion in Bitcoin and $875 million in ETH. The exchange froze $3 billion in",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115911595712729182",
-      "published_at": "2026-10-30T05:52:54.000Z",
+      "url": "https://x.com/i/trending/2116063292150218854",
+      "published_at": "2026-10-30T07:08:24.000Z",
       "tags": [
         "binance",
-        "hack",
         "security"
       ],
-      "why_it_matters": "全站行情來自 Binance：恐慌期間急升榜易出假反彈，捕捉率樣本都可能受扭曲。",
+      "why_it_matters": "Binance 充提同行情可能持續波動，跟買 Binance 幣要預咗點差同插針。",
       "category": "News"
     },
     {
-      "id": "2116018873006952625",
-      "title": "Binance 被黑拖累 BTC 收約 $77,800",
-      "title_en": "Binance Hack Triggers Bitcoin Drop to $78K as Old Predictions Resurface",
-      "summary": "被盜事件令 BTC 跌幾個百分點，一度見 $77,000 中段，收約 $77,800–77,980。",
-      "summary_en": "A suspected hack at Binance affected $6.3 billion in assets, driving Bitcoin down several percent to close around $77,800–$77,980 after hitting mid-$77,000s. User lynk0x's June 4 post declaring 'Octob",
+      "id": "2116034431941300383",
+      "title": "BTC 跌到 $76K 區：Binance 被盜引發拋售",
+      "title_en": "Bitcoin Drops to $76,000s After Binance $6.3 Billion Hack",
+      "summary": "BTC 由約 $80.3K 急跌至 $76.4K 先輕微反彈，爆倉大增。",
+      "summary_en": "The cryptocurrency fell sharply amid a reported $6.3 billion hack at Binance, pushing prices from around $80,300 down to $76,418 before a slight rebound. Traders shared charts of steep red candles and",
       "source": "X News",
-      "url": "https://x.com/i/trending/2116018873006952625",
-      "published_at": "2026-10-30T04:12:11.000Z",
+      "url": "https://x.com/i/trending/2116034431941300383",
+      "published_at": "2026-10-30T06:09:09.000Z",
       "tags": [
         "btc",
         "market"
       ],
-      "why_it_matters": "大市主導咗今日跌幅；評 AI 跟買勝負時要對比 BTC 基準，唔好全怪選幣。",
+      "why_it_matters": "大盤跌緊，模擬倉止蝕位要守，追升訊號要睇清楚係咪逆市強。",
       "category": "News"
     },
     {
-      "id": "2116009271863521385",
-      "title": "BTC 低見 $77,739，加密跌勢跟科技股",
-      "title_en": "Bitcoin Dips Below $78,000 as Crypto Selloff Mirrors Tech Stocks",
-      "summary": "隔夜跌勢加深，全網逾 $11 億倉位被平；走勢同科技股同步。",
-      "summary_en": "The cryptocurrency slide deepened overnight on October 29, with Bitcoin hitting a daily low of $77,739 and over $1.1 billion in positions liquidated across exchanges in the past 24 hours—mostly long b",
+      "id": "2116061652080832855",
+      "title": "馬斯克笑 CZ 保安警告，Binance 被盜話題持續發酵",
+      "title_en": "Elon Musk Laughs Off CZ's Crypto Security Warning After Massive Binance Hack",
+      "summary": "Binance 報 $63 億被盜後，Musk 回應 CZ 嘅安全提醒成熱話。",
+      "summary_en": "Binance reported a $6.3 billion hack on October 29, linked to a compromised DevOps engineer's laptop that allowed unauthorized withdrawals across networks. The exchange pledged to cover all losses usi",
       "source": "X News",
-      "url": "https://x.com/i/trending/2116009271863521385",
-      "published_at": "2026-10-30T03:33:15.000Z",
+      "url": "https://x.com/i/trending/2116061652080832855",
+      "published_at": "2026-10-30T07:02:02.000Z",
       "tags": [
-        "btc",
-        "macro",
-        "liquidations"
+        "binance",
+        "cz"
       ],
-      "why_it_matters": "風險資產齊跌時迷因幣 beta 更高，止蝕 −4% 會更易觸發。",
-      "category": "News"
-    },
-    {
-      "id": "2116036410289406421",
-      "title": "麻吉大哥 Hyperliquid 帳戶八連爆剩 $1.50",
-      "title_en": "Machi Big Brother's Hyperliquid Account Wiped to $1.50 After Eight Liquidations",
-      "summary": "鏈上數據顯示佢嘅 ETH 槓桿倉被連續八次強平，帳戶清零。",
-      "summary_en": "On-chain data revealed eight rapid liquidations that closed all his ETH positions on the decentralized perpetuals platform, leaving the wallet empty amid market volatility. Huang, a Taiwanese-American",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2116036410289406421",
-      "published_at": "2026-10-30T05:21:32.000Z",
-      "tags": [
-        "hyperliquid",
-        "eth",
-        "liquidations"
-      ],
-      "why_it_matters": "高槓桿喺急跌市好易歸零——模擬倉槓桿風險分級要照用。",
-      "category": "News"
-    },
-    {
-      "id": "2115892615585341679",
-      "title": "HYPE 因 ICE 合作 24h 升 14%",
-      "title_en": "Hyperliquid's HYPE Token Surges 14% on ICE Partnership News",
-      "summary": "Hyperliquid 代幣升近 $98、市值破 $230 億，受紐交所母公司 ICE 合作消息推動。",
-      "summary_en": "The token climbed more than 14% in 24 hours, hitting near $98 and pushing its market cap above $23 billion, fueled by Intercontinental Exchange (ICE)—parent of the NYSE—and Trade[XYZ] agreeing to buil",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115892615585341679",
-      "published_at": "2026-10-29T19:52:23.000Z",
-      "tags": [
-        "hype",
-        "hyperliquid",
-        "gainer"
-      ],
-      "why_it_matters": "HYPE 係 10/29 密封日嘅早標捕捉之一；大消息驅動嘅升幅值得跟進續航。",
-      "category": "News"
-    },
-    {
-      "id": "2115756304312435149",
-      "title": "Druckenmiller 投資 trade[XYZ]，參與 ICE×Hyperliquid",
-      "title_en": "Stan Druckenmiller Backs trade[XYZ] in ICE-Hyperliquid Partnership",
-      "summary": "對沖基金大佬 Druckenmiller 宣布投資 trade[XYZ]，同 ICE 合作推 24/7 永續合約。",
-      "summary_en": "Druckenmiller announced his excitement as an investor in trade[XYZ], which is teaming up with Intercontinental Exchange (ICE), the NYSE parent, to launch 24/7 perpetual futures on Hyperliquid for regu",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115756304312435149",
-      "published_at": "2026-10-30T04:28:18.000Z",
-      "tags": [
-        "hype",
-        "institutions"
-      ],
-      "why_it_matters": "機構入 Hyperliquid 生態，HYPE 敘事仲有燃料。",
-      "category": "News"
-    },
-    {
-      "id": "2115870740109004839",
-      "title": "BTC 市佔跌至約 60.1%，山寨幣有輪動跡象",
-      "title_en": "Bitcoin Dominance Dips as Altcoins Show Signs of Surge",
-      "summary": "BTC dominance 回落、山寨市佔急升，市場討論資金由 BTC 流向細幣。",
-      "summary_en": "Bitcoin dominance has dropped to around 60.1%, while altcoin dominance climbs sharply, prompting talk of money rotating from Bitcoin to smaller coins. Ash Crypto noted the shift bluntly: 'BITCOIN DOMI",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115870740109004839",
-      "published_at": "2026-10-29T18:26:20.000Z",
-      "tags": [
-        "btc-dominance",
-        "altcoins"
-      ],
-      "why_it_matters": "山寨輪動有利急升榜捕捉；但要同今日 Binance 恐慌一齊睇。",
-      "category": "News"
-    },
-    {
-      "id": "2115942197585477708",
-      "title": "XRP 跌超 6% 至 $1.23",
-      "title_en": "XRP Drops Over 6% to $1.23 Amid Selling Pressure",
-      "summary": "技術阻力加市場淡靜，XRP 單日跌逾 6%，圖表見下降形態。",
-      "summary_en": "The cryptocurrency fell more than 6% that day, trading near $1.23 due to technical resistance and muted market appetite. Charts showed bearish patterns like descending trendlines and crosses, with Mic",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115942197585477708",
-      "published_at": "2026-10-30T00:50:48.000Z",
-      "tags": [
-        "xrp",
-        "market"
-      ],
-      "why_it_matters": "大型山寨都弱，揀幣時避開純追跌勢嘅大市值幣。",
-      "category": "News"
-    },
-    {
-      "id": "2115788630102847964",
-      "title": "$AXIS 跌 40%：ZachXBT 揭多簽錢包轉走代幣",
-      "title_en": "$AXIS Token Drops 40% After Wallet Transfer Concerns",
-      "summary": "4,200 萬 AXIS 由項目多簽轉去六個地址後沽出約 504 萬 USDC。",
-      "summary_en": "On-chain sleuth ZachXBT flagged 42 million AXIS tokens moved from the project's multisig wallet to six addresses, which were then sold for 5.04 million USDC—just eight days after the October 21 token ",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115788630102847964",
-      "published_at": "2026-10-29T23:53:59.000Z",
-      "tags": [
-        "axis",
-        "rug",
-        "onchain"
-      ],
-      "why_it_matters": "項目方拋售係迷因／細幣常見 rug 前兆，要留意 🚩 訊號。",
-      "category": "News"
-    },
-    {
-      "id": "2116026523140387262",
-      "title": "CZ 紅色床照變跌市 meme",
-      "title_en": "Red-Tinted CZ Bed Photo Becomes Crypto Downtrend Meme",
-      "summary": "CZ 早前分享嘅神秘圖被網民改成紅色，配合 BTC 由約 $83,576 回落成為跌市梗圖。",
-      "summary_en": "On September 29, Binance co-founder CZ shared the mysterious green image, sparking speculation about upcoming news. As Bitcoin dropped from near $83,576 early October to $77,939 by October 29, users e",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2116026523140387262",
-      "published_at": "2026-10-30T04:42:21.000Z",
-      "tags": [
-        "cz",
-        "meme",
-        "sentiment"
-      ],
-      "why_it_matters": "Binance 相關情緒偏負面，留意 BNB 生態幣嘅 X 熱度變化。",
+      "why_it_matters": "情緒面偏淡，社交熱度高嘅幣未必等於升。",
       "category": "News"
     },
     {
       "id": "2116007051558007249",
-      "title": "Binance 被黑掀起諷刺「起底」meme 潮",
+      "title": "Binance 被盜引發一波諷刺 meme",
       "title_en": "Binance Hack Sparks Wave of Satirical Doxxing Memes",
-      "summary": "Binance 承認熱錢包被盜約 $63 億後，X 上湧現大量諷刺梗圖。",
+      "summary": "社群用起底式 meme 嘲諷 Binance 保安事件。",
       "summary_en": "Binance revealed a major security breach on October 29-30, 2026, where hackers drained about $6.3 billion from hot wallets via a compromised DevOps engineer's laptop. The exchange has frozen $3 billio",
       "source": "X News",
       "url": "https://x.com/i/trending/2116007051558007249",
       "published_at": "2026-10-30T03:26:23.000Z",
       "tags": [
         "binance",
-        "meme",
-        "x-buzz"
+        "meme"
       ],
-      "why_it_matters": "社交熱度高唔等於買盤，X 熱要配合成交量先算。",
+      "why_it_matters": "meme 情緒集中喺事件本身，唔一定帶動 meme 幣。",
       "category": "News"
     },
     {
-      "id": "2115908517395837140",
-      "title": "Coinbase Q3 盈利 $7.19 億，收入跌 35%",
-      "title_en": "Coinbase Posts $719 Million Profit Despite Revenue Dip in Q3 2026",
-      "summary": "收入 $12.2 億按年跌 35%，但每股盈利 $2.51 勝預期，靠投資收益帶動。",
-      "summary_en": "The exchange reported $1.22 billion in revenue, down 35% from last year, but earnings per share of $2.51 beat Wall Street forecasts, fueled by a $715 million gain on crypto holdings. CEO Brian Armstro",
+      "id": "2116026523140387262",
+      "title": "CZ 紅色床照變成跌市 meme",
+      "title_en": "Red-Tinted CZ Bed Photo Becomes Crypto Downtrend Meme",
+      "summary": "CZ 舊相被改成紅色，配合 BTC 由 $83.5K 下跌成跌市梗圖。",
+      "summary_en": "On September 29, Binance co-founder CZ shared the mysterious green image, sparking speculation about upcoming news. As Bitcoin dropped from near $83,576 early October to $77,939 by October 29, users e",
       "source": "X News",
-      "url": "https://x.com/i/trending/2115908517395837140",
-      "published_at": "2026-10-30T03:10:48.000Z",
+      "url": "https://x.com/i/trending/2116026523140387262",
+      "published_at": "2026-10-30T04:42:21.000Z",
       "tags": [
-        "coinbase",
-        "earnings"
+        "cz",
+        "meme"
       ],
-      "why_it_matters": "交易所收入下滑反映散戶活躍度轉弱，急升持續性要打折。",
+      "why_it_matters": "反映市場恐慌情緒，留意超賣反彈機會。",
+      "category": "News"
+    },
+    {
+      "id": "2116009271863521385",
+      "title": "BTC 跌穿 $78K，加密跟美股科技股一齊跌",
+      "title_en": "Bitcoin Dips Below $78,000 as Crypto Selloff Mirrors Tech Stocks",
+      "summary": "10/29 夜間 BTC 低見 $77,739，全網爆倉超過 $11 億。",
+      "summary_en": "The cryptocurrency slide deepened overnight on October 29, with Bitcoin hitting a daily low of $77,739 and over $1.1 billion in positions liquidated across exchanges in the past 24 hours—mostly long b",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2116009271863521385",
+      "published_at": "2026-10-30T03:33:15.000Z",
+      "tags": [
+        "btc",
+        "liquidation"
+      ],
+      "why_it_matters": "同科技股聯動高，美股開市時段波動會傳過嚟。",
+      "category": "News"
+    },
+    {
+      "id": "2115497447732445567",
+      "title": "Fed 維持利率 3.75%–4.00% 不變",
+      "title_en": "Fed Holds Rates Steady at 3.75%-4.00% Amid Elevated Inflation",
+      "summary": "10 比 2 決定按兵不動，形容經濟強勁但通脹仍高。",
+      "summary_en": "The Fed kept the federal funds rate at 3.75% to 4.00% in a 10-2 decision, describing the economy as expanding strongly with steady job gains and robust spending, while inflation remains elevated. Gove",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115497447732445567",
+      "published_at": "2026-10-29T22:22:20.000Z",
+      "tags": [
+        "macro",
+        "fed"
+      ],
+      "why_it_matters": "無減息驚喜，短線風險資產缺乏推動力。",
+      "category": "News"
+    },
+    {
+      "id": "2115870740109004839",
+      "title": "BTC 市佔跌至約 60.1%，山寨幣有輪動跡象",
+      "title_en": "Bitcoin Dominance Dips as Altcoins Show Signs of Surge",
+      "summary": "BTC dominance 回落，山寨幣市佔上升，市場討論資金轉向細幣。",
+      "summary_en": "Bitcoin dominance has dropped to around 60.1%, while altcoin dominance climbs sharply, prompting talk of money rotating from Bitcoin to smaller coins. Ash Crypto noted the shift bluntly: 'BITCOIN DOMI",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115870740109004839",
+      "published_at": "2026-10-29T18:26:20.000Z",
+      "tags": [
+        "altcoins",
+        "rotation"
+      ],
+      "why_it_matters": "輪動若成立，急升板細幣機會會增加，係捕捉率嘅好時機。",
+      "category": "News"
+    },
+    {
+      "id": "2115701855909212547",
+      "title": "38 間美國大企反對 OKX-ICE 代幣化股票",
+      "title_en": "Major Companies Object to Tokenized Shares on OKX-ICE Platform",
+      "summary": "IBM、Microsoft、JPMorgan 等正式反對喺 OKX-ICE 平台上架佢哋嘅代幣化股份。",
+      "summary_en": "As of October 28, 38 U.S. companies—including tech giants IBM, Dell, Intel, AMD, Microsoft, Alphabet, and financial firms like JPMorgan and Goldman Sachs—formally objected to third-party tokenization ",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115701855909212547",
+      "published_at": "2026-10-29T22:44:46.000Z",
+      "tags": [
+        "okx",
+        "tokenized-stocks"
+      ],
+      "why_it_matters": "代幣化股票監管風險升，相關幣種要小心。",
+      "category": "News"
+    },
+    {
+      "id": "2115933411403505971",
+      "title": "Bubblemaps 指 Solstice 推 $BOOMER 有捆綁錢包",
+      "title_en": "Bubblemaps Accuses Solstice of Bundling in $BOOMER Promotion",
+      "summary": "Bubblemaps 圖表顯示 $BOOMER 有大量關聯錢包。",
+      "summary_en": "On October 29, Bubblemaps called out Solstice for building a launchpad and promoting $BOOMER, which they said showed bundled wallets in their visualizations. Solstice replied that the token migrated t",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115933411403505971",
+      "published_at": "2026-10-29T22:34:29.000Z",
+      "tags": [
+        "memecoin",
+        "rug-risk"
+      ],
+      "why_it_matters": "典型莊家盤訊號，同我哋 shill 🚩 規則一致。",
+      "category": "News"
+    },
+    {
+      "id": "2115516008689697145",
+      "title": "SPX6900 社群全球聚會，持幣者表明長揸",
+      "title_en": "SPX6900 Fans Organize Global Meetups and Share Long-Term Commitment",
+      "summary": "SPX6900 喺多個城市搞 meetup，社群熱度持續。",
+      "summary_en": "The SPX6900 memecoin community, launched in August 2023 as a satirical take on the S&P 500, is buzzing with meetups in cities like Melbourne, Austin, London, Barcelona, Los Angeles, and more. Holders ",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115516008689697145",
+      "published_at": "2026-10-29T22:44:58.000Z",
+      "tags": [
+        "memecoin",
+        "spx"
+      ],
+      "why_it_matters": "社群型 meme 熱度可作觀察，但要等 Binance 行情配合。",
+      "category": "News"
+    },
+    {
+      "id": "2115837481815851238",
+      "title": "Franklin Templeton 推股息再投資 BTC 嘅 ETF",
+      "title_en": "Franklin Templeton Launches ETFs That Reinvest Stock Dividends into Bitcoin",
+      "summary": "FBEQ、FIBT 將股票股息自動轉入 Bitcoin。",
+      "summary_en": "The $1.8 trillion asset manager introduced the Franklin U.S. Equity Bitcoin DRIP Index ETF (FBEQ) and Franklin U.S. Innovation Bitcoin DRIP Index ETF (FIBT) on October 29. These funds hold mostly U.S.",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115837481815851238",
+      "published_at": "2026-10-29T21:44:43.000Z",
+      "tags": [
+        "etf",
+        "btc"
+      ],
+      "why_it_matters": "機構入場渠道增加，中長線利好 BTC。",
+      "category": "News"
+    },
+    {
+      "id": "2115824327958650962",
+      "title": "杜拜皇室背景公司推 $15 億 BTC＋地產策略",
+      "title_en": "Dubai Royal-Backed Firm Launches $1.5 Billion Bitcoin-Real Estate Strategy",
+      "summary": "BTC 持倉由 Coinbase Asset Management 管理，配合酒店地產。",
+      "summary_en": "Founded by Sakhib Waseem, Adam Ali, and Mason Borda, the firm pairs professionally managed Bitcoin holdings—overseen by Coinbase Asset Management—with hospitality properties and branded residences in ",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115824327958650962",
+      "published_at": "2026-10-29T20:42:20.000Z",
+      "tags": [
+        "btc",
+        "institutions"
+      ],
+      "why_it_matters": "機構需求消息，短線影響有限。",
+      "category": "News"
+    },
+    {
+      "id": "2115895706687004764",
+      "title": "BTC 喺區塊 973,728 分叉出 eCash (ECX)",
+      "title_en": "Bitcoin Forks at Block 973,728 to Launch eCash (ECX) with Drivechains",
+      "summary": "Paul Sztorc 主導，以 BIP 300/301 啟用 Drivechains 側鏈。",
+      "summary_en": "The fork, led by Paul Sztorc of LayerTwo Labs, activates Drivechains via BIP 300 and 301, enabling opt-in sidechains for privacy, payments, and prediction markets without altering Bitcoin's core rules",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115895706687004764",
+      "published_at": "2026-10-29T20:06:37.000Z",
+      "tags": [
+        "btc",
+        "fork"
+      ],
+      "why_it_matters": "分叉幣空投／上架消息可能帶來短炒。",
       "category": "News"
     },
     {
       "id": "2115886222404968540",
-      "title": "Shopify 商戶經 Coinbase 協議收 $4,200 萬 USDC",
+      "title": "Shopify 商戶經 Coinbase 協議結算 $4,200 萬 USDC",
       "title_en": "Shopify Merchants Settle $42 Million in USDC Payments via Coinbase Protocol",
-      "summary": "Shopify 同 Coinbase 喺 Base 建開源支付協議，商戶可直接收穩定幣。",
+      "summary": "Base 上嘅 Commerce Payments Protocol 讓商戶收穩定幣。",
       "summary_en": "Shopify and Coinbase built an open-source Commerce Payments Protocol on the Base network, making it simple for eligible merchants to accept stablecoin payments while converting funds to local currency",
       "source": "X News",
       "url": "https://x.com/i/trending/2115886222404968540",
       "published_at": "2026-10-29T19:25:43.000Z",
       "tags": [
         "base",
-        "usdc",
-        "payments"
+        "usdc"
       ],
-      "why_it_matters": "Base 生態實際應用增加，相關幣有基本面故事。",
-      "category": "News"
-    },
-    {
-      "id": "2115972937366823165",
-      "title": "DTCC 推代幣化服務，目標 $30 萬億證券",
-      "title_en": "DTCC Launches Tokenization Service for $30 Trillion in Securities",
-      "summary": "DTCC 喺 Canton Network 同自家 Besu 鏈推出代幣化服務。",
-      "summary_en": "On October 28, the Depository Trust & Clearing Corporation rolled out its Tokenization Service on the Canton Network and its own Besu blockchain, targeting $30 trillion in securities like Russell 1000",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115972937366823165",
-      "published_at": "2026-10-30T01:10:49.000Z",
-      "tags": [
-        "rwa",
-        "canton",
-        "tokenization"
-      ],
-      "why_it_matters": "RWA／Canton 敘事升溫，Binance 有上相關幣時可留意。",
+      "why_it_matters": "Base 生態實際使用增長。",
       "category": "News"
     },
     {
       "id": "2115813822527426922",
-      "title": "Ondo 喺 Solana 推七個 BlackRock 組合",
+      "title": "Ondo 喺 Solana 推七個 BlackRock 支援組合",
       "title_en": "Ondo Finance Launches Seven BlackRock-Powered Portfolios on Solana",
-      "summary": "Ondo Intelligent Portfolios 覆蓋 5%／8% 收益、AI 龍頭、七巨頭加加密等策略。",
+      "summary": "涵蓋收益、AI 龍頭、Mag 7 加加密等策略。",
       "summary_en": "The seven Intelligent Portfolios cover income targets like 5% and 8%, AI leaders, Magnificent 7 stocks with crypto, and BlackRock strategies for high income, growth, and diversified exposure. Each tok",
       "source": "X News",
       "url": "https://x.com/i/trending/2115813822527426922",
@@ -266,14 +258,14 @@
         "solana",
         "rwa"
       ],
-      "why_it_matters": "ONDO／SOL 嘅 RWA 敘事有新催化。",
+      "why_it_matters": "RWA 題材持續，ONDO 可放觀察名單。",
       "category": "News"
     },
     {
       "id": "2115824331423179257",
-      "title": "巴西 Mercado Bitcoin 接入 Sui，觸及 450 萬用戶",
+      "title": "巴西 Mercado Bitcoin 開通 Sui，覆蓋 450 萬用戶",
       "title_en": "Mercado Bitcoin Opens Sui Blockchain to 4.5 Million Brazilian Users",
-      "summary": "巴西最大交易所支持 SUI 買賣同轉帳。",
+      "summary": "用戶可直接買賣同轉賬 SUI。",
       "summary_en": "Mercado Bitcoin, Brazil's largest crypto exchange with 4.5 million clients, has integrated the Sui network, allowing users to buy, sell, send, and receive SUI, USDC, and USDsui directly on-chain. This",
       "source": "X News",
       "url": "https://x.com/i/trending/2115824331423179257",
@@ -282,91 +274,104 @@
         "sui",
         "adoption"
       ],
-      "why_it_matters": "SUI 有新增量用戶故事，可放入觀察。",
-      "category": "News"
-    },
-    {
-      "id": "2115701855909212547",
-      "title": "38 間美企反對 OKX-ICE 代幣化股票",
-      "title_en": "Major Companies Object to Tokenized Shares on OKX-ICE Platform",
-      "summary": "IBM、微軟、Alphabet、摩根大通等正式反對喺該平台上架其代幣化股票。",
-      "summary_en": "As of October 28, 38 U.S. companies—including tech giants IBM, Dell, Intel, AMD, Microsoft, Alphabet, and financial firms like JPMorgan and Goldman Sachs—formally objected to third-party tokenization ",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115701855909212547",
-      "published_at": "2026-10-29T22:44:46.000Z",
-      "tags": [
-        "okx",
-        "ice",
-        "tokenized-stocks"
-      ],
-      "why_it_matters": "代幣化股票監管阻力大，相關敘事幣要防回吐。",
+      "why_it_matters": "SUI 新增零售渠道，可留意成交量變化。",
       "category": "News"
     },
     {
       "id": "2115843122727162313",
-      "title": "印度突擊搜查加密公司，涉 ₹5,000 億盧比轉帳",
+      "title": "印度搜查加密公司，涉 ₹5,000 億盧比未授權轉賬",
       "title_en": "India Raids Crypto Firms Over ₹5,000 Crore Unauthorized Transfers",
-      "summary": "執法部門搜查 Mudrex 母公司等，指涉用 USDT／USDC 做未經授權跨境轉帳。",
+      "summary": "Mudrex 母公司等被查，涉以 USDT/USDC 跨境轉賬。",
       "summary_en": "The raids hit RPFAS Technologies, which runs Mudrex and Saber.money, over alleged unauthorized cross-border deals worth more than ₹5,000 crore using USDT and USDC without RBI approval. Investigators f",
       "source": "X News",
       "url": "https://x.com/i/trending/2115843122727162313",
       "published_at": "2026-10-29T18:49:22.000Z",
       "tags": [
-        "india",
-        "regulation"
+        "regulation",
+        "india"
       ],
-      "why_it_matters": "監管消息偏淡，對亞洲散戶情緒有壓力。",
+      "why_it_matters": "監管打擊消息，對穩定幣流動性有輕微壓力。",
+      "category": "News"
+    },
+    {
+      "id": "2115811357878526418",
+      "title": "英國 FCA 同 HTX 就違規宣傳達成和解",
+      "title_en": "FCA Secures Settlement with HTX Over Unlawful UK Crypto Promotions",
+      "summary": "HTX（前火幣）就多次違反金融宣傳規則同 FCA 庭外和解。",
+      "summary_en": "The Financial Conduct Authority reached a High Court settlement with HTX, formerly Huobi, after accusing it of repeated breaches of financial promotion rules since October 2025. HTX agreed to undertak",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115811357878526418",
+      "published_at": "2026-10-29T17:08:37.000Z",
+      "tags": [
+        "regulation",
+        "htx"
+      ],
+      "why_it_matters": "交易所合規壓力持續。",
+      "category": "News"
+    },
+    {
+      "id": "2115821542940528811",
+      "title": "Coinbase 為美國用戶上架 Ripple RLUSD",
+      "title_en": "Coinbase Lists Ripple's RLUSD Stablecoin for U.S. Users",
+      "summary": "RLUSD 已上 Coinbase app、交易所同 Prime，可 1:1 兌換。",
+      "summary_en": "Coinbase added RLUSD to its retail app, exchange, and Prime platform on October 28, enabling 1:1 conversions from dollars or other stablecoins across XRP Ledger, Ethereum, and Base networks. The stabl",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115821542940528811",
+      "published_at": "2026-10-29T15:13:39.000Z",
+      "tags": [
+        "xrp",
+        "stablecoin"
+      ],
+      "why_it_matters": "XRP 生態利好消息，留意 XRP 行情反應。",
+      "category": "News"
+    },
+    {
+      "id": "2115368381108879588",
+      "title": "Ripple Swell 大會喺紐約慶祝創紀錄一年",
+      "title_en": "Ripple Celebrates Record Year at Swell Conference in NYC",
+      "summary": "HSBC 等銀行出席，超過 100 位講者。",
+      "summary_en": "The 10th annual Swell conference, held October 27–29 at The Shed, merged with developer and academic summits, featuring 100+ speakers from banks like HSBC and fintechs like Robinhood. Ripple reported ",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115368381108879588",
+      "published_at": "2026-10-30T00:16:08.000Z",
+      "tags": [
+        "xrp",
+        "ripple"
+      ],
+      "why_it_matters": "XRP 敘事延續，短線多數已反映。",
       "category": "News"
     },
     {
       "id": "2115717341136765410",
-      "title": "新加坡警方警告：零售店有被改裝 Ledger 錢包",
+      "title": "新加坡警方警告零售店有被改裝嘅 Ledger 錢包",
       "title_en": "Singapore Police Warn of Tampered Ledger Wallets in Retail Stores",
-      "summary": "9 月 10 日以來最少兩名受害人買到被植入惡意零件嘅 Ledger 硬件錢包。",
+      "summary": "至少兩名受害人買到植入惡意組件嘅硬件錢包。",
       "summary_en": "Since September 10, at least two victims fell prey to tampered Ledger cryptocurrency hardware wallets sold at some Singapore retail outlets, with malicious components stealing recovery phrases and pri",
       "source": "X News",
       "url": "https://x.com/i/trending/2115717341136765410",
       "published_at": "2026-10-30T01:48:57.000Z",
       "tags": [
         "security",
-        "ledger"
+        "wallet"
       ],
-      "why_it_matters": "真錢出入金要經官方渠道買錢包；模擬倉唔受影響。",
+      "why_it_matters": "保安事件頻繁，市場風險情緒偏弱。",
       "category": "News"
     },
     {
-      "id": "2115772932240880066",
-      "title": "俄羅斯登記首個加密自律組織",
-      "title_en": "Russia Registers First Crypto Self-Regulatory Body",
-      "summary": "俄央行登記 NAUFOR 監管加密交易所同數字託管機構。",
-      "summary_en": "On October 29, the Bank of Russia registered NAUFOR, a long-standing securities group, to oversee crypto exchanges and digital depositories under the July crypto law. The 23 listed exchanges and eight",
+      "id": "2115709966963380644",
+      "title": "Westpac 由 12 月起限制加密付款每月 $1 萬",
+      "title_en": "Westpac Caps Crypto Payments at $10,000 Monthly from December",
+      "summary": "網銀、app 同卡付款達上限即封，入金唔受限。",
+      "summary_en": "The new limit applies across online banking, apps, and cards, with payments blocked once reached until the next month; incoming transfers from exchanges face no changes. Banks cite scam data, where ne",
       "source": "X News",
-      "url": "https://x.com/i/trending/2115772932240880066",
-      "published_at": "2026-10-29T17:32:05.000Z",
+      "url": "https://x.com/i/trending/2115709966963380644",
+      "published_at": "2026-10-29T15:11:58.000Z",
       "tags": [
-        "russia",
-        "regulation"
+        "regulation",
+        "australia"
       ],
-      "why_it_matters": "監管框架成形，俄語區資金流入路徑更清晰。",
-      "category": "News"
-    },
-    {
-      "id": "2115606359194358204",
-      "title": "Solana RWA 總值創 $51.9 億新高",
-      "title_en": "Solana Unblocks Polygon After Payments Integration Reveal",
-      "summary": "Solana 上代幣化資產總值本週創新高，Polygon 亦喺 Open Money 接入 Solana。",
-      "summary_en": "Solana's real-world asset ecosystem hit a record $5.19 billion in total value this week amid booming tokenized assets. Polygon launched Solana on its Open Money Stack, enabling seamless fund transfers",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115606359194358204",
-      "published_at": "2026-10-30T00:05:23.000Z",
-      "tags": [
-        "solana",
-        "rwa"
-      ],
-      "why_it_matters": "SOL 生態 RWA 敘事持續，有利 SOL 系幣嘅資金面。",
+      "why_it_matters": "澳洲散戶入金渠道收緊，影響有限但偏淡。",
       "category": "News"
     }
-  ],
-  "x_fetched_at": "2026-10-30T14:05:00+08:00",
-  "x_job": "hourly-update"
+  ]
 }
