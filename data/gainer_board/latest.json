@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-31T04:23:12+08:00",
+ "updated_at": "2026-10-31T05:01:59+08:00",
  "batch": "gb-20261031-0345",
  "picked_at": "2026-10-31T03:45:06+08:00",
  "btc_24h_pct": -5.19,
@@ -717,48 +717,6 @@
      "max_gain_pct": 2.01,
      "max_drawdown_pct": -8.25,
      "close_pct": -8.03,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-30T22:35:19+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "PARTI",
-   "pair": "PARTIUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-30T17:00:00+08:00",
-   "entry_price_usd": 0.0537,
-   "price_at_snapshot": 0.0528,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 11.18,
-   "change_24h_at_pick": 37.69,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261030-1943",
-   "score": 19.8,
-   "change_1h_at_pick": 6.13,
-   "change_4h_at_pick": -0.92,
-   "vol_x_avg": 0.64,
-   "vol_x_prev_hour": 0.64,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -18.51,
-   "quote_volume_24h": 45548947,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 8.19,
-     "max_drawdown_pct": -4.84,
-     "close_pct": -2.23,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
