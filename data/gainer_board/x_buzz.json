@@ -5,42 +5,42 @@
    "symbol": "INITUSDT",
    "base": "INIT",
    "flag": "pump",
-   "trigger_at": "2026-10-29T00:45:00+08:00",
-   "checked_at": "2026-10-29T04:40:21+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 8.0,
-   "spike_ratio": 0.38,
+   "trigger_at": "2026-10-31T00:30:00+08:00",
+   "checked_at": "2026-10-31T01:17:51+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 0.5,
    "verdict": "冷",
-   "one_line": "冷卻中，多係喊單莊",
+   "one_line": "訊號多、討論淡",
    "shill_flag": true,
-   "big_accounts": 1,
+   "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2115445026398552132",
-     "url": "https://x.com/Cryptobullmaker/status/2115445026398552132",
-     "text": "$Init ruling #Binance 170% in a month only up after i called We added 0.09 Current price 0.25 $Hana next will do only up Keep learning and …",
-     "likes": 189,
-     "author_username": "Cryptobullmaker",
-     "author_followers": 116662,
-     "created_at": "2026-10-28T22:06:12+08:00"
+     "id": "2116179682047529084",
+     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
+     "text": "$INIT Bullish run completed — all TPs achieved ✅ Maintaining discipline and strong risk management while avoiding greed.",
+     "likes": 2,
+     "author_username": "Randy_Austin1",
+     "author_followers": 1159,
+     "created_at": "2026-10-30T22:45:27+08:00"
     },
     {
-     "id": "2115497531052351724",
-     "url": "https://x.com/Anthonyb_t/status/2115497531052351724",
-     "text": "Ive been exploring MojoAI, tested crypto research on todays biggest opportunity analyse trending token price volume",
-     "likes": 60,
-     "author_username": "Anthonyb_t",
-     "author_followers": 8062,
-     "created_at": "2026-10-29T01:34:50+08:00"
+     "id": "2116180072973439093",
+     "url": "https://x.com/Randy_Austin1/status/2116180072973439093",
+     "text": "Binance Futures #INIT/USDT All take-profit targets achieved 😎 Profit: 1,012.258% 📈 Period: 9 hr 10 min ⏰",
+     "likes": 1,
+     "author_username": "Randy_Austin1",
+     "author_followers": 1159,
+     "created_at": "2026-10-30T22:47:00+08:00"
     },
     {
-     "id": "2115449466807304513",
-     "url": "https://x.com/_Aiza_Xo/status/2115449466807304513",
-     "text": "$INIT waking up after long accumulation? Price reclaiming EMA 200 Base breakout in progress Major upside if momentum holds",
-     "likes": 4,
-     "author_username": "_Aiza_Xo",
-     "author_followers": 171,
-     "created_at": "2026-10-28T22:23:50+08:00"
+     "id": "2116193089182192077",
+     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
+     "text": "New signal Coin: $INIT/USDT Signal type:Long Entry 0.15995 Take profits Targets 1) 0.17000 … Leverage:25x Stop loss: 0.15000",
+     "likes": 1,
+     "author_username": "ZaraVinkaqz",
+     "author_followers": 0,
+     "created_at": "2026-10-30T23:38:44+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -536,29 +536,20 @@
    "base": "SOPH",
    "flag": "pump",
    "trigger_at": "2026-10-30T22:45:00+08:00",
-   "checked_at": "2026-10-31T00:12:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 2.5,
-   "spike_ratio": 0.8,
-   "verdict": "冷",
-   "one_line": "熱度低，多掃描器",
-   "shill_flag": false,
+   "checked_at": "2026-10-31T01:17:51+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 2.57,
+   "verdict": "升溫",
+   "one_line": "帖數回升半係莊",
+   "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
-    {
-     "id": "2116106200878043184",
-     "url": "https://x.com/Zyptocom/status/2116106200878043184",
-     "text": "Daily Crypto Market Update Top Gainers | Top Losers $BEAM +33.89% | $BLAST -29.52% $MAGMA +31.54% | $AIC -22.00% kinetiq:native +26.92% | $…",
-     "likes": 4,
-     "author_username": "Zyptocom",
-     "author_followers": 579,
-     "created_at": "2026-10-30T17:53:28+08:00"
-    },
     {
      "id": "2116177910365139453",
      "url": "https://x.com/FantasyWhales/status/2116177910365139453",
      "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform, recent project …",
-     "likes": 2,
+     "likes": 3,
      "author_username": "FantasyWhales",
      "author_followers": 1099,
      "created_at": "2026-10-30T22:38:25+08:00"
@@ -566,58 +557,67 @@
     {
      "id": "2116150028053934450",
      "url": "https://x.com/UiiU_100/status/2116150028053934450",
-     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT",
+     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT 😂",
      "likes": 2,
      "author_username": "UiiU_100",
-     "author_followers": 1083,
+     "author_followers": 1082,
      "created_at": "2026-10-30T20:47:37+08:00"
+    },
+    {
+     "id": "2116156397591101897",
+     "url": "https://x.com/FantasyWhales/status/2116156397591101897",
+     "text": "Story Protocol's ($SOPH) surging interest & high valuation potential stem from its innovative on-chain IP infrastructure, robust backing by…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-10-30T21:12:56+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "BEAMXUSDT": {
    "symbol": "BEAMXUSDT",
    "base": "BEAMX",
    "flag": "pump",
    "trigger_at": "2026-10-30T21:45:00+08:00",
-   "checked_at": "2026-10-31T00:12:30+08:00",
+   "checked_at": "2026-10-31T01:17:51+08:00",
    "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 13.33,
-   "spike_ratio": 0.67,
+   "posts_prev_6h_avg_per_h": 11.0,
+   "spike_ratio": 0.82,
    "verdict": "冷",
-   "one_line": "爆後冷卻，多喊單",
+   "one_line": "多數喊單促銷",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2116174650162221094",
      "url": "https://x.com/imran_sharif213/status/2116174650162221094",
-     "text": "#BEAMX / USDT LONG — TP2 SMASHED! Status: Second target crushed cleanly as the bulls take complete control! Current ROI: +290.43% ($849.43+…",
-     "likes": 15,
+     "text": "#BEAMX / USDT LONG — TP2 SMASHED! ✅🔥 Status: Second target crushed cleanly as the bulls take complete control! 📈 Current ROI: +290.43%",
+     "likes": 16,
      "author_username": "imran_sharif213",
      "author_followers": 3794,
      "created_at": "2026-10-30T22:25:27+08:00"
     },
     {
-     "id": "2116189503136370837",
-     "url": "https://x.com/RoccobullboTTom/status/2116189503136370837",
-     "text": "#PREMIUM_SIGNAL Today $BEAMX day on Binance! $BEAMX already achieved my first terget 115% profit so far I’m always making my presence felt …",
-     "likes": 5,
-     "author_username": "RoccobullboTTom",
-     "author_followers": 49958,
-     "created_at": "2026-10-30T23:24:29+08:00"
+     "id": "2116210977389887750",
+     "url": "https://x.com/OpMaggi/status/2116210977389887750",
+     "text": "100% up from my call don't sleep I'm the guy who predict things before your so called influencer ! ethereum:0x62d0… #Beamx #btc #eth",
+     "likes": 1,
+     "author_username": "OpMaggi",
+     "author_followers": 409,
+     "created_at": "2026-10-31T00:49:48+08:00"
     },
     {
-     "id": "2116199680501821558",
-     "url": "https://x.com/ArslanOnChain/status/2116199680501821558",
-     "text": "$BEAMX SHORT SQUEEZE CAUGHT! TP2 HIT. Entry at 0.0045, and $BEAMX ripped straight through both targets before pushing to a high of 0.0054. …",
-     "likes": 4,
-     "author_username": "ArslanOnChain",
-     "author_followers": 4926,
-     "created_at": "2026-10-31T00:04:55+08:00"
+     "id": "2116172248940003748",
+     "url": "https://x.com/Sivam_kumar_Rai/status/2116172248940003748",
+     "text": "Beamx came out of nowhere... thank you! can it go more? #Crypto #altcoin #BeamX",
+     "likes": 1,
+     "author_username": "Sivam_kumar_Rai",
+     "author_followers": 21,
+     "created_at": "2026-10-30T22:15:55+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "TLMUSDT": {
    "symbol": "TLMUSDT",
@@ -2878,15 +2878,144 @@
      "created_at": "2026-10-30T21:01:25+08:00"
     }
    ]
+  },
+  {
+   "symbol": "INITUSDT",
+   "base": "INIT",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T00:30:00+08:00",
+   "checked_at": "2026-10-31T01:17:51+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 0.5,
+   "verdict": "冷",
+   "one_line": "訊號多、討論淡",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116179682047529084",
+     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
+     "text": "$INIT Bullish run completed — all TPs achieved ✅ Maintaining discipline and strong risk management while avoiding greed.",
+     "likes": 2,
+     "author_username": "Randy_Austin1",
+     "author_followers": 1159,
+     "created_at": "2026-10-30T22:45:27+08:00"
+    },
+    {
+     "id": "2116180072973439093",
+     "url": "https://x.com/Randy_Austin1/status/2116180072973439093",
+     "text": "Binance Futures #INIT/USDT All take-profit targets achieved 😎 Profit: 1,012.258% 📈 Period: 9 hr 10 min ⏰",
+     "likes": 1,
+     "author_username": "Randy_Austin1",
+     "author_followers": 1159,
+     "created_at": "2026-10-30T22:47:00+08:00"
+    },
+    {
+     "id": "2116193089182192077",
+     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
+     "text": "New signal Coin: $INIT/USDT Signal type:Long Entry 0.15995 Take profits Targets 1) 0.17000 … Leverage:25x Stop loss: 0.15000",
+     "likes": 1,
+     "author_username": "ZaraVinkaqz",
+     "author_followers": 0,
+     "created_at": "2026-10-30T23:38:44+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "SOPHUSDT",
+   "base": "SOPH",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T22:45:00+08:00",
+   "checked_at": "2026-10-31T01:17:51+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 2.57,
+   "verdict": "升溫",
+   "one_line": "帖數回升半係莊",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116177910365139453",
+     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
+     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform, recent project …",
+     "likes": 3,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-10-30T22:38:25+08:00"
+    },
+    {
+     "id": "2116150028053934450",
+     "url": "https://x.com/UiiU_100/status/2116150028053934450",
+     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT 😂",
+     "likes": 2,
+     "author_username": "UiiU_100",
+     "author_followers": 1082,
+     "created_at": "2026-10-30T20:47:37+08:00"
+    },
+    {
+     "id": "2116156397591101897",
+     "url": "https://x.com/FantasyWhales/status/2116156397591101897",
+     "text": "Story Protocol's ($SOPH) surging interest & high valuation potential stem from its innovative on-chain IP infrastructure, robust backing by…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-10-30T21:12:56+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BEAMXUSDT",
+   "base": "BEAMX",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T21:45:00+08:00",
+   "checked_at": "2026-10-31T01:17:51+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 11.0,
+   "spike_ratio": 0.82,
+   "verdict": "冷",
+   "one_line": "多數喊單促銷",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116174650162221094",
+     "url": "https://x.com/imran_sharif213/status/2116174650162221094",
+     "text": "#BEAMX / USDT LONG — TP2 SMASHED! ✅🔥 Status: Second target crushed cleanly as the bulls take complete control! 📈 Current ROI: +290.43%",
+     "likes": 16,
+     "author_username": "imran_sharif213",
+     "author_followers": 3794,
+     "created_at": "2026-10-30T22:25:27+08:00"
+    },
+    {
+     "id": "2116210977389887750",
+     "url": "https://x.com/OpMaggi/status/2116210977389887750",
+     "text": "100% up from my call don't sleep I'm the guy who predict things before your so called influencer ! ethereum:0x62d0… #Beamx #btc #eth",
+     "likes": 1,
+     "author_username": "OpMaggi",
+     "author_followers": 409,
+     "created_at": "2026-10-31T00:49:48+08:00"
+    },
+    {
+     "id": "2116172248940003748",
+     "url": "https://x.com/Sivam_kumar_Rai/status/2116172248940003748",
+     "text": "Beamx came out of nowhere... thank you! can it go more? #Crypto #altcoin #BeamX",
+     "likes": 1,
+     "author_username": "Sivam_kumar_Rai",
+     "author_followers": 21,
+     "created_at": "2026-10-30T22:15:55+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-31",
   "daily_total_cap": 60,
-  "calls_today": 6,
+  "calls_today": 12,
   "cap_reached": false,
-  "updated_at": "2026-10-31T00:13:02+08:00"
+  "updated_at": "2026-10-31T01:17:51+08:00"
  },
- "updated_at": "2026-10-31T00:13:02+08:00",
+ "updated_at": "2026-10-31T01:17:51+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

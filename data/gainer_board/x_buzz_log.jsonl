@@ -169,3 +169,9 @@
 {"ts": "2026-10-31T00:11:50+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
 {"ts": "2026-10-31T00:11:50+08:00", "symbol": "BEAMXUSDT", "tool": "search", "query": "($BEAMX OR #BEAMX) lang:en -is:retweet", "result_count": 20}
 {"ts": "2026-10-31T00:11:50+08:00", "symbol": "TLMUSDT", "tool": "search", "query": "($TLM OR #TLM) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-31T01:16:21+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-10-31T01:16:21+08:00", "symbol": "SOPHUSDT", "tool": "counts", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-10-31T01:16:21+08:00", "symbol": "BEAMXUSDT", "tool": "counts", "query": "($BEAMX OR #BEAMX) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-31T01:17:21+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-31T01:17:21+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-31T01:17:21+08:00", "symbol": "BEAMXUSDT", "tool": "search", "query": "($BEAMX OR #BEAMX) lang:en -is:retweet", "result_count": 10}
