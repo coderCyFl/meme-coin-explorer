@@ -1,7 +1,175 @@
 {
-  "fetched_at": "2026-10-30T00:44:45+08:00",
+  "fetched_at": "2026-10-30T09:08:30+08:00",
   "source": "X search_news via agent (static snapshot; site never calls X)",
   "stories": [
+    {
+      "id": "2115911595712729182",
+      "title": "Binance 熱錢包疑被盜 $56 億，暫停充提",
+      "title_en": "Binance Faces Potential Hack with $5.6 Billion in Stolen Crypto",
+      "summary": "鏈上見逾 $56 億 BTC／ETH／穩定幣異常流出；CZ 話用戶資金安全、交易所會全額補償，充提暫停做安全檢查。Tether 凍結 $15 億 USDT、Circle 封鎖數億 USDC，BTC 一度跌穿 $78,500。",
+      "summary_en": "Blockchain data revealed suspicious transfers of over $5.6 billion in Bitcoin, Ethereum, and stablecoins from Binance hot wallets Thursday. Binance founder CZ confirmed user funds are safe, with the exchange promising to",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115911595712729182",
+      "published_at": "2026-10-30T01:00:48.000Z",
+      "tags": [
+        "binance",
+        "hack",
+        "security",
+        "btc"
+      ],
+      "why_it_matters": "我哋全部行情來自 Binance：充提暫停期間價格可能偏離其他所、波動放大；模擬倉照開但止蝕要守緊，急升榜要提防恐慌反彈假訊號。",
+      "category": "News"
+    },
+    {
+      "id": "2115892615585341679",
+      "title": "HYPE 24h 急升 14%：ICE 夥拍 Hyperliquid 技術",
+      "title_en": "Hyperliquid's HYPE Token Surges 14% on ICE Partnership News",
+      "summary": "NYSE 母公司 ICE 同 Trade[XYZ] 用 Hyperliquid 技術起受監管美國永續合約，HYPE 升穿 $90、接近 $98，市值逾 $230 億，日成交過 $10 億。",
+      "summary_en": "The token climbed more than 14% in 24 hours, hitting near $98 and pushing its market cap above $23 billion, fueled by Intercontinental Exchange (ICE)—parent of the NYSE—and Trade[XYZ] agreeing to build regulated U.S. per",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115892615585341679",
+      "published_at": "2026-10-29T19:52:23.000Z",
+      "tags": [
+        "hype",
+        "catalyst",
+        "perp"
+      ],
+      "why_it_matters": "HYPE 係 10/29 密封日嘅早標捉到幣之一；催化劑型急升可作 🚀 追買參考，但要跟 TP/SL 出場。",
+      "category": "News"
+    },
+    {
+      "id": "2115870740109004839",
+      "title": "BTC 主導率跌至約 60.1%，資金疑轉入山寨",
+      "title_en": "Bitcoin Dominance Dips as Altcoins Show Signs of Surge",
+      "summary": "分析師指 BTC 主導率回落、山寨主導率 MACD 金叉，但 altseason 指數仍中性 56–59。",
+      "summary_en": "Bitcoin dominance has dropped to around 60.1%, while altcoin dominance climbs sharply, prompting talk of money rotating from Bitcoin to smaller coins. Ash Crypto noted the shift bluntly: 'BITCOIN DOMINANCE IS DUMPING MON",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115870740109004839",
+      "published_at": "2026-10-29T18:26:20.000Z",
+      "tags": [
+        "btc",
+        "altcoin",
+        "rotation"
+      ],
+      "why_it_matters": "山寨輪動有利急升榜同早標捕捉；主導率續跌可放寬追買，反彈就收緊。",
+      "category": "News"
+    },
+    {
+      "id": "2115895706687004764",
+      "title": "BTC 喺區塊 973,728 分叉出 eCash（ECX）",
+      "title_en": "Bitcoin Forks at Block 973,728 to Launch eCash (ECX) with Drivechains",
+      "summary": "Paul Sztorc 帶頭以 BIP 300/301 啟動 Drivechains，自管 BTC 持有人 1:1 得新幣；已有細交易所開始交易，社群提醒小心詐騙錢包。",
+      "summary_en": "The fork, led by Paul Sztorc of LayerTwo Labs, activates Drivechains via BIP 300 and 301, enabling opt-in sidechains for privacy, payments, and prediction markets without altering Bitcoin's core rules. Seven sidechains l",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115895706687004764",
+      "published_at": "2026-10-29T20:06:37.000Z",
+      "tags": [
+        "btc",
+        "fork",
+        "scam-risk"
+      ],
+      "why_it_matters": "分叉幣唔喺 Binance 上，不入我哋榜；但「領空投」釣魚會增加。",
+      "category": "News"
+    },
+    {
+      "id": "2115776142418559131",
+      "title": "Chainlink 推 24/7 股票／RWA 報價，Aave 首用",
+      "title_en": "Chainlink Launches 24/7 Pricing Feeds at Link:NYC Event",
+      "summary": "Link:NYC 發佈全天候代幣化股票、商品、RWA 報價，Aave Horizon 首個採用；DTCC 前一日開通約 $30 萬億證券代幣化服務。",
+      "summary_en": "At the Link:NYC event on October 29, Chainlink unveiled its 24/7 service for continuous pricing on tokenized stocks, commodities, and real-world assets, filling gaps with perpetual futures data for trading, settlement, a",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115776142418559131",
+      "published_at": "2026-10-30T00:52:42.000Z",
+      "tags": [
+        "link",
+        "rwa",
+        "infra"
+      ],
+      "why_it_matters": "LINK 有實質催化劑；RWA 敘事幣（LINK／ONDO）可入觀察。",
+      "category": "News"
+    },
+    {
+      "id": "2115733284638597205",
+      "title": "代幣化股票市值達 $46.3 億，Binance bStocks 領頭",
+      "title_en": "Tokenized Stocks Hit $4.63 Billion Milestone Echoing Early Stablecoins",
+      "summary": "由年初不足 $10 億升至 $46.3 億，bStocks、Ondo、xStocks 佔 81%，BNB Chain 承載最多。",
+      "summary_en": "The sector has surged from under $1 billion at the start of the year, led by issuers like Binance’s bStocks, Ondo, and xStocks, which control 81 percent of the market. BNB Chain hosts the most value, with Ethereum and So",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115733284638597205",
+      "published_at": "2026-10-29T17:45:36.000Z",
+      "tags": [
+        "rwa",
+        "binance",
+        "bnb"
+      ],
+      "why_it_matters": "BNB 鏈生態受惠；代幣化股票敘事持續升溫。",
+      "category": "News"
+    },
+    {
+      "id": "2115766737673068567",
+      "title": "Ansem 繼續睇淡：沽空 ETH，BTC 約 $81k",
+      "title_en": "Ansem Shares Bearish Crypto Trading Breakdown Video",
+      "summary": "KOL Ansem 話 FOMC 冇料到，維持看淡 BTC／ETH／大型股，等再回調先復甦；粉絲順勢推 Solana meme。",
+      "summary_en": "He called the recent FOMC meeting a nothing burger, outlined a Monday high/low playbook, and shared an Ethereum short amid Bitcoin near $81,000, Ethereum at $2,360, and Solana around $102. Ansem sticks to his bearish sta",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115766737673068567",
+      "published_at": "2026-10-29T15:12:46.000Z",
+      "tags": [
+        "kol",
+        "eth",
+        "sentiment"
+      ],
+      "why_it_matters": "大 KOL 睇淡 + 交易所事故，短線情緒偏弱；留意 KOL 叫單 meme 屬 🚩 喊單。",
+      "category": "News"
+    },
+    {
+      "id": "2115376695796715626",
+      "title": "AI Agent 鏈上互相聘用：TermiX 市場上線",
+      "title_en": "AI Agents Hire Each Other Through TermiX On-Chain Marketplace",
+      "summary": "TermiX 用 USDC／USDT 託管，讓 AI agent 接審計等任務，完成先放款。",
+      "summary_en": "On TermiX, powered by the Agent Autonomous Commerce Protocol at agent.family, buyers post requests or browse listings for tasks like code audits, with escrow in USDC or USDT locking funds until delivery. Agents handle un",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115376695796715626",
+      "published_at": "2026-10-30T00:27:05.000Z",
+      "tags": [
+        "ai",
+        "agents"
+      ],
+      "why_it_matters": "AI agent 敘事幣仍有熱度，可作題材參考。",
+      "category": "News"
+    },
+    {
+      "id": "2115953872153776190",
+      "title": "AI 驅動網攻襲七國金融機構，竊 $3,600 萬",
+      "title_en": "AI-Powered Cyberattacks Hit Financial Firms in Seven Countries",
+      "summary": "報道指南韓、拉美、意大利、印度等金融機構遭 AI 工具輔助攻擊，洩露數據並偷走約 $3,600 萬。",
+      "summary_en": "Reports detail AI-driven attacks on financial institutions across South Korea, Latin America, Italy, India, and beyond, using tools like Artex, Claude, and Grok to expose data, siphon $36 million in India, and trick tran",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115953872153776190",
+      "published_at": "2026-10-29T23:55:14.000Z",
+      "tags": [
+        "security",
+        "ai"
+      ],
+      "why_it_matters": "加上 Binance 事件，安全題材當道；釣魚風險上升。",
+      "category": "News"
+    },
+    {
+      "id": "2115717341136765410",
+      "title": "新加坡警方：零售店有被改裝 Ledger，損失 S$350 萬",
+      "title_en": "Singapore Police Warn of Tampered Ledger Wallets with S$3.5M Losses",
+      "summary": "9 月起至少兩宗零售買到被植入裝置嘅 Ledger，助記詞被截取。",
+      "summary_en": "Since September 10, 2026, at least two cases emerged of tampered Ledger hardware wallets sold at local retail stores, leading to about S$3.5 million in losses as implants captured recovery phrases and private keys. The S",
+      "source": "X News",
+      "url": "https://x.com/i/trending/2115717341136765410",
+      "published_at": "2026-10-29T22:57:30.000Z",
+      "tags": [
+        "security",
+        "wallet"
+      ],
+      "why_it_matters": "只喺官方渠道買硬件錢包。",
+      "category": "News"
+    },
     {
       "id": "2115497447732445567",
       "title": "聯儲 10–2 票維持利率 3.75%–4.00%",
@@ -106,23 +274,6 @@
       "category": "News"
     },
     {
-      "id": "2115776142418559131",
-      "title": "DTCC 開通約 $30 萬億證券代幣化服務",
-      "title_en": "DTCC Launches Tokenization Service for $30 Trillion in Securities",
-      "summary": "10/28 上線：DTC 託管證券嘅數碼孿生，首批約 34 隻合資格標的（羅素 1000／ETF／美債等）；JPM、Citi、Fidelity 等已加入。",
-      "summary_en": "DTCC Tokenization Service live Oct 28 for digital twins of DTC-held securities (~$30T eligible set).",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115776142418559131",
-      "published_at": "2026-10-29T14:28:57.000Z",
-      "tags": [
-        "rwa",
-        "tradfi",
-        "infra"
-      ],
-      "why_it_matters": "華爾街基建上鏈屬長線叙事；對當日 meme 捕捉率影響有限，但可解釋資金偏好「合規資產」多過山寨。",
-      "category": "News"
-    },
-    {
       "id": "2115772932240880066",
       "title": "俄羅斯央行批出首個加密交易所自律組織",
       "title_en": "Russia Registers First Self-Regulatory Body for Crypto Exchanges",
@@ -186,124 +337,6 @@
         "solana"
       ],
       "why_it_matters": "新 launchpad 幣極易一日內歸零；模擬倉跟買應避開「平台幣／自家盤」同開發者可任意撤帳嘅項目。",
-      "category": "News"
-    },
-    {
-      "id": "2115731926464319522",
-      "title": "CFTC 主席暢想「智能雪櫃自己炒幣買餸」",
-      "title_en": "CFTC Chair Envisions Fridge Trading Crypto for Groceries",
-      "summary": "10/28 Frontier Forum：Selig 談 AI agent 可持倉、交易甚至發 meme；問邊個註冊、邊個負責，會唔會要「know-your-agent」。",
-      "summary_en": "At Oct 28 CFTC Frontier Forum, Selig floated AI agents holding/trading crypto and launching memecoins; raised registration/liability questions.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115731926464319522",
-      "published_at": "2026-10-29T12:56:51.000Z",
-      "tags": [
-        "regulation",
-        "ai",
-        "macro"
-      ],
-      "why_it_matters": "監管開始認真睇 AI 交易代理；我哋紙上策略要保持可解釋規則，唔好變成黑箱跟單。",
-      "category": "News"
-    },
-    {
-      "id": "2115768199681544489",
-      "title": "Solana RWA 突破 $51.9 億新高",
-      "title_en": "Solana Real-World Assets Hit $5.19 Billion Milestone",
-      "summary": "rwa.xyz 顯示 Solana 代幣化資產創新高，僅次 Ethereum／BNB；同日官帳同 Polygon 互相 mute／block 玩梗。",
-      "summary_en": "Solana RWA ATH ~$5.19B per rwa.xyz; playful X spat with Polygon same day.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115768199681544489",
-      "published_at": "2026-10-29T11:34:23.000Z",
-      "tags": [
-        "solana",
-        "rwa"
-      ],
-      "why_it_matters": "公鏈資金向 RWA 傾斜時，meme 流動性會更薄；early-gainer 要更嚴控流動性同洗版門檻。",
-      "category": "News"
-    },
-    {
-      "id": "2115768197890572734",
-      "title": "PEPE 對 BTC 兩年跌勢疑似打破，巨鯨增持",
-      "title_en": "PEPE Meme Coin Breaks Two-Year Downtrend Amid Whale Buys",
-      "summary": "PEPE 約 $0.00000493、市值 ~$20.7 億、24h 量逾 $8 億；傳 Justin Sun 相關錢包提走約 $5100 萬。波動仍大。",
-      "summary_en": "PEPE near $0.00000493 (~$2.07B mcap, >$800M vol); wallets tied to Justin Sun withdrew ~$51M.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115768197890572734",
-      "published_at": "2026-10-29T11:34:11.000Z",
-      "tags": [
-        "meme",
-        "pepe",
-        "whale"
-      ],
-      "why_it_matters": "大型 meme 反彈會搶走小市值注意力；捕捉率對照仍要以當日頭 20 急升為準，唔好跟單「已經爆完」嘅藍籌 meme。",
-      "category": "News"
-    },
-    {
-      "id": "2115745877906391349",
-      "title": "神秘巨鯨五日沽逾 100 萬 SOL（約 $1.04 億）",
-      "title_en": "Solana Holds Near $100 After Whale Sells $104 Million in SOL",
-      "summary": "鏈上見錢包日均約 20 萬 SOL 入幣安／Kraken；SOL 10/29 曾跌穿 $100 後企穩，市場同時受 ETF 外流同弱勢拖累。",
-      "summary_en": "~200k SOL/day to Binance/Kraken over ~5 days (~$104M); SOL dipped below $100 then stabilized Oct 29.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115745877906391349",
-      "published_at": "2026-10-29T10:07:37.000Z",
-      "tags": [
-        "solana",
-        "whale",
-        "macro"
-      ],
-      "why_it_matters": "大戶分批出貨會壓制 Solana meme 熱度；early board 要避免把「鏈上掉血」當入場確認。",
-      "category": "News"
-    },
-    {
-      "id": "2115722074140684434",
-      "title": "比特币波動率跌至 2023 年夏低位附近",
-      "title_en": "Bitcoin Volatility Hits 2023 Lows Near $80,000",
-      "summary": "Glassnode 顯示一個月已實現波動約 25%，近 2023 年中；BTC 徘徊 $80–81k，聯儲維持利率後壓縮波動，市場等下一次大變動。",
-      "summary_en": "1-month realized vol ~25% (Glassnode), near mid-2023; BTC ~$80–81k after Fed hold.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115722074140684434",
-      "published_at": "2026-10-29T08:31:16.000Z",
-      "tags": [
-        "btc",
-        "macro",
-        "volatility"
-      ],
-      "why_it_matters": "低波動常預示大方向選擇；跟買批次更要跟緊 BTC／廣度，唔好喺壓縮期加大槓杆式注碼。",
-      "category": "News"
-    },
-    {
-      "id": "2115338252378931313",
-      "title": "假 Trust Wallet 卡網站釣魚，連錢包即被掃",
-      "title_en": "Fake Trust Wallet Card Sites Drain User Funds",
-      "summary": "冒充 Trust Wallet 推「無 KYC 金屬卡／8% cashback」誘人連錢包；官方否認關係，研究員提醒只經官方渠道。",
-      "summary_en": "Phishing sites mimic Trust Wallet card offers; connecting wallets drains funds; official account denied affiliation.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115338252378931313",
-      "published_at": "2026-10-28T13:21:07.000Z",
-      "tags": [
-        "phishing",
-        "security",
-        "ops-risk"
-      ],
-      "why_it_matters": "釣魚網站同假空投一樣常見；任何「連錢包領卡／空投」對模擬倉用戶都係即時紅旗。",
-      "category": "News"
-    },
-    {
-      "id": "2115388166463242472",
-      "title": "Bloom 交易 Bot 漏洞：約 94 秒掃走近 $95 萬 SOL",
-      "title_en": "Solana Wallets Drained in Bloom Trading Bot Hack",
-      "summary": "10/26 第三方模組 RCE，約 49 個地址、9408 SOL（~$95 萬）被掃；團隊其後暫停服務並承諾全額退款。",
-      "summary_en": "Oct 26 third-party RCE drained ~9,408 SOL (~$953k) from ~49 addresses; Bloom paused and pledged refunds.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115388166463242472",
-      "published_at": "2026-10-28T10:24:18.000Z",
-      "tags": [
-        "hack",
-        "security",
-        "solana"
-      ],
-      "why_it_matters": "交易 Bot／授權係常見攻擊面；紙上實驗用戶亦應分倉、撤銷舊授權，唔好把熱錢包當長期倉。",
       "category": "News"
     }
   ]
