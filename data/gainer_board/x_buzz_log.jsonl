@@ -163,3 +163,9 @@
 {"ts": "2026-10-30T10:18:54+08:00", "symbol": "GTCUSDT", "tool": "counts", "query": "($GTC OR #GTC) (crypto OR binance) lang:en -is:retweet", "result_count": 17}
 {"ts": "2026-10-30T10:18:55+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
 {"ts": "2026-10-30T10:18:56+08:00", "symbol": "GTCUSDT", "tool": "search", "query": "($GTC OR #GTC) (crypto OR binance) lang:en -is:retweet", "result_count": 14}
+{"ts": "2026-10-31T00:11:22+08:00", "symbol": "SOPHUSDT", "tool": "counts", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
+{"ts": "2026-10-31T00:11:23+08:00", "symbol": "BEAMXUSDT", "tool": "counts", "query": "($BEAMX OR #BEAMX) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-31T00:11:23+08:00", "symbol": "TLMUSDT", "tool": "counts", "query": "($TLM OR #TLM) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-10-31T00:11:50+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
+{"ts": "2026-10-31T00:11:50+08:00", "symbol": "BEAMXUSDT", "tool": "search", "query": "($BEAMX OR #BEAMX) lang:en -is:retweet", "result_count": 20}
+{"ts": "2026-10-31T00:11:50+08:00", "symbol": "TLMUSDT", "tool": "search", "query": "($TLM OR #TLM) (crypto OR binance) lang:en -is:retweet", "result_count": 9}

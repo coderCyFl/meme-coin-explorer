@@ -530,6 +530,138 @@
     }
    ],
    "checks_this_trigger": 1
+  },
+  "SOPHUSDT": {
+   "symbol": "SOPHUSDT",
+   "base": "SOPH",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T22:45:00+08:00",
+   "checked_at": "2026-10-31T00:12:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 2.5,
+   "spike_ratio": 0.8,
+   "verdict": "冷",
+   "one_line": "熱度低，多掃描器",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116106200878043184",
+     "url": "https://x.com/Zyptocom/status/2116106200878043184",
+     "text": "Daily Crypto Market Update Top Gainers | Top Losers $BEAM +33.89% | $BLAST -29.52% $MAGMA +31.54% | $AIC -22.00% kinetiq:native +26.92% | $…",
+     "likes": 4,
+     "author_username": "Zyptocom",
+     "author_followers": 579,
+     "created_at": "2026-10-30T17:53:28+08:00"
+    },
+    {
+     "id": "2116177910365139453",
+     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
+     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform, recent project …",
+     "likes": 2,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-10-30T22:38:25+08:00"
+    },
+    {
+     "id": "2116150028053934450",
+     "url": "https://x.com/UiiU_100/status/2116150028053934450",
+     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT",
+     "likes": 2,
+     "author_username": "UiiU_100",
+     "author_followers": 1083,
+     "created_at": "2026-10-30T20:47:37+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "BEAMXUSDT": {
+   "symbol": "BEAMXUSDT",
+   "base": "BEAMX",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T21:45:00+08:00",
+   "checked_at": "2026-10-31T00:12:30+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 13.33,
+   "spike_ratio": 0.67,
+   "verdict": "冷",
+   "one_line": "爆後冷卻，多喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116174650162221094",
+     "url": "https://x.com/imran_sharif213/status/2116174650162221094",
+     "text": "#BEAMX / USDT LONG — TP2 SMASHED! Status: Second target crushed cleanly as the bulls take complete control! Current ROI: +290.43% ($849.43+…",
+     "likes": 15,
+     "author_username": "imran_sharif213",
+     "author_followers": 3794,
+     "created_at": "2026-10-30T22:25:27+08:00"
+    },
+    {
+     "id": "2116189503136370837",
+     "url": "https://x.com/RoccobullboTTom/status/2116189503136370837",
+     "text": "#PREMIUM_SIGNAL Today $BEAMX day on Binance! $BEAMX already achieved my first terget 115% profit so far I’m always making my presence felt …",
+     "likes": 5,
+     "author_username": "RoccobullboTTom",
+     "author_followers": 49958,
+     "created_at": "2026-10-30T23:24:29+08:00"
+    },
+    {
+     "id": "2116199680501821558",
+     "url": "https://x.com/ArslanOnChain/status/2116199680501821558",
+     "text": "$BEAMX SHORT SQUEEZE CAUGHT! TP2 HIT. Entry at 0.0045, and $BEAMX ripped straight through both targets before pushing to a high of 0.0054. …",
+     "likes": 4,
+     "author_username": "ArslanOnChain",
+     "author_followers": 4926,
+     "created_at": "2026-10-31T00:04:55+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "TLMUSDT": {
+   "symbol": "TLMUSDT",
+   "base": "TLM",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T20:15:00+08:00",
+   "checked_at": "2026-10-31T00:12:30+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.83,
+   "spike_ratio": 0.55,
+   "verdict": "冷",
+   "one_line": "冷清，多新號喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116158567002800537",
+     "url": "https://x.com/luxquantcrypto/status/2116158567002800537",
+     "text": "$TLM hit its final target of 0.00137, a 10.5% spot move from the 0.00124 entry, in 1d 15h. Over the same hours, crypto market cap outside B…",
+     "likes": 1,
+     "author_username": "luxquantcrypto",
+     "author_followers": 3266,
+     "created_at": "2026-10-30T21:21:33+08:00"
+    },
+    {
+     "id": "2116120839720452548",
+     "url": "https://x.com/Asnipercrypto/status/2116120839720452548",
+     "text": "$TLM UPDATE Bullish Falling Wedge Breakout has Already Done ,with a very solid candle in 1D time frame Now,Ready for good bullish wave Maxi…",
+     "likes": 0,
+     "author_username": "Asnipercrypto",
+     "author_followers": 1801,
+     "created_at": "2026-10-30T18:51:38+08:00"
+    },
+    {
+     "id": "2116153501697106059",
+     "url": "https://x.com/cexscan/status/2116153501697106059",
+     "text": "#Binance Spot – Last Hour USDT Trades Overview Total volume: 217.04M USDT Top gainer: $TLM Top loser: $ALPINE",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-30T21:01:25+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -2617,15 +2749,144 @@
      "created_at": "2026-10-30T05:55:14+08:00"
     }
    ]
+  },
+  {
+   "symbol": "SOPHUSDT",
+   "base": "SOPH",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T22:45:00+08:00",
+   "checked_at": "2026-10-31T00:12:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 2.5,
+   "spike_ratio": 0.8,
+   "verdict": "冷",
+   "one_line": "熱度低，多掃描器",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116106200878043184",
+     "url": "https://x.com/Zyptocom/status/2116106200878043184",
+     "text": "Daily Crypto Market Update Top Gainers | Top Losers $BEAM +33.89% | $BLAST -29.52% $MAGMA +31.54% | $AIC -22.00% kinetiq:native +26.92% | $…",
+     "likes": 4,
+     "author_username": "Zyptocom",
+     "author_followers": 579,
+     "created_at": "2026-10-30T17:53:28+08:00"
+    },
+    {
+     "id": "2116177910365139453",
+     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
+     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform, recent project …",
+     "likes": 2,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-10-30T22:38:25+08:00"
+    },
+    {
+     "id": "2116150028053934450",
+     "url": "https://x.com/UiiU_100/status/2116150028053934450",
+     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT",
+     "likes": 2,
+     "author_username": "UiiU_100",
+     "author_followers": 1083,
+     "created_at": "2026-10-30T20:47:37+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BEAMXUSDT",
+   "base": "BEAMX",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T21:45:00+08:00",
+   "checked_at": "2026-10-31T00:12:30+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 13.33,
+   "spike_ratio": 0.67,
+   "verdict": "冷",
+   "one_line": "爆後冷卻，多喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116174650162221094",
+     "url": "https://x.com/imran_sharif213/status/2116174650162221094",
+     "text": "#BEAMX / USDT LONG — TP2 SMASHED! Status: Second target crushed cleanly as the bulls take complete control! Current ROI: +290.43% ($849.43+…",
+     "likes": 15,
+     "author_username": "imran_sharif213",
+     "author_followers": 3794,
+     "created_at": "2026-10-30T22:25:27+08:00"
+    },
+    {
+     "id": "2116189503136370837",
+     "url": "https://x.com/RoccobullboTTom/status/2116189503136370837",
+     "text": "#PREMIUM_SIGNAL Today $BEAMX day on Binance! $BEAMX already achieved my first terget 115% profit so far I’m always making my presence felt …",
+     "likes": 5,
+     "author_username": "RoccobullboTTom",
+     "author_followers": 49958,
+     "created_at": "2026-10-30T23:24:29+08:00"
+    },
+    {
+     "id": "2116199680501821558",
+     "url": "https://x.com/ArslanOnChain/status/2116199680501821558",
+     "text": "$BEAMX SHORT SQUEEZE CAUGHT! TP2 HIT. Entry at 0.0045, and $BEAMX ripped straight through both targets before pushing to a high of 0.0054. …",
+     "likes": 4,
+     "author_username": "ArslanOnChain",
+     "author_followers": 4926,
+     "created_at": "2026-10-31T00:04:55+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TLMUSDT",
+   "base": "TLM",
+   "flag": "pump",
+   "trigger_at": "2026-10-30T20:15:00+08:00",
+   "checked_at": "2026-10-31T00:12:30+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.83,
+   "spike_ratio": 0.55,
+   "verdict": "冷",
+   "one_line": "冷清，多新號喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116158567002800537",
+     "url": "https://x.com/luxquantcrypto/status/2116158567002800537",
+     "text": "$TLM hit its final target of 0.00137, a 10.5% spot move from the 0.00124 entry, in 1d 15h. Over the same hours, crypto market cap outside B…",
+     "likes": 1,
+     "author_username": "luxquantcrypto",
+     "author_followers": 3266,
+     "created_at": "2026-10-30T21:21:33+08:00"
+    },
+    {
+     "id": "2116120839720452548",
+     "url": "https://x.com/Asnipercrypto/status/2116120839720452548",
+     "text": "$TLM UPDATE Bullish Falling Wedge Breakout has Already Done ,with a very solid candle in 1D time frame Now,Ready for good bullish wave Maxi…",
+     "likes": 0,
+     "author_username": "Asnipercrypto",
+     "author_followers": 1801,
+     "created_at": "2026-10-30T18:51:38+08:00"
+    },
+    {
+     "id": "2116153501697106059",
+     "url": "https://x.com/cexscan/status/2116153501697106059",
+     "text": "#Binance Spot – Last Hour USDT Trades Overview Total volume: 217.04M USDT Top gainer: $TLM Top loser: $ALPINE",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-10-30T21:01:25+08:00"
+    }
+   ]
   }
  ],
  "cap": {
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "daily_total_cap": 60,
-  "calls_today": 60,
-  "cap_reached": true,
-  "updated_at": "2026-10-30T10:19:30+08:00"
+  "calls_today": 6,
+  "cap_reached": false,
+  "updated_at": "2026-10-31T00:13:02+08:00"
  },
- "updated_at": "2026-10-30T10:19:30+08:00",
+ "updated_at": "2026-10-31T00:13:02+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
