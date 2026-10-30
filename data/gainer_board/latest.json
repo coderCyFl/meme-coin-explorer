@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-31T03:47:45+08:00",
+ "updated_at": "2026-10-31T04:18:43+08:00",
  "batch": "gb-20261031-0345",
  "picked_at": "2026-10-31T03:45:06+08:00",
  "btc_24h_pct": -5.19,
@@ -759,90 +759,6 @@
      "max_gain_pct": 8.19,
      "max_drawdown_pct": -4.84,
      "close_pct": -2.23,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-30T22:35:19+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "BEAMX",
-   "pair": "BEAMXUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-30T16:15:00+08:00",
-   "entry_price_usd": 0.00429,
-   "price_at_snapshot": 0.004698,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": -0.23,
-   "change_24h_at_pick": 27.15,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261030-1943",
-   "score": 75.3,
-   "change_1h_at_pick": 5.2,
-   "change_4h_at_pick": 23.17,
-   "vol_x_avg": 3.48,
-   "vol_x_prev_hour": 4.63,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -1.76,
-   "quote_volume_24h": 14560997,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 10.75,
-     "max_drawdown_pct": -2.42,
-     "close_pct": 7.95,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-30T22:35:19+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "LSK",
-   "pair": "LSKUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-30T16:15:00+08:00",
-   "entry_price_usd": 0.1943,
-   "price_at_snapshot": 0.2083,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 6.12,
-   "change_24h_at_pick": 14.77,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261030-1943",
-   "score": 33.4,
-   "change_1h_at_pick": 6.47,
-   "change_4h_at_pick": 11.6,
-   "vol_x_avg": 0.74,
-   "vol_x_prev_hour": 0.91,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -13.1,
-   "quote_volume_24h": 18003799,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 12.2,
-     "max_drawdown_pct": -2.62,
-     "close_pct": 8.03,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
