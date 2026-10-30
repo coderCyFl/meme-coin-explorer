@@ -77,7 +77,7 @@ export function setupSizeGate(outcomes, picksDoc, nowMs = Date.now()) {
     rolling7d_sealed_ew_pct: ew == null ? null : +ew.toFixed(2),
     n: rets.length,
     seal_hours: byH,
-    rule: "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase always full",
+    rule: "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase 唔受 ¼ gate 限 (細盤 24h vol < $3M 仍用 size:bonus)",
   };
 }
 
@@ -558,7 +558,7 @@ async function main() {
   for (const c of chaseHits) {
     if (entries.some((e) => e.pair_address === c.symbol)) continue;
     entries.push({
-      id: `${day}-${batchNum}-CHASE-${c.base}`, batch: batchId, type: "buy", tier: "chase", exitRegime: "momentum",
+      id: `${day}-${batchNum}-CHASE-${c.base}`, batch: batchId, type: "buy", tier: "chase", exit_rule: "chase_20261030d", exitRegime: "momentum",
       created_at: isoHK, chain: "binance", token_address: "binance:" + c.symbol, pair_address: c.symbol, dex: "binance-spot",
       symbol: c.base, name: c.base + " (Binance)", url: `https://www.binance.com/en/trade/${c.base}_USDT`,
       entry_price_usd: c.last,
