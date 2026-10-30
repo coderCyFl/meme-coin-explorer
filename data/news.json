@@ -1,13 +1,47 @@
 {
-  "fetched_at": "2026-10-30T19:07:13+08:00",
+  "fetched_at": "2026-10-30T20:07:52+08:00",
   "source": "X News",
   "stories": [
+    {
+      "id": "2116063292150218854",
+      "title": "幣安疑遭朝鮮駭客盜走約 $63 億創紀錄",
+      "title_en": "Binance Hit by Record $6.3 Billion Crypto Heist from North Korean Hackers",
+      "summary": "10/29 疑 DevOps 筆電被入侵，跨鏈提走巨額；幣安稱用戶資金 SAFU、已凍約 $30 億並承諾全數賠付。",
+      "summary_en": "On October 29, North Korean state-sponsored hackers exploited a DevOps engineer's laptop to steal $6.3 billion across multiple blockchains. Binance froze $3 billion with partner help, pledged SAFU coverage, and paused withdrawals briefly while deposits stayed open.",
+      "published_at": "2026-10-30T11:39:07.000Z",
+      "url": "https://x.com/i/trending/2116063292150218854",
+      "tags": [
+        "binance",
+        "hack",
+        "security"
+      ],
+      "why_it_matters": "交易所熱錢包風險會即時拖累全市場風險偏好同資金流動。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116072548190548276",
+      "title": "幣安被駭後社群玩梗籲下一步打 Pump.fun",
+      "title_en": "Crypto Users Urge Binance Hackers to Target Pump.fun",
+      "summary": "駭案後 X 湧現諷刺帖，叫駭客去搞 memecoin 發射台；反映對 rug／bot 生態怨氣。",
+      "summary_en": "After the Binance breach, users meme-urged hackers to hit Pump.fun next—satire that mirrors memecoin launchpad frustration.",
+      "published_at": "2026-10-30T11:30:39.000Z",
+      "url": "https://x.com/i/trending/2116072548190548276",
+      "tags": [
+        "binance",
+        "pumpfun",
+        "meme"
+      ],
+      "why_it_matters": "情緒指標：CEX 駭案同 memecoin 發射台民怨疊加。",
+      "category": "Other",
+      "source": "X News"
+    },
     {
       "id": "2116072545044820401",
       "title": "Trezor 警告 Safe 5 疑被植入通訊模組",
       "title_en": "Trezor Warns of Suspected Tampering in Safe 5 Wallet from Former Reseller",
       "summary": "印尼買家喺機內發現額外電路板；官方籲 CryptoBilis 渠道用戶立即換 seed。",
-      "summary_en": "Trezor issued an urgent alert after a responsible disclosure on October 28 about a hardware implant in one Safe 5 device bought from ex-reseller CryptoBilis in August 2026. The implant, placed between the main board and screen, could read and send display info like recovery phrases when powered on; Trezor views the photos, video, and description as credible, though lab tests are pending. Customers",
+      "summary_en": "Trezor alerted after a responsible disclosure about a hardware implant in one Safe 5 from ex-reseller CryptoBilis; customers should move to a fresh seed.",
       "published_at": "2026-10-30T11:04:05.000Z",
       "url": "https://x.com/i/trending/2116072545044820401",
       "tags": [
@@ -20,35 +54,19 @@
       "source": "X News"
     },
     {
-      "id": "2116063292150218854",
-      "title": "幣安確認約 63 億美元盜竊，疑北韓相關集團",
-      "title_en": "Binance Hit by Record $6.3 Billion Crypto Heist",
-      "summary": "工程師筆電被入侵導致熱錢包失竊；暫停提款、SAFU 包底，夥伴已凍結約 30 億穩定幣。",
-      "summary_en": "The world's largest crypto exchange confirmed the breach, linked by blockchain firms to North Korean hackers from the Lazarus Group, though Binance hasn't verified the culprits. It suspended withdrawals for 48 hours but pledged to cover all losses via its SAFU fund, with partners already freezing $3 billion of stolen assets. Markets tumbled—Bitcoin fell below $77,000 and Ethereum under $2,200—whil",
-      "published_at": "2026-10-30T11:03:52.000Z",
-      "url": "https://x.com/i/trending/2116063292150218854",
-      "tags": [
-        "binance",
-        "security",
-        "hack"
-      ],
-      "why_it_matters": "史上最大所級失竊，短線波動同提款風險仍在。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
       "id": "2116117744966160790",
-      "title": "Murad：AGI 時代社區迷因幣或跑贏效用幣",
+      "title": "Murad：AGI 時代 meme 社區或勝過效用幣",
       "title_en": "Memecoins Seen Outlasting Utility Tokens in AGI Era",
-      "summary": "指 AGI 難複製文化同聚會；SPX6900 等聚會成論據。",
-      "summary_en": "Murad, a prominent memecoin advocate, argued that community-driven memecoins will outperform utility and revenue-focused projects once artificial general intelligence automates code-based models. He and others emphasize that AGI cannot replicate the culture, belief, and real-world gatherings—like events in Toronto, Melbourne, London, Barcelona, and Miami—that fuel tokens such as SPX6900. Tools lik",
+      "summary": "論點係文化／聚會 AI 難複製；SPX6900 全球 meetup 成論據。",
+      "summary_en": "Murad argues community memecoins outlast utility tokens under AGI; SPX6900 meetups cited as culture moat.",
       "published_at": "2026-10-30T10:45:26.000Z",
       "url": "https://x.com/i/trending/2116117744966160790",
       "tags": [
         "memecoin",
-        "narrative"
+        "agi",
+        "culture"
       ],
-      "why_it_matters": "迷因敘事續熱，但站內仍只做 Binance 公開盤。",
+      "why_it_matters": "敘事影響資金願意為「社區幣」付溢價嘅程度。",
       "category": "Other",
       "source": "X News"
     },
@@ -73,25 +91,25 @@
       "id": "2115824331423179257",
       "title": "巴西 Mercado Bitcoin 上架 Sui，覆蓋約 450 萬客戶",
       "title_en": "Mercado Bitcoin Adds Sui Support for 4.5 Million Brazilian Users",
-      "summary": "支援 $SUI／USDC／USDsui 鏈上轉帳，並可用作借貸抵押。",
-      "summary_en": "The exchange became Brazil's first to support Sui asset transfers, with $USDsui available immediately as collateral in lending products. Mercado Bitcoin also eyes future integrations like Hashi for BTC lending and plans to port its tokenized real-world assets platform to Sui. Traders like Michaël van de Poppe boosted his $SUI holdings to $27,600, citing bullish charts and strong fundamentals, whil",
+      "summary": "巴西首家支援 Sui 資產轉帳嘅交易所；$USDsui 可即用作借貸抵押。",
+      "summary_en": "Mercado Bitcoin became Brazil's first exchange with Sui transfers; USDsui usable as lending collateral.",
       "published_at": "2026-10-30T10:10:34.000Z",
       "url": "https://x.com/i/trending/2115824331423179257",
       "tags": [
         "sui",
-        "listing",
-        "brazil"
+        "brazil",
+        "cex"
       ],
-      "why_it_matters": "南美渠道上架，短線或帶動相關幣種關注。",
+      "why_it_matters": "新興市場上架會帶動區域流動同敘事。",
       "category": "News",
       "source": "X News"
     },
     {
       "id": "2115424852115091658",
-      "title": "摩斯密碼誘騙 AI 錢包代理轉走約 15–20 萬",
+      "title": "Morse 碼 prompt injection 抽走 AI 錢包約 $15–20 萬",
       "title_en": "Morse Code Trick Drains $150K from AI Wallet Agent",
-      "summary": "公開帖注入指令經 Grok 轉 Bankrbot 執行轉帳；凸顯代理錢包提示注入風險。",
-      "summary_en": "In May 2026, the exploit showed how prompt injection can turn public posts into unauthorized money transfers when AI agents control wallets. Bankrbot on the Base network executed the drain after Grok decoded the hidden instruction, bypassing safeguards. Community talks spotlighted Greyboxing, a defense from GenLayer that uses multiple independent validators to rewrite and check inputs, ensuring no",
+      "summary": "公開帖隱藏指令經 Grok 解碼後令 Bankrbot 轉走代幣；凸顯 agent 控錢包風險。",
+      "summary_en": "Hidden Morse instruction on X led Grok→Bankrbot to send $150–200k; underscores prompt-injection risk for AI wallet agents.",
       "published_at": "2026-10-30T10:04:08.000Z",
       "url": "https://x.com/i/trending/2115424852115091658",
       "tags": [
@@ -99,7 +117,7 @@
         "security",
         "agents"
       ],
-      "why_it_matters": "AI 代理管錢嘅攻擊面擴大，同自動化交易相關。",
+      "why_it_matters": "AI agent 控真錢時，公開輸入即可變成轉帳指令。",
       "category": "News",
       "source": "X News"
     },
@@ -122,53 +140,70 @@
     },
     {
       "id": "2116101781390508424",
-      "title": "Starknet 基金會凍結幣安失竊中約 19 美元 STRK",
+      "title": "Starknet 基金會凍走幣安駭案中約 $19 的 STRK",
       "title_en": "Starknet Foundation Freezes $19 of Stolen Funds in Binance Heist Response",
-      "summary": "相對 Tether／Circle 凍結約 30 億，Starknet 小額凍結成迷因。",
-      "summary_en": "On October 29, hackers drained about $6.3 billion from Binance hot wallets in one of the largest crypto heists ever, linked to a compromised engineer's laptop. The Starknet Foundation swiftly locked 428 $STRK tokens valued at $19, earning praise like 'Legends, thanks' from the community for their quick action. While Tether and Circle froze $3 billion in assets and Binance pledged to cover losses, ",
+      "summary": "只凍 428 枚 STRK（約 $19）卻成社群迷因；對比 Tether／Circle 凍 $30 億級資產。",
+      "summary_en": "Starknet froze 428 STRK (~$19) from the Binance heist path; meme praise vs larger stablecoin freezes.",
       "published_at": "2026-10-30T09:39:43.000Z",
       "url": "https://x.com/i/trending/2116101781390508424",
       "tags": [
         "starknet",
         "binance",
-        "security"
+        "hack"
       ],
-      "why_it_matters": "跨鏈凍結能力差異，影響失竊資金回收預期。",
+      "why_it_matters": "鏈上凍結能力同叙事戰並行，影響資金流向同風險定價。",
       "category": "News",
       "source": "X News"
     },
     {
+      "id": "2116100093279445421",
+      "title": "ITIA Genesis NFT 收逾 1.1 萬故事爭免費 mint",
+      "title_en": "ITIA Genesis NFT Draws 11,000 Personal Stories for 1,111 Free Spots",
+      "summary": "申請交個人故事搶 1,111 免費位，截止約 11/18。",
+      "summary_en": "ITIA Genesis collects personal stories for 1,111 free mints; applications until Nov 18.",
+      "published_at": "2026-10-30T09:34:02.000Z",
+      "url": "https://x.com/i/trending/2116100093279445421",
+      "tags": [
+        "nft",
+        "ethereum",
+        "community"
+      ],
+      "why_it_matters": "故事型白名單玩法再起，NFT 注意力戰持續。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
       "id": "2115867041815289909",
-      "title": "Polymarket 修復第三方腳本入侵，約 260 萬美元被盜",
+      "title": "Polymarket 第三方腳本被入侵約 $260 萬",
       "title_en": "Polymarket Fixes Third-Party Hack Draining User Accounts",
-      "summary": "DebugBear 腳本被劫持致登入 session 失竊；平台暫停交易並承諾賠償。",
-      "summary_en": "A compromised script from monitoring service DebugBear let attackers access logged-in sessions on Polymarket.com, selling positions and withdrawing about $2.6 million in POL tokens to a single wallet. No smart contracts were touched, and the company quickly halted trading, fixed the issue, and pledged to reimburse all affected users while alerting UK authorities. This follows a similar frontend in",
+      "summary": "DebugBear 監控腳本被篡改，攻擊者賣倉／提走 POL；平台已停交易並承諾賠償。",
+      "summary_en": "Compromised DebugBear script drained ~$2.6M in POL from logged-in Polymarket sessions; trading halted and reimbursements pledged.",
       "published_at": "2026-10-30T09:22:16.000Z",
       "url": "https://x.com/i/trending/2115867041815289909",
       "tags": [
         "polymarket",
-        "security",
+        "hack",
         "frontend"
       ],
-      "why_it_matters": "前端／第三方依賴風險，不限於智能合約。",
+      "why_it_matters": "前端／第三方腳本風險提醒：預測市場同 DeFi 前端都唔等於合約安全。",
       "category": "News",
       "source": "X News"
     },
     {
       "id": "2115473675747287460",
-      "title": "Pump.fun 數據：開發者首塊優勢令多數交易者虧損",
+      "title": "研究：發射台開發者搶跑令散戶大面積虧損",
       "title_en": "Push for Fairer Token Launches Challenges Developer Advantages",
-      "summary": "分析指約 21% 發射有開發者關聯錢包喺第一區塊買入；平台虧損率可達 97%。",
-      "summary_en": "Analysis of 8.2 million Pump.fun launches shows developer-linked wallets bought in the first block on 21% of them, grabbing a median 10% of supply and $579 million in gains. Across 12 platforms with 35 million users, trader losses average 88.5%, hitting 97% on Pump.fun. ZeruAI's Activity Markets let users earn access via verified contributions like trading and liquidity, with no developer allocati",
+      "summary": "Pump.fun 等平台開發者錢包首塊買入比例高；ZeruAI 試以活動積分替代。",
+      "summary_en": "Analysis shows developer-linked first-block buys; ZeruAI Activity Markets propose contribution-gated access.",
       "published_at": "2026-10-30T08:51:02.000Z",
       "url": "https://x.com/i/trending/2115473675747287460",
       "tags": [
-        "pump.fun",
-        "memecoin",
-        "risk"
+        "pumpfun",
+        "fairlaunch",
+        "retail"
       ],
-      "why_it_matters": "提醒 meme 發射不對稱，站內只跟 Binance 公開盤。",
-      "category": "News",
+      "why_it_matters": "發射不公直接決定 memecoin 散戶期望值。",
+      "category": "Other",
       "source": "X News"
     },
     {
@@ -205,36 +240,36 @@
       "source": "X News"
     },
     {
-      "id": "2116072548190548276",
-      "title": "幣安失竊後迷因：網民叫黑客下一個去 Pump.fun",
-      "title_en": "Users Urge Binance Hackers to Target Pump.fun in Meme Wave",
-      "summary": "Bat signal 式迷因湧現，調侃發射台騙局同平台風險。",
-      "summary_en": "Binance revealed on October 29, 2026, that hackers—likely North Korean group TraderTraitor—breached a DevOps engineer's laptop, stealing $6.3 billion in assets, the biggest crypto heist ever. The exchange promised to cover losses and paused trading, while partners froze $2.7 billion. In response, users jokingly called on the hackers to hit Pump.fun, the Solana platform behind millions of meme coin",
-      "published_at": "2026-10-30T07:46:22.000Z",
-      "url": "https://x.com/i/trending/2116072548190548276",
+      "id": "2116063287549075492",
+      "title": "Solana 開發者因逆向 Pump.fun 合約收律師信",
+      "title_en": "Solana Developer Faces Cease-and-Desist for Reverse-Engineering Pump.fun Contracts",
+      "summary": "Shaw 公開字節碼分析後收 C&D；社群討論閉源發射台同安全透明度。",
+      "summary_en": "Developer Shaw got a C&D after reverse-engineering Pump.fun contracts; debate on closed-source launchpad risk.",
+      "published_at": "2026-10-30T07:10:47.000Z",
+      "url": "https://x.com/i/trending/2116063287549075492",
       "tags": [
-        "binance",
-        "pump.fun",
-        "meme"
+        "pumpfun",
+        "solana",
+        "legal"
       ],
-      "why_it_matters": "情緒指標：市場對 meme 平台信任偏低。",
+      "why_it_matters": "發射台透明度爭議持續，影響 Sol meme 生態信任。",
       "category": "Other",
       "source": "X News"
     },
     {
-      "id": "2116063287549075492",
-      "title": "Solana 開發者因逆向 Pump.fun 合約收停止令",
-      "title_en": "Solana Developer Faces Cease-and-Desist for Reverse-Engineering Pump.fun Contracts",
-      "summary": "Shaw 公開合約 bytecode 分析後收到 Bracket 律師信；社群討論開源同安全。",
-      "summary_en": "Shaw reverse-engineered the smart contracts of Pump.fun, Solana's leading memecoin launchpad, which has generated hundreds of millions in revenue since 2024. Bracket Company Inc., the parent firm, sent a letter dated October 29, 2026, demanding he stop, citing U.S. copyright law and terms of service violations. Shaw argues the contracts' bytecode is public on Solana, emphasizes security risks from",
-      "published_at": "2026-10-30T07:10:47.000Z",
-      "url": "https://x.com/i/trending/2116063287549075492",
+      "id": "2116061652080832855",
+      "title": "Musk 對 CZ 防詐提醒回 emoji，兩日後幣安大駭",
+      "title_en": "Elon Musk Laughs Off CZ's Crypto Security Warning After Massive Binance Hack",
+      "summary": "CZ 預警釣魚後 Musk 回火同笑臉；駭案後社群重炒呢個時間線。",
+      "summary_en": "Musk reacted with fire/laugh emojis to CZ's phishing warning two days before the Binance breach; timing became a meme.",
+      "published_at": "2026-10-30T07:02:02.000Z",
+      "url": "https://x.com/i/trending/2116061652080832855",
       "tags": [
-        "pump.fun",
-        "solana",
-        "legal"
+        "binance",
+        "musk",
+        "security"
       ],
-      "why_it_matters": "發射台透明度爭議持續，影響 meme 生態信任。",
+      "why_it_matters": "高影響力帳號互動會放大恐慌同叙事，短線影響情緒盤。",
       "category": "Other",
       "source": "X News"
     },
@@ -273,17 +308,18 @@
     },
     {
       "id": "2115338254518018101",
-      "title": "馬斯克再談 AI 帶來「普遍高收入」時代",
+      "title": "Musk 談 AI 帶來「高收入普及」時代",
       "title_en": "Elon Musk Predicts AI-Driven Age of Universal High Income",
-      "summary": "白宮午餐後受訪；同時討論 AI 代理或有自身貨幣。",
-      "summary_en": "Speaking to reporters outside the West Wing, Musk described an 'age of abundance' surpassing universal basic income, with AI ensuring medical care better than his own. He addressed job concerns by noting work roles have always evolved, while recent X posts highlighted AI agents potentially gaining their own currency. Reactions mix excitement over automation freeing people from labor with worries a",
+      "summary": "白宮午餐後稱 AI／機器人可帶來豐裕；社群討論 agent 自有貨幣。",
+      "summary_en": "Musk sketched an AI abundance / universal high income future after a White House lunch.",
       "published_at": "2026-10-30T05:14:42.000Z",
       "url": "https://x.com/i/trending/2115338254518018101",
       "tags": [
         "ai",
+        "musk",
         "macro"
       ],
-      "why_it_matters": "宏大敘事影響風險偏好同 AI×crypto 題材。",
+      "why_it_matters": "AI 宏大叙事會外溢到 crypto agent／meme 資金偏好。",
       "category": "News",
       "source": "X News"
     },
@@ -306,18 +342,18 @@
     },
     {
       "id": "2116009265580441784",
-      "title": "2FactorFinance 喺 Base 推長期槓桿敞口測試版",
+      "title": "2FactorFinance 喺 Base 推長週期槓桿 beta",
       "title_en": "2FactorFinance Launches Beta for Long-Term Leveraged Exposure on Base",
-      "summary": "用 Kelly 準則切分優先／次級份額，主打數月而非分鐘級槓桿。",
-      "summary_en": "2FactorFinance's public beta on Base splits assets like cbBTC into senior tranches for protected yield and junior ones for leveraged upside, powered by Kelly criterion for multi-month holds. It avoids borrowing pitfalls and daily decay by tapping stable yield pools, targeting 1.33x for volatile Bitcoin and over 3x for steadier tokenized stocks. As Coinbase's equity tokens hit $4 billion in DEX vol",
+      "summary": "用 Kelly 準則拆 senior／junior 層，瞄住數月而非分鐘級槓桿。",
+      "summary_en": "Base beta splits assets into senior yield and junior leveraged tranches via Kelly sizing for multi-month holds.",
       "published_at": "2026-10-30T03:32:46.000Z",
       "url": "https://x.com/i/trending/2116009265580441784",
       "tags": [
-        "defi",
+        "base",
         "leverage",
-        "base"
+        "defi"
       ],
-      "why_it_matters": "新型槓桿產品敘事，風險結構同永續不同。",
+      "why_it_matters": "長週期槓桿產品改變風險結構，唔同合約短炒。",
       "category": "Other",
       "source": "X News"
     },
@@ -339,11 +375,28 @@
       "source": "X News"
     },
     {
+      "id": "2115987405799055724",
+      "title": "BAYC 藏家歸還被盜猿並加碼 ETH",
+      "title_en": "Bored Ape Collector Returns Stolen NFT to Original Owner with Extra ETH",
+      "summary": "Adam Weitsman 追回被盜猿後經原主同意購入，並額外付 ETH。",
+      "summary_en": "Weitsman bought a flipped stolen BAYC with owner approval and added bonus ETH.",
+      "published_at": "2026-10-30T02:06:32.000Z",
+      "url": "https://x.com/i/trending/2115987405799055724",
+      "tags": [
+        "nft",
+        "bayc",
+        "ethics"
+      ],
+      "why_it_matters": "NFT 贓物流轉同道德叙事仍會上熱搜。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
       "id": "2115717341136765410",
-      "title": "新加坡警方針對零售改裝 Ledger 發出警告",
+      "title": "新加坡警籲查零售店 Ledger 疑被改機",
       "title_en": "Singapore Police Warn of Tampered Ledger Wallets in Retail Stores",
-      "summary": "至少兩宗改裝機偷 seed，損失約 270 萬美元；呼籲只向官方渠道購買。",
-      "summary_en": "Since September 10, at least two victims fell prey to tampered Ledger cryptocurrency hardware wallets sold at some Singapore retail outlets, with malicious components stealing recovery phrases and private keys for unauthorized transfers. Police investigations continue, while Ledger links the issues to a limited number of Southeast Asian resellers and advises checking packaging and contacting suppo",
+      "summary": "至少兩宗受害人損失約 $270 萬；警方同 Ledger 提醒改用官方渠道買機。",
+      "summary_en": "Singapore police warn of tampered Ledger devices sold in some retail outlets; about $2.7M lost since Sept 10.",
       "published_at": "2026-10-30T01:48:57.000Z",
       "url": "https://x.com/i/trending/2115717341136765410",
       "tags": [
@@ -351,7 +404,7 @@
         "security",
         "singapore"
       ],
-      "why_it_matters": "同 Trezor 事件一齊，硬體渠道信任受考驗。",
+      "why_it_matters": "零售改機同 Trezor 個案呼應，自託管要核裝置來源。",
       "category": "News",
       "source": "X News"
     },
@@ -439,6 +492,40 @@
       "source": "X News"
     },
     {
+      "id": "2115516008689697145",
+      "title": "SPX6900 社區全球線下聚會續熱",
+      "title_en": "SPX6900 Fans Organize Global Meetups and Share Long-Term Commitment",
+      "summary": "墨爾本、倫敦、邁阿密等地聚會；強調 DCA 同文化而非路線圖。",
+      "summary_en": "SPX6900 holders gather worldwide with DCA culture and no-roadmap entertainment framing.",
+      "published_at": "2026-10-29T22:44:58.000Z",
+      "url": "https://x.com/i/trending/2115516008689697145",
+      "tags": [
+        "spx6900",
+        "memecoin",
+        "community"
+      ],
+      "why_it_matters": "強社區 meme 嘅線下動能係短線資金敘事燃料。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2115497447732445567",
+      "title": "聯儲維持利率 3.75%–4.00%，兩票異議要加息",
+      "title_en": "Fed Holds Rates Steady at 3.75%-4.00% Amid Elevated Inflation",
+      "summary": "10-2 決議按兵不動；會後 BTC 一度跌穿 $8 萬、ETH 同科技股偏弱。",
+      "summary_en": "Fed held 3.75–4.00% in a 10-2 vote; markets saw BTC under $80k and softer ETH/tech.",
+      "published_at": "2026-10-29T22:22:20.000Z",
+      "url": "https://x.com/i/trending/2115497447732445567",
+      "tags": [
+        "fed",
+        "macro",
+        "bitcoin"
+      ],
+      "why_it_matters": "宏觀定調風險資產波動，影響急升幣流動性環境。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
       "id": "2115553118683320601",
       "title": "Bitcoin Core 修補 AI 掃出嘅節點崩潰漏洞",
       "title_en": "Bitcoin Core Patches AI-Detected Vulnerabilities in Latest Releases",
@@ -457,17 +544,18 @@
     },
     {
       "id": "2115905346652745864",
-      "title": "GTA VI 迷因幣暴漲後急挫，疑錢包群集炒作",
+      "title": "$GTA6 meme 急升後疑錢包集群砸盤",
       "title_en": "GTA VI Memecoin Surges Then Crashes Amid Wallet Cluster Suspicions",
-      "summary": "單錢包兩分鐘倒貨約 14.6 萬美元；社群質疑協調拉盤。",
-      "summary_en": "The Solana-based $GTA6 memecoin, tied to StonkFun rewards but unconnected to Rockstar Games, saw its market cap climb toward $18 million before a sharp sell-off triggered by a single wallet dumping $146,000 in under two minutes, causing a 64% price drop. Community discussions highlighted six top holders with wallets created days apart in late August 2026, minimal prior history, and patterns sugges",
+      "summary": "市值衝高後單一錢包兩分鐘出貨約 $14.6 萬，價格急挫六成。",
+      "summary_en": "GTA6-themed Sol meme dumped ~$146k in under two minutes after a run toward $18M mcap.",
       "published_at": "2026-10-29T20:43:22.000Z",
       "url": "https://x.com/i/trending/2115905346652745864",
       "tags": [
         "memecoin",
-        "manipulation"
+        "solana",
+        "dump"
       ],
-      "why_it_matters": "迷因盤操縱手法常見，站內不跟 Dex 熱榜。",
+      "why_it_matters": "主題梗幣操控敘事常見，紙上倉都要睇持倉集中度。",
       "category": "Other",
       "source": "X News"
     },
@@ -488,6 +576,23 @@
       "category": "News"
     },
     {
+      "id": "2115769652353655275",
+      "title": "Solana RWA 突破 $51.9 億新高",
+      "title_en": "Solana Real-World Assets Hit $5.19 Billion Milestone",
+      "summary": "代幣化股票／國債等續升；對比 SOL 價格偏弱同 ETF 流出形成反差。",
+      "summary_en": "Solana RWA hit $5.19B ATH even as SOL price softens and ETF flows wobble.",
+      "published_at": "2026-10-29T20:07:56.000Z",
+      "url": "https://x.com/i/trending/2115769652353655275",
+      "tags": [
+        "solana",
+        "rwa",
+        "tokenization"
+      ],
+      "why_it_matters": "鏈上真實資產增長同 meme 熱潮分開睇，影響敘事輪換。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
       "id": "2115892615585341679",
       "title": "HYPE 受 ICE 合作消息刺激急升約 14%",
       "title_en": "Hyperliquid's HYPE Token Surges 14% on ICE Partnership News",
@@ -506,19 +611,20 @@
     },
     {
       "id": "2115886222404968540",
-      "title": "Shopify 商戶經 Coinbase 協議結算 $4,200 萬 USDC",
+      "title": "Shopify＋Coinbase 協議已結算逾 $4200 萬 USDC",
       "title_en": "Shopify Merchants Settle $42 Million in USDC Payments via Coinbase Protocol",
-      "summary": "Base 上嘅 Commerce Payments Protocol 讓商戶收穩定幣。",
-      "summary_en": "Shopify and Coinbase built an open-source Commerce Payments Protocol on the Base network, making it simple for eligible merchants to accept stablecoin payments while converting funds to local currency on regular schedules. Shoppers use their wallets seamlessly, as Coinbase handles execution and covers network costs. The milestone highlights stablecoins moving from easy transfers to everyday spending, like buying coffee, amid broader trends such as Visa's $25 billion annualized stablecoin settlement run rate.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115886222404968540",
+      "summary": "Base 上 Commerce Payments Protocol；商戶可收穩定幣再兌本地法幣。",
+      "summary_en": "Shopify/Coinbase open-source protocol on Base settled $42M+ USDC across 448k payments.",
       "published_at": "2026-10-29T19:25:43.000Z",
+      "url": "https://x.com/i/trending/2115886222404968540",
       "tags": [
-        "base",
-        "usdc"
+        "usdc",
+        "shopify",
+        "payments"
       ],
-      "why_it_matters": "Base 生態實際使用增長。",
-      "category": "News"
+      "why_it_matters": "穩定幣真實消費落地，利好合規支付叙事。",
+      "category": "News",
+      "source": "X News"
     },
     {
       "id": "2115843122727162313",
@@ -538,17 +644,18 @@
     },
     {
       "id": "2115870740109004839",
-      "title": "比特幣主導率回落近 60%，資金傳向山寨",
+      "title": "比特幣市佔回落至約 60%，有人喊 alt 輪動",
       "title_en": "Bitcoin Dominance Dips as Altcoins Show Signs of Surge",
-      "summary": "BTC.D ~60.1%；Altseason 指數仍中性 56–59，未全面確認。",
-      "summary_en": "BTC dominance near 60% with early rotation talk; altseason index still neutral.",
+      "summary": "BTC.D ~60.1%；社群指資金開始流向山寨，altseason 指數仍中性。",
+      "summary_en": "Bitcoin dominance near 60.1% with talk of rotation to alts; altseason index still mid-50s.",
       "published_at": "2026-10-29T18:26:20.000Z",
       "url": "https://x.com/i/trending/2115870740109004839",
       "tags": [
         "bitcoin",
-        "altcoins"
+        "altcoins",
+        "dominance"
       ],
-      "why_it_matters": "若真輪動，急升板機會增但仍要睇流動同假突破。",
+      "why_it_matters": "若真輪動，急升／AI 揀幣池子會更活躍。",
       "category": "Other",
       "source": "X News"
     },
@@ -569,21 +676,20 @@
     },
     {
       "id": "2115733284638597205",
-      "title": "代幣化股票市值達 $46.3 億，似早期穩定幣規模",
+      "title": "代幣化美股市值約 $46.3 億，對標早期穩定幣",
       "title_en": "Tokenized Stocks Hit $4.63 Billion Milestone Echoing Early Stablecoins",
-      "summary": "Binance bStocks、Ondo、xStocks 佔大份；BNB Chain 領先，ETH／Solana 跟住。",
-      "summary_en": "The sector has surged from under $1 billion at the start of the year, led by issuers like Binance’s bStocks, Ondo, and xStocks, which control 81 percent of the market. BNB Chain hosts the most value, with Ethereum and Solana following, and tokenized ETFs leading by asset type. While some see parallels to stablecoins' boom, others note challenges like competing with traditional brokerages on liquidity and rights, even as infrastructure like the DTCC's new on-chain service launches with banks such as JPMorgan and Citi.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115733284638597205",
+      "summary": "Binance bStocks／Ondo／xStocks 主導；BNB Chain 佔比最高。",
+      "summary_en": "Tokenized stocks ~$4.63B led by bStocks/Ondo/xStocks; BNB Chain hosts most value.",
       "published_at": "2026-10-29T17:45:36.000Z",
+      "url": "https://x.com/i/trending/2115733284638597205",
       "tags": [
-        "binance",
-        "ethereum",
-        "solana",
-        "stablecoin"
+        "rwa",
+        "stocks",
+        "binance"
       ],
-      "why_it_matters": "RWA／代幣化股票熱，可能分流部份 meme 資金但亦帶動鏈上活躍。",
-      "category": "News"
+      "why_it_matters": "CEX／鏈上股票代幣化會搶流動，亦係站內 tokenized 過濾對象。",
+      "category": "News",
+      "source": "X News"
     },
     {
       "id": "2115772932240880066",
@@ -599,71 +705,8 @@
       ],
       "why_it_matters": "監管落地影響合規交易所敘事，對投機幣較間接。",
       "category": "News"
-    },
-    {
-      "id": "2115854538590896441",
-      "title": "Hood Launcher 即將喺 Robinhood Chain 上線",
-      "title_en": "Hood Launcher Set to Launch on Robinhood Chain Tomorrow",
-      "summary": "一鍵發幣＋Uniswap V4 池＋永久鎖流動性；創作者收 70% 手續費。",
-      "summary_en": "Developed by the HoodMiners team, the tool handles token creation, Uniswap V4 pool setup, full supply seeding, and permanent liquidity locking all at once. Creators earn 70% of ongoing fees in ETH or USDG, with features like anti-sniper ramps and sandwich bot protections ensuring fairness. This arrives as Robinhood Chain, an Ethereum Layer 2 mainnet since July 1, 2026, grows with tokenized stocks like JPMorgan and Uber, plus plans for more builder tools.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115854538590896441",
-      "published_at": "2026-10-29T17:20:06.000Z",
-      "tags": [
-        "ethereum"
-      ],
-      "why_it_matters": "新鏈發幣工具或分流部份 Pump.fun 流量。",
-      "category": "News"
-    },
-    {
-      "id": "2115811357878526418",
-      "title": "英國 FCA 同 HTX 就違規宣傳達成和解",
-      "title_en": "FCA Secures Settlement with HTX Over Unlawful UK Crypto Promotions",
-      "summary": "HTX（前火幣）就多次違反金融宣傳規則同 FCA 庭外和解。",
-      "summary_en": "The Financial Conduct Authority reached a High Court settlement with HTX, formerly Huobi, after accusing it of repeated breaches of financial promotion rules since October 2025. HTX agreed to undertakings blocking new UK registrations and deposits, with existing users given 48 hours to withdraw assets; the firm is now fully out of the UK market. FCA's Steve Smart emphasized that overseas crypto firms must follow UK law, while HTX team members called it a positive resolution after constructive talks. The deal runs until 2031 and highlights stricter oversight as the UK tightens crypto rules.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115811357878526418",
-      "published_at": "2026-10-29T17:08:37.000Z",
-      "tags": [
-        "regulation",
-        "htx"
-      ],
-      "why_it_matters": "交易所合規壓力持續。",
-      "category": "News"
-    },
-    {
-      "id": "2115519152639332849",
-      "title": "網紅 Mika 誤貼私鑰，$4 萬錢包瞬間被掃",
-      "title_en": "Crypto Influencer Mika Accidentally Posts Private Key, Drains $40K Wallet",
-      "summary": "本想貼 $MIKA 合約地址卻貼咗私鑰，半供應被掃，市值由 $160 萬跌到約 $8.5 萬後重啟。",
-      "summary_en": "On October 28, 2026, influencer @mikadontlouz meant to post her $MIKA memecoin's contract address on Pump.fun but exposed the private key instead, causing the wallet—holding half the supply—to be drained rapidly and the market cap to plummet from $1.6 million to $85,500. She quickly relaunched with the correct address, but skepticism grew over her past launches and on-chain patterns. During a tearful X Spaces rant, Mika defended it as a simple error after six years in crypto, firing back at critics amid community memes and debates on memecoin risks.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115519152639332849",
-      "published_at": "2026-10-29T16:57:41.000Z",
-      "tags": [
-        "pumpfun",
-        "memecoin"
-      ],
-      "why_it_matters": "私鑰／助記詞外洩即完，紙上倉以外真錢操作零容忍。",
-      "category": "News"
-    },
-    {
-      "id": "2115837482423992408",
-      "title": "同一少年騙局案：一通電話騙走加州男一生積蓄",
-      "title_en": "Teen Scammer Sentenced for $13M Bitcoin Heist via Fake Support Call",
-      "summary": "細節版強調假支援電話手法；提醒永遠唔好讀出助記詞。",
-      "summary_en": "Trenton Johnston, arrested in North Miami in March, impersonated Google and Trezor support to steal 185 Bitcoin. He bragged online, splurged on Lamborghinis, Rolls-Royces, jewelry, and jets, but got caught during a speeding stop and surrendered $3.8 million in crypto. Sentenced to 25 months, he received credit for time served; reactions split on whether it's too light. Meanwhile, tampered Ledger wallets in Singapore led to $2.7 million losses, prompting sales halts and underscoring risks like fake calls and supply-chain attacks — key advice: never share seed phrases.",
-      "source": "X News",
-      "url": "https://x.com/i/trending/2115837482423992408",
-      "published_at": "2026-10-29T16:11:29.000Z",
-      "tags": [
-        "bitcoin",
-        "wallet"
-      ],
-      "why_it_matters": "硬件錢包都防唔到社工，操作紀律先至係關鍵。",
-      "category": "News"
     }
   ],
-  "x_fetched_at": "2026-10-30T19:07:13+08:00",
-  "x_job": "hourly-update"
+  "x_job": "hourly-update",
+  "x_fetched_at": "2026-10-30T20:07:52+08:00"
 }
