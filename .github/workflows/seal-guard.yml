@@ -2,9 +2,9 @@
 name: Seal guard
 on:
   push:
-    paths: ["data/gainer_board/daily_vs_gainers/**", "scripts/gainer_board.py", "scripts/check_seals.py", "tests/**"]
+    paths: ["data/gainer_board/daily_vs_gainers/**", "scripts/gainer_board.py", "scripts/check_seals.py", "tests/**", "scripts/news_guard.py"]
   pull_request:
-    paths: ["data/gainer_board/daily_vs_gainers/**", "scripts/gainer_board.py", "scripts/check_seals.py", "tests/**"]
+    paths: ["data/gainer_board/daily_vs_gainers/**", "scripts/gainer_board.py", "scripts/check_seals.py", "tests/**", "scripts/news_guard.py"]
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Tests
-        run: python3 -m py_compile scripts/gainer_board.py scripts/check_seals.py && python3 -m unittest discover -s tests -v
+        run: python3 -m py_compile scripts/gainer_board.py scripts/check_seals.py scripts/news_guard.py && python3 -m unittest discover -s tests -v
       - name: Sealed files unchanged vs base
         run: |
           BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
