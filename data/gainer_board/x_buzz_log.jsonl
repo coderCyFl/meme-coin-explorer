@@ -147,3 +147,9 @@
 {"ts": "2026-10-30T04:20:10+08:00", "symbol": "PEPEUSDT", "tool": "search", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-10-30T05:19:50+08:00", "symbol": "PARTIUSDT", "tool": "counts", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 204}
 {"ts": "2026-10-30T05:19:51+08:00", "symbol": "PARTIUSDT", "tool": "search", "query": "($PARTI OR #PARTI) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-30T08:16:19+08:00", "symbol": "GTCUSDT", "tool": "counts", "query": "($GTC OR #GTC) (crypto OR binance) lang:en -is:retweet", "result_count": 11}
+{"ts": "2026-10-30T08:16:19+08:00", "symbol": "GTCUSDT", "tool": "search", "query": "($GTC OR #GTC) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-30T08:16:19+08:00", "symbol": "TRXUSDT", "tool": "counts", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 485}
+{"ts": "2026-10-30T08:16:19+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-10-30T08:16:19+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-10-30T08:16:19+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
