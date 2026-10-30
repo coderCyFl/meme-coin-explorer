@@ -2,8 +2,10 @@
 name: Daily outcomes snapshot
 on:
   schedule:
-    # ~01:00 UTC ≈ 09:00 HKT
-    - cron: "0 1 * * 1-5"
+    # Every 4h UTC (09/13/17/21/01/05 HKT), all days incl. weekends.
+    # setup_20261030e sell_by is 12h — weekday-only 09:00 HKT left RENDER/AAVE 12h unsealed overnight/weekend.
+    # Keeps the old 01:00 UTC ≈ 09:00 HKT slot.
+    - cron: "0 1,5,9,13,17,21 * * *"
   workflow_dispatch:
 
 permissions:
