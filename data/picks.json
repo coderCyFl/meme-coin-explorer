@@ -4435,6 +4435,334 @@
      "exit_plan": "目標 +5%（$137.75）· 止蝕 −4%（$125.942）· 12h 檢討 · 最遲 24h 沽"
     }
    ]
+  },
+  {
+   "id": "batch-012",
+   "created_at": "2026-10-30T13:37:44+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, accumulation); rotation stopped + higher_lows ¼ (20261030g); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -2,
+    "breadth_up_pct": 1.9,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "setup_size_gate": {
+    "size": "quarter",
+    "rolling7d_sealed_ew_pct": -1.96,
+    "n": 23,
+    "seal_hours": {
+     "24h": 23
+    },
+    "rule": "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase always full"
+   },
+   "setup_exit": {
+    "tp": 10,
+    "sl": 4,
+    "reviewH": 6,
+    "sellH": 12
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 78758.74
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 98.29
+    }
+   },
+   "entries": [
+    {
+     "id": "20261030-012-RENDER",
+     "batch": "batch-012",
+     "type": "buy",
+     "created_at": "2026-10-30T13:37:44+08:00",
+     "chain": "binance",
+     "token_address": "binance:RENDERUSDT",
+     "pair_address": "RENDERUSDT",
+     "dex": "binance-spot",
+     "symbol": "RENDER",
+     "name": "RENDER (Binance)",
+     "url": "https://www.binance.com/en/trade/RENDER_USDT",
+     "entry_price_usd": 1.578,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 5742751.22135,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -4.364,
+      "high24h": 1.72,
+      "low24h": 1.45,
+      "vol_creep": 2.121,
+      "rel_vs_btc_7d": -6,
+      "compression": 0.412,
+      "angle": "mean_reversion"
+     },
+     "model_score": 63,
+     "score_parts": {
+      "vol_creep": 22,
+      "compression": 0,
+      "relative": 10.804818901786518,
+      "higher_lows": 0,
+      "rotation": 22.002677167659176,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.448900003562516,
+      "chase_penalty": 0
+     },
+     "conviction": 63,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half",
+      "size:quarter"
+     ],
+     "size": "quarter",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "RENDERUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 1.7358,
+     "stop_price_usd": 1.51488,
+     "review_at": "2026-10-30T19:37:44+08:00",
+     "sell_by": "2026-10-31T01:37:44+08:00",
+     "exit_plan": "目標 +10%（$1.7358）· 止蝕 −4%（$1.51488）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
+    },
+    {
+     "id": "20261030-012-AAVE",
+     "batch": "batch-012",
+     "type": "buy",
+     "created_at": "2026-10-30T13:37:44+08:00",
+     "chain": "binance",
+     "token_address": "binance:AAVEUSDT",
+     "pair_address": "AAVEUSDT",
+     "dex": "binance-spot",
+     "symbol": "AAVE",
+     "name": "AAVE (Binance)",
+     "url": "https://www.binance.com/en/trade/AAVE_USDT",
+     "entry_price_usd": 126.81,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 40155010.40325,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -3.866,
+      "high24h": 138,
+      "low24h": 115.23,
+      "vol_creep": 2.329,
+      "rel_vs_btc_7d": -9.16,
+      "compression": 0.625,
+      "angle": "mean_reversion"
+     },
+     "model_score": 72,
+     "score_parts": {
+      "vol_creep": 22,
+      "compression": 0,
+      "relative": 16.492324549160777,
+      "higher_lows": 0,
+      "rotation": 24,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.504674678448065,
+      "chase_penalty": 0
+     },
+     "conviction": 72,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half",
+      "size:quarter"
+     ],
+     "size": "quarter",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "AAVEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 139.491,
+     "stop_price_usd": 121.738,
+     "review_at": "2026-10-30T19:37:44+08:00",
+     "sell_by": "2026-10-31T01:37:44+08:00",
+     "exit_plan": "目標 +10%（$139.491）· 止蝕 −4%（$121.738）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
+    },
+    {
+     "id": "20261030-012-CHASE-BEAMX",
+     "batch": "batch-012",
+     "type": "buy",
+     "tier": "chase",
+     "exitRegime": "momentum",
+     "created_at": "2026-10-30T13:37:44+08:00",
+     "chain": "binance",
+     "token_address": "binance:BEAMXUSDT",
+     "pair_address": "BEAMXUSDT",
+     "dex": "binance-spot",
+     "symbol": "BEAMX",
+     "name": "BEAMX (Binance)",
+     "url": "https://www.binance.com/en/trade/BEAMX_USDT",
+     "entry_price_usd": 0.003784,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 5147855.930596,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 11.098,
+      "high24h": 0.003785,
+      "low24h": 0.003224,
+      "from_high_pct": -0.03,
+      "vol_ratio_1h": 9.18,
+      "c1h_pct": 8.34,
+      "angle": "chase",
+      "tier": "chase"
+     },
+     "model_score": null,
+     "score_parts": null,
+     "conviction": null,
+     "rationale": "🚀 續升買：24h +11.1%、離 24h 高 -0.0%、1h 成交 9.2x、1h 仲升緊 → 紙上跟買。",
+     "tip": "🚀 續升買 · 可追",
+     "angle": "chase",
+     "flags": [
+      "Binance USDT spot",
+      "tier:chase",
+      "angle:chase",
+      "size:full"
+     ],
+     "size": "full",
+     "suggested_exit_h": 4,
+     "suggested_second_h": 24,
+     "take_profit_pct": 20,
+     "take_profit2_pct": 50,
+     "stop_loss_pct": 10,
+     "evidence": {
+      "source": "binance-24hr-ticker+klines-1h",
+      "symbol": "BEAMXUSDT",
+      "note": "gainer_core.chase_ok mirror; separate from early-capture scorecard"
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.0045408,
+     "stop_price_usd": 0.0034056,
+     "review_at": "2026-10-30T17:37:44+08:00",
+     "sell_by": "2026-10-31T13:37:44+08:00",
+     "exit_plan": "+20% 放一半（$0.0045408）· +50% 清（$0.005676）· 止蝕 −10%（$0.0034056）· 4h 檢討 · 最遲 24h 沽",
+     "target2_price_usd": 0.005676
+    },
+    {
+     "id": "20261030-012-CHASE-SOPH",
+     "batch": "batch-012",
+     "type": "buy",
+     "tier": "chase",
+     "exitRegime": "momentum",
+     "created_at": "2026-10-30T13:37:44+08:00",
+     "chain": "binance",
+     "token_address": "binance:SOPHUSDT",
+     "pair_address": "SOPHUSDT",
+     "dex": "binance-spot",
+     "symbol": "SOPH",
+     "name": "SOPH (Binance)",
+     "url": "https://www.binance.com/en/trade/SOPH_USDT",
+     "entry_price_usd": 0.0017,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 1808153.71966,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 16.438,
+      "high24h": 0.00171,
+      "low24h": 0.00118,
+      "from_high_pct": -0.58,
+      "vol_ratio_1h": 4.47,
+      "c1h_pct": 11.97,
+      "angle": "chase",
+      "tier": "chase"
+     },
+     "model_score": null,
+     "score_parts": null,
+     "conviction": null,
+     "rationale": "🚀 續升買：24h +16.4%、離 24h 高 -0.6%、1h 成交 4.5x、1h 仲升緊 → 紙上跟買。",
+     "tip": "🚀 續升買 · 可追",
+     "angle": "chase",
+     "flags": [
+      "Binance USDT spot",
+      "tier:chase",
+      "angle:chase",
+      "size:bonus"
+     ],
+     "size": "bonus",
+     "suggested_exit_h": 4,
+     "suggested_second_h": 24,
+     "take_profit_pct": 20,
+     "take_profit2_pct": 50,
+     "stop_loss_pct": 10,
+     "evidence": {
+      "source": "binance-24hr-ticker+klines-1h",
+      "symbol": "SOPHUSDT",
+      "note": "gainer_core.chase_ok mirror; separate from early-capture scorecard"
+     },
+     "horizons_h": [
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.00204,
+     "stop_price_usd": 0.00153,
+     "review_at": "2026-10-30T17:37:44+08:00",
+     "sell_by": "2026-10-31T13:37:44+08:00",
+     "exit_plan": "+20% 放一半（$0.00204）· +50% 清（$0.00255）· 止蝕 −10%（$0.00153）· 4h 檢討 · 最遲 24h 沽",
+     "target2_price_usd": 0.00255
+    }
+   ]
   }
  ]
 }
