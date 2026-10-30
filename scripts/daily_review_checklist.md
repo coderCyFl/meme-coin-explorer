@@ -13,6 +13,7 @@
 ## 2. 新聞新鮮度
 - [ ] `data/news.json` 嘅 `fetched_at` 係咪 48 小時內？
 - [ ] 過期就用 agent `search_news`（≤5 calls）刷新，保留 `data/raw/news-NNN/`
+- [ ] **X news 每個鐘最多一次**：call X 之前一定要跑 `python3 scripts/news_guard.py begin --job <routine>`；見到 `SKIP` 就唔好 call X、唔好改 `data/news.json`。寫入只可以用 `git pull --rebase` 之後嘅 `news_guard.py write --in <candidate>`（會 append `data/x_calls_log.jsonl`）
 - [ ] 每則有冇「點解重要」？空白就補
 
 ## 3. UX 摩擦
