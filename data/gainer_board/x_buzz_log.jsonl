@@ -209,3 +209,7 @@
 {"ts": "2026-10-31T06:12:00+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-10-31T06:12:00+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 12}
 {"ts": "2026-10-31T06:12:00+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-31T07:16:00+08:00", "symbol": "SOPHUSDT", "tool": "counts", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 42}
+{"ts": "2026-10-31T07:16:00+08:00", "symbol": "SOPHUSDT", "tool": "search", "query": "($SOPH OR #SOPH) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-10-31T07:16:00+08:00", "symbol": "BLURUSDT", "tool": "counts", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
+{"ts": "2026-10-31T07:16:00+08:00", "symbol": "BLURUSDT", "tool": "search", "query": "($BLUR OR #BLUR) (crypto OR binance) lang:en -is:retweet", "result_count": 10}

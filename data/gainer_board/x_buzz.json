@@ -5,33 +5,33 @@
    "symbol": "BLURUSDT",
    "base": "BLUR",
    "flag": "pump",
-   "trigger_at": "2026-10-31T02:45:00+08:00",
-   "checked_at": "2026-10-31T06:12:00+08:00",
-   "posts_last_1h": 1,
+   "trigger_at": "2026-10-31T03:15:00+08:00",
+   "checked_at": "2026-10-31T07:16:00+08:00",
+   "posts_last_1h": 2,
    "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 0.55,
+   "spike_ratio": 1.09,
    "verdict": "冷",
-   "one_line": "得告警莊，聲量低",
+   "one_line": "聲量低，多告警莊",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
+    {
+     "id": "2116291570488009120",
+     "url": "https://x.com/ratiodotday/status/2116291570488009120",
+     "text": "Biggest perp movers, last 4h BLUR +8.0%",
+     "likes": 2,
+     "author_username": "ratiodotday",
+     "author_followers": 46,
+     "created_at": "2026-10-31T06:10:03+08:00"
+    },
     {
      "id": "2116286721511829551",
      "url": "https://x.com/CR_2030/status/2116286721511829551",
      "text": "#BLUR Complete Crypto Risk Sniper Bot",
      "likes": 2,
      "author_username": "CR_2030",
-     "author_followers": 1546,
+     "author_followers": 1547,
      "created_at": "2026-10-31T05:50:47+08:00"
-    },
-    {
-     "id": "2116291570488009120",
-     "url": "https://x.com/ratiodotday/status/2116291570488009120",
-     "text": "Biggest perp movers, last 4h BLUR +8.0%",
-     "likes": 1,
-     "author_username": "ratiodotday",
-     "author_followers": 46,
-     "created_at": "2026-10-31T06:10:03+08:00"
     },
     {
      "id": "2116289113880150069",
@@ -39,11 +39,11 @@
      "text": "Last 60m - #Binance Spot Top Gainers include Blur ↑3.22%",
      "likes": 1,
      "author_username": "cexscan",
-     "author_followers": 10602,
+     "author_followers": 10601,
      "created_at": "2026-10-31T06:00:18+08:00"
     }
    ],
-   "checks_this_trigger": 4
+   "checks_this_trigger": 1
   },
   "KATUSDT": {
    "symbol": "KATUSDT",
@@ -475,13 +475,13 @@
    "symbol": "SOPHUSDT",
    "base": "SOPH",
    "flag": "pump",
-   "trigger_at": "2026-10-31T02:15:00+08:00",
-   "checked_at": "2026-10-31T06:12:00+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 5.67,
-   "spike_ratio": 0.53,
+   "trigger_at": "2026-10-31T06:00:00+08:00",
+   "checked_at": "2026-10-31T07:16:00+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 5.83,
+   "spike_ratio": 1.2,
    "verdict": "冷",
-   "one_line": "熱度淡，多掃盤喊單",
+   "one_line": "多掃盤bot，聲量平",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -491,26 +491,26 @@
      "text": "#SOPH Complete Crypto Risk Sniper Bot",
      "likes": 2,
      "author_username": "CR_2030",
-     "author_followers": 1546,
+     "author_followers": 1547,
      "created_at": "2026-10-31T05:50:24+08:00"
     },
     {
      "id": "2116289113880150069",
      "url": "https://x.com/cexscan/status/2116289113880150069",
-     "text": "Last 60m - #Binance Spot Top 3 Gainers: $SOPH (Sophon) : ↑6.8%",
+     "text": "Last 60m - #Binance Spot Top Gainers include $SOPH ↑6.8%",
      "likes": 1,
      "author_username": "cexscan",
-     "author_followers": 10602,
+     "author_followers": 10601,
      "created_at": "2026-10-31T06:00:18+08:00"
     },
     {
-     "id": "2116247573329588467",
-     "url": "https://x.com/Amina_Allee/status/2116247573329588467",
-     "text": "Binance Futures #SOPH/USDT All take-profit targets achieved Profits: 893.7201%",
-     "likes": 0,
-     "author_username": "Amina_Allee",
-     "author_followers": 804,
-     "created_at": "2026-10-31T03:15:14+08:00"
+     "id": "2116290124116041854",
+     "url": "https://x.com/bn_trader/status/2116290124116041854",
+     "text": "Crypto Movers Oct 30 Gainers include $SOPH",
+     "likes": 1,
+     "author_username": "bn_trader",
+     "author_followers": 2832,
+     "created_at": "2026-10-31T06:04:19+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -3344,15 +3344,101 @@
      "created_at": "2026-10-31T06:00:18+08:00"
     }
    ]
+  },
+  {
+   "symbol": "SOPHUSDT",
+   "base": "SOPH",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T06:00:00+08:00",
+   "checked_at": "2026-10-31T07:16:00+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 5.83,
+   "spike_ratio": 1.2,
+   "verdict": "冷",
+   "one_line": "多掃盤bot，聲量平",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116286623184785586",
+     "url": "https://x.com/CR_2030/status/2116286623184785586",
+     "text": "#SOPH Complete Crypto Risk Sniper Bot",
+     "likes": 2,
+     "author_username": "CR_2030",
+     "author_followers": 1547,
+     "created_at": "2026-10-31T05:50:24+08:00"
+    },
+    {
+     "id": "2116289113880150069",
+     "url": "https://x.com/cexscan/status/2116289113880150069",
+     "text": "Last 60m - #Binance Spot Top Gainers include $SOPH ↑6.8%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10601,
+     "created_at": "2026-10-31T06:00:18+08:00"
+    },
+    {
+     "id": "2116290124116041854",
+     "url": "https://x.com/bn_trader/status/2116290124116041854",
+     "text": "Crypto Movers Oct 30 Gainers include $SOPH",
+     "likes": 1,
+     "author_username": "bn_trader",
+     "author_followers": 2832,
+     "created_at": "2026-10-31T06:04:19+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BLURUSDT",
+   "base": "BLUR",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T03:15:00+08:00",
+   "checked_at": "2026-10-31T07:16:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 1.83,
+   "spike_ratio": 1.09,
+   "verdict": "冷",
+   "one_line": "聲量低，多告警莊",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116291570488009120",
+     "url": "https://x.com/ratiodotday/status/2116291570488009120",
+     "text": "Biggest perp movers, last 4h BLUR +8.0%",
+     "likes": 2,
+     "author_username": "ratiodotday",
+     "author_followers": 46,
+     "created_at": "2026-10-31T06:10:03+08:00"
+    },
+    {
+     "id": "2116286721511829551",
+     "url": "https://x.com/CR_2030/status/2116286721511829551",
+     "text": "#BLUR Complete Crypto Risk Sniper Bot",
+     "likes": 2,
+     "author_username": "CR_2030",
+     "author_followers": 1547,
+     "created_at": "2026-10-31T05:50:47+08:00"
+    },
+    {
+     "id": "2116289113880150069",
+     "url": "https://x.com/cexscan/status/2116289113880150069",
+     "text": "Last 60m - #Binance Spot Top Gainers include Blur ↑3.22%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10601,
+     "created_at": "2026-10-31T06:00:18+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-31",
   "daily_total_cap": 60,
-  "calls_today": 46,
+  "calls_today": 50,
   "cap_reached": false,
-  "updated_at": "2026-10-31T06:13:00+08:00"
+  "updated_at": "2026-10-31T07:17:05+08:00"
  },
- "updated_at": "2026-10-31T06:13:00+08:00",
+ "updated_at": "2026-10-31T07:17:05+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
