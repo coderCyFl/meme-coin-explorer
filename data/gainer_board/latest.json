@@ -1,10 +1,42 @@
 {
- "updated_at": "2026-10-31T05:01:59+08:00",
- "batch": "gb-20261031-0345",
- "picked_at": "2026-10-31T03:45:06+08:00",
- "btc_24h_pct": -5.19,
- "universe": 107,
+ "updated_at": "2026-10-31T05:39:29+08:00",
+ "batch": "gb-20261031-0537",
+ "picked_at": "2026-10-31T05:37:08+08:00",
+ "btc_24h_pct": -3.5,
+ "universe": 96,
  "active": [
+  {
+   "symbol": "HOT",
+   "pair": "HOTUSDT",
+   "tier": "early2",
+   "picked_at": "2026-10-31T05:00:00+08:00",
+   "entry_price_usd": 0.000396,
+   "price_at_snapshot": 0.000405,
+   "trigger_via": "thin",
+   "change_15m_at_pick": -7.69,
+   "change_24h_at_pick": 22.22,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261031-0537",
+   "score": 73.8,
+   "change_1h_at_pick": 14.45,
+   "change_4h_at_pick": 17.86,
+   "vol_x_avg": 25.4,
+   "vol_x_prev_hour": 0.0,
+   "range_24h_pct": 49.3,
+   "from_24h_high_pct": -13.35,
+   "quote_volume_24h": 1902178,
+   "watch_only": true,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
   {
    "symbol": "OP",
    "pair": "OPUSDT",
@@ -105,6 +137,38 @@
    "symbol": "SOPH",
    "pair": "SOPHUSDT",
    "tier": "pump",
+   "picked_at": "2026-10-31T01:45:00+08:00",
+   "entry_price_usd": 0.00236,
+   "price_at_snapshot": 0.00206,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": 10.28,
+   "change_24h_at_pick": 55.26,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261031-0537",
+   "score": 95.9,
+   "change_1h_at_pick": 14.01,
+   "change_4h_at_pick": 35.63,
+   "vol_x_avg": 4.9,
+   "vol_x_prev_hour": 1.71,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -3.28,
+   "quote_volume_24h": 8862071,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "SOPH",
+   "pair": "SOPHUSDT",
+   "tier": "pump",
    "picked_at": "2026-10-31T00:45:00+08:00",
    "entry_price_usd": 0.00207,
    "price_at_snapshot": 0.00231,
@@ -122,7 +186,17 @@
    "from_24h_high_pct": -2.82,
    "quote_volume_24h": 8255800,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 25.6,
+     "max_drawdown_pct": -3.38,
+     "close_pct": 0.97,
+     "hit20": true,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-31T05:37:06+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -154,7 +228,17 @@
    "from_24h_high_pct": -13.92,
    "quote_volume_24h": 7835071,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.64,
+     "max_drawdown_pct": -7.7,
+     "close_pct": -4.74,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-31T05:37:06+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -186,7 +270,17 @@
    "from_24h_high_pct": -9.67,
    "quote_volume_24h": 2845076,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 2.77,
+     "max_drawdown_pct": -9.23,
+     "close_pct": -5.35,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-31T05:37:06+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -218,7 +312,17 @@
    "from_24h_high_pct": -4.61,
    "quote_volume_24h": 12179889,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 2.39,
+     "max_drawdown_pct": -5.11,
+     "close_pct": -1.31,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-10-31T05:37:06+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
