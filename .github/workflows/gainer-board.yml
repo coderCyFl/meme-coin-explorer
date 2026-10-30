@@ -3,7 +3,10 @@
 name: Gainer board snapshot + seal
 on:
   schedule:
-    - cron: "5,20,35,50 * * * *"  # every 15 min (denser early flags; :05/:20/:35/:50)
+    # Snapshot: primary 15-min + offset backup 15-min (2026-10-30 primary stalled ~09:22–13:06 HKT).
+    # Seal: primary 23:55 + near backup 23:58 + late catch-up 00:40; every snapshot also seal_due().
+    - cron: "5,20,35,50 * * * *"   # primary 15-min snapshot (denser early flags)
+    - cron: "10,25,40,55 * * * *"  # offset backup 15-min (when primary slots drop for hours)
     - cron: "55 15 * * *"   # 23:55 Asia/Shanghai daily seal (GH cron is UTC: 15:55Z = 23:55 UTC+8)
     - cron: "58 15 * * *"   # 23:58 backup seal (no-op if already sealed)
     - cron: "40 16 * * *"   # 00:40 catch-up seal (GH often delays crons by hours; every 15-min run also catches up)

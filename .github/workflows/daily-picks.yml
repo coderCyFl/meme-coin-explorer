@@ -5,15 +5,24 @@
 name: Daily AI picks batch
 on:
   schedule:
-    # GitHub's scheduled runs here are often hours late or dropped (gainer-board :05/:35
-    # fires every ~2-3h; daily-outcomes 01:00 UTC ran at 05:43). So: off-the-hour primary
-    # plus backups. The script's same-day check makes every later run a no-op (exit 0).
-    # Asia/Shanghai: 08:47 primary, then 09:23, 10:13, 11:43, 14:17 backups. Every day.
+    # GitHub often delays/drops schedules (2026-10-30: all 5 morning slots missed until
+    # manual workflow_dispatch). Mirror gainer-board seal pattern: primary + near backups
+    # + late catch-ups + dense hourly catch-up. Script same-day check → exit 0 no-op if
+    # today's batch already exists. Asia/Shanghai = UTC+8 (times in comments are HKT).
+    # Primary 08:47
     - cron: "47 0 * * *"
-    - cron: "23 1 * * *"
-    - cron: "13 2 * * *"
-    - cron: "43 3 * * *"
-    - cron: "17 6 * * *"
+    # Near backups (like seal 55→58)
+    - cron: "23 1 * * *"   # 09:23
+    - cron: "13 2 * * *"   # 10:13
+    - cron: "43 3 * * *"   # 11:43
+    - cron: "17 6 * * *"   # 14:17
+    # Late catch-ups (like seal 40 16) — afternoon/evening HKT
+    - cron: "37 8 * * *"   # 16:37
+    - cron: "11 10 * * *"  # 18:11
+    - cron: "29 12 * * *"  # 20:29
+    # Dense hourly catch-up :07 UTC hours 0–12 (= 08:07–20:07 HKT) — mirrors
+    # gainer-board's every-15-min seal_due. Overlaps with the slots above are intentional no-ops.
+    - cron: "7 0-12 * * *"
   workflow_dispatch:
     inputs:
       force:
