@@ -112,6 +112,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-31T05:37:06+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 0.64,
+       "max_drawdown_pct": -15.37,
+       "close_pct": -14.85,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
       }
      },
      "exit_plan": {
@@ -154,6 +163,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-31T05:37:06+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 2.77,
+       "max_drawdown_pct": -13.28,
+       "close_pct": -11.81,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
       }
      },
      "exit_plan": {
@@ -196,6 +214,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-31T05:37:06+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 49.51,
+       "max_drawdown_pct": -5.11,
+       "close_pct": 36.9,
+       "hit20": true,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
       }
      },
      "exit_plan": {
@@ -312,6 +339,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-31T05:37:06+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 25.6,
+       "max_drawdown_pct": -27.05,
+       "close_pct": -25.6,
+       "hit20": true,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
       }
      },
      "exit_plan": {
@@ -354,6 +390,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-31T07:18:06+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 2.96,
+       "max_drawdown_pct": -13.12,
+       "close_pct": -12.38,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
       }
      },
      "exit_plan": {
@@ -596,6 +641,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-10-31T07:18:06+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 10.17,
+       "max_drawdown_pct": -36.02,
+       "close_pct": -35.17,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
       }
      },
      "exit_plan": {
@@ -2921,7 +2975,17 @@
      "from_24h_high_pct": -0.64,
      "quote_volume_24h": 15307162,
      "watch_only": false,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 21.12,
+       "max_drawdown_pct": -0.27,
+       "close_pct": 18.31,
+       "hit20": true,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -2953,7 +3017,17 @@
      "from_24h_high_pct": -1.39,
      "quote_volume_24h": 3922996,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 9.92,
+       "max_drawdown_pct": -14.57,
+       "close_pct": -9.12,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -2985,7 +3059,17 @@
      "from_24h_high_pct": -1.81,
      "quote_volume_24h": 4787569,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 3.97,
+       "max_drawdown_pct": -2.84,
+       "close_pct": -2.13,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3017,7 +3101,17 @@
      "from_24h_high_pct": -0.56,
      "quote_volume_24h": 82382079,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.92,
+       "max_drawdown_pct": -0.99,
+       "close_pct": 1.85,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3049,7 +3143,17 @@
      "from_24h_high_pct": -2.59,
      "quote_volume_24h": 4444699,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.36,
+       "max_drawdown_pct": -0.76,
+       "close_pct": 1.14,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3081,7 +3185,17 @@
      "from_24h_high_pct": -0.64,
      "quote_volume_24h": 18052344,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.72,
+       "max_drawdown_pct": -1.13,
+       "close_pct": -0.37,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3113,7 +3227,17 @@
      "from_24h_high_pct": -0.5,
      "quote_volume_24h": 8330091,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.22,
+       "max_drawdown_pct": -2.68,
+       "close_pct": -0.89,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3145,7 +3269,17 @@
      "from_24h_high_pct": -1.32,
      "quote_volume_24h": 10927238,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.75,
+       "max_drawdown_pct": -0.42,
+       "close_pct": 1.15,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3177,7 +3311,17 @@
      "from_24h_high_pct": -3.44,
      "quote_volume_24h": 3664031,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.74,
+       "max_drawdown_pct": -2.53,
+       "close_pct": 0.05,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3209,7 +3353,17 @@
      "from_24h_high_pct": -0.63,
      "quote_volume_24h": 5355773,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.74,
+       "max_drawdown_pct": -0.69,
+       "close_pct": 0.21,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -3241,7 +3395,17 @@
      "from_24h_high_pct": -2.72,
      "quote_volume_24h": 3468234,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.61,
+       "max_drawdown_pct": -0.54,
+       "close_pct": 1.75,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-01T01:55:49+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
