@@ -1,0 +1,968 @@
+{
+ "date": "2026-10-31",
+ "scheduled_for": "2026-10-31T23:55:00+08:00",
+ "taken_at": "2026-10-31T23:55:00+08:00",
+ "as_of": "2026-10-31T23:55:00+08:00",
+ "method": "kline_asof_2355_v1",
+ "universe_all": 395,
+ "excluded_tokenized": 105,
+ "tokenized_source": "exchangeInfo:TRD_GRP_261+product-tag:bStocks",
+ "rule": "Top 20 = ALL Binance USDT spot pairs (stables / leveraged / tokenized excluded, no volume floor) by 24h %, computed from Binance 5m klines AS OF 23:55 Asia/Shanghai (close of the 5m bar ending 23:55 vs open 24h earlier) — never the live ticker at run time, so any re-run gives the same seal. Only flags timestamped before 23:55 (from snapshot batches taken by 23:55) count. A flag is EARLY only if rank_24h_at_flag > 20 and 24h % < +15% at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately.",
+ "flagged": 32,
+ "early_flagged": 20,
+ "late_flagged": 12,
+ "early_hits": 2,
+ "late_hits": 7,
+ "precision_pct": 10.0,
+ "late_precision_pct": 58.3,
+ "recall_top20_pct": 10.0,
+ "recall_top10_pct": 10.0,
+ "late_recall_top20_pct": 35.0,
+ "buyable_flagged": 14,
+ "buyable_early_hits": 1,
+ "hits": [
+  {
+   "symbol": "LSK",
+   "pair": "LSKUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 1.43,
+   "entry_price_usd": 0.2133,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 1,
+   "final_change_24h": 43.72,
+   "peak_time": "2026-10-31T21:00:00+08:00",
+   "lead_h": 20.5
+  },
+  {
+   "symbol": "PENDLE",
+   "pair": "PENDLEUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T08:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 7.75,
+   "entry_price_usd": 1.864,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 20,
+   "final_change_24h": 8.19,
+   "peak_time": "2026-10-31T08:00:00+08:00",
+   "lead_h": -0.2
+  }
+ ],
+ "late": [
+  {
+   "symbol": "RSR",
+   "pair": "RSRUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T16:30:00+08:00",
+   "rank_24h_at_flag": 3,
+   "change_24h_at_flag": 8.92,
+   "entry_price_usd": 0.001477,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 3,
+   "final_change_24h": 19.43,
+   "peak_time": "2026-10-31T15:00:00+08:00",
+   "lead_h": -1.5
+  },
+  {
+   "symbol": "RAD",
+   "pair": "RADUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T18:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 23.25,
+   "entry_price_usd": 0.281,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 9,
+   "final_change_24h": 11.56,
+   "peak_time": "2026-10-31T18:00:00+08:00",
+   "lead_h": -0.8
+  },
+  {
+   "symbol": "STX",
+   "pair": "STXUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T20:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 29.32,
+   "entry_price_usd": 0.363,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 7,
+   "final_change_24h": 13.31,
+   "peak_time": "2026-10-31T20:00:00+08:00",
+   "lead_h": -0.8
+  },
+  {
+   "symbol": "RUNE",
+   "pair": "RUNEUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T21:30:00+08:00",
+   "rank_24h_at_flag": 19,
+   "change_24h_at_flag": 8.29,
+   "entry_price_usd": 0.705,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 6,
+   "final_change_24h": 13.66,
+   "peak_time": "2026-10-31T23:00:00+08:00",
+   "lead_h": 1.5
+  },
+  {
+   "symbol": "COW",
+   "pair": "COWUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 32.45,
+   "entry_price_usd": 0.1445,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 2,
+   "final_change_24h": 24.66,
+   "peak_time": "2026-10-31T22:00:00+08:00",
+   "lead_h": 0.0
+  },
+  {
+   "symbol": "RED",
+   "pair": "REDUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:30:00+08:00",
+   "rank_24h_at_flag": 3,
+   "change_24h_at_flag": 16.68,
+   "entry_price_usd": 0.142,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 4,
+   "final_change_24h": 18.93,
+   "peak_time": "2026-10-31T23:00:00+08:00",
+   "lead_h": 0.5
+  },
+  {
+   "symbol": "AMP",
+   "pair": "AMPUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:45:00+08:00",
+   "rank_24h_at_flag": 9,
+   "change_24h_at_flag": 16.4,
+   "entry_price_usd": 0.000738,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 16,
+   "final_change_24h": 9.25,
+   "peak_time": "2026-10-31T17:00:00+08:00",
+   "lead_h": -5.8
+  }
+ ],
+ "missed": [
+  {
+   "symbol": "HYPER",
+   "rank": 5,
+   "change_24h": 15.0
+  },
+  {
+   "symbol": "PROVE",
+   "rank": 8,
+   "change_24h": 11.62
+  },
+  {
+   "symbol": "MORPHO",
+   "rank": 10,
+   "change_24h": 11.43
+  },
+  {
+   "symbol": "CVC",
+   "rank": 11,
+   "change_24h": 10.58
+  },
+  {
+   "symbol": "NMR",
+   "rank": 12,
+   "change_24h": 10.44
+  },
+  {
+   "symbol": "GUN",
+   "rank": 13,
+   "change_24h": 10.36
+  },
+  {
+   "symbol": "ADX",
+   "rank": 14,
+   "change_24h": 9.45
+  },
+  {
+   "symbol": "EDEN",
+   "rank": 15,
+   "change_24h": 9.32
+  },
+  {
+   "symbol": "GTC",
+   "rank": 17,
+   "change_24h": 8.6
+  },
+  {
+   "symbol": "PYTH",
+   "rank": 18,
+   "change_24h": 8.39
+  },
+  {
+   "symbol": "AAVE",
+   "rank": 19,
+   "change_24h": 8.37
+  }
+ ],
+ "top20": [
+  {
+   "symbol": "LSK",
+   "rank": 1,
+   "change_24h": 43.72,
+   "quote_volume_24h": 18584759
+  },
+  {
+   "symbol": "COW",
+   "rank": 2,
+   "change_24h": 24.66,
+   "quote_volume_24h": 3573036
+  },
+  {
+   "symbol": "RSR",
+   "rank": 3,
+   "change_24h": 19.43,
+   "quote_volume_24h": 5812278
+  },
+  {
+   "symbol": "RED",
+   "rank": 4,
+   "change_24h": 18.93,
+   "quote_volume_24h": 3080450
+  },
+  {
+   "symbol": "HYPER",
+   "rank": 5,
+   "change_24h": 15.0,
+   "quote_volume_24h": 1095254
+  },
+  {
+   "symbol": "RUNE",
+   "rank": 6,
+   "change_24h": 13.66,
+   "quote_volume_24h": 4542389
+  },
+  {
+   "symbol": "STX",
+   "rank": 7,
+   "change_24h": 13.31,
+   "quote_volume_24h": 4915710
+  },
+  {
+   "symbol": "PROVE",
+   "rank": 8,
+   "change_24h": 11.62,
+   "quote_volume_24h": 2023740
+  },
+  {
+   "symbol": "RAD",
+   "rank": 9,
+   "change_24h": 11.56,
+   "quote_volume_24h": 3676007
+  },
+  {
+   "symbol": "MORPHO",
+   "rank": 10,
+   "change_24h": 11.43,
+   "quote_volume_24h": 2694796
+  },
+  {
+   "symbol": "CVC",
+   "rank": 11,
+   "change_24h": 10.58,
+   "quote_volume_24h": 1077349
+  },
+  {
+   "symbol": "NMR",
+   "rank": 12,
+   "change_24h": 10.44,
+   "quote_volume_24h": 1121880
+  },
+  {
+   "symbol": "GUN",
+   "rank": 13,
+   "change_24h": 10.36,
+   "quote_volume_24h": 999888
+  },
+  {
+   "symbol": "ADX",
+   "rank": 14,
+   "change_24h": 9.45,
+   "quote_volume_24h": 887340
+  },
+  {
+   "symbol": "EDEN",
+   "rank": 15,
+   "change_24h": 9.32,
+   "quote_volume_24h": 2779578
+  },
+  {
+   "symbol": "AMP",
+   "rank": 16,
+   "change_24h": 9.25,
+   "quote_volume_24h": 2551866
+  },
+  {
+   "symbol": "GTC",
+   "rank": 17,
+   "change_24h": 8.6,
+   "quote_volume_24h": 3573134
+  },
+  {
+   "symbol": "PYTH",
+   "rank": 18,
+   "change_24h": 8.39,
+   "quote_volume_24h": 3138709
+  },
+  {
+   "symbol": "AAVE",
+   "rank": 19,
+   "change_24h": 8.37,
+   "quote_volume_24h": 18002931
+  },
+  {
+   "symbol": "PENDLE",
+   "rank": 20,
+   "change_24h": 8.19,
+   "quote_volume_24h": 4748470
+  }
+ ],
+ "flags": [
+  {
+   "symbol": "SOPH",
+   "pair": "SOPHUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-30T22:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 29.53,
+   "entry_price_usd": 0.00193,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -12.92
+  },
+  {
+   "symbol": "INIT",
+   "pair": "INITUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -10.58,
+   "entry_price_usd": 0.19703,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -7.81
+  },
+  {
+   "symbol": "KERNEL",
+   "pair": "KERNELUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 14.59,
+   "entry_price_usd": 0.0542,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -7.18
+  },
+  {
+   "symbol": "LSK",
+   "pair": "LSKUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 1.43,
+   "entry_price_usd": 0.2133,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 1,
+   "final_change_24h": 43.72,
+   "peak_time": "2026-10-31T21:00:00+08:00",
+   "lead_h": 20.5
+  },
+  {
+   "symbol": "ANIME",
+   "pair": "ANIMEUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:41:39+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -3.77,
+   "entry_price_usd": 0.002808,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.18
+  },
+  {
+   "symbol": "APT",
+   "pair": "APTUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:41:39+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -8.976,
+   "entry_price_usd": 0.6318,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 1.94
+  },
+  {
+   "symbol": "DOT",
+   "pair": "DOTUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:41:39+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -4.767,
+   "entry_price_usd": 0.959,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -0.83
+  },
+  {
+   "symbol": "JUP",
+   "pair": "JUPUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T00:41:39+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -8.955,
+   "entry_price_usd": 0.2552,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 2.08
+  },
+  {
+   "symbol": "BLUR",
+   "pair": "BLURUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T02:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 22.01,
+   "entry_price_usd": 0.00981,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -1.79
+  },
+  {
+   "symbol": "OP",
+   "pair": "OPUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T03:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 2.09,
+   "entry_price_usd": 0.1125,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 4.61
+  },
+  {
+   "symbol": "HOT",
+   "pair": "HOTUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T05:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 22.22,
+   "entry_price_usd": 0.000396,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 4.13
+  },
+  {
+   "symbol": "PENDLE",
+   "pair": "PENDLEUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T08:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 7.75,
+   "entry_price_usd": 1.864,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 20,
+   "final_change_24h": 8.19,
+   "peak_time": "2026-10-31T08:00:00+08:00",
+   "lead_h": -0.2
+  },
+  {
+   "symbol": "LINK",
+   "pair": "LINKUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T09:00:00+08:00",
+   "rank_24h_at_flag": 29,
+   "change_24h_at_flag": 10.99,
+   "entry_price_usd": 11.664,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 4.97
+  },
+  {
+   "symbol": "BEAMX",
+   "pair": "BEAMXUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T12:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 55.28,
+   "entry_price_usd": 0.005253,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 1.98
+  },
+  {
+   "symbol": "TIA",
+   "pair": "TIAUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T14:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 3.62,
+   "entry_price_usd": 0.4723,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 7.71
+  },
+  {
+   "symbol": "ERA",
+   "pair": "ERAUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T14:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -0.57,
+   "entry_price_usd": 0.0701,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -1.3
+  },
+  {
+   "symbol": "NIL",
+   "pair": "NILUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T14:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 12.07,
+   "entry_price_usd": 0.08107,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -9.0
+  },
+  {
+   "symbol": "PROM",
+   "pair": "PROMUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T14:30:00+08:00",
+   "rank_24h_at_flag": 388,
+   "change_24h_at_flag": -9.56,
+   "entry_price_usd": 5.097,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -0.14
+  },
+  {
+   "symbol": "ZRO",
+   "pair": "ZROUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T14:30:00+08:00",
+   "rank_24h_at_flag": 223,
+   "change_24h_at_flag": 2.02,
+   "entry_price_usd": 1.718,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 3.74
+  },
+  {
+   "symbol": "SLP",
+   "pair": "SLPUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T14:45:00+08:00",
+   "rank_24h_at_flag": 2,
+   "change_24h_at_flag": 23.28,
+   "entry_price_usd": 0.000556,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 3.21
+  },
+  {
+   "symbol": "ZAMA",
+   "pair": "ZAMAUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T14:45:00+08:00",
+   "rank_24h_at_flag": 386,
+   "change_24h_at_flag": -3.01,
+   "entry_price_usd": 0.06542,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.08
+  },
+  {
+   "symbol": "RSR",
+   "pair": "RSRUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T16:30:00+08:00",
+   "rank_24h_at_flag": 3,
+   "change_24h_at_flag": 8.92,
+   "entry_price_usd": 0.001477,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 3,
+   "final_change_24h": 19.43,
+   "peak_time": "2026-10-31T15:00:00+08:00",
+   "lead_h": -1.5
+  },
+  {
+   "symbol": "RAD",
+   "pair": "RADUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-10-31T18:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 23.25,
+   "entry_price_usd": 0.281,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 9,
+   "final_change_24h": 11.56,
+   "peak_time": "2026-10-31T18:00:00+08:00",
+   "lead_h": -0.8
+  },
+  {
+   "symbol": "NEAR",
+   "pair": "NEARUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T20:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 3.33,
+   "entry_price_usd": 4.437,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 3.78
+  },
+  {
+   "symbol": "STX",
+   "pair": "STXUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T20:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 29.32,
+   "entry_price_usd": 0.363,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 7,
+   "final_change_24h": 13.31,
+   "peak_time": "2026-10-31T20:00:00+08:00",
+   "lead_h": -0.8
+  },
+  {
+   "symbol": "MARSCOIN",
+   "pair": "MARSCOINUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T21:30:00+08:00",
+   "rank_24h_at_flag": 91,
+   "change_24h_at_flag": 3.13,
+   "entry_price_usd": 0.0527,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 5.26
+  },
+  {
+   "symbol": "RUNE",
+   "pair": "RUNEUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T21:30:00+08:00",
+   "rank_24h_at_flag": 19,
+   "change_24h_at_flag": 8.29,
+   "entry_price_usd": 0.705,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 6,
+   "final_change_24h": 13.66,
+   "peak_time": "2026-10-31T23:00:00+08:00",
+   "lead_h": 1.5
+  },
+  {
+   "symbol": "COW",
+   "pair": "COWUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 32.45,
+   "entry_price_usd": 0.1445,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 2,
+   "final_change_24h": 24.66,
+   "peak_time": "2026-10-31T22:00:00+08:00",
+   "lead_h": 0.0
+  },
+  {
+   "symbol": "REZ",
+   "pair": "REZUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -0.8,
+   "entry_price_usd": 0.004093,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 4.31
+  },
+  {
+   "symbol": "CELO",
+   "pair": "CELOUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:30:00+08:00",
+   "rank_24h_at_flag": 23,
+   "change_24h_at_flag": 9.02,
+   "entry_price_usd": 0.07686,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 7.91
+  },
+  {
+   "symbol": "RED",
+   "pair": "REDUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:30:00+08:00",
+   "rank_24h_at_flag": 3,
+   "change_24h_at_flag": 16.68,
+   "entry_price_usd": 0.142,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 4,
+   "final_change_24h": 18.93,
+   "peak_time": "2026-10-31T23:00:00+08:00",
+   "lead_h": 0.5
+  },
+  {
+   "symbol": "AMP",
+   "pair": "AMPUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-10-31T22:45:00+08:00",
+   "rank_24h_at_flag": 9,
+   "change_24h_at_flag": 16.4,
+   "entry_price_usd": 0.000738,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 16,
+   "final_change_24h": 9.25,
+   "peak_time": "2026-10-31T17:00:00+08:00",
+   "lead_h": -5.8
+  }
+ ],
+ "by_tier": {
+  "pump": {
+   "flagged": 10,
+   "early_flagged": 6,
+   "early_hits": 1,
+   "precision_pct": 16.7,
+   "hits": [
+    "LSK"
+   ]
+  },
+  "early2": {
+   "flagged": 23,
+   "early_flagged": 14,
+   "early_hits": 2,
+   "precision_pct": 14.3,
+   "hits": [
+    "LSK",
+    "PENDLE"
+   ]
+  },
+  "early": {
+   "flagged": 0,
+   "early_flagged": 0,
+   "early_hits": 0,
+   "precision_pct": null,
+   "hits": []
+  },
+  "main": {
+   "flagged": 4,
+   "early_flagged": 4,
+   "early_hits": 0,
+   "precision_pct": 0.0,
+   "hits": []
+  }
+ },
+ "x_split": {
+  "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+  "hot": {
+   "flags": 2,
+   "sealed": 2,
+   "pending": 0,
+   "mean_4h_close_pct": -5.02,
+   "hit20_pct": 50.0
+  },
+  "cold": {
+   "flags": 7,
+   "sealed": 7,
+   "pending": 0,
+   "mean_4h_close_pct": -2.51,
+   "hit20_pct": 14.3
+  },
+  "unchecked": {
+   "flags": 7,
+   "sealed": 6,
+   "pending": 1,
+   "mean_4h_close_pct": -2.31,
+   "hit20_pct": 0.0
+  }
+ },
+ "sealed": true,
+ "sealed_at": "2026-10-31T23:57:25+08:00",
+ "seal_note": "準時 23:55 封印"
+}
