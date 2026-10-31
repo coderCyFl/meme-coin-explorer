@@ -255,3 +255,7 @@
 {"ts": "2026-11-01T01:16:30+08:00", "symbol": "RSRUSDT", "tool": "search", "query": "($RSR OR #RSR) (crypto OR binance) lang:en -is:retweet", "result_count": 5}
 {"ts": "2026-11-01T01:16:30+08:00", "symbol": "COWUSDT", "tool": "counts", "query": "(\"COW coin\" OR \"COW token\" OR COWUSDT OR \"$COW\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 64}
 {"ts": "2026-11-01T01:16:30+08:00", "symbol": "COWUSDT", "tool": "search", "query": "(\"COW coin\" OR \"COW token\" OR COWUSDT OR \"$COW\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-01T02:18:47+08:00", "symbol": "COWUSDT", "tool": "counts", "query": "(\"COW coin\" OR \"COW token\" OR COWUSDT OR \"$COW\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 75}
+{"ts": "2026-11-01T02:18:47+08:00", "symbol": "AVAXUSDT", "tool": "counts", "query": "($AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 38}
+{"ts": "2026-11-01T02:18:47+08:00", "symbol": "COWUSDT", "tool": "search", "query": "(\"COW coin\" OR \"COW token\" OR COWUSDT OR \"$COW\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 14}
+{"ts": "2026-11-01T02:18:47+08:00", "symbol": "AVAXUSDT", "tool": "search", "query": "($AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
