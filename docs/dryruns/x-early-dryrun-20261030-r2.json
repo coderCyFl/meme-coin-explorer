@@ -1,0 +1,1348 @@
+{
+  "generated_at": "2026-10-31T14:20:41+08:00",
+  "window": [
+    "2026-10-25",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30"
+  ],
+  "trial": {
+    "x_c24_max": 8.0,
+    "hard_seal_c24_max": 15.0,
+    "very_early_c24_max": 8.0,
+    "x_opens_paper": false,
+    "note": "Strategy preview 2026-10-31: X tightened to c24<8; hard seal unchanged c24<15; X dry-only"
+  },
+  "constants": {
+    "E2_PREC": [
+      1.2,
+      1.5,
+      15.0
+    ],
+    "X_EARLY_shipped": {
+      "verdicts": [
+        "熱",
+        "升溫"
+      ],
+      "c24_max": 15.0,
+      "vr": 1.5
+    },
+    "X_EARLY_trial": {
+      "verdicts": [
+        "熱",
+        "升溫"
+      ],
+      "c24_max": 8.0,
+      "vr": 1.5,
+      "shill_excluded": true
+    }
+  },
+  "x_history": {
+    "checks": 109,
+    "hot_warm": 28,
+    "note": "Historical X mostly post-🔥; understates prospective early-candidate X targeting"
+  },
+  "live_scorecard": [
+    {
+      "date": "2026-10-25",
+      "live_recall": 0.0,
+      "live_prec": 0.0,
+      "live_early_hits": 0,
+      "live_early_flagged": 4
+    },
+    {
+      "date": "2026-10-26",
+      "live_recall": 0.0,
+      "live_prec": 0.0,
+      "live_early_hits": 0,
+      "live_early_flagged": 6
+    },
+    {
+      "date": "2026-10-27",
+      "live_recall": 5.0,
+      "live_prec": 20.0,
+      "live_early_hits": 1,
+      "live_early_flagged": 5
+    },
+    {
+      "date": "2026-10-28",
+      "live_recall": 0.0,
+      "live_prec": 0.0,
+      "live_early_hits": 0,
+      "live_early_flagged": 6
+    },
+    {
+      "date": "2026-10-29",
+      "live_recall": 10.0,
+      "live_prec": 20.0,
+      "live_early_hits": 2,
+      "live_early_flagged": 10
+    },
+    {
+      "date": "2026-10-30",
+      "live_recall": 35.0,
+      "live_prec": 17.1,
+      "live_early_hits": 7,
+      "live_early_flagged": 41
+    }
+  ],
+  "live_avg_recall_pct": 8.3,
+  "live_ge10_days": [
+    "2026-10-29",
+    "2026-10-30"
+  ],
+  "dry": {
+    "e2": {
+      "recall_pct": 38.3,
+      "caught": 46,
+      "n": 120,
+      "per_day": {
+        "2026-10-25": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "ENA",
+            "INJ",
+            "NIL",
+            "QNT",
+            "REZ"
+          ]
+        },
+        "2026-10-26": {
+          "caught": 8,
+          "n": 20,
+          "recall_pct": 40.0,
+          "syms": [
+            "AT",
+            "BABY",
+            "BEAMX",
+            "CHIP",
+            "ERA",
+            "KAT",
+            "PARTI",
+            "QNT"
+          ]
+        },
+        "2026-10-27": {
+          "caught": 10,
+          "n": 20,
+          "recall_pct": 50.0,
+          "syms": [
+            "ANIME",
+            "AVA",
+            "BANK",
+            "BREV",
+            "INIT",
+            "NIL",
+            "OSMO",
+            "REZ",
+            "ZAMA",
+            "牛来"
+          ]
+        },
+        "2026-10-28": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "BLUR",
+            "LTC",
+            "PEPE",
+            "PUMP",
+            "XPL"
+          ]
+        },
+        "2026-10-29": {
+          "caught": 9,
+          "n": 20,
+          "recall_pct": 45.0,
+          "syms": [
+            "BICO",
+            "CETUS",
+            "ENA",
+            "HUMA",
+            "LSK",
+            "PEPE",
+            "PUMP",
+            "ZEC",
+            "牛来"
+          ]
+        },
+        "2026-10-30": {
+          "caught": 9,
+          "n": 20,
+          "recall_pct": 45.0,
+          "syms": [
+            "BCH",
+            "BEAMX",
+            "FLOKI",
+            "NIL",
+            "PUNDIX",
+            "RUNE",
+            "SKY",
+            "SOPH",
+            "TRX"
+          ]
+        }
+      }
+    },
+    "x_alone": {
+      "recall_pct": 0.8,
+      "caught": 1,
+      "n": 120,
+      "per_day": {
+        "2026-10-25": {
+          "caught": 0,
+          "n": 20,
+          "recall_pct": 0.0,
+          "syms": []
+        },
+        "2026-10-26": {
+          "caught": 0,
+          "n": 20,
+          "recall_pct": 0.0,
+          "syms": []
+        },
+        "2026-10-27": {
+          "caught": 0,
+          "n": 20,
+          "recall_pct": 0.0,
+          "syms": []
+        },
+        "2026-10-28": {
+          "caught": 0,
+          "n": 20,
+          "recall_pct": 0.0,
+          "syms": []
+        },
+        "2026-10-29": {
+          "caught": 1,
+          "n": 20,
+          "recall_pct": 5.0,
+          "syms": [
+            "HYPE"
+          ]
+        },
+        "2026-10-30": {
+          "caught": 0,
+          "n": 20,
+          "recall_pct": 0.0,
+          "syms": []
+        }
+      }
+    },
+    "e2_union_x": {
+      "recall_pct": 39.2,
+      "caught": 47,
+      "n": 120,
+      "per_day": {
+        "2026-10-25": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "ENA",
+            "INJ",
+            "NIL",
+            "QNT",
+            "REZ"
+          ]
+        },
+        "2026-10-26": {
+          "caught": 8,
+          "n": 20,
+          "recall_pct": 40.0,
+          "syms": [
+            "AT",
+            "BABY",
+            "BEAMX",
+            "CHIP",
+            "ERA",
+            "KAT",
+            "PARTI",
+            "QNT"
+          ]
+        },
+        "2026-10-27": {
+          "caught": 10,
+          "n": 20,
+          "recall_pct": 50.0,
+          "syms": [
+            "ANIME",
+            "AVA",
+            "BANK",
+            "BREV",
+            "INIT",
+            "NIL",
+            "OSMO",
+            "REZ",
+            "ZAMA",
+            "牛来"
+          ]
+        },
+        "2026-10-28": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "BLUR",
+            "LTC",
+            "PEPE",
+            "PUMP",
+            "XPL"
+          ]
+        },
+        "2026-10-29": {
+          "caught": 10,
+          "n": 20,
+          "recall_pct": 50.0,
+          "syms": [
+            "BICO",
+            "CETUS",
+            "ENA",
+            "HUMA",
+            "HYPE",
+            "LSK",
+            "PEPE",
+            "PUMP",
+            "ZEC",
+            "牛来"
+          ]
+        },
+        "2026-10-30": {
+          "caught": 9,
+          "n": 20,
+          "recall_pct": 45.0,
+          "syms": [
+            "BCH",
+            "BEAMX",
+            "FLOKI",
+            "NIL",
+            "PUNDIX",
+            "RUNE",
+            "SKY",
+            "SOPH",
+            "TRX"
+          ]
+        }
+      }
+    },
+    "e2_very_early_c24lt8": {
+      "recall_pct": 25.0,
+      "caught": 30,
+      "n": 120,
+      "per_day": {
+        "2026-10-25": {
+          "caught": 3,
+          "n": 20,
+          "recall_pct": 15.0,
+          "syms": [
+            "ENA",
+            "INJ",
+            "QNT"
+          ]
+        },
+        "2026-10-26": {
+          "caught": 6,
+          "n": 20,
+          "recall_pct": 30.0,
+          "syms": [
+            "AT",
+            "BABY",
+            "BEAMX",
+            "CHIP",
+            "ERA",
+            "QNT"
+          ]
+        },
+        "2026-10-27": {
+          "caught": 6,
+          "n": 20,
+          "recall_pct": 30.0,
+          "syms": [
+            "AVA",
+            "INIT",
+            "NIL",
+            "OSMO",
+            "REZ",
+            "ZAMA"
+          ]
+        },
+        "2026-10-28": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "BLUR",
+            "LTC",
+            "PEPE",
+            "PUMP",
+            "XPL"
+          ]
+        },
+        "2026-10-29": {
+          "caught": 4,
+          "n": 20,
+          "recall_pct": 20.0,
+          "syms": [
+            "ENA",
+            "PUMP",
+            "ZEC",
+            "牛来"
+          ]
+        },
+        "2026-10-30": {
+          "caught": 6,
+          "n": 20,
+          "recall_pct": 30.0,
+          "syms": [
+            "BCH",
+            "BEAMX",
+            "FLOKI",
+            "NIL",
+            "SKY",
+            "TRX"
+          ]
+        }
+      }
+    },
+    "union_very_early_c24lt8": {
+      "recall_pct": 25.8,
+      "caught": 31,
+      "n": 120,
+      "per_day": {
+        "2026-10-25": {
+          "caught": 3,
+          "n": 20,
+          "recall_pct": 15.0,
+          "syms": [
+            "ENA",
+            "INJ",
+            "QNT"
+          ]
+        },
+        "2026-10-26": {
+          "caught": 6,
+          "n": 20,
+          "recall_pct": 30.0,
+          "syms": [
+            "AT",
+            "BABY",
+            "BEAMX",
+            "CHIP",
+            "ERA",
+            "QNT"
+          ]
+        },
+        "2026-10-27": {
+          "caught": 6,
+          "n": 20,
+          "recall_pct": 30.0,
+          "syms": [
+            "AVA",
+            "INIT",
+            "NIL",
+            "OSMO",
+            "REZ",
+            "ZAMA"
+          ]
+        },
+        "2026-10-28": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "BLUR",
+            "LTC",
+            "PEPE",
+            "PUMP",
+            "XPL"
+          ]
+        },
+        "2026-10-29": {
+          "caught": 5,
+          "n": 20,
+          "recall_pct": 25.0,
+          "syms": [
+            "ENA",
+            "HYPE",
+            "PUMP",
+            "ZEC",
+            "牛来"
+          ]
+        },
+        "2026-10-30": {
+          "caught": 6,
+          "n": 20,
+          "recall_pct": 30.0,
+          "syms": [
+            "BCH",
+            "BEAMX",
+            "FLOKI",
+            "NIL",
+            "SKY",
+            "TRX"
+          ]
+        }
+      }
+    },
+    "x_incremental_pp": 0.9,
+    "old_dry_10_25_29_union_pct": 38.0
+  },
+  "detail": {
+    "e2": {
+      "2026-10-25": [
+        {
+          "symbol": "ENA",
+          "leg": "prec",
+          "c24": 7.04,
+          "t": 1792940400000
+        },
+        {
+          "symbol": "REZ",
+          "leg": "prec",
+          "c24": 14.69,
+          "t": 1792869300000
+        },
+        {
+          "symbol": "QNT",
+          "leg": "prec",
+          "c24": -1.8,
+          "t": 1792858500000
+        },
+        {
+          "symbol": "INJ",
+          "leg": "prec",
+          "c24": 0.34,
+          "t": 1792888200000
+        },
+        {
+          "symbol": "NIL",
+          "leg": "prec",
+          "c24": 12.76,
+          "t": 1792881900000
+        }
+      ],
+      "2026-10-26": [
+        {
+          "symbol": "CHIP",
+          "leg": "prec",
+          "c24": 5.6,
+          "t": 1793007900000
+        },
+        {
+          "symbol": "BEAMX",
+          "leg": "thin",
+          "c24": -4.61,
+          "t": 1792962000000
+        },
+        {
+          "symbol": "PARTI",
+          "leg": "thin",
+          "c24": 13.06,
+          "t": 1793026800000
+        },
+        {
+          "symbol": "AT",
+          "leg": "thin",
+          "c24": -6.68,
+          "t": 1792970100000
+        },
+        {
+          "symbol": "KAT",
+          "leg": "prec",
+          "c24": 10.7,
+          "t": 1793008800000
+        },
+        {
+          "symbol": "BABY",
+          "leg": "prec",
+          "c24": 1.83,
+          "t": 1792946700000
+        },
+        {
+          "symbol": "ERA",
+          "leg": "prec",
+          "c24": -9.68,
+          "t": 1792948500000
+        },
+        {
+          "symbol": "QNT",
+          "leg": "prec",
+          "c24": 7.25,
+          "t": 1792945800000
+        }
+      ],
+      "2026-10-27": [
+        {
+          "symbol": "BANK",
+          "leg": "prec",
+          "c24": 14.89,
+          "t": 1793066400000
+        },
+        {
+          "symbol": "INIT",
+          "leg": "thin",
+          "c24": -4.18,
+          "t": 1793045700000
+        },
+        {
+          "symbol": "OSMO",
+          "leg": "thin",
+          "c24": 6.49,
+          "t": 1793072700000
+        },
+        {
+          "symbol": "REZ",
+          "leg": "thin",
+          "c24": 5.08,
+          "t": 1793087100000
+        },
+        {
+          "symbol": "牛来",
+          "leg": "prec",
+          "c24": 11.15,
+          "t": 1793115000000
+        },
+        {
+          "symbol": "BREV",
+          "leg": "thin",
+          "c24": 12.64,
+          "t": 1793105100000
+        },
+        {
+          "symbol": "AVA",
+          "leg": "prec",
+          "c24": 3.73,
+          "t": 1793107800000
+        },
+        {
+          "symbol": "ZAMA",
+          "leg": "prec",
+          "c24": 4.39,
+          "t": 1793106000000
+        },
+        {
+          "symbol": "ANIME",
+          "leg": "thin",
+          "c24": 11.19,
+          "t": 1793092500000
+        },
+        {
+          "symbol": "NIL",
+          "leg": "prec",
+          "c24": -1.14,
+          "t": 1793084400000
+        }
+      ],
+      "2026-10-28": [
+        {
+          "symbol": "BLUR",
+          "leg": "thin",
+          "c24": 4.8,
+          "t": 1793171700000
+        },
+        {
+          "symbol": "PEPE",
+          "leg": "prec",
+          "c24": 3.64,
+          "t": 1793120400000
+        },
+        {
+          "symbol": "XPL",
+          "leg": "prec",
+          "c24": 4.4,
+          "t": 1793202300000
+        },
+        {
+          "symbol": "PUMP",
+          "leg": "prec",
+          "c24": -0.99,
+          "t": 1793116800000
+        },
+        {
+          "symbol": "LTC",
+          "leg": "prec",
+          "c24": 2.85,
+          "t": 1793199600000
+        }
+      ],
+      "2026-10-29": [
+        {
+          "symbol": "LSK",
+          "leg": "thin",
+          "c24": 12.3,
+          "t": 1793283300000
+        },
+        {
+          "symbol": "PEPE",
+          "leg": "prec",
+          "c24": 12.39,
+          "t": 1793218500000
+        },
+        {
+          "symbol": "ENA",
+          "leg": "prec",
+          "c24": -4.83,
+          "t": 1793211300000
+        },
+        {
+          "symbol": "BICO",
+          "leg": "thin",
+          "c24": 12.56,
+          "t": 1793288700000
+        },
+        {
+          "symbol": "PUMP",
+          "leg": "prec",
+          "c24": -0.26,
+          "t": 1793211300000
+        },
+        {
+          "symbol": "HUMA",
+          "leg": "prec",
+          "c24": 9.41,
+          "t": 1793284200000
+        },
+        {
+          "symbol": "CETUS",
+          "leg": "thin",
+          "c24": 13.23,
+          "t": 1793286000000
+        },
+        {
+          "symbol": "牛来",
+          "leg": "prec",
+          "c24": 6.95,
+          "t": 1793288700000
+        },
+        {
+          "symbol": "ZEC",
+          "leg": "prec",
+          "c24": -0.98,
+          "t": 1793211300000
+        }
+      ],
+      "2026-10-30": [
+        {
+          "symbol": "BEAMX",
+          "leg": "prec",
+          "c24": 0.56,
+          "t": 1793331900000
+        },
+        {
+          "symbol": "SOPH",
+          "leg": "thin",
+          "c24": 10.96,
+          "t": 1793337300000
+        },
+        {
+          "symbol": "NIL",
+          "leg": "prec",
+          "c24": -4.67,
+          "t": 1793291400000
+        },
+        {
+          "symbol": "PUNDIX",
+          "leg": "thin",
+          "c24": 10.21,
+          "t": 1793357100000
+        },
+        {
+          "symbol": "RUNE",
+          "leg": "prec",
+          "c24": 9.74,
+          "t": 1793328300000
+        },
+        {
+          "symbol": "BCH",
+          "leg": "prec",
+          "c24": -0.17,
+          "t": 1793290500000
+        },
+        {
+          "symbol": "SKY",
+          "leg": "prec",
+          "c24": 1.07,
+          "t": 1793314800000
+        },
+        {
+          "symbol": "TRX",
+          "leg": "prec",
+          "c24": 3.7,
+          "t": 1793308500000
+        },
+        {
+          "symbol": "FLOKI",
+          "leg": "prec",
+          "c24": 2.44,
+          "t": 1793374200000
+        }
+      ]
+    },
+    "x": {
+      "2026-10-25": [],
+      "2026-10-26": [],
+      "2026-10-27": [],
+      "2026-10-28": [],
+      "2026-10-29": [
+        {
+          "symbol": "HYPE",
+          "leg": "x_buzz",
+          "c24": 4.32,
+          "t": 1793272080000,
+          "verdict": "升溫",
+          "shill": false,
+          "vr": 20.44,
+          "x_c24_max": 8.0
+        }
+      ],
+      "2026-10-30": []
+    },
+    "union": {
+      "2026-10-25": [
+        {
+          "symbol": "ENA",
+          "via": "e2"
+        },
+        {
+          "symbol": "INJ",
+          "via": "e2"
+        },
+        {
+          "symbol": "NIL",
+          "via": "e2"
+        },
+        {
+          "symbol": "QNT",
+          "via": "e2"
+        },
+        {
+          "symbol": "REZ",
+          "via": "e2"
+        }
+      ],
+      "2026-10-26": [
+        {
+          "symbol": "AT",
+          "via": "e2"
+        },
+        {
+          "symbol": "BABY",
+          "via": "e2"
+        },
+        {
+          "symbol": "BEAMX",
+          "via": "e2"
+        },
+        {
+          "symbol": "CHIP",
+          "via": "e2"
+        },
+        {
+          "symbol": "ERA",
+          "via": "e2"
+        },
+        {
+          "symbol": "KAT",
+          "via": "e2"
+        },
+        {
+          "symbol": "PARTI",
+          "via": "e2"
+        },
+        {
+          "symbol": "QNT",
+          "via": "e2"
+        }
+      ],
+      "2026-10-27": [
+        {
+          "symbol": "ANIME",
+          "via": "e2"
+        },
+        {
+          "symbol": "AVA",
+          "via": "e2"
+        },
+        {
+          "symbol": "BANK",
+          "via": "e2"
+        },
+        {
+          "symbol": "BREV",
+          "via": "e2"
+        },
+        {
+          "symbol": "INIT",
+          "via": "e2"
+        },
+        {
+          "symbol": "NIL",
+          "via": "e2"
+        },
+        {
+          "symbol": "OSMO",
+          "via": "e2"
+        },
+        {
+          "symbol": "REZ",
+          "via": "e2"
+        },
+        {
+          "symbol": "ZAMA",
+          "via": "e2"
+        },
+        {
+          "symbol": "牛来",
+          "via": "e2"
+        }
+      ],
+      "2026-10-28": [
+        {
+          "symbol": "BLUR",
+          "via": "e2"
+        },
+        {
+          "symbol": "LTC",
+          "via": "e2"
+        },
+        {
+          "symbol": "PEPE",
+          "via": "e2"
+        },
+        {
+          "symbol": "PUMP",
+          "via": "e2"
+        },
+        {
+          "symbol": "XPL",
+          "via": "e2"
+        }
+      ],
+      "2026-10-29": [
+        {
+          "symbol": "BICO",
+          "via": "e2"
+        },
+        {
+          "symbol": "CETUS",
+          "via": "e2"
+        },
+        {
+          "symbol": "ENA",
+          "via": "e2"
+        },
+        {
+          "symbol": "HUMA",
+          "via": "e2"
+        },
+        {
+          "symbol": "HYPE",
+          "via": "x"
+        },
+        {
+          "symbol": "LSK",
+          "via": "e2"
+        },
+        {
+          "symbol": "PEPE",
+          "via": "e2"
+        },
+        {
+          "symbol": "PUMP",
+          "via": "e2"
+        },
+        {
+          "symbol": "ZEC",
+          "via": "e2"
+        },
+        {
+          "symbol": "牛来",
+          "via": "e2"
+        }
+      ],
+      "2026-10-30": [
+        {
+          "symbol": "BCH",
+          "via": "e2"
+        },
+        {
+          "symbol": "BEAMX",
+          "via": "e2"
+        },
+        {
+          "symbol": "FLOKI",
+          "via": "e2"
+        },
+        {
+          "symbol": "NIL",
+          "via": "e2"
+        },
+        {
+          "symbol": "PUNDIX",
+          "via": "e2"
+        },
+        {
+          "symbol": "RUNE",
+          "via": "e2"
+        },
+        {
+          "symbol": "SKY",
+          "via": "e2"
+        },
+        {
+          "symbol": "SOPH",
+          "via": "e2"
+        },
+        {
+          "symbol": "TRX",
+          "via": "e2"
+        }
+      ]
+    },
+    "e2_very_early": {
+      "2026-10-25": [
+        {
+          "symbol": "ENA",
+          "leg": "prec",
+          "c24": 7.04,
+          "t": 1792940400000
+        },
+        {
+          "symbol": "QNT",
+          "leg": "prec",
+          "c24": -1.8,
+          "t": 1792858500000
+        },
+        {
+          "symbol": "INJ",
+          "leg": "prec",
+          "c24": 0.34,
+          "t": 1792888200000
+        }
+      ],
+      "2026-10-26": [
+        {
+          "symbol": "CHIP",
+          "leg": "prec",
+          "c24": 5.6,
+          "t": 1793007900000
+        },
+        {
+          "symbol": "BEAMX",
+          "leg": "thin",
+          "c24": -4.61,
+          "t": 1792962000000
+        },
+        {
+          "symbol": "AT",
+          "leg": "thin",
+          "c24": -6.68,
+          "t": 1792970100000
+        },
+        {
+          "symbol": "BABY",
+          "leg": "prec",
+          "c24": 1.83,
+          "t": 1792946700000
+        },
+        {
+          "symbol": "ERA",
+          "leg": "prec",
+          "c24": -9.68,
+          "t": 1792948500000
+        },
+        {
+          "symbol": "QNT",
+          "leg": "prec",
+          "c24": 7.25,
+          "t": 1792945800000
+        }
+      ],
+      "2026-10-27": [
+        {
+          "symbol": "INIT",
+          "leg": "thin",
+          "c24": -4.18,
+          "t": 1793045700000
+        },
+        {
+          "symbol": "OSMO",
+          "leg": "thin",
+          "c24": 6.49,
+          "t": 1793072700000
+        },
+        {
+          "symbol": "REZ",
+          "leg": "thin",
+          "c24": 5.08,
+          "t": 1793087100000
+        },
+        {
+          "symbol": "AVA",
+          "leg": "prec",
+          "c24": 3.73,
+          "t": 1793107800000
+        },
+        {
+          "symbol": "ZAMA",
+          "leg": "prec",
+          "c24": 4.39,
+          "t": 1793106000000
+        },
+        {
+          "symbol": "NIL",
+          "leg": "prec",
+          "c24": -1.14,
+          "t": 1793084400000
+        }
+      ],
+      "2026-10-28": [
+        {
+          "symbol": "BLUR",
+          "leg": "thin",
+          "c24": 4.8,
+          "t": 1793171700000
+        },
+        {
+          "symbol": "PEPE",
+          "leg": "prec",
+          "c24": 3.64,
+          "t": 1793120400000
+        },
+        {
+          "symbol": "XPL",
+          "leg": "prec",
+          "c24": 4.4,
+          "t": 1793202300000
+        },
+        {
+          "symbol": "PUMP",
+          "leg": "prec",
+          "c24": -0.99,
+          "t": 1793116800000
+        },
+        {
+          "symbol": "LTC",
+          "leg": "prec",
+          "c24": 2.85,
+          "t": 1793199600000
+        }
+      ],
+      "2026-10-29": [
+        {
+          "symbol": "ENA",
+          "leg": "prec",
+          "c24": -4.83,
+          "t": 1793211300000
+        },
+        {
+          "symbol": "PUMP",
+          "leg": "prec",
+          "c24": -0.26,
+          "t": 1793211300000
+        },
+        {
+          "symbol": "牛来",
+          "leg": "prec",
+          "c24": 6.95,
+          "t": 1793288700000
+        },
+        {
+          "symbol": "ZEC",
+          "leg": "prec",
+          "c24": -0.98,
+          "t": 1793211300000
+        }
+      ],
+      "2026-10-30": [
+        {
+          "symbol": "BEAMX",
+          "leg": "prec",
+          "c24": 0.56,
+          "t": 1793331900000
+        },
+        {
+          "symbol": "NIL",
+          "leg": "prec",
+          "c24": -4.67,
+          "t": 1793291400000
+        },
+        {
+          "symbol": "BCH",
+          "leg": "prec",
+          "c24": -0.17,
+          "t": 1793290500000
+        },
+        {
+          "symbol": "SKY",
+          "leg": "prec",
+          "c24": 1.07,
+          "t": 1793314800000
+        },
+        {
+          "symbol": "TRX",
+          "leg": "prec",
+          "c24": 3.7,
+          "t": 1793308500000
+        },
+        {
+          "symbol": "FLOKI",
+          "leg": "prec",
+          "c24": 2.44,
+          "t": 1793374200000
+        }
+      ]
+    },
+    "union_very_early": {
+      "2026-10-25": [
+        {
+          "symbol": "ENA",
+          "via": "e2"
+        },
+        {
+          "symbol": "INJ",
+          "via": "e2"
+        },
+        {
+          "symbol": "QNT",
+          "via": "e2"
+        }
+      ],
+      "2026-10-26": [
+        {
+          "symbol": "AT",
+          "via": "e2"
+        },
+        {
+          "symbol": "BABY",
+          "via": "e2"
+        },
+        {
+          "symbol": "BEAMX",
+          "via": "e2"
+        },
+        {
+          "symbol": "CHIP",
+          "via": "e2"
+        },
+        {
+          "symbol": "ERA",
+          "via": "e2"
+        },
+        {
+          "symbol": "QNT",
+          "via": "e2"
+        }
+      ],
+      "2026-10-27": [
+        {
+          "symbol": "AVA",
+          "via": "e2"
+        },
+        {
+          "symbol": "INIT",
+          "via": "e2"
+        },
+        {
+          "symbol": "NIL",
+          "via": "e2"
+        },
+        {
+          "symbol": "OSMO",
+          "via": "e2"
+        },
+        {
+          "symbol": "REZ",
+          "via": "e2"
+        },
+        {
+          "symbol": "ZAMA",
+          "via": "e2"
+        }
+      ],
+      "2026-10-28": [
+        {
+          "symbol": "BLUR",
+          "via": "e2"
+        },
+        {
+          "symbol": "LTC",
+          "via": "e2"
+        },
+        {
+          "symbol": "PEPE",
+          "via": "e2"
+        },
+        {
+          "symbol": "PUMP",
+          "via": "e2"
+        },
+        {
+          "symbol": "XPL",
+          "via": "e2"
+        }
+      ],
+      "2026-10-29": [
+        {
+          "symbol": "ENA",
+          "via": "e2"
+        },
+        {
+          "symbol": "HYPE",
+          "via": "x"
+        },
+        {
+          "symbol": "PUMP",
+          "via": "e2"
+        },
+        {
+          "symbol": "ZEC",
+          "via": "e2"
+        },
+        {
+          "symbol": "牛来",
+          "via": "e2"
+        }
+      ],
+      "2026-10-30": [
+        {
+          "symbol": "BCH",
+          "via": "e2"
+        },
+        {
+          "symbol": "BEAMX",
+          "via": "e2"
+        },
+        {
+          "symbol": "FLOKI",
+          "via": "e2"
+        },
+        {
+          "symbol": "NIL",
+          "via": "e2"
+        },
+        {
+          "symbol": "SKY",
+          "via": "e2"
+        },
+        {
+          "symbol": "TRX",
+          "via": "e2"
+        }
+      ]
+    }
+  },
+  "gate": {
+    "dry_union_recall_ge_10": true,
+    "live_seal_ge_10_days": [
+      "2026-10-29",
+      "2026-10-30"
+    ],
+    "note": "Dry ≥10% = trial OK to hand QA; live seal ≥10% is the real pass. X alone does not open paper. 🚀 EW separate."
+  }
+}
