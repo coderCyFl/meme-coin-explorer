@@ -240,44 +240,44 @@
    "base": "LSK",
    "flag": "pump",
    "trigger_at": "2026-10-31T08:14:05+08:00",
-   "checked_at": "2026-10-31T08:16:48+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 0.67,
-   "spike_ratio": 4.48,
+   "checked_at": "2026-10-31T09:11:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 1.0,
    "verdict": "冷",
-   "one_line": "警報bot多，冇真討論",
+   "one_line": "聲量回落，全係警報",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
+     "id": "2116325221363863666",
+     "url": "https://x.com/CR_2030/status/2116325221363863666",
+     "text": "#LSK Complete 💯 Crypto Risk Sniper Bot",
+     "likes": 3,
+     "author_username": "CR_2030",
+     "author_followers": 1547,
+     "created_at": "2026-10-31T08:23:46+08:00"
+    },
+    {
      "id": "2116320531318255938",
      "url": "https://x.com/cexscan/status/2116320531318255938",
-     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $LSK (Lisk) : ↑6.83% vethor-token:native (VeThor Token) : ↑2.6% $HAEDAL (Haedal) : ↑2…",
+     "text": "Last 15m - #Binance Spot Top Gainers: $LSK ↑6.83%",
      "likes": 1,
      "author_username": "cexscan",
      "author_followers": 10601,
      "created_at": "2026-10-31T08:05:08+08:00"
     },
     {
-     "id": "2116292465770504462",
-     "url": "https://x.com/Bitcoinsovereig/status/2116292465770504462",
-     "text": "#LSK/USDT Stop Target Hit ⛔ Loss: 130.9298% 📉 #Crypto #Trading #Signal Join our free signals group",
-     "likes": 1,
-     "author_username": "Bitcoinsovereig",
-     "author_followers": 2606,
-     "created_at": "2026-10-31T06:13:37+08:00"
-    },
-    {
-     "id": "2116322332763398216",
-     "url": "https://x.com/theparseepm/status/2116322332763398216",
-     "text": "🟢 $LSK pumped in the last 12s (+0.97%, 0.2072$ → 0.2092$) T3 | Binance, OKX 24h vol $9.1M | OI $7.7M",
+     "id": "2116323373005365678",
+     "url": "https://x.com/Finora_EN/status/2116323373005365678",
+     "text": "Finora AI called the $LSK long at $0.1982. Third target hit, +25.48%",
      "likes": 0,
-     "author_username": "theparseepm",
-     "author_followers": 66,
-     "created_at": "2026-10-31T08:12:18+08:00"
+     "author_username": "Finora_EN",
+     "author_followers": 24637,
+     "created_at": "2026-10-31T08:16:26+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "PYTHUSDT": {
    "symbol": "PYTHUSDT",
@@ -476,44 +476,44 @@
    "base": "SOPH",
    "flag": "pump",
    "trigger_at": "2026-10-31T06:00:00+08:00",
-   "checked_at": "2026-10-31T08:16:48+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 5.83,
-   "spike_ratio": 1.03,
+   "checked_at": "2026-10-31T09:11:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 4.17,
+   "spike_ratio": 0.24,
    "verdict": "冷",
-   "one_line": "多喊單群，聲量平",
-   "shill_flag": true,
-   "big_accounts": 0,
+   "one_line": "幾乎冇討論，掃盤提",
+   "shill_flag": false,
+   "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2116303504004218978",
-     "url": "https://x.com/Kennycrypto102/status/2116303504004218978",
-     "text": "📊 SOPH/USDT — 15M ANALYSIS Price has demonstrated bullish momentum following a period of consolidation and a strong upside expansion.",
-     "likes": 3,
-     "author_username": "Kennycrypto102",
-     "author_followers": 2,
-     "created_at": "2026-10-31T06:57:29+08:00"
+     "id": "2116321920283197935",
+     "url": "https://x.com/OldmanScalping/status/2116321920283197935",
+     "text": "DAILY REPORT — Sat 31 Oct market breadth (mentions $SOPH context)",
+     "likes": 5,
+     "author_username": "OldmanScalping",
+     "author_followers": 157690,
+     "created_at": "2026-10-31T08:10:39+08:00"
     },
     {
-     "id": "2116313237335515481",
-     "url": "https://x.com/Customized_Fix/status/2116313237335515481",
-     "text": "#Binance #Futures #SOPH/USDT All take-profit #targets achieved 😎 #Profit: 779.6156% 📈 Period: 4 hr 39 min ⏰",
-     "likes": 2,
-     "author_username": "Customized_Fix",
-     "author_followers": 2327,
-     "created_at": "2026-10-31T07:36:09+08:00"
+     "id": "2116320531318255938",
+     "url": "https://x.com/cexscan/status/2116320531318255938",
+     "text": "Last 15m - #Binance Spot Top Losers: $SOPH ↓-3.6%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10601,
+     "created_at": "2026-10-31T08:05:08+08:00"
     },
     {
-     "id": "2116310991512506473",
-     "url": "https://x.com/arbigen_trade/status/2116310991512506473",
-     "text": "My scanner gave a signal on $SOPH. Spread: +2.5%. Direction: Long Binance / Short Bybit. #crypto #arbitrage",
-     "likes": 2,
-     "author_username": "arbigen_trade",
-     "author_followers": 2,
-     "created_at": "2026-10-31T07:27:14+08:00"
+     "id": "2116320061971640589",
+     "url": "https://x.com/TIQCrypto/status/2116320061971640589",
+     "text": "Market Close Report: 2026-10-30 | BTC -0.83%",
+     "likes": 1,
+     "author_username": "TIQCrypto",
+     "author_followers": 5413,
+     "created_at": "2026-10-31T08:03:16+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "BEAMXUSDT": {
    "symbol": "BEAMXUSDT",
@@ -3603,15 +3603,101 @@
      "created_at": "2026-10-31T07:31:14+08:00"
     }
    ]
+  },
+  {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T08:14:05+08:00",
+   "checked_at": "2026-10-31T09:11:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 1.0,
+   "verdict": "冷",
+   "one_line": "聲量回落，全係警報",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116325221363863666",
+     "url": "https://x.com/CR_2030/status/2116325221363863666",
+     "text": "#LSK Complete 💯 Crypto Risk Sniper Bot",
+     "likes": 3,
+     "author_username": "CR_2030",
+     "author_followers": 1547,
+     "created_at": "2026-10-31T08:23:46+08:00"
+    },
+    {
+     "id": "2116320531318255938",
+     "url": "https://x.com/cexscan/status/2116320531318255938",
+     "text": "Last 15m - #Binance Spot Top Gainers: $LSK ↑6.83%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10601,
+     "created_at": "2026-10-31T08:05:08+08:00"
+    },
+    {
+     "id": "2116323373005365678",
+     "url": "https://x.com/Finora_EN/status/2116323373005365678",
+     "text": "Finora AI called the $LSK long at $0.1982. Third target hit, +25.48%",
+     "likes": 0,
+     "author_username": "Finora_EN",
+     "author_followers": 24637,
+     "created_at": "2026-10-31T08:16:26+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "SOPHUSDT",
+   "base": "SOPH",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T06:00:00+08:00",
+   "checked_at": "2026-10-31T09:11:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 4.17,
+   "spike_ratio": 0.24,
+   "verdict": "冷",
+   "one_line": "幾乎冇討論，掃盤提",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2116321920283197935",
+     "url": "https://x.com/OldmanScalping/status/2116321920283197935",
+     "text": "DAILY REPORT — Sat 31 Oct market breadth (mentions $SOPH context)",
+     "likes": 5,
+     "author_username": "OldmanScalping",
+     "author_followers": 157690,
+     "created_at": "2026-10-31T08:10:39+08:00"
+    },
+    {
+     "id": "2116320531318255938",
+     "url": "https://x.com/cexscan/status/2116320531318255938",
+     "text": "Last 15m - #Binance Spot Top Losers: $SOPH ↓-3.6%",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10601,
+     "created_at": "2026-10-31T08:05:08+08:00"
+    },
+    {
+     "id": "2116320061971640589",
+     "url": "https://x.com/TIQCrypto/status/2116320061971640589",
+     "text": "Market Close Report: 2026-10-30 | BTC -0.83%",
+     "likes": 1,
+     "author_username": "TIQCrypto",
+     "author_followers": 5413,
+     "created_at": "2026-10-31T08:03:16+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-10-31",
   "daily_total_cap": 60,
-  "calls_today": 56,
-  "cap_reached": false,
-  "updated_at": "2026-10-31T08:16:48+08:00"
+  "calls_today": 60,
+  "cap_reached": true,
+  "updated_at": "2026-10-31T09:12:04+08:00"
  },
- "updated_at": "2026-10-31T08:16:48+08:00",
+ "updated_at": "2026-10-31T09:12:04+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
