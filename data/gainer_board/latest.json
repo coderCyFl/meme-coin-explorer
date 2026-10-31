@@ -1,10 +1,74 @@
 {
- "updated_at": "2026-11-01T04:17:43+08:00",
- "batch": "gb-20261101-0313",
- "picked_at": "2026-11-01T03:13:45+08:00",
- "btc_24h_pct": 1.52,
- "universe": 59,
+ "updated_at": "2026-11-01T05:29:47+08:00",
+ "batch": "gb-20261101-0528",
+ "picked_at": "2026-11-01T05:28:07+08:00",
+ "btc_24h_pct": 0.82,
+ "universe": 60,
  "active": [
+  {
+   "symbol": "XPL",
+   "pair": "XPLUSDT",
+   "tier": "early2",
+   "picked_at": "2026-11-01T04:30:00+08:00",
+   "entry_price_usd": 0.0828,
+   "price_at_snapshot": 0.08192,
+   "trigger_via": "prec",
+   "change_15m_at_pick": 1.48,
+   "change_24h_at_pick": 3.86,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261101-0528",
+   "score": 37.6,
+   "change_1h_at_pick": 3.2,
+   "change_4h_at_pick": 2.26,
+   "vol_x_avg": 2.92,
+   "vol_x_prev_hour": 1.86,
+   "range_24h_pct": 4.6,
+   "from_24h_high_pct": -0.28,
+   "quote_volume_24h": 11337063,
+   "watch_only": true,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "AMP",
+   "pair": "AMPUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-01T04:15:00+08:00",
+   "entry_price_usd": 0.000775,
+   "price_at_snapshot": 0.00071,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": 2.92,
+   "change_24h_at_pick": 20.34,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261101-0528",
+   "score": 68.7,
+   "change_1h_at_pick": 11.35,
+   "change_4h_at_pick": 12.65,
+   "vol_x_avg": 4.91,
+   "vol_x_prev_hour": 2.45,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -8.82,
+   "quote_volume_24h": 3461141,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
   {
    "symbol": "STX",
    "pair": "STXUSDT",
@@ -154,7 +218,17 @@
    "from_24h_high_pct": -1.93,
    "quote_volume_24h": 7484037,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.35,
+     "max_drawdown_pct": -2.78,
+     "close_pct": -2.39,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T05:27:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -186,7 +260,17 @@
    "from_24h_high_pct": -18.55,
    "quote_volume_24h": 5599754,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 10.12,
+     "max_drawdown_pct": -0.95,
+     "close_pct": -0.22,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T05:27:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -218,7 +302,17 @@
    "from_24h_high_pct": -5.5,
    "quote_volume_24h": 3815941,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 2.49,
+     "max_drawdown_pct": -1.01,
+     "close_pct": 1.26,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T05:27:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -250,7 +344,17 @@
    "from_24h_high_pct": -2.85,
    "quote_volume_24h": 12550816,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 2.27,
+     "max_drawdown_pct": -0.01,
+     "close_pct": 0.75,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T05:27:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -282,7 +386,17 @@
    "from_24h_high_pct": -6.81,
    "quote_volume_24h": 3416161,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 2.37,
+     "max_drawdown_pct": -6.57,
+     "close_pct": -5.62,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T05:27:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -314,7 +428,17 @@
    "from_24h_high_pct": -3.1,
    "quote_volume_24h": 6452786,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 4.33,
+     "max_drawdown_pct": -8.36,
+     "close_pct": -8.24,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T05:27:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -817,48 +941,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-10-31T22:51:04+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "RSR",
-   "pair": "RSRUSDT",
-   "tier": "early2",
-   "picked_at": "2026-10-31T16:30:00+08:00",
-   "entry_price_usd": 0.001477,
-   "price_at_snapshot": 0.001539,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 1.1,
-   "change_24h_at_pick": 8.92,
-   "rank_24h_at_pick": 3,
-   "batch": "gb-20261031-1648",
-   "score": 33.6,
-   "change_1h_at_pick": 1.93,
-   "change_4h_at_pick": 5.88,
-   "vol_x_avg": 4.0,
-   "vol_x_prev_hour": 2.79,
-   "range_24h_pct": 33.4,
-   "from_24h_high_pct": -15.11,
-   "quote_volume_24h": 4363339,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 8.33,
-     "max_drawdown_pct": -3.25,
-     "close_pct": -2.23,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-31T21:36:37+08:00"
     }
    },
    "exit_plan": {
