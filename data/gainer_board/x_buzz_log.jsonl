@@ -239,3 +239,19 @@
 {"ts": "2026-11-01T00:13:13+08:00", "symbol": "TIAUSDT", "tool": "search", "query": "($TIA OR #TIA) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
 {"ts": "2026-11-01T00:13:13+08:00", "symbol": "GRAMUSDT", "tool": "counts", "query": "($GRAM OR #GRAM) (crypto OR binance) lang:en -is:retweet", "result_count": 18}
 {"ts": "2026-11-01T00:13:13+08:00", "symbol": "GRAMUSDT", "tool": "search", "query": "($GRAM OR #GRAM) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "LSKUSDT", "tool": "counts", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 89}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "LSKUSDT", "tool": "search", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "PYTHUSDT", "tool": "counts", "query": "($PYTH OR #PYTH) (crypto OR binance) lang:en -is:retweet", "result_count": 24}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "PYTHUSDT", "tool": "search", "query": "($PYTH OR #PYTH) (crypto OR binance) lang:en -is:retweet", "result_count": 19}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "NEARUSDT", "tool": "counts", "query": "($NEAR OR #NEAR) (crypto OR binance) lang:en -is:retweet", "result_count": 439}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "NEARUSDT", "tool": "search", "query": "($NEAR OR #NEAR) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "STRKUSDT", "tool": "counts", "query": "($STRK OR #STRK) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "STRKUSDT", "tool": "search", "query": "($STRK OR #STRK) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "INJUSDT", "tool": "counts", "query": "($INJ OR #INJ) (crypto OR binance) lang:en -is:retweet", "result_count": 36}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "INJUSDT", "tool": "search", "query": "($INJ OR #INJ) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "ARBUSDT", "tool": "counts", "query": "($ARB OR #ARB) (crypto OR binance) lang:en -is:retweet", "result_count": 24}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "ARBUSDT", "tool": "search", "query": "($ARB OR #ARB) (crypto OR binance) lang:en -is:retweet", "result_count": 17}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "RSRUSDT", "tool": "counts", "query": "($RSR OR #RSR) (crypto OR binance) lang:en -is:retweet", "result_count": 16}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "RSRUSDT", "tool": "search", "query": "($RSR OR #RSR) (crypto OR binance) lang:en -is:retweet", "result_count": 5}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "COWUSDT", "tool": "counts", "query": "(\"COW coin\" OR \"COW token\" OR COWUSDT OR \"$COW\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 64}
+{"ts": "2026-11-01T01:16:30+08:00", "symbol": "COWUSDT", "tool": "search", "query": "(\"COW coin\" OR \"COW token\" OR COWUSDT OR \"$COW\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 25}
