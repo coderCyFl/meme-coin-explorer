@@ -14,7 +14,12 @@ first bar in the last 4h with (rolling 1h >= +5% AND 1h vol >= 3x prev-24h hourl
 Per trigger (episode): first check right after the 🔥 trigger, then every RECHECK_MIN while within
 HOLD_H of the trigger, at most MAX_CHECKS_PER_TRIGGER checks. Daily budget DAILY_TOTAL_CAP X calls
 (counted from data/gainer_board/x_buzz_log.jsonl, Shanghai day); each target costs ~CALLS_PER_TARGET calls.
-When the budget is gone: targets = [] and x_buzz.json gets cap.cap_reached = true (site: 「今日 X 額度用完」).
+When the hard budget is gone: targets = [] and x_buzz.json gets cap.cap_reached = true (site: 「今日 X 額度用完」).
+
+Afternoon reserve (2026-10-31, see docs/x-afternoon-quota.md): BEFORE AFTERNOON_START_HOUR (Asia/Shanghai),
+spendable = DAILY_TOTAL_CAP - AFTERNOON_RESERVE_CALLS - used so 🔥 first-checks + early candidates still have
+quota after morning. Morning also defers rechecks of coins already marked 冷. Early pool prefers c24 < +8%.
+Seal / exit / paper rules are NOT changed here.
 
 Output: {"generated_at", "cap_reached", "calls_today", "daily_total_cap", "calls_remaining",
          "on_board": [...all current 🔥...], "targets": [{symbol, base, flag, trigger_at, trigger_via,
@@ -35,6 +40,10 @@ CALLS_PER_TARGET = 2          # counts + search
 MAX_TARGETS_PER_RUN = 8
 HOLD_H = 4                    # 🔥 stays on the board 4h after the trigger (= live.js GB_TRIGGER_H)
 SITE_POOL = 90                # live.js GB_POOL_MAX (site scans every >=5%-range coin since 20261025g1)
+# Afternoon quota reserve (Asia/Shanghai). See docs/x-afternoon-quota.md.
+AFTERNOON_START_HOUR = 12     # unlock reserved calls from this hour (inclusive)
+AFTERNOON_RESERVE_CALLS = 24  # hold ~12 targets×2 for post-morning 🔥 / early
+VERY_EARLY_C24_MAX = 8.0      # prefer early-candidate pool with 24h move below this (seal gate still 15)
 # Tickers that are everyday words / too short: add crypto context to the X query.
 AMBIGUOUS = {"ONE", "GAS", "SUN", "MOVE", "PEOPLE", "ACT", "BANANA", "ME", "AI", "HOOK", "GO", "COOKIE", "TRUMP",
              "ANIME", "EPIC", "BOME", "PIXEL", "PORTAL", "TURBO", "NOT", "DOGS", "CAT", "BIO", "LAYER", "SIGN", "HOME",
@@ -139,8 +148,8 @@ def current_pumps():
 
 
 def current_early_candidates(limit=12):
-    """Near-early coins for X 熱度早標 targeting (NOT yet 🔥). c24<15, 1h vol≥1.5x, rank>20.
-    Cheap ticker pre-filter then 15m confirm. Caps at `limit` by |c24| then vr."""
+    """Near-early coins for X 熱度早標 targeting (NOT yet 🔥). c24<X_EARLY_C24_MAX, 1h vol≥1.5x, rank>20.
+    Prefers very-early (c24 < VERY_EARLY_C24_MAX) before higher-c24 fill. Caps at `limit`."""
     listed = set(g.universe())
     elig = []
     for x in g.get("/api/v3/ticker/24hr", {"type": "MINI"}):
@@ -154,7 +163,8 @@ def current_early_candidates(limit=12):
         if not (0 <= c24 < g.X_EARLY_C24_MAX):
             continue
         elig.append({"symbol": s, "base": s[:-4], "price": last, "chg24": c24, "qv": qv})
-    elig.sort(key=lambda e: -e["chg24"])
+    # Prefer very-early (c24 < +8%) first, then higher c24 fill — catch before the big move.
+    elig.sort(key=lambda e: (e["chg24"] >= VERY_EARLY_C24_MAX, -e["chg24"]))
     # rank proxy: position in full 24h leaderboard among listed USDT (approx via sorted elig of ALL would be better)
     allt = []
     for x in g.get("/api/v3/ticker/24hr", {"type": "MINI"}):
@@ -198,10 +208,24 @@ def plan(pumps, buzz, log, t_now=None, early_cands=None):
     day = t_now.strftime("%Y-%m-%d")
     used = xc.calls_on(day, log)
     remaining = None if DAILY_TOTAL_CAP is None else max(0, DAILY_TOTAL_CAP - used)
+    is_afternoon = t_now.hour >= AFTERNOON_START_HOUR
+    # Soft morning ceiling: hold AFTERNOON_RESERVE_CALLS until AFTERNOON_START_HOUR.
+    if remaining is None:
+        spendable = None
+    elif is_afternoon:
+        spendable = remaining
+    else:
+        spendable = max(0, DAILY_TOTAL_CAP - AFTERNOON_RESERVE_CALLS - used)
+    # Site banner 「今日 X 額度用完」 only when the hard day budget is gone (not while reserve holds).
     cap_reached = remaining is not None and remaining < CALLS_PER_TARGET
-    slots = MAX_TARGETS_PER_RUN if remaining is None else min(MAX_TARGETS_PER_RUN, remaining // CALLS_PER_TARGET)
+    slots_budget = spendable if spendable is not None else remaining
+    no_slots = slots_budget is not None and slots_budget < CALLS_PER_TARGET
+    slots = MAX_TARGETS_PER_RUN if slots_budget is None else min(MAX_TARGETS_PER_RUN, slots_budget // CALLS_PER_TARGET)
     hist = buzz.get("history") or []
+    deferred_cold = 0
+
     def _due_from(items, flag):
+        nonlocal deferred_cold
         out = []
         for p in items:
             sym = p["symbol"]
@@ -223,32 +247,57 @@ def plan(pumps, buzz, log, t_now=None, early_cands=None):
                 continue
             if last and t_now - last < datetime.timedelta(minutes=RECHECK_MIN - RECHECK_SLACK_MIN):
                 continue
+            # Morning: do not burn quota rechecking coins already marked 冷.
+            if (not is_afternoon) and n > 0 and prev.get("verdict") == "冷":
+                deferred_cold += 1
+                continue
             q = query_for(p["base"])
+            c24 = round(p["chg24"], 2) if p.get("chg24") is not None else None
             out.append({"symbol": sym, "base": p["base"], "flag": flag, "trigger_at": trig_iso,
                         "trigger_via": p.get("trigger_via"), "site_pool": p.get("site_pool", True), "price": p.get("price"),
-                        "chg24": round(p["chg24"], 2) if p.get("chg24") is not None else None,
+                        "chg24": c24,
+                        "very_early": bool(flag == "early" and c24 is not None and c24 < VERY_EARLY_C24_MAX),
                         "checks_this_trigger": n, "last_checked_at": xc.iso(last) if last else None,
                         "query": q, "count_query": q, "reason": "first" if n == 0 else "recheck"})
         return out
 
     due_pump = _due_from(pumps, "pump")
-    # early candidates share the same hourly budget; pumps keep priority
     early = early_cands or []
     pump_syms = {p["symbol"] for p in pumps}
     early = [e for e in early if e["symbol"] not in pump_syms]
     due_early = _due_from(early, "early")
-    # never-checked first; pumps before early; site_pool; newest trigger
     due = due_pump + due_early
-    due.sort(key=lambda d: (d["flag"] != "pump", d["checks_this_trigger"] > 0, not d.get("site_pool", True),
-                            -xc.parse_ts(d["trigger_at"]).timestamp()))
-    targets = [] if cap_reached else due[:slots]
+
+    def _prio(d):
+        # 0 first-check 🔥, 1 first-check very-early (c24<8), 2 other first-check,
+        # 3 recheck. Then site_pool, newest trigger.
+        first = d["checks_this_trigger"] == 0
+        if first and d["flag"] == "pump":
+            tier = 0
+        elif first and d.get("very_early"):
+            tier = 1
+        elif first:
+            tier = 2
+        else:
+            tier = 3
+        return (tier, not d.get("site_pool", True), -xc.parse_ts(d["trigger_at"]).timestamp())
+
+    due.sort(key=_prio)
+    targets = [] if no_slots else due[:slots]
     return {"generated_at": xc.iso(t_now), "cap_reached": cap_reached, "calls_today": used,
             "daily_total_cap": DAILY_TOTAL_CAP, "calls_remaining": remaining,
+            "spendable_now": spendable, "is_afternoon": is_afternoon,
+            "reserve_holding": (not is_afternoon) and (not cap_reached) and no_slots,
+            "deferred_cold_rechecks": deferred_cold,
             "config": {"RECHECK_MIN": RECHECK_MIN, "MAX_CHECKS_PER_TRIGGER": MAX_CHECKS_PER_TRIGGER,
                        "DAILY_TOTAL_CAP": DAILY_TOTAL_CAP, "CALLS_PER_TARGET": CALLS_PER_TARGET,
-                       "MAX_TARGETS_PER_RUN": MAX_TARGETS_PER_RUN},
+                       "MAX_TARGETS_PER_RUN": MAX_TARGETS_PER_RUN,
+                       "AFTERNOON_START_HOUR": AFTERNOON_START_HOUR,
+                       "AFTERNOON_RESERVE_CALLS": AFTERNOON_RESERVE_CALLS,
+                       "VERY_EARLY_C24_MAX": VERY_EARLY_C24_MAX},
             "on_board": [{"symbol": p["symbol"], "trigger_at": p["trigger_at"], "via": p.get("trigger_via"), "site_pool": p.get("site_pool", True)} for p in pumps],
-            "early_cands": [{"symbol": e["symbol"], "chg24": e.get("chg24"), "vr": e.get("vr"), "rank": e.get("rank")} for e in early],
+            "early_cands": [{"symbol": e["symbol"], "chg24": e.get("chg24"), "vr": e.get("vr"), "rank": e.get("rank"),
+                             "very_early": bool(e.get("chg24") is not None and e["chg24"] < VERY_EARLY_C24_MAX)} for e in early],
             "due_total": len(due), "due_pump": len(due_pump), "due_early": len(due_early), "targets": targets}
 
 
