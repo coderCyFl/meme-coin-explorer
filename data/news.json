@@ -1,7 +1,211 @@
 {
-  "fetched_at": "2026-10-31T13:06:05+08:00",
+  "fetched_at": "2026-10-31T14:07:54+08:00",
   "source": "X News",
   "stories": [
+    {
+      "id": "2116359578120274100",
+      "title": "多個加密項目網站遭 DNS 劫持釣魚",
+      "title_en": "DNS Hijacking Hits Multiple Crypto Project Websites",
+      "summary": "Flap、Kintsu 等站被導向 Step Drainer 惡意頁；Blockaid 點名約 12 個站，呼籲唔好連錢包／簽名。",
+      "summary_en": "Flap.sh and others redirected to Step Drainer pages; Blockaid flagged ~12 sites; revoke approvals if needed.",
+      "published_at": "2026-10-31T05:08:15+00:00",
+      "url": "https://x.com/i/trending/2116359578120274100",
+      "tags": [
+        "security",
+        "dns",
+        "phishing"
+      ],
+      "why_it_matters": "釣魚／DNS 劫持會即時偷錢包；模擬倉以外亦提醒核對官方頻道先連錢包。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116359577663086693",
+      "title": "Ethereum 驗證者大舉接入 mump2p 加速出塊",
+      "title_en": "Ethereum Validators Boost Network Speed with mump2p Adoption Surge",
+      "summary": "Optimum mump2p 主網後一週 TVB +76% 至約 249 萬 ETH；平均早 277ms 見到區塊。",
+      "summary_en": "Optimum mump2p: Total Value Boosted +76% to ~2.49M ETH; blocks ~277ms earlier on average.",
+      "published_at": "2026-10-31T02:45:11+00:00",
+      "url": "https://x.com/i/trending/2116359577663086693",
+      "tags": [
+        "ethereum",
+        "infra",
+        "validators"
+      ],
+      "why_it_matters": "出塊／傳播加快會影響套利同急升捕捉窗口；廣度同延遲環境值得留意。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116072545044820401",
+      "title": "Trezor 警告 Safe 5 遭植入竊聽板",
+      "title_en": "Trezor Warns of Hardware Implant in Safe 5 from Former Reseller",
+      "summary": "印尼用戶開箱發現額外電路板可讀助記詞並以流動訊號傳出；Trezor 切斷該經銷商並呼籲轉移資金。",
+      "summary_en": "Implant between board and screen can exfiltrate seed via cellular; Trezor cut reseller, urges fund moves.",
+      "published_at": "2026-10-31T02:11:31+00:00",
+      "url": "https://x.com/i/trending/2116072545044820401",
+      "tags": [
+        "trezor",
+        "hardware",
+        "security"
+      ],
+      "why_it_matters": "硬體供應鏈攻擊直接威脅冷錢包；買官方渠道同開箱檢查仍然關鍵。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116088121326735441",
+      "title": "Ansem 開約 88 萬美元 10x SOL 空單",
+      "title_en": "Ansem Opens $880K 10x Short on SOL Amid $ANSEM Token Crash",
+      "summary": "用 Pump.fun 新永續功能做 10x SOL short；同期 $ANSEM 由高峰大跌約九成。",
+      "summary_en": "~$880k 10x SOL short via Pump.fun perps; $ANSEM down ~90% from peak.",
+      "published_at": "2026-10-31T03:31:13+00:00",
+      "url": "https://x.com/i/trending/2116088121326735441",
+      "tags": [
+        "solana",
+        "pumpfun",
+        "perp"
+      ],
+      "why_it_matters": "KOL 槓桿空單同 meme 崩跌會放大 Solana 波動；急升表宜睇廣度而非單一喊單。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2116280633702093283",
+      "title": "OnePay 支援 USDC 直入支票戶口",
+      "title_en": "OnePay Enables Direct USDC Deposits to Checking Accounts",
+      "summary": "Walmart 背景 OnePay 經 Stripe Bridge 將 USDC 即時轉美元入帳；支援多鏈。",
+      "summary_en": "Walmart-backed OnePay converts USDC to dollars in checking via Stripe Bridge across 12 chains.",
+      "published_at": "2026-10-31T00:45:49+00:00",
+      "url": "https://x.com/i/trending/2116280633702093283",
+      "tags": [
+        "usdc",
+        "stablecoin",
+        "payments"
+      ],
+      "why_it_matters": "穩定幣入日常銀行通道＝法幣流動性敘事；風險偏好同穩定幣溢價會受影響。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116331796266889712",
+      "title": "SPX6900 靠社區信念撐住約 3.4 億市值",
+      "title_en": "SPX6900 Memecoin Thrives on Relentless Community Positivity",
+      "summary": "無團隊路線圖、靠 DCA 同 meme；現價約 $0.36，見大額現貨買入。",
+      "summary_en": "No team/roadmap; community DCA/memes; ~$0.36 with large spot buys.",
+      "published_at": "2026-10-31T00:55:55+00:00",
+      "url": "https://x.com/i/trending/2116331796266889712",
+      "tags": [
+        "meme",
+        "spx6900",
+        "community"
+      ],
+      "why_it_matters": "弱市仍有社區 meme 吸金；對照急升捕捉要分清敘事熱同可交易流動性。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2116157849453601191",
+      "title": "幣安被盜後 Satoshi 錢包仍紋絲不動",
+      "title_en": "Satoshi's $85 Billion Bitcoin Sits Untouched Amid Binance Hack Fears",
+      "summary": "約 109.6 萬 BTC（~$85B）分散逾 2 萬地址 15 年未動；對比 CEX 熱錢包風險。",
+      "summary_en": "~1.096M BTC (~$85B) across 21k+ addresses unmoved 15+ years vs CEX hot-wallet risk.",
+      "published_at": "2026-10-31T05:28:47+00:00",
+      "url": "https://x.com/i/trending/2116157849453601191",
+      "tags": [
+        "bitcoin",
+        "satoshi",
+        "security"
+      ],
+      "why_it_matters": "對比自我保管同交易所託管風險；市場情緒仍受 CEX 事故主導。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2116226602384179325",
+      "title": "Strategy 改以優先股籌資繼續囤 BTC",
+      "title_en": "Strategy Details Preferred Stock Shift for Bitcoin Buys Amid Earnings Volatility",
+      "summary": "Q3：持有 848,517 BTC；改以 STRC 等優先股買幣，普通股主要應付股息利息。",
+      "summary_en": "848,517 BTC held; preferred (STRC) for BTC buys; common equity reserved for dividends/interest.",
+      "published_at": "2026-10-30T18:00:33+00:00",
+      "url": "https://x.com/i/trending/2116226602384179325",
+      "tags": [
+        "mstr",
+        "bitcoin",
+        "treasury"
+      ],
+      "why_it_matters": "企業囤幣融資結構影響 BTC 買盤節奏同 MSTR／風險資產聯動。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2116193876361019659",
+      "title": "香港穩定幣 HKDAP 登陸 Solana",
+      "title_en": "Anchorpoint Brings HKD Stablecoin HKDAP to Solana Blockchain",
+      "summary": "Anchorpoint（渣打香港／HKT／Animoca）獲牌後將 HKDAP 由 ETH beta 擴至 Solana。",
+      "summary_en": "HKMA-licensed Anchorpoint expands HKDAP from Ethereum beta onto Solana with Foundation partnership.",
+      "published_at": "2026-10-30T19:05:05+00:00",
+      "url": "https://x.com/i/trending/2116193876361019659",
+      "tags": [
+        "solana",
+        "stablecoin",
+        "hongkong"
+      ],
+      "why_it_matters": "非美元穩定幣上 Solana 強化亞洲支付同 RWA 敘事；可睇 SOL 生態資金流。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2115756304312435149",
+      "title": "Druckenmiller 力撐 ICE×Hyperliquid 美期貨合作",
+      "title_en": "Stan Druckenmiller Backs trade[XYZ] in ICE-Hyperliquid U.S. Futures Deal",
+      "summary": "ICE 與 trade[XYZ]/Hyperliquid 擬推 24/7 美股／商品／加密永續（待 CFTC）；HYPE 曾急升逾一成。",
+      "summary_en": "ICE + trade[XYZ]/Hyperliquid plan 24/7 US perps pending CFTC; HYPE jumped >10%.",
+      "published_at": "2026-10-30T22:42:45+00:00",
+      "url": "https://x.com/i/trending/2115756304312435149",
+      "tags": [
+        "hyperliquid",
+        "hype",
+        "regulation"
+      ],
+      "why_it_matters": "傳統交易所入場永續會帶動 HYPE／監管敘事；急升表宜跟監管催化。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2115867041815289909",
+      "title": "Polymarket 因第三方腳本被入侵停市約一小時",
+      "title_en": "Polymarket Halts Trading After Third-Party Hack Drains $2.7 Million",
+      "summary": "DebugBear 監控腳本被植入；約 $270 萬被抽走，平台退款並另補交易損失。",
+      "summary_en": "Compromised DebugBear RUM script drained ~$2.7M; refunds + trading-loss top-ups.",
+      "published_at": "2026-10-30T20:09:15+00:00",
+      "url": "https://x.com/i/trending/2115867041815289909",
+      "tags": [
+        "polymarket",
+        "hack",
+        "security"
+      ],
+      "why_it_matters": "前端第三方腳本風險會打擊預測市場同風險偏好；安全敘事持續主導周末盤。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116283600807354755",
+      "title": "交易員 Frank 平倉逾千萬美元 meme 空單",
+      "title_en": "Crypto Trader Frank Closes Million-Dollar Memecoin Shorts",
+      "summary": "平掉 BTC／ZEC／NEAR／PUMP 等約 $1230 萬槓桿空單；meme 總市值由高峰大回落。",
+      "summary_en": "Closed ~$12.3M leveraged shorts (BTC/ZEC/NEAR/PUMP); memecoin mcap down from peaks.",
+      "published_at": "2026-10-30T21:46:20+00:00",
+      "url": "https://x.com/i/trending/2116283600807354755",
+      "tags": [
+        "meme",
+        "trading",
+        "short"
+      ],
+      "why_it_matters": "大戶平空＝波動來源轉方向；追急升要分清空頭回補同真需求。",
+      "category": "Other",
+      "source": "X News"
+    },
     {
       "id": "2116063292150218854",
       "title": "幣安確認約 63 億美元被盜並承諾全數賠償",
@@ -54,23 +258,6 @@
       "source": "X News"
     },
     {
-      "id": "2116088121326735441",
-      "title": "Ansem 開約 88 萬美元 10x 做空 SOL",
-      "title_en": "Ansem Opens $880K 10x Short on SOL Amid $ANSEM Token Crash",
-      "summary": "透過 Pump.fun 新永續（接 Hyperliquid）開大空；同時 $ANSEM 由高位大幅回落。",
-      "summary_en": "~$880K 10x SOL short via Pump.fun perps; $ANSEM down hard from peak amid community gripes.",
-      "published_at": "2026-10-31T03:31:13+00:00",
-      "url": "https://x.com/i/trending/2116088121326735441",
-      "tags": [
-        "sol",
-        "ansem",
-        "perps"
-      ],
-      "why_it_matters": "KOL 大空單同 meme 崩塌會放大 SOL 生態短線波動。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
       "id": "2116369223551226285",
       "title": "網紅警告 Hyperliquid 或臨近被攻擊風險",
       "title_en": "Crypto Influencer Warns of Imminent Hyperliquid Exploit",
@@ -85,40 +272,6 @@
         "fud"
       ],
       "why_it_matters": "CEX 事故後資金遷徙／恐慌會影響 HYPE 同永續成交；留意 FUD 同真實漏洞差異。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116359578120274100",
-      "title": "Flap 官網 DNS 被劫持籲勿連錢包",
-      "title_en": "Flap Token Launchpad Warns of DNS Hijacking on Official Site",
-      "summary": "flap.sh 被導去釣魚站；團隊叫停用該頁、唔好簽名；Blockaid 亦旗過類似前端風險。",
-      "summary_en": "DNS hijack sent users to phishing prompts; avoid site, no wallet connects; similar frontend risks flagged elsewhere.",
-      "published_at": "2026-10-31T02:45:46+00:00",
-      "url": "https://x.com/i/trending/2116359578120274100",
-      "tags": [
-        "dns",
-        "phishing",
-        "defi"
-      ],
-      "why_it_matters": "發射台域名劫持常見；瀏覽／模擬跟買前要核實官方渠道。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116359577663086693",
-      "title": "以太坊驗證者大舉採用 mump2p 加速出塊",
-      "title_en": "Ethereum Validators Boost Network Speed with mump2p Adoption Surge",
-      "summary": "Optimum mump2p 用網絡編碼加快區塊傳播；近週 TVB 大增，平均提早約 277ms 見到區塊。",
-      "summary_en": "mump2p RLNC mesh; Total Value Boosted up sharply; blocks ~277ms earlier on average.",
-      "published_at": "2026-10-31T02:45:11+00:00",
-      "url": "https://x.com/i/trending/2116359577663086693",
-      "tags": [
-        "ethereum",
-        "validators",
-        "infra"
-      ],
-      "why_it_matters": "基礎設施延遲改善有助 MEV／交易體驗，屬中長線利好。",
       "category": "News",
       "source": "X News"
     },
@@ -140,73 +293,6 @@
       "source": "X News"
     },
     {
-      "id": "2116072545044820401",
-      "title": "Trezor 警告 Safe 5 疑遭植入讀種子板",
-      "title_en": "Trezor Warns of Hardware Implant in Safe 5 from Former Reseller",
-      "summary": "印尼用戶新機內藏可經流動網絡外傳助記詞嘅電路板；Trezor 叫 CryptoBilis（Tokopedia）3 月起買家即刻轉倉並聯絡更換。",
-      "summary_en": "Implant between board and screen can exfil seed via cellular; buyers from CryptoBilis since March 2026 urged to move funds and seek replacement.",
-      "published_at": "2026-10-31T02:11:31+00:00",
-      "url": "https://x.com/i/trending/2116072545044820401",
-      "tags": [
-        "trezor",
-        "hardware",
-        "security"
-      ],
-      "why_it_matters": "硬體錢包供應鏈風險直接影響自託管；唔係行情訊號但係安全底線。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116331796266889712",
-      "title": "SPX6900 社群持續定投市值約 3.4 億",
-      "title_en": "SPX6900 Memecoin Thrives on Relentless Community Positivity",
-      "summary": "無團隊路線圖、靠文化同 DCA；近期有大額現貨買入。",
-      "summary_en": "Community-driven meme ~$340M; heavy DCA culture and large spot buys reported.",
-      "published_at": "2026-10-31T00:55:55+00:00",
-      "url": "https://x.com/i/trending/2116331796266889712",
-      "tags": [
-        "spx6900",
-        "memecoin"
-      ],
-      "why_it_matters": "大型 eth meme 情緒指標；同幣安急升板分開觀察。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
-      "id": "2115756304312435149",
-      "title": "ICE 聯手 trade[XYZ]／Hyperliquid 推美國永續期貨",
-      "title_en": "Stan Druckenmiller Backs trade[XYZ] in ICE-Hyperliquid U.S. Futures Deal",
-      "summary": "ICE（紐交所母企）擬推受規管 24/7 永續；Druckenmiller 公開支持；HYPE 短線急升逾一成。",
-      "summary_en": "ICE + trade[XYZ] + Hyperliquid plan CFTC-pending 24/7 perps; Druckenmiller backing; HYPE jumped >10%.",
-      "published_at": "2026-10-30T22:42:45+00:00",
-      "url": "https://x.com/i/trending/2115756304312435149",
-      "tags": [
-        "hyperliquid",
-        "hype",
-        "ice",
-        "perps"
-      ],
-      "why_it_matters": "合規永續敘事利好 HYPE／衍生品板塊流動性預期。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116283600807354755",
-      "title": "交易員 Frank 平掉逾千萬美元 meme 空單",
-      "title_en": "Crypto Trader Frank Closes Million-Dollar Memecoin Shorts",
-      "summary": "在 meme 退潮中鎖定利潤；市值由高峰大幅萎縮。",
-      "summary_en": "Closed ~$12.3M leveraged shorts on BTC/ZEC/NEAR/PUMP after memecoin cooldown.",
-      "published_at": "2026-10-30T21:46:20+00:00",
-      "url": "https://x.com/i/trending/2116283600807354755",
-      "tags": [
-        "memecoin",
-        "trading"
-      ],
-      "why_it_matters": "大型空單平倉可短暫改變 meme／山寨波動結構。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
       "id": "2116259370371612935",
       "title": "MSTR 跌約 9% 交易員大舉買認沽",
       "title_en": "Traders Bet Big on MicroStrategy Puts as Stock Drops 9%",
@@ -220,23 +306,6 @@
       ],
       "why_it_matters": "BTC 代理股避險情緒，可反映整體風險偏好。",
       "category": "Other",
-      "source": "X News"
-    },
-    {
-      "id": "2115867041815289909",
-      "title": "Polymarket 第三方腳本被黑暫停交易約一小時",
-      "title_en": "Polymarket Halts Trading After Third-Party Hack Drains $2.7 Million",
-      "summary": "DebugBear 監控腳本被植入，盜約 270 萬；平台退款近乎全部受影響用戶並另補交易損失，合計約 390 萬。",
-      "summary_en": "Compromised DebugBear RUM script drained ~$2.7M; nearly all 726 users refunded plus trading-loss top-up (~$3.9M total).",
-      "published_at": "2026-10-30T20:09:15+00:00",
-      "url": "https://x.com/i/trending/2115867041815289909",
-      "tags": [
-        "polymarket",
-        "hack",
-        "frontend"
-      ],
-      "why_it_matters": "預測市場同前端第三方腳本風險升溫；短線情緒偏避險。",
-      "category": "News",
       "source": "X News"
     },
     {
@@ -255,23 +324,6 @@
       ],
       "why_it_matters": "強調金鑰／裝置管理優先於純合約審計；團隊運維風險上升。",
       "category": "Other",
-      "source": "X News"
-    },
-    {
-      "id": "2116193876361019659",
-      "title": "香港持牌穩定幣 HKDAP 登陸 Solana",
-      "title_en": "Anchorpoint Brings HKD Stablecoin HKDAP to Solana",
-      "summary": "Anchorpoint（渣打香港／HKT／Animoca 背景）將 HKDAP 由 Ethereum beta 擴至 Solana 鑄贖。",
-      "summary_en": "HKMA-licensed Anchorpoint expands HKDAP mint/redeem to Solana; Solana Foundation strategic partner.",
-      "published_at": "2026-10-30T19:05:05+00:00",
-      "url": "https://x.com/i/trending/2116193876361019659",
-      "tags": [
-        "solana",
-        "stablecoin",
-        "hongkong"
-      ],
-      "why_it_matters": "非美元穩定幣上 Solana 利好亞洲支付同 RWA 流動性。",
-      "category": "News",
       "source": "X News"
     },
     {
@@ -304,23 +356,6 @@
         "binance"
       ],
       "why_it_matters": "DeFi 風控工具（凍結）同流動性恢復節奏影響槓桿同穩定幣路徑。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116226602384179325",
-      "title": "Strategy 改以優先股為主籌資買 BTC",
-      "title_en": "Strategy Details Preferred Stock Shift for Bitcoin Buys",
-      "summary": "Q3 電話會：主要以 STRC 等數碼信貸買幣，普通股銷售受限；持倉約 84.8 萬枚 BTC，股價震盪。",
-      "summary_en": "Prefer digital credit/preferred (STRC) for BTC buys; 848,517 BTC held; shares volatile post-call.",
-      "published_at": "2026-10-30T18:00:33+00:00",
-      "url": "https://x.com/i/trending/2116226602384179325",
-      "tags": [
-        "mstr",
-        "bitcoin",
-        "treasury"
-      ],
-      "why_it_matters": "企業囤幣融資結構影響 MSTR／BTC 聯動同市場風險偏好。",
       "category": "News",
       "source": "X News"
     },
@@ -545,6 +580,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-10-31T13:06:05+08:00",
+  "x_fetched_at": "2026-10-31T14:07:54+08:00",
   "x_job": "hourly-update"
 }
