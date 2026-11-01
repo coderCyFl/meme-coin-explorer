@@ -1,10 +1,42 @@
 {
- "updated_at": "2026-11-01T06:36:17+08:00",
- "batch": "gb-20261101-0634",
- "picked_at": "2026-11-01T06:34:52+08:00",
- "btc_24h_pct": 0.85,
- "universe": 57,
+ "updated_at": "2026-11-01T08:27:19+08:00",
+ "batch": "gb-20261101-0825",
+ "picked_at": "2026-11-01T08:25:19+08:00",
+ "btc_24h_pct": 0.27,
+ "universe": 55,
  "active": [
+  {
+   "symbol": "LSK",
+   "pair": "LSKUSDT",
+   "tier": "early2",
+   "picked_at": "2026-11-01T08:15:00+08:00",
+   "entry_price_usd": 0.252,
+   "price_at_snapshot": 0.2501,
+   "trigger_via": "start",
+   "change_15m_at_pick": 2.82,
+   "change_24h_at_pick": 3.07,
+   "rank_24h_at_pick": 20,
+   "batch": "gb-20261101-0825",
+   "score": 2.5,
+   "change_1h_at_pick": 1.04,
+   "change_4h_at_pick": 4.3,
+   "vol_x_avg": 0.53,
+   "vol_x_prev_hour": 0.36,
+   "range_24h_pct": 54.8,
+   "from_24h_high_pct": -20.98,
+   "quote_volume_24h": 23991994,
+   "watch_only": true,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
   {
    "symbol": "BEAMX",
    "pair": "BEAMXUSDT",
@@ -73,6 +105,38 @@
    "symbol": "AMP",
    "pair": "AMPUSDT",
    "tier": "pump",
+   "picked_at": "2026-11-01T04:30:00+08:00",
+   "entry_price_usd": 0.000739,
+   "price_at_snapshot": 0.000717,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": -4.52,
+   "change_24h_at_pick": 15.29,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261101-0825",
+   "score": 49.7,
+   "change_1h_at_pick": 5.57,
+   "change_4h_at_pick": 6.95,
+   "vol_x_avg": 5.64,
+   "vol_x_prev_hour": 1.23,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -13.06,
+   "quote_volume_24h": 3631875,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "AMP",
+   "pair": "AMPUSDT",
+   "tier": "pump",
    "picked_at": "2026-11-01T04:15:00+08:00",
    "entry_price_usd": 0.000775,
    "price_at_snapshot": 0.00071,
@@ -90,7 +154,17 @@
    "from_24h_high_pct": -8.82,
    "quote_volume_24h": 3461141,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.26,
+     "max_drawdown_pct": -9.68,
+     "close_pct": -4.9,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-01T08:24:54+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -929,90 +1003,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-11-01T01:55:49+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "LSK",
-   "pair": "LSKUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-31T19:15:00+08:00",
-   "entry_price_usd": 0.2633,
-   "price_at_snapshot": 0.3092,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 7.47,
-   "change_24h_at_pick": 26.46,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261031-2137",
-   "score": 65.9,
-   "change_1h_at_pick": 9.07,
-   "change_4h_at_pick": 15.18,
-   "vol_x_avg": 1.71,
-   "vol_x_prev_hour": 5.9,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -0.64,
-   "quote_volume_24h": 15307162,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 21.12,
-     "max_drawdown_pct": -0.27,
-     "close_pct": 18.31,
-     "hit20": true,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-01T01:55:49+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "RAD",
-   "pair": "RADUSDT",
-   "tier": "pump",
-   "picked_at": "2026-10-31T18:45:00+08:00",
-   "entry_price_usd": 0.281,
-   "price_at_snapshot": 0.254,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 0.72,
-   "change_24h_at_pick": 23.25,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261031-2137",
-   "score": 68.6,
-   "change_1h_at_pick": 5.24,
-   "change_4h_at_pick": 15.16,
-   "vol_x_avg": 5.54,
-   "vol_x_prev_hour": 1.72,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -3.44,
-   "quote_volume_24h": 3556995,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 0.71,
-     "max_drawdown_pct": -12.46,
-     "close_pct": -11.39,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-10-31T22:51:04+08:00"
     }
    },
    "exit_plan": {
