@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-11-02T04:50:14+08:00",
- "batch": "gb-20261102-0332",
- "picked_at": "2026-11-02T03:32:09+08:00",
- "btc_24h_pct": 0.27,
- "universe": 47,
+ "updated_at": "2026-11-02T06:27:18+08:00",
+ "batch": "gb-20261102-0625",
+ "picked_at": "2026-11-02T06:25:46+08:00",
+ "btc_24h_pct": 0.08,
+ "universe": 48,
  "active": [
   {
    "symbol": "HEMI",
@@ -58,7 +58,17 @@
    "from_24h_high_pct": -5.78,
    "quote_volume_24h": 2264829,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 6.91,
+     "max_drawdown_pct": -5.12,
+     "close_pct": -3.58,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-02T06:25:26+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -90,7 +100,17 @@
    "from_24h_high_pct": -7.31,
    "quote_volume_24h": 5159878,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 1.56,
+     "max_drawdown_pct": -2.63,
+     "close_pct": 0.53,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-02T06:25:26+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -467,48 +487,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-11-02T02:37:48+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "GTC",
-   "pair": "GTCUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-01T18:15:00+08:00",
-   "entry_price_usd": 0.23688,
-   "price_at_snapshot": 0.24152,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 0.59,
-   "change_24h_at_pick": 0.22,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261101-2146",
-   "score": 40.7,
-   "change_1h_at_pick": 5.51,
-   "change_4h_at_pick": 2.1,
-   "vol_x_avg": 3.01,
-   "vol_x_prev_hour": 3.68,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -0.82,
-   "quote_volume_24h": 4316965,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 8.15,
-     "max_drawdown_pct": -0.86,
-     "close_pct": 0.71,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-01T23:00:27+08:00"
     }
    },
    "exit_plan": {
