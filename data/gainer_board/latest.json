@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-02T06:27:18+08:00",
- "batch": "gb-20261102-0625",
- "picked_at": "2026-11-02T06:25:46+08:00",
- "btc_24h_pct": 0.08,
+ "updated_at": "2026-11-02T07:02:31+08:00",
+ "batch": "gb-20261102-0700",
+ "picked_at": "2026-11-02T07:00:42+08:00",
+ "btc_24h_pct": 0.5,
  "universe": 48,
  "active": [
   {
@@ -26,7 +26,17 @@
    "from_24h_high_pct": -1.93,
    "quote_volume_24h": 1683272,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.39,
+     "max_drawdown_pct": -4.72,
+     "close_pct": -4.52,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-02T07:00:31+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
