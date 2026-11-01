@@ -1,48 +1,48 @@
 {
- "updated_at": "2026-11-01T21:47:52+08:00",
- "batches": 59,
- "flags": 157,
+ "updated_at": "2026-11-01T23:02:37+08:00",
+ "batches": 60,
+ "flags": 163,
  "horizons": {
   "4h": {
-   "n": 155,
+   "n": 156,
    "hit20": 7,
    "hit50": 1,
-   "avg_max_gain_pct": 5.55,
-   "avg_close_pct": -0.83,
-   "avg_max_drawdown_pct": -5.2,
-   "closed_up": 57
+   "avg_max_gain_pct": 5.56,
+   "avg_close_pct": -0.82,
+   "avg_max_drawdown_pct": -5.17,
+   "closed_up": 58
   },
   "24h": {
-   "n": 121,
+   "n": 127,
    "hit20": 17,
    "hit50": 2,
-   "avg_max_gain_pct": 9.95,
-   "avg_close_pct": -2.28,
-   "avg_max_drawdown_pct": -10.16,
-   "closed_up": 48
+   "avg_max_gain_pct": 9.91,
+   "avg_close_pct": -2.64,
+   "avg_max_drawdown_pct": -10.21,
+   "closed_up": 49
   }
  },
  "tiers": {
   "pump": {
    "4h": {
-    "n": 61,
+    "n": 62,
     "hit20": 5,
     "hit50": 1,
     "avg_max_gain_pct": 8.13,
-    "avg_close_pct": -0.04,
-    "avg_max_drawdown_pct": -6.7,
-    "closed_up": 23
+    "avg_close_pct": -0.03,
+    "avg_max_drawdown_pct": -6.6,
+    "closed_up": 24
    },
    "24h": {
-    "n": 49,
+    "n": 50,
     "hit20": 11,
     "hit50": 2,
-    "avg_max_gain_pct": 13.43,
-    "avg_close_pct": -4.11,
-    "avg_max_drawdown_pct": -13.14,
+    "avg_max_gain_pct": 13.29,
+    "avg_close_pct": -4.57,
+    "avg_max_drawdown_pct": -13.46,
     "closed_up": 15
    },
-   "flags": 63
+   "flags": 66
   },
   "early2": {
    "4h": {
@@ -55,15 +55,15 @@
     "closed_up": 33
    },
    "24h": {
-    "n": 67,
+    "n": 72,
     "hit20": 6,
     "hit50": 0,
-    "avg_max_gain_pct": 7.84,
-    "avg_close_pct": -0.97,
-    "avg_max_drawdown_pct": -8.08,
-    "closed_up": 31
+    "avg_max_gain_pct": 7.97,
+    "avg_close_pct": -1.34,
+    "avg_max_drawdown_pct": -8.05,
+    "closed_up": 32
    },
-   "flags": 89
+   "flags": 92
   },
   "early": {
    "4h": {
@@ -97,95 +97,29 @@
     "closed_up": 77
    },
    "24h": {
-    "n": 175,
+    "n": 181,
     "hit20": 14,
     "hit50": 1,
-    "avg_max_gain_pct": 7.88,
+    "avg_max_gain_pct": 7.86,
     "avg_close_pct": -1.73,
-    "avg_max_drawdown_pct": -7.15,
-    "closed_up": 64
+    "avg_max_drawdown_pct": -7.04,
+    "closed_up": 68
    },
    "flags": 222
   }
  },
  "latest_4h": {
-  "batch": "gb-20261101-1603",
-  "picked_at": "2026-11-01T16:03:47+08:00",
+  "batch": "gb-20261101-2146",
+  "picked_at": "2026-11-01T21:46:13+08:00",
   "entries": [
    {
-    "symbol": "G",
+    "symbol": "GTC",
     "tier": "pump",
-    "entry_price_usd": 0.00412,
-    "change_24h_at_pick": 26.38,
-    "max_gain_pct": 6.8,
-    "close_pct": -3.64,
-    "max_drawdown_pct": -5.1,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "PROM",
-    "tier": "early2",
-    "entry_price_usd": 5.642,
-    "change_24h_at_pick": 9.96,
-    "max_gain_pct": 14.87,
-    "close_pct": 0.41,
-    "max_drawdown_pct": -0.43,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "LINK",
-    "tier": "early2",
-    "entry_price_usd": 11.815,
-    "change_24h_at_pick": 3.8,
-    "max_gain_pct": 0.47,
-    "close_pct": -0.25,
-    "max_drawdown_pct": -0.92,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "AMP",
-    "tier": "early2",
-    "entry_price_usd": 0.000723,
-    "change_24h_at_pick": 9.38,
-    "max_gain_pct": 0.14,
-    "close_pct": -4.15,
-    "max_drawdown_pct": -4.43,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "REZ",
-    "tier": "cand",
-    "entry_price_usd": 0.004289,
-    "change_24h_at_pick": 5.93,
-    "max_gain_pct": 4.22,
-    "close_pct": -2.68,
-    "max_drawdown_pct": -4.99,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "RED",
-    "tier": "cand",
-    "entry_price_usd": 0.1383,
-    "change_24h_at_pick": 6.78,
-    "max_gain_pct": 0.0,
-    "close_pct": -1.88,
-    "max_drawdown_pct": -3.04,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "STX",
-    "tier": "cand",
-    "entry_price_usd": 0.3276,
-    "change_24h_at_pick": 8.58,
-    "max_gain_pct": 0.06,
-    "close_pct": -1.31,
-    "max_drawdown_pct": -2.41,
+    "entry_price_usd": 0.23688,
+    "change_24h_at_pick": 0.22,
+    "max_gain_pct": 8.15,
+    "close_pct": 0.71,
+    "max_drawdown_pct": -0.86,
     "hit20": false,
     "hit50": false
    }
