@@ -39,13 +39,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   </div>
 </header>
 
-<div class="disclaimer" role="note">
-  <div class="disc-one">Paper trading · Binance public data
-    <button type="button" class="linkish" id="discToggle">Details</button></div>
-  <div class="disc-full" id="discFull" hidden>
-    Home (Hot / Browse / Today) uses <b>Binance public data</b> only; Full mode “Scan” adds on-chain Dex.
-    <strong>Crypto.M</strong> is paper money in your browser.
-  </div>
+<div class="disclaimer disc-chip" role="note">
+  <div class="disc-one">Mock · paper</div>
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
@@ -268,7 +263,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <button id="followBatch" class="secondary" title="Follow batch">Follow batch</button>
       </div>
     </div>
-    <p class="honesty muted" id="sampleHonesty"></p>
+    <p class="honesty muted" id="sampleHonesty" hidden></p>
     <div class="stats" id="pickStats"></div>
   </section>
 
@@ -497,7 +492,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <p class="gb-livebar"><span>即時</span> · <span id="gainerUpdated">連接中…</span></p>
     <p class="home-sub" id="gainerMeta">Binance spot pumps · separate from AI picks</p>
     <div class="row wrap gb-multrow"><span class="muted tiny">注碼</span><div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div></div>
-    <p class="gb-warn tiny">追升紙上玩：中 +20% 機會低，一定要跟止蝕。只用 Binance 公開數據。</p>
+    
     <h4 class="gb-tier-title">🔥 規則</h4>
     <p class="tiny muted">近 4h：1h ≥ +5% 兼成交 ≥ 3x 平均，或 15m ≥ +5%（冇 24h 下限）。唔夠 6 隻補「候補」（只觀察、冇買入）。</p>
     <div id="gainerPumpBt"></div>
@@ -508,8 +503,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="gacc" id="gainerCard"></div>
   </div>
   <div id="pfDetail" data-park>
-    <div class="simbanner"><b>Crypto.M · 冇真實金錢。</b>
-      Shared cash pool; leverage is isolated (max 50x; Conservative≤3x · Aggressive≤10x · High risk/All-in≤50x). ~90% margin drawdown liquidates. Real perps have funding/wick risk.</div>
+    <div class="simbanner">Mock cash · not real money</div>
     <div id="liveStrip" class="live-strip" hidden>
       <span class="live-dot" aria-hidden="true"></span>
       <span id="liveStripText">即時報價關閉</span>
@@ -555,7 +549,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
     <div id="levSection" class="pos-section lev-section" hidden>
       <h3><span class="kind-badge lev">Leverage</span> (isolated) <span class="en">Can liquidate</span></h3>
-      <p class="muted lev-note">名義倉 = 保證金 × 倍數。浮虧 ≈ 保證金 90% → 爆倉，保證金歸零。v1 未計資金費（真實 perps 有 funding）。</p>
+      
       <div class="tablewrap"><table><thead><tr>
         <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
         <th class="num">入場</th><th class="num">標記價</th><th class="num">爆倉價</th>
@@ -659,12 +653,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   </div>
 </aside>
 
-<footer>
-  <p>Markets / Hot / Today's picks: <b>Binance-only</b> public REST + WebSocket (data-api / data-stream.binance.vision, no key).
-  舊批 Solana Dex 推薦只留喺完整紀錄；Dex 掃描喺完整模式先有，唔再當熱門。
-  X snapshot: <code>data/x_buzz.json</code> (≤1 refresh/day). Crypto.M in localStorage (paper).</p>
-  <p class="legend">誠實標籤：今日跟買 = 多角度 OHLCV 留意盤（量能／壓縮／相對 BTC／輪動／吸籌），刻意唔係 24h 升幅榜。唔係保證賺錢。</p>
-</footer>
+<footer></footer>
 
 <!-- Cartoon FX overlays -->
 <div id="allinFx" class="fx-overlay" hidden aria-hidden="true">

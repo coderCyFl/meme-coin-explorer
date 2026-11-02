@@ -1930,3 +1930,9 @@ button.allin-btn:hover,button.gb-allin:hover,.allin-btn:hover{
 #tradeDlg #tradeAllin:hover,dialog#tradeDlg #tradeAllin:hover,button#tradeAllin.allin-btn:hover{
   background:var(--panel2)!important;border-color:var(--muted)!important;color:var(--text)!important;
 }
+
+
+/* Cyrus cut: tiny mock chip, no legal wall */
+.disclaimer.disc-chip{padding:4px 10px!important;margin:8px 20px!important;font-size:11px!important;border-style:dashed!important;opacity:.85}
+.disclaimer.disc-chip .disc-one{margin:0;font-weight:600;color:var(--muted)}
+footer:empty{display:none}

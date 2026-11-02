@@ -127,29 +127,29 @@
     let whenText;
     if (labelOnlyReview && reviewAt) {
       whenText = pastSellBy
-        ? `已到 ${sh}h 最遲沽時間`
+        ? `Hit ${sh}h sell-by`
         : reviewPassed
-          ? `已過 ${rh}h 檢討（只係睇，唔使沽）· 最遲 ${frTime(secondAt)} 沽`
-          : `${frTime(reviewAt)} 檢討（唔使沽）· 最遲 ${frTime(secondAt)} 沽`;
+          ? `Past ${rh}h review (label only) · sell by ${frTime(secondAt)}`
+          : `Review ${frTime(reviewAt)} (no sell) · by ${frTime(secondAt)}`;
     } else if (!reviewAt) {
-      whenText = `約 ${rh}h 後再睇`;
+      whenText = `Recheck in ~${rh}h`;
     } else if (pastReview) {
       whenText = isWeak
-        ? `已過 ${rh}h · 宜決定賣定留`
-        : `已過 ${rh}h · 宜決定賣定留` + (secondAt ? `（${sh}h ${frTime(secondAt)} 再對照）` : "");
+        ? `Past ${rh}h · decide sell/hold`
+        : `Past ${rh}h · decide sell/hold` + (secondAt ? ` (${sh}h ${frTime(secondAt)} check)` : "");
     } else {
-      whenText = `約 ${frTime(reviewAt)} 再睇`;
+      whenText = `Recheck ~${frTime(reviewAt)}`;
     }
     let trimNote = null;
     if (high24 > 0 && entryPx > 0) {
       const roomPct = (high24 / entryPx - 1) * 100;
       if (roomPct > 0.5 && roomPct < tp) {
-        trimNote = `近 24h 高（+${roomPct.toFixed(1)}%）可減倉`;
+        trimNote = `Near 24h high (+${roomPct.toFixed(1)}%) — trim`;
       }
     }
     return {
       reviewAt, secondAt, reviewH: rh, secondH: sh, tp, sl, weak: isWeak, pastReview, labelOnlyReview,
-      whenText, tpText: `紙上 +${tp}%／-${sl}%`, trimNote,
+      whenText, tpText: `Paper +${tp}%/−${sl}%`, trimNote,
     };
   }
 
@@ -176,14 +176,14 @@
     const pastReview = reviewAt ? now >= reviewAt.getTime() : false;
     const pastHold = secondAt ? now >= secondAt.getTime() : false;
     let whenText;
-    if (!secondAt) whenText = `最遲 ${sh}h 內走`;
-    else if (pastHold) whenText = `已過 ${sh}h · 急升倉宜清`;
-    else if (pastReview) whenText = `最遲 ${frTime(secondAt)} 走`;
-    else whenText = `${frTime(reviewAt)} 再睇`;
+    if (!secondAt) whenText = `Exit within ${sh}h`;
+    else if (pastHold) whenText = `Past ${sh}h · clear pump`;
+    else if (pastReview) whenText = `Exit by ${frTime(secondAt)}`;
+    else whenText = `Recheck ${frTime(reviewAt)}`;
     return {
       momentum: true, reviewAt, secondAt, reviewH: rh, secondH: sh, tp, tp2, sl, weak: false,
       pastReview: pastHold, pastRecheck: pastReview, whenText,
-      tpText: `紙上 +${tp}%／+${tp2}%／-${sl}%`, trimNote: null,
+      tpText: `Paper +${tp}%/+${tp2}%/−${sl}%`, trimNote: null,
     };
   }
 
@@ -369,27 +369,27 @@
     if (live) {
       const chip = (c, tpl) => exitLiveNode("span", { class: "exit-chip " + c }, tpl, plan, basePx);
       const kids = plan.momentum
-        ? [chip("exit-tp", "🎯 {target}／{target2}"), chip("exit-sl", "止蝕 {stop}"), chip("exit-when", "最遲 {until}")]
-        : [chip("exit-tp", "🎯 {target}"), chip("exit-sl", "止蝕 {stop}"), chip("exit-when", "揸到 {review}")];
+        ? [chip("exit-tp", "🎯 {target}/{target2}"), chip("exit-sl", "Stop {stop}"), chip("exit-when", "By {until}")]
+        : [chip("exit-tp", "🎯 {target}"), chip("exit-sl", "Stop {stop}"), chip("exit-when", "Hold to {review}")];
       return el("div", exitLiveAttrs(pair, plan, basePx, { class: className, title: "If you Buy now: targets/stops use the same live formula as the trade sheet; a fill starts a new hold clock" }), ...kids);
     }
     const whenClean = plan.labelOnlyReview && plan.secondAt
-      ? `最遲 ${frTime(plan.secondAt)}（${plan.secondH}h）`
+      ? `by ${frTime(plan.secondAt)} (${plan.secondH}h)`
       : String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
-    const holdTxt = plan.pastReview ? (plan.labelOnlyReview ? "已到最遲沽時間 · 宜沽" : "宜決定賣定留") : ("揸到 " + (whenClean || plan.whenText));
+    const holdTxt = plan.pastReview ? (plan.labelOnlyReview ? "Past sell-by · exit" : "Decide sell/hold") : ("Hold to " + (whenClean || plan.whenText));
     const kids = plan.momentum ? [
       el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: plan.whenText }),
-      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp + "% 放一半" }),
-      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp2 + "% 清" }),
-      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
-      el("span", { class: "exit-chip exit-when", text: plan.secondAt ? "最遲 " + frTime(plan.secondAt) : "最遲 " + plan.secondH + "h" }),
+      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp + "% half" }),
+      el("span", { class: "exit-chip exit-tp", text: "+" + plan.tp2 + "% clear" }),
+      el("span", { class: "exit-chip exit-sl", text: "Stop −" + plan.sl + "%" }),
+      el("span", { class: "exit-chip exit-when", text: plan.secondAt ? "By " + frTime(plan.secondAt) : "By " + plan.secondH + "h" }),
     ] : [
       el("span", { class: "exit-chip exit-when" + (plan.pastReview ? " exit-due" : ""), text: holdTxt }),
-      el("span", { class: "exit-chip exit-tp", text: "目標 +" + plan.tp + "%" }),
-      el("span", { class: "exit-chip exit-sl", text: "止蝕 −" + plan.sl + "%" }),
+      el("span", { class: "exit-chip exit-tp", text: "Target +" + plan.tp + "%" }),
+      el("span", { class: "exit-chip exit-sl", text: "Stop −" + plan.sl + "%" }),
     ];
     if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
-    return el("div", { class: className, title: "幾時可以放 · 紙上參考唔係保證。" }, ...kids);
+    return el("div", { class: className }, ...kids);
   }
 
   /** Live-tick every would-be-buy exit text (same formula + same live price as the buy window). */
@@ -439,7 +439,7 @@
     return pos.qty > 0 && pos.cost ? pos.cost / pos.qty : null; // legacy spot (pre-20261025c1)
   }
 
-  const LEV_STOP_NOTE = "槓桿止蝕：計劃止蝕低過爆倉價，改用入場同爆倉中間";
+  const LEV_STOP_NOTE = "Lev stop: plan stop below liq → midway entry/liq";
   /**
    * Effective stop for a position. Spot (lev ≤ 1): the plan stop, unchanged.
    * Leverage: the plan stop if it sits ABOVE the liquidation price; otherwise halfway between
@@ -486,10 +486,10 @@
   function withStopLoss(g, loss) {
     if (!g) return g;
     g.lossUsd = loss != null && isFinite(loss) ? loss : null;
-    g.stop = `${price(g.stopPx)}（−${fmtSl(g.sl)}%` + (g.lossUsd != null ? ` · 約蝕 ${money2(Math.abs(Math.min(0, g.lossUsd)))}` : "") + "）" + (g.levStopAdj ? "（槓桿）" : g.momentum ? `· 到 +${g.tp}% 後止蝕升返成本` : "");
+    g.stop = `${price(g.stopPx)} (−${fmtSl(g.sl)}%` + (g.lossUsd != null ? ` · ~loss ${money2(Math.abs(Math.min(0, g.lossUsd)))}` : "") + ")" + (g.levStopAdj ? " (lev)" : g.momentum ? ` · after +${g.tp}% stop → breakeven` : "");
     return g;
   }
-  const STOP_HIT_TXT = "已到止蝕 · 宜平倉";
+  const STOP_HIT_TXT = "Stop hit · close";
   function exitGuideCopyPlan(plan, entryPx, markPx) {
     if (!plan || !(entryPx > 0)) return null;
     if (plan.momentum) return momentumGuideCopy(plan, entryPx, markPx);
@@ -500,22 +500,22 @@
     const near = mark != null && !reached && mark >= targetPx * 0.97;
     let main;
     if (reached) {
-      main = `已到目標 · ${price(targetPx)}（+${tp}%）可考慮放`;
+      main = `At target · ${price(targetPx)} (+${tp}%) — consider exit`;
     } else if (near) {
-      main = `接近 · ${price(targetPx)}（+${tp}%）可考慮放`;
+      main = `Near · ${price(targetPx)} (+${tp}%) — consider exit`;
     } else {
-      main = `${price(targetPx)}（+${tp}%）可考慮放`;
+      main = `${price(targetPx)} (+${tp}%) — consider exit`;
     }
     const whenClean = plan.labelOnlyReview && plan.secondAt
-      ? `最遲 ${frTime(plan.secondAt)}（${plan.secondH}h）`
+      ? `by ${frTime(plan.secondAt)} (${plan.secondH}h)`
       : String(plan.whenText || "").replace(/^約\s*/, "").replace(/\s*再睇$/, "");
     const hold = reached
-      ? (plan.pastReview ? (plan.labelOnlyReview ? "已到最遲沽時間 · 宜沽" : "已過檢視時間 · 宜決定賣定留") : `到目標可減倉；否則持有至 ${whenClean || plan.whenText}`)
+      ? (plan.pastReview ? (plan.labelOnlyReview ? "Past sell-by · exit" : "Past review · decide sell/hold") : `At target — trim or hold to ${whenClean || plan.whenText}`)
       : (plan.pastReview
-        ? (plan.labelOnlyReview ? `未到目標 · 已到 ${plan.secondH}h 最遲沽時間，宜沽` : `未到目標 · 已過檢視時間，宜決定賣定留定再 hold`)
-        : `${whenClean || plan.whenText} 再決定（而家未到目標）`);
-    const stop = `${price(stopPx)}（−${sl}%）· 紙上參考`;
-    const untilText = plan.pastReview ? (plan.labelOnlyReview ? "宜沽" : "宜決定") : (whenClean ? "揸到 " + whenClean : "");
+        ? (plan.labelOnlyReview ? `Missed target · ${plan.secondH}h sell-by — exit` : `Missed target · past review — decide`)
+        : `Decide at ${whenClean || plan.whenText} (target not hit)`);
+    const stop = `${price(stopPx)} (−${sl}%)`;
+    const untilText = plan.pastReview ? (plan.labelOnlyReview ? "Exit" : "Decide") : (whenClean ? "Hold to " + whenClean : "");
     return { main, hold, stop, basePx: entryPx, targetPx, stopPx, reached, pastReview: plan.pastReview, tp, sl, untilText };
   }
 
@@ -527,18 +527,18 @@
     const hit2 = mark != null && mark >= t2 * 0.995;
     const hit1 = mark != null && !hit2 && mark >= t1 * 0.995;
     let main;
-    if (hit2) main = `已到 +${plan.tp2}% · ${price(t2)} 可清倉`;
-    else if (hit1) main = `已到 +${plan.tp}% · 放一半；餘下等 ${price(t2)}（+${plan.tp2}%）`;
-    else main = `${price(t1)}（+${plan.tp}%）放一半 → ${price(t2)}（+${plan.tp2}%）清`;
-    const recheck = plan.reviewAt ? frTime(plan.reviewAt) : `${plan.reviewH}h 後`;
-    const last = plan.secondAt ? frTime(plan.secondAt) : `${plan.secondH}h 內`;
+    if (hit2) main = `Hit +${plan.tp2}% · ${price(t2)} — clear`;
+    else if (hit1) main = `Hit +${plan.tp}% · sell half; rest to ${price(t2)} (+${plan.tp2}%)`;
+    else main = `${price(t1)} (+${plan.tp}%) half → ${price(t2)} (+${plan.tp2}%) clear`;
+    const recheck = plan.reviewAt ? frTime(plan.reviewAt) : `in ${plan.reviewH}h`;
+    const last = plan.secondAt ? frTime(plan.secondAt) : `within ${plan.secondH}h`;
     const hold = plan.pastReview
-      ? `已過 ${plan.secondH}h · 急升倉唔好留，宜清`
+      ? `Past ${plan.secondH}h · don’t hold pumps — clear`
       : (plan.pastRecheck
-        ? `已過 ${plan.reviewH}h 檢查點 · 最遲 ${last} 走`
-        : `${recheck} 再睇（${plan.reviewH}h）· 最遲 ${last} 走`);
-    const stop = `${price(stopPx)}（−${plan.sl}%）· 到 +${plan.tp}% 後止蝕升返成本`;
-    return { main, hold, stop, basePx: entryPx, targetPx: t1, target2Px: t2, stopPx, reached: hit1 || hit2, pastReview: plan.pastReview, tp: plan.tp, sl: plan.sl, momentum: true, untilText: plan.pastReview ? "宜清" : "最遲 " + last };
+        ? `Past ${plan.reviewH}h check · exit by ${last}`
+        : `Recheck ${recheck} (${plan.reviewH}h) · by ${last}`);
+    const stop = `${price(stopPx)} (−${plan.sl}%) · after +${plan.tp}% stop → breakeven`;
+    return { main, hold, stop, basePx: entryPx, targetPx: t1, target2Px: t2, stopPx, reached: hit1 || hit2, pastReview: plan.pastReview, tp: plan.tp, sl: plan.sl, momentum: true, untilText: plan.pastReview ? "Clear" : "By " + last };
   }
 
   /** One short line: 🎯 target(s) · 止蝕 · 最遲 / 揸到. Shared by order sheet + holdings. */
@@ -546,7 +546,7 @@
     if (!g) return "";
     const tgt = g.momentum && g.target2Px ? `${price(g.targetPx)}／${price(g.target2Px)}` : price(g.targetPx);
     const when = g.untilText ? ` · ${g.untilText}` : "";
-    return `🎯 ${tgt} · 止蝕 ${price(g.stopPx)}${g.levStopAdj ? "（槓桿）" : ""}${when}`;
+    return `🎯 ${tgt} · Stop ${price(g.stopPx)}${g.levStopAdj ? " (lev)" : ""}${when}`;
   }
   function paintTradeExitGuide(guide) {
     const box = $("tradeExitGuide");
@@ -559,7 +559,7 @@
     box.dataset.loss = guide.lossUsd != null ? String(guide.lossUsd) : "";
     // Visible line: 🎯 … · 最遲 …  /  止蝕 $x（−0.9% · 約蝕 $y）（槓桿） — same stop text as 孤注一擲 sheet + 詳情.
     const tgt = guide.momentum && guide.target2Px ? `${price(guide.targetPx)}／${price(guide.target2Px)}` : price(guide.targetPx);
-    const m = $("tradeExitMain"); if (m) m.textContent = `🎯 ${tgt}` + (guide.untilText ? ` · ${guide.untilText}` : "") + `\n止蝕 ${guide.stop}`;
+    const m = $("tradeExitMain"); if (m) m.textContent = `🎯 ${tgt}` + (guide.untilText ? ` · ${guide.untilText}` : "") + `\nStop ${guide.stop}`;
     const h = $("tradeExitHold"); if (h) h.textContent = guide.hold;
     const s2 = $("tradeExitStop"); if (s2) s2.textContent = guide.stop;
   }
@@ -571,15 +571,15 @@
     if (g) withStopLoss(g, stopLossUsd(pos.leverage > 1 || pos.margin != null ? "lev" : "spot", { pos }, g.stopPx));
     if (!g) return exitHintRow(plan, { className: "sc-exit sc-exit-pos" });
     return el("div", { class: "pos-exit-guide", "data-sym": pos.symbol || "", "data-basis": String(g.basePx), "data-target": String(g.targetPx), "data-stop": String(g.stopPx), "data-tp": String(g.tp), "data-sl": String(g.sl) },
-      el("div", { class: "peg-kicker", text: "幾時可以放" }),
+      el("div", { class: "peg-kicker", text: "When to exit" }),
       el("div", { class: "peg-row" },
-        el("span", { class: "peg-lab", text: "目標價" }),
+        el("span", { class: "peg-lab", text: "Target" }),
         el("span", { class: "peg-main", text: g.main })),
       el("div", { class: "peg-row" },
-        el("span", { class: "peg-lab", text: "揸到" }),
+        el("span", { class: "peg-lab", text: "Hold to" }),
         el("span", { class: "peg-hold", text: g.hold })),
       el("div", { class: "peg-row" },
-        el("span", { class: "peg-lab", text: "止蝕" }),
+        el("span", { class: "peg-lab", text: "Stop" }),
         el("span", { class: "peg-stop", text: g.stop }))
     );
   }
@@ -931,15 +931,15 @@
           el("div", { class: "fr-ret num " + cls(r.ret), "data-fr-ret": e.pair_address, text: r.ret == null ? "…" : pct(r.ret) }),
           r.sealed && r.rec && r.rec.exit_reason && r.rec.exit_reason !== "hold_horizon" && r.rec.exit_reason !== "none"
             ? el("div", { class: "tiny muted", text:
-                (r.rec.exit_reason === "stop" ? "止蝕" : r.rec.exit_reason === "take_profit" ? "止賺" : r.rec.exit_reason)
+                (r.rec.exit_reason === "stop" ? "Stop" : r.rec.exit_reason === "take_profit" ? "TP" : r.rec.exit_reason)
                 + (r.rec.return_pct_eod != null && Math.abs(r.rec.return_pct_eod - r.ret) > 0.05
                   ? ` · EOD ${pct(r.rec.return_pct_eod)}` : "")
               })
             : (e.sell_by || e.stop_loss_pct != null
               ? el("div", { class: "tiny muted", text:
                   (e.take_profit_pct != null ? `止賺 +${e.take_profit_pct}%` : "")
-                  + (e.stop_loss_pct != null ? ` · 止蝕 −${e.stop_loss_pct}%` : "")
-                  + (e.sell_by ? ` · 最遲 ${frTime(e.sell_by)}` : "")
+                  + (e.stop_loss_pct != null ? ` · Stop −${e.stop_loss_pct}%` : "")
+                  + (e.sell_by ? ` · by ${frTime(e.sell_by)}` : "")
                 })
               : "")
         )
@@ -1285,7 +1285,7 @@
   /** exit_plan string recorded on every 🔥/🚀 paper buy (same shape as picks.json buys). */
   function gbExitPlanText(X, px) {
     const r = (x) => +Number(x).toPrecision(6);
-    return `+${X.tp}% 放一半（$${r(px * (1 + X.tp / 100))}）· +${X.tp2}% 清（$${r(px * (1 + X.tp2 / 100))}）· 止蝕 −${X.sl}%（$${r(px * (1 - X.sl / 100))}）· ${X.reviewH}h 檢討 · 最遲 ${X.secondH}h 沽`;
+    return `+${X.tp}% half ($${r(px * (1 + X.tp / 100))}) · +${X.tp2}% clear ($${r(px * (1 + X.tp2 / 100))}) · Stop −${X.sl}% ($${r(px * (1 - X.sl / 100))}) · review ${X.reviewH}h · by ${X.secondH}h`;
   }
 
   /** One-glance alert grid: 觸發時間 · 觸發價 · 觸發後 % · 目標 · 止蝕 (目標/止蝕 = buy NOW at live price, ticks). */
@@ -1294,11 +1294,11 @@
     const since = nowPx > 0 && e > 0 ? (nowPx / e - 1) * 100 : null;
     const plan = gbPlanNow();
     return el("div", exitLiveAttrs(pair, plan, nowPx, { class: "gba-grid", "data-gb-levels": "banner" }),
-      el("div", {}, el("span", { class: "k", text: (trig.trigger_src === "kline" ? (trig.forming ? "觸發（即時）" : "觸發（15m 線）") : trig.trigger_src === "now" ? "觸發（今個鐘）" : "觸發") + (trig.via ? " · " + ({ "15m": "15m 急拉", "1h+vol": "1h+量", start: "起步", thin: "細盤" }[trig.via] || trig.via) : "") }), el("b", { class: "num", text: frTime(trig.picked_at) })),
-      el("div", {}, el("span", { class: "k", text: "觸發價" }), el("b", { class: "num", text: price(e) })),
-      el("div", {}, el("span", { class: "k", text: "觸發後" }), el("b", { class: "num " + cls(since), "data-gb-since": pair, "data-gb-entry": String(e), text: pct(since) })),
-      el("div", {}, el("span", { class: "k", text: "目標（而家入）" }), exitLiveNode("b", { class: "num pos" }, "{target} / {target2}", plan, nowPx)),
-      el("div", {}, el("span", { class: "k", text: "止蝕" }), exitLiveNode("b", { class: "num neg" }, "{stop}", plan, nowPx)));
+      el("div", {}, el("span", { class: "k", text: (trig.trigger_src === "kline" ? (trig.forming ? "Trigger (live)" : "Trigger (15m bar)") : trig.trigger_src === "now" ? "Trigger (this hour)" : "Trigger") + (trig.via ? " · " + ({ "15m": "15m surge", "1h+vol": "1h+vol", start: "start", thin: "thin" }[trig.via] || trig.via) : "") }), el("b", { class: "num", text: frTime(trig.picked_at) })),
+      el("div", {}, el("span", { class: "k", text: "Trigger px" }), el("b", { class: "num", text: price(e) })),
+      el("div", {}, el("span", { class: "k", text: "Since" }), el("b", { class: "num " + cls(since), "data-gb-since": pair, "data-gb-entry": String(e), text: pct(since) })),
+      el("div", {}, el("span", { class: "k", text: "Target (enter now)" }), exitLiveNode("b", { class: "num pos" }, "{target} / {target2}", plan, nowPx)),
+      el("div", {}, el("span", { class: "k", text: "Stop" }), exitLiveNode("b", { class: "num neg" }, "{stop}", plan, nowPx)));
   }
 
   /** Banner = newest REAL 🔥 (rule hit) or ⚡ trigger. 候補 never appears here. */
@@ -1525,11 +1525,11 @@
           r.rank24 ? el("span", { class: "pump-badge soft", text: `24h 升幅第 ${r.rank24} 名` }) : ""),
         t ? gbAlertGrid(r.symbol, t, px) : "",
         watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-ladder", "data-gb-levels": "details" }),
-          exitLiveNode("span", {}, "{target}（+{tp}%）放一半、止蝕升返成本 → {target2}（+{tp2}%）清 · {review} 再睇 · 最遲 {until} 走", plan, px)),
+          exitLiveNode("span", {}, "{target} (+{tp}%) half, stop→BE → {target2} (+{tp2}%) clear · recheck {review} · by {until}", plan, px)),
         buy && usd > 0 ? el("div", { class: "tiny" },
           `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${X.tp}% 賺 ${money2(usd * X.tp / 100 - fee2)}` }), " · ",
           el("b", { class: "pos", text: `+${X.tp2}% 賺 ${money2(usd * X.tp2 / 100 - fee2)}` }), " · ",
-          el("b", { class: "neg", text: `止蝕蝕 ${money2(usd * X.sl / 100 + fee2)}` })) : "",
+          el("b", { class: "neg", text: `Stop loss ${money2(usd * X.sl / 100 + fee2)}` })) : "",
         r.tier === "chase" ? el("div", { class: "tiny muted", text: `🚀 續升買：24h +${10}–${30}%、離 24h 高 ≤ 2%、1h 成交 ≥ 2x 平均、1h 仲升緊 → 紙上直接跟買。` + (small ? ` 細盤（24h 成交 < $3M）注碼 ×${CHASE_SMALL_MULT}。` : "") }) : "",
         r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
         r.tier === "chase" ? "" : gbBtLine(r.tier === "cand" ? "pump" : r.tier),
@@ -1911,10 +1911,10 @@
         el("td", { class: "num live-px", "data-label": "現價", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
         el("td", { class: "num " + cls(chg), "data-label": "24h", text: chg != null ? pct(chg) : "—" }),
         el("td", { class: "daily-when", "data-label": "幾時可以放" },
-          exitLiveNode("div", {}, "揸到 {review}", plan, lvPx)),
+          exitLiveNode("div", {}, "Hold to {review}", plan, lvPx)),
         el("td", { class: "daily-target", "data-label": "目標價" },
-          exitLiveNode("div", { class: "num pos" }, "{target}（+{tp}%）", plan, lvPx),
-          exitLiveNode("div", { class: "num neg tiny" }, "止蝕 {stop}（−{sl}%）", plan, lvPx),
+          exitLiveNode("div", { class: "num pos" }, "{target} (+{tp}%)", plan, lvPx),
+          exitLiveNode("div", { class: "num neg tiny" }, "Stop {stop} (−{sl}%)", plan, lvPx),
           qtr ? el("div", { class: "muted tiny", text: "¼注" }) : null),
         el("td", { "data-label": "注碼" },
           el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼注" : half ? "半注" : "全注" })
@@ -1974,13 +1974,7 @@
     const goodAvoid = avoids.filter((x) => x.ret != null && x.ret < -0.05).length;
     // Honesty + horizons
     const sh = $("sampleHonesty");
-    if (sh) {
-      const n = buys.length;
-      const due = buys.some((x) => hoursSince(x.e.created_at) >= 24);
-      const hasOut = S.outcomes.length > 0;
-      sh.textContent = (n < 20 ? `⚠️ 樣本太少（買入推薦 ${n} 筆），唔好當結論。` : `樣本 ${n} 筆。`)
-        + (hasOut ? "" : " 24h／7d 結果尚未到期（或未跑 snapshot）。");
-    }
+    if (sh) { sh.textContent = ""; sh.hidden = true; }
     renderFollowReport(simpleBuys);
     renderDailyBatchTable();
     renderSimpleCards(simpleBuys);
@@ -2517,7 +2511,7 @@
         const g = exitGuideCopy(allinPlan, li.price, li.price, lev);
         if (g) withStopLoss(g, lev > 1 ? stopLossUsd("lev", { margin: calc.allinMargin(cash, lev), lev, entry: li.price }, g.stopPx) : stopLossUsd("spot", { usd: cash, entry: li.price }, g.stopPx));
         const tgt = g && g.momentum && g.target2Px ? `${price(g.targetPx)}／${price(g.target2Px)}` : g ? price(g.targetPx) : "";
-        n.textContent = g ? (lev > 1 ? `爆 ${price(g.liqPx)} · ` : "") + `🎯 ${tgt}` + (g.untilText ? ` · ${g.untilText}` : "") + `\n止蝕 ${g.stop}` + (g.levStopAdj ? `\n${LEV_STOP_NOTE}` : "") : "";
+        n.textContent = g ? (lev > 1 ? `liq ${price(g.liqPx)} · ` : "") + `🎯 ${tgt}` + (g.untilText ? ` · ${g.untilText}` : "") + `\nStop ${g.stop}` + (g.levStopAdj ? `\n${LEV_STOP_NOTE}` : "") : "";
         n.dataset.stop = g ? String(g.stopPx) : ""; n.dataset.loss = g && g.lossUsd != null ? String(g.lossUsd) : ""; n.dataset.liq = g && g.liqPx ? String(g.liqPx) : ""; n.dataset.basis = String(li.price);
       };
       const paint = () => {
@@ -2801,10 +2795,10 @@
           if (!(v > 0)) return "";
           if (mode === "lev") {
             const o = calc.levOpen(v, lev, li.price);
-            return `名義 ${money2(o.notional)} · 費 ${levFeePct()}% ${money2(o.openFee)} · 爆倉 ${price(liqPriceLong(li.price, lev))}`;
+            return `Notional ${money2(o.notional)} · Fee ${levFeePct()}% ${money2(o.openFee)} · liq ${price(liqPriceLong(li.price, lev))}`;
           }
           const b = calc.spotBuy(v, buyFillPx(li, v));
-          return `≈ ${fmtQty(b.qty)} ${info.symbol} · 費 ${P.feePct}% ${money2(b.fee)}`;
+          return `≈ ${fmtQty(b.qty)} ${info.symbol} · Fee ${P.feePct}% ${money2(b.fee)}`;
         },
         callout: (v, { mode, lev }) => {
           if (mode !== "lev" || !(v > 0)) return [null, false];
@@ -2854,7 +2848,7 @@
         preview: (v) => {
           const f = Math.min(100, Math.max(0, v)) / 100, sl = calc.spotSell(pos.qty * f, li.price);
           const pnl = sl.proceeds - pos.cost * f;
-          return `收 ${money2(sl.proceeds)} · 費 ${P.feePct}% ${money2(sl.fee)} · 盈虧 ${pnl >= 0 ? "+" : ""}${money2(pnl)}`;
+          return `收 ${money2(sl.proceeds)} · Fee ${P.feePct}% ${money2(sl.fee)} · P&L ${pnl >= 0 ? "+" : ""}${money2(pnl)}`;
         },
         okLabel: "Sell",
       }))?.amt;
@@ -2906,7 +2900,7 @@
       info: `${price(mark)} · 盈虧 ${m.unreal >= 0 ? "+" : ""}${money2(m.unreal)}`,
       label: "Close %", value: 100, quick: [["100%", 100]],
       modePicker: false, symbol: pos.symbol, minAmt: 99.99, maxAmt: 100,
-      preview: () => `退回 ${money2(cc.back)} · 費 ${money2(cc.closeFee)} · 淨 ${cc.pnl >= 0 ? "+" : ""}${money2(cc.pnl)}`,
+      preview: () => `退回 ${money2(cc.back)} · Fee ${money2(cc.closeFee)} · net ${cc.pnl >= 0 ? "+" : ""}${money2(cc.pnl)}`,
       okLabel: "Close",
     });
     if (!res) return;
@@ -3062,7 +3056,7 @@
       const hm = sh(ms).slice(11, 16), day = sh(ms).slice(0, 10), today = sh(Date.now()).slice(0, 10), tmr = sh(Date.now() + 86400e3).slice(0, 10);
       return day === today ? hm : day === tmr ? "明 " + hm : `${+day.slice(5, 7)}/${+day.slice(8, 10)} ${hm}`;
     };
-    const until = plan.pastReview ? (plan.labelOnlyReview ? "宜沽" : "宜決定") : plan.momentum ? `最遲 ${shortT(plan.secondAt || plan.reviewAt)}` : `揸到 ${shortT(plan.labelOnlyReview ? (plan.secondAt || plan.reviewAt) : plan.reviewAt)}`;
+    const until = plan.pastReview ? (plan.labelOnlyReview ? "Exit" : "Decide") : plan.momentum ? `By ${shortT(plan.secondAt || plan.reviewAt)}` : `Hold to ${shortT(plan.labelOnlyReview ? (plan.secondAt || plan.reviewAt) : plan.reviewAt)}`;
     const tgt = "🎯 " + price(g.targetPx);
     const l1 = r.kind === "lev" && r.px > 0 ? `爆 ${price(liqPriceLong(pos.entry, pos.leverage))} · ${tgt}` : tgt;
     const l2 = g.stopHit ? `止 ${price(g.stopPx)} · ${STOP_HIT_TXT}` : `止 ${price(g.stopPx)} · ${until}`;
@@ -3166,9 +3160,9 @@
     }
     box.append(el("div", { class: "kv pd-kv" }, ...rows.flat()));
     if (g) box.append(el("div", { class: "pd-exit" },
-      el("div", { class: "peg-kicker", text: "幾時可以放" }),
+      el("div", { class: "peg-kicker", text: "When to exit" }),
       el("div", { text: g.main }), el("div", { class: "muted", text: g.hold }),
-      el("div", { class: "muted pd-stop", "data-stop": String(g.stopPx), "data-loss": g.lossUsd != null ? String(g.lossUsd) : "", text: "止蝕 " + g.stop }),
+      el("div", { class: "muted pd-stop", "data-stop": String(g.stopPx), "data-loss": g.lossUsd != null ? String(g.lossUsd) : "", text: "Stop " + g.stop }),
       g.stopHit ? el("div", { class: "stop-hit-txt pd-stophit", text: STOP_HIT_TXT }) : "",
       g.levStopAdj ? el("div", { class: "pd-levstop", text: LEV_STOP_NOTE }) : ""));
     const info = { chain: pos.chain, pair: pos.pair, token: pos.token, symbol: pos.symbol, name: pos.name, source: pos.source };
@@ -3737,7 +3731,7 @@
     applyUiMode(b.dataset.ui);
     show((location.hash || "#picks").slice(1));
   }));
-  if ($("discToggle")) $("discToggle").addEventListener("click", () => {
+  if ($("discToggle") && $("discFull")) $("discToggle").addEventListener("click", () => {
     const f = $("discFull"); f.hidden = !f.hidden;
     $("discToggle").textContent = f.hidden ? "Details" : "Hide";
   });
