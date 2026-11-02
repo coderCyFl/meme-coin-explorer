@@ -52,7 +52,17 @@
      "from_24h_high_pct": -1.81,
      "quote_volume_24h": 4646886,
      "watch_only": false,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.99,
+       "max_drawdown_pct": -6.21,
+       "close_pct": -1.61,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-03T04:15:30+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -212,6 +222,70 @@
      "from_24h_high_pct": -25.35,
      "quote_volume_24h": 6682562,
      "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
+  },
+  {
+   "batch": "gb-20261103-0415",
+   "picked_at": "2026-11-03T04:15:38+08:00",
+   "universe": 56,
+   "btc_24h_pct": -1.02,
+   "universe_all": 395,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "HOTUSDT",
+    "HAEDALUSDT",
+    "NOMUSDT",
+    "1000CATUSDT",
+    "MITOUSDT",
+    "GLMRUSDT",
+    "OGNUSDT",
+    "SOPHUSDT",
+    "COWUSDT",
+    "LUMIAUSDT",
+    "ACTUSDT",
+    "WINUSDT",
+    "SUNUSDT",
+    "DOLOUSDT",
+    "TURTLEUSDT",
+    "MEGAUSDT",
+    "TRXUSDT",
+    "LAUSDT",
+    "SXTUSDT",
+    "HOMEUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "HOT",
+     "pair": "HOTUSDT",
+     "tier": "pump",
+     "picked_at": "2026-11-03T04:00:00+08:00",
+     "entry_price_usd": 0.000475,
+     "price_at_snapshot": 0.000461,
+     "trigger_via": "1h+vol",
+     "change_15m_at_pick": 3.94,
+     "change_24h_at_pick": 18.75,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261103-0415",
+     "score": 68.1,
+     "change_1h_at_pick": 10.98,
+     "change_4h_at_pick": 9.45,
+     "vol_x_avg": 4.27,
+     "vol_x_prev_hour": 2.06,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -1.66,
+     "quote_volume_24h": 5057462,
+     "watch_only": false,
      "outcomes": {},
      "exit_plan": {
       "take_profit_pct": 20.0,
