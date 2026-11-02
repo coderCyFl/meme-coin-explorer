@@ -1750,7 +1750,7 @@ dialog.sheet{padding:14px 14px calc(14px + env(safe-area-inset-bottom));width:mi
 #tradeDlg .risk-callout{margin:6px 0;padding:6px 10px;font-size:12px}
 #tradeDlg .trade-actions{display:flex;gap:8px;flex-wrap:nowrap!important}
 #tradeDlg .trade-actions #tradeCancel{flex:1}
-#tradeDlg .trade-actions #tradeAllin{flex:1;min-height:52px}
+#tradeDlg .trade-actions #tradeAllin{flex:0 0 auto;min-height:40px;max-width:120px}
 #tradeDlg .trade-actions #tradeOk{flex:2}
 #tradeOk:disabled{opacity:.45}
 #allinDlg h3{margin:0 0 4px}
@@ -1787,10 +1787,10 @@ body.ui-simple footer{display:none}
 /* ======================= BUTTON PALETTE LOCK (Cyrus hard rule): Binance yellow + black, dark secondary. No amber tints. =======================
    Primary / CTA / buy / all-in / 50x confirm: #F0B90B bg (hover #FCD535) + #0B0E11 text. Secondary: #2B3139 + #fff.
    Red #F6465D only for sell / loss (text or sell button); green #0ECB81 only for up / profit. */
-button.primary,.cta.primary,a.primary,.buybtn,#tradeOk,#tradeOk.lev-ok,#moodBuy,.allin-btn,#allinDlg .allin-ok,#allinOk,#tradeAllin,
+button.primary,.cta.primary,a.primary,.buybtn,#tradeOk,#tradeOk.lev-ok,#moodBuy,.allin-btn,#allinDlg .allin-ok,#allinOk,
 #pfBuyBtn,#pfAllinBtn,.gb-buy,.gb-allin,button.hot,.cta.hot,.primary.hot,#allinAgain{
   background:#F0B90B!important;background-image:none!important;border-color:#F0B90B!important;color:#0B0E11!important;filter:none!important}
-button.primary:hover,.cta.primary:hover,a.primary:hover,.buybtn:hover,#tradeOk:hover,#moodBuy:hover,.allin-btn:hover,#allinDlg .allin-ok:hover,#allinOk:hover,#tradeAllin:hover,
+button.primary:hover,.cta.primary:hover,a.primary:hover,.buybtn:hover,#tradeOk:hover,#moodBuy:hover,.allin-btn:hover,#allinDlg .allin-ok:hover,#allinOk:hover,
 #pfBuyBtn:hover,#pfAllinBtn:hover,.gb-buy:hover,.gb-allin:hover,#allinAgain:hover{background:#FCD535!important;border-color:#FCD535!important;color:#0B0E11!important}
 button.secondary,a.secondary,.cta:not(.primary):not(.danger):not(.hot){background:#2B3139!important;background-image:none!important;border-color:#2B3139!important;color:#fff!important}
 button.secondary:hover,a.secondary:hover{background:#363C45!important;border-color:#474D57!important}
@@ -1919,3 +1919,14 @@ button.allin-btn:hover,button.gb-allin:hover,.allin-btn:hover{
 .gbc-miss-det{margin-top:6px;font-size:12px}
 .gbc-miss-det summary{cursor:pointer;color:var(--muted);font-weight:700}
 .howto[hidden]{display:none!important}
+
+
+/* TRADE SHEET All-in outline — only #tradeOk is yellow fill */
+#tradeDlg #tradeAllin,dialog#tradeDlg #tradeAllin,button#tradeAllin.allin-btn{
+  background:transparent!important;background-image:none!important;
+  color:var(--text)!important;border:1px solid var(--line-strong)!important;
+  font-weight:700;flex:0 0 auto!important;max-width:120px;
+}
+#tradeDlg #tradeAllin:hover,dialog#tradeDlg #tradeAllin:hover,button#tradeAllin.allin-btn:hover{
+  background:var(--panel2)!important;border-color:var(--muted)!important;color:var(--text)!important;
+}

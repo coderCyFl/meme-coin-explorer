@@ -1314,8 +1314,8 @@
     box.classList.toggle("gba-early", gbIsEarly(best.tier));
     box.append(
       el("div", { class: "gba-head" },
-        el("span", { class: "gb-risk", text: "高風險" }),
-        el("strong", { text: `${gbTierIcon(best.tier)} 最新觸發 ${best.base}` }),
+        el("span", { class: "gb-risk", text: "HIGH RISK" }),
+        el("strong", { text: `${gbTierIcon(best.tier)} Latest trigger · ${best.base}` }),
         el("span", { class: "gba-time muted tiny", text: gbIsEarly(best.tier) ? "Watch · not a buy signal" : "Spot · paper" })),
       gbAlertGrid(best.pair, best.trig, best.price));
   }
@@ -2330,9 +2330,9 @@
       const paintModeCards = () => {
         document.querySelectorAll("#tradeModeRow .mode-card").forEach((b) => b.classList.toggle("active", b.dataset.trademode === mode));
         $("tradeLevRow").hidden = mode !== "lev";
-        $("tradeAmtLabel").textContent = mode === "lev" ? "保證金 (USD)" : label;
+        $("tradeAmtLabel").textContent = mode === "lev" ? "Margin (USD)" : label;
         const ok = $("tradeOk");
-        if (ok) { ok.classList.toggle("lev-ok", mode === "lev"); ok.textContent = mode === "lev" ? "開 " + lev + "x" : (okLabel || "確認"); }
+        if (ok) { ok.classList.toggle("lev-ok", mode === "lev"); ok.textContent = mode === "lev" ? "Open " + lev + "x" : (okLabel || "Buy"); }
       };
       document.querySelectorAll("#tradeModeRow .mode-card").forEach((b) => {
         b.onclick = () => { mode = b.dataset.trademode; paintModeCards(); upd(); };
@@ -2788,11 +2788,11 @@
       const chg = window.MCE.live && window.MCE.live.board && window.MCE.live.board.get(info.pair);
       const chgTxt = chg && chg.chg24 != null ? " " + pct(chg.chg24) : "";
       const res = await askTrade({
-        title: `買 ${info.symbol}` + (info.exitRegime === "momentum" ? " 🔥" : ""),
-        info: `${price(li.price)}${chgTxt} · 現金 ${money2(cash0)}`,
-        label: "金額 (USD)",
+        title: `Buy ${info.symbol}` + (info.exitRegime === "momentum" ? " 🔥" : ""),
+        info: `${price(li.price)}${chgTxt} · cash ${money2(cash0)}`,
+        label: "Amount (USD)",
         value: Math.min(Math.max(100, Math.round(cash0 * 0.1 * (info.sizeMult > 0 ? info.sizeMult : 1))), Math.floor(cash0 * 100) / 100),
-        quick: [["25%", pctAmt(0.25)], ["50%", pctAmt(0.5)], ["75%", pctAmt(0.75)], ["全倉", pctAmt(1)]],
+        quick: [["25%", pctAmt(0.25)], ["50%", pctAmt(0.5)], ["75%", pctAmt(0.75)], ["All-in", pctAmt(1)]],
         modePicker: !info.forceSpot, defaultMode: "spot", levDefault: risk().defaultLev,
         symbol: info.symbol,
         exitGuide: buyExitGuide,
@@ -2811,7 +2811,7 @@
           if (v * (1 + lev * levFeePct() / 100) > cash0 + 1e-9) return ["現金唔夠（保證金 + 開倉費）", true];
           return lev >= 10 ? [`跌 ${(LIQ_MARGIN_FRAC / lev * 100).toFixed(1)}% 就爆倉`, true] : [null, false];
         },
-        okLabel: "買入",
+        okLabel: "Buy",
         onAllin: true,
       });
       if (!res) return;
@@ -2847,16 +2847,16 @@
       const li = await livePrice(pos.chain, pos.pair).catch((e) => { if (confirm(e.message + "。要以 $0 銷帳嗎？")) return { price: 0, liq: 0, writeoff: true }; throw e; });
       const basis = posBasisPx(pos);
       const pctSell = li.writeoff ? 100 : (await askTrade({
-        title: `賣 ${pos.symbol}`,
+        title: `Sell ${pos.symbol}`,
         info: `${price(li.price)} · 持有 ${fmtQty(pos.qty)}` + (basis > 0 ? ` · ${pct((li.price / basis - 1) * 100)}` : ""),
-        label: "賣出比例 %", value: presetPct || 100, quick: [["25%", 25], ["50%", 50], ["100%", 100]],
+        label: "Sell %", value: presetPct || 100, quick: [["25%", 25], ["50%", 50], ["100%", 100]],
         modePicker: false, symbol: pos.symbol, minAmt: 0, maxAmt: 100,
         preview: (v) => {
           const f = Math.min(100, Math.max(0, v)) / 100, sl = calc.spotSell(pos.qty * f, li.price);
           const pnl = sl.proceeds - pos.cost * f;
           return `收 ${money2(sl.proceeds)} · 費 ${P.feePct}% ${money2(sl.fee)} · 盈虧 ${pnl >= 0 ? "+" : ""}${money2(pnl)}`;
         },
-        okLabel: "賣出",
+        okLabel: "Sell",
       }))?.amt;
       if (pctSell == null) return;
       pfSyncFromStorage();
@@ -2902,12 +2902,12 @@
       return;
     }
     const res = await askTrade({
-      title: `平倉 ${pos.symbol} ${pos.leverage}x`,
+      title: `Close ${pos.symbol} ${pos.leverage}x`,
       info: `${price(mark)} · 盈虧 ${m.unreal >= 0 ? "+" : ""}${money2(m.unreal)}`,
-      label: "平倉 %", value: 100, quick: [["100%", 100]],
+      label: "Close %", value: 100, quick: [["100%", 100]],
       modePicker: false, symbol: pos.symbol, minAmt: 99.99, maxAmt: 100,
       preview: () => `退回 ${money2(cc.back)} · 費 ${money2(cc.closeFee)} · 淨 ${cc.pnl >= 0 ? "+" : ""}${money2(cc.pnl)}`,
-      okLabel: "平倉",
+      okLabel: "Close",
     });
     if (!res) return;
     const { closeFee, back, pnl } = cc;
@@ -2949,10 +2949,10 @@
     if (!buys.length) return alert("今批冇買入推薦");
     const allowLevCopy = riskId !== "safe";
     const res = await askTrade({
-      title: `跟晒今批（${batchLabel(last)} · ${risk().label}）`,
+      title: `Follow batch (${batchLabel(last)} · ${risk().label})`,
       info: buys.map((b) => "$" + b.symbol).join("、") + ` · 現金 ${money2(P.cash)}` + (allowLevCopy ? " · 可選「槓桿」用細保證金高倍（危險）" : " · 穩陣檔只限現貨"),
-      label: "總金額／總保證金 (USD)", value: Math.min(3000, Math.floor(P.cash)),
-      quick: [["$500", 500], ["$1k", 1000], ["$3k", 3000], ["$5k", 5000], ["全倉", Math.floor(P.cash)]].map(([t, v]) => [t, Math.min(v, Math.floor(P.cash))]),
+      label: "Total amount / margin (USD)", value: Math.min(3000, Math.floor(P.cash)),
+      quick: [["$500", 500], ["$1k", 1000], ["$3k", 3000], ["$5k", 5000], ["All-in", Math.floor(P.cash)]].map(([t, v]) => [t, Math.min(v, Math.floor(P.cash))]),
       modePicker: allowLevCopy, defaultMode: "spot", levDefault: risk().defaultLev,
       preview: (v, { mode, lev }) => {
         const each = v / buys.length;
@@ -2964,7 +2964,7 @@
         const drop = LIQ_MARGIN_FRAC / lev * 100;
         return [`⚠️ 高風險跟倉：${buys.length} 隻各 ${lev}x，任何一隻跌 ~${drop.toFixed(1)}% 就爆該倉保證金`, true];
       },
-      okLabel: "確認跟倉",
+      okLabel: "Confirm",
     });
     if (!res) return;
     if (res.mode === "lev") {
