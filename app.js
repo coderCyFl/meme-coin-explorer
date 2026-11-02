@@ -293,7 +293,7 @@
           window.MCE.paper && window.MCE.paper.openBuy({
             chain: r.chain, pair: r.p.pairAddress, token: r.address, symbol: r.sym, name: r.name, price: r.price
           });
-        } }, "落倉"),
+        } }, "Buy"),
         href ? el("a", { href, target: "_blank", rel: "noopener", onclick: (e) => e.stopPropagation(), text: " ↗" }) : ""));
   }
 
@@ -314,7 +314,7 @@
         el("div", { text: "Pair age" }), el("div", { text: age(r.created) }),
         el("div", { text: "DEX" }), el("div", { text: r.p.dexId || "–" })),
       el("p", {}, href ? el("a", { href, target: "_blank", rel: "noopener", text: "Open on DexScreener ↗" }) : "", "  ",
-        el("button", { class: "primary sm", onclick: () => { $("drawer").hidden = true; window.MCE.paper && window.MCE.paper.openBuy({ chain: r.chain, pair: r.p.pairAddress, token: r.address, symbol: r.sym, name: r.name, price: r.price }); } }, "落倉")),
+        el("button", { class: "primary sm", onclick: () => { $("drawer").hidden = true; window.MCE.paper && window.MCE.paper.openBuy({ chain: r.chain, pair: r.p.pairAddress, token: r.address, symbol: r.sym, name: r.name, price: r.price }); } }, "Buy")),
       el("h3", { text: "Risk flags" }),
       r.flags.length ? el("ul", {}, r.flags.map(([i, t]) => el("li", { text: `${i} ${t}` }))) : el("p", { class: "muted", text: "No automatic flags. That does not mean it's safe." }));
     const links = [...(r.p.info?.websites || []).map((w) => [w.label || "Website", w.url]), ...(r.p.info?.socials || []).map((s) => [s.type, s.url])]

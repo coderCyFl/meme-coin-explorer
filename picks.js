@@ -371,7 +371,7 @@
       const kids = plan.momentum
         ? [chip("exit-tp", "🎯 {target}／{target2}"), chip("exit-sl", "止蝕 {stop}"), chip("exit-when", "最遲 {until}")]
         : [chip("exit-tp", "🎯 {target}"), chip("exit-sl", "止蝕 {stop}"), chip("exit-when", "揸到 {review}")];
-      return el("div", exitLiveAttrs(pair, plan, basePx, { class: className, title: "而家落倉嘅話：目標／止蝕同落倉窗、持倉用同一條公式同一個即時價；落倉會由而家起計新嘅持有時間" }), ...kids);
+      return el("div", exitLiveAttrs(pair, plan, basePx, { class: className, title: "If you Buy now: targets/stops use the same live formula as the trade sheet; a fill starts a new hold clock" }), ...kids);
     }
     const whenClean = plan.labelOnlyReview && plan.secondAt
       ? `最遲 ${frTime(plan.secondAt)}（${plan.secondH}h）`
@@ -747,7 +747,7 @@
     box.textContent = "";
     const bn = (buys || []).filter((x) => x.e && x.e.chain === "binance");
     const top = (bn.length ? bn : buys || []).slice(0, 6);
-    if (!top.length) { box.append(el("p", { class: "muted", text: "計緊多角度盤…稍等" })); return; }
+    if (!top.length) { box.append(el("p", { class: "muted", text: "Loading setups…" })); return; }
     const liveApi = window.MCE.live;
     top.forEach((x, i) => {
       const tip = x.e.tip || (x.e.rationale || "").split("（")[0].slice(0, 72) || "多角度盤 · 唔係追 24h 升幅";
@@ -769,13 +769,15 @@
         ? liveApi.coinLogoEl(x.e.symbol, "coin-logo", 44)
         : el("span", { class: "coin-logo letter", text: String(x.e.symbol || "?").slice(0, 2) });
       const details = el("details", { class: "sc-details" },
-        el("summary", { text: "詳情" }),
+        el("summary", { text: "Details" }),
         el("div", { class: "sc-detail-body muted" },
           x.e.chain === "binance" ? shillLineEl(x.e.pair_address || x.e.symbol) : null,
           el("div", { text: tip }),
-          el("div", { text: "角度：" + (ANGLE_LABEL[angle] || angle || "setup") }),
-          el("div", { text: "推薦價 " + price(x.e.entry_price_usd) + (chg != null ? " · 當時 24h " + pct(chg) : "") }),
-          el("div", { text: (x.e.rationale || "").slice(0, 160) })
+          el("div", { text: "Angle: " + (ANGLE_LABEL[angle] || angle || "setup") }),
+          el("div", { text: "Entry " + price(x.e.entry_price_usd) + (chg != null ? " · then 24h " + pct(chg) : "") }),
+          el("div", { text: (x.e.rationale || "").slice(0, 160) }),
+          exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
+          (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: setupQuarterNow() ? "Size ¼ · 7d follow avg not green yet" : "Size ¼ · structure soft" }) : null
         )
       );
       box.append(el("article", { class: "simple-card anim-in", "data-angle": angle || "", style: "--i:" + i },
@@ -791,12 +793,9 @@
               return el("div", { class: "sc-ret num " + cls(c), "data-bn-chg": x.e.pair_address || "", text: c != null ? pct(c) : "—" }); })()
           )
         ),
-        exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
-        (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: setupQuarterNow() ? "注碼 ¼ · 近 7d 跟買平均未轉正，轉正先回全注" : "注碼 ¼ · 結構類近期未轉正" }) : null,
         details,
         el("div", { class: "sc-actions" },
-          el("button", { type: "button", class: "allin-btn", onclick: () => openAllinFlow(scInfo) }, "孤注"),
-          el("button", { class: "primary", onclick: () => openBuy(scInfo) }, "買")
+          el("button", { class: "primary", onclick: () => openBuy(scInfo) }, "Buy")
         )
       ));
     }); paintShillSoon();
@@ -849,7 +848,7 @@
     if (!list.length) {
       pctEl.textContent = "—";
       pctEl.className = "fr-pct";
-      if (pnlEl) { pnlEl.textContent = "假錢 —"; pnlEl.className = "fr-pnl"; }
+      if (pnlEl) { pnlEl.textContent = "Paper —"; pnlEl.className = "fr-pnl"; }
       if (stEl) stEl.innerHTML = '<span class="fr-chip fr-chip-muted">未有今批買入推薦</span>';
       if (metaEl) metaEl.textContent = "";
       return;
@@ -1185,7 +1184,7 @@
         ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
         el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
-        el("button", { class: "primary sm", onclick: () => openBuy(hotInfo) }, "落倉")
+        el("button", { class: "primary sm", onclick: () => openBuy(hotInfo) }, "Buy")
       ));
     }
   }
@@ -1315,9 +1314,9 @@
     box.classList.toggle("gba-early", gbIsEarly(best.tier));
     box.append(
       el("div", { class: "gba-head" },
-        el("span", { class: "gb-risk", text: "高風險" }),
-        el("strong", { text: `${gbTierIcon(best.tier)} 最新觸發 ${best.base}` }),
-        el("span", { class: "gba-time muted tiny", text: gbIsEarly(best.tier) ? "觀察 · 唔係買入訊號" : "現貨 · 紙上" })),
+        el("span", { class: "gb-risk", text: "HIGH RISK" }),
+        el("strong", { text: `${gbTierIcon(best.tier)} Latest trigger · ${best.base}` }),
+        el("span", { class: "gba-time muted tiny", text: gbIsEarly(best.tier) ? "Watch · not a buy signal" : "Spot · paper" })),
       gbAlertGrid(best.pair, best.trig, best.price));
   }
 
@@ -1499,19 +1498,22 @@
     const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: r.base.slice(0, 2) });
     const spark = liveApi && liveApi.sparkSvg ? liveApi.sparkSvg(r.spark || [], { w: 120, h: 32, up: (r.c4h || 0) >= 0, className: "spark-svg gb-spark" }) : null;
     const tags = r.tier === "cand"
-      ? [el("span", { class: "gb-watch", text: "候補" })]
+      ? [el("span", { class: "gb-watch", text: "Watch" })]
       : gbIsEarly(r.tier)
-        ? [el("span", { class: "gb-watch", text: "⚡ 觀察" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "細盤" })] : [])
+        ? [el("span", { class: "gb-watch", text: "⚡ Early" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "Thin" })] : [])
         : r.tier === "chase"
-          ? [el("span", { class: "gb-buytag", text: "🚀 續升買" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "細盤 加碼" })] : [])
-          : r.tier === "pump" ? [el("span", { class: "gb-buytag", text: "🔥 可追" })] : [];
+          ? [el("span", { class: "gb-buytag", text: "🚀 Chase" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "Thin +" })] : [])
+          : r.tier === "pump" ? [el("span", { class: "gb-buytag", text: "🔥 Hot" })] : [];
     const bnInfo = {
       chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
       symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
     };
     const details = el("details", { class: "gb-details" },
-      el("summary", { text: "詳情" }),
+      el("summary", { text: "Details" }),
       el("div", { class: "gb-det-body" },
+        el("div", { class: "pump-badges" }, ...tags),
+        watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-exit1", "data-gb-levels": "card" }),
+          exitLiveNode("span", { class: "num" }, "Half {target} · Clear {target2} · Stop {stop} · by {untilS}", plan, px)),
         spark || "",
         (r.tier === "pump" || gbIsEarly(r.tier)) ? shillLineEl(r.symbol) : null,
         el("div", { class: "pump-badges" },
@@ -1532,24 +1534,18 @@
         r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
         r.tier === "chase" ? "" : gbBtLine(r.tier === "cand" ? "pump" : r.tier),
         el("div", { class: "gb-det-actions" },
-          el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, `孤注一擲 ${r.base}`))));
+          el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, "All-in"))));
     const kids = [
       el("div", { class: "gb-top" },
         logo,
-        el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags),
-          r.tier === "pump" ? el("button", { type: "button", class: "gb-xchip", "data-gb-x": r.symbol, hidden: true, "aria-expanded": "false", onclick: () => gbXToggle(r.symbol) }) : "",
-          (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
+        el("div", { class: "gb-id" }, el("div", { class: "nm", text: r.base })),
         el("div", { class: "gb-px" },
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }))),
       r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
-      // 幾時放 = ONE line (same shared exit formula + live price as the buy window; ticks via refreshExitChips)
-      watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "gb-min gb-exit1", "data-gb-levels": "card" }),
-        exitLiveNode("span", { class: "num" }, "半 {target} · 清 {target2} · 止 {stop} · {untilS}前走", plan, px)),
     ];
     if (buy) {
       kids.push(el("div", { class: "gb-buyrow" },
-        el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, "孤注"),
         el("button", { class: "primary gb-buy", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
           symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
@@ -1559,14 +1555,10 @@
           size: "full", sizeMult: mult, forceSpot: true, tier: r.tier, exit_plan: gbExitPlanText(X, r.price),
           entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, tier: r.tier },
           onFilled: (res) => gbLogBought(r, null, res),
-        }) }, `跟買 $${Math.round(usd).toLocaleString()}`)));
+        }) }, "Buy")));
     }
     if (r.tier === "early2") {
-      const viaX = (r.trigger && r.trigger.via === "x_buzz") || (r.serverFlag && r.serverFlag.via === "x_buzz");
-      kids.push(el("div", { class: "gb-buyrow gb-e2row" }, gbEarlyChip(),
-        viaX ? el("span", { class: "gb-buytag soft", text: "X 熱度早標" }) : null));
-      kids.push(el("div", { class: "tiny muted",
-        text: `觀察出場參考：+${GAINER_EXIT.tp}% / +${GAINER_EXIT.tp2}% · 止蝕 −${GAINER_EXIT.sl}% · ${GAINER_EXIT.reviewH}h 複盤（唔係買入訊號）` }));
+      /* early notes live in Details; face stays name/price/%/Buy */
     }
     kids.push(details);
     return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (gbIsEarly(r.tier) ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
@@ -1721,7 +1713,7 @@
   }
 
 
-  /** Homepage 🔥 strip: latest sealed early-capture rate (always visible, not folded in 詳情). */
+  /** Homepage strip: plain "Caught: COIN… (x/20)" for latest settled day — no jargon. */
   function renderGainerCaptureStrip() {
     const box = $("gainerCapture"); if (!box) return;
     box.textContent = "";
@@ -1730,53 +1722,34 @@
     box.hidden = false;
     if (!cards.length) {
       box.append(
-        el("div", { class: "gbc-line" },
-          el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
-          el("span", { class: "gbc-big muted", text: "—" })),
-        el("p", { class: "gbc-sub tiny muted", text: "未有密封 · 每晚 23:55 對 Binance 頭 20" }));
+        el("div", { class: "gbc-caught" },
+          el("span", { class: "gbc-caught-main muted", text: "Caught: — (0/20)" })),
+        el("p", { class: "gbc-sub tiny muted", text: "No settled day yet · nightly check vs Binance top 20 ~23:55 HKT" }));
       return;
     }
     const c = cards[cards.length - 1];
-    const sealed = c.date || "";
-    const md = sealed.length >= 10 ? `${Number(sealed.slice(5, 7))}/${sealed.slice(8, 10)}` : sealed;
+    const day = c.date || "";
+    const md = day.length >= 10 ? `${Number(day.slice(5, 7))}/${day.slice(8, 10)}` : day;
     const today = isoSh().slice(0, 10);
-    const recall = c.recall_top20_pct;
-    const prec = c.precision_pct;
     const earlyHits = c.early_hits != null ? c.early_hits : ((c.hits || []).length);
-    const earlyFlagged = c.early_flagged != null ? c.early_flagged : (c.flagged != null ? c.flagged : "–");
-    const pass = recall != null && Number(recall) >= 10;
     const hitSyms = (c.hits || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
-    const lateSyms = (c.late || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
     const missSyms = (c.missed || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
-    const w = sum.scorecard_7d || {};
+    const list = hitSyms.length ? hitSyms.join(", ") : "—";
+    const pass = earlyHits >= 2; // ≥10% of 20
 
-    const gate = el("span", {
-      class: "gbc-gate " + (pass ? "pass" : "fail"),
-      text: pass ? "PASS（≥10%）" : "FAIL（≥10%）",
-    });
-    const big = el("div", { class: "gbc-line" },
-      el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
-      el("span", { class: "gbc-big num " + (pass ? "pos" : "neg"), text: recall != null ? `${recall}%` : "—" }),
-      el("span", { class: "gbc-inline", text: `（捉到 ${earlyHits}/20）` }),
-      el("span", { class: "gbc-dot", text: "·" }),
-      el("span", { class: "gbc-inline", text: `講中率 ${prec != null ? prec + "%" : "–"}（${earlyHits}/${earlyFlagged}）` }),
-      el("span", { class: "gbc-dot", text: "·" }),
-      gate);
-    const sealNote = el("div", { class: "gbc-seal tiny" },
-      el("span", { class: "gbc-sealchip", text: `密封 ${md}` }),
-      sealed !== today
-        ? el("span", { class: "muted", text: "（最新密封日 · 今日未封）" })
-        : el("span", { class: "muted", text: "（今日）" }),
-      el("span", { class: "muted", text: w.days ? ` · 7 日 ${w.recall_top20_pct ?? "–"}%` : "" }));
-
-    const names = (lab, syms, cls) => el("div", { class: "gbc-names " + cls },
-      el("span", { class: "gbc-lab", text: lab }),
-      el("span", { class: "gbc-syms", text: syms.length ? syms.join(" · ") : "無" }));
-
-    box.append(big, sealNote,
-      names("捉到", hitSyms, "gbc-hit"),
-      names("走漏", missSyms, "gbc-miss"));
-    if (lateSyms.length) box.append(names("遲標", lateSyms, "gbc-late"));
+    box.append(
+      el("div", { class: "gbc-caught" },
+        el("span", { class: "gbc-caught-main num " + (pass ? "pos" : "neg"),
+          text: `Caught: ${list} (${earlyHits}/20)` })),
+      el("div", { class: "gbc-meta tiny muted" },
+        el("span", { text: day === today ? `Settled ${md} · today` : `Latest settled ${md} · tonight’s check pending` })),
+    );
+    if (missSyms.length) {
+      const det = el("details", { class: "gbc-miss-det" },
+        el("summary", { text: `Missed ${missSyms.length}` }),
+        el("div", { class: "gbc-syms tiny muted", text: missSyms.join(", ") }));
+      box.append(det);
+    }
   }
 
   function renderGainerAccuracy() {
@@ -1947,7 +1920,7 @@
           el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼注" : half ? "半注" : "全注" })
         ),
         el("td", { class: "actions", "data-label": "" },
-          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "買")
+          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "Buy")
         )
       ));
     }
@@ -1980,7 +1953,7 @@
         el("td", { class: "num " + cls(x.excess), "data-label": "vs " + (x.bmKey || "BTC"), text: x.excess == null ? "–" : (x.excess > 0 ? "+" : "") + x.excess.toFixed(1) + " pts" }),
         el("td", { "data-label": "持有", text: held(x.e.created_at) }),
         hz,
-        el("td", { "data-label": "", class: "actions" }, el("button", { class: "primary", onclick: (ev) => { ev.stopPropagation(); openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }); } }, "落倉"), " ",
+        el("td", { "data-label": "", class: "actions" }, el("button", { class: "primary", onclick: (ev) => { ev.stopPropagation(); openBuy({ chain: x.e.chain, pair: x.e.pair_address, token: x.e.token_address, symbol: x.e.symbol, name: x.e.name }); } }, "Buy"), " ",
           href ? el("a", { href, target: "_blank", rel: "noopener", onclick: (ev) => ev.stopPropagation(), text: "↗" }) : "")));
     }
     const ab = $("avoidBody"); ab.textContent = "";
@@ -2064,7 +2037,7 @@
       el("h3", { text: `${e.type === "buy" ? "買入推薦" : "避過"}：${e.name} ($${e.symbol}) · ${batchLabel(x.b)}` }),
       el("p", { class: "rationale", text: e.rationale }),
       e.type === "buy" ? exitHintRow(exitPlanFromEntry(e), { className: "sc-exit sc-exit-detail" }) : "",
-      e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "落倉 · 放入 Crypto.M")) : "",
+      e.type === "buy" ? el("p", {}, el("button", { class: "primary", onclick: () => openBuy({ chain: e.chain, pair: e.pair_address, token: e.token_address, symbol: e.symbol, name: e.name, source: e.chain === "binance" ? "binance" : undefined }) }, "Buy")) : "",
       el("div", { class: "kv" },
         el("div", { text: "記錄時間" }), el("div", { text: `${localTime(e.created_at)} (${e.created_at})` }),
         el("div", { text: "推薦價" }), el("div", { text: `${price(e.entry_price_usd)} · 當時 ${(x.bmKey || "BTC")} $${(x.bm && x.bm.price_usd) != null ? x.bm.price_usd : (x.b.benchmarks?.BTC?.price_usd ?? x.b.benchmarks?.SOL?.price_usd ?? "?")}` }),
@@ -2091,10 +2064,10 @@
   const LEV_FEE_PCT = 0.1;
   const levFeePct = () => LEV_FEE_PCT;
   const RISK = {
-    safe: { id: "safe", label: "穩陣", maxLev: 3, defaultLev: 2, allowLev: true, spotOnlyCopy: true },
-    agg:  { id: "agg",  label: "進取", maxLev: 10, defaultLev: 5, allowLev: true, spotOnlyCopy: false },
-    yolo: { id: "yolo", label: "極高風險", maxLev: 50, defaultLev: 10, allowLev: true, spotOnlyCopy: false },
-    allin: { id: "allin", label: "孤注一擲", maxLev: 50, defaultLev: 50, allowLev: true, spotOnlyCopy: true },
+    safe: { id: "safe", label: "Conservative", maxLev: 3, defaultLev: 2, allowLev: true, spotOnlyCopy: true },
+    agg:  { id: "agg",  label: "Aggressive", maxLev: 10, defaultLev: 5, allowLev: true, spotOnlyCopy: false },
+    yolo: { id: "yolo", label: "High risk", maxLev: 50, defaultLev: 10, allowLev: true, spotOnlyCopy: false },
+    allin: { id: "allin", label: "All-in", maxLev: 50, defaultLev: 50, allowLev: true, spotOnlyCopy: true },
   };
   let riskId = localStorage.getItem("mce:risk") || "agg";
   if (riskId === "allin") riskId = "yolo"; // legacy sticky all-in profile → same 50x cap, no hijack
@@ -2106,10 +2079,10 @@
     document.querySelectorAll("[data-risk]").forEach((b) => b.classList.toggle("active", b.dataset.risk === id));
     const h = $("riskHint");
     if (h) {
-      h.textContent = id === "safe" ? "穩陣：偏向現貨，槓桿最多 3x。"
-        : id === "yolo" ? "極高風險：最多 50x。跌約 1.8% 就爆倉。"
-        : id === "allin" ? "孤注一擲：一隻幣 All-in（現貨或 50x）。"
-        : "進取：最多 10x。";
+      h.textContent = id === "safe" ? "Conservative: prefer Spot, lev max 3x."
+        : id === "yolo" ? "High risk: max 50x; ~1.8% drop can liquidate."
+        : id === "allin" ? "All-in: one coin (Spot or 50x)."
+        : "Aggressive: max 10x.";
       h.className = "muted risk-hint" + (id === "yolo" || id === "allin" ? " yolo" : "");
     }
     rebuildLevPresets(risk().defaultLev);
@@ -2357,9 +2330,9 @@
       const paintModeCards = () => {
         document.querySelectorAll("#tradeModeRow .mode-card").forEach((b) => b.classList.toggle("active", b.dataset.trademode === mode));
         $("tradeLevRow").hidden = mode !== "lev";
-        $("tradeAmtLabel").textContent = mode === "lev" ? "保證金 (USD)" : label;
+        $("tradeAmtLabel").textContent = mode === "lev" ? "Margin (USD)" : label;
         const ok = $("tradeOk");
-        if (ok) { ok.classList.toggle("lev-ok", mode === "lev"); ok.textContent = mode === "lev" ? "開 " + lev + "x" : (okLabel || "確認"); }
+        if (ok) { ok.classList.toggle("lev-ok", mode === "lev"); ok.textContent = mode === "lev" ? "Open " + lev + "x" : (okLabel || "Buy"); }
       };
       document.querySelectorAll("#tradeModeRow .mode-card").forEach((b) => {
         b.onclick = () => { mode = b.dataset.trademode; paintModeCards(); upd(); };
@@ -2815,11 +2788,11 @@
       const chg = window.MCE.live && window.MCE.live.board && window.MCE.live.board.get(info.pair);
       const chgTxt = chg && chg.chg24 != null ? " " + pct(chg.chg24) : "";
       const res = await askTrade({
-        title: `買 ${info.symbol}` + (info.exitRegime === "momentum" ? " 🔥" : ""),
-        info: `${price(li.price)}${chgTxt} · 現金 ${money2(cash0)}`,
-        label: "金額 (USD)",
+        title: `Buy ${info.symbol}` + (info.exitRegime === "momentum" ? " 🔥" : ""),
+        info: `${price(li.price)}${chgTxt} · cash ${money2(cash0)}`,
+        label: "Amount (USD)",
         value: Math.min(Math.max(100, Math.round(cash0 * 0.1 * (info.sizeMult > 0 ? info.sizeMult : 1))), Math.floor(cash0 * 100) / 100),
-        quick: [["25%", pctAmt(0.25)], ["50%", pctAmt(0.5)], ["75%", pctAmt(0.75)], ["全倉", pctAmt(1)]],
+        quick: [["25%", pctAmt(0.25)], ["50%", pctAmt(0.5)], ["75%", pctAmt(0.75)], ["All-in", pctAmt(1)]],
         modePicker: !info.forceSpot, defaultMode: "spot", levDefault: risk().defaultLev,
         symbol: info.symbol,
         exitGuide: buyExitGuide,
@@ -2838,7 +2811,7 @@
           if (v * (1 + lev * levFeePct() / 100) > cash0 + 1e-9) return ["現金唔夠（保證金 + 開倉費）", true];
           return lev >= 10 ? [`跌 ${(LIQ_MARGIN_FRAC / lev * 100).toFixed(1)}% 就爆倉`, true] : [null, false];
         },
-        okLabel: "買入",
+        okLabel: "Buy",
         onAllin: true,
       });
       if (!res) return;
@@ -2874,16 +2847,16 @@
       const li = await livePrice(pos.chain, pos.pair).catch((e) => { if (confirm(e.message + "。要以 $0 銷帳嗎？")) return { price: 0, liq: 0, writeoff: true }; throw e; });
       const basis = posBasisPx(pos);
       const pctSell = li.writeoff ? 100 : (await askTrade({
-        title: `賣 ${pos.symbol}`,
+        title: `Sell ${pos.symbol}`,
         info: `${price(li.price)} · 持有 ${fmtQty(pos.qty)}` + (basis > 0 ? ` · ${pct((li.price / basis - 1) * 100)}` : ""),
-        label: "賣出比例 %", value: presetPct || 100, quick: [["25%", 25], ["50%", 50], ["100%", 100]],
+        label: "Sell %", value: presetPct || 100, quick: [["25%", 25], ["50%", 50], ["100%", 100]],
         modePicker: false, symbol: pos.symbol, minAmt: 0, maxAmt: 100,
         preview: (v) => {
           const f = Math.min(100, Math.max(0, v)) / 100, sl = calc.spotSell(pos.qty * f, li.price);
           const pnl = sl.proceeds - pos.cost * f;
           return `收 ${money2(sl.proceeds)} · 費 ${P.feePct}% ${money2(sl.fee)} · 盈虧 ${pnl >= 0 ? "+" : ""}${money2(pnl)}`;
         },
-        okLabel: "賣出",
+        okLabel: "Sell",
       }))?.amt;
       if (pctSell == null) return;
       pfSyncFromStorage();
@@ -2929,12 +2902,12 @@
       return;
     }
     const res = await askTrade({
-      title: `平倉 ${pos.symbol} ${pos.leverage}x`,
+      title: `Close ${pos.symbol} ${pos.leverage}x`,
       info: `${price(mark)} · 盈虧 ${m.unreal >= 0 ? "+" : ""}${money2(m.unreal)}`,
-      label: "平倉 %", value: 100, quick: [["100%", 100]],
+      label: "Close %", value: 100, quick: [["100%", 100]],
       modePicker: false, symbol: pos.symbol, minAmt: 99.99, maxAmt: 100,
       preview: () => `退回 ${money2(cc.back)} · 費 ${money2(cc.closeFee)} · 淨 ${cc.pnl >= 0 ? "+" : ""}${money2(cc.pnl)}`,
-      okLabel: "平倉",
+      okLabel: "Close",
     });
     if (!res) return;
     const { closeFee, back, pnl } = cc;
@@ -2976,10 +2949,10 @@
     if (!buys.length) return alert("今批冇買入推薦");
     const allowLevCopy = riskId !== "safe";
     const res = await askTrade({
-      title: `跟晒今批（${batchLabel(last)} · ${risk().label}）`,
+      title: `Follow batch (${batchLabel(last)} · ${risk().label})`,
       info: buys.map((b) => "$" + b.symbol).join("、") + ` · 現金 ${money2(P.cash)}` + (allowLevCopy ? " · 可選「槓桿」用細保證金高倍（危險）" : " · 穩陣檔只限現貨"),
-      label: "總金額／總保證金 (USD)", value: Math.min(3000, Math.floor(P.cash)),
-      quick: [["$500", 500], ["$1k", 1000], ["$3k", 3000], ["$5k", 5000], ["全倉", Math.floor(P.cash)]].map(([t, v]) => [t, Math.min(v, Math.floor(P.cash))]),
+      label: "Total amount / margin (USD)", value: Math.min(3000, Math.floor(P.cash)),
+      quick: [["$500", 500], ["$1k", 1000], ["$3k", 3000], ["$5k", 5000], ["All-in", Math.floor(P.cash)]].map(([t, v]) => [t, Math.min(v, Math.floor(P.cash))]),
       modePicker: allowLevCopy, defaultMode: "spot", levDefault: risk().defaultLev,
       preview: (v, { mode, lev }) => {
         const each = v / buys.length;
@@ -2991,7 +2964,7 @@
         const drop = LIQ_MARGIN_FRAC / lev * 100;
         return [`⚠️ 高風險跟倉：${buys.length} 隻各 ${lev}x，任何一隻跌 ~${drop.toFixed(1)}% 就爆該倉保證金`, true];
       },
-      okLabel: "確認跟倉",
+      okLabel: "Confirm",
     });
     if (!res) return;
     if (res.mode === "lev") {
@@ -3112,7 +3085,7 @@
         if (kd !== lastKind) {
           lastKind = kd;
           box.append(el("div", { class: "pos-grp pos-grp-" + kd, "data-grp": kd },
-            el("span", { text: kd === "lev" ? "槓桿" : "現貨" }), el("span", { class: "muted num", "data-grp-sum": kd })));
+            el("span", { text: kd === "lev" ? "Leverage" : "Spot" }), el("span", { class: "muted num", "data-grp-sum": kd })));
         }
         const sym = r.pos.symbol;
         const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(sym, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: String(sym).slice(0, 2) });
@@ -3232,7 +3205,7 @@
     }
     const liqN = checkLiquidations(levMarks);
     if (liqN) {
-      toast(`${liqN} 個槓桿倉觸發爆倉`);
+      toast(`${liqN} lev position(s) liquidated`);
       if (P.allin && P.allin.status === "open" && P.allin.mode === "lev" && !P.levPositions[P.allin.key]) {
         const last = P.trades.find((t) => t.side === "LIQUIDATE" && t.symbol === P.allin.symbol);
         const cb = P.allin.cashBefore || 0;
@@ -3256,7 +3229,7 @@
       const flashCls = li.flash === "up" ? " tick-up" : li.flash === "down" ? " tick-down" : "";
       hb.append(el("tr", { class: "cardish spot-row" + flashCls, "data-pos": k },
         el("td", { "data-label": "幣" },
-          el("span", { class: "kind-badge spot", text: "現貨" }), " ",
+          el("span", { class: "kind-badge spot", text: "Spot" }), " ",
           el("b", { text: "$" + p.symbol }), " ", srcBadge(p.chain, p.pair, li),
           li.state === "dead" ? el("span", { class: "pill dead" }, "已死") : "",
           u != null ? el("div", { class: "pnl-glance " + cls(u), text: (u >= 0 ? "+" : "") + money2(u) + " · " + (upct == null ? "" : pct(upct)) }) : "",
@@ -3348,7 +3321,7 @@
     setTxt("pgPnlPct", pct(totalPct));
     setTxt("pgCash", money2(P.cash));
     setTxt("pgPos", String(spotN + levN));
-    setTxt("pgPosSub", `現貨 ${spotN} · 槓桿 ${levN}`);
+    setTxt("pgPosSub", `Spot ${spotN} · Lev ${levN}`);
     const pgPnl = $("pgPnl"), pgPct = $("pgPnlPct");
     if (pgPnl) pgPnl.className = ("pg-v " + cls(total) + (pgPnl.classList.contains("tick-up") ? " tick-up" : pgPnl.classList.contains("tick-down") ? " tick-down" : "")).trim();
     if (pgPct) pgPct.className = "pg-s " + cls(total);
@@ -3364,7 +3337,7 @@
       simpleSt.append(
         sstat("總資產", money2(equity), `起始 ${money2(P.start)}`),
         sstat("總盈虧", (total >= 0 ? "+" : "") + money2(total), pct(totalPct), cls(total)),
-        sstat("持倉", String(spotN + levN), `現貨 ${spotN} · 槓桿 ${levN}`),
+        sstat("Positions", String(spotN + levN), `Spot ${spotN} · Lev ${levN}`),
         sstat("現金", money2(P.cash)));
     }
     const mini = $("simplePfMini");
@@ -3384,12 +3357,12 @@
       stat("總資產", money2(equity), `起始 ${money2(P.start)}`),
       stat("總盈虧", `${money2(total)} (${pct(totalPct)})`, P.firstBuyAt ? `由 ${localTime(P.firstBuyAt)}` : "未開倉", cls(total)),
       stat("現金", money2(P.cash)),
-      stat("現貨市值", money2(spotValue), `浮盈虧 ${money2(unrealSpot)}`, cls(unrealSpot)),
-      stat("槓桿倉權益", money2(levEquity), `保證金 ${money2(levMargin)} · 浮 ${money2(levUnreal)}`, cls(levUnreal)),
-      stat("現貨已實現", money2(P.realizedSpot || 0), "", cls(P.realizedSpot)),
-      stat("槓桿已實現", money2(P.realizedLev || 0), `爆倉 ${P.liquidations || 0} 次`, cls(P.realizedLev)),
+      stat("Spot value", money2(spotValue), `uPnL ${money2(unrealSpot)}`, cls(unrealSpot)),
+      stat("Lev equity", money2(levEquity), `margin ${money2(levMargin)} · uPnL ${money2(levUnreal)}`, cls(levUnreal)),
+      stat("Spot realized", money2(P.realizedSpot || 0), "", cls(P.realizedSpot)),
+      stat("Lev realized", money2(P.realizedLev || 0), `liqs ${P.liquidations || 0}`, cls(P.realizedLev)),
       stat("最大回撤", pct(dd), `峰值 ${money2(P.equityPeak || P.start)}`, cls(dd)),
-      stat("同期 " + bmSym, solRet == null ? "–" : pct(solRet), bmLock ? `基準 $${Number(bmLock.price).toFixed(2)}` : "第一次落倉鎖定", cls(solRet)),
+      stat("同期 " + bmSym, solRet == null ? "–" : pct(solRet), bmLock ? `base $${Number(bmLock.price).toFixed(2)}` : "locked on first Buy", cls(solRet)),
       stat("跑贏 " + bmSym, solRet == null ? "–" : (totalPct - solRet > 0 ? "+" : "") + (totalPct - solRet).toFixed(1) + " pts", "總回報 − " + bmSym, cls(solRet == null ? 0 : totalPct - solRet)));
 
     const tb = $("tradeBody"); tb.textContent = "";
@@ -3656,11 +3629,11 @@
       location.hash = "browse";
       setTimeout(() => {
         if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
-        toast("短線模式：去睇幣（Binance 現貨），急升盤當參考唔好盲目追");
+        toast("Scalp mode: open Markets (Binance spot); treat pumps as reference, don’t chase blindly");
       }, 200);
     } else if (lens === "careful") {
       location.hash = "picks";
-      toast("謹慎模式：只跟 AI 買入推薦，撳「落倉」或「跟晒今批」");
+      toast("Careful mode: follow AI picks only — tap Buy or Follow batch");
     } else if (lens === "research") {
       location.hash = "news";
       toast("研究模式：先睇重點新聞同避過清單");
@@ -3675,12 +3648,12 @@
       goView("portfolio");
       const el = document.getElementById("lens-allin");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      toast("孤注一擲：假錢 All-in 一隻幣，一舖過");
+      toast("All-in: paper money, one coin, one shot");
       setTimeout(() => openAllinFlow(), 400);
     }
     // Also expand howto and highlight section
     const howto = document.getElementById("howto");
-    if (howto) howto.open = true;
+    if (howto) { howto.hidden = false; howto.open = true; }
     document.querySelectorAll(".howto-sec").forEach((sec) => {
       sec.classList.toggle("hilite", sec.id === "lens-" + lens);
     });
@@ -3766,12 +3739,17 @@
   }));
   if ($("discToggle")) $("discToggle").addEventListener("click", () => {
     const f = $("discFull"); f.hidden = !f.hidden;
-    $("discToggle").textContent = f.hidden ? "詳情" : "收起";
+    $("discToggle").textContent = f.hidden ? "Details" : "Hide";
   });
   if ($("moreToFull")) $("moreToFull").addEventListener("click", () => { applyUiMode("full"); location.hash = "picks"; });
   if ($("moreHowto")) $("moreHowto").addEventListener("click", () => {
     applyUiMode("full");
-    const h = $("howto"); if (h) { h.open = true; h.scrollIntoView({ behavior: "smooth" }); }
+    const h = $("howto");
+    if (h) {
+      h.hidden = false;
+      h.open = true;
+      h.scrollIntoView({ behavior: "smooth" });
+    }
   });
   if ($("simplePfDetail")) $("simplePfDetail").addEventListener("click", () => {
     document.querySelector(".panel .seg")?.scrollIntoView({ behavior: "smooth" });
@@ -3780,7 +3758,7 @@
   // ---------- ux-fix wiring: buy any coin, 孤注一擲 (simple mode too), 詳情 sheets ----------
   async function buyAnyCoin() {
     if (!window.MCE.market) return;
-    const info = await window.MCE.market.pickCoin({ title: "買幣" });
+    const info = await window.MCE.market.pickCoin({ title: "Buy" });
     if (info) openBuy(info);
   }
   if ($("pfBuyBtn")) $("pfBuyBtn").addEventListener("click", buyAnyCoin);

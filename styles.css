@@ -322,7 +322,7 @@ body.ui-simple .en{display:none}
 .sc-why{font-size:14px;line-height:1.45;color:#cfd5e3;margin:8px 0}
 .sc-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:10px}
 .sc-actions{display:flex;gap:8px}
-.sc-actions .cta{flex:1}
+.sc-actions .cta{flex:0 0 auto;width:auto;max-width:96px}
 .simple-pf-mini{margin-top:12px}
 .simple-pf-link{display:block;padding:12px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);color:var(--text);text-decoration:none;font-weight:600}
 .simple-news{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;color:var(--text);text-decoration:none;font-size:13px}
@@ -354,7 +354,7 @@ body.ui-simple .en{display:none}
   .bottom-nav{padding-bottom:calc(6px + env(safe-area-inset-bottom))}
   .panel,.disclaimer,.simbanner,.allin-banner,.allin-result,.buzzbar{max-width:calc(100vw - 24px);box-sizing:border-box}
   .simple-card .sc-actions{flex-direction:column}
-  .simple-card .sc-actions .cta{width:100%;min-height:48px}
+  .simple-card .sc-actions .cta{width:auto;max-width:96px;min-height:40px}
   .stats{grid-template-columns:1fr 1fr;gap:8px}
   .risk-bar,.capital-row{gap:6px}
   .presets .preset{min-height:44px}
@@ -523,7 +523,7 @@ tr.tick-down .live-px, .tick-down .live-px{animation:pnlFlashRed .7s ease}
 .simple-card .sc-why{font-size:13px;color:var(--muted);margin:8px 0}
 .simple-card .sc-meta{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:12px;margin-bottom:8px}
 .simple-card .sc-actions{display:flex;gap:8px}
-.simple-card .sc-actions .cta{flex:1;min-height:44px}
+.simple-card .sc-actions .cta{flex:0 0 auto;width:auto;max-width:96px;min-height:36px}
 
 /* ===== Real logos (no emoji mascots) ===== */
 .coin-logo-wrap{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -680,7 +680,7 @@ body.ui-simple #bnStripPanel{display:none!important}
 
 @media (max-width:700px){
   .home-title{font-size:20px}
-  .simple-card .sc-actions .cta{width:100%;min-height:48px}
+  .simple-card .sc-actions .cta{width:auto;max-width:96px;min-height:40px}
 }
 
 /* Simple mode: less text walls */
@@ -982,7 +982,7 @@ h1{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}
 .simple-card .sc-px .num{font-size:16px;font-weight:700}
 .simple-card .sc-why{font-size:12px;line-height:1.4;color:var(--muted)!important;margin:0}
 .simple-card .sc-actions .primary,.simple-card .sc-actions .cta{
-  width:100%;min-height:var(--btn-h);
+  width:auto;max-width:96px;min-width:64px;min-height:36px;flex:0 0 auto;
 }
 .angle-pill{
   background:var(--panel2)!important;color:var(--muted)!important;
@@ -1550,7 +1550,7 @@ img.logo-mark.logo-3d{
 .gb-exit-row{display:grid;grid-template-columns:64px 1fr;gap:6px;font-size:12px;align-items:baseline}
 .gb-exit-row .lab{color:var(--muted);font-weight:700}
 .gb-money b{font-weight:800}
-.gb-buy{width:100%;min-height:44px;font-size:15px;font-weight:800}
+.gb-buy{width:auto;max-width:96px;min-width:64px;min-height:36px;padding:0 14px;font-size:13px;font-weight:700}
 .gb-state{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;border:1px dashed var(--line-strong);color:var(--muted)}
 .gb-state.gb-error{border-color:#7f1d1d;color:#fda4af}
 .gacc{margin-top:14px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--panel2)}
@@ -1573,7 +1573,7 @@ img.logo-mark.logo-3d{
 dialog#tradeDlg .trade-exit-guide.teg-momentum{border-color:#7f1d1d}
 .gb-state{font-size:13px}
 .gb-buyrow{display:flex;gap:8px;align-items:stretch}
-.gb-buyrow .gb-buy{flex:1}
+.gb-buyrow .gb-buy{flex:0 0 auto}
 .gb-btchip{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:0 10px;border-radius:8px;border:1px solid var(--line-strong);background:#0f1420;font-size:12px;font-weight:800;white-space:nowrap}
 .gb-btchip.neg{color:var(--red);border-color:#7a2030}
 .gb-btchip.pos{color:var(--green)}
@@ -1658,7 +1658,7 @@ img.coin-logo,.coin-logo.letter{border-radius:50%!important;background:transpare
 .gb-px .live-px{font-size:16px;font-weight:700}
 .gb-exit1{display:block!important;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:none!important;padding:0!important;border:0!important}
 .gb-buyrow{display:flex;gap:8px;align-items:center}
-.gb-buyrow .gb-buy{flex:1;min-height:40px}
+.gb-buyrow .gb-buy{flex:0 0 auto;min-height:36px}
 .gb-buyrow .gb-btchip{font-size:11px}
 .gb-details summary{font-size:12px;color:var(--muted)}
 .gb-det-actions{margin-top:8px}
@@ -1750,7 +1750,7 @@ dialog.sheet{padding:14px 14px calc(14px + env(safe-area-inset-bottom));width:mi
 #tradeDlg .risk-callout{margin:6px 0;padding:6px 10px;font-size:12px}
 #tradeDlg .trade-actions{display:flex;gap:8px;flex-wrap:nowrap!important}
 #tradeDlg .trade-actions #tradeCancel{flex:1}
-#tradeDlg .trade-actions #tradeAllin{flex:1;min-height:52px}
+#tradeDlg .trade-actions #tradeAllin{flex:0 0 auto;min-height:40px;max-width:120px}
 #tradeDlg .trade-actions #tradeOk{flex:2}
 #tradeOk:disabled{opacity:.45}
 #allinDlg h3{margin:0 0 4px}
@@ -1787,10 +1787,10 @@ body.ui-simple footer{display:none}
 /* ======================= BUTTON PALETTE LOCK (Cyrus hard rule): Binance yellow + black, dark secondary. No amber tints. =======================
    Primary / CTA / buy / all-in / 50x confirm: #F0B90B bg (hover #FCD535) + #0B0E11 text. Secondary: #2B3139 + #fff.
    Red #F6465D only for sell / loss (text or sell button); green #0ECB81 only for up / profit. */
-button.primary,.cta.primary,a.primary,.buybtn,#tradeOk,#tradeOk.lev-ok,#moodBuy,.allin-btn,#allinDlg .allin-ok,#allinOk,#tradeAllin,
+button.primary,.cta.primary,a.primary,.buybtn,#tradeOk,#tradeOk.lev-ok,#moodBuy,.allin-btn,#allinDlg .allin-ok,#allinOk,
 #pfBuyBtn,#pfAllinBtn,.gb-buy,.gb-allin,button.hot,.cta.hot,.primary.hot,#allinAgain{
   background:#F0B90B!important;background-image:none!important;border-color:#F0B90B!important;color:#0B0E11!important;filter:none!important}
-button.primary:hover,.cta.primary:hover,a.primary:hover,.buybtn:hover,#tradeOk:hover,#moodBuy:hover,.allin-btn:hover,#allinDlg .allin-ok:hover,#allinOk:hover,#tradeAllin:hover,
+button.primary:hover,.cta.primary:hover,a.primary:hover,.buybtn:hover,#tradeOk:hover,#moodBuy:hover,.allin-btn:hover,#allinDlg .allin-ok:hover,#allinOk:hover,
 #pfBuyBtn:hover,#pfAllinBtn:hover,.gb-buy:hover,.gb-allin:hover,#allinAgain:hover{background:#FCD535!important;border-color:#FCD535!important;color:#0B0E11!important}
 button.secondary,a.secondary,.cta:not(.primary):not(.danger):not(.hot){background:#2B3139!important;background-image:none!important;border-color:#2B3139!important;color:#fff!important}
 button.secondary:hover,a.secondary:hover{background:#363C45!important;border-color:#474D57!important}
@@ -1871,3 +1871,62 @@ button.allin-btn.allin-btn:hover,button.allin-btn.sm:hover,button.primary.sm:hov
 .gb-row[data-gb-tier="chase"]{border-color:#F0B90B55}
 .gb-buyrow .primary.gb-buy{background:#F0B90B;border-color:#F0B90B;color:#0B0E11;font-weight:800}
 .gb-row[data-gb-tier="pump"] .gb-exit1,.gb-row[data-gb-tier="chase"] .gb-exit1{white-space:normal}
+
+
+/* ===== UI Bot 2026-11-02: compact yellow CTAs (cards/gainer) · EN chrome ===== */
+.gb-buyrow{
+  display:flex;gap:8px;align-items:center;justify-content:flex-end;
+  margin-top:8px;
+}
+.gb-buyrow .gb-buy,
+button.primary.gb-buy,
+.simple-card .sc-actions .primary,
+.simple-card .sc-actions .cta,
+.sc-actions .primary,
+.sc-actions .cta{
+  width:auto!important;flex:0 0 auto!important;max-width:96px;
+  min-width:64px;min-height:36px!important;padding:0 14px!important;
+  font-size:13px!important;font-weight:700;
+}
+.simple-card .sc-actions{justify-content:flex-end;flex-direction:row!important}
+@media (max-width:700px){
+  .simple-card .sc-actions{flex-direction:row!important}
+  .simple-card .sc-actions .cta,
+  .simple-card .sc-actions .primary{width:auto!important;min-height:40px!important}
+  /* OKX pattern: only bottom-sheet final Buy may be full-width */
+  dialog#tradeDlg .primary#tradeOk{width:100%;min-height:52px;font-size:17px;max-width:none}
+}
+/* All-in = secondary outline (not second yellow essay) */
+button.allin-btn,button.gb-allin,.allin-btn{
+  background:transparent!important;color:var(--text)!important;
+  border:1px solid var(--line-strong)!important;font-weight:700;
+}
+button.allin-btn:hover,button.gb-allin:hover,.allin-btn:hover{
+  border-color:var(--muted)!important;background:var(--panel2)!important;color:var(--text)!important;
+}
+/* Keep sheet final primary yellow */
+#tradeOk,#allinOk,#allinDlg .allin-ok{background:var(--accent)!important;border-color:var(--accent)!important;color:var(--on-accent)!important}
+#tradeOk:hover,#allinOk:hover{background:var(--accent-bright)!important;border-color:var(--accent-bright)!important;color:var(--on-accent)!important}
+/* Trade actions order: Buy primary · All-in outline · Cancel ghost */
+.trade-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.trade-actions #tradeAllin{order:2}
+.trade-actions #tradeCancel{order:3}
+.trade-actions #tradeOk{order:1;flex:1}
+/* Caught strip */
+.gbc-caught{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 8px}
+.gbc-caught-main{font-size:18px;font-weight:900;font-family:var(--font-num);line-height:1.25;word-break:break-word}
+.gbc-meta{margin-top:6px}
+.gbc-miss-det{margin-top:6px;font-size:12px}
+.gbc-miss-det summary{cursor:pointer;color:var(--muted);font-weight:700}
+.howto[hidden]{display:none!important}
+
+
+/* TRADE SHEET All-in outline — only #tradeOk is yellow fill */
+#tradeDlg #tradeAllin,dialog#tradeDlg #tradeAllin,button#tradeAllin.allin-btn{
+  background:transparent!important;background-image:none!important;
+  color:var(--text)!important;border:1px solid var(--line-strong)!important;
+  font-weight:700;flex:0 0 auto!important;max-width:120px;
+}
+#tradeDlg #tradeAllin:hover,dialog#tradeDlg #tradeAllin:hover,button#tradeAllin.allin-btn:hover{
+  background:var(--panel2)!important;border-color:var(--muted)!important;color:var(--text)!important;
+}

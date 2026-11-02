@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zh-Hant-HK">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crypto.M</title>
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
-<meta name="description" content="Crypto.M：Binance 公開行情 · 多角度留意盤 · 假錢模擬落倉追蹤賺蝕。">
+<meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
 <link rel="stylesheet" href="styles.css?v=20261030g">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
@@ -27,43 +27,43 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <img class="logo logo-mark logo-3d" src="icons/logo-mark.png?v=20261030g" width="36" height="36" alt="" aria-hidden="true" decoding="async">
     <div>
       <h1>Crypto.M</h1>
-      <p class="sub">Crypto.M · Binance 公開行情 · 假錢紙上倉</p>
+      <p class="sub">Crypto.M · Binance public data · paper trading</p>
     </div>
   </div>
   <div class="header-right">
-    <div class="seg mini ui-toggle" id="uiModeToggle" title="介面模式">
-      <button type="button" class="segbtn active" data-ui="simple">簡單</button>
-      <button type="button" class="segbtn" data-ui="full">完整</button>
+    <div class="seg mini ui-toggle" id="uiModeToggle" title="UI mode">
+      <button type="button" class="segbtn active" data-ui="simple">Simple</button>
+      <button type="button" class="segbtn" data-ui="full">Full</button>
     </div>
-    <div class="status" id="status">載入中…</div>
+    <div class="status" id="status">Loading…</div>
   </div>
 </header>
 
 <div class="disclaimer" role="note">
-  <div class="disc-one">假錢紙上倉 · Binance 公開行情
-    <button type="button" class="linkish" id="discToggle">詳情</button></div>
+  <div class="disc-one">Paper trading · Binance public data
+    <button type="button" class="linkish" id="discToggle">Details</button></div>
   <div class="disc-full" id="discFull" hidden>
-    主線（熱門／睇幣／今日跟買）淨用 <b>Binance 公開行情</b>；完整模式「掃描」先會睇到鏈上 Dex。
-    呢度係<strong>Crypto.M</strong> 假錢模擬，錢只喺瀏覽器。
+    Home (Hot / Browse / Today) uses <b>Binance public data</b> only; Full mode “Scan” adds on-chain Dex.
+    <strong>Crypto.M</strong> is paper money in your browser.
   </div>
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
-  <a href="#picks" class="tab" data-view="picks">今日跟買</a>
-  <a href="#browse" class="tab" data-view="browse">睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
-  <a href="#news" class="tab" data-view="news">新聞</a>
-  <a href="#explore" class="tab" data-view="explore">掃描</a>
+  <a href="#picks" class="tab" data-view="picks">Today's picks</a>
+  <a href="#browse" class="tab" data-view="browse">Markets</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">Portfolio</a>
+  <a href="#news" class="tab" data-view="news">News</a>
+  <a href="#explore" class="tab" data-view="explore">Scan</a>
 </nav>
-<nav class="tabs simple-tabs simple-only" role="tablist" aria-label="簡單分頁">
-  <a href="#picks" class="tab" data-view="picks">今日跟買</a>
-  <a href="#browse" class="tab" data-view="browse">睇幣</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">模擬倉</a>
-  <a href="#more" class="tab" data-view="more">更多</a>
+<nav class="tabs simple-tabs simple-only" role="tablist" aria-label="Simple tabs">
+  <a href="#picks" class="tab" data-view="picks">Today's picks</a>
+  <a href="#browse" class="tab" data-view="browse">Markets</a>
+  <a href="#portfolio" class="tab" data-view="portfolio">Portfolio</a>
+  <a href="#more" class="tab" data-view="more">More</a>
 </nav>
 
-<details class="howto full-only" id="howto">
-  <summary>點樣用（角色 · 一日流程 · FAQ）</summary>
+<details class="howto full-only" id="howto" hidden>
+  <summary>Help · roles · day flow · FAQ</summary>
 
   <div class="howto-grid">
     <button type="button" class="lens" data-lens="scalp">
@@ -171,15 +171,15 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <!-- ===== 急升榜 (high-risk, separate from AI picks; not halved by weak-market gate) ===== -->
   <section class="panel gainer-panel" id="gainerPanel" aria-live="polite">
     <div class="panelhead gb-head">
-      <h3 class="home-title gb-tier-title gb-tier-pump">🔥 急升 · 🚀 續升買 <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
+      <h3 class="home-title gb-tier-title gb-tier-pump">🔥 Gainers · 🚀 Chase <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
       <div class="row home-tools">
-        <button type="button" id="gainerInfoBtn" class="ghost sm">詳情</button>
-        <button type="button" id="gainerRefresh" class="ghost sm" title="重掃" aria-label="重掃">↻</button>
+        <button type="button" id="gainerInfoBtn" class="ghost sm">Info</button>
+        <button type="button" id="gainerRefresh" class="ghost sm" title="Refresh" aria-label="Refresh">↻</button>
       </div>
     </div>
     <div class="gb-capture" id="gainerCapture" hidden></div>
     <div class="gb-alert" id="gainerAlert" hidden></div>
-    <p class="tiny muted gb-xcap" id="gainerXCap" hidden>今日 X 額度用完</p>
+    <p class="tiny muted gb-xcap" id="gainerXCap" hidden>X daily cap used</p>
     <div id="gainerList" class="gb-list"></div>
     <h3 class="gb-tier-title">⚡ 早期 <span class="muted tiny">觀察</span></h3>
     <div id="earlyList" class="gb-list"></div>
@@ -190,12 +190,12 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel follow-report" id="followReportPanel" aria-live="polite">
     <div class="fr-head">
       <div>
-        <div class="fr-kicker" id="followReportKicker">若跟晒今批買 · 24h</div>
-        <div class="fr-status" id="followReportStatus"><span class="fr-chip fr-chip-muted">載入中…</span></div>
+        <div class="fr-kicker" id="followReportKicker">If you followed · 24h</div>
+        <div class="fr-status" id="followReportStatus"><span class="fr-chip fr-chip-muted">Loading…</span></div>
       </div>
       <div class="fr-hero" id="followReportHero">
         <div class="fr-pct" id="followReportPct">—</div>
-        <div class="fr-pnl" id="followReportPnl">假錢 —</div>
+        <div class="fr-pnl" id="followReportPnl">Paper —</div>
       </div>
     </div>
     <div class="fr-meta" id="followReportMeta"></div>
@@ -205,8 +205,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel daily-batch-panel simple-only" id="dailyBatchPanel" aria-live="polite">
     <div class="panelhead">
       <div>
-        <h2 class="home-title">每日新留意</h2>
-        <p class="home-sub" id="dailyBatchMeta">今日批次 · 同「今日跟買」分開</p>
+        <h2 class="home-title">Daily watch</h2>
+        <p class="home-sub" id="dailyBatchMeta">Today’s batch · separate from Today picks</p>
       </div>
     </div>
     <div class="table-wrap daily-batch-wrap">
@@ -218,19 +218,19 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <tbody id="dailyBatchBody"></tbody>
       </table>
     </div>
-    <div class="empty" id="dailyBatchEmpty" hidden>未有今日批次。</div>
+    <div class="empty" id="dailyBatchEmpty" hidden>No batch yet.</div>
   </section>
 
   <section class="panel home-brief simple-only" id="simpleCardsPanel">
     <div class="panelhead">
       <div>
-        <h2 class="home-title">今日跟買</h2>
-        <p class="home-sub" id="setupMeta">多角度留意盤 · 唔係 24h 升幅榜</p>
+        <h2 class="home-title">Today's picks</h2>
+        <p class="home-sub" id="setupMeta">Multi-angle setups · not 24h gainer rank</p>
         <div class="regime-banner" id="regimeBanner" hidden></div>
       </div>
       <div class="row wrap home-tools">
-        <button type="button" id="livePicksRefresh" class="ghost sm" title="重算">↻</button>
-        <button id="picksRefresh" class="ghost sm full-only" title="刷新">↻</button>
+        <button type="button" id="livePicksRefresh" class="ghost sm" title="Refresh">↻</button>
+        <button id="picksRefresh" class="ghost sm full-only" title="Refresh">↻</button>
       </div>
     </div>
     <div id="simpleCards" class="simple-cards"></div>
@@ -241,14 +241,14 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="panelhead">
       <div>
         <h3 class="pump-title">爆升對照／前兆</h3>
-        <p class="home-sub">近 1–7 日急升只做對照 · AI 跟買唔追 · 想追睇上面「急升榜」</p>
+        <p class="home-sub">Recent pumps are for reference only · AI does not chase · use Gainers above to chase</p>
       </div>
     </div>
     <div id="chaseList" class="chase-list"></div>
   </section>
 
   <section class="panel simple-only" id="simpleNewsStrip" hidden>
-    <a id="simpleNewsLink" class="simple-news" href="#news"><span class="k">新聞</span> <span id="simpleNewsText">載入中…</span> <span id="simpleNewsAge" class="age"></span></a>
+    <a id="simpleNewsLink" class="simple-news" href="#news"><span class="k">News</span> <span id="simpleNewsText">Loading…</span> <span id="simpleNewsAge" class="age"></span></a>
   </section>
 
   <!-- Full mode hero / extras -->
@@ -256,16 +256,16 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="flow">
       <div class="step"><b>1</b> 多角度盤</div>
       <div class="arrow">→</div>
-      <div class="step"><b>2</b> 模擬落倉</div>
+      <div class="step"><b>2</b> Paper buy</div>
       <div class="arrow">→</div>
       <div class="step"><b>3</b> 追蹤賺蝕</div>
     </div>
     <p class="intro">用 Binance 1d／1h OHLCV 睇<strong>量能、壓縮、相對 BTC、輪動、吸籌</strong>——推「之後有機會」嘅盤，唔係已經急升嗰啲。
       <span class="en">Multi-angle setups from public OHLCV — not 24h gainer rank.</span></p>
     <div class="panelhead">
-      <h2>完整紀錄</h2>
+      <h2>History</h2>
       <div class="row wrap">
-        <button id="followBatch" class="secondary" title="跟晒今批">跟晒今批</button>
+        <button id="followBatch" class="secondary" title="Follow batch">Follow batch</button>
       </div>
     </div>
     <p class="honesty muted" id="sampleHonesty"></p>
@@ -282,35 +282,35 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
   <section class="panel full-only" id="hotBuyPanel">
     <div class="panelhead">
-      <h3>留意盤（同今日跟買）</h3>
-      <a class="sm" href="#browse">睇幣 →</a>
+      <h3>Setups (same as Today)</h3>
+      <a class="sm" href="#browse">Markets →</a>
     </div>
     <div id="hotBuyList" class="hot-buy-list"></div>
   </section>
 
   <section class="panel full-only">
-    <h3>買入推薦 · 撳「落倉」放入 Crypto.M</h3>
+    <h3>Picks · tap Buy into Crypto.M</h3>
     <div class="tablewrap"><table class="picks"><thead><tr>
       <th>幣</th><th>推薦時間</th><th class="num">推薦價</th><th class="num">而家</th>
       <th class="num">回報</th><th class="num">同期 BTC</th><th class="num">跑贏 BTC</th><th>持有</th><th>24h / 72h / 7d</th><th></th>
     </tr></thead><tbody id="picksBody"></tbody></table></div>
 
-    <h3>避過建議 <span class="muted">正確＝之後跌咗</span></h3>
+    <h3>Avoid <span class="muted">correct = fell after</span></h3>
     <div class="tablewrap"><table class="picks"><thead><tr>
-      <th>避過</th><th>推薦時間</th><th class="num">當時價</th><th class="num">而家</th><th class="num">之後走勢</th><th class="num">BTC</th><th>持有</th><th>暫時判決</th><th></th>
+      <th>Avoid</th><th>推薦時間</th><th class="num">當時價</th><th class="num">而家</th><th class="num">之後走勢</th><th class="num">BTC</th><th>持有</th><th>暫時判決</th><th></th>
     </tr></thead><tbody id="avoidBody"></tbody></table></div>
   </section>
   <section class="panel full-only" id="pickDetails"></section>
 </div>
 
-<!-- ===== 睇幣（Coin Mood · Binance only） ===== -->
+<!-- ===== Markets (Coin Mood · Binance only) ===== -->
 <div id="view-browse" class="view" hidden>
   <section class="panel mood-wrap" id="moodPanel">
     <div class="mood-topbar">
       <div class="mood-live"><span class="live-dot"></span> 即時 · Binance</div>
       <div class="mood-tools">
         <button type="button" id="bnSearchBtn" class="iconbtn" title="搜尋" aria-label="搜尋">⌕</button>
-        <button type="button" id="bnRefresh" class="iconbtn" title="刷新">↻</button>
+        <button type="button" id="bnRefresh" class="iconbtn" title="Refresh">↻</button>
       </div>
     </div>
     <div class="row wrap browse-controls mood-search" id="bnSearchRow">
@@ -319,7 +319,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="mood-hero" id="moodHero">
       <div class="mood-title">行情</div>
       <div class="mood-mascot mood-mascot-3d" id="moodMascot" aria-hidden="true"></div>
-      <div class="mood-feel" id="moodFeel">載入中…</div>
+      <div class="mood-feel" id="moodFeel">Loading…</div>
       <div class="mood-feel-zh" id="moodFeelZh" hidden></div>
       <div class="mood-pair" id="moodPair"><span class="mood-ico" id="moodIco"></span> <span id="moodSym">—</span></div>
       <div class="mood-price" id="moodPrice">—</div>
@@ -332,8 +332,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       </div>
       <div class="mood-vol" id="moodVol">Vol —</div>
       <div class="mood-actions">
-        <button type="button" class="primary" id="moodBuy">買</button>
-        <button type="button" class="allin-btn" id="moodAllin">孤注一擲</button>
+        <button type="button" class="primary" id="moodBuy">Buy</button>
+        <button type="button" class="allin-btn" id="moodAllin">All-in</button>
         <a class="secondary" id="moodBnLink" href="#" target="_blank" rel="noopener">Binance ↗</a>
       </div>
     </div>
@@ -346,46 +346,46 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="view-portfolio" class="view" hidden>
   <section class="panel pf-panel">
     <div class="pf-glance pf-hero" id="pfGlance" aria-live="polite">
-      <div class="pg-cell pg-main" data-k="equity"><div class="pg-k">總資產</div><div class="pg-v" id="pgEquity">—</div><div class="pg-s" id="pgEquitySub" hidden></div></div>
-      <div class="pg-cell" data-k="pnl"><div class="pg-k">盈虧</div><div class="pg-v" id="pgPnl">—</div><div class="pg-s" id="pgPnlPct"></div></div>
-      <div class="pg-cell" data-k="cash"><div class="pg-k">現金</div><div class="pg-v" id="pgCash">—</div></div>
-      <div class="pg-cell" data-k="pos" hidden><div class="pg-k">持倉</div><div class="pg-v" id="pgPos">—</div><div class="pg-s" id="pgPosSub"></div></div>
+      <div class="pg-cell pg-main" data-k="equity"><div class="pg-k">Equity</div><div class="pg-v" id="pgEquity">—</div><div class="pg-s" id="pgEquitySub" hidden></div></div>
+      <div class="pg-cell" data-k="pnl"><div class="pg-k">P&L</div><div class="pg-v" id="pgPnl">—</div><div class="pg-s" id="pgPnlPct"></div></div>
+      <div class="pg-cell" data-k="cash"><div class="pg-k">Cash</div><div class="pg-v" id="pgCash">—</div></div>
+      <div class="pg-cell" data-k="pos" hidden><div class="pg-k">Positions</div><div class="pg-v" id="pgPos">—</div><div class="pg-s" id="pgPosSub"></div></div>
     </div>
     <div class="pf-actions">
-      <button type="button" id="pfBuyBtn" class="primary">＋ 買幣</button>
-      <button type="button" id="pfAllinBtn" class="allin-btn">孤注一擲</button>
-      <button type="button" id="pfInfoBtn" class="ghost">詳情</button>
+      <button type="button" id="pfBuyBtn" class="primary">Buy</button>
+      <button type="button" id="pfAllinBtn" class="allin-btn">All-in</button>
+      <button type="button" id="pfInfoBtn" class="ghost">Info</button>
     </div>
 
     <div id="allinBanner" class="allin-banner" hidden>
       <div class="allin-live">
-        <div class="allin-title">孤注一擲中</div>
+        <div class="allin-title">All-in open</div>
         <div id="allinLive" class="allin-live-stats"></div>
       </div>
-      <button type="button" id="allinCloseBtn" class="secondary danger">平倉</button>
+      <button type="button" id="allinCloseBtn" class="secondary danger">Close</button>
     </div>
     <div id="allinResult" class="allin-result" hidden>
       <div id="allinResultBody"></div>
-      <button type="button" id="allinAgain" class="primary">再來一鋪</button>
+      <button type="button" id="allinAgain" class="primary">Again</button>
     </div>
 
     <div id="posList" class="pos-list" aria-live="polite"></div>
-    <div class="empty pos-empty" id="posEmpty">未有持倉 · 撳「＋ 買幣」</div>
+    <div class="empty pos-empty" id="posEmpty">No positions · tap Buy</div>
   </section>
 </div>
 
 <!-- ===== 更多（簡單模式） ===== -->
 <div id="view-more" class="view simple-only" hidden>
   <section class="panel">
-    <h2>更多</h2>
+    <h2>More</h2>
     <div class="more-list">
-      <a class="more-item" href="#browse">睇幣</a>
-      <a class="more-item" href="#news">重點新聞</a>
-      <button type="button" class="more-item" id="allinFromPicks">孤注一擲（進階）</button>
-      <a class="more-item" href="#explore">市場掃描（完整）</a>
-      <button type="button" class="more-item" id="moreToFull">切換「完整」介面</button>
-      <button type="button" class="more-item" id="moreHowto">點樣用</button>
-      <a class="more-item" href="#picks">返去今日跟買</a>
+      <a class="more-item" href="#browse">Markets</a>
+      <a class="more-item" href="#news">News</a>
+      <button type="button" class="more-item" id="allinFromPicks">All-in</button>
+      <a class="more-item" href="#explore">Scan (full)</a>
+      <button type="button" class="more-item" id="moreToFull">Switch to Full UI</button>
+      <button type="button" class="more-item" id="moreHowto">Help</button>
+      <a class="more-item" href="#picks">Back to Today's picks</a>
     </div>
   </section>
 </div>
@@ -394,16 +394,16 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <div id="view-news" class="view" hidden>
   <section class="panel">
     <div class="panelhead">
-      <h2>重點新聞 <span class="en">Key news for meme traders</span></h2>
+      <h2>Key news <span class="en">Headlines</span></h2>
       <span class="muted" id="newsMeta"></span>
     </div>
-    <p class="intro">精選新聞快照（網站唔 call X）。<span id="newsFreshness" class="age"></span></p>
+    <p class="intro">Curated news snapshot (site does not call X). <span id="newsFreshness" class="age"></span></p>
     <div class="news-filters">
-      <button type="button" class="chip active" data-ntag="all">全部</button>
+      <button type="button" class="chip active" data-ntag="all">All</button>
       <button type="button" class="chip" data-ntag="rug">Rug / Scam</button>
-      <button type="button" class="chip" data-ntag="market">市場</button>
+      <button type="button" class="chip" data-ntag="market">Market</button>
       <button type="button" class="chip" data-ntag="meme">Meme</button>
-      <button type="button" class="chip" data-ntag="regulation">監管</button>
+      <button type="button" class="chip" data-ntag="regulation">Regulation</button>
     </div>
     <div id="newsList" class="news-list"></div>
   </section>
@@ -411,7 +411,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <!-- ===== 市場掃描 ===== -->
 <div id="view-explore" class="view" hidden>
-<p class="muted tiny" style="margin:0.5rem 1rem 0">完整模式可選 · 鏈上 Dex 掃描（唔係主線熱門／睇幣）。主產品用 Binance 公開行情。</p>
+<p class="muted tiny" style="margin:0.5rem 1rem 0">Full mode optional · on-chain Dex scan (not main Markets). Product uses Binance public market.</p>
 <section class="controls">
   <div class="group">
     <label for="source">來源（Dex）</label>
@@ -489,13 +489,13 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 
 <!-- ===== 詳情 sheet + parked detail sections (moved into the sheet on demand; ids keep updating) ===== -->
 <dialog id="infoSheet" class="sheet">
-  <div class="sheet-head"><b id="infoSheetTitle">詳情</b><button type="button" class="iconbtn" data-sheet-close aria-label="關閉">✕</button></div>
+  <div class="sheet-head"><b id="infoSheetTitle">Details</b><button type="button" class="iconbtn" data-sheet-close aria-label="Close">✕</button></div>
   <div id="infoSheetBody" class="sheet-body"></div>
 </dialog>
 <div id="sheetPark" hidden>
   <div id="gbDetail" data-park>
     <p class="gb-livebar"><span>即時</span> · <span id="gainerUpdated">連接中…</span></p>
-    <p class="home-sub" id="gainerMeta">Binance 現貨急升幣 · 同 AI 跟買分開</p>
+    <p class="home-sub" id="gainerMeta">Binance spot pumps · separate from AI picks</p>
     <div class="row wrap gb-multrow"><span class="muted tiny">注碼</span><div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div></div>
     <p class="gb-warn tiny">追升紙上玩：中 +20% 機會低，一定要跟止蝕。只用 Binance 公開數據。</p>
     <h4 class="gb-tier-title">🔥 規則</h4>
@@ -509,19 +509,19 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   </div>
   <div id="pfDetail" data-park>
     <div class="simbanner"><b>Crypto.M · 冇真實金錢。</b>
-      共用一個現金池；槓桿係逐倉模擬（上限 50x；穩陣≤3x · 進取≤10x · 極高風險／孤注一擲≤50x）。浮虧 ≈ 保證金 90% 就爆倉。真實永續有資金費同插針，會爆得更快。</div>
+      Shared cash pool; leverage is isolated (max 50x; Conservative≤3x · Aggressive≤10x · High risk/All-in≤50x). ~90% margin drawdown liquidates. Real perps have funding/wick risk.</div>
     <div id="liveStrip" class="live-strip" hidden>
       <span class="live-dot" aria-hidden="true"></span>
       <span id="liveStripText">即時報價關閉</span>
     </div>
     <div class="stats pf-stats-dup" id="pfStats"></div>
     <div class="risk-bar">
-      <span class="muted">風險檔</span>
+      <span class="muted">Risk</span>
       <div class="seg risk" id="riskProfile">
-        <button type="button" class="segbtn" data-risk="safe">穩陣</button>
-        <button type="button" class="segbtn active" data-risk="agg">進取</button>
-        <button type="button" class="segbtn" data-risk="yolo">極高風險</button>
-        <button type="button" class="segbtn" data-risk="allin">孤注一擲</button>
+        <button type="button" class="segbtn" data-risk="safe">Conservative</button>
+        <button type="button" class="segbtn active" data-risk="agg">Aggressive</button>
+        <button type="button" class="segbtn" data-risk="yolo">High risk</button>
+        <button type="button" class="segbtn" data-risk="allin">All-in</button>
       </div>
     </div>
     <p class="muted risk-hint" id="riskHint"></p>
@@ -537,33 +537,33 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <label class="muted" for="feePct">費%</label>
       <input id="feePct" type="number" min="0" max="20" step="0.01" value="0.1">
       <button id="pfRefresh" class="sm">↻ 報價</button>
-      <button id="copyPicks" class="secondary">跟晒今批</button>
+      <button id="copyPicks" class="secondary">Follow batch</button>
       <button id="pfReset" class="ghost sm danger">重置</button>
     </div>
     <div class="seg pf-mode-seg" role="tablist" aria-label="倉位類型">
-      <button type="button" class="segbtn" data-pfmode="spot">現貨</button>
-      <button type="button" class="segbtn" data-pfmode="lev">槓桿</button>
-      <button type="button" class="segbtn active" data-pfmode="all">全部</button>
+      <button type="button" class="segbtn" data-pfmode="spot">Spot</button>
+      <button type="button" class="segbtn" data-pfmode="lev">Leverage</button>
+      <button type="button" class="segbtn active" data-pfmode="all">All</button>
     </div>
     <div id="spotSection" class="pos-section spot-section">
-      <h3><span class="kind-badge spot">現貨</span> 持倉 <span class="en">Spot · 最多蝕晒本金</span></h3>
+      <h3><span class="kind-badge spot">Spot</span> Positions <span class="en">Spot · max lose principal</span></h3>
       <div class="tablewrap"><table><thead><tr>
         <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
         <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
       </tr></thead><tbody id="holdBody"></tbody></table>
-      <div class="empty" id="holdEmpty">未有現貨。去「今日跟買」撳 <b>落倉</b> → 選現貨，或「跟晒今批（現貨）」。</div></div>
+      <div class="empty" id="holdEmpty">No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.</div></div>
     </div>
     <div id="levSection" class="pos-section lev-section" hidden>
-      <h3><span class="kind-badge lev">槓桿</span> 倉（逐倉模擬） <span class="en">Isolated · 可爆倉</span></h3>
+      <h3><span class="kind-badge lev">Leverage</span> (isolated) <span class="en">Can liquidate</span></h3>
       <p class="muted lev-note">名義倉 = 保證金 × 倍數。浮虧 ≈ 保證金 90% → 爆倉，保證金歸零。v1 未計資金費（真實 perps 有 funding）。</p>
       <div class="tablewrap"><table><thead><tr>
         <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
         <th class="num">入場</th><th class="num">標記價</th><th class="num">爆倉價</th>
         <th class="num">浮盈虧</th><th class="num">倉權益</th><th></th>
       </tr></thead><tbody id="levBody"></tbody></table>
-      <div class="empty" id="levEmpty">未有槓桿倉。落倉時選「槓桿」，揀 2x–50x（視風險檔）同保證金。</div></div>
+      <div class="empty" id="levEmpty">No leverage positions. On Buy pick Leverage, 2x–50x (by risk) and margin.</div></div>
     </div>
-    <h3>交易紀錄</h3>
+    <h3>Trades</h3>
     <div class="tablewrap"><table><thead><tr>
       <th>時間</th><th>類型</th><th>方向</th><th>幣</th><th class="num">價</th><th class="num">數量/名義</th><th class="num">金額</th><th class="num">手續費</th><th class="num">已實現</th>
     </tr></thead><tbody id="tradeBody"></tbody></table></div>
@@ -572,7 +572,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </div>
 
 <dialog id="coinPickDlg" class="sheet">
-  <div class="sheet-head"><b id="coinPickTitle">揀幣</b><span class="muted tiny" id="coinPickCount"></span><button type="button" class="iconbtn" id="coinPickClose" aria-label="關閉">✕</button></div>
+  <div class="sheet-head"><b id="coinPickTitle">揀幣</b><span class="muted tiny" id="coinPickCount"></span><button type="button" class="iconbtn" id="coinPickClose" aria-label="Close">✕</button></div>
   <p class="tiny muted" id="coinPickHint" hidden></p>
   <input id="coinPickQ" type="search" placeholder="搜尋 BTC / ANIME / 名" autocomplete="off" autocapitalize="characters" spellcheck="false">
   <div id="coinPickList" class="cp-list"></div>
@@ -581,24 +581,24 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <dialog id="allinDlg" class="sheet">
   <form method="dialog" id="allinForm">
     <div class="trade-orb-wrap" id="allinOrb" aria-hidden="true"></div>
-    <h3 id="allinTitle">孤注一擲</h3>
+    <h3 id="allinTitle">All-in</h3>
     <p class="muted" id="allinInfo"></p>
     <div class="seg mini allin-seg" id="allinModeSeg">
-      <button type="button" class="segbtn active" data-allinmode="spot">現貨全倉</button>
-      <button type="button" class="segbtn" data-allinmode="lev">50x 槓桿</button>
+      <button type="button" class="segbtn active" data-allinmode="spot">Spot all-in</button>
+      <button type="button" class="segbtn" data-allinmode="lev">50x lev</button>
     </div>
     <div class="risk-callout hot" id="allinCallout"></div>
     <div class="allin-exit" id="allinExit"></div>
     <div class="allin-scenarios" id="allinScenarios"></div>
     <div class="row trade-actions">
       <button type="button" id="allinCancel" class="ghost">取消</button>
-      <button type="submit" id="allinOk" class="primary allin-ok">孤注一擲</button>
+      <button type="submit" id="allinOk" class="primary allin-ok">All-in</button>
     </div>
   </form>
 </dialog>
 
 <dialog id="allinPickDlg" hidden>
-  <form method="dialog" id="allinPickForm"><div id="allinPickList"></div><button type="button" id="allinPickCancel">取消</button></form>
+  <form method="dialog" id="allinPickForm"><div id="allinPickList"></div><button type="button" id="allinPickCancel">Cancel</button></form>
 </dialog>
 
 <dialog id="tradeDlg" class="sheet">
@@ -606,21 +606,21 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="trade-head">
       <div class="trade-orb-wrap" id="tradeOrb" aria-hidden="true" hidden></div>
       <div class="trade-headtxt">
-        <h3 id="tradeTitle">買</h3>
+        <h3 id="tradeTitle">Buy</h3>
         <p class="muted" id="tradeInfo"></p>
       </div>
     </div>
-    <div id="tradeModeRow" class="seg mini trade-mode" role="group" aria-label="落倉模式" hidden>
-      <button type="button" class="segbtn mode-card active" data-trademode="spot">現貨</button>
-      <button type="button" class="segbtn mode-card lev" data-trademode="lev">槓桿</button>
+    <div id="tradeModeRow" class="seg mini trade-mode" role="group" aria-label="Trade mode" hidden>
+      <button type="button" class="segbtn mode-card active" data-trademode="spot">Spot</button>
+      <button type="button" class="segbtn mode-card lev" data-trademode="lev">Leverage</button>
     </div>
     <p class="mode-risk-note muted" id="tradeModeRiskNote" hidden></p>
     <div id="tradeRiskRow" class="mode-row" hidden>
       <div class="seg mini" id="tradeRisk">
-        <button type="button" class="segbtn" data-risk="safe">穩陣</button>
-        <button type="button" class="segbtn active" data-risk="agg">進取</button>
-        <button type="button" class="segbtn" data-risk="yolo">極高風險</button>
-        <button type="button" class="segbtn" data-risk="allin">孤注一擲</button>
+        <button type="button" class="segbtn" data-risk="safe">Conservative</button>
+        <button type="button" class="segbtn active" data-risk="agg">Aggressive</button>
+        <button type="button" class="segbtn" data-risk="yolo">High risk</button>
+        <button type="button" class="segbtn" data-risk="allin">All-in</button>
       </div>
     </div>
     <div id="tradeLevRow" class="mode-row" hidden>
@@ -634,7 +634,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <option value="50">50x</option>
       </select>
     </div>
-    <label for="tradeAmt" id="tradeAmtLabel" class="tiny muted">金額 (USD)</label>
+    <label for="tradeAmt" id="tradeAmtLabel" class="tiny muted">Amount (USD)</label>
     <input id="tradeAmt" type="number" min="0" step="any" inputmode="decimal" required>
     <div class="row quick pct-chips" id="tradeQuick"></div>
     <p class="trade-preview" id="tradePreview"></p>
@@ -645,24 +645,24 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="risk-callout" id="tradeCallout" hidden></div>
     <p class="simnote" id="tradeSimNote" hidden></p>
     <div class="row trade-actions">
-      <button value="cancel" type="button" id="tradeCancel" class="ghost">取消</button>
-      <button type="button" id="tradeAllin" class="allin-btn sm" hidden>孤注一擲</button>
-      <button id="tradeOk" value="ok" class="primary">確認</button>
+      <button value="cancel" type="button" id="tradeCancel" class="ghost">Cancel</button>
+      <button type="button" id="tradeAllin" class="allin-btn sm" hidden>All-in</button>
+      <button id="tradeOk" value="ok" class="primary">Buy</button>
     </div>
   </form>
 </dialog>
 
 <aside class="drawer" id="drawer" hidden>
   <div class="drawer-inner">
-    <button class="close" id="closeDrawer" aria-label="關閉">✕</button>
+    <button class="close" id="closeDrawer" aria-label="Close">✕</button>
     <div id="drawerBody"></div>
   </div>
 </aside>
 
 <footer>
-  <p>睇幣／熱門／今日跟買（新批）：<b>淨 Binance</b> 公開 REST + WebSocket（data-api / data-stream.binance.vision，唔使 key）。
+  <p>Markets / Hot / Today's picks: <b>Binance-only</b> public REST + WebSocket (data-api / data-stream.binance.vision, no key).
   舊批 Solana Dex 推薦只留喺完整紀錄；Dex 掃描喺完整模式先有，唔再當熱門。
-  X 快照：<code>data/x_buzz.json</code>（最多一日刷新一次）。Crypto.M 存 localStorage（假錢）。</p>
+  X snapshot: <code>data/x_buzz.json</code> (≤1 refresh/day). Crypto.M in localStorage (paper).</p>
   <p class="legend">誠實標籤：今日跟買 = 多角度 OHLCV 留意盤（量能／壓縮／相對 BTC／輪動／吸籌），刻意唔係 24h 升幅榜。唔係保證賺錢。</p>
 </footer>
 
@@ -671,20 +671,20 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <div class="fx-shake">
     <div class="fx-burst" aria-hidden="true"></div>
     <div class="fx-emoji" id="allinFxEmoji">🎰</div>
-    <div class="fx-title" id="allinFxTitle">孤注一擲！</div>
+    <div class="fx-title" id="allinFxTitle">All-in!</div>
     <div class="fx-sub" id="allinFxSub">一舖過</div>
     <div class="fx-coin" id="allinFxCoin"></div>
   </div>
 </div>
 <div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
 
-<nav class="bottom-nav" role="tablist" aria-label="主要分頁">
-  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab">首頁</span></a>
-  <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab">睇幣</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab">模擬倉</span></a>
-  <a href="#news" class="tab bn-full" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8"/></svg><span class="bn-lab">新聞</span></a>
-  <a href="#explore" class="tab bn-full" data-view="explore"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="bn-lab">掃描</span></a>
-  <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab">更多</span></a>
+<nav class="bottom-nav" role="tablist" aria-label="Main tabs">
+  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab">Today's picks</span></a>
+  <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab">Markets</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab">Portfolio</span></a>
+  <a href="#news" class="tab bn-full" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8"/></svg><span class="bn-lab">News</span></a>
+  <a href="#explore" class="tab bn-full" data-view="explore"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="bn-lab">Scan</span></a>
+  <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab">More</span></a>
 </nav>
 
 <script src="live.js?v=20261030g"></script>
