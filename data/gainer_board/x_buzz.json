@@ -343,6 +343,50 @@
     }
    ],
    "checks_this_trigger": 1
+  },
+  "ASTERUSDT": {
+   "symbol": "ASTERUSDT",
+   "base": "ASTER",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T07:15:00+08:00",
+   "checked_at": "2026-11-03T07:14:30+08:00",
+   "posts_last_1h": 162,
+   "posts_prev_6h_avg_per_h": 199.33,
+   "spike_ratio": 0.81,
+   "verdict": "冷",
+   "one_line": "冷·雜音同bot蓋過",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117393393836003534",
+     "url": "https://x.com/gho_stgirl2/status/2117393393836003534",
+     "text": "Aster viviano jihon regino (Nuestras versiones en hombre) Slytherins boys🗣️💚",
+     "likes": 3,
+     "author_username": "gho_stgirl2",
+     "author_followers": 112,
+     "created_at": "2026-11-03T07:08:19+08:00"
+    },
+    {
+     "id": "2117392208533881083",
+     "url": "https://x.com/ohnonotagain_26/status/2117392208533881083",
+     "text": "Just stone cold chillin with the Aster man",
+     "likes": 2,
+     "author_username": "ohnonotagain_26",
+     "author_followers": 7576,
+     "created_at": "2026-11-03T07:03:36+08:00"
+    },
+    {
+     "id": "2117362057783959666",
+     "url": "https://x.com/ThesharkSame/status/2117362057783959666",
+     "text": "(Brumy and Aster)",
+     "likes": 1,
+     "author_username": "ThesharkSame",
+     "author_followers": 75716,
+     "created_at": "2026-11-03T05:03:47+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -766,15 +810,58 @@
      "created_at": "2026-11-03T04:05:40+08:00"
     }
    ]
+  },
+  {
+   "symbol": "ASTERUSDT",
+   "base": "ASTER",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T07:15:00+08:00",
+   "checked_at": "2026-11-03T07:14:30+08:00",
+   "posts_last_1h": 162,
+   "posts_prev_6h_avg_per_h": 199.33,
+   "spike_ratio": 0.81,
+   "verdict": "冷",
+   "one_line": "冷·雜音同bot蓋過",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117393393836003534",
+     "url": "https://x.com/gho_stgirl2/status/2117393393836003534",
+     "text": "Aster viviano jihon regino (Nuestras versiones en hombre) Slytherins boys🗣️💚",
+     "likes": 3,
+     "author_username": "gho_stgirl2",
+     "author_followers": 112,
+     "created_at": "2026-11-03T07:08:19+08:00"
+    },
+    {
+     "id": "2117392208533881083",
+     "url": "https://x.com/ohnonotagain_26/status/2117392208533881083",
+     "text": "Just stone cold chillin with the Aster man",
+     "likes": 2,
+     "author_username": "ohnonotagain_26",
+     "author_followers": 7576,
+     "created_at": "2026-11-03T07:03:36+08:00"
+    },
+    {
+     "id": "2117362057783959666",
+     "url": "https://x.com/ThesharkSame/status/2117362057783959666",
+     "text": "(Brumy and Aster)",
+     "likes": 1,
+     "author_username": "ThesharkSame",
+     "author_followers": 75716,
+     "created_at": "2026-11-03T05:03:47+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 20,
+  "calls_today": 22,
   "cap_reached": false,
-  "updated_at": "2026-11-03T04:12:14+08:00"
+  "updated_at": "2026-11-03T07:14:21+08:00"
  },
- "updated_at": "2026-11-03T04:12:14+08:00",
+ "updated_at": "2026-11-03T07:14:21+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
