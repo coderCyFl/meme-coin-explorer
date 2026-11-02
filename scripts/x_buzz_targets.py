@@ -35,14 +35,14 @@ import x_buzz_common as xc  # noqa: E402
 RECHECK_MIN = 30              # recheck a 🔥 coin every 30 min while on board
 RECHECK_SLACK_MIN = 3         # routine jitter: a check 27+ min ago counts as due
 MAX_CHECKS_PER_TRIGGER = 8    # max X checks per coin per 🔥 trigger
-DAILY_TOTAL_CAP = 60          # max X calls per Shanghai day (None = no cap)
+DAILY_TOTAL_CAP = 120         # max X calls per Shanghai day (None = no cap; raised 60→120 2026-11-02)
 CALLS_PER_TARGET = 2          # counts + search
 MAX_TARGETS_PER_RUN = 8
 HOLD_H = 4                    # 🔥 stays on the board 4h after the trigger (= live.js GB_TRIGGER_H)
 SITE_POOL = 90                # live.js GB_POOL_MAX (site scans every >=5%-range coin since 20261025g1)
 # Afternoon quota reserve (Asia/Shanghai). See docs/x-afternoon-quota.md.
 AFTERNOON_START_HOUR = 12     # unlock reserved calls from this hour (inclusive)
-AFTERNOON_RESERVE_CALLS = 24  # hold ~12 targets×2 for post-morning 🔥 / early
+AFTERNOON_RESERVE_CALLS = 48  # hold ~24 targets×2 for post-morning 🔥 / early (raised 24→48 with 2× day cap)
 VERY_EARLY_C24_MAX = 8.0      # prefer early-candidate pool with 24h move below this (seal gate still 15)
 # Tickers that are everyday words / too short: add crypto context to the X query.
 AMBIGUOUS = {"ONE", "GAS", "SUN", "MOVE", "PEOPLE", "ACT", "BANANA", "ME", "AI", "HOOK", "GO", "COOKIE", "TRUMP",

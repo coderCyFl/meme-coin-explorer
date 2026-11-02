@@ -1,13 +1,17 @@
-# X afternoon quota reserve (2026-10-31)
+# X afternoon quota reserve (2026-10-31; raised 2026-11-02)
 
 ## Problem
 
-`DAILY_TOTAL_CAP = 60` (Asia/Shanghai day, counted in `data/gainer_board/x_buzz_log.jsonl`)
-was burning out by ~09:12 on cold 🔥 rechecks. Afternoon 🔥 / early-candidate runs then got
-`targets=[]` with no remaining calls — blocking Cyrus’s “catch before it explodes” goal.
+`DAILY_TOTAL_CAP` (Asia/Shanghai day, counted in `data/gainer_board/x_buzz_log.jsonl`)
+was burning out by ~09:12 on cold 🔥 rechecks when it was 60. Afternoon 🔥 / early-candidate
+runs then got `targets=[]` with no remaining calls — blocking Cyrus’s “catch before it explodes”
+goal.
 
 Example burn (2026-10-31): 60/60 by 09:12; verdicts that morning ≈ 28×冷 / 2×升溫; zero
-calls after 09:00.
+calls after 09:00. Afternoon reserve (`AFTERNOON_RESERVE_CALLS=24`) landed as `b244984`.
+
+2026-11-02: Cyrus topped up Grok Bot usage and asked to raise X capacity so afternoon early
+coins are not starved → day cap **60→120**, afternoon reserve **24→48** (same rule shape).
 
 ## Policy (scheduler only — seal / exit / paper unchanged)
 
@@ -15,9 +19,9 @@ Configured in `scripts/x_buzz_targets.py`:
 
 | knobs | default | meaning |
 | --- | --- | --- |
-| `DAILY_TOTAL_CAP` | 60 | hard Shanghai-day X call ceiling |
+| `DAILY_TOTAL_CAP` | 120 | hard Shanghai-day X call ceiling |
 | `AFTERNOON_START_HOUR` | 12 | unlock reserved calls from this hour (inclusive) |
-| `AFTERNOON_RESERVE_CALLS` | 24 | ~12 targets × `CALLS_PER_TARGET` held for afternoon |
+| `AFTERNOON_RESERVE_CALLS` | 48 | ~24 targets × `CALLS_PER_TARGET` held for afternoon |
 | `VERY_EARLY_C24_MAX` | 8.0 | prefer early-candidate pool with 24h move &lt; +8% |
 
 Behaviour:
@@ -48,6 +52,5 @@ python3 scripts/x_buzz_targets.py --no-write --pumps-json /tmp/pumps.json --now 
 
 ## Out of scope
 
-- Raising the absolute 60-call day cap
 - Changing seal hard-gate (`c24&lt;15` / recall definition) or exit `setup_20261030e`
 - Merging without QA APPROVE
