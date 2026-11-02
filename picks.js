@@ -1538,7 +1538,7 @@
     const kids = [
       el("div", { class: "gb-top" },
         logo,
-        el("div", { class: "gb-id" }, el("div", { class: "nm", text: r.base })),
+        el("div", { class: "gb-id" }, el("div", { class: "nm", text: r.base }), (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
         el("div", { class: "gb-px" },
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }))),
