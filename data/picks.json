@@ -5801,6 +5801,205 @@
      "exit_plan": "目標 +10%（$9.6261）· 止蝕 −4%（$8.40096）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
     }
    ]
+  },
+  {
+   "id": "batch-016",
+   "created_at": "2026-11-03T02:46:25+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, accumulation); rotation stopped + higher_lows ¼ (20261030g); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -1.25,
+    "breadth_up_pct": 0,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "setup_size_gate": {
+    "size": "quarter",
+    "rolling7d_sealed_ew_pct": -0.07,
+    "n": 27,
+    "seal_hours": {
+     "24h": 14,
+     "12h": 13
+    },
+    "rule": "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase 唔受 ¼ gate 限 (細盤 24h vol < $3M 仍用 size:bonus)"
+   },
+   "setup_exit": {
+    "tp": 10,
+    "sl": 4,
+    "reviewH": 6,
+    "sellH": 12
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 77006.75
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 92.09
+    }
+   },
+   "entries": [
+    {
+     "id": "20261103-016-ACT",
+     "batch": "batch-016",
+     "type": "buy",
+     "created_at": "2026-11-03T02:46:25+08:00",
+     "chain": "binance",
+     "token_address": "binance:ACTUSDT",
+     "pair_address": "ACTUSDT",
+     "dex": "binance-spot",
+     "symbol": "ACT",
+     "name": "ACT (Binance)",
+     "url": "https://www.binance.com/en/trade/ACT_USDT",
+     "entry_price_usd": 0.00808,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 582898.693724,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -0.98,
+      "high24h": 0.00868,
+      "low24h": 0.00797,
+      "vol_creep": 2.186,
+      "rel_vs_btc_7d": -2.02,
+      "compression": 1,
+      "angle": "mean_reversion"
+     },
+     "model_score": 33,
+     "score_parts": {
+      "vol_creep": 22,
+      "compression": 0,
+      "relative": 3.639015655752674,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 7.206991352583226,
+      "chase_penalty": 0
+     },
+     "conviction": 33,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half",
+      "size:quarter"
+     ],
+     "size": "quarter",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "ACTUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.008888,
+     "stop_price_usd": 0.0077568,
+     "review_at": "2026-11-03T08:46:25+08:00",
+     "sell_by": "2026-11-03T14:46:25+08:00",
+     "exit_plan": "目標 +10%（$0.008888）· 止蝕 −4%（$0.0077568）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
+    },
+    {
+     "id": "20261103-016-MEME",
+     "batch": "batch-016",
+     "type": "buy",
+     "created_at": "2026-11-03T02:46:25+08:00",
+     "chain": "binance",
+     "token_address": "binance:MEMEUSDT",
+     "pair_address": "MEMEUSDT",
+     "dex": "binance-spot",
+     "symbol": "MEME",
+     "name": "MEME (Binance)",
+     "url": "https://www.binance.com/en/trade/MEME_USDT",
+     "entry_price_usd": 0.000418,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 511307.68265,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -4.348,
+      "high24h": 0.000445,
+      "low24h": 0.000418,
+      "vol_creep": 1.677,
+      "rel_vs_btc_7d": -6.19,
+      "compression": 1.578,
+      "angle": "mean_reversion"
+     },
+     "model_score": 70,
+     "score_parts": {
+      "vol_creep": 18.96982179988397,
+      "compression": 10.412024304445161,
+      "relative": 11.133263343548741,
+      "higher_lows": 0,
+      "rotation": 22.18514630197152,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 7.135852897830317,
+      "chase_penalty": 0
+     },
+     "conviction": 70,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half",
+      "size:quarter"
+     ],
+     "size": "quarter",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "MEMEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.0004598,
+     "stop_price_usd": 0.00040128,
+     "review_at": "2026-11-03T08:46:25+08:00",
+     "sell_by": "2026-11-03T14:46:25+08:00",
+     "exit_plan": "目標 +10%（$0.0004598）· 止蝕 −4%（$0.00040128）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
+    }
+   ]
   }
  ]
 }
