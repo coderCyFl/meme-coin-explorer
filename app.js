@@ -668,7 +668,7 @@
         window.MCE.live.sync();
       }
       if (window.MCE.onBnBoardLoaded) window.MCE.onBnBoardLoaded(rows);
-      setStatus(`Binance ${rows.length} 組 · ${new Date().toLocaleTimeString("zh-HK", { hour12: false })}`);
+      setStatus(`Binance ${rows.length} pairs · ${new Date().toLocaleTimeString("en-GB", { hour12: false })}`);
       return rows;
     } catch (e) {
       console.error(e);
