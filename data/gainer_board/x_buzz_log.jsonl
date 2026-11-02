@@ -227,3 +227,5 @@
 {"ts": "2026-11-03T00:13:40+08:00", "symbol": "QNTUSDT", "tool": "search", "query": "($QNT OR #QNT) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
 {"ts": "2026-11-03T00:12:40+08:00", "symbol": "ETHUSDT", "tool": "counts", "query": "($ETH OR #ETH) (crypto OR binance) lang:en -is:retweet", "result_count": 256}
 {"ts": "2026-11-03T00:13:40+08:00", "symbol": "ETHUSDT", "tool": "search", "query": "($ETH OR #ETH) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-03T01:16:43+08:00", "symbol": "MITOUSDT", "tool": "counts", "query": "($MITO OR #MITO) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-11-03T01:16:43+08:00", "symbol": "MITOUSDT", "tool": "search", "query": "($MITO OR #MITO) (crypto OR binance) lang:en -is:retweet", "result_count": 2}

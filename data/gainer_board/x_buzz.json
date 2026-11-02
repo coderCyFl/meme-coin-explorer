@@ -1,314 +1,6 @@
 {
  "version": 1,
  "coins": {
-  "LSKUSDT": {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T21:30:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 13.33,
-   "spike_ratio": 0.68,
-   "verdict": "冷",
-   "one_line": "熱度回落仍有黑客討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116526843847430261",
-     "url": "https://x.com/Proxonchain/status/2116526843847430261",
-     "text": "$LSK pumped from $0.21 to $0.31, and the #2 holder is quietly selling into it. Remember the wallet shuffle I flagged? It's back.",
-     "likes": 9,
-     "author_username": "Proxonchain",
-     "author_followers": 6775,
-     "created_at": "2026-10-31T21:44:57+08:00"
-    },
-    {
-     "id": "2116548276904210464",
-     "url": "https://x.com/ratiodotday/status/2116548276904210464",
-     "text": "Biggest perp movers, last 4h: $COW +21.3% LSK +15.3% IDOL +4.7%",
-     "likes": 4,
-     "author_username": "ratiodotday",
-     "author_followers": 54,
-     "created_at": "2026-10-31T23:10:07+08:00"
-    },
-    {
-     "id": "2116568058273951797",
-     "url": "https://x.com/Ryven2o/status/2116568058273951797",
-     "text": "Looks like LSK didn’t get the memo about yesterday’s Binance hack. While the entire market is dealing with fear, LSK is up almost 45% today",
-     "likes": 2,
-     "author_username": "Ryven2o",
-     "author_followers": 2127,
-     "created_at": "2026-11-01T00:28:43+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "PYTHUSDT": {
-   "symbol": "PYTHUSDT",
-   "base": "PYTH",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 3.0,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "基建討論多過喊單",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116500302983573756",
-     "url": "https://x.com/realmjmetax/status/2116500302983573756",
-     "text": "Shout out to @PythNetwork. Pyth delivers real time market data straight from first party sources like exchanges and trading firms",
-     "likes": 21,
-     "author_username": "realmjmetax",
-     "author_followers": 6716,
-     "created_at": "2026-10-31T19:59:29+08:00"
-    },
-    {
-     "id": "2116541379157668310",
-     "url": "https://x.com/icyfloorprice/status/2116541379157668310",
-     "text": "Pyth Pro is the institutional side of Pyth Network. Millisecond updates straight from trading firms and banks. Already around $10M ARR.",
-     "likes": 12,
-     "author_username": "icyfloorprice",
-     "author_followers": 4404,
-     "created_at": "2026-10-31T22:42:42+08:00"
-    },
-    {
-     "id": "2116522877487133083",
-     "url": "https://x.com/leahbluewater/status/2116522877487133083",
-     "text": "Wall Street waits all day for one Treasury yield snapshot. Pyth just put them onchain. 7 maturities updating every 200 MILLISECONDS.",
-     "likes": 10,
-     "author_username": "leahbluewater",
-     "author_followers": 17572,
-     "created_at": "2026-10-31T21:29:11+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "NEARUSDT": {
-   "symbol": "NEARUSDT",
-   "base": "NEAR",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 71,
-   "posts_prev_6h_avg_per_h": 61.33,
-   "spike_ratio": 1.16,
-   "verdict": "冷",
-   "one_line": "關鍵字雜訊多真討論少",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116575423068852374",
-     "url": "https://x.com/skyiszen/status/2116575423068852374",
-     "text": "One crypto chart that sticks out to me rn is NEARSOL: Expecting NEAR to appreciate vs SOL and ETH.",
-     "likes": 5,
-     "author_username": "skyiszen",
-     "author_followers": 4279,
-     "created_at": "2026-11-01T00:57:59+08:00"
-    },
-    {
-     "id": "2116576926898835839",
-     "url": "https://x.com/__Con_/status/2116576926898835839",
-     "text": "Although I think $BTC is a great asset to hold for crypto exposure, there are some better assets. $PUMP is in accumulation. $NEAR is in",
-     "likes": 2,
-     "author_username": "__Con_",
-     "author_followers": 29502,
-     "created_at": "2026-11-01T01:03:58+08:00"
-    },
-    {
-     "id": "2116572718250516772",
-     "url": "https://x.com/BitcoinStrat/status/2116572718250516772",
-     "text": "The Bitwise NEAR ETF lost about 4,800,000 dollars in a single Tuesday, its biggest outflow day on record.",
-     "likes": 0,
-     "author_username": "BitcoinStrat",
-     "author_followers": 6826,
-     "created_at": "2026-11-01T00:47:14+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "STRKUSDT": {
-   "symbol": "STRKUSDT",
-   "base": "STRK",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 2.99,
-   "verdict": "冷",
-   "one_line": "量極低偶有凍結消息",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116563191027343379",
-     "url": "https://x.com/tgd_duu/status/2116563191027343379",
-     "text": "Starknet Foundation froze 428 $STRK ($19) which were stolen on Binance a huge sum of money :/ thanks",
-     "likes": 27,
-     "author_username": "tgd_duu",
-     "author_followers": 19562,
-     "created_at": "2026-11-01T00:09:23+08:00"
-    },
-    {
-     "id": "2116579310827885031",
-     "url": "https://x.com/BSCGemsAlert/status/2116579310827885031",
-     "text": "30 ALTCOINS TO WATCH IF BITCOIN HITS $120K! includes $STRK among many alts",
-     "likes": 1,
-     "author_username": "BSCGemsAlert",
-     "author_followers": 485124,
-     "created_at": "2026-11-01T01:13:26+08:00"
-    },
-    {
-     "id": "2116495051362889757",
-     "url": "https://x.com/cryptowithgopal/status/2116495051362889757",
-     "text": "$STRK Printing a Bearish Pennant formation on the 1H chart after a strong downtrend!",
-     "likes": 1,
-     "author_username": "cryptowithgopal",
-     "author_followers": 15377,
-     "created_at": "2026-10-31T19:38:37+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "INJUSDT": {
-   "symbol": "INJUSDT",
-   "base": "INJ",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 4.5,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "生態帖多有互動",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116567522665189868",
-     "url": "https://x.com/_Bbymimi_/status/2116567522665189868",
-     "text": "Runup Is Bringing A New Kind Of Value To Injective. More projects are finding creative ways to make $INJ useful beyond its existing role.",
-     "likes": 42,
-     "author_username": "_Bbymimi_",
-     "author_followers": 3386,
-     "created_at": "2026-11-01T00:26:35+08:00"
-    },
-    {
-     "id": "2116550241017274647",
-     "url": "https://x.com/kiraridust/status/2116550241017274647",
-     "text": "I made a magazine about @injective in the US. ONCHAIN AMERICA, Issue 01. Injective futures went live on Bitnomial.",
-     "likes": 27,
-     "author_username": "kiraridust",
-     "author_followers": 4630,
-     "created_at": "2026-10-31T23:17:55+08:00"
-    },
-    {
-     "id": "2116544448171844074",
-     "url": "https://x.com/Rose5Zara/status/2116544448171844074",
-     "text": "Inective achieved Multiple Massive Achievements in Uptober! Major developments across tokenized stocks, on-chain derivatives.",
-     "likes": 17,
-     "author_username": "Rose5Zara",
-     "author_followers": 1838,
-     "created_at": "2026-10-31T22:54:54+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "ARBUSDT": {
-   "symbol": "ARBUSDT",
-   "base": "ARB",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 3.0,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "官方生態更新有討論",
-   "shill_flag": false,
-   "big_accounts": 2,
-   "top_posts": [
-    {
-     "id": "2116575840548835753",
-     "url": "https://x.com/arbitrum/status/2116575840548835753",
-     "text": "This week on Arbitrum: Tokenized funds reach $1.1B in market cap with issuers Spiko, FTDA, Securitize leading growth",
-     "likes": 27,
-     "author_username": "arbitrum",
-     "author_followers": 1140407,
-     "created_at": "2026-11-01T00:59:39+08:00"
-    },
-    {
-     "id": "2116579310827885031",
-     "url": "https://x.com/BSCGemsAlert/status/2116579310827885031",
-     "text": "30 ALTCOINS TO WATCH IF BITCOIN HITS $120K! includes $ARB among many alts",
-     "likes": 1,
-     "author_username": "BSCGemsAlert",
-     "author_followers": 485124,
-     "created_at": "2026-11-01T01:13:26+08:00"
-    },
-    {
-     "id": "2116551786982940694",
-     "url": "https://x.com/mach0crypto/status/2116551786982940694",
-     "text": "Will Binance buy 74.56 million ARB? Yes, so stop selling your shit to the cartel. $ARB #BinanceHack",
-     "likes": 1,
-     "author_username": "mach0crypto",
-     "author_followers": 70,
-     "created_at": "2026-10-31T23:24:04+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "RSRUSDT": {
-   "symbol": "RSRUSDT",
-   "base": "RSR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T23:30:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 1.38,
-   "verdict": "冷",
-   "one_line": "帖少黑客拋壓已過",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116515865915261148",
-     "url": "https://x.com/CryptoPro2008/status/2116515865915261148",
-     "text": "#RSR #Binance Crypto is no longer what it used to be. Now it’s mostly manipulation, staged moves, and a constant hunt for liquidations.",
-     "likes": 9,
-     "author_username": "CryptoPro2008",
-     "author_followers": 239,
-     "created_at": "2026-10-31T21:01:20+08:00"
-    },
-    {
-     "id": "2116555897694552440",
-     "url": "https://x.com/cryptolevier/status/2116555897694552440",
-     "text": "$RSR +19% on the day and still climbing. Binance hacker dumped stolen RSR; Reserve confirmed attacker now holds none.",
-     "likes": 2,
-     "author_username": "cryptolevier",
-     "author_followers": 8198,
-     "created_at": "2026-10-31T23:40:24+08:00"
-    },
-    {
-     "id": "2116570945121071341",
-     "url": "https://x.com/cexscan/status/2116570945121071341",
-     "text": "Last 60m Coinbase Spot: Top losers include $RSR (Reserve Rights) -7.43%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10602,
-     "created_at": "2026-11-01T00:40:11+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
   "COWUSDT": {
    "symbol": "COWUSDT",
    "base": "COW",
@@ -533,33 +225,24 @@
    "symbol": "MITOUSDT",
    "base": "MITO",
    "flag": "pump",
-   "trigger_at": "2026-11-02T20:30:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 1.0,
-   "spike_ratio": 0.0,
+   "trigger_at": "2026-11-02T21:15:00+08:00",
+   "checked_at": "2026-11-03T01:16:43+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 0.5,
+   "spike_ratio": 6.0,
    "verdict": "冷",
-   "one_line": "上榜後討論已淡",
+   "one_line": "量少諷刺泵未成熱",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2117253803020050456",
      "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
-     "text": "The @MitosisOrg's $MITO is the top gainer on Binance Crime pump at its finest",
-     "likes": 26,
+     "text": "The @MitosisOrg's $MITO is the top gainer on Binance 🤣💀 Crime pump at its finest",
+     "likes": 30,
      "author_username": "Crypto_Zh0u",
-     "author_followers": 9466,
+     "author_followers": 9465,
      "created_at": "2026-11-02T21:53:37+08:00"
-    },
-    {
-     "id": "2117180866183225814",
-     "url": "https://x.com/rab4745/status/2117180866183225814",
-     "text": "Top grainer in binance spot $SOPH $MITO Which one are you holding?",
-     "likes": 11,
-     "author_username": "rab4745",
-     "author_followers": 18494,
-     "created_at": "2026-11-02T17:03:48+08:00"
     },
     {
      "id": "2117259764074008984",
@@ -567,7 +250,7 @@
      "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
      "likes": 1,
      "author_username": "soonmource",
-     "author_followers": 8541,
+     "author_followers": 8543,
      "created_at": "2026-11-02T22:17:19+08:00"
     }
    ],
@@ -707,350 +390,6 @@
   }
  },
  "history": [
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T21:30:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 13.33,
-   "spike_ratio": 0.68,
-   "verdict": "冷",
-   "one_line": "熱度回落仍有黑客討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116526843847430261",
-     "url": "https://x.com/Proxonchain/status/2116526843847430261",
-     "text": "$LSK pumped from $0.21 to $0.31, and the #2 holder is quietly selling into it. Remember the wallet shuffle I flagged? It's back.",
-     "likes": 9,
-     "author_username": "Proxonchain",
-     "author_followers": 6775,
-     "created_at": "2026-10-31T21:44:57+08:00"
-    },
-    {
-     "id": "2116548276904210464",
-     "url": "https://x.com/ratiodotday/status/2116548276904210464",
-     "text": "Biggest perp movers, last 4h: $COW +21.3% LSK +15.3% IDOL +4.7%",
-     "likes": 4,
-     "author_username": "ratiodotday",
-     "author_followers": 54,
-     "created_at": "2026-10-31T23:10:07+08:00"
-    },
-    {
-     "id": "2116568058273951797",
-     "url": "https://x.com/Ryven2o/status/2116568058273951797",
-     "text": "Looks like LSK didn’t get the memo about yesterday’s Binance hack. While the entire market is dealing with fear, LSK is up almost 45% today",
-     "likes": 2,
-     "author_username": "Ryven2o",
-     "author_followers": 2127,
-     "created_at": "2026-11-01T00:28:43+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PYTHUSDT",
-   "base": "PYTH",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 3.0,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "基建討論多過喊單",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116500302983573756",
-     "url": "https://x.com/realmjmetax/status/2116500302983573756",
-     "text": "Shout out to @PythNetwork. Pyth delivers real time market data straight from first party sources like exchanges and trading firms",
-     "likes": 21,
-     "author_username": "realmjmetax",
-     "author_followers": 6716,
-     "created_at": "2026-10-31T19:59:29+08:00"
-    },
-    {
-     "id": "2116541379157668310",
-     "url": "https://x.com/icyfloorprice/status/2116541379157668310",
-     "text": "Pyth Pro is the institutional side of Pyth Network. Millisecond updates straight from trading firms and banks. Already around $10M ARR.",
-     "likes": 12,
-     "author_username": "icyfloorprice",
-     "author_followers": 4404,
-     "created_at": "2026-10-31T22:42:42+08:00"
-    },
-    {
-     "id": "2116522877487133083",
-     "url": "https://x.com/leahbluewater/status/2116522877487133083",
-     "text": "Wall Street waits all day for one Treasury yield snapshot. Pyth just put them onchain. 7 maturities updating every 200 MILLISECONDS.",
-     "likes": 10,
-     "author_username": "leahbluewater",
-     "author_followers": 17572,
-     "created_at": "2026-10-31T21:29:11+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "NEARUSDT",
-   "base": "NEAR",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 71,
-   "posts_prev_6h_avg_per_h": 61.33,
-   "spike_ratio": 1.16,
-   "verdict": "冷",
-   "one_line": "關鍵字雜訊多真討論少",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116575423068852374",
-     "url": "https://x.com/skyiszen/status/2116575423068852374",
-     "text": "One crypto chart that sticks out to me rn is NEARSOL: Expecting NEAR to appreciate vs SOL and ETH.",
-     "likes": 5,
-     "author_username": "skyiszen",
-     "author_followers": 4279,
-     "created_at": "2026-11-01T00:57:59+08:00"
-    },
-    {
-     "id": "2116576926898835839",
-     "url": "https://x.com/__Con_/status/2116576926898835839",
-     "text": "Although I think $BTC is a great asset to hold for crypto exposure, there are some better assets. $PUMP is in accumulation. $NEAR is in",
-     "likes": 2,
-     "author_username": "__Con_",
-     "author_followers": 29502,
-     "created_at": "2026-11-01T01:03:58+08:00"
-    },
-    {
-     "id": "2116572718250516772",
-     "url": "https://x.com/BitcoinStrat/status/2116572718250516772",
-     "text": "The Bitwise NEAR ETF lost about 4,800,000 dollars in a single Tuesday, its biggest outflow day on record.",
-     "likes": 0,
-     "author_username": "BitcoinStrat",
-     "author_followers": 6826,
-     "created_at": "2026-11-01T00:47:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "STRKUSDT",
-   "base": "STRK",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 2.99,
-   "verdict": "冷",
-   "one_line": "量極低偶有凍結消息",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116563191027343379",
-     "url": "https://x.com/tgd_duu/status/2116563191027343379",
-     "text": "Starknet Foundation froze 428 $STRK ($19) which were stolen on Binance a huge sum of money :/ thanks",
-     "likes": 27,
-     "author_username": "tgd_duu",
-     "author_followers": 19562,
-     "created_at": "2026-11-01T00:09:23+08:00"
-    },
-    {
-     "id": "2116579310827885031",
-     "url": "https://x.com/BSCGemsAlert/status/2116579310827885031",
-     "text": "30 ALTCOINS TO WATCH IF BITCOIN HITS $120K! includes $STRK among many alts",
-     "likes": 1,
-     "author_username": "BSCGemsAlert",
-     "author_followers": 485124,
-     "created_at": "2026-11-01T01:13:26+08:00"
-    },
-    {
-     "id": "2116495051362889757",
-     "url": "https://x.com/cryptowithgopal/status/2116495051362889757",
-     "text": "$STRK Printing a Bearish Pennant formation on the 1H chart after a strong downtrend!",
-     "likes": 1,
-     "author_username": "cryptowithgopal",
-     "author_followers": 15377,
-     "created_at": "2026-10-31T19:38:37+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "INJUSDT",
-   "base": "INJ",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 4.5,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "生態帖多有互動",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116567522665189868",
-     "url": "https://x.com/_Bbymimi_/status/2116567522665189868",
-     "text": "Runup Is Bringing A New Kind Of Value To Injective. More projects are finding creative ways to make $INJ useful beyond its existing role.",
-     "likes": 42,
-     "author_username": "_Bbymimi_",
-     "author_followers": 3386,
-     "created_at": "2026-11-01T00:26:35+08:00"
-    },
-    {
-     "id": "2116550241017274647",
-     "url": "https://x.com/kiraridust/status/2116550241017274647",
-     "text": "I made a magazine about @injective in the US. ONCHAIN AMERICA, Issue 01. Injective futures went live on Bitnomial.",
-     "likes": 27,
-     "author_username": "kiraridust",
-     "author_followers": 4630,
-     "created_at": "2026-10-31T23:17:55+08:00"
-    },
-    {
-     "id": "2116544448171844074",
-     "url": "https://x.com/Rose5Zara/status/2116544448171844074",
-     "text": "Inective achieved Multiple Massive Achievements in Uptober! Major developments across tokenized stocks, on-chain derivatives.",
-     "likes": 17,
-     "author_username": "Rose5Zara",
-     "author_followers": 1838,
-     "created_at": "2026-10-31T22:54:54+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "ARBUSDT",
-   "base": "ARB",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T01:15:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 3.0,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "官方生態更新有討論",
-   "shill_flag": false,
-   "big_accounts": 2,
-   "top_posts": [
-    {
-     "id": "2116575840548835753",
-     "url": "https://x.com/arbitrum/status/2116575840548835753",
-     "text": "This week on Arbitrum: Tokenized funds reach $1.1B in market cap with issuers Spiko, FTDA, Securitize leading growth",
-     "likes": 27,
-     "author_username": "arbitrum",
-     "author_followers": 1140407,
-     "created_at": "2026-11-01T00:59:39+08:00"
-    },
-    {
-     "id": "2116579310827885031",
-     "url": "https://x.com/BSCGemsAlert/status/2116579310827885031",
-     "text": "30 ALTCOINS TO WATCH IF BITCOIN HITS $120K! includes $ARB among many alts",
-     "likes": 1,
-     "author_username": "BSCGemsAlert",
-     "author_followers": 485124,
-     "created_at": "2026-11-01T01:13:26+08:00"
-    },
-    {
-     "id": "2116551786982940694",
-     "url": "https://x.com/mach0crypto/status/2116551786982940694",
-     "text": "Will Binance buy 74.56 million ARB? Yes, so stop selling your shit to the cartel. $ARB #BinanceHack",
-     "likes": 1,
-     "author_username": "mach0crypto",
-     "author_followers": 70,
-     "created_at": "2026-10-31T23:24:04+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "RSRUSDT",
-   "base": "RSR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T23:30:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 1.38,
-   "verdict": "冷",
-   "one_line": "帖少黑客拋壓已過",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116515865915261148",
-     "url": "https://x.com/CryptoPro2008/status/2116515865915261148",
-     "text": "#RSR #Binance Crypto is no longer what it used to be. Now it’s mostly manipulation, staged moves, and a constant hunt for liquidations.",
-     "likes": 9,
-     "author_username": "CryptoPro2008",
-     "author_followers": 239,
-     "created_at": "2026-10-31T21:01:20+08:00"
-    },
-    {
-     "id": "2116555897694552440",
-     "url": "https://x.com/cryptolevier/status/2116555897694552440",
-     "text": "$RSR +19% on the day and still climbing. Binance hacker dumped stolen RSR; Reserve confirmed attacker now holds none.",
-     "likes": 2,
-     "author_username": "cryptolevier",
-     "author_followers": 8198,
-     "created_at": "2026-10-31T23:40:24+08:00"
-    },
-    {
-     "id": "2116570945121071341",
-     "url": "https://x.com/cexscan/status/2116570945121071341",
-     "text": "Last 60m Coinbase Spot: Top losers include $RSR (Reserve Rights) -7.43%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10602,
-     "created_at": "2026-11-01T00:40:11+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "COWUSDT",
-   "base": "COW",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T22:00:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 9.17,
-   "spike_ratio": 0.98,
-   "verdict": "冷",
-   "one_line": "熱度回落多喊單訊號",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116563752980296136",
-     "url": "https://x.com/CryptoWhales55/status/2116563752980296136",
-     "text": "#AKEUSDT Bearish Strong selling pressure continues. Below $0.0140 expecting further downside. #COWUSDT tagged in signal spam",
-     "likes": 50,
-     "author_username": "CryptoWhales55",
-     "author_followers": 7355,
-     "created_at": "2026-11-01T00:11:37+08:00"
-    },
-    {
-     "id": "2116548276904210464",
-     "url": "https://x.com/ratiodotday/status/2116548276904210464",
-     "text": "Biggest perp movers, last 4h: $COW +21.3% LSK +15.3% IDOL +4.7%",
-     "likes": 4,
-     "author_username": "ratiodotday",
-     "author_followers": 54,
-     "created_at": "2026-10-31T23:10:07+08:00"
-    },
-    {
-     "id": "2116570463094595976",
-     "url": "https://x.com/Kingz_chuks/status/2116570463094595976",
-     "text": "Top gainers today: $COW +17.73% $MORPHO +12.28% $STX +12.16%",
-     "likes": 1,
-     "author_username": "Kingz_chuks",
-     "author_followers": 271,
-     "created_at": "2026-11-01T00:38:17+08:00"
-    }
-   ]
-  },
   {
    "symbol": "COWUSDT",
    "base": "COW",
@@ -1437,15 +776,49 @@
      "created_at": "2026-11-02T23:37:20+08:00"
     }
    ]
+  },
+  {
+   "symbol": "MITOUSDT",
+   "base": "MITO",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T21:15:00+08:00",
+   "checked_at": "2026-11-03T01:16:43+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 0.5,
+   "spike_ratio": 6.0,
+   "verdict": "冷",
+   "one_line": "量少諷刺泵未成熱",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117253803020050456",
+     "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
+     "text": "The @MitosisOrg's $MITO is the top gainer on Binance 🤣💀 Crime pump at its finest",
+     "likes": 30,
+     "author_username": "Crypto_Zh0u",
+     "author_followers": 9465,
+     "created_at": "2026-11-02T21:53:37+08:00"
+    },
+    {
+     "id": "2117259764074008984",
+     "url": "https://x.com/soonmource/status/2117259764074008984",
+     "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
+     "likes": 1,
+     "author_username": "soonmource",
+     "author_followers": 8543,
+     "created_at": "2026-11-02T22:17:19+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 14,
+  "calls_today": 16,
   "cap_reached": false,
-  "updated_at": "2026-11-03T00:14:40+08:00"
+  "updated_at": "2026-11-03T01:16:43+08:00"
  },
- "updated_at": "2026-11-03T00:14:40+08:00",
+ "updated_at": "2026-11-03T01:16:43+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
