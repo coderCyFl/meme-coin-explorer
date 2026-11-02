@@ -747,7 +747,7 @@
     box.textContent = "";
     const bn = (buys || []).filter((x) => x.e && x.e.chain === "binance");
     const top = (bn.length ? bn : buys || []).slice(0, 6);
-    if (!top.length) { box.append(el("p", { class: "muted", text: "計緊多角度盤…稍等" })); return; }
+    if (!top.length) { box.append(el("p", { class: "muted", text: "Loading setups…" })); return; }
     const liveApi = window.MCE.live;
     top.forEach((x, i) => {
       const tip = x.e.tip || (x.e.rationale || "").split("（")[0].slice(0, 72) || "多角度盤 · 唔係追 24h 升幅";
@@ -769,13 +769,15 @@
         ? liveApi.coinLogoEl(x.e.symbol, "coin-logo", 44)
         : el("span", { class: "coin-logo letter", text: String(x.e.symbol || "?").slice(0, 2) });
       const details = el("details", { class: "sc-details" },
-        el("summary", { text: "詳情" }),
+        el("summary", { text: "Details" }),
         el("div", { class: "sc-detail-body muted" },
           x.e.chain === "binance" ? shillLineEl(x.e.pair_address || x.e.symbol) : null,
           el("div", { text: tip }),
-          el("div", { text: "角度：" + (ANGLE_LABEL[angle] || angle || "setup") }),
-          el("div", { text: "推薦價 " + price(x.e.entry_price_usd) + (chg != null ? " · 當時 24h " + pct(chg) : "") }),
-          el("div", { text: (x.e.rationale || "").slice(0, 160) })
+          el("div", { text: "Angle: " + (ANGLE_LABEL[angle] || angle || "setup") }),
+          el("div", { text: "Entry " + price(x.e.entry_price_usd) + (chg != null ? " · then 24h " + pct(chg) : "") }),
+          el("div", { text: (x.e.rationale || "").slice(0, 160) }),
+          exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
+          (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: setupQuarterNow() ? "Size ¼ · 7d follow avg not green yet" : "Size ¼ · structure soft" }) : null
         )
       );
       box.append(el("article", { class: "simple-card anim-in", "data-angle": angle || "", style: "--i:" + i },
@@ -791,12 +793,9 @@
               return el("div", { class: "sc-ret num " + cls(c), "data-bn-chg": x.e.pair_address || "", text: c != null ? pct(c) : "—" }); })()
           )
         ),
-        exitHintRow(x.e.chain === "binance" && livePx > 0 ? wouldBuyPlan(scInfo) : exitPlanFromEntry(x.e), x.e.chain === "binance" && livePx > 0 ? { basePx: livePx, pair: x.e.pair_address } : {}),
-        (x.e.size === "quarter" || (x.e.tier !== "chase" && x.e.exitRegime !== "momentum" && setupQuarterNow())) ? el("div", { class: "sc-size tiny muted", text: setupQuarterNow() ? "注碼 ¼ · 近 7d 跟買平均未轉正，轉正先回全注" : "注碼 ¼ · 結構類近期未轉正" }) : null,
         details,
         el("div", { class: "sc-actions" },
-          el("button", { type: "button", class: "allin-btn", onclick: () => openAllinFlow(scInfo) }, "孤注"),
-          el("button", { class: "primary", onclick: () => openBuy(scInfo) }, "買")
+          el("button", { class: "primary", onclick: () => openBuy(scInfo) }, "Buy")
         )
       ));
     }); paintShillSoon();
@@ -1185,7 +1184,7 @@
         ),
         el("div", { class: "num " + ((r.chg24 || 0) > 0 ? "pos" : (r.chg24 || 0) < 0 ? "neg" : ""), "data-bn-chg": r.symbol, text: pct(r.chg24) }),
         el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(r.price) }),
-        el("button", { class: "primary sm", onclick: () => openBuy(hotInfo) }, "落倉")
+        el("button", { class: "primary sm", onclick: () => openBuy(hotInfo) }, "Buy")
       ));
     }
   }
@@ -1499,19 +1498,22 @@
     const logo = liveApi && liveApi.coinLogoEl ? liveApi.coinLogoEl(r.base, "coin-logo", 36) : el("span", { class: "coin-logo letter", text: r.base.slice(0, 2) });
     const spark = liveApi && liveApi.sparkSvg ? liveApi.sparkSvg(r.spark || [], { w: 120, h: 32, up: (r.c4h || 0) >= 0, className: "spark-svg gb-spark" }) : null;
     const tags = r.tier === "cand"
-      ? [el("span", { class: "gb-watch", text: "候補" })]
+      ? [el("span", { class: "gb-watch", text: "Watch" })]
       : gbIsEarly(r.tier)
-        ? [el("span", { class: "gb-watch", text: "⚡ 觀察" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "細盤" })] : [])
+        ? [el("span", { class: "gb-watch", text: "⚡ Early" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "Thin" })] : [])
         : r.tier === "chase"
-          ? [el("span", { class: "gb-buytag", text: "🚀 續升買" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "細盤 加碼" })] : [])
-          : r.tier === "pump" ? [el("span", { class: "gb-buytag", text: "🔥 可追" })] : [];
+          ? [el("span", { class: "gb-buytag", text: "🚀 Chase" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "Thin +" })] : [])
+          : r.tier === "pump" ? [el("span", { class: "gb-buytag", text: "🔥 Hot" })] : [];
     const bnInfo = {
       chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
       symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
     };
     const details = el("details", { class: "gb-details" },
-      el("summary", { text: "詳情" }),
+      el("summary", { text: "Details" }),
       el("div", { class: "gb-det-body" },
+        el("div", { class: "pump-badges" }, ...tags),
+        watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-exit1", "data-gb-levels": "card" }),
+          exitLiveNode("span", { class: "num" }, "Half {target} · Clear {target2} · Stop {stop} · by {untilS}", plan, px)),
         spark || "",
         (r.tier === "pump" || gbIsEarly(r.tier)) ? shillLineEl(r.symbol) : null,
         el("div", { class: "pump-badges" },
@@ -1532,24 +1534,18 @@
         r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
         r.tier === "chase" ? "" : gbBtLine(r.tier === "cand" ? "pump" : r.tier),
         el("div", { class: "gb-det-actions" },
-          el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, `孤注一擲 ${r.base}`))));
+          el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, "All-in"))));
     const kids = [
       el("div", { class: "gb-top" },
         logo,
-        el("div", { class: "gb-id" }, el("div", { class: "nm" }, r.base, " ", ...tags),
-          r.tier === "pump" ? el("button", { type: "button", class: "gb-xchip", "data-gb-x": r.symbol, hidden: true, "aria-expanded": "false", onclick: () => gbXToggle(r.symbol) }) : "",
-          (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
+        el("div", { class: "gb-id" }, el("div", { class: "nm", text: r.base })),
         el("div", { class: "gb-px" },
           el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
           el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }))),
       r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
-      // 幾時放 = ONE line (same shared exit formula + live price as the buy window; ticks via refreshExitChips)
-      watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "gb-min gb-exit1", "data-gb-levels": "card" }),
-        exitLiveNode("span", { class: "num" }, "半 {target} · 清 {target2} · 止 {stop} · {untilS}前走", plan, px)),
     ];
     if (buy) {
       kids.push(el("div", { class: "gb-buyrow" },
-        el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, "孤注"),
         el("button", { class: "primary gb-buy", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
           symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
@@ -1559,14 +1555,10 @@
           size: "full", sizeMult: mult, forceSpot: true, tier: r.tier, exit_plan: gbExitPlanText(X, r.price),
           entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, tier: r.tier },
           onFilled: (res) => gbLogBought(r, null, res),
-        }) }, `跟買 $${Math.round(usd).toLocaleString()}`)));
+        }) }, "Buy")));
     }
     if (r.tier === "early2") {
-      const viaX = (r.trigger && r.trigger.via === "x_buzz") || (r.serverFlag && r.serverFlag.via === "x_buzz");
-      kids.push(el("div", { class: "gb-buyrow gb-e2row" }, gbEarlyChip(),
-        viaX ? el("span", { class: "gb-buytag soft", text: "X 熱度早標" }) : null));
-      kids.push(el("div", { class: "tiny muted",
-        text: `觀察出場參考：+${GAINER_EXIT.tp}% / +${GAINER_EXIT.tp2}% · 止蝕 −${GAINER_EXIT.sl}% · ${GAINER_EXIT.reviewH}h 複盤（唔係買入訊號）` }));
+      /* early notes live in Details; face stays name/price/%/Buy */
     }
     kids.push(details);
     return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (gbIsEarly(r.tier) ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
@@ -1721,7 +1713,7 @@
   }
 
 
-  /** Homepage 🔥 strip: latest sealed early-capture rate (always visible, not folded in 詳情). */
+  /** Homepage strip: plain "Caught: COIN… (x/20)" for latest settled day — no jargon. */
   function renderGainerCaptureStrip() {
     const box = $("gainerCapture"); if (!box) return;
     box.textContent = "";
@@ -1730,53 +1722,34 @@
     box.hidden = false;
     if (!cards.length) {
       box.append(
-        el("div", { class: "gbc-line" },
-          el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
-          el("span", { class: "gbc-big muted", text: "—" })),
-        el("p", { class: "gbc-sub tiny muted", text: "未有密封 · 每晚 23:55 對 Binance 頭 20" }));
+        el("div", { class: "gbc-caught" },
+          el("span", { class: "gbc-caught-main muted", text: "Caught: — (0/20)" })),
+        el("p", { class: "gbc-sub tiny muted", text: "No settled day yet · nightly check vs Binance top 20 ~23:55 HKT" }));
       return;
     }
     const c = cards[cards.length - 1];
-    const sealed = c.date || "";
-    const md = sealed.length >= 10 ? `${Number(sealed.slice(5, 7))}/${sealed.slice(8, 10)}` : sealed;
+    const day = c.date || "";
+    const md = day.length >= 10 ? `${Number(day.slice(5, 7))}/${day.slice(8, 10)}` : day;
     const today = isoSh().slice(0, 10);
-    const recall = c.recall_top20_pct;
-    const prec = c.precision_pct;
     const earlyHits = c.early_hits != null ? c.early_hits : ((c.hits || []).length);
-    const earlyFlagged = c.early_flagged != null ? c.early_flagged : (c.flagged != null ? c.flagged : "–");
-    const pass = recall != null && Number(recall) >= 10;
     const hitSyms = (c.hits || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
-    const lateSyms = (c.late || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
     const missSyms = (c.missed || []).map((h) => (typeof h === "string" ? h : h.symbol)).filter(Boolean);
-    const w = sum.scorecard_7d || {};
+    const list = hitSyms.length ? hitSyms.join(", ") : "—";
+    const pass = earlyHits >= 2; // ≥10% of 20
 
-    const gate = el("span", {
-      class: "gbc-gate " + (pass ? "pass" : "fail"),
-      text: pass ? "PASS（≥10%）" : "FAIL（≥10%）",
-    });
-    const big = el("div", { class: "gbc-line" },
-      el("span", { class: "gbc-kicker", text: "今日早標捕捉率" }),
-      el("span", { class: "gbc-big num " + (pass ? "pos" : "neg"), text: recall != null ? `${recall}%` : "—" }),
-      el("span", { class: "gbc-inline", text: `（捉到 ${earlyHits}/20）` }),
-      el("span", { class: "gbc-dot", text: "·" }),
-      el("span", { class: "gbc-inline", text: `講中率 ${prec != null ? prec + "%" : "–"}（${earlyHits}/${earlyFlagged}）` }),
-      el("span", { class: "gbc-dot", text: "·" }),
-      gate);
-    const sealNote = el("div", { class: "gbc-seal tiny" },
-      el("span", { class: "gbc-sealchip", text: `密封 ${md}` }),
-      sealed !== today
-        ? el("span", { class: "muted", text: "（最新密封日 · 今日未封）" })
-        : el("span", { class: "muted", text: "（今日）" }),
-      el("span", { class: "muted", text: w.days ? ` · 7 日 ${w.recall_top20_pct ?? "–"}%` : "" }));
-
-    const names = (lab, syms, cls) => el("div", { class: "gbc-names " + cls },
-      el("span", { class: "gbc-lab", text: lab }),
-      el("span", { class: "gbc-syms", text: syms.length ? syms.join(" · ") : "無" }));
-
-    box.append(big, sealNote,
-      names("捉到", hitSyms, "gbc-hit"),
-      names("走漏", missSyms, "gbc-miss"));
-    if (lateSyms.length) box.append(names("遲標", lateSyms, "gbc-late"));
+    box.append(
+      el("div", { class: "gbc-caught" },
+        el("span", { class: "gbc-caught-main num " + (pass ? "pos" : "neg"),
+          text: `Caught: ${list} (${earlyHits}/20)` })),
+      el("div", { class: "gbc-meta tiny muted" },
+        el("span", { text: day === today ? `Settled ${md} · today` : `Latest settled ${md} · tonight’s check pending` })),
+    );
+    if (missSyms.length) {
+      const det = el("details", { class: "gbc-miss-det" },
+        el("summary", { text: `Missed ${missSyms.length}` }),
+        el("div", { class: "gbc-syms tiny muted", text: missSyms.join(", ") }));
+      box.append(det);
+    }
   }
 
   function renderGainerAccuracy() {
@@ -1947,7 +1920,7 @@
           el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼注" : half ? "半注" : "全注" })
         ),
         el("td", { class: "actions", "data-label": "" },
-          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "買")
+          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "Buy")
         )
       ));
     }
@@ -3675,12 +3648,12 @@
       goView("portfolio");
       const el = document.getElementById("lens-allin");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      toast("孤注一擲：假錢 All-in 一隻幣，一舖過");
+      toast("All-in: paper money, one coin, one shot");
       setTimeout(() => openAllinFlow(), 400);
     }
     // Also expand howto and highlight section
     const howto = document.getElementById("howto");
-    if (howto) howto.open = true;
+    if (howto) { howto.hidden = false; howto.open = true; }
     document.querySelectorAll(".howto-sec").forEach((sec) => {
       sec.classList.toggle("hilite", sec.id === "lens-" + lens);
     });
@@ -3766,12 +3739,17 @@
   }));
   if ($("discToggle")) $("discToggle").addEventListener("click", () => {
     const f = $("discFull"); f.hidden = !f.hidden;
-    $("discToggle").textContent = f.hidden ? "詳情" : "收起";
+    $("discToggle").textContent = f.hidden ? "Details" : "Hide";
   });
   if ($("moreToFull")) $("moreToFull").addEventListener("click", () => { applyUiMode("full"); location.hash = "picks"; });
   if ($("moreHowto")) $("moreHowto").addEventListener("click", () => {
     applyUiMode("full");
-    const h = $("howto"); if (h) { h.open = true; h.scrollIntoView({ behavior: "smooth" }); }
+    const h = $("howto");
+    if (h) {
+      h.hidden = false;
+      h.open = true;
+      h.scrollIntoView({ behavior: "smooth" });
+    }
   });
   if ($("simplePfDetail")) $("simplePfDetail").addEventListener("click", () => {
     document.querySelector(".panel .seg")?.scrollIntoView({ behavior: "smooth" });
@@ -3780,7 +3758,7 @@
   // ---------- ux-fix wiring: buy any coin, 孤注一擲 (simple mode too), 詳情 sheets ----------
   async function buyAnyCoin() {
     if (!window.MCE.market) return;
-    const info = await window.MCE.market.pickCoin({ title: "買幣" });
+    const info = await window.MCE.market.pickCoin({ title: "Buy" });
     if (info) openBuy(info);
   }
   if ($("pfBuyBtn")) $("pfBuyBtn").addEventListener("click", buyAnyCoin);
