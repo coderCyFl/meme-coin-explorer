@@ -389,7 +389,7 @@
       el("span", { class: "exit-chip exit-sl", text: "Stop −" + plan.sl + "%" }),
     ];
     if (plan.trimNote) kids.push(el("span", { class: "exit-chip exit-trim", text: plan.trimNote }));
-    return el("div", { class: className, title: "When to exit · paper reference, not a guarantee." }, ...kids);
+    return el("div", { class: className }, ...kids);
   }
 
   /** Live-tick every would-be-buy exit text (same formula + same live price as the buy window). */
@@ -514,7 +514,7 @@
       : (plan.pastReview
         ? (plan.labelOnlyReview ? `Missed target · ${plan.secondH}h sell-by — exit` : `Missed target · past review — decide`)
         : `Decide at ${whenClean || plan.whenText} (target not hit)`);
-    const stop = `${price(stopPx)} (−${sl}%) · paper ref`;
+    const stop = `${price(stopPx)} (−${sl}%)`;
     const untilText = plan.pastReview ? (plan.labelOnlyReview ? "Exit" : "Decide") : (whenClean ? "Hold to " + whenClean : "");
     return { main, hold, stop, basePx: entryPx, targetPx, stopPx, reached, pastReview: plan.pastReview, tp, sl, untilText };
   }
@@ -1974,13 +1974,7 @@
     const goodAvoid = avoids.filter((x) => x.ret != null && x.ret < -0.05).length;
     // Honesty + horizons
     const sh = $("sampleHonesty");
-    if (sh) {
-      const n = buys.length;
-      const due = buys.some((x) => hoursSince(x.e.created_at) >= 24);
-      const hasOut = S.outcomes.length > 0;
-      sh.textContent = (n < 20 ? `⚠️ 樣本太少（買入推薦 ${n} 筆），唔好當結論。` : `樣本 ${n} 筆。`)
-        + (hasOut ? "" : " 24h／7d 結果尚未到期（或未跑 snapshot）。");
-    }
+    if (sh) { sh.textContent = ""; sh.hidden = true; }
     renderFollowReport(simpleBuys);
     renderDailyBatchTable();
     renderSimpleCards(simpleBuys);
@@ -3737,7 +3731,7 @@
     applyUiMode(b.dataset.ui);
     show((location.hash || "#picks").slice(1));
   }));
-  if ($("discToggle")) $("discToggle").addEventListener("click", () => {
+  if ($("discToggle") && $("discFull")) $("discToggle").addEventListener("click", () => {
     const f = $("discFull"); f.hidden = !f.hidden;
     $("discToggle").textContent = f.hidden ? "Details" : "Hide";
   });
