@@ -67,17 +67,17 @@
   }
   const pct = (v) => (v == null || isNaN(v) ? "–" : (v > 0 ? "+" : "") + v.toFixed(1) + "%");
   const fmtInt = (n) => (n == null ? "–" : Number(n).toLocaleString());
-  /** zh-HK 24h Asia/Shanghai, e.g. 「10月23日 14:24」 (no AM/PM US format). */
+  /** Short EN 24h Asia/Shanghai, e.g. "10/23 14:24" (no AM/PM). */
   const localTime = (iso) => {
     try {
       const d = new Date(iso);
       if (isNaN(d)) return iso || "";
       const p = {};
-      new Intl.DateTimeFormat("zh-HK", {
+      new Intl.DateTimeFormat("en-US", {
         timeZone: "Asia/Shanghai", month: "numeric", day: "numeric",
         hour: "2-digit", minute: "2-digit", hourCycle: "h23",
       }).formatToParts(d).forEach((x) => { p[x.type] = x.value; });
-      return `${+p.month}月${+p.day}日 ${String(p.hour).padStart(2, "0")}:${String(p.minute).padStart(2, "0")}`;
+      return `${+p.month}/${+p.day} ${String(p.hour).padStart(2, "0")}:${String(p.minute).padStart(2, "0")}`;
     } catch { return iso || ""; }
   };
 

@@ -176,7 +176,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="gb-alert" id="gainerAlert" hidden></div>
     <p class="tiny muted gb-xcap" id="gainerXCap" hidden>X daily cap used</p>
     <div id="gainerList" class="gb-list"></div>
-    <h3 class="gb-tier-title">⚡ 早期 <span class="muted tiny">觀察</span></h3>
+    <h3 class="gb-tier-title">⚡ Early <span class="muted tiny">watch</span></h3>
     <div id="earlyList" class="gb-list"></div>
   </section>
 
@@ -207,8 +207,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="table-wrap daily-batch-wrap">
       <table class="data daily-batch-table" id="dailyBatchTable">
         <thead><tr>
-          <th>幣</th><th class="num">現價</th><th class="num">24h</th>
-          <th>幾時可以放</th><th>目標價</th><th>注碼</th><th></th>
+          <th>Coin</th><th class="num">Price</th><th class="num">24h</th>
+          <th>Exit</th><th>Target</th><th>Size</th><th></th>
         </tr></thead>
         <tbody id="dailyBatchBody"></tbody>
       </table>
@@ -489,15 +489,15 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </dialog>
 <div id="sheetPark" hidden>
   <div id="gbDetail" data-park>
-    <p class="gb-livebar"><span>即時</span> · <span id="gainerUpdated">連接中…</span></p>
+    <p class="gb-livebar"><span>Live</span> · <span id="gainerUpdated">Connecting…</span></p>
     <p class="home-sub" id="gainerMeta">Binance spot pumps · separate from AI picks</p>
-    <div class="row wrap gb-multrow"><span class="muted tiny">注碼</span><div class="gb-mult" id="gainerMult" role="group" aria-label="注碼倍數"></div></div>
+    <div class="row wrap gb-multrow"><span class="muted tiny">Size</span><div class="gb-mult" id="gainerMult" role="group" aria-label="Size multiplier"></div></div>
     
-    <h4 class="gb-tier-title">🔥 規則</h4>
-    <p class="tiny muted">近 4h：1h ≥ +5% 兼成交 ≥ 3x 平均，或 15m ≥ +5%（冇 24h 下限）。唔夠 6 隻補「候補」（只觀察、冇買入）。</p>
+    <h4 class="gb-tier-title">🔥 Rules</h4>
+    <p class="tiny muted">Last 4h: 1h ≥ +5% and vol ≥ 3x avg, or 15m ≥ +5% (no 24h floor). Pad to 6 with candidates (watch only, no buy).</p>
     <div id="gainerPumpBt"></div>
-    <h4 class="gb-tier-title">⚡ 早期</h4>
-    <p class="tiny muted">未 🔥 先起步（15m ≥ +2.5%，24h 波幅 ≥ 25%）或細盤急拉 · 只觀察，冇買入掣。</p>
+    <h4 class="gb-tier-title">⚡ Early</h4>
+    <p class="tiny muted">Pre-🔥 start (15m ≥ +2.5%, 24h range ≥ 25%) or thin-book surge · watch only, no buy.</p>
     <div id="gainerEarlyBt"></div>
     <div class="gacc" id="gainerAcc"></div>
     <div class="gacc" id="gainerCard"></div>
@@ -506,7 +506,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="simbanner">Mock cash · not real money</div>
     <div id="liveStrip" class="live-strip" hidden>
       <span class="live-dot" aria-hidden="true"></span>
-      <span id="liveStripText">即時報價關閉</span>
+      <span id="liveStripText">Live quotes off</span>
     </div>
     <div class="stats pf-stats-dup" id="pfStats"></div>
     <div class="risk-bar">
@@ -520,21 +520,21 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
     <p class="muted risk-hint" id="riskHint"></p>
     <div class="row wrap capital-row">
-      <span class="muted">起始資金</span>
+      <span class="muted">Start cash</span>
       <div class="presets" id="capitalPresets">
         <button type="button" class="sm preset" data-cap="1000">$1k</button>
         <button type="button" class="sm preset active" data-cap="5000">$5k</button>
         <button type="button" class="sm preset" data-cap="10000">$10k</button>
         <button type="button" class="sm preset" data-cap="50000">$50k</button>
       </div>
-      <input id="startCash" type="number" min="100" step="100" value="5000" title="重置時生效">
-      <label class="muted" for="feePct">費%</label>
+      <input id="startCash" type="number" min="100" step="100" value="5000" title="Applies on reset">
+      <label class="muted" for="feePct">Fee %</label>
       <input id="feePct" type="number" min="0" max="20" step="0.01" value="0.1">
-      <button id="pfRefresh" class="sm">↻ 報價</button>
+      <button id="pfRefresh" class="sm">↻ Quotes</button>
       <button id="copyPicks" class="secondary">Follow batch</button>
-      <button id="pfReset" class="ghost sm danger">重置</button>
+      <button id="pfReset" class="ghost sm danger">Reset</button>
     </div>
-    <div class="seg pf-mode-seg" role="tablist" aria-label="倉位類型">
+    <div class="seg pf-mode-seg" role="tablist" aria-label="Position type">
       <button type="button" class="segbtn" data-pfmode="spot">Spot</button>
       <button type="button" class="segbtn" data-pfmode="lev">Leverage</button>
       <button type="button" class="segbtn active" data-pfmode="all">All</button>
@@ -542,8 +542,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div id="spotSection" class="pos-section spot-section">
       <h3><span class="kind-badge spot">Spot</span> Positions <span class="en">Spot · max lose principal</span></h3>
       <div class="tablewrap"><table><thead><tr>
-        <th>幣</th><th class="num">數量</th><th class="num">入場均價</th><th class="num">成本</th>
-        <th class="num">而家價</th><th class="num">市值</th><th class="num">浮盈虧 %</th><th class="num">浮盈虧 $</th><th></th>
+        <th>Coin</th><th class="num">Qty</th><th class="num">Avg entry</th><th class="num">Cost</th>
+        <th class="num">Mark</th><th class="num">Value</th><th class="num">uPnL %</th><th class="num">uPnL $</th><th></th>
       </tr></thead><tbody id="holdBody"></tbody></table>
       <div class="empty" id="holdEmpty">No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.</div></div>
     </div>
@@ -551,15 +551,15 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
       <h3><span class="kind-badge lev">Leverage</span> (isolated) <span class="en">Can liquidate</span></h3>
       
       <div class="tablewrap"><table><thead><tr>
-        <th>幣</th><th class="num">倍數</th><th class="num">保證金</th><th class="num">名義</th>
-        <th class="num">入場</th><th class="num">標記價</th><th class="num">爆倉價</th>
-        <th class="num">浮盈虧</th><th class="num">倉權益</th><th></th>
+        <th>Coin</th><th class="num">Lev</th><th class="num">Margin</th><th class="num">Notional</th>
+        <th class="num">Entry</th><th class="num">Mark</th><th class="num">Liq</th>
+        <th class="num">uPnL</th><th class="num">Equity</th><th></th>
       </tr></thead><tbody id="levBody"></tbody></table>
       <div class="empty" id="levEmpty">No leverage positions. On Buy pick Leverage, 2x–50x (by risk) and margin.</div></div>
     </div>
     <h3>Trades</h3>
     <div class="tablewrap"><table><thead><tr>
-      <th>時間</th><th>類型</th><th>方向</th><th>幣</th><th class="num">價</th><th class="num">數量/名義</th><th class="num">金額</th><th class="num">手續費</th><th class="num">已實現</th>
+      <th>Time</th><th>Kind</th><th>Side</th><th>Coin</th><th class="num">Px</th><th class="num">Qty/Notional</th><th class="num">USD</th><th class="num">Fee</th><th class="num">Realized</th>
     </tr></thead><tbody id="tradeBody"></tbody></table></div>
   </div>
   <div id="posDetail" data-park></div>

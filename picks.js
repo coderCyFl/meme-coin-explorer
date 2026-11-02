@@ -27,15 +27,15 @@
   }
 
 
-  /** Follow-report times: zh-HK 24h "10月22日 04:54" (Asia/Shanghai, no seconds). */
+  /** Follow-report / trigger times: short EN 24h "10/22 04:54" (Asia/Shanghai, no seconds). */
   const frTime = (iso) => {
     try {
       const d = new Date(iso);
       if (isNaN(d)) return iso || "";
       const p = {};
-      new Intl.DateTimeFormat("zh-HK", { timeZone: "Asia/Shanghai", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+      new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Shanghai", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
         .formatToParts(d).forEach((x) => { p[x.type] = x.value; });
-      return `${+p.month}月${+p.day}日 ${String(p.hour).padStart(2, "0")}:${String(p.minute).padStart(2, "0")}`;
+      return `${+p.month}/${+p.day} ${String(p.hour).padStart(2, "0")}:${String(p.minute).padStart(2, "0")}`;
     } catch (_) { return iso || ""; }
   };
   const hoursSince = (iso) => (Date.now() - new Date(iso).getTime()) / 3.6e6;
@@ -339,7 +339,7 @@
       target: () => (L ? price(L.targetPx) : "—"), target2: () => (L && L.target2Px != null ? price(L.target2Px) : "—"),
       stop: () => (L ? price(L.stopPx) : "—"), tp: () => plan.tp, tp2: () => plan.tp2, sl: () => plan.sl,
       review: () => at(plan.reviewH), until: () => at(plan.secondH),
-      untilS: () => { const d = new Date(nowMs + plan.secondH * 3600e3); const t = frTime(d); return shanghaiDay(d) === shanghaiDay(new Date(nowMs)) ? t.slice(-5) : "明 " + t.slice(-5); },
+      untilS: () => { const d = new Date(nowMs + plan.secondH * 3600e3); const t = frTime(d); return shanghaiDay(d) === shanghaiDay(new Date(nowMs)) ? t.slice(-5) : "tmr " + t.slice(-5); },
     };
     return String(tpl).replace(/\{(\w+)\}/g, (m, k) => (map[k] ? String(map[k]()) : m));
   }
@@ -609,20 +609,20 @@
     const id = typeof batch === "string" ? batch : batch.id;
     const created = typeof batch === "string" ? null : (batch.created_at || null);
     const latest = latestId || (S.picks?.batches?.length ? S.picks.batches[S.picks.batches.length - 1].id : null);
-    if (id && latest && id === latest) return "今批";
+    if (id && latest && id === latest) return "Latest";
     if (created) {
       try {
         const d = new Date(created);
         if (!isNaN(d)) {
-          const md = `${d.getMonth() + 1}月${d.getDate()}日`;
-          const hm = d.toLocaleTimeString("zh-HK", { hour: "2-digit", minute: "2-digit", hour12: false });
+          const md = `${d.getMonth() + 1}/${d.getDate()}`;
+          const hm = d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false });
           return `${md} ${hm}`;
         }
       } catch (_) {}
     }
     // Fallback: ordinal without "batch-" prefix
     const m = String(id || "").match(/(\d+)$/);
-    return m ? `第 ${parseInt(m[1], 10)} 批` : "較早批次";
+    return m ? `Batch ${parseInt(m[1], 10)}` : "Earlier batch";
   }
 
   async function fetchPairs(list, force = false) {
@@ -733,13 +733,13 @@
   }
 
   const ANGLE_LABEL = {
-    accumulation: "靜吸",
-    rotation: "輪動",
-    compression: "壓縮",
-    mean_reversion: "回彈",
-    higher_lows: "結構",
-    relative: "相對",
-    already_up: "勿追",
+    accumulation: "Accum",
+    rotation: "Rotation",
+    compression: "Compress",
+    mean_reversion: "Rebound",
+    higher_lows: "Structure",
+    relative: "Relative",
+    already_up: "Don't chase",
   };
 
   function renderSimpleCards(buys) {
@@ -806,22 +806,22 @@
   function followHorizonState(createdAt) {
     const age = hoursSince(createdAt);
     const left = 24 - age;
-    if (age >= 24) return { kind: "full", age, left: 0, label: "已滿 24h" };
-    return { kind: "mtm", age, left, label: `未滿 24h · 暫計（仲差 ${Math.max(0, left).toFixed(1)}h）` };
+    if (age >= 24) return { kind: "full", age, left: 0, label: "Full 24h" };
+    return { kind: "mtm", age, left, label: `Under 24h · MTM (${Math.max(0, left).toFixed(1)}h left)` };
   }
 
   /** Price cell for a follow-report row: sealed → 入 $x → 24h $y (static); live → ticking mark. */
   function frPxCell(r, e) {
-    const entry = el("div", { class: "muted tiny", text: "入 " + price(e.entry_price_usd) });
+    const entry = el("div", { class: "muted tiny", text: "In " + price(e.entry_price_usd) });
     if (r.sealed && r.rec) {
       const exitPx = r.rec.status === "dead" ? null : r.rec.price_usd;
       const sealIso = r.rec.due_at || r.rec.observed_at;
-      const sealT = sealIso ? "封盤 " + frTime(sealIso) + (r.rec.price_source === "kline_1m_due" ? "（到期 1m K 線收市價）" : "") : "24h 已封盤";
+      const sealT = sealIso ? "Sealed " + frTime(sealIso) + (r.rec.price_source === "kline_1m_due" ? " (due 1m close)" : "") : "24h sealed";
       return el("div", { class: "fr-px", title: sealT },
         entry,
         exitPx != null
           ? el("div", { class: "num fr-exit " + cls(r.ret), text: "24h " + price(exitPx) })
-          : el("div", { class: "muted tiny fr-exit", text: r.rec.status === "dead" ? "已死 · " + sealT : sealT })
+          : el("div", { class: "muted tiny fr-exit", text: r.rec.status === "dead" ? "Dead · " + sealT : sealT })
       );
     }
     // Live: ticking price via data-bn-price; fall back to last known mark instead of a bare "…"
@@ -829,7 +829,7 @@
       : (r.ret != null && e.entry_price_usd ? e.entry_price_usd * (1 + r.ret / 100) : null);
     return el("div", { class: "fr-px" },
       entry,
-      el("div", { class: "num live-px", "data-bn-price": e.pair_address, text: mark != null ? price(mark) : "報價連接中" })
+      el("div", { class: "num live-px", "data-bn-price": e.pair_address, text: mark != null ? price(mark) : "Connecting…" })
     );
   }
 
@@ -849,7 +849,7 @@
       pctEl.textContent = "—";
       pctEl.className = "fr-pct";
       if (pnlEl) { pnlEl.textContent = "Paper —"; pnlEl.className = "fr-pnl"; }
-      if (stEl) stEl.innerHTML = '<span class="fr-chip fr-chip-muted">未有今批買入推薦</span>';
+      if (stEl) stEl.innerHTML = '<span class="fr-chip fr-chip-muted">No buys in latest batch</span>';
       if (metaEl) metaEl.textContent = "";
       return;
     }
@@ -879,34 +879,34 @@
       } else {
         chips.push(`<span class="fr-chip fr-chip-mtm">${hz.label}</span>`);
       }
-      if (sealedAll) chips.push(`<span class="fr-chip fr-chip-lock">已鎖 24h 快照</span>`);
-      else if (hz.kind === "full") chips.push(`<span class="fr-chip fr-chip-live">即時價暫代（待快照）</span>`);
-      else chips.push(`<span class="fr-chip fr-chip-live">即時對盤</span>`);
-      chips.push(`<span class="fr-chip fr-chip-win">勝率 ${known.length ? wins + "/" + known.length : "—"}</span>`);
+      if (sealedAll) chips.push(`<span class="fr-chip fr-chip-lock">Locked 24h snapshot</span>`);
+      else if (hz.kind === "full") chips.push(`<span class="fr-chip fr-chip-live">Live px stand-in (await seal)</span>`);
+      else chips.push(`<span class="fr-chip fr-chip-live">Live mark</span>`);
+      chips.push(`<span class="fr-chip fr-chip-win">Win ${known.length ? wins + "/" + known.length : "—"}</span>`);
       stEl.innerHTML = chips.join("");
     }
     if (metaEl) {
       const bid = list[0].b && list[0].b.id ? list[0].b.id : "";
       const sealAt = sealedAll ? withRet.map((r) => r.rec && (r.rec.due_at || r.rec.observed_at)).filter(Boolean).sort().pop() : null;
       const head = sealedAll && bid ? bid : batchLabel(list[0].b);
-      metaEl.textContent = `等權各 $${(per).toFixed(0)} · 總假本 $${FAKE_STAKE} · ${head} · 買入時間 ${frTime(created)}`
-        + (sealAt ? ` · 封盤 ${frTime(sealAt)}` : "");
+      metaEl.textContent = `EW $${(per).toFixed(0)} each · paper $${FAKE_STAKE} · ${head} · bought ${frTime(created)}`
+        + (sealAt ? ` · sealed ${frTime(sealAt)}` : "");
     }
     const kickEl = $("followReportKicker");
     if (kickEl) {
       const bid = list[0].b && list[0].b.id ? list[0].b.id : "";
-      kickEl.textContent = sealedAll && bid ? `若跟晒 ${bid} 買 · 24h 結果` : "若跟晒今批買 · 24h";
+      kickEl.textContent = sealedAll && bid ? `If followed ${bid} · 24h result` : "If followed latest batch · 24h";
     }
     if (avgRet == null) {
       pctEl.textContent = "…";
       pctEl.className = "fr-pct";
-      if (pnlEl) { pnlEl.textContent = "報價連接中"; pnlEl.className = "fr-pnl"; }
+      if (pnlEl) { pnlEl.textContent = "Connecting…"; pnlEl.className = "fr-pnl"; }
     } else {
       pctEl.textContent = (avgRet >= 0 ? "+" : "") + avgRet.toFixed(2) + "%";
       pctEl.className = "fr-pct " + cls(avgRet);
       if (pnlEl) {
-        // Verb carries the sign: 賺 $X / 蝕 $X (no "-$" after 蝕)
-        pnlEl.textContent = (pnl >= 0 ? "賺 " : "蝕 ") + "$" + Math.abs(pnl).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        // Verb carries the sign: +$X / −$X
+        pnlEl.textContent = (pnl >= 0 ? "+" : "−") + "$" + Math.abs(pnl).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         pnlEl.className = "fr-pnl " + cls(pnl);
       }
     }
@@ -922,8 +922,8 @@
         el("div", { class: "fr-id" },
           el("div", { class: "nm", text: e.symbol }),
           el("div", { class: "sy" },
-            el("span", { class: "angle-pill", text: ANGLE_LABEL[angle] || "留意盤" }),
-            r.sealed ? el("span", { class: "pill", text: "24h鎖" }) : ""
+            el("span", { class: "angle-pill", text: ANGLE_LABEL[angle] || "Watch" }),
+            r.sealed ? el("span", { class: "pill", text: "24h lock" }) : ""
           )
         ),
         frPxCell(r, e),
@@ -937,7 +937,7 @@
               })
             : (e.sell_by || e.stop_loss_pct != null
               ? el("div", { class: "tiny muted", text:
-                  (e.take_profit_pct != null ? `止賺 +${e.take_profit_pct}%` : "")
+                  (e.take_profit_pct != null ? `TP +${e.take_profit_pct}%` : "")
                   + (e.stop_loss_pct != null ? ` · Stop −${e.stop_loss_pct}%` : "")
                   + (e.sell_by ? ` · by ${frTime(e.sell_by)}` : "")
                 })
@@ -1527,11 +1527,11 @@
         watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-ladder", "data-gb-levels": "details" }),
           exitLiveNode("span", {}, "{target} (+{tp}%) half, stop→BE → {target2} (+{tp2}%) clear · recheck {review} · by {until}", plan, px)),
         buy && usd > 0 ? el("div", { class: "tiny" },
-          `現貨 ${money2(usd)}：`, el("b", { class: "pos", text: `+${X.tp}% 賺 ${money2(usd * X.tp / 100 - fee2)}` }), " · ",
-          el("b", { class: "pos", text: `+${X.tp2}% 賺 ${money2(usd * X.tp2 / 100 - fee2)}` }), " · ",
+          `Spot ${money2(usd)}: `, el("b", { class: "pos", text: `+${X.tp}% gain ${money2(usd * X.tp / 100 - fee2)}` }), " · ",
+          el("b", { class: "pos", text: `+${X.tp2}% gain ${money2(usd * X.tp2 / 100 - fee2)}` }), " · ",
           el("b", { class: "neg", text: `Stop loss ${money2(usd * X.sl / 100 + fee2)}` })) : "",
-        r.tier === "chase" ? el("div", { class: "tiny muted", text: `🚀 續升買：24h +${10}–${30}%、離 24h 高 ≤ 2%、1h 成交 ≥ 2x 平均、1h 仲升緊 → 紙上直接跟買。` + (small ? ` 細盤（24h 成交 < $3M）注碼 ×${CHASE_SMALL_MULT}。` : "") }) : "",
-        r.tier === "cand" ? el("div", { class: "tiny muted", text: "候補：近 4h 未有 🔥 急拉（1h ≥ +5% 兼量 ≥ 3x，或 15m ≥ +5%），只做觀察，冇買入掣。" }) : "",
+        r.tier === "chase" ? el("div", { class: "tiny muted", text: `🚀 Chase: 24h +${10}–${30}%, ≤2% off 24h high, 1h vol ≥ 2x avg, 1h still up → paper follow.` + (small ? ` Thin book (24h vol < $3M) size ×${CHASE_SMALL_MULT}.` : "") }) : "",
+        r.tier === "cand" ? el("div", { class: "tiny muted", text: "Candidate: no 🔥 surge in last 4h (1h ≥ +5% & vol ≥ 3x, or 15m ≥ +5%) — watch only, no buy." }) : "",
         r.tier === "chase" ? "" : gbBtLine(r.tier === "cand" ? "pump" : r.tier),
         el("div", { class: "gb-det-actions" },
           el("button", { type: "button", class: "allin-btn sm gb-allin", onclick: () => openAllinFlow(bnInfo) }, "All-in"))));
@@ -1580,7 +1580,7 @@
     box.textContent = "";
     const bt = $("gainerEarlyBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("early2")); }
     if (!early.length) {
-      box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: "近 4h 冇 ⚡" })));
+      box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: "No ⚡ in last 4h" })));
       return;
     }
     for (const r of early) box.append(gbCard(r, trig.get(r.symbol + ":early2") || null, { buy: false }));
@@ -1604,7 +1604,7 @@
     const fresh = t && Date.now() - t < 3 * 60_000;
     n.classList.toggle("on", !!fresh);
     const tt = $("gainerUpdated");
-    if (tt) tt.textContent = t ? "更新 " + new Date(t).toLocaleTimeString("zh-HK", { hour12: false }) : "連接中…";
+    if (tt) tt.textContent = t ? "Updated " + new Date(t).toLocaleTimeString("en-GB", { hour12: false }) : "Connecting…";
   }
 
   async function loadGainerBoard(force) {
@@ -1852,13 +1852,13 @@
     const latest = batches.length ? batches[batches.length - 1] : null;
     const buys = latest ? (latest.entries || []).filter((e) => e.type === "buy") : [];
     if (meta) {
-      if (!latest) meta.textContent = "未有批次";
+      if (!latest) meta.textContent = "No batch yet";
       else {
         const reg = latest.regime || {};
         const weak = reg.state === "weak" || reg.sizing === "half";
-        meta.textContent = `${latest.id || "batch"} · ${frTime(latest.created_at)} · ${buys.length} 隻可買`
-          + (setupQuarterNow() ? " · ¼注（近 7d 跟買未轉正）" : weak ? " · 弱市半注" : " · 正常注碼")
-          + " · 同「今日跟買」卡分開";
+        meta.textContent = `${latest.id || "batch"} · ${frTime(latest.created_at)} · ${buys.length} buys`
+          + (setupQuarterNow() ? " · ¼ size (7d follow not green)" : weak ? " · weak half-size" : " · full size")
+          + " · separate from Today picks";
       }
     }
     if (!buys.length) {
@@ -1901,23 +1901,23 @@
         ? liveApi.coinLogoEl(e.symbol, "coin-logo", 28)
         : el("span", { class: "coin-logo letter", text: String(e.symbol || "?").slice(0, 2) });
       body.append(el("tr", Object.assign({ class: "cardish", "data-daily-sym": e.symbol }, liveAttrs),
-        el("td", { "data-label": "幣" },
+        el("td", { "data-label": "Coin" },
           el("div", { class: "tok" }, logo, el("div", {},
             el("div", { class: "nm", text: e.symbol }),
             chg != null ? el("div", { class: "sy num tiny " + cls(chg), text: pct(chg) }) : "",
             e.chain === "binance" ? shillFlagEl(e.pair_address || e.symbol) : null
           ))
         ),
-        el("td", { class: "num live-px", "data-label": "現價", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
+        el("td", { class: "num live-px", "data-label": "Price", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
         el("td", { class: "num " + cls(chg), "data-label": "24h", text: chg != null ? pct(chg) : "—" }),
-        el("td", { class: "daily-when", "data-label": "幾時可以放" },
+        el("td", { class: "daily-when", "data-label": "Exit" },
           exitLiveNode("div", {}, "Hold to {review}", plan, lvPx)),
-        el("td", { class: "daily-target", "data-label": "目標價" },
+        el("td", { class: "daily-target", "data-label": "Target" },
           exitLiveNode("div", { class: "num pos" }, "{target} (+{tp}%)", plan, lvPx),
           exitLiveNode("div", { class: "num neg tiny" }, "Stop {stop} (−{sl}%)", plan, lvPx),
-          qtr ? el("div", { class: "muted tiny", text: "¼注" }) : null),
-        el("td", { "data-label": "注碼" },
-          el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼注" : half ? "半注" : "全注" })
+          qtr ? el("div", { class: "muted tiny", text: "¼ size" }) : null),
+        el("td", { "data-label": "Size" },
+          el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼" : half ? "Half" : "Full" })
         ),
         el("td", { class: "actions", "data-label": "" },
           el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "Buy")
@@ -3400,7 +3400,7 @@
     const parts = [];
     if (bn) parts.push(`Binance 即時 ×${bn}`);
     if (dex) parts.push(`Dex 即時（每 ${(window.MCE.live?.DEX_POLL_MS || 4000) / 1000} 秒）×${dex}`);
-    txt.textContent = "持倉報價：" + (parts.join(" · ") || "連接中…");
+    txt.textContent = "Marks: " + (parts.join(" · ") || "Connecting…");
   }
   let liveStarted = false, liveRenderBusy = false, liveTickBound = false;
   function ensureLiveLoop(forceStart) {
@@ -3757,8 +3757,8 @@
   }
   if ($("pfBuyBtn")) $("pfBuyBtn").addEventListener("click", buyAnyCoin);
   if ($("pfAllinBtn")) $("pfAllinBtn").addEventListener("click", () => openAllinFlow());
-  if ($("pfInfoBtn")) $("pfInfoBtn").addEventListener("click", () => { window.MCE.market.openSheet("模擬倉詳情", "pfDetail"); renderPortfolio(false); });
-  if ($("gainerInfoBtn")) $("gainerInfoBtn").addEventListener("click", () => window.MCE.market.openSheet("急升 · 詳情", "gbDetail"));
+  if ($("pfInfoBtn")) $("pfInfoBtn").addEventListener("click", () => { window.MCE.market.openSheet("Paper details", "pfDetail"); renderPortfolio(false); });
+  if ($("gainerInfoBtn")) $("gainerInfoBtn").addEventListener("click", () => window.MCE.market.openSheet("Gainers · details", "gbDetail"));
   /** For the coin picker: 🔥 now, held, AI picks — shown first (not exclusive). */
   window.MCE.hotSymbols = () => {
     const pump = new Set([...document.querySelectorAll('.gb-row[data-gb-tier="pump"]')].map((r) => r.dataset.gbSym));
