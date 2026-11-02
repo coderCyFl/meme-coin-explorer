@@ -45,831 +45,6 @@
    ],
    "checks_this_trigger": 1
   },
-  "PARTIUSDT": {
-   "symbol": "PARTIUSDT",
-   "base": "PARTI",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T01:30:00+08:00",
-   "checked_at": "2026-10-30T05:20:00+08:00",
-   "posts_last_1h": 50,
-   "posts_prev_6h_avg_per_h": 24.67,
-   "spike_ratio": 2.03,
-   "verdict": "升溫",
-   "one_line": "討論翻倍，但多數係喊單群報捷",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115872605211341131",
-     "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
-     "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
-     "likes": 6,
-     "author_username": "GlobeOfcrypto1",
-     "author_followers": 12093,
-     "created_at": "2026-10-30T02:25:14+08:00"
-    },
-    {
-     "id": "2115866775040704808",
-     "url": "https://x.com/RoccobullboTTom/status/2115866775040704808",
-     "text": "#PREMIUM_SIGNAL $PARTI is roaring loudly in the market right now! ALREADY ACHIEVED MY FIRST TERGET 80% PROFIT",
-     "likes": 4,
-     "author_username": "RoccobullboTTom",
-     "author_followers": 49948,
-     "created_at": "2026-10-30T02:02:04+08:00"
-    },
-    {
-     "id": "2115856032820007319",
-     "url": "https://x.com/CryptoTenon/status/2115856032820007319",
-     "text": "$parti #parti target 4 95% up on spot after the entry 2375% profit with 25x",
-     "likes": 4,
-     "author_username": "CryptoTenon",
-     "author_followers": 4739,
-     "created_at": "2026-10-30T01:19:23+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "BICOUSDT": {
-   "symbol": "BICOUSDT",
-   "base": "BICO",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.67,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "X 上幾乎冇人討論",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [],
-   "checks_this_trigger": 2
-  },
-  "PEPEUSDT": {
-   "symbol": "PEPEUSDT",
-   "base": "PEPE",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T00:30:00+08:00",
-   "checked_at": "2026-10-30T04:20:30+08:00",
-   "posts_last_1h": 21,
-   "posts_prev_6h_avg_per_h": 19.5,
-   "spike_ratio": 1.08,
-   "verdict": "冷",
-   "one_line": "討論平穩，冇明顯升溫",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115810211596316876",
-     "url": "https://x.com/MichealResearch/status/2115810211596316876",
-     "text": "$PEPE dipped 0.61% this hour, yet its 24h turned to +0.45% as yesterday's lows rolled off. Rolling-window math, not fresh buying.",
-     "likes": 31,
-     "author_username": "MichealResearch",
-     "author_followers": 1383,
-     "created_at": "2026-10-29T22:17:18+08:00"
-    },
-    {
-     "id": "2115840892779233717",
-     "url": "https://x.com/WhaleAlertDesk/status/2115840892779233717",
-     "text": "$PEPE weekly chart looking dangerous. Big range, clean structure, and a massive arrow pointing higher.",
-     "likes": 22,
-     "author_username": "WhaleAlertDesk",
-     "author_followers": 107092,
-     "created_at": "2026-10-30T00:19:13+08:00"
-    },
-    {
-     "id": "2115840824491770222",
-     "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
-     "text": "$YEE : Major Opportunity? YouTube video. #Crypto #Altcoins #Memecoins #Binance $PEPE $DOGE",
-     "likes": 16,
-     "author_username": "CryptoNowNever",
-     "author_followers": 4259,
-     "created_at": "2026-10-30T00:18:57+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "GTCUSDT": {
-   "symbol": "GTCUSDT",
-   "base": "GTC",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T08:12:04+08:00",
-   "checked_at": "2026-10-30T10:19:00+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 3.27,
-   "verdict": "熱",
-   "one_line": "幣安黑客拋售GTC，負面熱議",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115913250898641371",
-     "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
-     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total ~$2.5B",
-     "likes": 34,
-     "author_username": "vinibarbosabr",
-     "author_followers": 12176,
-     "created_at": "2026-10-30T05:06:45+08:00"
-    },
-    {
-     "id": "2115940780204228787",
-     "url": "https://x.com/alertachart/status/2115940780204228787",
-     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M ...",
-     "likes": 15,
-     "author_username": "alertachart",
-     "author_followers": 626,
-     "created_at": "2026-10-30T06:56:08+08:00"
-    },
-    {
-     "id": "2115925451805986968",
-     "url": "https://x.com/owocki/status/2115925451805986968",
-     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
-     "likes": 13,
-     "author_username": "owocki",
-     "author_followers": 134352,
-     "created_at": "2026-10-30T05:55:14+08:00"
-    }
-   ],
-   "checks_this_trigger": 3
-  },
-  "TRXUSDT": {
-   "symbol": "TRXUSDT",
-   "base": "TRX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T09:12:30+08:00",
-   "posts_last_1h": 101,
-   "posts_prev_6h_avg_per_h": 72.33,
-   "spike_ratio": 1.4,
-   "verdict": "升溫",
-   "one_line": "幣安被黑新聞帶起，多為轉貼",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115951202773164276",
-     "url": "https://x.com/Jessica6aka/status/2115951202773164276",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
-     "likes": 143,
-     "author_username": "Jessica6aka",
-     "author_followers": 719,
-     "created_at": "2026-10-30T07:37:33+08:00"
-    },
-    {
-     "id": "2115925949812244563",
-     "url": "https://x.com/BitElite17/status/2115925949812244563",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
-     "likes": 22,
-     "author_username": "BitElite17",
-     "author_followers": 28053,
-     "created_at": "2026-10-30T05:57:13+08:00"
-    },
-    {
-     "id": "2115924578019008644",
-     "url": "https://x.com/SamAlpha_/status/2115924578019008644",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
-     "likes": 8,
-     "author_username": "SamAlpha_",
-     "author_followers": 19575,
-     "created_at": "2026-10-30T05:51:46+08:00"
-    }
-   ],
-   "checks_this_trigger": 2
-  },
-  "RUNEUSDT": {
-   "symbol": "RUNEUSDT",
-   "base": "RUNE",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T06:30:00+08:00",
-   "checked_at": "2026-10-30T10:19:00+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 0.6,
-   "verdict": "冷",
-   "one_line": "討論好少，冇明顯升溫",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115936828637536556",
-     "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
-     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
-     "likes": 31,
-     "author_username": "Shft_Ctrl",
-     "author_followers": 1205,
-     "created_at": "2026-10-30T06:40:26+08:00"
-    },
-    {
-     "id": "2115945507491324352",
-     "url": "https://x.com/ksamemsol/status/2115945507491324352",
-     "text": "$rune and $xmr buy",
-     "likes": 1,
-     "author_username": "ksamemsol",
-     "author_followers": 138,
-     "created_at": "2026-10-30T07:14:56+08:00"
-    },
-    {
-     "id": "2115929227136553291",
-     "url": "https://x.com/cexscan/status/2115929227136553291",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) +5.72%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-30T06:10:14+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "SOPHUSDT": {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T06:00:00+08:00",
-   "checked_at": "2026-10-31T09:11:00+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 4.17,
-   "spike_ratio": 0.24,
-   "verdict": "冷",
-   "one_line": "幾乎冇討論，掃盤提",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116321920283197935",
-     "url": "https://x.com/OldmanScalping/status/2116321920283197935",
-     "text": "DAILY REPORT — Sat 31 Oct market breadth (mentions $SOPH context)",
-     "likes": 5,
-     "author_username": "OldmanScalping",
-     "author_followers": 157690,
-     "created_at": "2026-10-31T08:10:39+08:00"
-    },
-    {
-     "id": "2116320531318255938",
-     "url": "https://x.com/cexscan/status/2116320531318255938",
-     "text": "Last 15m - #Binance Spot Top Losers: $SOPH ↓-3.6%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T08:05:08+08:00"
-    },
-    {
-     "id": "2116320061971640589",
-     "url": "https://x.com/TIQCrypto/status/2116320061971640589",
-     "text": "Market Close Report: 2026-10-30 | BTC -0.83%",
-     "likes": 1,
-     "author_username": "TIQCrypto",
-     "author_followers": 5413,
-     "created_at": "2026-10-31T08:03:16+08:00"
-    }
-   ],
-   "checks_this_trigger": 3
-  },
-  "BEAMXUSDT": {
-   "symbol": "BEAMXUSDT",
-   "base": "BEAMX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T22:30:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 16,
-   "posts_prev_6h_avg_per_h": 10.0,
-   "spike_ratio": 1.6,
-   "verdict": "冷",
-   "one_line": "喊單複製、冇實討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116222793708912898",
-     "url": "https://x.com/Zackcrypto_1/status/2116222793708912898",
-     "text": "#BEAMX/USDT Entry: 0.003247 Targets 0.003400–0.004556 SL 0.002800 Leverage 50x",
-     "likes": 0,
-     "author_username": "Zackcrypto_1",
-     "author_followers": 868,
-     "created_at": "2026-10-31T01:36:46+08:00"
-    },
-    {
-     "id": "2116225328829882407",
-     "url": "https://x.com/mannuelmate1/status/2116225328829882407",
-     "text": "$BEAMX — Bearish Short Setup | Still Trading Under Resistance! SHORT Entry Zone $0.00470–$0.00476",
-     "likes": 0,
-     "author_username": "mannuelmate1",
-     "author_followers": 1391,
-     "created_at": "2026-10-31T01:46:50+08:00"
-    },
-    {
-     "id": "2116224160888143943",
-     "url": "https://x.com/petertradee1/status/2116224160888143943",
-     "text": "$BEAMX — Bearish Short Setup | Still Trading Under Resistance! SHORT Entry Zone $0.00470–$0.00476",
-     "likes": 0,
-     "author_username": "petertradee1",
-     "author_followers": 2794,
-     "created_at": "2026-10-31T01:42:12+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "TLMUSDT": {
-   "symbol": "TLMUSDT",
-   "base": "TLM",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T20:15:00+08:00",
-   "checked_at": "2026-10-31T00:12:30+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 0.55,
-   "verdict": "冷",
-   "one_line": "冷清，多新號喊單",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116158567002800537",
-     "url": "https://x.com/luxquantcrypto/status/2116158567002800537",
-     "text": "$TLM hit its final target of 0.00137, a 10.5% spot move from the 0.00124 entry, in 1d 15h. Over the same hours, crypto market cap outside B…",
-     "likes": 1,
-     "author_username": "luxquantcrypto",
-     "author_followers": 3266,
-     "created_at": "2026-10-30T21:21:33+08:00"
-    },
-    {
-     "id": "2116120839720452548",
-     "url": "https://x.com/Asnipercrypto/status/2116120839720452548",
-     "text": "$TLM UPDATE Bullish Falling Wedge Breakout has Already Done ,with a very solid candle in 1D time frame Now,Ready for good bullish wave Maxi…",
-     "likes": 0,
-     "author_username": "Asnipercrypto",
-     "author_followers": 1801,
-     "created_at": "2026-10-30T18:51:38+08:00"
-    },
-    {
-     "id": "2116153501697106059",
-     "url": "https://x.com/cexscan/status/2116153501697106059",
-     "text": "#Binance Spot – Last Hour USDT Trades Overview Total volume: 217.04M USDT Top gainer: $TLM Top loser: $ALPINE",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10597,
-     "created_at": "2026-10-30T21:01:25+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "INITUSDT": {
-   "symbol": "INITUSDT",
-   "base": "INIT",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T04:20:53+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 0.46,
-   "verdict": "冷",
-   "one_line": "近一小時好靜",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116201343257924020",
-     "url": "https://x.com/cryptodeepapp/status/2116201343257924020",
-     "text": "CryptoDeep Supported Assets Update Removed include INIT among others.",
-     "likes": 2,
-     "author_username": "cryptodeepapp",
-     "author_followers": 1511,
-     "created_at": "2026-10-31T00:11:32+08:00"
-    },
-    {
-     "id": "2116179682047529084",
-     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
-     "text": "$INIT Bullish run completed — all TPs achieved. Maintaining discipline and strong risk management.",
-     "likes": 2,
-     "author_username": "Randy_Austin1",
-     "author_followers": 1160,
-     "created_at": "2026-10-30T22:45:27+08:00"
-    },
-    {
-     "id": "2116193089182192077",
-     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
-     "text": "New signal Coin: $INIT/USDT Long Entry 0.15995 leverage 25x Stop loss 0.15000",
-     "likes": 1,
-     "author_username": "ZaraVinkaqz",
-     "author_followers": 0,
-     "created_at": "2026-10-30T23:38:44+08:00"
-    }
-   ],
-   "checks_this_trigger": 4
-  },
-  "KERNELUSDT": {
-   "symbol": "KERNELUSDT",
-   "base": "KERNEL",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T01:45:00+08:00",
-   "checked_at": "2026-10-31T05:12:00+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 3.17,
-   "spike_ratio": 0.95,
-   "verdict": "冷",
-   "one_line": "冇幣圈聲，雜訊多",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116246033525092566",
-     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
-     "text": "Today Top 5 Gainers SOPH BEAMX BLUR DOOD KERNEL on Binance/OKX",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T03:09:06+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "BLURUSDT": {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T03:15:00+08:00",
-   "checked_at": "2026-10-31T07:16:00+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 1.09,
-   "verdict": "冷",
-   "one_line": "聲量低，多告警莊",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116291570488009120",
-     "url": "https://x.com/ratiodotday/status/2116291570488009120",
-     "text": "Biggest perp movers, last 4h BLUR +8.0%",
-     "likes": 2,
-     "author_username": "ratiodotday",
-     "author_followers": 46,
-     "created_at": "2026-10-31T06:10:03+08:00"
-    },
-    {
-     "id": "2116286721511829551",
-     "url": "https://x.com/CR_2030/status/2116286721511829551",
-     "text": "#BLUR Complete Crypto Risk Sniper Bot",
-     "likes": 2,
-     "author_username": "CR_2030",
-     "author_followers": 1547,
-     "created_at": "2026-10-31T05:50:47+08:00"
-    },
-    {
-     "id": "2116289113880150069",
-     "url": "https://x.com/cexscan/status/2116289113880150069",
-     "text": "Last 60m - #Binance Spot Top Gainers include Blur ↑3.22%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T06:00:18+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "PENDLEUSDT": {
-   "symbol": "PENDLEUSDT",
-   "base": "PENDLE",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T08:15:00+08:00",
-   "checked_at": "2026-10-31T08:16:48+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 9.0,
-   "spike_ratio": 1.0,
-   "verdict": "冷",
-   "one_line": "聲量平，有DeFi討論",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116315140123418645",
-     "url": "https://x.com/rektdiomedes/status/2116315140123418645",
-     "text": "More insane opportunities for yield-enjoyers via @protocol_fx! Recently did a big article + #FrenchChart on their fxSAVE-Morpho-Looping. Bu…",
-     "likes": 8,
-     "author_username": "rektdiomedes",
-     "author_followers": 106434,
-     "created_at": "2026-10-31T07:43:43+08:00"
-    },
-    {
-     "id": "2116310282238931276",
-     "url": "https://x.com/richardnhsu/status/2116310282238931276",
-     "text": "I think ethereum:0x808507121b80c02388fad14726482e061b8da827 is at a really great entry here. Pendle/ETH chart still on an uptrend. Still my…",
-     "likes": 1,
-     "author_username": "richardnhsu",
-     "author_followers": 4969,
-     "created_at": "2026-10-31T07:24:25+08:00"
-    },
-    {
-     "id": "2116311999785132510",
-     "url": "https://x.com/Finora_EN/status/2116311999785132510",
-     "text": "@MotazBadwais alright let's see what's cooking on $PENDLE #PENDLEUSDT.P 1h 🧐 - my bias is bullish here on the 1h while structure holds",
-     "likes": 0,
-     "author_username": "Finora_EN",
-     "author_followers": 24638,
-     "created_at": "2026-10-31T07:31:14+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "RSRUSDT": {
-   "symbol": "RSRUSDT",
-   "base": "RSR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T23:30:00+08:00",
-   "checked_at": "2026-11-01T01:16:30+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 1.38,
-   "verdict": "冷",
-   "one_line": "帖少黑客拋壓已過",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116515865915261148",
-     "url": "https://x.com/CryptoPro2008/status/2116515865915261148",
-     "text": "#RSR #Binance Crypto is no longer what it used to be. Now it’s mostly manipulation, staged moves, and a constant hunt for liquidations.",
-     "likes": 9,
-     "author_username": "CryptoPro2008",
-     "author_followers": 239,
-     "created_at": "2026-10-31T21:01:20+08:00"
-    },
-    {
-     "id": "2116555897694552440",
-     "url": "https://x.com/cryptolevier/status/2116555897694552440",
-     "text": "$RSR +19% on the day and still climbing. Binance hacker dumped stolen RSR; Reserve confirmed attacker now holds none.",
-     "likes": 2,
-     "author_username": "cryptolevier",
-     "author_followers": 8198,
-     "created_at": "2026-10-31T23:40:24+08:00"
-    },
-    {
-     "id": "2116570945121071341",
-     "url": "https://x.com/cexscan/status/2116570945121071341",
-     "text": "Last 60m Coinbase Spot: Top losers include $RSR (Reserve Rights) -7.43%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10602,
-     "created_at": "2026-11-01T00:40:11+08:00"
-    }
-   ],
-   "checks_this_trigger": 2
-  },
-  "REDUSDT": {
-   "symbol": "REDUSDT",
-   "base": "RED",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T22:30:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 139,
-   "posts_prev_6h_avg_per_h": 139.83,
-   "spike_ratio": 0.99,
-   "verdict": "冷",
-   "one_line": "噪音多真討論少",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116531933702226180",
-     "url": "https://x.com/cexscan/status/2116531933702226180",
-     "text": "Last 15m - #Binance Spot Top 3 Gainers: $COW ↑23.47% $RED (RedStone) ↑2.86% $FF ↑2.55%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T22:05:10+08:00"
-    },
-    {
-     "id": "2116552948406993067",
-     "url": "https://x.com/luxquantalgo/status/2116552948406993067",
-     "text": "$RED reached TP3. The chart high reached +11.60% spot from entry. #RED #REDUSDT #LuxQuant",
-     "likes": 0,
-     "author_username": "luxquantalgo",
-     "author_followers": 666,
-     "created_at": "2026-10-31T23:28:41+08:00"
-    },
-    {
-     "id": "2116538598199578994",
-     "url": "https://x.com/ZenithQuant/status/2116538598199578994",
-     "text": "$RED rally locked in +16.3% profit from $0.13645 to $0.14140! Powered by heavy whale inflow & Binance MM backing.",
-     "likes": 0,
-     "author_username": "ZenithQuant",
-     "author_followers": 1,
-     "created_at": "2026-10-31T22:31:39+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "COWUSDT": {
-   "symbol": "COWUSDT",
-   "base": "COW",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T22:30:00+08:00",
-   "checked_at": "2026-11-01T02:18:47+08:00",
-   "posts_last_1h": 16,
-   "posts_prev_6h_avg_per_h": 9.83,
-   "spike_ratio": 1.63,
-   "verdict": "升溫",
-   "one_line": "量微升，多數係喊單訊號",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116586733836059117",
-     "url": "https://x.com/Proxonchain/status/2116586733836059117",
-     "text": "$COW ran up to ~34% today and I couldn't find any real news behind it. So I checked the chain. In the last 8h, a wallet labels Stefan Georg…",
-     "likes": 1,
-     "author_username": "Proxonchain",
-     "author_followers": 6783,
-     "created_at": "2026-11-01T01:42:56+08:00"
-    },
-    {
-     "id": "2116592074011148428",
-     "url": "https://x.com/copycharlottes/status/2116592074011148428",
-     "text": "$COW LONG NOW GUYS CHECK PINNED POST COW/USDT LONG Leverage - 25x Entry - 0.1081 Stop Loss - 0.0981",
-     "likes": 1,
-     "author_username": "copycharlottes",
-     "author_followers": 984,
-     "created_at": "2026-11-01T02:04:09+08:00"
-    },
-    {
-     "id": "2116586936639082644",
-     "url": "https://x.com/itzgentuu_/status/2116586936639082644",
-     "text": "TRADE: #COW/USDT Signal Type: Regular (Long) Leverage: Isolated (50X) ENTRY TARGET: 0.1027 TAKE PROFITS / STOP LOSS listed",
-     "likes": 0,
-     "author_username": "itzgentuu_",
-     "author_followers": 477,
-     "created_at": "2026-11-01T01:43:44+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "STXUSDT": {
-   "symbol": "STXUSDT",
-   "base": "STX",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T20:45:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 7.33,
-   "spike_ratio": 0.55,
-   "verdict": "冷",
-   "one_line": "聲量回落靠榜單帖",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116516542804267147",
-     "url": "https://x.com/CryptoSteveO1/status/2116516542804267147",
-     "text": "While everyone is distracted by all the hacks…I'm still researching and stacking GREAT crypto tokens such as $STX the ONLY NATIVE $BTC laye…",
-     "likes": 4,
-     "author_username": "CryptoSteveO1",
-     "author_followers": 2392,
-     "created_at": "2026-10-31T21:04:01+08:00"
-    },
-    {
-     "id": "2116482572645732720",
-     "url": "https://x.com/SleazyMinks/status/2116482572645732720",
-     "text": "$BTC Bitcoin ecosystem is getting bid early! $MERL: Top buzz… $STX: Up 100 spots, sentiment turning bullish $ORDI: OI +32%",
-     "likes": 3,
-     "author_username": "SleazyMinks",
-     "author_followers": 2375,
-     "created_at": "2026-10-31T18:49:02+08:00"
-    },
-    {
-     "id": "2116504105917022548",
-     "url": "https://x.com/Crypto_Potato/status/2116504105917022548",
-     "text": "MARKET MOVE: $STX defies the broader altcoin slump with a massive 11% surge. $AAVE also shows strength, adding 6%.",
-     "likes": 2,
-     "author_username": "Crypto_Potato",
-     "author_followers": 36870,
-     "created_at": "2026-10-31T20:14:36+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "AAVEUSDT": {
-   "symbol": "AAVEUSDT",
-   "base": "AAVE",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T00:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 29,
-   "posts_prev_6h_avg_per_h": 22.0,
-   "spike_ratio": 1.32,
-   "verdict": "冷",
-   "one_line": "多講黑客少炒幣",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116479145421283649",
-     "url": "https://x.com/Eljaboom/status/2116479145421283649",
-     "text": "2026 crypto security damage: hacks, exploits and drained wallets. Aave-user wallet theft: −$50.4M Binance: −$6.3B…",
-     "likes": 44,
-     "author_username": "Eljaboom",
-     "author_followers": 681441,
-     "created_at": "2026-10-31T18:35:25+08:00"
-    },
-    {
-     "id": "2116509861177680165",
-     "url": "https://x.com/MagicDegenSOL/status/2116509861177680165",
-     "text": "A list of all the crypto hacks in 2026: Binance: $6.3B … Aave-user wallet theft: $50.4M…",
-     "likes": 4,
-     "author_username": "MagicDegenSOL",
-     "author_followers": 54483,
-     "created_at": "2026-10-31T20:37:28+08:00"
-    },
-    {
-     "id": "2116532712785776734",
-     "url": "https://x.com/BullishMarktCap/status/2116532712785776734",
-     "text": "TOP GAINERS · 24H $STX +12.5% $PENDLE +10.6% $EIGEN +10.1% $AAVE +8.9% $RUNE +8.1% Aave reopened lending markets…",
-     "likes": 1,
-     "author_username": "BullishMarktCap",
-     "author_followers": 25512,
-     "created_at": "2026-10-31T22:08:16+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "TIAUSDT": {
-   "symbol": "TIAUSDT",
-   "base": "TIA",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T00:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.83,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "幾乎無人提及",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116486535864537118",
-     "url": "https://x.com/cryptowithgopal/status/2116486535864537118",
-     "text": "celestia:native A Rising Wedge pattern is forming on the 15-min chart! Price is trading around $0.4723…",
-     "likes": 10,
-     "author_username": "cryptowithgopal",
-     "author_followers": 15375,
-     "created_at": "2026-10-31T19:04:47+08:00"
-    },
-    {
-     "id": "2116486657843286178",
-     "url": "https://x.com/ZRoss_FX/status/2116486657843286178",
-     "text": "My market journal is split into signals: $SEI for speed, $TIA for modular infrastructure, $DYDX…",
-     "likes": 0,
-     "author_username": "ZRoss_FX",
-     "author_followers": 230,
-     "created_at": "2026-10-31T19:05:16+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "GRAMUSDT": {
-   "symbol": "GRAMUSDT",
-   "base": "GRAM",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T00:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 2.33,
-   "spike_ratio": 1.72,
-   "verdict": "冷",
-   "one_line": "聲量低偏宣傳帖",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116545738255823242",
-     "url": "https://x.com/superdapp/status/2116545738255823242",
-     "text": "Staking Gram (Toncoin) $GRAM Earn rewards every day, withdraw anytime, and let your crypto generate passive income.",
-     "likes": 8,
-     "author_username": "superdapp",
-     "author_followers": 7869,
-     "created_at": "2026-10-31T23:00:02+08:00"
-    },
-    {
-     "id": "2116483091866742924",
-     "url": "https://x.com/RhizaCore/status/2116483091866742924",
-     "text": "Crypto News Today: Tonomy, a Gram prediction market on Telegram, applies for CFTC registration…",
-     "likes": 4,
-     "author_username": "RhizaCore",
-     "author_followers": 1440,
-     "created_at": "2026-10-31T18:51:06+08:00"
-    },
-    {
-     "id": "2116501930776158447",
-     "url": "https://x.com/0xGramArchive/status/2116501930776158447",
-     "text": "Archive block #0019 consensus reached. Decryption results: 84.2% data recovered · 0xGRAM Genesis Nodes mapped…",
-     "likes": 2,
-     "author_username": "0xGramArchive",
-     "author_followers": 3,
-     "created_at": "2026-10-31T20:05:57+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
   "PYTHUSDT": {
    "symbol": "PYTHUSDT",
    "base": "PYTH",
@@ -1090,6 +265,94 @@
    ],
    "checks_this_trigger": 1
   },
+  "RSRUSDT": {
+   "symbol": "RSRUSDT",
+   "base": "RSR",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T23:30:00+08:00",
+   "checked_at": "2026-11-01T01:16:30+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.17,
+   "spike_ratio": 1.38,
+   "verdict": "冷",
+   "one_line": "帖少黑客拋壓已過",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116515865915261148",
+     "url": "https://x.com/CryptoPro2008/status/2116515865915261148",
+     "text": "#RSR #Binance Crypto is no longer what it used to be. Now it’s mostly manipulation, staged moves, and a constant hunt for liquidations.",
+     "likes": 9,
+     "author_username": "CryptoPro2008",
+     "author_followers": 239,
+     "created_at": "2026-10-31T21:01:20+08:00"
+    },
+    {
+     "id": "2116555897694552440",
+     "url": "https://x.com/cryptolevier/status/2116555897694552440",
+     "text": "$RSR +19% on the day and still climbing. Binance hacker dumped stolen RSR; Reserve confirmed attacker now holds none.",
+     "likes": 2,
+     "author_username": "cryptolevier",
+     "author_followers": 8198,
+     "created_at": "2026-10-31T23:40:24+08:00"
+    },
+    {
+     "id": "2116570945121071341",
+     "url": "https://x.com/cexscan/status/2116570945121071341",
+     "text": "Last 60m Coinbase Spot: Top losers include $RSR (Reserve Rights) -7.43%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10602,
+     "created_at": "2026-11-01T00:40:11+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "COWUSDT": {
+   "symbol": "COWUSDT",
+   "base": "COW",
+   "flag": "pump",
+   "trigger_at": "2026-10-31T22:30:00+08:00",
+   "checked_at": "2026-11-01T02:18:47+08:00",
+   "posts_last_1h": 16,
+   "posts_prev_6h_avg_per_h": 9.83,
+   "spike_ratio": 1.63,
+   "verdict": "升溫",
+   "one_line": "量微升，多數係喊單訊號",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2116586733836059117",
+     "url": "https://x.com/Proxonchain/status/2116586733836059117",
+     "text": "$COW ran up to ~34% today and I couldn't find any real news behind it. So I checked the chain. In the last 8h, a wallet labels Stefan Georg…",
+     "likes": 1,
+     "author_username": "Proxonchain",
+     "author_followers": 6783,
+     "created_at": "2026-11-01T01:42:56+08:00"
+    },
+    {
+     "id": "2116592074011148428",
+     "url": "https://x.com/copycharlottes/status/2116592074011148428",
+     "text": "$COW LONG NOW GUYS CHECK PINNED POST COW/USDT LONG Leverage - 25x Entry - 0.1081 Stop Loss - 0.0981",
+     "likes": 1,
+     "author_username": "copycharlottes",
+     "author_followers": 984,
+     "created_at": "2026-11-01T02:04:09+08:00"
+    },
+    {
+     "id": "2116586936639082644",
+     "url": "https://x.com/itzgentuu_/status/2116586936639082644",
+     "text": "TRADE: #COW/USDT Signal Type: Regular (Long) Leverage: Isolated (50X) ENTRY TARGET: 0.1027 TAKE PROFITS / STOP LOSS listed",
+     "likes": 0,
+     "author_username": "itzgentuu_",
+     "author_followers": 477,
+     "created_at": "2026-11-01T01:43:44+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
   "AVAXUSDT": {
    "symbol": "AVAXUSDT",
    "base": "AVAX",
@@ -1133,2332 +396,317 @@
     }
    ],
    "checks_this_trigger": 1
+  },
+  "HOTUSDT": {
+   "symbol": "HOTUSDT",
+   "base": "HOT",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T22:45:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 126,
+   "posts_prev_6h_avg_per_h": 77.0,
+   "spike_ratio": 1.64,
+   "verdict": "冷",
+   "one_line": "帖文多數講熱錢包",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117222804663804182",
+     "url": "https://x.com/CryptoTeca__/status/2117222804663804182",
+     "text": "the reported $6.36b binance hack could be one of the biggest crypto security incidents in history. to put it into perspective, $6.3b is hig…",
+     "likes": 73,
+     "author_username": "CryptoTeca__",
+     "author_followers": 186740,
+     "created_at": "2026-11-02T19:50:27+08:00"
+    },
+    {
+     "id": "2117255910301323603",
+     "url": "https://x.com/fitgirltruth/status/2117255910301323603",
+     "text": "Crazy how many just ignored this and still believe their digital code is safe. physical metals, ammo, livestock, and real food are the curr…",
+     "likes": 12,
+     "author_username": "fitgirltruth",
+     "author_followers": 20814,
+     "created_at": "2026-11-02T22:02:00+08:00"
+    },
+    {
+     "id": "2117273069030883783",
+     "url": "https://x.com/cexscan/status/2117273069030883783",
+     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $ARIA : ↑9.91% $TEM : ↑7.37% $HOT (Holo) : ↑6.4%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10603,
+     "created_at": "2026-11-02T23:10:11+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "MEGAUSDT": {
+   "symbol": "MEGAUSDT",
+   "base": "MEGA",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T22:30:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.88,
+   "verdict": "冷",
+   "one_line": "真MEGA討論好少",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117198167959900230",
+     "url": "https://x.com/Pi_Community0/status/2117198167959900230",
+     "text": "$LUNC Something mega big is coming soon Whale Alert 28.92 billion LUNC moved From: Binance",
+     "likes": 88,
+     "author_username": "Pi_Community0",
+     "author_followers": 1548,
+     "created_at": "2026-11-02T18:12:33+08:00"
+    },
+    {
+     "id": "2117269379976999279",
+     "url": "https://x.com/0xgodzubby/status/2117269379976999279",
+     "text": "The Latest Perps, Options & Props Developments Perp dex OI surges 76% to $24B in Q3",
+     "likes": 22,
+     "author_username": "0xgodzubby",
+     "author_followers": 2033,
+     "created_at": "2026-11-02T22:55:31+08:00"
+    },
+    {
+     "id": "2117182278530981916",
+     "url": "https://x.com/FantasyWhales/status/2117182278530981916",
+     "text": "Story Protocol ($MEGA) surged after its recent Mainnet launch and Binance Web3 Wallet integration, boosting investor interest in its decent…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-11-02T17:09:25+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "HAEDALUSDT": {
+   "symbol": "HAEDALUSDT",
+   "base": "HAEDAL",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T22:00:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "訊號同投票帖為主",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117188329594880351",
+     "url": "https://x.com/Jus7Degen/status/2117188329594880351",
+     "text": "$HAEDAL — Haedal Protocol Everyone is watching $SUI, $CETUS, and $DEEP. But what about the protocol helping SUI holders earn staking reward…",
+     "likes": 4,
+     "author_username": "Jus7Degen",
+     "author_followers": 4760,
+     "created_at": "2026-11-02T17:33:27+08:00"
+    },
+    {
+     "id": "2117220542604333482",
+     "url": "https://x.com/grossbel12/status/2117220542604333482",
+     "text": "@HaedalProtocol Liquid Staking on @SuiNetwork Haedal is a native liquid staking protocol on the Sui blockchain",
+     "likes": 2,
+     "author_username": "grossbel12",
+     "author_followers": 1637,
+     "created_at": "2026-11-02T19:41:28+08:00"
+    },
+    {
+     "id": "2117255914348855743",
+     "url": "https://x.com/DyorNetCrypto/status/2117255914348855743",
+     "text": "Top 5 Bullish Trends - USDT - 1h $PRAI $XTSLA GoPlus $HAEDAL $ARIA",
+     "likes": 0,
+     "author_username": "DyorNetCrypto",
+     "author_followers": 82281,
+     "created_at": "2026-11-02T22:02:01+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "MITOUSDT": {
+   "symbol": "MITOUSDT",
+   "base": "MITO",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T20:30:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.0,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "上榜後討論已淡",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117253803020050456",
+     "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
+     "text": "The @MitosisOrg's $MITO is the top gainer on Binance Crime pump at its finest",
+     "likes": 26,
+     "author_username": "Crypto_Zh0u",
+     "author_followers": 9466,
+     "created_at": "2026-11-02T21:53:37+08:00"
+    },
+    {
+     "id": "2117180866183225814",
+     "url": "https://x.com/rab4745/status/2117180866183225814",
+     "text": "Top grainer in binance spot $SOPH $MITO Which one are you holding?",
+     "likes": 11,
+     "author_username": "rab4745",
+     "author_followers": 18494,
+     "created_at": "2026-11-02T17:03:48+08:00"
+    },
+    {
+     "id": "2117259764074008984",
+     "url": "https://x.com/soonmource/status/2117259764074008984",
+     "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
+     "likes": 1,
+     "author_username": "soonmource",
+     "author_followers": 8541,
+     "created_at": "2026-11-02T22:17:19+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "TRXUSDT": {
+   "symbol": "TRXUSDT",
+   "base": "TRX",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T00:15:00+08:00",
+   "checked_at": "2026-11-03T00:15:00+08:00",
+   "posts_last_1h": 24,
+   "posts_prev_6h_avg_per_h": 28.17,
+   "spike_ratio": 0.85,
+   "verdict": "冷",
+   "one_line": "黑客洗錢討論為主",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117232785748636126",
+     "url": "https://x.com/ourcryptotalk/status/2117232785748636126",
+     "text": "Five tickers caught in the middle of a $500M+ crypto laundering story. $RUNE $NEAR $ETH $TRX $FLIP",
+     "likes": 38,
+     "author_username": "ourcryptotalk",
+     "author_followers": 82788,
+     "created_at": "2026-11-02T20:30:07+08:00"
+    },
+    {
+     "id": "2117184867297284126",
+     "url": "https://x.com/0xTria/status/2117184867297284126",
+     "text": "october on perp dexs volume, vs september: hyperliquid $168b variational $78.1b",
+     "likes": 14,
+     "author_username": "0xTria",
+     "author_followers": 4952,
+     "created_at": "2026-11-02T17:19:42+08:00"
+    },
+    {
+     "id": "2117238586646876324",
+     "url": "https://x.com/hackenclub/status/2117238586646876324",
+     "text": "86% of UK financial firms surveyed by the Bank of England and FCA use AI, and only about half report ongoing monitoring.",
+     "likes": 5,
+     "author_username": "hackenclub",
+     "author_followers": 130614,
+     "created_at": "2026-11-02T20:53:10+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "QNTUSDT": {
+   "symbol": "QNTUSDT",
+   "base": "QNT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T00:15:00+08:00",
+   "checked_at": "2026-11-03T00:15:00+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 7.33,
+   "spike_ratio": 1.09,
+   "verdict": "冷",
+   "one_line": "持貨喊單無爆熱",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117202558074708421",
+     "url": "https://x.com/InvestwithDoc/status/2117202558074708421",
+     "text": "Which RWA Crypto are you most Bullish on? Ondo Stellar Hedera $XRP $QNT XDC $ADA",
+     "likes": 26,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9298,
+     "created_at": "2026-11-02T18:30:00+08:00"
+    },
+    {
+     "id": "2117204441296261229",
+     "url": "https://x.com/AnonHbar/status/2117204441296261229",
+     "text": "$QNT The crowd always underestimates how long the strong can wait $QNT doesn’t need the noise. Clearing House rails.",
+     "likes": 14,
+     "author_username": "AnonHbar",
+     "author_followers": 620,
+     "created_at": "2026-11-02T18:37:29+08:00"
+    },
+    {
+     "id": "2117278508393140715",
+     "url": "https://x.com/BullishMarktCap/status/2117278508393140715",
+     "text": "TOP GAINERS · 24H $TRX +2.2% $ZEC +2.0% $HTX +1.7% $TRUMP +1.2% $QNT +0.9%",
+     "likes": 3,
+     "author_username": "BullishMarktCap",
+     "author_followers": 25299,
+     "created_at": "2026-11-02T23:31:48+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "ETHUSDT": {
+   "symbol": "ETHUSDT",
+   "base": "ETH",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T00:15:00+08:00",
+   "checked_at": "2026-11-03T00:15:00+08:00",
+   "posts_last_1h": 256,
+   "posts_prev_6h_avg_per_h": 256.0,
+   "spike_ratio": 1.0,
+   "verdict": "冷",
+   "one_line": "基數高多數複製貼",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117219084589007008",
+     "url": "https://x.com/CryptoPulseXgl/status/2117219084589007008",
+     "text": "$ETH is trading around $2,288, up ~0.8%. Ethereum is reacting to record October ETF outflows and recovering from post-Binance hack lows. Ke…",
+     "likes": 9,
+     "author_username": "CryptoPulseXgl",
+     "author_followers": 12631,
+     "created_at": "2026-11-02T19:35:40+08:00"
+    },
+    {
+     "id": "2117275740895072312",
+     "url": "https://x.com/Marketracker365/status/2117275740895072312",
+     "text": "Just in: @BitMNR bought 8,573 #ETH last week, lifting its stash to 6,060,506 ETH. Tom Lee called the muted reaction to the Binance hack con…",
+     "likes": 2,
+     "author_username": "Marketracker365",
+     "author_followers": 113,
+     "created_at": "2026-11-02T23:20:48+08:00"
+    },
+    {
+     "id": "2117279901867024792",
+     "url": "https://x.com/H45216Muntajul/status/2117279901867024792",
+     "text": "Market Update & Binance Security Recovery BTC/USDT around $78,051 ETH/Usdt near $2,297",
+     "likes": 2,
+     "author_username": "H45216Muntajul",
+     "author_followers": 357,
+     "created_at": "2026-11-02T23:37:20+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T22:30:00+08:00",
-   "checked_at": "2026-10-30T02:23:06+08:00",
-   "posts_last_1h": 7,
-   "posts_prev_6h_avg_per_h": 3.17,
-   "spike_ratio": 2.21,
-   "verdict": "升溫",
-   "one_line": "升溫但多喊單莊",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115854611064176911",
-     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
-     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR $CHOMP 42% WITHIN 2HR $HDLR 47% WITHIN 1HR $LSK ROLLING BINANCE TOP GAINER",
-     "likes": 6,
-     "author_username": "insider__Alpha",
-     "author_followers": 2677,
-     "created_at": "2026-10-30T01:13:44+08:00"
-    },
-    {
-     "id": "2115848135951941827",
-     "url": "https://x.com/FedeGonzalgh/status/2115848135951941827",
-     "text": "#LSK/USDT Profit: +550.84% Click on the link below to join our free signals group",
-     "likes": 3,
-     "author_username": "FedeGonzalgh",
-     "author_followers": 1528,
-     "created_at": "2026-10-30T00:48:00+08:00"
-    },
-    {
-     "id": "2115870543610327440",
-     "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
-     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — AND THE WALLET MOVEMENTS ARE WORTH WATCHING. A major holder with 71M $LSK",
-     "likes": 3,
-     "author_username": "ArslanOnChain",
-     "author_followers": 4912,
-     "created_at": "2026-10-30T02:17:03+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PARTIUSDT",
-   "base": "PARTI",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T00:15:00+08:00",
-   "checked_at": "2026-10-30T02:23:06+08:00",
-   "posts_last_1h": 36,
-   "posts_prev_6h_avg_per_h": 11.0,
-   "spike_ratio": 3.27,
-   "verdict": "熱",
-   "one_line": "急升喊單刷屏中",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115870175996375310",
-     "url": "https://x.com/Zaynnode/status/2115870175996375310",
-     "text": "$PARTI hit my TP with 60% green god candle (Zayn Call In the Top gainer on Binance). I gave you $PARTI at $0.034 it pumped above $0.060",
-     "likes": 34,
-     "author_username": "Zaynnode",
-     "author_followers": 48487,
-     "created_at": "2026-10-30T02:15:35+08:00"
-    },
-    {
-     "id": "2115866152245383400",
-     "url": "https://x.com/VexeCrypto/status/2115866152245383400",
-     "text": "$PARTI and $GNS are dominating the top gainers list. The market is really slow but seeing these gains makes me happy.",
-     "likes": 22,
-     "author_username": "VexeCrypto",
-     "author_followers": 34494,
-     "created_at": "2026-10-30T01:59:36+08:00"
-    },
-    {
-     "id": "2115864367946408065",
-     "url": "https://x.com/CoinQTS/status/2115864367946408065",
-     "text": "$Parti Pumped over 70% Another successful profitable trade All short time target points achieved",
-     "likes": 4,
-     "author_username": "CoinQTS",
-     "author_followers": 52471,
-     "created_at": "2026-10-30T01:52:30+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BICOUSDT",
-   "base": "BICO",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T02:23:06+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.67,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "幾乎無人講",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": []
-  },
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T23:30:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 8,
-   "posts_prev_6h_avg_per_h": 4.33,
-   "spike_ratio": 1.85,
-   "verdict": "升溫",
-   "one_line": "討論升溫，多為喊單群推廣",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115870543610327440",
-     "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
-     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — a major holder with 71M $LSK sent 3.5M $LSK to a second wallet moving toward exch…",
-     "likes": 8,
-     "author_username": "ArslanOnChain",
-     "author_followers": 4914,
-     "created_at": "2026-10-30T02:17:03+08:00"
-    },
-    {
-     "id": "2115854611064176911",
-     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
-     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR, ROLLING #BINANCE TOP GAINER NO 1. JOIN PREMIUM DM",
-     "likes": 8,
-     "author_username": "insider__Alpha",
-     "author_followers": 2679,
-     "created_at": "2026-10-30T01:13:44+08:00"
-    },
-    {
-     "id": "2115847760343912852",
-     "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
-     "text": "#LSK/USDT All take-profit targets achieved, Profits: 550.23%. Click on the link below to join our free signals group",
-     "likes": 3,
-     "author_username": "FedeGonzalgh",
-     "author_followers": 1528,
-     "created_at": "2026-10-30T00:46:31+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PARTIUSDT",
-   "base": "PARTI",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T00:15:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 46,
-   "posts_prev_6h_avg_per_h": 15.17,
-   "spike_ratio": 3.03,
-   "verdict": "熱",
-   "one_line": "帖量急升三倍，喊單報捷居多",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115870175996375310",
-     "url": "https://x.com/Zaynnode/status/2115870175996375310",
-     "text": "$PARTI hit my TP with 60% green god candle (Top gainer on Binance). I gave you $PARTI at $0.034, it pumped above $0.060",
-     "likes": 69,
-     "author_username": "Zaynnode",
-     "author_followers": 48505,
-     "created_at": "2026-10-30T02:15:35+08:00"
-    },
-    {
-     "id": "2115866775040704808",
-     "url": "https://x.com/RoccobullboTTom/status/2115866775040704808",
-     "text": "#PREMIUM_SIGNAL $PARTI is roaring loudly in the market right now! ALREADY ACHIEVED MY FIRST TARGET 80% PROFIT",
-     "likes": 4,
-     "author_username": "RoccobullboTTom",
-     "author_followers": 49943,
-     "created_at": "2026-10-30T02:02:04+08:00"
-    },
-    {
-     "id": "2115856032820007319",
-     "url": "https://x.com/CryptoTenon/status/2115856032820007319",
-     "text": "$parti #parti target 4 done. 95% up on spot after the entry, 2375% profit with 25x",
-     "likes": 4,
-     "author_username": "CryptoTenon",
-     "author_followers": 4738,
-     "created_at": "2026-10-30T01:19:23+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PEPEUSDT",
-   "base": "PEPE",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 14,
-   "posts_prev_6h_avg_per_h": 19.33,
-   "spike_ratio": 0.72,
-   "verdict": "冷",
-   "one_line": "帖量回落，冇新熱度",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115810211596316876",
-     "url": "https://x.com/MichealResearch/status/2115810211596316876",
-     "text": "$PEPE dipped 0.61% this hour, yet its 24h turned to +0.45% as yesterday's lows rolled off. Rolling-window math, not fresh buying.",
-     "likes": 28,
-     "author_username": "MichealResearch",
-     "author_followers": 1382,
-     "created_at": "2026-10-29T22:17:18+08:00"
-    },
-    {
-     "id": "2115840824491770222",
-     "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
-     "text": "$YEE : Major Opportunity? YouTube video. #Crypto #Altcoins #Memecoins #Binance $PEPE $DOGE",
-     "likes": 14,
-     "author_username": "CryptoNowNever",
-     "author_followers": 4259,
-     "created_at": "2026-10-30T00:18:57+08:00"
-    },
-    {
-     "id": "2115840892779233717",
-     "url": "https://x.com/WhaleAlertDesk/status/2115840892779233717",
-     "text": "$PEPE weekly chart looking dangerous. Big range, clean structure, and a massive arrow pointing higher. Is the frog about to send it?",
-     "likes": 12,
-     "author_username": "WhaleAlertDesk",
-     "author_followers": 107085,
-     "created_at": "2026-10-30T00:19:13+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BICOUSDT",
-   "base": "BICO",
-   "flag": "pump",
-   "trigger_at": "2026-10-29T23:45:00+08:00",
-   "checked_at": "2026-10-30T03:17:00+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.67,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "X 上幾乎冇人討論",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": []
-  },
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T01:15:00+08:00",
-   "checked_at": "2026-10-30T04:20:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 5.67,
-   "spike_ratio": 0.35,
-   "verdict": "冷",
-   "one_line": "討論退潮，多數係喊單群",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115870543610327440",
-     "url": "https://x.com/ArslanOnChain/status/2115870543610327440",
-     "text": "SOMETHING INTERESTING IS HAPPENING BEHIND THE $LSK PUMP — major holder with 71M $LSK sent 3.5M $LSK to a second wallet moving toward exchan…",
-     "likes": 11,
-     "author_username": "ArslanOnChain",
-     "author_followers": 4915,
-     "created_at": "2026-10-30T02:17:03+08:00"
-    },
-    {
-     "id": "2115854611064176911",
-     "url": "https://x.com/insider__Alpha/status/2115854611064176911",
-     "text": "INSIDERALPHA PREMIUM CALL $LSK 32% WITHIN 5HR, $LSK ROLLING #BINANCE TOP GAINER NO 1. JOIN PREMIUM DM",
-     "likes": 10,
-     "author_username": "insider__Alpha",
-     "author_followers": 2679,
-     "created_at": "2026-10-30T01:13:44+08:00"
-    },
-    {
-     "id": "2115847760343912852",
-     "url": "https://x.com/FedeGonzalgh/status/2115847760343912852",
-     "text": "#LSK/USDT All take-profit targets achieved, Profits: 550.23% (20x). Join our free signals group.",
-     "likes": 3,
-     "author_username": "FedeGonzalgh",
-     "author_followers": 1528,
-     "created_at": "2026-10-30T00:46:31+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PARTIUSDT",
-   "base": "PARTI",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T00:30:00+08:00",
-   "checked_at": "2026-10-30T04:20:30+08:00",
-   "posts_last_1h": 45,
-   "posts_prev_6h_avg_per_h": 21.33,
-   "spike_ratio": 2.11,
-   "verdict": "熱",
-   "one_line": "討論再升溫，但喊單居多",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115870175996375310",
-     "url": "https://x.com/Zaynnode/status/2115870175996375310",
-     "text": "$PARTI hit my TP with 60% green god candle (top gainer on Binance). Gave you $PARTI at $0.034, pumped above $0.060.",
-     "likes": 83,
-     "author_username": "Zaynnode",
-     "author_followers": 48502,
-     "created_at": "2026-10-30T02:15:35+08:00"
-    },
-    {
-     "id": "2115872605211341131",
-     "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
-     "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
-     "likes": 5,
-     "author_username": "GlobeOfcrypto1",
-     "author_followers": 12092,
-     "created_at": "2026-10-30T02:25:14+08:00"
-    },
-    {
-     "id": "2115856032820007319",
-     "url": "https://x.com/CryptoTenon/status/2115856032820007319",
-     "text": "$parti #parti target 4 done. 95% up on spot after the entry, 2375% profit with 25x",
-     "likes": 4,
-     "author_username": "CryptoTenon",
-     "author_followers": 4738,
-     "created_at": "2026-10-30T01:19:23+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PEPEUSDT",
-   "base": "PEPE",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T00:30:00+08:00",
-   "checked_at": "2026-10-30T04:20:30+08:00",
-   "posts_last_1h": 21,
-   "posts_prev_6h_avg_per_h": 19.5,
-   "spike_ratio": 1.08,
-   "verdict": "冷",
-   "one_line": "討論平穩，冇明顯升溫",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115810211596316876",
-     "url": "https://x.com/MichealResearch/status/2115810211596316876",
-     "text": "$PEPE dipped 0.61% this hour, yet its 24h turned to +0.45% as yesterday's lows rolled off. Rolling-window math, not fresh buying.",
-     "likes": 31,
-     "author_username": "MichealResearch",
-     "author_followers": 1383,
-     "created_at": "2026-10-29T22:17:18+08:00"
-    },
-    {
-     "id": "2115840892779233717",
-     "url": "https://x.com/WhaleAlertDesk/status/2115840892779233717",
-     "text": "$PEPE weekly chart looking dangerous. Big range, clean structure, and a massive arrow pointing higher.",
-     "likes": 22,
-     "author_username": "WhaleAlertDesk",
-     "author_followers": 107092,
-     "created_at": "2026-10-30T00:19:13+08:00"
-    },
-    {
-     "id": "2115840824491770222",
-     "url": "https://x.com/CryptoNowNever/status/2115840824491770222",
-     "text": "$YEE : Major Opportunity? YouTube video. #Crypto #Altcoins #Memecoins #Binance $PEPE $DOGE",
-     "likes": 16,
-     "author_username": "CryptoNowNever",
-     "author_followers": 4259,
-     "created_at": "2026-10-30T00:18:57+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PARTIUSDT",
-   "base": "PARTI",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T01:30:00+08:00",
-   "checked_at": "2026-10-30T05:20:00+08:00",
-   "posts_last_1h": 50,
-   "posts_prev_6h_avg_per_h": 24.67,
-   "spike_ratio": 2.03,
-   "verdict": "升溫",
-   "one_line": "討論翻倍，但多數係喊單群報捷",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115872605211341131",
-     "url": "https://x.com/GlobeOfcrypto1/status/2115872605211341131",
-     "text": "$PARTI #PARTI Completed our target with a solid rise. 103% profit done",
-     "likes": 6,
-     "author_username": "GlobeOfcrypto1",
-     "author_followers": 12093,
-     "created_at": "2026-10-30T02:25:14+08:00"
-    },
-    {
-     "id": "2115866775040704808",
-     "url": "https://x.com/RoccobullboTTom/status/2115866775040704808",
-     "text": "#PREMIUM_SIGNAL $PARTI is roaring loudly in the market right now! ALREADY ACHIEVED MY FIRST TERGET 80% PROFIT",
-     "likes": 4,
-     "author_username": "RoccobullboTTom",
-     "author_followers": 49948,
-     "created_at": "2026-10-30T02:02:04+08:00"
-    },
-    {
-     "id": "2115856032820007319",
-     "url": "https://x.com/CryptoTenon/status/2115856032820007319",
-     "text": "$parti #parti target 4 95% up on spot after the entry 2375% profit with 25x",
-     "likes": 4,
-     "author_username": "CryptoTenon",
-     "author_followers": 4739,
-     "created_at": "2026-10-30T01:19:23+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "GTCUSDT",
-   "base": "GTC",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T08:12:04+08:00",
-   "checked_at": "2026-10-30T08:16:19+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "幣安黑客揸16%GTC，驚砸盤",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115913250898641371",
-     "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
-     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx ~$2.5B moved",
-     "likes": 33,
-     "author_username": "vinibarbosabr",
-     "author_followers": 12176,
-     "created_at": "2026-10-30T05:06:45+08:00"
-    },
-    {
-     "id": "2115940780204228787",
-     "url": "https://x.com/alertachart/status/2115940780204228787",
-     "text": "Binance Hacker Wallet – Full Holdings: USDT, BTC, ETH, USDC, TRX, SOL...",
-     "likes": 14,
-     "author_username": "alertachart",
-     "author_followers": 626,
-     "created_at": "2026-10-30T06:56:08+08:00"
-    },
-    {
-     "id": "2115925451805986968",
-     "url": "https://x.com/owocki/status/2115925451805986968",
-     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situatio",
-     "likes": 12,
-     "author_username": "owocki",
-     "author_followers": 134352,
-     "created_at": "2026-10-30T05:55:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "TRXUSDT",
-   "base": "TRX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T08:16:19+08:00",
-   "posts_last_1h": 96,
-   "posts_prev_6h_avg_per_h": 59.33,
-   "spike_ratio": 1.62,
-   "verdict": "升溫",
-   "one_line": "幣安被黑新聞帶動，多數複製貼",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115951202773164276",
-     "url": "https://x.com/Jessica6aka/status/2115951202773164276",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $234 million $TRX ...",
-     "likes": 143,
-     "author_username": "Jessica6aka",
-     "author_followers": 719,
-     "created_at": "2026-10-30T07:37:33+08:00"
-    },
-    {
-     "id": "2115925549235556539",
-     "url": "https://x.com/Nafis_4v/status/2115925549235556539",
-     "text": "It's not over !! Binance 14 is still being drained. Binance hacked with over $5.6 billion stolen ... $234 million $TRX",
-     "likes": 10,
-     "author_username": "Nafis_4v",
-     "author_followers": 38989,
-     "created_at": "2026-10-30T05:55:37+08:00"
-    },
-    {
-     "id": "2115924578019008644",
-     "url": "https://x.com/SamAlpha_/status/2115924578019008644",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen ... $234 million $TRX",
-     "likes": 8,
-     "author_username": "SamAlpha_",
-     "author_followers": 19575,
-     "created_at": "2026-10-30T05:51:46+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "RUNEUSDT",
-   "base": "RUNE",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T08:16:19+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 1.17,
-   "spike_ratio": 1.71,
-   "verdict": "冷",
-   "one_line": "討論少，炒黑客錢走THORChain",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115936828637536556",
-     "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
-     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $XM",
-     "likes": 12,
-     "author_username": "Shft_Ctrl",
-     "author_followers": 1206,
-     "created_at": "2026-10-30T06:40:26+08:00"
-    },
-    {
-     "id": "2115945507491324352",
-     "url": "https://x.com/ksamemsol/status/2115945507491324352",
-     "text": "$rune and $xmr buy fuck binance karma is a bitch",
-     "likes": 1,
-     "author_username": "ksamemsol",
-     "author_followers": 139,
-     "created_at": "2026-10-30T07:14:56+08:00"
-    },
-    {
-     "id": "2115929227136553291",
-     "url": "https://x.com/cexscan/status/2115929227136553291",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) +5.72%, $TRX (TRON) +3.96%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-30T06:10:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "TRXUSDT",
-   "base": "TRX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T09:12:30+08:00",
-   "posts_last_1h": 101,
-   "posts_prev_6h_avg_per_h": 72.33,
-   "spike_ratio": 1.4,
-   "verdict": "升溫",
-   "one_line": "幣安被黑新聞帶起，多為轉貼",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115951202773164276",
-     "url": "https://x.com/Jessica6aka/status/2115951202773164276",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
-     "likes": 143,
-     "author_username": "Jessica6aka",
-     "author_followers": 719,
-     "created_at": "2026-10-30T07:37:33+08:00"
-    },
-    {
-     "id": "2115925949812244563",
-     "url": "https://x.com/BitElite17/status/2115925949812244563",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
-     "likes": 22,
-     "author_username": "BitElite17",
-     "author_followers": 28053,
-     "created_at": "2026-10-30T05:57:13+08:00"
-    },
-    {
-     "id": "2115924578019008644",
-     "url": "https://x.com/SamAlpha_/status/2115924578019008644",
-     "text": "BREAKING: World's largest crypto exchange Binance hacked with over $5.6 billion stolen: $1.45 billion $BTC, $875 million $ETH, $234 million…",
-     "likes": 8,
-     "author_username": "SamAlpha_",
-     "author_followers": 19575,
-     "created_at": "2026-10-30T05:51:46+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "RUNEUSDT",
-   "base": "RUNE",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T05:45:00+08:00",
-   "checked_at": "2026-10-30T09:12:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 1.33,
-   "verdict": "冷",
-   "one_line": "討論少，黑客經THOR洗錢",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115936828637536556",
-     "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
-     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
-     "likes": 21,
-     "author_username": "Shft_Ctrl",
-     "author_followers": 1205,
-     "created_at": "2026-10-30T06:40:26+08:00"
-    },
-    {
-     "id": "2115945507491324352",
-     "url": "https://x.com/ksamemsol/status/2115945507491324352",
-     "text": "$rune and $xmr buy fuck binance karma is a bitch",
-     "likes": 1,
-     "author_username": "ksamemsol",
-     "author_followers": 138,
-     "created_at": "2026-10-30T07:14:56+08:00"
-    },
-    {
-     "id": "2115929227136553291",
-     "url": "https://x.com/cexscan/status/2115929227136553291",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) up 5.72%, $TRX (TRON) up 3.96%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-30T06:10:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "GTCUSDT",
-   "base": "GTC",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T08:12:04+08:00",
-   "checked_at": "2026-10-30T09:12:30+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 2.0,
-   "verdict": "冷",
-   "one_line": "黑客持大量GTC，有拋壓",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115913250898641371",
-     "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
-     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total for this tx: ~$2.5B",
-     "likes": 34,
-     "author_username": "vinibarbosabr",
-     "author_followers": 12176,
-     "created_at": "2026-10-30T05:06:45+08:00"
-    },
-    {
-     "id": "2115940780204228787",
-     "url": "https://x.com/alertachart/status/2115940780204228787",
-     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M, USDC $823M, TRX $239.59M ...",
-     "likes": 14,
-     "author_username": "alertachart",
-     "author_followers": 626,
-     "created_at": "2026-10-30T06:56:08+08:00"
-    },
-    {
-     "id": "2115925451805986968",
-     "url": "https://x.com/owocki/status/2115925451805986968",
-     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
-     "likes": 12,
-     "author_username": "owocki",
-     "author_followers": 134356,
-     "created_at": "2026-10-30T05:55:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "RUNEUSDT",
-   "base": "RUNE",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T06:30:00+08:00",
-   "checked_at": "2026-10-30T10:19:00+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 0.6,
-   "verdict": "冷",
-   "one_line": "討論好少，冇明顯升溫",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2115936828637536556",
-     "url": "https://x.com/Shft_Ctrl/status/2115936828637536556",
-     "text": "It would've been epic if @THORChain had @monero with decent pool size today. Imagine 5 billion of binance hack funds going straight into $X…",
-     "likes": 31,
-     "author_username": "Shft_Ctrl",
-     "author_followers": 1205,
-     "created_at": "2026-10-30T06:40:26+08:00"
-    },
-    {
-     "id": "2115945507491324352",
-     "url": "https://x.com/ksamemsol/status/2115945507491324352",
-     "text": "$rune and $xmr buy",
-     "likes": 1,
-     "author_username": "ksamemsol",
-     "author_followers": 138,
-     "created_at": "2026-10-30T07:14:56+08:00"
-    },
-    {
-     "id": "2115929227136553291",
-     "url": "https://x.com/cexscan/status/2115929227136553291",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $RUNE (THORChain) +5.72%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-30T06:10:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "GTCUSDT",
-   "base": "GTC",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T08:12:04+08:00",
-   "checked_at": "2026-10-30T10:19:00+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 3.27,
-   "verdict": "熱",
-   "one_line": "幣安黑客拋售GTC，負面熱議",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2115913250898641371",
-     "url": "https://x.com/vinibarbosabr/status/2115913250898641371",
-     "text": "another day, another hack in crypto. @binance hot wallet affected (Binance 14 in etherscan), approx. total ~$2.5B",
-     "likes": 34,
-     "author_username": "vinibarbosabr",
-     "author_followers": 12176,
-     "created_at": "2026-10-30T05:06:45+08:00"
-    },
-    {
-     "id": "2115940780204228787",
-     "url": "https://x.com/alertachart/status/2115940780204228787",
-     "text": "Binance Hacker Wallet - Full Holdings: USDT $1.77B, BTC $1.44B, ETH $985.82M ...",
-     "likes": 15,
-     "author_username": "alertachart",
-     "author_followers": 626,
-     "created_at": "2026-10-30T06:56:08+08:00"
-    },
-    {
-     "id": "2115925451805986968",
-     "url": "https://x.com/owocki/status/2115925451805986968",
-     "text": "binance hacker has 14,457,610.13 GTC as part of todays binance exploit (no @gitcoin systems were compromised) we are monitoring the situati…",
-     "likes": 13,
-     "author_username": "owocki",
-     "author_followers": 134352,
-     "created_at": "2026-10-30T05:55:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T22:45:00+08:00",
-   "checked_at": "2026-10-31T00:12:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 2.5,
-   "spike_ratio": 0.8,
-   "verdict": "冷",
-   "one_line": "熱度低，多掃描器",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116106200878043184",
-     "url": "https://x.com/Zyptocom/status/2116106200878043184",
-     "text": "Daily Crypto Market Update Top Gainers | Top Losers $BEAM +33.89% | $BLAST -29.52% $MAGMA +31.54% | $AIC -22.00% kinetiq:native +26.92% | $…",
-     "likes": 4,
-     "author_username": "Zyptocom",
-     "author_followers": 579,
-     "created_at": "2026-10-30T17:53:28+08:00"
-    },
-    {
-     "id": "2116177910365139453",
-     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
-     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform, recent project …",
-     "likes": 2,
-     "author_username": "FantasyWhales",
-     "author_followers": 1099,
-     "created_at": "2026-10-30T22:38:25+08:00"
-    },
-    {
-     "id": "2116150028053934450",
-     "url": "https://x.com/UiiU_100/status/2116150028053934450",
-     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT",
-     "likes": 2,
-     "author_username": "UiiU_100",
-     "author_followers": 1083,
-     "created_at": "2026-10-30T20:47:37+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BEAMXUSDT",
-   "base": "BEAMX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T21:45:00+08:00",
-   "checked_at": "2026-10-31T00:12:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 13.33,
-   "spike_ratio": 0.67,
-   "verdict": "冷",
-   "one_line": "爆後冷卻，多喊單",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116174650162221094",
-     "url": "https://x.com/imran_sharif213/status/2116174650162221094",
-     "text": "#BEAMX / USDT LONG — TP2 SMASHED! Status: Second target crushed cleanly as the bulls take complete control! Current ROI: +290.43% ($849.43+…",
-     "likes": 15,
-     "author_username": "imran_sharif213",
-     "author_followers": 3794,
-     "created_at": "2026-10-30T22:25:27+08:00"
-    },
-    {
-     "id": "2116189503136370837",
-     "url": "https://x.com/RoccobullboTTom/status/2116189503136370837",
-     "text": "#PREMIUM_SIGNAL Today $BEAMX day on Binance! $BEAMX already achieved my first terget 115% profit so far I’m always making my presence felt …",
-     "likes": 5,
-     "author_username": "RoccobullboTTom",
-     "author_followers": 49958,
-     "created_at": "2026-10-30T23:24:29+08:00"
-    },
-    {
-     "id": "2116199680501821558",
-     "url": "https://x.com/ArslanOnChain/status/2116199680501821558",
-     "text": "$BEAMX SHORT SQUEEZE CAUGHT! TP2 HIT. Entry at 0.0045, and $BEAMX ripped straight through both targets before pushing to a high of 0.0054. …",
-     "likes": 4,
-     "author_username": "ArslanOnChain",
-     "author_followers": 4926,
-     "created_at": "2026-10-31T00:04:55+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "TLMUSDT",
-   "base": "TLM",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T20:15:00+08:00",
-   "checked_at": "2026-10-31T00:12:30+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 0.55,
-   "verdict": "冷",
-   "one_line": "冷清，多新號喊單",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116158567002800537",
-     "url": "https://x.com/luxquantcrypto/status/2116158567002800537",
-     "text": "$TLM hit its final target of 0.00137, a 10.5% spot move from the 0.00124 entry, in 1d 15h. Over the same hours, crypto market cap outside B…",
-     "likes": 1,
-     "author_username": "luxquantcrypto",
-     "author_followers": 3266,
-     "created_at": "2026-10-30T21:21:33+08:00"
-    },
-    {
-     "id": "2116120839720452548",
-     "url": "https://x.com/Asnipercrypto/status/2116120839720452548",
-     "text": "$TLM UPDATE Bullish Falling Wedge Breakout has Already Done ,with a very solid candle in 1D time frame Now,Ready for good bullish wave Maxi…",
-     "likes": 0,
-     "author_username": "Asnipercrypto",
-     "author_followers": 1801,
-     "created_at": "2026-10-30T18:51:38+08:00"
-    },
-    {
-     "id": "2116153501697106059",
-     "url": "https://x.com/cexscan/status/2116153501697106059",
-     "text": "#Binance Spot – Last Hour USDT Trades Overview Total volume: 217.04M USDT Top gainer: $TLM Top loser: $ALPINE",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10597,
-     "created_at": "2026-10-30T21:01:25+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "INITUSDT",
-   "base": "INIT",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T01:17:51+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.0,
-   "spike_ratio": 0.5,
-   "verdict": "冷",
-   "one_line": "訊號多、討論淡",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116179682047529084",
-     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
-     "text": "$INIT Bullish run completed — all TPs achieved ✅ Maintaining discipline and strong risk management while avoiding greed.",
-     "likes": 2,
-     "author_username": "Randy_Austin1",
-     "author_followers": 1159,
-     "created_at": "2026-10-30T22:45:27+08:00"
-    },
-    {
-     "id": "2116180072973439093",
-     "url": "https://x.com/Randy_Austin1/status/2116180072973439093",
-     "text": "Binance Futures #INIT/USDT All take-profit targets achieved 😎 Profit: 1,012.258% 📈 Period: 9 hr 10 min ⏰",
-     "likes": 1,
-     "author_username": "Randy_Austin1",
-     "author_followers": 1159,
-     "created_at": "2026-10-30T22:47:00+08:00"
-    },
-    {
-     "id": "2116193089182192077",
-     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
-     "text": "New signal Coin: $INIT/USDT Signal type:Long Entry 0.15995 Take profits Targets 1) 0.17000 … Leverage:25x Stop loss: 0.15000",
-     "likes": 1,
-     "author_username": "ZaraVinkaqz",
-     "author_followers": 0,
-     "created_at": "2026-10-30T23:38:44+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T22:45:00+08:00",
-   "checked_at": "2026-10-31T01:17:51+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 2.33,
-   "spike_ratio": 2.57,
-   "verdict": "升溫",
-   "one_line": "帖數回升半係莊",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116177910365139453",
-     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
-     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform, recent project …",
-     "likes": 3,
-     "author_username": "FantasyWhales",
-     "author_followers": 1099,
-     "created_at": "2026-10-30T22:38:25+08:00"
-    },
-    {
-     "id": "2116150028053934450",
-     "url": "https://x.com/UiiU_100/status/2116150028053934450",
-     "text": "JUST IN: Binance is now pumping $SOPH to sell $USDT 😂",
-     "likes": 2,
-     "author_username": "UiiU_100",
-     "author_followers": 1082,
-     "created_at": "2026-10-30T20:47:37+08:00"
-    },
-    {
-     "id": "2116156397591101897",
-     "url": "https://x.com/FantasyWhales/status/2116156397591101897",
-     "text": "Story Protocol's ($SOPH) surging interest & high valuation potential stem from its innovative on-chain IP infrastructure, robust backing by…",
-     "likes": 1,
-     "author_username": "FantasyWhales",
-     "author_followers": 1099,
-     "created_at": "2026-10-30T21:12:56+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BEAMXUSDT",
-   "base": "BEAMX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T21:45:00+08:00",
-   "checked_at": "2026-10-31T01:17:51+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 11.0,
-   "spike_ratio": 0.82,
-   "verdict": "冷",
-   "one_line": "多數喊單促銷",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116174650162221094",
-     "url": "https://x.com/imran_sharif213/status/2116174650162221094",
-     "text": "#BEAMX / USDT LONG — TP2 SMASHED! ✅🔥 Status: Second target crushed cleanly as the bulls take complete control! 📈 Current ROI: +290.43%",
-     "likes": 16,
-     "author_username": "imran_sharif213",
-     "author_followers": 3794,
-     "created_at": "2026-10-30T22:25:27+08:00"
-    },
-    {
-     "id": "2116210977389887750",
-     "url": "https://x.com/OpMaggi/status/2116210977389887750",
-     "text": "100% up from my call don't sleep I'm the guy who predict things before your so called influencer ! ethereum:0x62d0… #Beamx #btc #eth",
-     "likes": 1,
-     "author_username": "OpMaggi",
-     "author_followers": 409,
-     "created_at": "2026-10-31T00:49:48+08:00"
-    },
-    {
-     "id": "2116172248940003748",
-     "url": "https://x.com/Sivam_kumar_Rai/status/2116172248940003748",
-     "text": "Beamx came out of nowhere... thank you! can it go more? #Crypto #altcoin #BeamX",
-     "likes": 1,
-     "author_username": "Sivam_kumar_Rai",
-     "author_followers": 21,
-     "created_at": "2026-10-30T22:15:55+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "KERNELUSDT",
-   "base": "KERNEL",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T23:15:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 3.33,
-   "spike_ratio": 0.6,
-   "verdict": "冷",
-   "one_line": "噪音多、無真討論",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116215486362845325",
-     "url": "https://x.com/chrismbalz_code/status/2116215486362845325",
-     "text": "With the $pls price down, wondering like me what a home-based PulseChain Validator Node can really do?!",
-     "likes": 1,
-     "author_username": "chrismbalz_code",
-     "author_followers": 242,
-     "created_at": "2026-10-31T01:07:43+08:00"
-    },
-    {
-     "id": "2116232724348309677",
-     "url": "https://x.com/polyexlabs/status/2116232724348309677",
-     "text": "13/ The human factor can't be patched. People err, laptops get infected, and critical CVEs in everyday software, from the Linux kernel to G…",
-     "likes": 0,
-     "author_username": "polyexlabs",
-     "author_followers": 298,
-     "created_at": "2026-10-31T02:16:13+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BEAMXUSDT",
-   "base": "BEAMX",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T22:30:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 16,
-   "posts_prev_6h_avg_per_h": 10.0,
-   "spike_ratio": 1.6,
-   "verdict": "冷",
-   "one_line": "喊單複製、冇實討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116222793708912898",
-     "url": "https://x.com/Zackcrypto_1/status/2116222793708912898",
-     "text": "#BEAMX/USDT Entry: 0.003247 Targets 0.003400–0.004556 SL 0.002800 Leverage 50x",
-     "likes": 0,
-     "author_username": "Zackcrypto_1",
-     "author_followers": 868,
-     "created_at": "2026-10-31T01:36:46+08:00"
-    },
-    {
-     "id": "2116225328829882407",
-     "url": "https://x.com/mannuelmate1/status/2116225328829882407",
-     "text": "$BEAMX — Bearish Short Setup | Still Trading Under Resistance! SHORT Entry Zone $0.00470–$0.00476",
-     "likes": 0,
-     "author_username": "mannuelmate1",
-     "author_followers": 1391,
-     "created_at": "2026-10-31T01:46:50+08:00"
-    },
-    {
-     "id": "2116224160888143943",
-     "url": "https://x.com/petertradee1/status/2116224160888143943",
-     "text": "$BEAMX — Bearish Short Setup | Still Trading Under Resistance! SHORT Entry Zone $0.00470–$0.00476",
-     "likes": 0,
-     "author_username": "petertradee1",
-     "author_followers": 2794,
-     "created_at": "2026-10-31T01:42:12+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "INITUSDT",
-   "base": "INIT",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 0.46,
-   "verdict": "冷",
-   "one_line": "幾乎靜、剩bot文",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116214855203971429",
-     "url": "https://x.com/GreenCandleTr/status/2116214855203971429",
-     "text": "$INIT price move alert +5.5% in the last hour Price $0.1865 24h -15.4% Binance Futures Spot OKX",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T01:05:13+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T22:45:00+08:00",
-   "checked_at": "2026-10-31T02:18:30+08:00",
-   "posts_last_1h": 11,
-   "posts_prev_6h_avg_per_h": 3.0,
-   "spike_ratio": 3.67,
-   "verdict": "升溫",
-   "one_line": "量升但多喊單",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116228446221115569",
-     "url": "https://x.com/Lucas_M3046/status/2116228446221115569",
-     "text": "$SOPH Bullish run completed — all TPs achieved PnL +933.81%",
-     "likes": 2,
-     "author_username": "Lucas_M3046",
-     "author_followers": 1550,
-     "created_at": "2026-10-31T01:59:13+08:00"
-    },
-    {
-     "id": "2116228706058571876",
-     "url": "https://x.com/cexscan/status/2116228706058571876",
-     "text": "Last 60m - #Binance Spot (USDT Trades) Top 3 Gainers: $SOPH (Sophon) : ↑16.04%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10598,
-     "created_at": "2026-10-31T02:00:15+08:00"
-    },
-    {
-     "id": "2116223831916380603",
-     "url": "https://x.com/Matthew_Her2/status/2116223831916380603",
-     "text": "Binance Futures, Bitget Futures #SOPH/USDT All take-profit targets achieved Profit: 890.6518%",
-     "likes": 1,
-     "author_username": "Matthew_Her2",
-     "author_followers": 322,
-     "created_at": "2026-10-31T01:40:53+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T02:45:00+08:00",
-   "checked_at": "2026-10-31T03:17:07+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 1.38,
-   "verdict": "冷",
-   "one_line": "一小時幾條bot",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116241942816166326",
-     "url": "https://x.com/GreenCandleTr/status/2116241942816166326",
-     "text": "$BLUR up another +11.7% since our last alert +15.8% in the last hour Price $0.0100 24h +25.0% Binance",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T02:52:51+08:00"
-    },
-    {
-     "id": "2116237331367661706",
-     "url": "https://x.com/GreenCandleTr/status/2116237331367661706",
-     "text": "$BLUR price move alert +8.6% in the last hour Price $0.009 24h +12.1% Binance Spot OKX Spot",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T02:34:32+08:00"
-    },
-    {
-     "id": "2116245049608450315",
-     "url": "https://x.com/cexscan/status/2116245049608450315",
-     "text": "Last 15m Binance Spot Top gainers SOPH GTC XPL; Blur among losers -2.72%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10599,
-     "created_at": "2026-10-31T03:05:12+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T23:15:00+08:00",
-   "checked_at": "2026-10-31T03:17:07+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 4.83,
-   "spike_ratio": 0.62,
-   "verdict": "冷",
-   "one_line": "熱度回落剩bot",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116177910365139453",
-     "url": "https://x.com/FantasyWhales/status/2116177910365139453",
-     "text": "Story ($SOPH) experienced a significant price surge, likely driven by increasing interest in its decentralized AI platform. #SOPH #Crypto",
-     "likes": 3,
-     "author_username": "FantasyWhales",
-     "author_followers": 1098,
-     "created_at": "2026-10-30T22:38:25+08:00"
-    },
-    {
-     "id": "2116222259677233601",
-     "url": "https://x.com/Lucas_M3046/status/2116222259677233601",
-     "text": "Binance Futures #SOPH/USDT All take-profit targets achieved Profit: 779.6156% Period: 4 hr 39 min",
-     "likes": 1,
-     "author_username": "Lucas_M3046",
-     "author_followers": 1551,
-     "created_at": "2026-10-31T01:34:38+08:00"
-    },
-    {
-     "id": "2116228706058571876",
-     "url": "https://x.com/cexscan/status/2116228706058571876",
-     "text": "Last 60m Binance Spot Top 3 Gainers: $SOPH (Sophon) +16.04% particle-network +5.01% $SENT +3.75%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10599,
-     "created_at": "2026-10-31T02:00:15+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "INITUSDT",
-   "base": "INIT",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T03:17:07+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 2.5,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "近一小時靜晒",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116179682047529084",
-     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
-     "text": "$INIT Bullish run completed — all TPs achieved. Maintaining discipline and strong risk management.",
-     "likes": 2,
-     "author_username": "Randy_Austin1",
-     "author_followers": 1160,
-     "created_at": "2026-10-30T22:45:27+08:00"
-    },
-    {
-     "id": "2116201343257924020",
-     "url": "https://x.com/cryptodeepapp/status/2116201343257924020",
-     "text": "CryptoDeep Supported Assets Update Removed include INIT among others.",
-     "likes": 2,
-     "author_username": "cryptodeepapp",
-     "author_followers": 1511,
-     "created_at": "2026-10-31T00:11:32+08:00"
-    },
-    {
-     "id": "2116193089182192077",
-     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
-     "text": "New signal Coin: $INIT/USDT Long Entry 0.15995 leverage 25x Stop loss 0.15000",
-     "likes": 1,
-     "author_username": "ZaraVinkaqz",
-     "author_followers": 0,
-     "created_at": "2026-10-30T23:38:44+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "KERNELUSDT",
-   "base": "KERNEL",
-   "flag": "pump",
-   "trigger_at": "2026-10-30T23:15:00+08:00",
-   "checked_at": "2026-10-31T03:17:07+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 3.5,
-   "spike_ratio": 0.57,
-   "verdict": "冷",
-   "one_line": "幾乎冇真討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116201181093446038",
-     "url": "https://x.com/GreenCandleTr/status/2116201181093446038",
-     "text": "$KERNEL price move alert +7.9% in the last hour Price $0.0545 24h +13.8% Binance Futures Spot",
-     "likes": 1,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T00:10:53+08:00"
-    },
-    {
-     "id": "2116246033525092566",
-     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
-     "text": "Todays Top 5 Gainers SOPH BEAMX BLUR DOOD KERNEL +10.7% Binance",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T03:09:06+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:45:00+08:00",
-   "checked_at": "2026-10-31T04:20:53+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 4.83,
-   "spike_ratio": 1.03,
-   "verdict": "冷",
-   "one_line": "掃描bot為主偏冷",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116228706058571876",
-     "url": "https://x.com/cexscan/status/2116228706058571876",
-     "text": "Last 60m Binance Spot Top gainers SOPH +16.04%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-31T02:00:15+08:00"
-    },
-    {
-     "id": "2116247573329588467",
-     "url": "https://x.com/Amina_Allee/status/2116247573329588467",
-     "text": "Binance Futures #SOPH/USDT All take-profit targets achieved Profits 893%",
-     "likes": 0,
-     "author_username": "Amina_Allee",
-     "author_followers": 804,
-     "created_at": "2026-10-31T03:15:14+08:00"
-    },
-    {
-     "id": "2116249647928778870",
-     "url": "https://x.com/CR7CryptoSignal/status/2116249647928778870",
-     "text": "$SOPH SHORT target reached +10.6% on 2x margin. Simulated result.",
-     "likes": 0,
-     "author_username": "CR7CryptoSignal",
-     "author_followers": 1,
-     "created_at": "2026-10-31T03:23:28+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "KERNELUSDT",
-   "base": "KERNEL",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T04:20:53+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 3.5,
-   "spike_ratio": 0.57,
-   "verdict": "冷",
-   "one_line": "雜訊多真熱唔夠",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116201181093446038",
-     "url": "https://x.com/GreenCandleTr/status/2116201181093446038",
-     "text": "$KERNEL price move alert +7.9% in the last hour Price $0.0545 24h +13.8% Binance",
-     "likes": 1,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T00:10:53+08:00"
-    },
-    {
-     "id": "2116246033525092566",
-     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
-     "text": "Today Top 5 Gainers SOPH BEAMX BLUR DOOD KERNEL on Binance/OKX",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T03:09:06+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T02:45:00+08:00",
-   "checked_at": "2026-10-31T04:20:53+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 2.67,
-   "spike_ratio": 1.12,
-   "verdict": "冷",
-   "one_line": "警報bot刷屏為主",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116241942816166326",
-     "url": "https://x.com/GreenCandleTr/status/2116241942816166326",
-     "text": "$BLUR up another +11.7% since our last alert +15.8% in the last hour Price $0.0100 24h +25.0% Binance",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T02:52:51+08:00"
-    },
-    {
-     "id": "2116245049608450315",
-     "url": "https://x.com/cexscan/status/2116245049608450315",
-     "text": "Last 15m Binance Spot Top gainers SOPH GTC XPL; Blur among losers -2.72%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-31T03:05:12+08:00"
-    },
-    {
-     "id": "2116237331367661706",
-     "url": "https://x.com/GreenCandleTr/status/2116237331367661706",
-     "text": "$BLUR price move alert +8.6% in the last hour Price $0.009 24h +12.1% Binance Spot OKX Spot",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T02:34:32+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "INITUSDT",
-   "base": "INIT",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T00:30:00+08:00",
-   "checked_at": "2026-10-31T04:20:53+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.17,
-   "spike_ratio": 0.46,
-   "verdict": "冷",
-   "one_line": "近一小時好靜",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116201343257924020",
-     "url": "https://x.com/cryptodeepapp/status/2116201343257924020",
-     "text": "CryptoDeep Supported Assets Update Removed include INIT among others.",
-     "likes": 2,
-     "author_username": "cryptodeepapp",
-     "author_followers": 1511,
-     "created_at": "2026-10-31T00:11:32+08:00"
-    },
-    {
-     "id": "2116179682047529084",
-     "url": "https://x.com/Randy_Austin1/status/2116179682047529084",
-     "text": "$INIT Bullish run completed — all TPs achieved. Maintaining discipline and strong risk management.",
-     "likes": 2,
-     "author_username": "Randy_Austin1",
-     "author_followers": 1160,
-     "created_at": "2026-10-30T22:45:27+08:00"
-    },
-    {
-     "id": "2116193089182192077",
-     "url": "https://x.com/ZaraVinkaqz/status/2116193089182192077",
-     "text": "New signal Coin: $INIT/USDT Long Entry 0.15995 leverage 25x Stop loss 0.15000",
-     "likes": 1,
-     "author_username": "ZaraVinkaqz",
-     "author_followers": 0,
-     "created_at": "2026-10-30T23:38:44+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "KERNELUSDT",
-   "base": "KERNEL",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T01:45:00+08:00",
-   "checked_at": "2026-10-31T05:12:00+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 3.17,
-   "spike_ratio": 0.95,
-   "verdict": "冷",
-   "one_line": "冇幣圈聲，雜訊多",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116246033525092566",
-     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
-     "text": "Today Top 5 Gainers SOPH BEAMX BLUR DOOD KERNEL on Binance/OKX",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T03:09:06+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T01:15:00+08:00",
-   "checked_at": "2026-10-31T05:12:00+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 5.17,
-   "spike_ratio": 0.97,
-   "verdict": "冷",
-   "one_line": "多數喊單莊同scanner",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116228706058571876",
-     "url": "https://x.com/cexscan/status/2116228706058571876",
-     "text": "Last 60m Binance Spot Top Gainers SOPH Sophon up 16.04%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-31T02:00:15+08:00"
-    },
-    {
-     "id": "2116247573329588467",
-     "url": "https://x.com/Amina_Allee/status/2116247573329588467",
-     "text": "Binance Futures SOPH/USDT All take-profit targets achieved Profits 893%",
-     "likes": 0,
-     "author_username": "Amina_Allee",
-     "author_followers": 804,
-     "created_at": "2026-10-31T03:15:14+08:00"
-    },
-    {
-     "id": "2116246033525092566",
-     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
-     "text": "Today Top 5 Gainers SOPH +60.8% BEAMX BLUR on Binance",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T03:09:06+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T02:45:00+08:00",
-   "checked_at": "2026-10-31T05:12:00+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 0.55,
-   "verdict": "冷",
-   "one_line": "得告警莊，聲量低",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116241942816166326",
-     "url": "https://x.com/GreenCandleTr/status/2116241942816166326",
-     "text": "BLUR up another +11.7% since last alert Price $0.0100 24h +25.0% Binance",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T02:52:51+08:00"
-    },
-    {
-     "id": "2116246033525092566",
-     "url": "https://x.com/GreenCandleTr/status/2116246033525092566",
-     "text": "Today Top 5 Gainers SOPH BEAMX BLUR +20.5% on Binance",
-     "likes": 0,
-     "author_username": "GreenCandleTr",
-     "author_followers": 2,
-     "created_at": "2026-10-31T03:09:06+08:00"
-    },
-    {
-     "id": "2116245049608450315",
-     "url": "https://x.com/cexscan/status/2116245049608450315",
-     "text": "Last 15m Binance Spot Blur among top losers down 2.72%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10600,
-     "created_at": "2026-10-31T03:05:12+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T02:15:00+08:00",
-   "checked_at": "2026-10-31T06:12:00+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 5.67,
-   "spike_ratio": 0.53,
-   "verdict": "冷",
-   "one_line": "熱度淡，多掃盤喊單",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116286623184785586",
-     "url": "https://x.com/CR_2030/status/2116286623184785586",
-     "text": "#SOPH Complete Crypto Risk Sniper Bot",
-     "likes": 2,
-     "author_username": "CR_2030",
-     "author_followers": 1546,
-     "created_at": "2026-10-31T05:50:24+08:00"
-    },
-    {
-     "id": "2116289113880150069",
-     "url": "https://x.com/cexscan/status/2116289113880150069",
-     "text": "Last 60m - #Binance Spot Top 3 Gainers: $SOPH (Sophon) : ↑6.8%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10602,
-     "created_at": "2026-10-31T06:00:18+08:00"
-    },
-    {
-     "id": "2116247573329588467",
-     "url": "https://x.com/Amina_Allee/status/2116247573329588467",
-     "text": "Binance Futures #SOPH/USDT All take-profit targets achieved Profits: 893.7201%",
-     "likes": 0,
-     "author_username": "Amina_Allee",
-     "author_followers": 804,
-     "created_at": "2026-10-31T03:15:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T02:45:00+08:00",
-   "checked_at": "2026-10-31T06:12:00+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 0.55,
-   "verdict": "冷",
-   "one_line": "得告警莊，聲量低",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116286721511829551",
-     "url": "https://x.com/CR_2030/status/2116286721511829551",
-     "text": "#BLUR Complete Crypto Risk Sniper Bot",
-     "likes": 2,
-     "author_username": "CR_2030",
-     "author_followers": 1546,
-     "created_at": "2026-10-31T05:50:47+08:00"
-    },
-    {
-     "id": "2116291570488009120",
-     "url": "https://x.com/ratiodotday/status/2116291570488009120",
-     "text": "Biggest perp movers, last 4h BLUR +8.0%",
-     "likes": 1,
-     "author_username": "ratiodotday",
-     "author_followers": 46,
-     "created_at": "2026-10-31T06:10:03+08:00"
-    },
-    {
-     "id": "2116289113880150069",
-     "url": "https://x.com/cexscan/status/2116289113880150069",
-     "text": "Last 60m - #Binance Spot Top Gainers include Blur ↑3.22%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10602,
-     "created_at": "2026-10-31T06:00:18+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T06:00:00+08:00",
-   "checked_at": "2026-10-31T07:16:00+08:00",
-   "posts_last_1h": 7,
-   "posts_prev_6h_avg_per_h": 5.83,
-   "spike_ratio": 1.2,
-   "verdict": "冷",
-   "one_line": "多掃盤bot，聲量平",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116286623184785586",
-     "url": "https://x.com/CR_2030/status/2116286623184785586",
-     "text": "#SOPH Complete Crypto Risk Sniper Bot",
-     "likes": 2,
-     "author_username": "CR_2030",
-     "author_followers": 1547,
-     "created_at": "2026-10-31T05:50:24+08:00"
-    },
-    {
-     "id": "2116289113880150069",
-     "url": "https://x.com/cexscan/status/2116289113880150069",
-     "text": "Last 60m - #Binance Spot Top Gainers include $SOPH ↑6.8%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T06:00:18+08:00"
-    },
-    {
-     "id": "2116290124116041854",
-     "url": "https://x.com/bn_trader/status/2116290124116041854",
-     "text": "Crypto Movers Oct 30 Gainers include $SOPH",
-     "likes": 1,
-     "author_username": "bn_trader",
-     "author_followers": 2832,
-     "created_at": "2026-10-31T06:04:19+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "BLURUSDT",
-   "base": "BLUR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T03:15:00+08:00",
-   "checked_at": "2026-10-31T07:16:00+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 1.83,
-   "spike_ratio": 1.09,
-   "verdict": "冷",
-   "one_line": "聲量低，多告警莊",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116291570488009120",
-     "url": "https://x.com/ratiodotday/status/2116291570488009120",
-     "text": "Biggest perp movers, last 4h BLUR +8.0%",
-     "likes": 2,
-     "author_username": "ratiodotday",
-     "author_followers": 46,
-     "created_at": "2026-10-31T06:10:03+08:00"
-    },
-    {
-     "id": "2116286721511829551",
-     "url": "https://x.com/CR_2030/status/2116286721511829551",
-     "text": "#BLUR Complete Crypto Risk Sniper Bot",
-     "likes": 2,
-     "author_username": "CR_2030",
-     "author_followers": 1547,
-     "created_at": "2026-10-31T05:50:47+08:00"
-    },
-    {
-     "id": "2116289113880150069",
-     "url": "https://x.com/cexscan/status/2116289113880150069",
-     "text": "Last 60m - #Binance Spot Top Gainers include Blur ↑3.22%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T06:00:18+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T08:14:05+08:00",
-   "checked_at": "2026-10-31T08:16:48+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 0.67,
-   "spike_ratio": 4.48,
-   "verdict": "冷",
-   "one_line": "警報bot多，冇真討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116320531318255938",
-     "url": "https://x.com/cexscan/status/2116320531318255938",
-     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $LSK (Lisk) : ↑6.83% vethor-token:native (VeThor Token) : ↑2.6% $HAEDAL (Haedal) : ↑2…",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T08:05:08+08:00"
-    },
-    {
-     "id": "2116292465770504462",
-     "url": "https://x.com/Bitcoinsovereig/status/2116292465770504462",
-     "text": "#LSK/USDT Stop Target Hit ⛔ Loss: 130.9298% 📉 #Crypto #Trading #Signal Join our free signals group",
-     "likes": 1,
-     "author_username": "Bitcoinsovereig",
-     "author_followers": 2606,
-     "created_at": "2026-10-31T06:13:37+08:00"
-    },
-    {
-     "id": "2116322332763398216",
-     "url": "https://x.com/theparseepm/status/2116322332763398216",
-     "text": "🟢 $LSK pumped in the last 12s (+0.97%, 0.2072$ → 0.2092$) T3 | Binance, OKX 24h vol $9.1M | OI $7.7M",
-     "likes": 0,
-     "author_username": "theparseepm",
-     "author_followers": 66,
-     "created_at": "2026-10-31T08:12:18+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T06:00:00+08:00",
-   "checked_at": "2026-10-31T08:16:48+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 5.83,
-   "spike_ratio": 1.03,
-   "verdict": "冷",
-   "one_line": "多喊單群，聲量平",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116303504004218978",
-     "url": "https://x.com/Kennycrypto102/status/2116303504004218978",
-     "text": "📊 SOPH/USDT — 15M ANALYSIS Price has demonstrated bullish momentum following a period of consolidation and a strong upside expansion.",
-     "likes": 3,
-     "author_username": "Kennycrypto102",
-     "author_followers": 2,
-     "created_at": "2026-10-31T06:57:29+08:00"
-    },
-    {
-     "id": "2116313237335515481",
-     "url": "https://x.com/Customized_Fix/status/2116313237335515481",
-     "text": "#Binance #Futures #SOPH/USDT All take-profit #targets achieved 😎 #Profit: 779.6156% 📈 Period: 4 hr 39 min ⏰",
-     "likes": 2,
-     "author_username": "Customized_Fix",
-     "author_followers": 2327,
-     "created_at": "2026-10-31T07:36:09+08:00"
-    },
-    {
-     "id": "2116310991512506473",
-     "url": "https://x.com/arbigen_trade/status/2116310991512506473",
-     "text": "My scanner gave a signal on $SOPH. Spread: +2.5%. Direction: Long Binance / Short Bybit. #crypto #arbitrage",
-     "likes": 2,
-     "author_username": "arbigen_trade",
-     "author_followers": 2,
-     "created_at": "2026-10-31T07:27:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "PENDLEUSDT",
-   "base": "PENDLE",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T08:15:00+08:00",
-   "checked_at": "2026-10-31T08:16:48+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 9.0,
-   "spike_ratio": 1.0,
-   "verdict": "冷",
-   "one_line": "聲量平，有DeFi討論",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116315140123418645",
-     "url": "https://x.com/rektdiomedes/status/2116315140123418645",
-     "text": "More insane opportunities for yield-enjoyers via @protocol_fx! Recently did a big article + #FrenchChart on their fxSAVE-Morpho-Looping. Bu…",
-     "likes": 8,
-     "author_username": "rektdiomedes",
-     "author_followers": 106434,
-     "created_at": "2026-10-31T07:43:43+08:00"
-    },
-    {
-     "id": "2116310282238931276",
-     "url": "https://x.com/richardnhsu/status/2116310282238931276",
-     "text": "I think ethereum:0x808507121b80c02388fad14726482e061b8da827 is at a really great entry here. Pendle/ETH chart still on an uptrend. Still my…",
-     "likes": 1,
-     "author_username": "richardnhsu",
-     "author_followers": 4969,
-     "created_at": "2026-10-31T07:24:25+08:00"
-    },
-    {
-     "id": "2116311999785132510",
-     "url": "https://x.com/Finora_EN/status/2116311999785132510",
-     "text": "@MotazBadwais alright let's see what's cooking on $PENDLE #PENDLEUSDT.P 1h 🧐 - my bias is bullish here on the 1h while structure holds",
-     "likes": 0,
-     "author_username": "Finora_EN",
-     "author_followers": 24638,
-     "created_at": "2026-10-31T07:31:14+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T08:14:05+08:00",
-   "checked_at": "2026-10-31T09:11:00+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 2.0,
-   "spike_ratio": 1.0,
-   "verdict": "冷",
-   "one_line": "聲量回落，全係警報",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116325221363863666",
-     "url": "https://x.com/CR_2030/status/2116325221363863666",
-     "text": "#LSK Complete 💯 Crypto Risk Sniper Bot",
-     "likes": 3,
-     "author_username": "CR_2030",
-     "author_followers": 1547,
-     "created_at": "2026-10-31T08:23:46+08:00"
-    },
-    {
-     "id": "2116320531318255938",
-     "url": "https://x.com/cexscan/status/2116320531318255938",
-     "text": "Last 15m - #Binance Spot Top Gainers: $LSK ↑6.83%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T08:05:08+08:00"
-    },
-    {
-     "id": "2116323373005365678",
-     "url": "https://x.com/Finora_EN/status/2116323373005365678",
-     "text": "Finora AI called the $LSK long at $0.1982. Third target hit, +25.48%",
-     "likes": 0,
-     "author_username": "Finora_EN",
-     "author_followers": 24637,
-     "created_at": "2026-10-31T08:16:26+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "SOPHUSDT",
-   "base": "SOPH",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T06:00:00+08:00",
-   "checked_at": "2026-10-31T09:11:00+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 4.17,
-   "spike_ratio": 0.24,
-   "verdict": "冷",
-   "one_line": "幾乎冇討論，掃盤提",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116321920283197935",
-     "url": "https://x.com/OldmanScalping/status/2116321920283197935",
-     "text": "DAILY REPORT — Sat 31 Oct market breadth (mentions $SOPH context)",
-     "likes": 5,
-     "author_username": "OldmanScalping",
-     "author_followers": 157690,
-     "created_at": "2026-10-31T08:10:39+08:00"
-    },
-    {
-     "id": "2116320531318255938",
-     "url": "https://x.com/cexscan/status/2116320531318255938",
-     "text": "Last 15m - #Binance Spot Top Losers: $SOPH ↓-3.6%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T08:05:08+08:00"
-    },
-    {
-     "id": "2116320061971640589",
-     "url": "https://x.com/TIQCrypto/status/2116320061971640589",
-     "text": "Market Close Report: 2026-10-30 | BTC -0.83%",
-     "likes": 1,
-     "author_username": "TIQCrypto",
-     "author_followers": 5413,
-     "created_at": "2026-10-31T08:03:16+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "RSRUSDT",
-   "base": "RSR",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T23:30:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 4.0,
-   "verdict": "熱",
-   "one_line": "黑客出貨後討論升溫",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116515865915261148",
-     "url": "https://x.com/CryptoPro2008/status/2116515865915261148",
-     "text": "#RSR #Binance Crypto is no longer what it used to be. We once had projects building the future across Web3, Metaverse, RWA, and DeFi. Now, …",
-     "likes": 8,
-     "author_username": "CryptoPro2008",
-     "author_followers": 239,
-     "created_at": "2026-10-31T21:01:20+08:00"
-    },
-    {
-     "id": "2116555897694552440",
-     "url": "https://x.com/cryptolevier/status/2116555897694552440",
-     "text": "$RSR +19% on the day and still climbing. Flagged at $0.001545, now ~$0.00168, on ~$60M of 24h volume. Why the move: The Binance hacker dump…",
-     "likes": 2,
-     "author_username": "cryptolevier",
-     "author_followers": 8198,
-     "created_at": "2026-10-31T23:40:24+08:00"
-    },
-    {
-     "id": "2116559768743457206",
-     "url": "https://x.com/cryptolevier/status/2116559768743457206",
-     "text": "$RSR +16% in 24h after the Binance hacker finished dumping stolen RSR. Spiked to $0.001717, now ~$0.00161…",
-     "likes": 0,
-     "author_username": "cryptolevier",
-     "author_followers": 8198,
-     "created_at": "2026-10-31T23:55:47+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "REDUSDT",
-   "base": "RED",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T22:30:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 139,
-   "posts_prev_6h_avg_per_h": 139.83,
-   "spike_ratio": 0.99,
-   "verdict": "冷",
-   "one_line": "噪音多真討論少",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116531933702226180",
-     "url": "https://x.com/cexscan/status/2116531933702226180",
-     "text": "Last 15m - #Binance Spot Top 3 Gainers: $COW ↑23.47% $RED (RedStone) ↑2.86% $FF ↑2.55%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T22:05:10+08:00"
-    },
-    {
-     "id": "2116552948406993067",
-     "url": "https://x.com/luxquantalgo/status/2116552948406993067",
-     "text": "$RED reached TP3. The chart high reached +11.60% spot from entry. #RED #REDUSDT #LuxQuant",
-     "likes": 0,
-     "author_username": "luxquantalgo",
-     "author_followers": 666,
-     "created_at": "2026-10-31T23:28:41+08:00"
-    },
-    {
-     "id": "2116538598199578994",
-     "url": "https://x.com/ZenithQuant/status/2116538598199578994",
-     "text": "$RED rally locked in +16.3% profit from $0.13645 to $0.14140! Powered by heavy whale inflow & Binance MM backing.",
-     "likes": 0,
-     "author_username": "ZenithQuant",
-     "author_followers": 1,
-     "created_at": "2026-10-31T22:31:39+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "COWUSDT",
-   "base": "COW",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T22:00:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 22,
-   "posts_prev_6h_avg_per_h": 6.17,
-   "spike_ratio": 3.57,
-   "verdict": "熱",
-   "one_line": "急升但訊號莊多",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116534160059986348",
-     "url": "https://x.com/mrcamerontrader/status/2116534160059986348",
-     "text": "also if you want to add $COW pump means $JOE next.. narrative play you can join or skip. #crypto",
-     "likes": 2,
-     "author_username": "mrcamerontrader",
-     "author_followers": 433,
-     "created_at": "2026-10-31T22:14:01+08:00"
-    },
-    {
-     "id": "2116531933702226180",
-     "url": "https://x.com/cexscan/status/2116531933702226180",
-     "text": "Last 15m - #Binance Spot Top 3 Gainers: $COW (CoW Protocol) : ↑23.47% $RED : ↑2.86% $FF : ↑2.55%",
-     "likes": 1,
-     "author_username": "cexscan",
-     "author_followers": 10601,
-     "created_at": "2026-10-31T22:05:10+08:00"
-    },
-    {
-     "id": "2116533570260947071",
-     "url": "https://x.com/EntitledTrader/status/2116533570260947071",
-     "text": "CoW Protocol rose 37.83% over the past 24 hours and now trades near $0.1495. $14.6M traded in the last 24 hours.",
-     "likes": 1,
-     "author_username": "EntitledTrader",
-     "author_followers": 2032,
-     "created_at": "2026-10-31T22:11:41+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "STXUSDT",
-   "base": "STX",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T20:45:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 7.33,
-   "spike_ratio": 0.55,
-   "verdict": "冷",
-   "one_line": "聲量回落靠榜單帖",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116516542804267147",
-     "url": "https://x.com/CryptoSteveO1/status/2116516542804267147",
-     "text": "While everyone is distracted by all the hacks…I'm still researching and stacking GREAT crypto tokens such as $STX the ONLY NATIVE $BTC laye…",
-     "likes": 4,
-     "author_username": "CryptoSteveO1",
-     "author_followers": 2392,
-     "created_at": "2026-10-31T21:04:01+08:00"
-    },
-    {
-     "id": "2116482572645732720",
-     "url": "https://x.com/SleazyMinks/status/2116482572645732720",
-     "text": "$BTC Bitcoin ecosystem is getting bid early! $MERL: Top buzz… $STX: Up 100 spots, sentiment turning bullish $ORDI: OI +32%",
-     "likes": 3,
-     "author_username": "SleazyMinks",
-     "author_followers": 2375,
-     "created_at": "2026-10-31T18:49:02+08:00"
-    },
-    {
-     "id": "2116504105917022548",
-     "url": "https://x.com/Crypto_Potato/status/2116504105917022548",
-     "text": "MARKET MOVE: $STX defies the broader altcoin slump with a massive 11% surge. $AAVE also shows strength, adding 6%.",
-     "likes": 2,
-     "author_username": "Crypto_Potato",
-     "author_followers": 36870,
-     "created_at": "2026-10-31T20:14:36+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "LSKUSDT",
-   "base": "LSK",
-   "flag": "pump",
-   "trigger_at": "2026-10-31T20:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 14,
-   "posts_prev_6h_avg_per_h": 12.17,
-   "spike_ratio": 1.15,
-   "verdict": "升溫",
-   "one_line": "黑客相關討論持續",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116491593939357878",
-     "url": "https://x.com/Cryptobullmaker/status/2116491593939357878",
-     "text": "$Lsk ruling Binance top 2 gainers 50% in a week Our coins are starting one by one… Do not miss $Hana",
-     "likes": 121,
-     "author_username": "Cryptobullmaker",
-     "author_followers": 116690,
-     "created_at": "2026-10-31T19:24:53+08:00"
-    },
-    {
-     "id": "2116461177106477437",
-     "url": "https://x.com/0xNoxxx/status/2116461177106477437",
-     "text": "Why isn’t LSK falling, with the hacker’s 9.26M LSK sitting in a fresh wallet? Spot is doing the buying…",
-     "likes": 10,
-     "author_username": "0xNoxxx",
-     "author_followers": 11474,
-     "created_at": "2026-10-31T17:24:01+08:00"
-    },
-    {
-     "id": "2116486631939310011",
-     "url": "https://x.com/ArslanOnChain/status/2116486631939310011",
-     "text": "THE BINANCE HACK TRAIL JUST TOOK ANOTHER TURN — AND $LSK IS RIGHT IN THE MIDDLE. The full 9.26M $LSK…",
-     "likes": 9,
-     "author_username": "ArslanOnChain",
-     "author_followers": 5018,
-     "created_at": "2026-10-31T19:05:10+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "AAVEUSDT",
-   "base": "AAVE",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T00:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 29,
-   "posts_prev_6h_avg_per_h": 22.0,
-   "spike_ratio": 1.32,
-   "verdict": "冷",
-   "one_line": "多講黑客少炒幣",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2116479145421283649",
-     "url": "https://x.com/Eljaboom/status/2116479145421283649",
-     "text": "2026 crypto security damage: hacks, exploits and drained wallets. Aave-user wallet theft: −$50.4M Binance: −$6.3B…",
-     "likes": 44,
-     "author_username": "Eljaboom",
-     "author_followers": 681441,
-     "created_at": "2026-10-31T18:35:25+08:00"
-    },
-    {
-     "id": "2116509861177680165",
-     "url": "https://x.com/MagicDegenSOL/status/2116509861177680165",
-     "text": "A list of all the crypto hacks in 2026: Binance: $6.3B … Aave-user wallet theft: $50.4M…",
-     "likes": 4,
-     "author_username": "MagicDegenSOL",
-     "author_followers": 54483,
-     "created_at": "2026-10-31T20:37:28+08:00"
-    },
-    {
-     "id": "2116532712785776734",
-     "url": "https://x.com/BullishMarktCap/status/2116532712785776734",
-     "text": "TOP GAINERS · 24H $STX +12.5% $PENDLE +10.6% $EIGEN +10.1% $AAVE +8.9% $RUNE +8.1% Aave reopened lending markets…",
-     "likes": 1,
-     "author_username": "BullishMarktCap",
-     "author_followers": 25512,
-     "created_at": "2026-10-31T22:08:16+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "TIAUSDT",
-   "base": "TIA",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T00:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.83,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "幾乎無人提及",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116486535864537118",
-     "url": "https://x.com/cryptowithgopal/status/2116486535864537118",
-     "text": "celestia:native A Rising Wedge pattern is forming on the 15-min chart! Price is trading around $0.4723…",
-     "likes": 10,
-     "author_username": "cryptowithgopal",
-     "author_followers": 15375,
-     "created_at": "2026-10-31T19:04:47+08:00"
-    },
-    {
-     "id": "2116486657843286178",
-     "url": "https://x.com/ZRoss_FX/status/2116486657843286178",
-     "text": "My market journal is split into signals: $SEI for speed, $TIA for modular infrastructure, $DYDX…",
-     "likes": 0,
-     "author_username": "ZRoss_FX",
-     "author_followers": 230,
-     "created_at": "2026-10-31T19:05:16+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "GRAMUSDT",
-   "base": "GRAM",
-   "flag": "pump",
-   "trigger_at": "2026-11-01T00:15:00+08:00",
-   "checked_at": "2026-11-01T00:13:13+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 2.33,
-   "spike_ratio": 1.72,
-   "verdict": "冷",
-   "one_line": "聲量低偏宣傳帖",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2116545738255823242",
-     "url": "https://x.com/superdapp/status/2116545738255823242",
-     "text": "Staking Gram (Toncoin) $GRAM Earn rewards every day, withdraw anytime, and let your crypto generate passive income.",
-     "likes": 8,
-     "author_username": "superdapp",
-     "author_followers": 7869,
-     "created_at": "2026-10-31T23:00:02+08:00"
-    },
-    {
-     "id": "2116483091866742924",
-     "url": "https://x.com/RhizaCore/status/2116483091866742924",
-     "text": "Crypto News Today: Tonomy, a Gram prediction market on Telegram, applies for CFTC registration…",
-     "likes": 4,
-     "author_username": "RhizaCore",
-     "author_followers": 1440,
-     "created_at": "2026-10-31T18:51:06+08:00"
-    },
-    {
-     "id": "2116501930776158447",
-     "url": "https://x.com/0xGramArchive/status/2116501930776158447",
-     "text": "Archive block #0019 consensus reached. Decryption results: 84.2% data recovered · 0xGRAM Genesis Nodes mapped…",
-     "likes": 2,
-     "author_username": "0xGramArchive",
-     "author_followers": 3,
-     "created_at": "2026-10-31T20:05:57+08:00"
-    }
-   ]
-  },
   {
    "symbol": "LSKUSDT",
    "base": "LSK",
@@ -3888,15 +1136,316 @@
      "created_at": "2026-11-01T01:55:41+08:00"
     }
    ]
+  },
+  {
+   "symbol": "HOTUSDT",
+   "base": "HOT",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T22:45:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 126,
+   "posts_prev_6h_avg_per_h": 77.0,
+   "spike_ratio": 1.64,
+   "verdict": "冷",
+   "one_line": "帖文多數講熱錢包",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117222804663804182",
+     "url": "https://x.com/CryptoTeca__/status/2117222804663804182",
+     "text": "the reported $6.36b binance hack could be one of the biggest crypto security incidents in history. to put it into perspective, $6.3b is hig…",
+     "likes": 73,
+     "author_username": "CryptoTeca__",
+     "author_followers": 186740,
+     "created_at": "2026-11-02T19:50:27+08:00"
+    },
+    {
+     "id": "2117255910301323603",
+     "url": "https://x.com/fitgirltruth/status/2117255910301323603",
+     "text": "Crazy how many just ignored this and still believe their digital code is safe. physical metals, ammo, livestock, and real food are the curr…",
+     "likes": 12,
+     "author_username": "fitgirltruth",
+     "author_followers": 20814,
+     "created_at": "2026-11-02T22:02:00+08:00"
+    },
+    {
+     "id": "2117273069030883783",
+     "url": "https://x.com/cexscan/status/2117273069030883783",
+     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $ARIA : ↑9.91% $TEM : ↑7.37% $HOT (Holo) : ↑6.4%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10603,
+     "created_at": "2026-11-02T23:10:11+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "MEGAUSDT",
+   "base": "MEGA",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T22:30:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.88,
+   "verdict": "冷",
+   "one_line": "真MEGA討論好少",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117198167959900230",
+     "url": "https://x.com/Pi_Community0/status/2117198167959900230",
+     "text": "$LUNC Something mega big is coming soon Whale Alert 28.92 billion LUNC moved From: Binance",
+     "likes": 88,
+     "author_username": "Pi_Community0",
+     "author_followers": 1548,
+     "created_at": "2026-11-02T18:12:33+08:00"
+    },
+    {
+     "id": "2117269379976999279",
+     "url": "https://x.com/0xgodzubby/status/2117269379976999279",
+     "text": "The Latest Perps, Options & Props Developments Perp dex OI surges 76% to $24B in Q3",
+     "likes": 22,
+     "author_username": "0xgodzubby",
+     "author_followers": 2033,
+     "created_at": "2026-11-02T22:55:31+08:00"
+    },
+    {
+     "id": "2117182278530981916",
+     "url": "https://x.com/FantasyWhales/status/2117182278530981916",
+     "text": "Story Protocol ($MEGA) surged after its recent Mainnet launch and Binance Web3 Wallet integration, boosting investor interest in its decent…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1099,
+     "created_at": "2026-11-02T17:09:25+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "HAEDALUSDT",
+   "base": "HAEDAL",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T22:00:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "訊號同投票帖為主",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117188329594880351",
+     "url": "https://x.com/Jus7Degen/status/2117188329594880351",
+     "text": "$HAEDAL — Haedal Protocol Everyone is watching $SUI, $CETUS, and $DEEP. But what about the protocol helping SUI holders earn staking reward…",
+     "likes": 4,
+     "author_username": "Jus7Degen",
+     "author_followers": 4760,
+     "created_at": "2026-11-02T17:33:27+08:00"
+    },
+    {
+     "id": "2117220542604333482",
+     "url": "https://x.com/grossbel12/status/2117220542604333482",
+     "text": "@HaedalProtocol Liquid Staking on @SuiNetwork Haedal is a native liquid staking protocol on the Sui blockchain",
+     "likes": 2,
+     "author_username": "grossbel12",
+     "author_followers": 1637,
+     "created_at": "2026-11-02T19:41:28+08:00"
+    },
+    {
+     "id": "2117255914348855743",
+     "url": "https://x.com/DyorNetCrypto/status/2117255914348855743",
+     "text": "Top 5 Bullish Trends - USDT - 1h $PRAI $XTSLA GoPlus $HAEDAL $ARIA",
+     "likes": 0,
+     "author_username": "DyorNetCrypto",
+     "author_followers": 82281,
+     "created_at": "2026-11-02T22:02:01+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "MITOUSDT",
+   "base": "MITO",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T20:30:00+08:00",
+   "checked_at": "2026-11-03T00:14:40+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.0,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "上榜後討論已淡",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117253803020050456",
+     "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
+     "text": "The @MitosisOrg's $MITO is the top gainer on Binance Crime pump at its finest",
+     "likes": 26,
+     "author_username": "Crypto_Zh0u",
+     "author_followers": 9466,
+     "created_at": "2026-11-02T21:53:37+08:00"
+    },
+    {
+     "id": "2117180866183225814",
+     "url": "https://x.com/rab4745/status/2117180866183225814",
+     "text": "Top grainer in binance spot $SOPH $MITO Which one are you holding?",
+     "likes": 11,
+     "author_username": "rab4745",
+     "author_followers": 18494,
+     "created_at": "2026-11-02T17:03:48+08:00"
+    },
+    {
+     "id": "2117259764074008984",
+     "url": "https://x.com/soonmource/status/2117259764074008984",
+     "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
+     "likes": 1,
+     "author_username": "soonmource",
+     "author_followers": 8541,
+     "created_at": "2026-11-02T22:17:19+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TRXUSDT",
+   "base": "TRX",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T00:15:00+08:00",
+   "checked_at": "2026-11-03T00:15:00+08:00",
+   "posts_last_1h": 24,
+   "posts_prev_6h_avg_per_h": 28.17,
+   "spike_ratio": 0.85,
+   "verdict": "冷",
+   "one_line": "黑客洗錢討論為主",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117232785748636126",
+     "url": "https://x.com/ourcryptotalk/status/2117232785748636126",
+     "text": "Five tickers caught in the middle of a $500M+ crypto laundering story. $RUNE $NEAR $ETH $TRX $FLIP",
+     "likes": 38,
+     "author_username": "ourcryptotalk",
+     "author_followers": 82788,
+     "created_at": "2026-11-02T20:30:07+08:00"
+    },
+    {
+     "id": "2117184867297284126",
+     "url": "https://x.com/0xTria/status/2117184867297284126",
+     "text": "october on perp dexs volume, vs september: hyperliquid $168b variational $78.1b",
+     "likes": 14,
+     "author_username": "0xTria",
+     "author_followers": 4952,
+     "created_at": "2026-11-02T17:19:42+08:00"
+    },
+    {
+     "id": "2117238586646876324",
+     "url": "https://x.com/hackenclub/status/2117238586646876324",
+     "text": "86% of UK financial firms surveyed by the Bank of England and FCA use AI, and only about half report ongoing monitoring.",
+     "likes": 5,
+     "author_username": "hackenclub",
+     "author_followers": 130614,
+     "created_at": "2026-11-02T20:53:10+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "QNTUSDT",
+   "base": "QNT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T00:15:00+08:00",
+   "checked_at": "2026-11-03T00:15:00+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 7.33,
+   "spike_ratio": 1.09,
+   "verdict": "冷",
+   "one_line": "持貨喊單無爆熱",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117202558074708421",
+     "url": "https://x.com/InvestwithDoc/status/2117202558074708421",
+     "text": "Which RWA Crypto are you most Bullish on? Ondo Stellar Hedera $XRP $QNT XDC $ADA",
+     "likes": 26,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9298,
+     "created_at": "2026-11-02T18:30:00+08:00"
+    },
+    {
+     "id": "2117204441296261229",
+     "url": "https://x.com/AnonHbar/status/2117204441296261229",
+     "text": "$QNT The crowd always underestimates how long the strong can wait $QNT doesn’t need the noise. Clearing House rails.",
+     "likes": 14,
+     "author_username": "AnonHbar",
+     "author_followers": 620,
+     "created_at": "2026-11-02T18:37:29+08:00"
+    },
+    {
+     "id": "2117278508393140715",
+     "url": "https://x.com/BullishMarktCap/status/2117278508393140715",
+     "text": "TOP GAINERS · 24H $TRX +2.2% $ZEC +2.0% $HTX +1.7% $TRUMP +1.2% $QNT +0.9%",
+     "likes": 3,
+     "author_username": "BullishMarktCap",
+     "author_followers": 25299,
+     "created_at": "2026-11-02T23:31:48+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ETHUSDT",
+   "base": "ETH",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T00:15:00+08:00",
+   "checked_at": "2026-11-03T00:15:00+08:00",
+   "posts_last_1h": 256,
+   "posts_prev_6h_avg_per_h": 256.0,
+   "spike_ratio": 1.0,
+   "verdict": "冷",
+   "one_line": "基數高多數複製貼",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117219084589007008",
+     "url": "https://x.com/CryptoPulseXgl/status/2117219084589007008",
+     "text": "$ETH is trading around $2,288, up ~0.8%. Ethereum is reacting to record October ETF outflows and recovering from post-Binance hack lows. Ke…",
+     "likes": 9,
+     "author_username": "CryptoPulseXgl",
+     "author_followers": 12631,
+     "created_at": "2026-11-02T19:35:40+08:00"
+    },
+    {
+     "id": "2117275740895072312",
+     "url": "https://x.com/Marketracker365/status/2117275740895072312",
+     "text": "Just in: @BitMNR bought 8,573 #ETH last week, lifting its stash to 6,060,506 ETH. Tom Lee called the muted reaction to the Binance hack con…",
+     "likes": 2,
+     "author_username": "Marketracker365",
+     "author_followers": 113,
+     "created_at": "2026-11-02T23:20:48+08:00"
+    },
+    {
+     "id": "2117279901867024792",
+     "url": "https://x.com/H45216Muntajul/status/2117279901867024792",
+     "text": "Market Update & Binance Security Recovery BTC/USDT around $78,051 ETH/Usdt near $2,297",
+     "likes": 2,
+     "author_username": "H45216Muntajul",
+     "author_followers": 357,
+     "created_at": "2026-11-02T23:37:20+08:00"
+    }
+   ]
   }
  ],
  "cap": {
-  "date": "2026-11-01",
-  "daily_total_cap": 60,
-  "calls_today": 36,
+  "date": "2026-11-03",
+  "daily_total_cap": 120,
+  "calls_today": 14,
   "cap_reached": false,
-  "updated_at": "2026-11-01T02:21:01+08:00"
+  "updated_at": "2026-11-03T00:14:40+08:00"
  },
- "updated_at": "2026-11-01T02:21:01+08:00",
+ "updated_at": "2026-11-03T00:14:40+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
