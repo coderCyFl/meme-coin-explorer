@@ -34,16 +34,18 @@ class AfternoonQuotaTest(unittest.TestCase):
         return [{"ts": f"{day}T07:00:00+08:00", "symbol": "ZZZUSDT", "tool": "search"} for _ in range(n)]
 
     def test_morning_holds_reserve(self):
-        # 40 used → remaining 20, but spendable = 60-24-40 = 0 before noon
+        # 72 used → remaining 48, but spendable = 120-48-72 = 0 before noon
         buzz = {"coins": {}, "history": []}
         morning = xc.parse_ts("2026-10-31T09:00:00+08:00")
-        res = xt.plan([self.pump], buzz, self._log(40), morning, early_cands=[self.early_ve])
-        self.assertEqual(res["calls_remaining"], 20)
+        res = xt.plan([self.pump], buzz, self._log(72), morning, early_cands=[self.early_ve])
+        self.assertEqual(res["calls_remaining"], 48)
         self.assertEqual(res["spendable_now"], 0)
         self.assertFalse(res["is_afternoon"])
         self.assertTrue(res["reserve_holding"])
         self.assertFalse(res["cap_reached"])
         self.assertEqual(res["targets"], [])
+        self.assertEqual(res["config"]["DAILY_TOTAL_CAP"], 120)
+        self.assertEqual(res["config"]["AFTERNOON_RESERVE_CALLS"], 48)
 
     def test_afternoon_unlocks_reserve(self):
         buzz = {"coins": {}, "history": []}
@@ -51,9 +53,10 @@ class AfternoonQuotaTest(unittest.TestCase):
         # Fresh trigger so HOLD_H (4h) still covers 13:00.
         pump = dict(self.pump, trigger_at="2026-10-31T12:05:00+08:00")
         early = dict(self.early_ve, trigger_at="2026-10-31T12:05:00+08:00")
-        res = xt.plan([pump], buzz, self._log(40), aft, early_cands=[early])
-        self.assertEqual(res["calls_remaining"], 20)
-        self.assertEqual(res["spendable_now"], 20)
+        # Same 72 used as morning test: remaining 48 unlocked in afternoon.
+        res = xt.plan([pump], buzz, self._log(72), aft, early_cands=[early])
+        self.assertEqual(res["calls_remaining"], 48)
+        self.assertEqual(res["spendable_now"], 48)
         self.assertTrue(res["is_afternoon"])
         self.assertFalse(res["reserve_holding"])
         self.assertGreaterEqual(len(res["targets"]), 1)
@@ -87,7 +90,7 @@ class AfternoonQuotaTest(unittest.TestCase):
     def test_hard_cap_still_blocks(self):
         buzz = {"coins": {}, "history": []}
         aft = xc.parse_ts("2026-10-31T15:00:00+08:00")
-        res = xt.plan([self.pump], buzz, self._log(60), aft, early_cands=[self.early_ve])
+        res = xt.plan([self.pump], buzz, self._log(120), aft, early_cands=[self.early_ve])
         self.assertTrue(res["cap_reached"])
         self.assertEqual(res["calls_remaining"], 0)
         self.assertEqual(res["targets"], [])
