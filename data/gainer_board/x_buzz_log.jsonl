@@ -229,3 +229,7 @@
 {"ts": "2026-11-03T00:13:40+08:00", "symbol": "ETHUSDT", "tool": "search", "query": "($ETH OR #ETH) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
 {"ts": "2026-11-03T01:16:43+08:00", "symbol": "MITOUSDT", "tool": "counts", "query": "($MITO OR #MITO) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
 {"ts": "2026-11-03T01:16:43+08:00", "symbol": "MITOUSDT", "tool": "search", "query": "($MITO OR #MITO) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
+{"ts": "2026-11-03T04:11:13+08:00", "symbol": "HOTUSDT", "tool": "counts", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 82}
+{"ts": "2026-11-03T04:11:14+08:00", "symbol": "XRPUSDT", "tool": "counts", "query": "($XRP OR #XRP) (crypto OR binance) lang:en -is:retweet", "result_count": 199}
+{"ts": "2026-11-03T04:11:40+08:00", "symbol": "HOTUSDT", "tool": "search", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-03T04:11:45+08:00", "symbol": "XRPUSDT", "tool": "search", "query": "(XRP OR #XRP) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
