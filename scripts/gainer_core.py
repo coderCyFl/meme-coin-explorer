@@ -179,13 +179,13 @@ def surge_fire(sf):
 #   (a) 起步 — qv>=$3M, not 🔥, 15m>=+2.5%, 1h>=0, prior-24h range>=25%.
 #   (b) 細盤 — qv $1.5M..$3M + surge_raw.
 #   (c) prec / grind prec_e — MODEST WIDEN 2026-10-30b: qv>=$3M, not 🔥,
-#       1h>=+1.2% (was 1.5), vr>=1.5x, 24h%<+15%. Target ~+2–5 early flags/day, not FP explode.
+#       1h>=+1.2% (was 1.5), vr>=1.5x, 24h%<+8% (P1 trial 2026-11-03; was +15%). Target earlier capture; kill if prec collapses.
 #   (d) X 熱度早標 (x_early_ok) — when x_buzz flips 熱/升溫 AND c24<+15 AND not top-20 AND
 #       1h vol≥1.5x → emit ⚡ via=x_buzz (can coexist with prec). Keep 🚩 shill. X stays hourly.
 # Capture scorecard UNCHANGED: early = before top20 + c24<15. X is never a buy signal by itself.
 # Still fails buy gate on 4h mean → watch-only 「觀察」.
 E2_C15, E2_C1_MIN, E2_RNG24, E2_LOW_QV = 2.5, 0.0, 25.0, 1.5e6
-E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 1.2, 1.5, 15.0
+E2_PREC_C1, E2_PREC_VR, E2_PREC_C24_MAX = 1.2, 1.5, 8.0
 # X 熱度早標 thresholds (Strategy/QA lock 2026-10-30)
 X_EARLY_VERDICTS = ("熱", "升溫")
 X_EARLY_C24_MAX, X_EARLY_VR = 15.0, 1.5

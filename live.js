@@ -620,13 +620,13 @@
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
   const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
-  // ⚡ v2 (20261030d, mirrors gainer_core.early2_at): 起步 + prec_e 1.2/1.5/15 + 細盤 + X熱度早標; watch-only.
+  // ⚡ v2 (P1 20261103, mirrors gainer_core.early2_at): 起步 + prec_e 1.2/1.5/8 + 細盤 + X熱度早標; watch-only.
   //   起步: 24h vol ≥ $3M, not 🔥, 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
-  //   prec_e (grind): 24h vol ≥ $3M, not 🔥, 1h ≥ +1.5%, vol ≥ 1.5x, 24h % < +15%
+  //   prec_e (grind): 24h vol ≥ $3M, not 🔥, 1h ≥ +1.2%, vol ≥ 1.5x, 24h % < +8% (was +15%; P1 earlier e2)
   //   細盤: 24h vol $1.5M–$3M with the 🔥 price/volume condition
   //   suppressed when 🔥 (≥ $3M) fired on that coin in the 16 bars up to the signal bar.
   const GB_E2_C15 = 2.5, GB_E2_C1_MIN = 0, GB_E2_RNG24 = 25, GB_E2_LOW_QV = 1.5e6;
-  const GB_E2_PREC_C1 = 1.2, GB_E2_PREC_VR = 1.5, GB_E2_PREC_C24_MAX = 15;
+  const GB_E2_PREC_C1 = 1.2, GB_E2_PREC_VR = 1.5, GB_E2_PREC_C24_MAX = 8;
   // X 熱度早標 (Strategy/QA 2026-10-30): 熱/升溫 + c24<15 + vr≥1.5 + not top20 → ⚡ via=x_buzz
   const GB_X_EARLY_C24_MAX = 15, GB_X_EARLY_VR = 1.5;
   // Scan pool: EVERY eligible coin passing a cheap ticker pre-filter (no top-10 cap any more):
