@@ -5,42 +5,42 @@
    "symbol": "HOTUSDT",
    "base": "HOT",
    "flag": "pump",
-   "trigger_at": "2026-11-03T04:30:00+08:00",
-   "checked_at": "2026-11-03T08:10:44+08:00",
-   "posts_last_1h": 64,
-   "posts_prev_6h_avg_per_h": 86.0,
-   "spike_ratio": 0.74,
-   "verdict": "冷",
-   "one_line": "冷·熱錢包雜音蓋過",
+   "trigger_at": "2026-11-03T19:15:00+08:00",
+   "checked_at": "2026-11-03T19:18:08+08:00",
+   "posts_last_1h": 79,
+   "posts_prev_6h_avg_per_h": 52.33,
+   "spike_ratio": 1.51,
+   "verdict": "升溫",
+   "one_line": "升溫但多熱錢包雜音",
    "shill_flag": true,
-   "big_accounts": 0,
+   "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2117400286381604966",
-     "url": "https://x.com/HYPERBEASTAI/status/2117400286381604966",
-     "text": "Brazil's biggest crypto exchange just put numbers on its hack. Mercado Bitcoin says about 49 million dollars moved out in the incident, 11.…",
+     "id": "2117567958549459334",
+     "url": "https://x.com/Vindicatedchidi/status/2117567958549459334",
+     "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There…",
+     "likes": 9,
+     "author_username": "Vindicatedchidi",
+     "author_followers": 208776,
+     "created_at": "2026-11-03T18:41:58+08:00"
+    },
+    {
+     "id": "2117560923464544430",
+     "url": "https://x.com/mai_thanhVN/status/2117560923464544430",
+     "text": "Back in February I pulled my USDT off the exchange and into a wallet where I hold the keys. October proved it right: tampered Ledger device…",
+     "likes": 5,
+     "author_username": "mai_thanhVN",
+     "author_followers": 33750,
+     "created_at": "2026-11-03T18:14:01+08:00"
+    },
+    {
+     "id": "2117547822929359156",
+     "url": "https://x.com/cryptoanalyst81/status/2117547822929359156",
+     "text": "$HOT Weekly Timeframe #BTC #ETH #Bitcoin #Binance #ARIAUSDT #AGTUSDT #SOXSUSDT #JCTUSDT #ICNTUSDT #PIEVERSE #XAG #RUNEUSDT #IRYSUSDT #BMTUS…",
      "likes": 2,
-     "author_username": "HYPERBEASTAI",
-     "author_followers": 128,
-     "created_at": "2026-11-03T07:35:42+08:00"
-    },
-    {
-     "id": "2117405574459736193",
-     "url": "https://x.com/smotrhq/status/2117405574459736193",
-     "text": "So who was our user? Etherscan labels the wallet Binance Hot Wallet Exploiter 18, linked to the reported ~$6.3bn hack. It swapped 125m USDT…",
-     "likes": 1,
-     "author_username": "smotrhq",
-     "author_followers": 4,
-     "created_at": "2026-11-03T07:56:43+08:00"
-    },
-    {
-     "id": "2117404465687060897",
-     "url": "https://x.com/gozogame/status/2117404465687060897",
-     "text": "Bitcoin's lowest point this year was $58K in early July. The Binance hack has already happened. $6.3B vanished from their hot wallets.",
-     "likes": 1,
-     "author_username": "gozogame",
-     "author_followers": 207,
-     "created_at": "2026-11-03T07:52:18+08:00"
+     "author_username": "cryptoanalyst81",
+     "author_followers": 1698,
+     "created_at": "2026-11-03T17:21:57+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1353,15 +1353,58 @@
      "created_at": "2026-11-03T14:03:01+08:00"
     }
    ]
+  },
+  {
+   "symbol": "HOTUSDT",
+   "base": "HOT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T19:15:00+08:00",
+   "checked_at": "2026-11-03T19:18:08+08:00",
+   "posts_last_1h": 79,
+   "posts_prev_6h_avg_per_h": 52.33,
+   "spike_ratio": 1.51,
+   "verdict": "升溫",
+   "one_line": "升溫但多熱錢包雜音",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117567958549459334",
+     "url": "https://x.com/Vindicatedchidi/status/2117567958549459334",
+     "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There…",
+     "likes": 9,
+     "author_username": "Vindicatedchidi",
+     "author_followers": 208776,
+     "created_at": "2026-11-03T18:41:58+08:00"
+    },
+    {
+     "id": "2117560923464544430",
+     "url": "https://x.com/mai_thanhVN/status/2117560923464544430",
+     "text": "Back in February I pulled my USDT off the exchange and into a wallet where I hold the keys. October proved it right: tampered Ledger device…",
+     "likes": 5,
+     "author_username": "mai_thanhVN",
+     "author_followers": 33750,
+     "created_at": "2026-11-03T18:14:01+08:00"
+    },
+    {
+     "id": "2117547822929359156",
+     "url": "https://x.com/cryptoanalyst81/status/2117547822929359156",
+     "text": "$HOT Weekly Timeframe #BTC #ETH #Bitcoin #Binance #ARIAUSDT #AGTUSDT #SOXSUSDT #JCTUSDT #ICNTUSDT #PIEVERSE #XAG #RUNEUSDT #IRYSUSDT #BMTUS…",
+     "likes": 2,
+     "author_username": "cryptoanalyst81",
+     "author_followers": 1698,
+     "created_at": "2026-11-03T17:21:57+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 42,
+  "calls_today": 44,
   "cap_reached": false,
-  "updated_at": "2026-11-03T18:15:27+08:00"
+  "updated_at": "2026-11-03T19:18:17+08:00"
  },
- "updated_at": "2026-11-03T18:15:27+08:00",
+ "updated_at": "2026-11-03T19:18:17+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
