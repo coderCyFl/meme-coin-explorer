@@ -788,42 +788,42 @@
    "symbol": "FILUSDT",
    "base": "FIL",
    "flag": "pump",
-   "trigger_at": "2026-11-03T23:15:00+08:00",
-   "checked_at": "2026-11-03T23:16:13+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 2.5,
-   "spike_ratio": 0.0,
+   "trigger_at": "2026-11-04T05:15:00+08:00",
+   "checked_at": "2026-11-04T05:14:19+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 1.17,
+   "spike_ratio": 1.71,
    "verdict": "冷",
-   "one_line": "討論少兼多圖表喊單",
+   "one_line": "量淡兼喊單多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117593623042936994",
-     "url": "https://x.com/SamWilliam18504/status/2117593623042936994",
-     "text": "FIL holding key support ~$0.79, chart projecting upside toward $60. NFA #FIL",
-     "likes": 29,
-     "author_username": "SamWilliam18504",
-     "author_followers": 545,
-     "created_at": "2026-11-03T20:23:57+08:00"
+     "id": "2117636670061248769",
+     "url": "https://x.com/leeky_k_crypt/status/2117636670061248769",
+     "text": "FILECOIN REWARDS FOR PAID SERVICES HIT 5.7% On Nov 1, Filecoin (@Filecoin) sent 3,198.78 FIL of its block rewards, the new FIL the network …",
+     "likes": 53,
+     "author_username": "leeky_k_crypt",
+     "author_followers": 4263,
+     "created_at": "2026-11-03T23:15:00+08:00"
     },
     {
-     "id": "2117535499988738454",
-     "url": "https://x.com/Jus7Degen/status/2117535499988738454",
-     "text": "filecoin:native — infrastructure to store the world's growing data",
-     "likes": 27,
-     "author_username": "Jus7Degen",
-     "author_followers": 4805,
-     "created_at": "2026-11-03T16:32:59+08:00"
+     "id": "2117667515044090067",
+     "url": "https://x.com/dreamchaserjtk/status/2117667515044090067",
+     "text": "FILECOIN (FIL) WEEKLY ANALYSIS! FIL IS AT A CRITICAL SUPPORT ZONE! THE WEEKLY CHART IS SHOWING POTENTIAL BUYING PRESSURE THAT COULD PUSH FI…",
+     "likes": 1,
+     "author_username": "dreamchaserjtk",
+     "author_followers": 11184,
+     "created_at": "2026-11-04T01:17:34+08:00"
     },
     {
-     "id": "2117602707355631862",
-     "url": "https://x.com/Jimmyy_yyyy/status/2117602707355631862",
-     "text": "30 CRYPTO PROJECTS AND THEIR BIGGEST FAILURES — includes FIL era incidents",
-     "likes": 2,
-     "author_username": "Jimmyy_yyyy",
-     "author_followers": 977,
-     "created_at": "2026-11-03T21:00:03+08:00"
+     "id": "2117678359668793484",
+     "url": "https://x.com/Daily_T_Setups/status/2117678359668793484",
+     "text": "$FIL auction rotation shows buyers absorbing inside value between 0.86087 and 0.87786. Long setup Entry: 0.8711 Stop: 0.86481 (-0.7%) TP1: …",
+     "likes": 0,
+     "author_username": "Daily_T_Setups",
+     "author_followers": 1987,
+     "created_at": "2026-11-04T02:00:40+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -947,6 +947,50 @@
      "author_username": "FantasyWhales",
      "author_followers": 1100,
      "created_at": "2026-11-04T00:52:03+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "AVAXUSDT": {
+   "symbol": "AVAXUSDT",
+   "base": "AVAX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T05:15:00+08:00",
+   "checked_at": "2026-11-04T05:14:19+08:00",
+   "posts_last_1h": 12,
+   "posts_prev_6h_avg_per_h": 3.5,
+   "spike_ratio": 3.43,
+   "verdict": "升溫",
+   "one_line": "量升但推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117723539067539875",
+     "url": "https://x.com/Alfred3o3/status/2117723539067539875",
+     "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
+     "likes": 3,
+     "author_username": "Alfred3o3",
+     "author_followers": 353,
+     "created_at": "2026-11-04T05:00:11+08:00"
+    },
+    {
+     "id": "2117714127841890336",
+     "url": "https://x.com/mndsetdex/status/2117714127841890336",
+     "text": "Development Update! We’re making serious progress! Multi-chain testing is underway, with $SOL, $ETH, $BNB, $BTC, $MATIC, $AVAX , $ARB & $HO…",
+     "likes": 2,
+     "author_username": "mndsetdex",
+     "author_followers": 257,
+     "created_at": "2026-11-04T04:22:47+08:00"
+    },
+    {
+     "id": "2117716274931491081",
+     "url": "https://x.com/leviathan_news/status/2117716274931491081",
+     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6% and DefiLlama expand…",
+     "likes": 1,
+     "author_username": "leviathan_news",
+     "author_followers": 7534,
+     "created_at": "2026-11-04T04:31:19+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -3333,15 +3377,101 @@
      "created_at": "2026-11-04T04:12:25+08:00"
     }
    ]
+  },
+  {
+   "symbol": "AVAXUSDT",
+   "base": "AVAX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T05:15:00+08:00",
+   "checked_at": "2026-11-04T05:14:19+08:00",
+   "posts_last_1h": 12,
+   "posts_prev_6h_avg_per_h": 3.5,
+   "spike_ratio": 3.43,
+   "verdict": "升溫",
+   "one_line": "量升但推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117723539067539875",
+     "url": "https://x.com/Alfred3o3/status/2117723539067539875",
+     "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
+     "likes": 3,
+     "author_username": "Alfred3o3",
+     "author_followers": 353,
+     "created_at": "2026-11-04T05:00:11+08:00"
+    },
+    {
+     "id": "2117714127841890336",
+     "url": "https://x.com/mndsetdex/status/2117714127841890336",
+     "text": "Development Update! We’re making serious progress! Multi-chain testing is underway, with $SOL, $ETH, $BNB, $BTC, $MATIC, $AVAX , $ARB & $HO…",
+     "likes": 2,
+     "author_username": "mndsetdex",
+     "author_followers": 257,
+     "created_at": "2026-11-04T04:22:47+08:00"
+    },
+    {
+     "id": "2117716274931491081",
+     "url": "https://x.com/leviathan_news/status/2117716274931491081",
+     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6% and DefiLlama expand…",
+     "likes": 1,
+     "author_username": "leviathan_news",
+     "author_followers": 7534,
+     "created_at": "2026-11-04T04:31:19+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "FILUSDT",
+   "base": "FIL",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T05:15:00+08:00",
+   "checked_at": "2026-11-04T05:14:19+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 1.17,
+   "spike_ratio": 1.71,
+   "verdict": "冷",
+   "one_line": "量淡兼喊單多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117636670061248769",
+     "url": "https://x.com/leeky_k_crypt/status/2117636670061248769",
+     "text": "FILECOIN REWARDS FOR PAID SERVICES HIT 5.7% On Nov 1, Filecoin (@Filecoin) sent 3,198.78 FIL of its block rewards, the new FIL the network …",
+     "likes": 53,
+     "author_username": "leeky_k_crypt",
+     "author_followers": 4263,
+     "created_at": "2026-11-03T23:15:00+08:00"
+    },
+    {
+     "id": "2117667515044090067",
+     "url": "https://x.com/dreamchaserjtk/status/2117667515044090067",
+     "text": "FILECOIN (FIL) WEEKLY ANALYSIS! FIL IS AT A CRITICAL SUPPORT ZONE! THE WEEKLY CHART IS SHOWING POTENTIAL BUYING PRESSURE THAT COULD PUSH FI…",
+     "likes": 1,
+     "author_username": "dreamchaserjtk",
+     "author_followers": 11184,
+     "created_at": "2026-11-04T01:17:34+08:00"
+    },
+    {
+     "id": "2117678359668793484",
+     "url": "https://x.com/Daily_T_Setups/status/2117678359668793484",
+     "text": "$FIL auction rotation shows buyers absorbing inside value between 0.86087 and 0.87786. Long setup Entry: 0.8711 Stop: 0.86481 (-0.7%) TP1: …",
+     "likes": 0,
+     "author_username": "Daily_T_Setups",
+     "author_followers": 1987,
+     "created_at": "2026-11-04T02:00:40+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 18,
+  "calls_today": 23,
   "cap_reached": false,
-  "updated_at": "2026-11-04T04:19:50+08:00"
+  "updated_at": "2026-11-04T05:14:45+08:00"
  },
- "updated_at": "2026-11-04T04:19:50+08:00",
+ "updated_at": "2026-11-04T05:14:45+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

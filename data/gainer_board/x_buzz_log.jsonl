@@ -325,3 +325,8 @@
 {"ts": "2026-11-04T03:15:37+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-04T04:19:00+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 5}
 {"ts": "2026-11-04T04:19:05+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 5}
+{"ts": "2026-11-04T05:13:20+08:00", "symbol": "AVAXUSDT", "tool": "counts", "query": "($AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 33}
+{"ts": "2026-11-04T05:13:20+08:00", "symbol": "FILUSDT", "tool": "counts", "query": "($FIL OR #FIL) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-11-04T05:13:40+08:00", "symbol": "AVAXUSDT", "tool": "search", "query": "(AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
+{"ts": "2026-11-04T05:13:40+08:00", "symbol": "FILUSDT", "tool": "search", "query": "(FIL OR #FIL) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-11-04T05:14:00+08:00", "symbol": "FILUSDT", "tool": "search", "query": "(FIL OR #FIL OR Filecoin) (crypto OR binance OR Filecoin) lang:en -is:retweet", "result_count": 10}
