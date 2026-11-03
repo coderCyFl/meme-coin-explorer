@@ -1,7 +1,35 @@
 {
-  "fetched_at": "2026-11-03T14:09:14+08:00",
+  "fetched_at": "2026-11-03T15:09:55+08:00",
   "source": "X News",
   "stories": [
+    {
+      "id": "2117512259005993060",
+      "title": "TRON Blockchain Hits 16 Billion Transactions and Leads USDT Supply",
+      "title_en": "TRON Blockchain Hits 16 Billion Transactions and Leads USDT Supply",
+      "summary": "By early November 2026, TRON reached 16 billion cumulative transactions and averaged 11.5 million daily, while Q3 stablecoin settlement hit $2.21 trillion, up 5.1% from before. It surpassed Ethereum in USDT supply with $92.35 billion versus $86.69 billion, handling 73% of global stablecoin volume. New U.S. products like the Canary Staked TRX ETF and regulated TRX futures are drawing traditional investors, as daily fees topped $904,000 and accounts exceed 411 million.",
+      "summary_en": "By early November 2026, TRON reached 16 billion cumulative transactions and averaged 11.5 million daily, while Q3 stablecoin settlement hit $2.21 trillion, up 5.1% from before. It surpassed Ethereum in USDT supply with $92.35 billion versus $86.69 billion, handling 73% of global stablecoin volume. New U.S. products like the Canary Staked TRX ETF and regulated TRX futures are drawing traditional investors, as daily fees topped $904,000 and accounts exceed 411 million.",
+      "published_at": "2026-11-03T07:05:29.000Z",
+      "url": "https://x.com/i/trending/2117512259005993060",
+      "tags": [],
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117377180749660392",
+      "title": "Edited Biden-Pepe Meme Floods Timelines with Shock Humor",
+      "title_en": "Edited Biden-Pepe Meme Floods Timelines with Shock Humor",
+      "summary": "The meme, a fresh 2026 edit showing Biden in a graphic act with the cartoon frog, draws reactions like 'out of fucking pocket' and vows to repost so no one escapes. Comments mix dark jokes, feigned alerts to authorities, and disbelief, echoing Pepe's long history in political memes from creator Matt Furie. A separate video of a muscular man in tight plaid underwear sparks its own playful desire and shares, as users turn private shocks into public chains on the platform.",
+      "summary_en": "The meme, a fresh 2026 edit showing Biden in a graphic act with the cartoon frog, draws reactions like 'out of fucking pocket' and vows to repost so no one escapes. Comments mix dark jokes, feigned alerts to authorities, and disbelief, echoing Pepe's long history in political memes from creator Matt Furie. A separate video of a muscular man in tight plaid underwear sparks its own playful desire and shares, as users turn private shocks into public chains on the platform.",
+      "published_at": "2026-11-03T03:44:53.000Z",
+      "url": "https://x.com/i/trending/2117377180749660392",
+      "tags": [
+        "Memes"
+      ],
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "Other",
+      "source": "X News"
+    },
     {
       "id": "2117260404883939594",
       "title": "Mercado Bitcoin Halts Services After $38 Million Security Breach",
@@ -1763,6 +1791,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-03T14:09:14+08:00",
+  "x_fetched_at": "2026-11-03T15:09:55+08:00",
   "x_job": "hourly-update"
 }
