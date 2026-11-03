@@ -956,12 +956,12 @@
    "base": "AVAX",
    "flag": "pump",
    "trigger_at": "2026-11-04T05:15:00+08:00",
-   "checked_at": "2026-11-04T05:14:19+08:00",
-   "posts_last_1h": 12,
-   "posts_prev_6h_avg_per_h": 3.5,
-   "spike_ratio": 3.43,
-   "verdict": "升溫",
-   "one_line": "量升但推廣文多",
+   "checked_at": "2026-11-04T06:20:31+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 4.17,
+   "spike_ratio": 1.68,
+   "verdict": "冷",
+   "one_line": "量穩但訊號bot多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
@@ -969,28 +969,116 @@
      "id": "2117723539067539875",
      "url": "https://x.com/Alfred3o3/status/2117723539067539875",
      "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
-     "likes": 3,
+     "likes": 4,
      "author_username": "Alfred3o3",
-     "author_followers": 353,
+     "author_followers": 356,
      "created_at": "2026-11-04T05:00:11+08:00"
     },
     {
      "id": "2117714127841890336",
      "url": "https://x.com/mndsetdex/status/2117714127841890336",
      "text": "Development Update! We’re making serious progress! Multi-chain testing is underway, with $SOL, $ETH, $BNB, $BTC, $MATIC, $AVAX , $ARB & $HO…",
-     "likes": 2,
+     "likes": 3,
      "author_username": "mndsetdex",
-     "author_followers": 257,
+     "author_followers": 256,
      "created_at": "2026-11-04T04:22:47+08:00"
     },
     {
      "id": "2117716274931491081",
      "url": "https://x.com/leviathan_news/status/2117716274931491081",
-     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6% and DefiLlama expand…",
+     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6%",
      "likes": 1,
      "author_username": "leviathan_news",
-     "author_followers": 7534,
+     "author_followers": 7533,
      "created_at": "2026-11-04T04:31:19+08:00"
+    }
+   ],
+   "checks_this_trigger": 2
+  },
+  "AEROUSDT": {
+   "symbol": "AEROUSDT",
+   "base": "AERO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T06:30:00+08:00",
+   "checked_at": "2026-11-04T06:20:31+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 2.67,
+   "verdict": "冷",
+   "one_line": "量少兼推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117655546723746231",
+     "url": "https://x.com/InvestwithDoc/status/2117655546723746231",
+     "text": "Crypto is on DISCOUNT!!! Are you Buying? near:native -15% $VVV -16% $INJ -14% algorand:native -13% $TAO -12% $AERO -12%",
+     "likes": 13,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9358,
+     "created_at": "2026-11-04T00:30:01+08:00"
+    },
+    {
+     "id": "2117716274931491081",
+     "url": "https://x.com/leviathan_news/status/2117716274931491081",
+     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6%",
+     "likes": 1,
+     "author_username": "leviathan_news",
+     "author_followers": 7533,
+     "created_at": "2026-11-04T04:31:19+08:00"
+    },
+    {
+     "id": "2117685950348468268",
+     "url": "https://x.com/BitcoinJesusETH/status/2117685950348468268",
+     "text": "Our job at Milk Road PRO is to find crypto winners before the market does. We were early to $AERO (+46.9%), $UNI (+44.9%), and $SKY (+38.9%…",
+     "likes": 1,
+     "author_username": "BitcoinJesusETH",
+     "author_followers": 7393,
+     "created_at": "2026-11-04T02:30:49+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "ENAUSDT": {
+   "symbol": "ENAUSDT",
+   "base": "ENA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T06:30:00+08:00",
+   "checked_at": "2026-11-04T06:20:31+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.5,
+   "spike_ratio": 1.2,
+   "verdict": "冷",
+   "one_line": "量淡但有支撐討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117700985661595708",
+     "url": "https://x.com/MstrTranquility/status/2117700985661595708",
+     "text": "$ENA went from $0.29 to $0.17 and the bears are still asking for more Fair enough, the trend is bearish fams But we’re now sitting on a pre…",
+     "likes": 38,
+     "author_username": "MstrTranquility",
+     "author_followers": 12022,
+     "created_at": "2026-11-04T03:30:34+08:00"
+    },
+    {
+     "id": "2117723539067539875",
+     "url": "https://x.com/Alfred3o3/status/2117723539067539875",
+     "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
+     "likes": 4,
+     "author_username": "Alfred3o3",
+     "author_followers": 356,
+     "created_at": "2026-11-04T05:00:11+08:00"
+    },
+    {
+     "id": "2117697311761653852",
+     "url": "https://x.com/Binance_NZL/status/2117697311761653852",
+     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: ETH: ENA, USDE, PENDLE, WLD, QNT, SHIB…",
+     "likes": 3,
+     "author_username": "Binance_NZL",
+     "author_followers": 7962,
+     "created_at": "2026-11-04T03:15:58+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -3463,15 +3551,144 @@
      "created_at": "2026-11-04T02:00:40+08:00"
     }
    ]
+  },
+  {
+   "symbol": "AEROUSDT",
+   "base": "AERO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T06:30:00+08:00",
+   "checked_at": "2026-11-04T06:20:31+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 2.67,
+   "verdict": "冷",
+   "one_line": "量少兼推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117655546723746231",
+     "url": "https://x.com/InvestwithDoc/status/2117655546723746231",
+     "text": "Crypto is on DISCOUNT!!! Are you Buying? near:native -15% $VVV -16% $INJ -14% algorand:native -13% $TAO -12% $AERO -12%",
+     "likes": 13,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9358,
+     "created_at": "2026-11-04T00:30:01+08:00"
+    },
+    {
+     "id": "2117716274931491081",
+     "url": "https://x.com/leviathan_news/status/2117716274931491081",
+     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6%",
+     "likes": 1,
+     "author_username": "leviathan_news",
+     "author_followers": 7533,
+     "created_at": "2026-11-04T04:31:19+08:00"
+    },
+    {
+     "id": "2117685950348468268",
+     "url": "https://x.com/BitcoinJesusETH/status/2117685950348468268",
+     "text": "Our job at Milk Road PRO is to find crypto winners before the market does. We were early to $AERO (+46.9%), $UNI (+44.9%), and $SKY (+38.9%…",
+     "likes": 1,
+     "author_username": "BitcoinJesusETH",
+     "author_followers": 7393,
+     "created_at": "2026-11-04T02:30:49+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ENAUSDT",
+   "base": "ENA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T06:30:00+08:00",
+   "checked_at": "2026-11-04T06:20:31+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.5,
+   "spike_ratio": 1.2,
+   "verdict": "冷",
+   "one_line": "量淡但有支撐討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117700985661595708",
+     "url": "https://x.com/MstrTranquility/status/2117700985661595708",
+     "text": "$ENA went from $0.29 to $0.17 and the bears are still asking for more Fair enough, the trend is bearish fams But we’re now sitting on a pre…",
+     "likes": 38,
+     "author_username": "MstrTranquility",
+     "author_followers": 12022,
+     "created_at": "2026-11-04T03:30:34+08:00"
+    },
+    {
+     "id": "2117723539067539875",
+     "url": "https://x.com/Alfred3o3/status/2117723539067539875",
+     "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
+     "likes": 4,
+     "author_username": "Alfred3o3",
+     "author_followers": 356,
+     "created_at": "2026-11-04T05:00:11+08:00"
+    },
+    {
+     "id": "2117697311761653852",
+     "url": "https://x.com/Binance_NZL/status/2117697311761653852",
+     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: ETH: ENA, USDE, PENDLE, WLD, QNT, SHIB…",
+     "likes": 3,
+     "author_username": "Binance_NZL",
+     "author_followers": 7962,
+     "created_at": "2026-11-04T03:15:58+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "AVAXUSDT",
+   "base": "AVAX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T05:15:00+08:00",
+   "checked_at": "2026-11-04T06:20:31+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 4.17,
+   "spike_ratio": 1.68,
+   "verdict": "冷",
+   "one_line": "量穩但訊號bot多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117723539067539875",
+     "url": "https://x.com/Alfred3o3/status/2117723539067539875",
+     "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
+     "likes": 4,
+     "author_username": "Alfred3o3",
+     "author_followers": 356,
+     "created_at": "2026-11-04T05:00:11+08:00"
+    },
+    {
+     "id": "2117714127841890336",
+     "url": "https://x.com/mndsetdex/status/2117714127841890336",
+     "text": "Development Update! We’re making serious progress! Multi-chain testing is underway, with $SOL, $ETH, $BNB, $BTC, $MATIC, $AVAX , $ARB & $HO…",
+     "likes": 3,
+     "author_username": "mndsetdex",
+     "author_followers": 256,
+     "created_at": "2026-11-04T04:22:47+08:00"
+    },
+    {
+     "id": "2117716274931491081",
+     "url": "https://x.com/leviathan_news/status/2117716274931491081",
+     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6%",
+     "likes": 1,
+     "author_username": "leviathan_news",
+     "author_followers": 7533,
+     "created_at": "2026-11-04T04:31:19+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 23,
+  "calls_today": 29,
   "cap_reached": false,
-  "updated_at": "2026-11-04T05:14:45+08:00"
+  "updated_at": "2026-11-04T06:20:31+08:00"
  },
- "updated_at": "2026-11-04T05:14:45+08:00",
+ "updated_at": "2026-11-04T06:20:31+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

@@ -330,3 +330,9 @@
 {"ts": "2026-11-04T05:13:40+08:00", "symbol": "AVAXUSDT", "tool": "search", "query": "(AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
 {"ts": "2026-11-04T05:13:40+08:00", "symbol": "FILUSDT", "tool": "search", "query": "(FIL OR #FIL) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
 {"ts": "2026-11-04T05:14:00+08:00", "symbol": "FILUSDT", "tool": "search", "query": "(FIL OR #FIL OR Filecoin) (crypto OR binance OR Filecoin) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-04T06:20:31+08:00", "symbol": "AEROUSDT", "tool": "counts", "query": "($AERO OR #AERO) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
+{"ts": "2026-11-04T06:20:31+08:00", "symbol": "ENAUSDT", "tool": "counts", "query": "($ENA OR #ENA) (crypto OR binance) lang:en -is:retweet", "result_count": 18}
+{"ts": "2026-11-04T06:20:31+08:00", "symbol": "AVAXUSDT", "tool": "counts", "query": "($AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 32}
+{"ts": "2026-11-04T06:20:31+08:00", "symbol": "AEROUSDT", "tool": "search", "query": "(AERO OR #AERO) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-11-04T06:20:31+08:00", "symbol": "ENAUSDT", "tool": "search", "query": "(ENA OR #ENA) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-04T06:20:31+08:00", "symbol": "AVAXUSDT", "tool": "search", "query": "(AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
