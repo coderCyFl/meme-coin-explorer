@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
-<link rel="stylesheet" href="styles.css?v=20261104b">
+<link rel="stylesheet" href="styles.css?v=20261104c">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
 <link rel="icon" href="icons/icon-32.png?v=20261030g" type="image/png" sizes="32x32">
@@ -20,6 +20,8 @@
 <script>
 (function(){try{var m=localStorage.getItem('mce:ui:mode')||'simple';
 document.body.classList.add(m==='full'?'ui-full':'ui-simple');
+var L=localStorage.getItem('mce:lang:v1');
+document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 }catch(e){document.body.classList.add('ui-simple');}})();
 </script>
 <header class="top">
@@ -31,11 +33,15 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
   </div>
   <div class="header-right">
+    <div class="seg mini lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <button type="button" class="segbtn active" data-lang="en">EN</button>
+      <button type="button" class="segbtn" data-lang="zh">ZH</button>
+    </div>
     <div class="auth-bar" id="authBar" aria-label="Account">
-      <button type="button" class="sm auth-btn" id="authLoginBtn">Login</button>
-      <button type="button" class="sm auth-btn auth-cta" id="authRegisterBtn">Register</button>
+      <button type="button" class="sm auth-btn" id="authLoginBtn" data-i18n="auth.login">Login</button>
+      <button type="button" class="sm auth-btn auth-cta" id="authRegisterBtn" data-i18n="auth.register">Register</button>
       <span class="auth-user" id="authUserLabel" hidden></span>
-      <button type="button" class="sm auth-btn" id="authLogoutBtn" hidden>Logout</button>
+      <button type="button" class="sm auth-btn" id="authLogoutBtn" hidden data-i18n="auth.logout">Logout</button>
     </div>
     <div class="seg mini ui-toggle" id="uiModeToggle" title="UI mode">
       <button type="button" class="segbtn active" data-ui="simple">Simple</button>
@@ -46,21 +52,21 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </header>
 
 <div class="disclaimer disc-chip" role="note">
-  <div class="disc-one">Mock · paper <span class="disc-saved" id="pfSavedHint" hidden>saved</span></div>
+  <div class="disc-one"><span data-i18n="mock.paper">Mock · paper</span> <span class="disc-saved" id="pfSavedHint" hidden data-i18n="mock.saved">saved</span></div>
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
-  <a href="#picks" class="tab" data-view="picks">Today's picks</a>
-  <a href="#browse" class="tab" data-view="browse">Markets</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">Portfolio</a>
+  <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
+  <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
+  <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
   <a href="#news" class="tab" data-view="news">News</a>
   <a href="#explore" class="tab" data-view="explore">Scan</a>
 </nav>
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="Simple tabs">
-  <a href="#picks" class="tab" data-view="picks">Today's picks</a>
-  <a href="#browse" class="tab" data-view="browse">Markets</a>
-  <a href="#portfolio" class="tab" data-view="portfolio">Portfolio</a>
-  <a href="#more" class="tab" data-view="more">More</a>
+  <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
+  <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
+  <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
+  <a href="#more" class="tab" data-view="more" data-i18n="tab.more">More</a>
 </nav>
 
 <details class="howto full-only" id="howto" hidden>
@@ -182,7 +188,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="gb-alert" id="gainerAlert" hidden></div>
     <p class="tiny muted gb-xcap" id="gainerXCap" hidden>X daily cap used</p>
     <div id="gainerList" class="gb-list"></div>
-    <h3 class="gb-tier-title">⚡ Early <span class="muted tiny">24h lock</span></h3>
+    <h3 class="gb-tier-title"><span data-i18n="early.title">⚡ Early</span> <span class="muted tiny" data-i18n="early.lock">24h lock</span></h3>
     <div id="earlyList" class="gb-list"></div>
   </section>
 
@@ -206,20 +212,20 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel daily-batch-panel simple-only" id="dailyBatchPanel" aria-live="polite">
     <div class="panelhead">
       <div>
-        <h2 class="home-title">Today</h2>
-        <p class="home-sub" id="dailyBatchMeta">Daily watch · separate from Early</p>
+        <h2 class="home-title" data-i18n="today.title">Today</h2>
+        <p class="home-sub" id="dailyBatchMeta" data-i18n="today.sub">Daily watch · separate from Early</p>
       </div>
     </div>
     <div class="table-wrap daily-batch-wrap">
       <table class="data daily-batch-table" id="dailyBatchTable">
         <thead><tr>
-          <th>Coin</th><th class="num">Price</th><th class="num">24h</th>
-          <th>Exit</th><th>Target</th><th>Size</th><th></th>
+          <th data-i18n="th.coin">Coin</th><th class="num" data-i18n="th.price">Price</th><th class="num" data-i18n="th.24h">24h</th>
+          <th data-i18n="th.exit">Exit</th><th data-i18n="th.target">Target</th><th data-i18n="th.size">Size</th><th></th>
         </tr></thead>
         <tbody id="dailyBatchBody"></tbody>
       </table>
     </div>
-    <div class="empty" id="dailyBatchEmpty" hidden>No batch yet.</div>
+    <div class="empty" id="dailyBatchEmpty" hidden data-i18n="empty.batch">No batch yet.</div>
   </section>
 
   <section class="panel home-brief simple-only" id="simpleCardsPanel">
@@ -371,7 +377,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
 
     <div id="posList" class="pos-list" aria-live="polite"></div>
-    <div class="empty pos-empty" id="posEmpty">No positions · tap Buy</div>
+    <div class="empty pos-empty" id="posEmpty" data-i18n="empty.pos">No positions · tap Buy</div>
   </section>
 </div>
 
@@ -381,9 +387,9 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <h2>More</h2>
     <div class="more-list">
       <div class="more-item more-auth-lab" id="moreAuthUser" hidden></div>
-      <button type="button" class="more-item" id="moreAuthLogin">Login</button>
-      <button type="button" class="more-item" id="moreAuthRegister">Register</button>
-      <button type="button" class="more-item" id="moreAuthLogout" hidden>Logout</button>
+      <button type="button" class="more-item" id="moreAuthLogin" data-i18n="auth.login">Login</button>
+      <button type="button" class="more-item" id="moreAuthRegister" data-i18n="auth.register">Register</button>
+      <button type="button" class="more-item" id="moreAuthLogout" hidden data-i18n="auth.logout">Logout</button>
       <a class="more-item" href="#browse">Markets</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
@@ -506,14 +512,14 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <h4 class="gb-tier-title">🔥 Rules</h4>
     <p class="tiny muted">Last 4h: 1h ≥ +5% and vol ≥ 3x avg, or 15m ≥ +5% (no 24h floor). Pad to 6 with candidates (watch only, no buy).</p>
     <div id="gainerPumpBt"></div>
-    <h4 class="gb-tier-title">⚡ Early</h4>
+    <h4 class="gb-tier-title" data-i18n="early.title">⚡ Early</h4>
     <p class="tiny muted">Pre-🔥 start / thin / X buzz · watch only · first flag locks 24h with % vs mention (not a buy).</p>
     <div id="gainerEarlyBt"></div>
     <div class="gacc" id="gainerAcc"></div>
     <div class="gacc" id="gainerCard"></div>
   </div>
   <div id="pfDetail" data-park>
-    <div class="simbanner simbanner-quiet">Mock · paper</div>
+    <div class="simbanner simbanner-quiet" data-i18n="mock.paper">Mock · paper</div>
     <div id="liveStrip" class="live-strip" hidden>
       <span class="live-dot" aria-hidden="true"></span>
       <span id="liveStripText">Live quotes off</span>
@@ -555,7 +561,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
         <th>Coin</th><th class="num">Qty</th><th class="num">Avg entry</th><th class="num">Cost</th>
         <th class="num">Mark</th><th class="num">Value</th><th class="num">uPnL %</th><th class="num">uPnL $</th><th></th>
       </tr></thead><tbody id="holdBody"></tbody></table>
-      <div class="empty" id="holdEmpty">No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.</div></div>
+      <div class="empty" id="holdEmpty" data-i18n="empty.hold">No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.</div></div>
     </div>
     <div id="levSection" class="pos-section lev-section" hidden>
       <h3><span class="kind-badge lev">Leverage</span> (isolated) <span class="en">Can liquidate</span></h3>
@@ -609,22 +615,22 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <dialog id="authDlg" class="sheet auth-sheet">
   <form method="dialog" id="authForm">
     <div class="sheet-head">
-      <b id="authTitle">Login</b>
+      <b id="authTitle" data-i18n="auth.login">Login</b>
       <button type="button" class="iconbtn" id="authClose" aria-label="Close">✕</button>
     </div>
     <div class="seg mini auth-mode" id="authModeSeg" role="tablist" aria-label="Auth mode">
-      <button type="button" class="segbtn active" data-authmode="login">Login</button>
-      <button type="button" class="segbtn" data-authmode="register">Register</button>
+      <button type="button" class="segbtn active" data-authmode="login" data-i18n="auth.login">Login</button>
+      <button type="button" class="segbtn" data-authmode="register" data-i18n="auth.register">Register</button>
     </div>
-    <label for="authUser" class="tiny muted">Username</label>
+    <label for="authUser" class="tiny muted" data-i18n="auth.username">Username</label>
     <input id="authUser" name="username" type="text" autocomplete="username" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" inputmode="text" placeholder="e.g. papertrader">
-    <label for="authPass" class="tiny muted">Password</label>
+    <label for="authPass" class="tiny muted" data-i18n="auth.password">Password</label>
     <input id="authPass" name="password" type="password" autocomplete="current-password" required minlength="4" maxlength="64" placeholder="••••">
-    <p class="muted tiny" id="authHint">Mock paper · unlock your saved portfolio</p>
+    <p class="muted tiny" id="authHint" data-i18n="auth.hint.login">Mock paper · unlock your saved portfolio</p>
     <p class="auth-err" id="authErr" hidden></p>
     <div class="row trade-actions auth-actions">
-      <button type="button" class="ghost" id="authCancel">Cancel</button>
-      <button type="submit" class="primary" id="authSubmit">Sign in</button>
+      <button type="button" class="ghost" id="authCancel" data-i18n="auth.cancel">Cancel</button>
+      <button type="submit" class="primary" id="authSubmit" data-i18n="auth.signin">Sign in</button>
     </div>
   </form>
 </dialog>
@@ -714,6 +720,6 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104b"></script>
+<script src="picks.js?v=20261104c"></script>
 </body>
 </html>
