@@ -1195,12 +1195,129 @@
   // Actions snapshot (static JSON), watch-only 「觀察」 because it failed the 30d buy gate.
   const GB_LOG_KEY = "mce:gainer:log:v1";
   const GB_MULT_KEY = "mce:gainer:mult";
+  const GB_EARLY_LOCK_KEY = "mce:gainer:earlyLock:v1";
+  const GB_EARLY_LOCK_MS = 24 * 3600e3; // display lock only — not paper / scorecard / P1
   const GB_TRIGGER_WINDOW_H = 12;
   const GB_RAW = "https://raw.githubusercontent.com/coderCyFl/meme-coin-explorer/main/";
   let gbBusy = false;
   let gbStatic = { t: 0, summary: null, latest: null };
   function gbMult() { const m = parseFloat(localStorage.getItem(GB_MULT_KEY)); return m > 0 ? m : 2; }
   function gbLoadLog() { try { const o = JSON.parse(localStorage.getItem(GB_LOG_KEY) || "[]"); return Array.isArray(o) ? o : []; } catch (_) { return []; } }
+
+  /** Early 24h display lock (Strategy OK): first early flag → fixed mentioned_at + mention_price; keep row visible 24h. Display only. */
+  function gbLoadEarlyLocks() {
+    try {
+      const o = JSON.parse(localStorage.getItem(GB_EARLY_LOCK_KEY) || "{}");
+      return o && typeof o === "object" && !Array.isArray(o) ? o : {};
+    } catch (_) { return {}; }
+  }
+  function gbSaveEarlyLocks(map) {
+    try { localStorage.setItem(GB_EARLY_LOCK_KEY, JSON.stringify(map)); } catch (_) {}
+  }
+  function gbPruneEarlyLocks(map, now = Date.now()) {
+    for (const k of Object.keys(map)) {
+      const t = map[k] && map[k].mentioned_at ? new Date(map[k].mentioned_at).getTime() : NaN;
+      if (!Number.isFinite(t) || now - t >= GB_EARLY_LOCK_MS) delete map[k];
+    }
+    return map;
+  }
+  /** Persist first early flag only — never reset mentioned_at / mention_price on refresh or re-flag. */
+  function gbTouchEarlyLocks(earlyRows) {
+    const map = gbPruneEarlyLocks(gbLoadEarlyLocks());
+    for (const r of earlyRows || []) {
+      if (!r || !r.symbol || map[r.symbol]) continue;
+      const mentionPx = (r.trigger && r.trigger.price > 0) ? r.trigger.price
+        : (r.serverFlag && r.serverFlag.entry_price_usd > 0) ? r.serverFlag.entry_price_usd
+        : r.price;
+      if (!(mentionPx > 0)) continue;
+      let mentionedAt;
+      if (r.trigger && r.trigger.t) mentionedAt = isoSh(new Date(r.trigger.t));
+      else if (r.serverFlag && r.serverFlag.picked_at) mentionedAt = r.serverFlag.picked_at;
+      else mentionedAt = isoSh();
+      map[r.symbol] = {
+        pair: r.symbol,
+        base: r.base || (r.symbol.endsWith("USDT") ? r.symbol.slice(0, -4) : r.symbol),
+        symbol: r.base || r.symbol,
+        mentioned_at: mentionedAt,
+        mention_price: mentionPx,
+        via: (r.trigger && r.trigger.via) || (r.serverFlag && r.serverFlag.via) || null,
+      };
+    }
+    gbSaveEarlyLocks(map);
+    return map;
+  }
+  /**
+   * Merge live ⚡ rows with retained locks still inside 24h.
+   * Live first; retained/gray lower. Does not change ranking engines, paper opens, or scorecard.
+   */
+  function gbMergeEarlyRetained(liveEarly, priceMap) {
+    const live = Array.isArray(liveEarly) ? liveEarly.slice() : [];
+    const locks = gbTouchEarlyLocks(live);
+    const liveSet = new Set(live.map((e) => e.symbol));
+    const out = live.map((e) => {
+      const lock = locks[e.symbol];
+      return Object.assign({}, e, {
+        mentioned_at: lock ? lock.mentioned_at : null,
+        mention_price: lock ? lock.mention_price : null,
+        retained: false,
+        liveEarly: true,
+      });
+    });
+    const now = Date.now();
+    const pxOf = (pair, fallback) => {
+      if (priceMap && typeof priceMap.get === "function") {
+        const p = priceMap.get(pair);
+        if (p > 0) return p;
+      }
+      try {
+        const br = window.MCE.live && window.MCE.live.board && window.MCE.live.board.get(pair);
+        if (br && br.price > 0) return br.price;
+      } catch (_) {}
+      return fallback;
+    };
+    for (const pair of Object.keys(locks)) {
+      if (liveSet.has(pair)) continue;
+      const lock = locks[pair];
+      const t0 = new Date(lock.mentioned_at).getTime();
+      if (!Number.isFinite(t0) || now - t0 >= GB_EARLY_LOCK_MS) continue;
+      const px = pxOf(pair, lock.mention_price);
+      const base = lock.base || lock.symbol || (pair.endsWith("USDT") ? pair.slice(0, -4) : pair);
+      out.push({
+        symbol: pair,
+        base,
+        price: px,
+        chg24: 0,
+        high: null,
+        fromHigh: null,
+        volRatio: null,
+        volQuote: null,
+        rank24: null,
+        c1h: null,
+        c4h: null,
+        score: -1,
+        tier: "early2",
+        thin: false,
+        spark: [],
+        logo: (window.MCE.live && window.MCE.live.logoUrl && window.MCE.live.logoUrl(base)) || "",
+        mentioned_at: lock.mentioned_at,
+        mention_price: lock.mention_price,
+        retained: true,
+        liveEarly: false,
+        trigger: { t: t0, price: lock.mention_price, via: lock.via || "lock", forming: false },
+        serverFlag: {
+          symbol: base, pair, tier: "early2", picked_at: lock.mentioned_at,
+          entry_price_usd: lock.mention_price, trigger_src: "early_lock", via: lock.via || "lock", forming: false,
+        },
+      });
+    }
+    out.sort((a, b) => {
+      if (!!a.retained !== !!b.retained) return a.retained ? 1 : -1;
+      const ta = (a.trigger && a.trigger.t) || 0;
+      const tb = (b.trigger && b.trigger.t) || 0;
+      return tb - ta || (b.score || 0) - (a.score || 0);
+    });
+    return out;
+  }
   function gbBatchId(d = new Date()) {
     const p = {};
     new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
@@ -1500,7 +1617,9 @@
     const tags = r.tier === "cand"
       ? [el("span", { class: "gb-watch", text: "Watch" })]
       : gbIsEarly(r.tier)
-        ? [el("span", { class: "gb-watch", text: "⚡ Early" })].concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "Thin" })] : [])
+        ? [el("span", { class: "gb-watch", text: "⚡ Early" })]
+            .concat(r.retained ? [el("span", { class: "gb-cand-tag", text: "Held 24h" })] : [el("span", { class: "gb-cand-tag soft", text: "24h lock" })])
+            .concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "Thin" })] : [])
         : r.tier === "chase"
           ? [el("span", { class: "gb-buytag", text: "🚀 Chase" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "Thin +" })] : [])
           : r.tier === "pump" ? [el("span", { class: "gb-buytag", text: "🔥 Hot" })] : [];
@@ -1517,6 +1636,8 @@
         spark || "",
         (r.tier === "pump" || gbIsEarly(r.tier)) ? shillLineEl(r.symbol) : null,
         el("div", { class: "pump-badges" },
+          gbIsEarly(r.tier) && r.mention_price ? el("span", { class: "pump-badge soft", text: `Mention ${price(r.mention_price)}` + (r.mentioned_at ? ` · ${frTime(r.mentioned_at)}` : "") }) : "",
+          gbIsEarly(r.tier) ? el("span", { class: "pump-badge soft", "data-bn-chg": r.symbol, text: `24h ${pct(r.chg24)}` }) : "",
           el("span", { class: "pump-badge soft gb-fh", "data-gb-fh": r.symbol, "data-gb-high": String(r.high || ""), text: `離 24h 高 ${pct(r.fromHigh)}` }),
           r.volRatio != null ? el("span", { class: "pump-badge " + (r.volRatio >= 1.5 ? "hot" : "soft"), text: `量 ×${r.volRatio.toFixed(1)}` + (r.volRatioPrev != null ? ` ← ×${r.volRatioPrev.toFixed(1)}` : "") }) : "",
           r.c1h != null ? el("span", { class: "pump-badge soft", text: `1h ${pct(r.c1h)}` }) : "",
@@ -1539,9 +1660,19 @@
       el("div", { class: "gb-top" },
         logo,
         el("div", { class: "gb-id" }, el("div", { class: "nm", text: r.base }), (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
-        el("div", { class: "gb-px" },
-          el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
-          el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }))),
+        (() => {
+          const mPx = (gbIsEarly(r.tier) && r.mention_price > 0) ? r.mention_price : null;
+          const sinceM = (mPx && px > 0) ? (px / mPx - 1) * 100 : null;
+          if (mPx) {
+            return el("div", { class: "gb-px" },
+              el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
+              el("div", { class: "num gb-chg " + cls(sinceM), "data-gb-since": r.symbol, "data-gb-entry": String(mPx), text: sinceM == null ? "—" : pct(sinceM) }),
+              el("div", { class: "tiny muted gb-mention-lab", text: "vs mention" }));
+          }
+          return el("div", { class: "gb-px" },
+            el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
+            el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }));
+        })()),
       r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
     ];
     if (buy) {
@@ -1561,7 +1692,7 @@
       /* early notes live in Details; face stays name/price/%/Buy */
     }
     kids.push(details);
-    return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (gbIsEarly(r.tier) ? " gb-early" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol }, ...kids);
+    return el("div", { class: "gb-row" + (r.tier === "cand" ? " gb-cand" : "") + (gbIsEarly(r.tier) ? " gb-early" : "") + (r.retained ? " gb-retained" : ""), "data-gb-tier": r.tier, "data-gb-sym": r.symbol, "data-gb-retained": r.retained ? "1" : "0" }, ...kids);
   }
 
   function renderGainerBoard(rows, trig) {
@@ -1580,7 +1711,7 @@
     box.textContent = "";
     const bt = $("gainerEarlyBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("early2")); }
     if (!early.length) {
-      box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: "No ⚡ in last 4h" })));
+      box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: "No ⚡ live · none in 24h lock" })));
       return;
     }
     for (const r of early) box.append(gbCard(r, trig.get(r.symbol + ":early2") || null, { buy: false }));
@@ -1662,6 +1793,8 @@
         }
         if (extras.length) early = early.concat(extras).slice(0, 10);
       } catch (_) {}
+      // Display lock: keep first-flag early rows visible 24h (gray if churned off live list). Not paper/scorecard.
+      early = gbMergeEarlyRetained(early, res.prices);
       const trig = gbLogSnapshot(rows.concat(early));
       for (const r of rows) { const t = trig.get(r.symbol + ":" + r.tier); if (t && !t.trigger_src) t.trigger_src = r.tier === "pump" ? "now" : "seen"; }
       const curPx = (p) => (res.prices && res.prices.get(p)) || null;

@@ -1531,6 +1531,9 @@ img.logo-mark.logo-3d{
 .gb-row{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:var(--panel2);border:1px solid #3a1212}
 .gb-row.gb-cand{border-style:dashed}
 .gb-row.gb-early{border-color:#474D57}
+.gb-row.gb-early.gb-retained{opacity:.72;border-style:dashed;border-color:#5a6270}
+.gb-mention-lab{margin-top:2px;font-size:10px;letter-spacing:.02em}
+.gb-cand-tag.soft{opacity:.85}
 .gb-top{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}
 .gb-id{min-width:0}
 .gb-id .nm{font-weight:800;font-size:15px}
