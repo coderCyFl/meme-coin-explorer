@@ -57,6 +57,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 
 <nav class="tabs top-tabs full-only" role="tablist">
   <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
+  <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
   <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
   <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
   <a href="#news" class="tab" data-view="news">News</a>
@@ -64,6 +65,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 </nav>
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="Simple tabs">
   <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
+  <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
   <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
   <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
   <a href="#more" class="tab" data-view="more" data-i18n="tab.more">More</a>
@@ -188,34 +190,11 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <div class="gb-alert" id="gainerAlert" hidden></div>
     <p class="tiny muted gb-xcap" id="gainerXCap" hidden>X daily cap used</p>
     <div id="gainerList" class="gb-list"></div>
-    <h3 class="gb-tier-title"><span data-i18n="early.title">⚡ Early</span> <span class="muted tiny" data-i18n="early.lock">24h lock</span></h3>
+    <div class="early-head">
+      <h3 class="gb-tier-title"><span data-i18n="early.title">Early finds</span> <span class="muted tiny" data-i18n="early.lock">24h lock</span></h3>
+      <p class="home-sub" data-i18n="early.sub">Spotted early — coins that may run hard</p>
+    </div>
     <div id="earlyList" class="gb-list"></div>
-  </section>
-
-  <!-- Hit report: sealed Early scorecards only (display; Strategy N/A) -->
-  <section class="panel hit-report" id="hitReportPanel" aria-live="polite">
-    <div class="panelhead">
-      <div>
-        <h2 class="home-title" data-i18n="hit.title">Hit report</h2>
-        <p class="home-sub" data-i18n="hit.sub">Sealed Early · last nights vs Binance top 20</p>
-      </div>
-      <div class="seg mini" id="hitWindowSeg" role="group" aria-label="Hit window">
-        <button type="button" class="segbtn active" data-hitwin="7d" data-i18n="hit.win7">7 nights</button>
-        <button type="button" class="segbtn" data-hitwin="night" data-i18n="hit.winnight">One night</button>
-      </div>
-    </div>
-    <div class="hit-hero" id="hitHero">
-      <div class="hit-big num" id="hitBig">—</div>
-      <div class="hit-rate num" id="hitRate">—</div>
-      <div class="hit-meta tiny muted" id="hitMeta"></div>
-    </div>
-    <div class="hit-nights" id="hitNights" hidden></div>
-    <div class="hit-cols" id="hitCols">
-      <div class="hit-col" id="hitColHit"><div class="hit-col-h pos" data-i18n="hit.col.hit">HIT</div><div class="hit-col-b" id="hitListHit"></div></div>
-      <div class="hit-col" id="hitColLate"><div class="hit-col-h warn" data-i18n="hit.col.late">LATE</div><div class="hit-col-b" id="hitListLate"></div></div>
-      <div class="hit-col" id="hitColMiss"><div class="hit-col-h neg" data-i18n="hit.col.miss">MISS</div><div class="hit-col-b" id="hitListMiss"></div></div>
-    </div>
-    <p class="tiny muted" data-i18n="hit.note">Display only · sealed JSON · not a live recompute</p>
   </section>
 
   <!-- X-news scan: parallel face + shill veto; never opens paper -->
@@ -428,6 +407,36 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
   </section>
 </div>
 
+<!-- ===== 命中 / Hits ===== -->
+<div id="view-hits" class="view" hidden>
+  <!-- Hit report: sealed Early scorecards only (display; Strategy N/A) -->
+  <section class="panel hit-report" id="hitReportPanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title" data-i18n="hit.title">Hit report</h2>
+        <p class="home-sub" data-i18n="hit.sub">Sealed Early · last nights vs Binance top 20</p>
+      </div>
+      <div class="seg mini" id="hitWindowSeg" role="group" aria-label="Hit window">
+        <button type="button" class="segbtn active" data-hitwin="7d" data-i18n="hit.win7">7 nights</button>
+        <button type="button" class="segbtn" data-hitwin="night" data-i18n="hit.winnight">One night</button>
+      </div>
+    </div>
+    <div class="hit-hero" id="hitHero">
+      <div class="hit-big num" id="hitBig">—</div>
+      <div class="hit-rate num" id="hitRate">—</div>
+      <div class="hit-meta tiny muted" id="hitMeta"></div>
+    </div>
+    <div class="hit-nights" id="hitNights" hidden></div>
+    <div class="hit-cols" id="hitCols">
+      <div class="hit-col" id="hitColHit"><div class="hit-col-h pos" data-i18n="hit.col.hit">HIT</div><div class="hit-col-b" id="hitListHit"></div></div>
+      <div class="hit-col" id="hitColLate"><div class="hit-col-h warn" data-i18n="hit.col.late">LATE</div><div class="hit-col-b" id="hitListLate"></div></div>
+      <div class="hit-col" id="hitColMiss"><div class="hit-col-h neg" data-i18n="hit.col.miss">MISS</div><div class="hit-col-b" id="hitListMiss"></div></div>
+    </div>
+    <p class="tiny muted" data-i18n="hit.note">Display only · sealed JSON · not a live recompute</p>
+  </section>
+
+</div>
+
 <!-- ===== 更多（簡單模式） ===== -->
 <div id="view-more" class="view simple-only" hidden>
   <section class="panel">
@@ -438,7 +447,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
       <button type="button" class="more-item" id="moreAuthRegister" data-i18n="auth.register">Register</button>
       <button type="button" class="more-item" id="moreAuthLogout" hidden data-i18n="auth.logout">Logout</button>
       <a class="more-item" href="#browse">Markets</a>
-      <a class="more-item" href="#picks" id="moreHitReport" data-i18n="hit.title">Hit report</a>
+      <a class="more-item" href="#hits" id="moreHitReport" data-view="hits" data-i18n="tab.hits">Hits</a>
       <a class="more-item" href="#picks" id="moreXNews" data-i18n="xnews.title">X news scan</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
@@ -568,7 +577,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <h4 class="gb-tier-title">🔥 Rules</h4>
     <p class="tiny muted">Last 4h: 1h ≥ +5% and vol ≥ 3x avg, or 15m ≥ +5% (no 24h floor). Pad to 6 with candidates (watch only, no buy).</p>
     <div id="gainerPumpBt"></div>
-    <h4 class="gb-tier-title" data-i18n="early.title">⚡ Early</h4>
+    <h4 class="gb-tier-title" data-i18n="early.title">Early finds</h4>
     <p class="tiny muted">Pre-🔥 start / thin / X buzz · watch only · first flag locks 24h with % vs mention (not a buy).</p>
     <div id="gainerEarlyBt"></div>
     <div class="gacc" id="gainerAcc"></div>
@@ -764,18 +773,19 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
 
 <nav class="bottom-nav" role="tablist" aria-label="Main tabs">
-  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab">Today's picks</span></a>
-  <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab">Markets</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab">Portfolio</span></a>
+  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab" data-i18n="tab.picks">Today's picks</span></a>
+  <a href="#hits" class="tab" data-view="hits"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span class="bn-lab" data-i18n="tab.hits">Hits</span></a>
+  <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab" data-i18n="tab.markets">Markets</span></a>
+  <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab" data-i18n="tab.portfolio">Portfolio</span></a>
   <a href="#news" class="tab bn-full" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8"/></svg><span class="bn-lab">News</span></a>
   <a href="#explore" class="tab bn-full" data-view="explore"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="bn-lab">Scan</span></a>
-  <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab">More</span></a>
+  <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab" data-i18n="tab.more">More</span></a>
 </nav>
 
 <script src="live.js?v=20261103a"></script>
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104e"></script>
+<script src="picks.js?v=20261104f"></script>
 </body>
 </html>

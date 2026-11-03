@@ -1548,6 +1548,8 @@ img.logo-mark.logo-3d{
 .gb-cand-tag{display:inline-block;margin-left:4px;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;color:var(--muted);border:1px dashed var(--line-strong)}
 .gb-warn{margin:2px 0 8px;color:#fda4af}
 .gb-tier-title{margin:14px 0 4px;font-size:15px;font-weight:800}
+.early-head{margin:10px 0 4px}.early-head .gb-tier-title{margin:0}.early-head .home-sub{margin:2px 0 8px}
+
 .gb-bt{margin:0 0 6px;color:var(--muted);line-height:1.4}
 .gb-mult{display:flex;gap:4px}
 .gb-mult .chip{min-height:32px;padding:4px 10px;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel2);color:var(--text);font-weight:700}

@@ -10,7 +10,7 @@ const css = readFileSync(resolve(root, "styles.css"), "utf8");
 let pass = 0, fail = 0;
 const ok = (n, c, extra = "") => { console.log((c ? "PASS " : "FAIL ") + n + (extra ? " → " + extra : "")); c ? pass++ : fail++; };
 
-ok("stamp 20261104e on picks.js script tag", /picks\.js\?v=20261104e/.test(html));
+ok("stamp 20261104f on picks.js script tag", /picks\.js\?v=20261104f/.test(html));
 ok("no leftover 20261029b in index.html", !/20261029b/.test(html));
 ok("shillFlagEl text is exactly 🚩 X 洗版", /\}, "🚩 X 洗版"\)/.test(picks));
 ok("no bare 🚩 append on xchip", !/gb-xflag", text: " 🚩"/.test(picks));

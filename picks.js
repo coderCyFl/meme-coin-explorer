@@ -32,9 +32,10 @@
       "auth.signed": "Signed in · @{u}",
       "mock.paper": "Mock · paper",
       "mock.saved": "saved",
-      "early.title": "⚡ Early",
+      "early.title": "Early finds",
+      "early.sub": "Spotted early — coins that may run hard",
       "early.lock": "24h lock",
-      "early.tag": "⚡ Early",
+      "early.tag": "Early find",
       "early.held": "Held 24h",
       "early.lock_tag": "24h lock",
       "today.title": "Today",
@@ -55,6 +56,7 @@
       "empty.hold": "No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.",
       "empty.pos": "No positions · tap Buy",
       "tab.picks": "Today's picks",
+      "tab.hits": "Hits",
       "tab.markets": "Markets",
       "tab.portfolio": "Portfolio",
       "tab.more": "More",
@@ -111,9 +113,10 @@
       "auth.signed": "已登入 · @{u}",
       "mock.paper": "模擬 · 紙上",
       "mock.saved": "已存",
-      "early.title": "⚡ 早期",
+      "early.title": "早期發現",
+      "early.sub": "提早發現、有機會爆升的幣",
       "early.lock": "24小時鎖定",
-      "early.tag": "⚡ 早期",
+      "early.tag": "早期",
       "early.held": "持有 24小時",
       "early.lock_tag": "24小時鎖定",
       "today.title": "今日",
@@ -134,6 +137,7 @@
       "empty.hold": "暫無現貨倉。去今日選幣 → 買入（現貨），或跟批次。",
       "empty.pos": "暫無倉位 · 撳買入",
       "tab.picks": "今日選幣",
+      "tab.hits": "命中",
       "tab.markets": "市場",
       "tab.portfolio": "組合",
       "tab.more": "更多",
@@ -1836,7 +1840,7 @@
       symbol: r.base, name: r.base + " (Binance)", price: r.price, source: "binance",
     };
     const details = el("details", { class: "gb-details" },
-      el("summary", { text: "Details" }),
+      el("summary", { text: tr("details") }),
       el("div", { class: "gb-det-body" },
         el("div", { class: "pump-badges" }, ...tags),
         watch ? "" : el("div", exitLiveAttrs(r.symbol, plan, px, { class: "tiny muted gb-exit1", "data-gb-levels": "card" }),
@@ -4562,11 +4566,11 @@
 
   function show(view) {
     const allowed = uiMode === "simple"
-      ? ["picks", "browse", "portfolio", "more", "news", "explore"]
-      : ["explore", "picks", "browse", "portfolio", "news", "more"];
+      ? ["picks", "hits", "browse", "portfolio", "more", "news", "explore"]
+      : ["explore", "picks", "hits", "browse", "portfolio", "news", "more"];
     if (!allowed.includes(view)) view = "picks";
     navGen++;
-    for (const v of ["explore", "picks", "browse", "portfolio", "news", "more"]) {
+    for (const v of ["explore", "picks", "hits", "browse", "portfolio", "news", "more"]) {
       const node = $("view-" + v);
       if (!node) continue;
       const on = v === view;
@@ -4590,6 +4594,7 @@
         loadPicks(); loadNews();
         loadLiveBnPicks(false);
       }
+      if (view === "hits") { try { renderHitReport(); } catch (_) {} }
       if (view === "browse") {
         if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
       }
@@ -4846,7 +4851,7 @@
     goView("picks");
     setTimeout(() => { const n = $(id); if (n) n.scrollIntoView({ behavior: "smooth", block: "start" }); }, 80);
   };
-  if ($("moreHitReport")) $("moreHitReport").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("hitReportPanel"); });
+  if ($("moreHitReport")) $("moreHitReport").addEventListener("click", (ev) => { ev.preventDefault(); goView("hits"); });
   if ($("moreXNews")) $("moreXNews").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("xNewsScanPanel"); });
   // 急升榜: own boot + rescan every 90s on ANY tab (decoupled from loadPicks / renderPicks).
   function bootGainer() {
