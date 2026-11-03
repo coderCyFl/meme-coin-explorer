@@ -6,44 +6,44 @@
    "base": "HOT",
    "flag": "pump",
    "trigger_at": "2026-11-03T19:15:00+08:00",
-   "checked_at": "2026-11-03T20:15:00+08:00",
-   "posts_last_1h": 111,
-   "posts_prev_6h_avg_per_h": 60.5,
-   "spike_ratio": 1.83,
+   "checked_at": "2026-11-03T21:19:16+08:00",
+   "posts_last_1h": 121,
+   "posts_prev_6h_avg_per_h": 71.5,
+   "spike_ratio": 1.69,
    "verdict": "升溫",
-   "one_line": "升溫但訊號bot偏多",
+   "one_line": "升溫但hack雜訊多",
    "shill_flag": true,
-   "big_accounts": 1,
+   "big_accounts": 2,
    "top_posts": [
     {
-     "id": "2117518376352563681",
-     "url": "https://x.com/cobacknam/status/2117518376352563681",
-     "text": "Binance incident, now day 5 and a recap On the evening of October 29, around $6.3B flowed out of Binance’s hot wallets. Across ten chains s…",
-     "likes": 12,
-     "author_username": "cobacknam",
-     "author_followers": 9359,
-     "created_at": "2026-11-03T15:24:57+08:00"
+     "id": "2117589097862582424",
+     "url": "https://x.com/MASTRtrade/status/2117589097862582424",
+     "text": "$6.36B left Binance in 20 minutes. We followed every flow. At MASTRtrade we rebuilt the entire hack trail and documented it step by step, ac",
+     "likes": 37,
+     "author_username": "MASTRtrade",
+     "author_followers": 1328,
+     "created_at": "2026-11-03T20:05:58+08:00"
+    },
+    {
+     "id": "2117606137994301694",
+     "url": "https://x.com/StarPlatinum_/status/2117606137994301694",
+     "text": "So wait North Korea stole $6.4 BILLION from Binance And the FBI officially pinned it on TraderTraitor (Lazarus). Pyongyang calls it \"absurd",
+     "likes": 11,
+     "author_username": "StarPlatinum_",
+     "author_followers": 112099,
+     "created_at": "2026-11-03T21:13:41+08:00"
     },
     {
      "id": "2117567958549459334",
      "url": "https://x.com/Vindicatedchidi/status/2117567958549459334",
-     "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There…",
+     "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There",
      "likes": 11,
      "author_username": "Vindicatedchidi",
-     "author_followers": 208778,
+     "author_followers": 208781,
      "created_at": "2026-11-03T18:41:58+08:00"
-    },
-    {
-     "id": "2117545645514924304",
-     "url": "https://x.com/mrcamerontrader/status/2117545645514924304",
-     "text": "🚀 HOT/USDT LONG 50X 💰 Entry Price: 0.000430 - 0.000415 🎯 TP Targets: (0.000441, 0.000455, 0.000470) 🛑 Stop Loss: 0.000405 #crypto",
-     "likes": 8,
-     "author_username": "mrcamerontrader",
-     "author_followers": 543,
-     "created_at": "2026-11-03T17:13:18+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 3
   },
   "MEGAUSDT": {
    "symbol": "MEGAUSDT",
@@ -304,42 +304,42 @@
    "symbol": "XRPUSDT",
    "base": "XRP",
    "flag": "pump",
-   "trigger_at": "2026-11-03T04:15:00+08:00",
-   "checked_at": "2026-11-03T04:12:01+08:00",
-   "posts_last_1h": 199,
-   "posts_prev_6h_avg_per_h": 184.0,
-   "spike_ratio": 1.08,
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 158,
+   "posts_prev_6h_avg_per_h": 121.67,
+   "spike_ratio": 1.3,
    "verdict": "冷",
-   "one_line": "冷·無爆升淨係常態",
+   "one_line": "自託管騙文洗版",
    "shill_flag": true,
-   "big_accounts": 1,
+   "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117340272119976432",
-     "url": "https://x.com/SantimentData/status/2117340272119976432",
-     "text": "Crypto Sentiment Sinks As Fear Creates Contrarian Opportunity. Sentiment around Bitcoin, Ethereum, XRP and other top caps has steadily weak…",
-     "likes": 6,
-     "author_username": "SantimentData",
-     "author_followers": 215221,
-     "created_at": "2026-11-03T03:37:13+08:00"
-    },
-    {
-     "id": "2117331592397922810",
-     "url": "https://x.com/BrunoRinarelli/status/2117331592397922810",
-     "text": "Crypto Evening Pulse. Spot desks are absorbing persistent de-risking as US trading intersects with European close.",
+     "id": "2117569204861968877",
+     "url": "https://x.com/simple_crypto7/status/2117569204861968877",
+     "text": "🚨PROTECT YOUR XRP. MOVE YOUR ASSETS OFF EXCHANGES LIKE UPHOLD, BINANCE, COINBASE, KRAKEN, ROBINHOOD, AND OTHERS. 🚨SELF-CUSTODY MATTERS. MESS",
      "likes": 2,
-     "author_username": "BrunoRinarelli",
-     "author_followers": 3583,
-     "created_at": "2026-11-03T03:02:44+08:00"
+     "author_username": "simple_crypto7",
+     "author_followers": 267,
+     "created_at": "2026-11-03T18:46:55+08:00"
     },
     {
-     "id": "2117347430098432071",
-     "url": "https://x.com/BackChannelQ/status/2117347430098432071",
-     "text": "URGENT: EXCHANGE COLLAPSES ARE HAPPENING FAST—ACT NOW! Another major Exchange has fallen, Binance just crashed.",
+     "id": "2117575104104145221",
+     "url": "https://x.com/NBTC_finance/status/2117575104104145221",
+     "text": "Binance Hack Wallet Moves 80M XRP in 50 Seconds as Separate 50M XRP Leaves Binance #Crypto #Exchanges #NBTC #Binance #XRP #Hacking #Wallet #",
      "likes": 1,
-     "author_username": "BackChannelQ",
-     "author_followers": 11683,
-     "created_at": "2026-11-03T04:05:40+08:00"
+     "author_username": "NBTC_finance",
+     "author_followers": 431,
+     "created_at": "2026-11-03T19:10:22+08:00"
+    },
+    {
+     "id": "2117585469835805096",
+     "url": "https://x.com/Team5Warriorss/status/2117585469835805096",
+     "text": "🚨 JUST IN: Binance reports that 90% of stolen assets have been replenished, with BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD, and ZEC r",
+     "likes": 1,
+     "author_username": "Team5Warriorss",
+     "author_followers": 904,
+     "created_at": "2026-11-03T19:51:33+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -392,33 +392,42 @@
    "symbol": "BMTUSDT",
    "base": "BMT",
    "flag": "pump",
-   "trigger_at": "2026-11-03T13:15:00+08:00",
-   "checked_at": "2026-11-03T17:12:33+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 3.17,
-   "spike_ratio": 0.63,
+   "trigger_at": "2026-11-03T20:45:00+08:00",
+   "checked_at": "2026-11-03T21:19:16+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 3.33,
+   "spike_ratio": 1.8,
    "verdict": "冷",
-   "one_line": "掃盤bot為主冇真人傾",
+   "one_line": "掃盤bot夾pump文",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117534328251101675",
-     "url": "https://x.com/guilhermebati25/status/2117534328251101675",
-     "text": "Uncover the next big memecoin on Solana! Get instant airdrop details and crypto insights with $BMT",
-     "likes": 0,
-     "author_username": "guilhermebati25",
-     "author_followers": 2613,
-     "created_at": "2026-11-03T16:28:20+08:00"
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digital",
+     "likes": 12,
+     "author_username": "Binance_TH_",
+     "author_followers": 25708,
+     "created_at": "2026-11-03T19:26:54+08:00"
     },
     {
-     "id": "2117534324979605585",
-     "url": "https://x.com/Merlon_Tooth/status/2117534324979605585",
-     "text": "Dive into this Solana memecoin sensation! Uncover airdrop opportunities and crypto details with $BMT",
+     "id": "2117575032171864169",
+     "url": "https://x.com/SarahLadalo/status/2117575032171864169",
+     "text": "Looking into Bitcoin and alts like $BMT $AKE, I noticed traditional markets also deserve attention too. Gold forex silver Nasdaq 100 and cru",
+     "likes": 2,
+     "author_username": "SarahLadalo",
+     "author_followers": 54,
+     "created_at": "2026-11-03T19:10:04+08:00"
+    },
+    {
+     "id": "2117604865899692379",
+     "url": "https://x.com/cexscan/status/2117604865899692379",
+     "text": "🇺🇸 US open. Binance Spot, last hour: 📈 $BMT +20.4% 📈 $HOT +8.7% 📈 HUMA +5.8% 📉 SKDDB −4.0% 📉 SOXSB −3.7% What stands out: BMT's +20% is bigg",
      "likes": 0,
-     "author_username": "Merlon_Tooth",
-     "author_followers": 1028,
-     "created_at": "2026-11-03T16:28:19+08:00"
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T21:08:37+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -472,44 +481,44 @@
    "base": "STRK",
    "flag": "pump",
    "trigger_at": "2026-11-03T20:00:00+08:00",
-   "checked_at": "2026-11-03T20:15:00+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 2.4,
-   "verdict": "冷",
-   "one_line": "掃盤bot為主冇真人傾",
+   "checked_at": "2026-11-03T21:19:16+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 3.0,
+   "verdict": "升溫",
+   "one_line": "升溫但掃盤偏多",
    "shill_flag": true,
-   "big_accounts": 2,
+   "big_accounts": 0,
    "top_posts": [
-    {
-     "id": "2117527082137800890",
-     "url": "https://x.com/DegenerateNews/status/2117527082137800890",
-     "text": "NEW: @binance CO-FOUNDER @heyibinance SAYS WITHDRAWALS ARE RE-ENABLED FOR 34 MORE ETHEREUM ASSETS AND 22 SOLANA TOKENS INCLUDING $ENA, $STR…",
-     "likes": 61,
-     "author_username": "DegenerateNews",
-     "author_followers": 425221,
-     "created_at": "2026-11-03T15:59:32+08:00"
-    },
-    {
-     "id": "2117518139843870932",
-     "url": "https://x.com/BinanceAfrica/status/2117518139843870932",
-     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: New: ETH: ENA, USDE, PENDLE, WLD, QNT,…",
-     "likes": 19,
-     "author_username": "BinanceAfrica",
-     "author_followers": 310552,
-     "created_at": "2026-11-03T15:24:00+08:00"
-    },
     {
      "id": "2117579264510054774",
      "url": "https://x.com/Binance_TH_/status/2117579264510054774",
-     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digita…",
-     "likes": 8,
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digital",
+     "likes": 12,
      "author_username": "Binance_TH_",
-     "author_followers": 25701,
+     "author_followers": 25708,
      "created_at": "2026-11-03T19:26:54+08:00"
+    },
+    {
+     "id": "2117592289610756243",
+     "url": "https://x.com/cryptowithgopal/status/2117592289610756243",
+     "text": "$STRK / USDT – 4H 🚀 Double Bottom Formation – Potential Bullish Reversal! $STRK is showing a potential double bottom after an extended downt",
+     "likes": 2,
+     "author_username": "cryptowithgopal",
+     "author_followers": 14403,
+     "created_at": "2026-11-03T20:18:39+08:00"
+    },
+    {
+     "id": "2117593045374013508",
+     "url": "https://x.com/SleazyMinks/status/2117593045374013508",
+     "text": "L2s: attention is building before price 🟢 $STRK: Top buzz, searched, sentiment turning $ARB: Real usage and OI building $MOVE: Attention jum",
+     "likes": 0,
+     "author_username": "SleazyMinks",
+     "author_followers": 2374,
+     "created_at": "2026-11-03T20:21:39+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "PUMPUSDT": {
    "symbol": "PUMPUSDT",
@@ -551,6 +560,138 @@
      "author_username": "SevinchanMert",
      "author_followers": 730,
      "created_at": "2026-11-03T20:13:27+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "INJUSDT": {
+   "symbol": "INJUSDT",
+   "base": "INJ",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 4.33,
+   "spike_ratio": 0.92,
+   "verdict": "冷",
+   "one_line": "討論少量平淡",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117564947899257171",
+     "url": "https://x.com/InvestwithDoc/status/2117564947899257171",
+     "text": "Best AI Crypto to Buy Right Now? $ICP Internet Computer $TAO Bittensor $NEAR Near Protocol $FET Fetch. $INJ Injective solana:rndrizKT3MK1iim",
+     "likes": 3,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9346,
+     "created_at": "2026-11-03T18:30:00+08:00"
+    },
+    {
+     "id": "2117567170557415808",
+     "url": "https://x.com/cryptowithgopal/status/2117567170557415808",
+     "text": "INJ / USDT – 1H A Bullish Double Bottom Pattern is forming! 🟢 INJ is showing signs of a potential reversal after an extended downtrend. Pric",
+     "likes": 2,
+     "author_username": "cryptowithgopal",
+     "author_followers": 14403,
+     "created_at": "2026-11-03T18:38:50+08:00"
+    },
+    {
+     "id": "2117597746546831362",
+     "url": "https://x.com/FrankLambeek/status/2117597746546831362",
+     "text": "The next phase of crypto needs more than faster blockchains. $SUI is building a broad application ecosystem. $SEI is targeting high-performa",
+     "likes": 1,
+     "author_username": "FrankLambeek",
+     "author_followers": 55106,
+     "created_at": "2026-11-03T20:40:20+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "WLFIUSDT": {
+   "symbol": "WLFIUSDT",
+   "base": "WLFI",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 3.33,
+   "spike_ratio": 1.2,
+   "verdict": "冷",
+   "one_line": "訊號spam為主",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117603182192767329",
+     "url": "https://x.com/Tyler_Did_It/status/2117603182192767329",
+     "text": "The Morning Minute (11.3) ⏰Top News: -Crypto majors fall further as outflows continue; BTC at $77.3k -BTC ETFs see another $400M in outflows",
+     "likes": 7,
+     "author_username": "Tyler_Did_It",
+     "author_followers": 64882,
+     "created_at": "2026-11-03T21:01:56+08:00"
+    },
+    {
+     "id": "2117603755529224357",
+     "url": "https://x.com/0xvenkat/status/2117603755529224357",
+     "text": "@NikkiSixx_7 @elonmusk so funny coming from someone who backs WLFI and TRON, literally the scum of all crypto projects lol",
+     "likes": 3,
+     "author_username": "0xvenkat",
+     "author_followers": 255,
+     "created_at": "2026-11-03T21:04:13+08:00"
+    },
+    {
+     "id": "2117604066180174141",
+     "url": "https://x.com/Keith080935/status/2117604066180174141",
+     "text": "🚨#XAUUSD #CRYPTO $XRP $MET $ASTER $CLANKER $COAI $PENGU $TURTLE $WLFI $BNB $BTC $ZEC $ETH $TRUMP $GBPUSD $USDJPY $USDCHF $USDCAD Click below",
+     "likes": 1,
+     "author_username": "Keith080935",
+     "author_followers": 1358,
+     "created_at": "2026-11-03T21:05:27+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "PEPEUSDT": {
+   "symbol": "PEPEUSDT",
+   "base": "PEPE",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 20,
+   "posts_prev_6h_avg_per_h": 19.5,
+   "spike_ratio": 1.03,
+   "verdict": "冷",
+   "one_line": "量平淡夾推薦碼",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117599142235049993",
+     "url": "https://x.com/MichealResearch/status/2117599142235049993",
+     "text": "$PEPE 2% from resistance. At $0.00000482, PEPE is about 2% below $0.00000492. That's the level that would turn a strong week into a breakout",
+     "likes": 14,
+     "author_username": "MichealResearch",
+     "author_followers": 1437,
+     "created_at": "2026-11-03T20:45:53+08:00"
+    },
+    {
+     "id": "2117603182192767329",
+     "url": "https://x.com/Tyler_Did_It/status/2117603182192767329",
+     "text": "The Morning Minute (11.3) ⏰Top News: -Crypto majors fall further as outflows continue; BTC at $77.3k -BTC ETFs see another $400M in outflows",
+     "likes": 7,
+     "author_username": "Tyler_Did_It",
+     "author_followers": 64882,
+     "created_at": "2026-11-03T21:01:56+08:00"
+    },
+    {
+     "id": "2117589173066453298",
+     "url": "https://x.com/onchainfaith/status/2117589173066453298",
+     "text": "GTA VI is coming out in just 15 days Crypto and non-crypto accounts are already generating insane buzz around it, and Rockstar has kicked of",
+     "likes": 7,
+     "author_username": "onchainfaith",
+     "author_followers": 694,
+     "created_at": "2026-11-03T20:06:16+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1613,15 +1754,316 @@
      "created_at": "2026-11-03T17:13:18+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T20:45:00+08:00",
+   "checked_at": "2026-11-03T21:19:16+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 3.33,
+   "spike_ratio": 1.8,
+   "verdict": "冷",
+   "one_line": "掃盤bot夾pump文",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digital",
+     "likes": 12,
+     "author_username": "Binance_TH_",
+     "author_followers": 25708,
+     "created_at": "2026-11-03T19:26:54+08:00"
+    },
+    {
+     "id": "2117575032171864169",
+     "url": "https://x.com/SarahLadalo/status/2117575032171864169",
+     "text": "Looking into Bitcoin and alts like $BMT $AKE, I noticed traditional markets also deserve attention too. Gold forex silver Nasdaq 100 and cru",
+     "likes": 2,
+     "author_username": "SarahLadalo",
+     "author_followers": 54,
+     "created_at": "2026-11-03T19:10:04+08:00"
+    },
+    {
+     "id": "2117604865899692379",
+     "url": "https://x.com/cexscan/status/2117604865899692379",
+     "text": "🇺🇸 US open. Binance Spot, last hour: 📈 $BMT +20.4% 📈 $HOT +8.7% 📈 HUMA +5.8% 📉 SKDDB −4.0% 📉 SOXSB −3.7% What stands out: BMT's +20% is bigg",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T21:08:37+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "STRKUSDT",
+   "base": "STRK",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T20:00:00+08:00",
+   "checked_at": "2026-11-03T21:19:16+08:00",
+   "posts_last_1h": 7,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 3.0,
+   "verdict": "升溫",
+   "one_line": "升溫但掃盤偏多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digital",
+     "likes": 12,
+     "author_username": "Binance_TH_",
+     "author_followers": 25708,
+     "created_at": "2026-11-03T19:26:54+08:00"
+    },
+    {
+     "id": "2117592289610756243",
+     "url": "https://x.com/cryptowithgopal/status/2117592289610756243",
+     "text": "$STRK / USDT – 4H 🚀 Double Bottom Formation – Potential Bullish Reversal! $STRK is showing a potential double bottom after an extended downt",
+     "likes": 2,
+     "author_username": "cryptowithgopal",
+     "author_followers": 14403,
+     "created_at": "2026-11-03T20:18:39+08:00"
+    },
+    {
+     "id": "2117593045374013508",
+     "url": "https://x.com/SleazyMinks/status/2117593045374013508",
+     "text": "L2s: attention is building before price 🟢 $STRK: Top buzz, searched, sentiment turning $ARB: Real usage and OI building $MOVE: Attention jum",
+     "likes": 0,
+     "author_username": "SleazyMinks",
+     "author_followers": 2374,
+     "created_at": "2026-11-03T20:21:39+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "HOTUSDT",
+   "base": "HOT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T19:15:00+08:00",
+   "checked_at": "2026-11-03T21:19:16+08:00",
+   "posts_last_1h": 121,
+   "posts_prev_6h_avg_per_h": 71.5,
+   "spike_ratio": 1.69,
+   "verdict": "升溫",
+   "one_line": "升溫但hack雜訊多",
+   "shill_flag": true,
+   "big_accounts": 2,
+   "top_posts": [
+    {
+     "id": "2117589097862582424",
+     "url": "https://x.com/MASTRtrade/status/2117589097862582424",
+     "text": "$6.36B left Binance in 20 minutes. We followed every flow. At MASTRtrade we rebuilt the entire hack trail and documented it step by step, ac",
+     "likes": 37,
+     "author_username": "MASTRtrade",
+     "author_followers": 1328,
+     "created_at": "2026-11-03T20:05:58+08:00"
+    },
+    {
+     "id": "2117606137994301694",
+     "url": "https://x.com/StarPlatinum_/status/2117606137994301694",
+     "text": "So wait North Korea stole $6.4 BILLION from Binance And the FBI officially pinned it on TraderTraitor (Lazarus). Pyongyang calls it \"absurd",
+     "likes": 11,
+     "author_username": "StarPlatinum_",
+     "author_followers": 112099,
+     "created_at": "2026-11-03T21:13:41+08:00"
+    },
+    {
+     "id": "2117567958549459334",
+     "url": "https://x.com/Vindicatedchidi/status/2117567958549459334",
+     "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There",
+     "likes": 11,
+     "author_username": "Vindicatedchidi",
+     "author_followers": 208781,
+     "created_at": "2026-11-03T18:41:58+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "INJUSDT",
+   "base": "INJ",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 4.33,
+   "spike_ratio": 0.92,
+   "verdict": "冷",
+   "one_line": "討論少量平淡",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117564947899257171",
+     "url": "https://x.com/InvestwithDoc/status/2117564947899257171",
+     "text": "Best AI Crypto to Buy Right Now? $ICP Internet Computer $TAO Bittensor $NEAR Near Protocol $FET Fetch. $INJ Injective solana:rndrizKT3MK1iim",
+     "likes": 3,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9346,
+     "created_at": "2026-11-03T18:30:00+08:00"
+    },
+    {
+     "id": "2117567170557415808",
+     "url": "https://x.com/cryptowithgopal/status/2117567170557415808",
+     "text": "INJ / USDT – 1H A Bullish Double Bottom Pattern is forming! 🟢 INJ is showing signs of a potential reversal after an extended downtrend. Pric",
+     "likes": 2,
+     "author_username": "cryptowithgopal",
+     "author_followers": 14403,
+     "created_at": "2026-11-03T18:38:50+08:00"
+    },
+    {
+     "id": "2117597746546831362",
+     "url": "https://x.com/FrankLambeek/status/2117597746546831362",
+     "text": "The next phase of crypto needs more than faster blockchains. $SUI is building a broad application ecosystem. $SEI is targeting high-performa",
+     "likes": 1,
+     "author_username": "FrankLambeek",
+     "author_followers": 55106,
+     "created_at": "2026-11-03T20:40:20+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "WLFIUSDT",
+   "base": "WLFI",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 3.33,
+   "spike_ratio": 1.2,
+   "verdict": "冷",
+   "one_line": "訊號spam為主",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117603182192767329",
+     "url": "https://x.com/Tyler_Did_It/status/2117603182192767329",
+     "text": "The Morning Minute (11.3) ⏰Top News: -Crypto majors fall further as outflows continue; BTC at $77.3k -BTC ETFs see another $400M in outflows",
+     "likes": 7,
+     "author_username": "Tyler_Did_It",
+     "author_followers": 64882,
+     "created_at": "2026-11-03T21:01:56+08:00"
+    },
+    {
+     "id": "2117603755529224357",
+     "url": "https://x.com/0xvenkat/status/2117603755529224357",
+     "text": "@NikkiSixx_7 @elonmusk so funny coming from someone who backs WLFI and TRON, literally the scum of all crypto projects lol",
+     "likes": 3,
+     "author_username": "0xvenkat",
+     "author_followers": 255,
+     "created_at": "2026-11-03T21:04:13+08:00"
+    },
+    {
+     "id": "2117604066180174141",
+     "url": "https://x.com/Keith080935/status/2117604066180174141",
+     "text": "🚨#XAUUSD #CRYPTO $XRP $MET $ASTER $CLANKER $COAI $PENGU $TURTLE $WLFI $BNB $BTC $ZEC $ETH $TRUMP $GBPUSD $USDJPY $USDCHF $USDCAD Click below",
+     "likes": 1,
+     "author_username": "Keith080935",
+     "author_followers": 1358,
+     "created_at": "2026-11-03T21:05:27+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "XRPUSDT",
+   "base": "XRP",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 158,
+   "posts_prev_6h_avg_per_h": 121.67,
+   "spike_ratio": 1.3,
+   "verdict": "冷",
+   "one_line": "自託管騙文洗版",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117569204861968877",
+     "url": "https://x.com/simple_crypto7/status/2117569204861968877",
+     "text": "🚨PROTECT YOUR XRP. MOVE YOUR ASSETS OFF EXCHANGES LIKE UPHOLD, BINANCE, COINBASE, KRAKEN, ROBINHOOD, AND OTHERS. 🚨SELF-CUSTODY MATTERS. MESS",
+     "likes": 2,
+     "author_username": "simple_crypto7",
+     "author_followers": 267,
+     "created_at": "2026-11-03T18:46:55+08:00"
+    },
+    {
+     "id": "2117575104104145221",
+     "url": "https://x.com/NBTC_finance/status/2117575104104145221",
+     "text": "Binance Hack Wallet Moves 80M XRP in 50 Seconds as Separate 50M XRP Leaves Binance #Crypto #Exchanges #NBTC #Binance #XRP #Hacking #Wallet #",
+     "likes": 1,
+     "author_username": "NBTC_finance",
+     "author_followers": 431,
+     "created_at": "2026-11-03T19:10:22+08:00"
+    },
+    {
+     "id": "2117585469835805096",
+     "url": "https://x.com/Team5Warriorss/status/2117585469835805096",
+     "text": "🚨 JUST IN: Binance reports that 90% of stolen assets have been replenished, with BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD, and ZEC r",
+     "likes": 1,
+     "author_username": "Team5Warriorss",
+     "author_followers": 904,
+     "created_at": "2026-11-03T19:51:33+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "base": "PEPE",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-03T21:20:21+08:00",
+   "posts_last_1h": 20,
+   "posts_prev_6h_avg_per_h": 19.5,
+   "spike_ratio": 1.03,
+   "verdict": "冷",
+   "one_line": "量平淡夾推薦碼",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117599142235049993",
+     "url": "https://x.com/MichealResearch/status/2117599142235049993",
+     "text": "$PEPE 2% from resistance. At $0.00000482, PEPE is about 2% below $0.00000492. That's the level that would turn a strong week into a breakout",
+     "likes": 14,
+     "author_username": "MichealResearch",
+     "author_followers": 1437,
+     "created_at": "2026-11-03T20:45:53+08:00"
+    },
+    {
+     "id": "2117603182192767329",
+     "url": "https://x.com/Tyler_Did_It/status/2117603182192767329",
+     "text": "The Morning Minute (11.3) ⏰Top News: -Crypto majors fall further as outflows continue; BTC at $77.3k -BTC ETFs see another $400M in outflows",
+     "likes": 7,
+     "author_username": "Tyler_Did_It",
+     "author_followers": 64882,
+     "created_at": "2026-11-03T21:01:56+08:00"
+    },
+    {
+     "id": "2117589173066453298",
+     "url": "https://x.com/onchainfaith/status/2117589173066453298",
+     "text": "GTA VI is coming out in just 15 days Crypto and non-crypto accounts are already generating insane buzz around it, and Rockstar has kicked of",
+     "likes": 7,
+     "author_username": "onchainfaith",
+     "author_followers": 694,
+     "created_at": "2026-11-03T20:06:16+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 50,
+  "calls_today": 64,
   "cap_reached": false,
-  "updated_at": "2026-11-03T20:15:11+08:00"
+  "updated_at": "2026-11-03T21:20:21+08:00"
  },
- "updated_at": "2026-11-03T20:15:11+08:00",
+ "updated_at": "2026-11-03T21:20:21+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

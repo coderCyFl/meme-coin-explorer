@@ -263,3 +263,17 @@
 {"ts": "2026-11-03T20:15:00+08:00", "symbol": "PUMPUSDT", "tool": "search", "query": "(\"PUMP coin\" OR \"PUMP token\" OR PUMPUSDT OR \"$PUMP\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-03T20:15:00+08:00", "symbol": "HOTUSDT", "tool": "counts", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 111}
 {"ts": "2026-11-03T20:15:00+08:00", "symbol": "HOTUSDT", "tool": "search", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 8}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "INJUSDT", "tool": "counts", "query": "($INJ OR #INJ) (crypto OR binance) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "INJUSDT", "tool": "search", "query": "($INJ OR #INJ) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "WLFIUSDT", "tool": "counts", "query": "($WLFI OR #WLFI) (crypto OR binance) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "WLFIUSDT", "tool": "search", "query": "($WLFI OR #WLFI) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "XRPUSDT", "tool": "counts", "query": "($XRP OR #XRP) (crypto OR binance) lang:en -is:retweet", "result_count": 158}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "XRPUSDT", "tool": "search", "query": "($XRP OR #XRP) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "PEPEUSDT", "tool": "counts", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 20}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "PEPEUSDT", "tool": "search", "query": "($PEPE OR #PEPE) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "STRKUSDT", "tool": "counts", "query": "($STRK OR #STRK) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "STRKUSDT", "tool": "search", "query": "($STRK OR #STRK) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "HOTUSDT", "tool": "counts", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 121}
+{"ts": "2026-11-03T21:19:16+08:00", "symbol": "HOTUSDT", "tool": "search", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
