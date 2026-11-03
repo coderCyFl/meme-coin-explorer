@@ -65,6 +65,29 @@
       "push.denied": "Notifications blocked · enable in browser settings",
       "push.on": "Notifications on · Early tips only",
       "push.off": "Notifications off",
+      "hit.title": "Hit report",
+      "hit.sub": "Sealed Early · last nights vs Binance top 20",
+      "hit.win7": "7 nights",
+      "hit.winnight": "One night",
+      "hit.col.hit": "HIT",
+      "hit.col.late": "LATE",
+      "hit.col.miss": "MISS",
+      "hit.note": "Display only · sealed JSON · not a live recompute",
+      "hit.empty": "No sealed nights yet.",
+      "hit.meta7": "{hits}/{flagged} early · {days} sealed nights",
+      "hit.metanight": "{date} · early {hits}/{flagged}",
+      "hit.tier": "tier {t}",
+      "xnews.title": "X news scan",
+      "xnews.sub": "Coin X snapshot · parallel only · not a buy signal",
+      "xnews.all": "All",
+      "xnews.hot": "Hot",
+      "xnews.warm": "Warming",
+      "xnews.cold": "Cold",
+      "xnews.shill": "Shill 🚩",
+      "xnews.empty": "No X snapshot yet.",
+      "xnews.view": "View posts",
+      "xnews.meta": "Snapshot {when} · {n} coins · scan only (no paper open)",
+      "xnews.parallel": "Parallel · shill veto on face · not Early lever",
     },
     zh: {
       "auth.login": "登入",
@@ -121,6 +144,29 @@
       "push.denied": "通知已封鎖 · 請到瀏覽器設定開啟",
       "push.on": "已開通知 · 只推 Early",
       "push.off": "已關通知",
+      "hit.title": "命中報告",
+      "hit.sub": "已封盤 Early · 對照 Binance 頭 20",
+      "hit.win7": "近 7 晚",
+      "hit.winnight": "單晚",
+      "hit.col.hit": "命中",
+      "hit.col.late": "遲標",
+      "hit.col.miss": "走漏",
+      "hit.note": "只讀展示 · 用已封盤 JSON · 不即場重算",
+      "hit.empty": "暫無封盤夜。",
+      "hit.meta7": "升前 {hits}/{flagged} · {days} 個封盤夜",
+      "hit.metanight": "{date} · 升前 {hits}/{flagged}",
+      "hit.tier": "檔 {t}",
+      "xnews.title": "X 新聞掃描",
+      "xnews.sub": "幣 X 快照 · 並行面 · 非買入訊號",
+      "xnews.all": "全部",
+      "xnews.hot": "熱",
+      "xnews.warm": "升溫",
+      "xnews.cold": "冷",
+      "xnews.shill": "洗版 🚩",
+      "xnews.empty": "暫無 X 快照。",
+      "xnews.view": "睇帖",
+      "xnews.meta": "快照 {when} · {n} 幣 · 只掃睇（唔開紙上倉）",
+      "xnews.parallel": "並行 · 面標洗版 · 唔當 Early 主杆",
     },
   };
   let uiLang = (localStorage.getItem(LANG_KEY) === "zh") ? "zh" : "en";
@@ -162,6 +208,8 @@
     if (refresh) {
       try { renderDailyBatchTable(); } catch (_) {}
       try { if (!gbBusy) loadGainerBoard(false); } catch (_) {}
+      try { renderHitReport(); } catch (_) {}
+      try { renderXNewsScan(); } catch (_) {}
       try { renderPortfolio && renderPortfolio(false); } catch (_) {}
     }
   }
@@ -2231,6 +2279,8 @@
     renderGainerAccuracy();
     renderGainerScorecard(res);
     renderGainerCaptureStrip();
+    try { renderHitReport(); } catch (_) {}
+    try { renderXNewsScan(); } catch (_) {}
   }
 
   /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
@@ -2290,6 +2340,217 @@
         el("div", { class: "gbc-syms tiny muted", text: missSyms.join(", ") }));
       box.append(det);
     }
+  }
+
+  // ---------- Hit report board (Strategy N/A — display-only sealed scorecards) ----------
+  // Source: summary.scorecards + summary.scorecard_7d; night detail from daily_vs_gainers/{date}.json.
+  // NEVER recompute live ranks / never touch Early flag rules / tip-era / exit.
+  let hitWin = "7d";
+  let hitNight = "";
+  const hitDailyCache = new Map();
+  async function hitLoadDaily(date) {
+    if (!date) return null;
+    if (hitDailyCache.has(date)) return hitDailyCache.get(date);
+    let j = null;
+    try {
+      const r = await fetch("data/gainer_board/daily_vs_gainers/" + date + ".json?t=" + Date.now(), { cache: "no-store" });
+      if (r.ok) j = await r.json();
+    } catch (_) {}
+    hitDailyCache.set(date, j);
+    return j;
+  }
+  function hitMd(day) {
+    if (!day || day.length < 10) return day || "—";
+    return `${Number(day.slice(5, 7))}/${day.slice(8, 10)}`;
+  }
+  function hitFmtPct(v) {
+    if (v == null || !isFinite(Number(v))) return "—";
+    const n = Number(v);
+    return (n >= 0 ? "+" : "") + n.toFixed(1) + "%";
+  }
+  function hitCoinRow(kind, c) {
+    if (!c) return null;
+    if (typeof c === "string") {
+      return el("div", { class: "hit-row" }, el("span", { class: "nm", text: c }));
+    }
+    const sym = c.symbol || c.base || "—";
+    const tiers = Array.isArray(c.tiers) ? c.tiers.join("/") : (c.tier || "");
+    const line2 = [];
+    if (kind === "miss") {
+      if (c.rank != null) line2.push("#" + c.rank);
+      if (c.change_24h != null) line2.push(hitFmtPct(c.change_24h));
+    } else {
+      if (tiers) line2.push(tr("hit.tier", { t: tiers }));
+      if (c.flag_time) line2.push(frTime(c.flag_time));
+      if (c.entry_price_usd != null) line2.push("@" + price(c.entry_price_usd));
+      if (c.final_rank != null) line2.push("#" + c.final_rank);
+      if (c.final_change_24h != null) line2.push(hitFmtPct(c.final_change_24h));
+      if (c.lead_h != null) line2.push(c.lead_h + "h");
+      line2.push(kind === "late" ? "LATE" : "HIT");
+    }
+    return el("div", { class: "hit-row" },
+      el("span", { class: "nm", text: sym }),
+      line2.length ? el("div", { class: "hit-line2", text: line2.join(" · ") }) : null);
+  }
+  function hitFillList(node, kind, rows) {
+    if (!node) return;
+    node.textContent = "";
+    const arr = Array.isArray(rows) ? rows : [];
+    if (!arr.length) {
+      node.append(el("div", { class: "hit-empty", text: "—" }));
+      return;
+    }
+    for (const r of arr) {
+      const row = hitCoinRow(kind, r);
+      if (row) node.append(row);
+    }
+  }
+  function renderHitReport() {
+    const box = $("hitReportPanel"); if (!box) return;
+    const sum = gbStatic.summary;
+    const cards = (sum && Array.isArray(sum.scorecards)) ? sum.scorecards.slice() : [];
+    const w7 = (sum && sum.scorecard_7d) || {};
+    if (!hitNight && cards.length) hitNight = cards[cards.length - 1].date || "";
+    if (hitNight && cards.length && !cards.some((c) => c.date === hitNight)) {
+      hitNight = cards[cards.length - 1].date || "";
+    }
+    document.querySelectorAll("#hitWindowSeg [data-hitwin]").forEach((b) => {
+      b.classList.toggle("active", b.dataset.hitwin === hitWin);
+    });
+    // Night chips always drive HIT|LATE|MISS lists; window seg only switches the hero totals.
+    const nights = $("hitNights");
+    if (nights) {
+      nights.hidden = !cards.length;
+      nights.textContent = "";
+      for (const c of cards) {
+        const d = c.date || "";
+        nights.append(el("button", {
+          type: "button", class: "chip" + (d === hitNight ? " active" : ""),
+          onclick: () => { hitNight = d; renderHitReport(); },
+        }, hitMd(d) + (c.precision_pct != null ? ` · ${c.precision_pct}%` : "")));
+      }
+    }
+    const big = $("hitBig");
+    const rate = $("hitRate");
+    const meta = $("hitMeta");
+    let earlyHits = 0, earlyFlagged = 0, hitRate = null, metaTxt = "";
+    const nightCard = cards.find((x) => x.date === hitNight) || cards[cards.length - 1] || null;
+    if (hitWin === "7d") {
+      earlyHits = w7.early_hits != null ? w7.early_hits : 0;
+      earlyFlagged = w7.early_flagged != null ? w7.early_flagged : (w7.flagged || 0);
+      hitRate = w7.precision_pct;
+      metaTxt = tr("hit.meta7", { hits: earlyHits, flagged: earlyFlagged, days: w7.days || cards.length || 0 });
+    } else if (nightCard) {
+      earlyHits = nightCard.early_hits != null ? nightCard.early_hits : ((nightCard.hits || []).length);
+      earlyFlagged = nightCard.early_flagged != null ? nightCard.early_flagged : (nightCard.flagged || 0);
+      hitRate = nightCard.precision_pct;
+      metaTxt = tr("hit.metanight", { date: hitMd(nightCard.date), hits: earlyHits, flagged: earlyFlagged });
+    } else {
+      metaTxt = tr("hit.empty");
+    }
+    if (big) big.textContent = earlyFlagged ? `${earlyHits}/${earlyFlagged}` : "—";
+    if (rate) {
+      rate.textContent = hitRate != null ? `${hitRate}%` : "—";
+      rate.className = "hit-rate num " + (hitRate != null && hitRate >= 10 ? "pos" : (hitRate != null ? "neg" : ""));
+    }
+    if (meta) meta.textContent = metaTxt || tr("hit.empty");
+
+    // Lists always for selected night — sealed daily JSON (Analysis fields) with scorecard fallback.
+    const listSrc = nightCard;
+    const dateForDaily = hitNight || (listSrc && listSrc.date);
+    const fillFrom = (daily, sc) => {
+      const hits = (daily && daily.hits) || (sc && sc.hits) || [];
+      const late = (daily && daily.late) || (sc && sc.late) || [];
+      const missed = (daily && daily.missed) || (sc && sc.missed) || [];
+      hitFillList($("hitListHit"), "hit", hits);
+      hitFillList($("hitListLate"), "late", late);
+      hitFillList($("hitListMiss"), "miss", missed);
+    };
+    if (!listSrc && !dateForDaily) {
+      hitFillList($("hitListHit"), "hit", []);
+      hitFillList($("hitListLate"), "late", []);
+      hitFillList($("hitListMiss"), "miss", []);
+      return;
+    }
+    fillFrom(null, listSrc);
+    if (dateForDaily) {
+      hitLoadDaily(dateForDaily).then((daily) => {
+        if (!daily) return;
+        if (hitNight === dateForDaily || (!hitNight && listSrc && listSrc.date === dateForDaily)) {
+          fillFrom(daily, listSrc);
+        }
+      }).catch(() => {});
+    }
+  }
+
+  // ---------- X-news scan board (Strategy OK: parallel face + shill veto; NEVER paper opener) ----------
+  let xNewsFilter = "all";
+  function renderXNewsScan() {
+    const list = $("xNewsList");
+    const empty = $("xNewsEmpty");
+    const meta = $("xNewsMeta");
+    if (!list) return;
+    list.textContent = "";
+    document.querySelectorAll("#xNewsFilters [data-xnf]").forEach((b) => {
+      b.classList.toggle("active", b.dataset.xnf === xNewsFilter);
+    });
+    const coinsObj = (gbX.data && gbX.data.coins && typeof gbX.data.coins === "object") ? gbX.data.coins : null;
+    const rows = [];
+    if (coinsObj) {
+      for (const [pair, c] of Object.entries(coinsObj)) {
+        if (!c || typeof c !== "object") continue;
+        const verdict = c.verdict;
+        if (!["熱", "升溫", "冷"].includes(verdict)) continue;
+        rows.push({ pair, c, verdict, shill: c.shill_flag === true, t: Date.parse(c.checked_at) || 0 });
+      }
+    }
+    rows.sort((a, b) => {
+      const rank = (v) => (v === "熱" ? 0 : v === "升溫" ? 1 : 2);
+      const d = rank(a.verdict) - rank(b.verdict);
+      if (d) return d;
+      return (b.t || 0) - (a.t || 0);
+    });
+    const filtered = rows.filter((r) => {
+      if (xNewsFilter === "all") return true;
+      if (xNewsFilter === "hot") return r.verdict === "熱";
+      if (xNewsFilter === "warm") return r.verdict === "升溫";
+      if (xNewsFilter === "cold") return r.verdict === "冷";
+      if (xNewsFilter === "shill") return r.shill;
+      return true;
+    });
+    if (meta) {
+      const when = gbX.data && gbX.data.updated_at ? frTime(gbX.data.updated_at) : "—";
+      meta.textContent = tr("xnews.meta", { when, n: rows.length }) + " · " + tr("xnews.parallel");
+    }
+    if (empty) empty.hidden = filtered.length > 0;
+    if (!filtered.length) return;
+    for (const r of filtered) {
+      const base = (r.c.base || r.pair.replace(/USDT$/, ""));
+      const vClass = r.verdict === "熱" ? "x-hot" : r.verdict === "升溫" ? "x-warm" : "x-cold";
+      const vLab = r.verdict === "熱" ? tr("xnews.hot") : r.verdict === "升溫" ? tr("xnews.warm") : tr("xnews.cold");
+      const shillEl = shillFlagEl(r.pair);
+      // Show shill immediately when flag true (paintShillFlags also runs after)
+      if (r.shill && shillEl) shillEl.hidden = false;
+      list.append(el("div", { class: "xnews-row", "data-xnews": r.pair },
+        el("div", { class: "xnews-top" },
+          el("span", { class: "nm", text: base }),
+          el("span", { class: "xnews-verdict " + vClass, text: "X " + vLab }),
+          shillEl,
+          r.t ? el("span", { class: "tiny muted", text: shHm(r.t) }) : null),
+        el("div", { class: "xnews-one", text: String(r.c.one_line || "").slice(0, 80) || "—" }),
+        el("div", { class: "xnews-actions" },
+          el("button", {
+            type: "button", class: "ghost sm",
+            // View-only sheet — intentionally NO Buy / NO openBuy / NO paper.
+            onclick: () => {
+              const rec = { ...r.c, _t: r.t };
+              if (window.MCE.market && window.MCE.market.openSheet) {
+                window.MCE.market.openSheet(`${base} · X ${r.verdict}`, [gbXSheet(rec), el("p", { class: "tiny muted xnews-note", text: tr("xnews.parallel") })]);
+              }
+            },
+          }, tr("xnews.view")))));
+    }
+    try { paintShillFlags(); } catch (_) {}
   }
 
   function renderGainerAccuracy() {
@@ -4569,6 +4830,24 @@
   };
   if ($("livePicksRefresh")) $("livePicksRefresh").addEventListener("click", () => loadLiveBnPicks(true));
   if ($("gainerRefresh")) $("gainerRefresh").addEventListener("click", () => loadGainerBoard(true));
+  document.querySelectorAll("#hitWindowSeg [data-hitwin]").forEach((b) => b.addEventListener("click", () => {
+    hitWin = b.dataset.hitwin === "night" ? "night" : "7d";
+    renderHitReport();
+  }));
+  document.querySelectorAll("#xNewsFilters [data-xnf]").forEach((b) => b.addEventListener("click", () => {
+    xNewsFilter = b.dataset.xnf || "all";
+    renderXNewsScan();
+  }));
+  if ($("xNewsRefresh")) $("xNewsRefresh").addEventListener("click", async () => {
+    try { await gbLoadX(true); } catch (_) {}
+    renderXNewsScan();
+  });
+  const scrollFace = (id) => {
+    goView("picks");
+    setTimeout(() => { const n = $(id); if (n) n.scrollIntoView({ behavior: "smooth", block: "start" }); }, 80);
+  };
+  if ($("moreHitReport")) $("moreHitReport").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("hitReportPanel"); });
+  if ($("moreXNews")) $("moreXNews").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("xNewsScanPanel"); });
   // 急升榜: own boot + rescan every 90s on ANY tab (decoupled from loadPicks / renderPicks).
   function bootGainer() {
     loadGainerBoard(false);
