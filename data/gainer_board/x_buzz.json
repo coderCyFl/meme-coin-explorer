@@ -6,44 +6,44 @@
    "base": "HOT",
    "flag": "pump",
    "trigger_at": "2026-11-03T19:15:00+08:00",
-   "checked_at": "2026-11-03T19:18:08+08:00",
-   "posts_last_1h": 79,
-   "posts_prev_6h_avg_per_h": 52.33,
-   "spike_ratio": 1.51,
+   "checked_at": "2026-11-03T20:15:00+08:00",
+   "posts_last_1h": 111,
+   "posts_prev_6h_avg_per_h": 60.5,
+   "spike_ratio": 1.83,
    "verdict": "升溫",
-   "one_line": "升溫但多熱錢包雜音",
+   "one_line": "升溫但訊號bot偏多",
    "shill_flag": true,
    "big_accounts": 1,
    "top_posts": [
     {
+     "id": "2117518376352563681",
+     "url": "https://x.com/cobacknam/status/2117518376352563681",
+     "text": "Binance incident, now day 5 and a recap On the evening of October 29, around $6.3B flowed out of Binance’s hot wallets. Across ten chains s…",
+     "likes": 12,
+     "author_username": "cobacknam",
+     "author_followers": 9359,
+     "created_at": "2026-11-03T15:24:57+08:00"
+    },
+    {
      "id": "2117567958549459334",
      "url": "https://x.com/Vindicatedchidi/status/2117567958549459334",
      "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There…",
-     "likes": 9,
+     "likes": 11,
      "author_username": "Vindicatedchidi",
-     "author_followers": 208776,
+     "author_followers": 208778,
      "created_at": "2026-11-03T18:41:58+08:00"
     },
     {
-     "id": "2117560923464544430",
-     "url": "https://x.com/mai_thanhVN/status/2117560923464544430",
-     "text": "Back in February I pulled my USDT off the exchange and into a wallet where I hold the keys. October proved it right: tampered Ledger device…",
-     "likes": 5,
-     "author_username": "mai_thanhVN",
-     "author_followers": 33750,
-     "created_at": "2026-11-03T18:14:01+08:00"
-    },
-    {
-     "id": "2117547822929359156",
-     "url": "https://x.com/cryptoanalyst81/status/2117547822929359156",
-     "text": "$HOT Weekly Timeframe #BTC #ETH #Bitcoin #Binance #ARIAUSDT #AGTUSDT #SOXSUSDT #JCTUSDT #ICNTUSDT #PIEVERSE #XAG #RUNEUSDT #IRYSUSDT #BMTUS…",
-     "likes": 2,
-     "author_username": "cryptoanalyst81",
-     "author_followers": 1698,
-     "created_at": "2026-11-03T17:21:57+08:00"
+     "id": "2117545645514924304",
+     "url": "https://x.com/mrcamerontrader/status/2117545645514924304",
+     "text": "🚀 HOT/USDT LONG 50X 💰 Entry Price: 0.000430 - 0.000415 🎯 TP Targets: (0.000441, 0.000455, 0.000470) 🛑 Stop Loss: 0.000405 #crypto",
+     "likes": 8,
+     "author_username": "mrcamerontrader",
+     "author_followers": 543,
+     "created_at": "2026-11-03T17:13:18+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "MEGAUSDT": {
    "symbol": "MEGAUSDT",
@@ -466,6 +466,94 @@
     }
    ],
    "checks_this_trigger": 4
+  },
+  "STRKUSDT": {
+   "symbol": "STRKUSDT",
+   "base": "STRK",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T20:00:00+08:00",
+   "checked_at": "2026-11-03T20:15:00+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 2.4,
+   "verdict": "冷",
+   "one_line": "掃盤bot為主冇真人傾",
+   "shill_flag": true,
+   "big_accounts": 2,
+   "top_posts": [
+    {
+     "id": "2117527082137800890",
+     "url": "https://x.com/DegenerateNews/status/2117527082137800890",
+     "text": "NEW: @binance CO-FOUNDER @heyibinance SAYS WITHDRAWALS ARE RE-ENABLED FOR 34 MORE ETHEREUM ASSETS AND 22 SOLANA TOKENS INCLUDING $ENA, $STR…",
+     "likes": 61,
+     "author_username": "DegenerateNews",
+     "author_followers": 425221,
+     "created_at": "2026-11-03T15:59:32+08:00"
+    },
+    {
+     "id": "2117518139843870932",
+     "url": "https://x.com/BinanceAfrica/status/2117518139843870932",
+     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: New: ETH: ENA, USDE, PENDLE, WLD, QNT,…",
+     "likes": 19,
+     "author_username": "BinanceAfrica",
+     "author_followers": 310552,
+     "created_at": "2026-11-03T15:24:00+08:00"
+    },
+    {
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digita…",
+     "likes": 8,
+     "author_username": "Binance_TH_",
+     "author_followers": 25701,
+     "created_at": "2026-11-03T19:26:54+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "PUMPUSDT": {
+   "symbol": "PUMPUSDT",
+   "base": "PUMP",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T20:15:00+08:00",
+   "checked_at": "2026-11-03T20:15:00+08:00",
+   "posts_last_1h": 754,
+   "posts_prev_6h_avg_per_h": 749.33,
+   "spike_ratio": 1.01,
+   "verdict": "冷",
+   "one_line": "雜音多冇真PUMP討論",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117590943222186226",
+     "url": "https://x.com/Rafael_Alpha1/status/2117590943222186226",
+     "text": "🔥 $PUMP — RUNNING HOT That’s a massive 123X expansion from the early $2K → $246K MC 🚀 entry. Another clean move added to the record. CA>> H…",
+     "likes": 2,
+     "author_username": "Rafael_Alpha1",
+     "author_followers": 666,
+     "created_at": "2026-11-03T20:13:18+08:00"
+    },
+    {
+     "id": "2117590974545240278",
+     "url": "https://x.com/_Shonsol/status/2117590974545240278",
+     "text": "Smooth 36x up on my call $PUMP TG eating massively Dm for entry Hxqh7Fxsz11pyqDRdEkBgP8vP44BPLPnQDrxzPYZpump #solana #memecoin #memecoin100…",
+     "likes": 0,
+     "author_username": "_Shonsol",
+     "author_followers": 1900,
+     "created_at": "2026-11-03T20:13:25+08:00"
+    },
+    {
+     "id": "2117590979846840691",
+     "url": "https://x.com/SevinchanMert/status/2117590979846840691",
+     "text": "I called $PUMP in my private tg DM me now to access my tg CA>>> Hxqh7Fxsz11pyqDRdEkBgP8vP44BPLPnQDrxzPYZpump",
+     "likes": 0,
+     "author_username": "SevinchanMert",
+     "author_followers": 730,
+     "created_at": "2026-11-03T20:13:27+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -1396,15 +1484,144 @@
      "created_at": "2026-11-03T17:21:57+08:00"
     }
    ]
+  },
+  {
+   "symbol": "STRKUSDT",
+   "base": "STRK",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T20:00:00+08:00",
+   "checked_at": "2026-11-03T20:15:00+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 2.4,
+   "verdict": "冷",
+   "one_line": "掃盤bot為主冇真人傾",
+   "shill_flag": true,
+   "big_accounts": 2,
+   "top_posts": [
+    {
+     "id": "2117527082137800890",
+     "url": "https://x.com/DegenerateNews/status/2117527082137800890",
+     "text": "NEW: @binance CO-FOUNDER @heyibinance SAYS WITHDRAWALS ARE RE-ENABLED FOR 34 MORE ETHEREUM ASSETS AND 22 SOLANA TOKENS INCLUDING $ENA, $STR…",
+     "likes": 61,
+     "author_username": "DegenerateNews",
+     "author_followers": 425221,
+     "created_at": "2026-11-03T15:59:32+08:00"
+    },
+    {
+     "id": "2117518139843870932",
+     "url": "https://x.com/BinanceAfrica/status/2117518139843870932",
+     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: New: ETH: ENA, USDE, PENDLE, WLD, QNT,…",
+     "likes": 19,
+     "author_username": "BinanceAfrica",
+     "author_followers": 310552,
+     "created_at": "2026-11-03T15:24:00+08:00"
+    },
+    {
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digita…",
+     "likes": 8,
+     "author_username": "Binance_TH_",
+     "author_followers": 25701,
+     "created_at": "2026-11-03T19:26:54+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "base": "PUMP",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T20:15:00+08:00",
+   "checked_at": "2026-11-03T20:15:00+08:00",
+   "posts_last_1h": 754,
+   "posts_prev_6h_avg_per_h": 749.33,
+   "spike_ratio": 1.01,
+   "verdict": "冷",
+   "one_line": "雜音多冇真PUMP討論",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117590943222186226",
+     "url": "https://x.com/Rafael_Alpha1/status/2117590943222186226",
+     "text": "🔥 $PUMP — RUNNING HOT That’s a massive 123X expansion from the early $2K → $246K MC 🚀 entry. Another clean move added to the record. CA>> H…",
+     "likes": 2,
+     "author_username": "Rafael_Alpha1",
+     "author_followers": 666,
+     "created_at": "2026-11-03T20:13:18+08:00"
+    },
+    {
+     "id": "2117590974545240278",
+     "url": "https://x.com/_Shonsol/status/2117590974545240278",
+     "text": "Smooth 36x up on my call $PUMP TG eating massively Dm for entry Hxqh7Fxsz11pyqDRdEkBgP8vP44BPLPnQDrxzPYZpump #solana #memecoin #memecoin100…",
+     "likes": 0,
+     "author_username": "_Shonsol",
+     "author_followers": 1900,
+     "created_at": "2026-11-03T20:13:25+08:00"
+    },
+    {
+     "id": "2117590979846840691",
+     "url": "https://x.com/SevinchanMert/status/2117590979846840691",
+     "text": "I called $PUMP in my private tg DM me now to access my tg CA>>> Hxqh7Fxsz11pyqDRdEkBgP8vP44BPLPnQDrxzPYZpump",
+     "likes": 0,
+     "author_username": "SevinchanMert",
+     "author_followers": 730,
+     "created_at": "2026-11-03T20:13:27+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "HOTUSDT",
+   "base": "HOT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T19:15:00+08:00",
+   "checked_at": "2026-11-03T20:15:00+08:00",
+   "posts_last_1h": 111,
+   "posts_prev_6h_avg_per_h": 60.5,
+   "spike_ratio": 1.83,
+   "verdict": "升溫",
+   "one_line": "升溫但訊號bot偏多",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117518376352563681",
+     "url": "https://x.com/cobacknam/status/2117518376352563681",
+     "text": "Binance incident, now day 5 and a recap On the evening of October 29, around $6.3B flowed out of Binance’s hot wallets. Across ten chains s…",
+     "likes": 12,
+     "author_username": "cobacknam",
+     "author_followers": 9359,
+     "created_at": "2026-11-03T15:24:57+08:00"
+    },
+    {
+     "id": "2117567958549459334",
+     "url": "https://x.com/Vindicatedchidi/status/2117567958549459334",
+     "text": "I ask again: where is your crypto actually safe? The recent Binance hack and the attacks that followed have reminded me of one thing: There…",
+     "likes": 11,
+     "author_username": "Vindicatedchidi",
+     "author_followers": 208778,
+     "created_at": "2026-11-03T18:41:58+08:00"
+    },
+    {
+     "id": "2117545645514924304",
+     "url": "https://x.com/mrcamerontrader/status/2117545645514924304",
+     "text": "🚀 HOT/USDT LONG 50X 💰 Entry Price: 0.000430 - 0.000415 🎯 TP Targets: (0.000441, 0.000455, 0.000470) 🛑 Stop Loss: 0.000405 #crypto",
+     "likes": 8,
+     "author_username": "mrcamerontrader",
+     "author_followers": 543,
+     "created_at": "2026-11-03T17:13:18+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 44,
+  "calls_today": 50,
   "cap_reached": false,
-  "updated_at": "2026-11-03T19:18:17+08:00"
+  "updated_at": "2026-11-03T20:15:11+08:00"
  },
- "updated_at": "2026-11-03T19:18:17+08:00",
+ "updated_at": "2026-11-03T20:15:11+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
