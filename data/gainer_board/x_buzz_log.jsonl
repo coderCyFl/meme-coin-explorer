@@ -319,3 +319,5 @@
 {"ts": "2026-11-04T01:16:15+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 659}
 {"ts": "2026-11-04T01:16:50+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 20}
 {"ts": "2026-11-04T01:16:50+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-04T02:14:10+08:00", "symbol": "SAGAUSDT", "tool": "counts", "query": "($SAGA OR #SAGA) (crypto OR binance) lang:en -is:retweet", "result_count": 14}
+{"ts": "2026-11-04T02:14:12+08:00", "symbol": "SAGAUSDT", "tool": "search", "query": "($SAGA OR #SAGA) (crypto OR binance) lang:en -is:retweet", "result_count": 10}

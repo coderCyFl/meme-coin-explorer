@@ -906,6 +906,50 @@
     }
    ],
    "checks_this_trigger": 1
+  },
+  "SAGAUSDT": {
+   "symbol": "SAGAUSDT",
+   "base": "SAGA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T00:30:00+08:00",
+   "checked_at": "2026-11-04T02:14:30+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 1.64,
+   "spike_ratio": 2.44,
+   "verdict": "冷",
+   "one_line": "雜音多冇真熱度",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117599311265456477",
+     "url": "https://x.com/FantasyWhales/status/2117599311265456477",
+     "text": "$SAGA crypto's surge is driven by its successful Binance Launchpool listing, mainnet launch, and growing market interest in its dedicated L…",
+     "likes": 2,
+     "author_username": "FantasyWhales",
+     "author_followers": 1100,
+     "created_at": "2026-11-03T20:46:33+08:00"
+    },
+    {
+     "id": "2117653313415995663",
+     "url": "https://x.com/FantasyWhales/status/2117653313415995663",
+     "text": "Why did $SAGA go up? Its mainnet officially launched, bringing its vision of \"chainlets\" – dedicated appchains for scalable dApps – to life…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1100,
+     "created_at": "2026-11-04T00:21:08+08:00"
+    },
+    {
+     "id": "2117661091899621519",
+     "url": "https://x.com/FantasyWhales/status/2117661091899621519",
+     "text": "Story Protocol's $SAGA token saw a price surge following its recent launch and successful airdrop distribution. Initial exchange listings a…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1100,
+     "created_at": "2026-11-04T00:52:03+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -3160,15 +3204,58 @@
      "created_at": "2026-11-04T00:03:00+08:00"
     }
    ]
+  },
+  {
+   "symbol": "SAGAUSDT",
+   "base": "SAGA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T00:30:00+08:00",
+   "checked_at": "2026-11-04T02:14:30+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 1.64,
+   "spike_ratio": 2.44,
+   "verdict": "冷",
+   "one_line": "雜音多冇真熱度",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117599311265456477",
+     "url": "https://x.com/FantasyWhales/status/2117599311265456477",
+     "text": "$SAGA crypto's surge is driven by its successful Binance Launchpool listing, mainnet launch, and growing market interest in its dedicated L…",
+     "likes": 2,
+     "author_username": "FantasyWhales",
+     "author_followers": 1100,
+     "created_at": "2026-11-03T20:46:33+08:00"
+    },
+    {
+     "id": "2117653313415995663",
+     "url": "https://x.com/FantasyWhales/status/2117653313415995663",
+     "text": "Why did $SAGA go up? Its mainnet officially launched, bringing its vision of \"chainlets\" – dedicated appchains for scalable dApps – to life…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1100,
+     "created_at": "2026-11-04T00:21:08+08:00"
+    },
+    {
+     "id": "2117661091899621519",
+     "url": "https://x.com/FantasyWhales/status/2117661091899621519",
+     "text": "Story Protocol's $SAGA token saw a price surge following its recent launch and successful airdrop distribution. Initial exchange listings a…",
+     "likes": 1,
+     "author_username": "FantasyWhales",
+     "author_followers": 1100,
+     "created_at": "2026-11-04T00:52:03+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 12,
+  "calls_today": 14,
   "cap_reached": false,
-  "updated_at": "2026-11-04T01:17:41+08:00"
+  "updated_at": "2026-11-04T02:15:13+08:00"
  },
- "updated_at": "2026-11-04T01:17:41+08:00",
+ "updated_at": "2026-11-04T02:15:13+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
