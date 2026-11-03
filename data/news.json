@@ -1,7 +1,37 @@
 {
-  "fetched_at": "2026-11-03T12:08:08+08:00",
+  "fetched_at": "2026-11-03T13:03:34+08:00",
   "source": "X News",
   "stories": [
+    {
+      "id": "2117459285034586236",
+      "title": "BAYC Community Celebrates Mutant Monday with New Holders",
+      "title_en": "BAYC Community Celebrates Mutant Monday with New Holders",
+      "summary": "Mutant Monday brings the Bored Ape Yacht Club and Mutant Ape Yacht Club communities together every week, with owners posting creative renders and welcoming newcomers like Starry Snow, who called entry a long-held dream. Holders like Chanimal and Welcome Apes shared warm greetings, praising standout traits like aquamarine backgrounds and eyeing big things for 2027. Recent sales hovered around 5.6 to 6 ETH with a floor near 5.85 ETH, showing steady interest amid ongoing connections and celebrations.",
+      "summary_en": "Mutant Monday brings the Bored Ape Yacht Club and Mutant Ape Yacht Club communities together every week, with owners posting creative renders and welcoming newcomers like Starry Snow, who called entry a long-held dream. Holders like Chanimal and Welcome Apes shared warm greetings, praising standout traits like aquamarine backgrounds and eyeing big things for 2027. Recent sales hovered around 5.6 to 6 ETH with a floor near 5.85 ETH, showing steady interest amid ongoing connections and celebrations.",
+      "published_at": "2026-11-03T03:36:46.000Z",
+      "url": "https://x.com/i/trending/2117459285034586236",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117481295756607950",
+      "title": "Bitcoin Trades Sideways Around $76,000-$77,000 Amid Correction Discussions and U.S. Midterm Election Anticipation",
+      "title_en": "Bitcoin Trades Sideways Around $76,000-$77,000 Amid Correction Discussions and U.S. Midterm Election Anticipation",
+      "summary": "Bitcoin price hovers between $75,000 and $77,000 after 74 days of sideways trading between $75,000 and $86,000. Traders debate potential sweeps to $74,000-$75,000 lows or bounces to $80,000, with technical indicators like Fear and Greed Index at 26 and key supports at $76,000-$76,800 ahead of U.S. midterm elections. Factors include ETF outflows, Binance hack aftermath, and geopolitical events like Qeshm Island strikes influencing volatility.",
+      "summary_en": "Bitcoin price hovers between $75,000 and $77,000 after 74 days of sideways trading between $75,000 and $86,000. Traders debate potential sweeps to $74,000-$75,000 lows or bounces to $80,000, with technical indicators like Fear and Greed Index at 26 and key supports at $76,000-$76,800 ahead of U.S. midterm elections. Factors include ETF outflows, Binance hack aftermath, and geopolitical events like Qeshm Island strikes influencing volatility.",
+      "published_at": "2026-11-03T05:02:36.000Z",
+      "url": "https://x.com/i/trending/2117481295756607950",
+      "tags": [
+        "News"
+      ],
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
+      "category": "News",
+      "source": "X News"
+    },
     {
       "id": "2117426584554717612",
       "title": "WorkOS Reveals AI Agent Breach in Internal Sales Systems",
@@ -1684,6 +1714,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-03T12:08:08+08:00",
+  "x_fetched_at": "2026-11-03T13:03:34+08:00",
   "x_job": "hourly-update"
 }
