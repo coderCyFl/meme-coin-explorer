@@ -393,88 +393,88 @@
    "base": "BMT",
    "flag": "pump",
    "trigger_at": "2026-11-03T12:15:00+08:00",
-   "checked_at": "2026-11-03T15:13:42+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 1.8,
+   "checked_at": "2026-11-03T16:13:00+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.17,
+   "spike_ratio": 2.77,
    "verdict": "冷",
    "one_line": "掃盤bot為主冇真人傾",
    "shill_flag": true,
-   "big_accounts": 0,
+   "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2117506113759514641",
-     "url": "https://x.com/Allice_Crypto/status/2117506113759514641",
-     "text": "$BMT UPDATE #BMT is getting a good support here. In this move we can see 80%+ gain here",
-     "likes": 0,
-     "author_username": "Allice_Crypto",
-     "author_followers": 11499,
-     "created_at": "2026-11-03T14:36:13+08:00"
+     "id": "2117518139843870932",
+     "url": "https://x.com/BinanceAfrica/status/2117518139843870932",
+     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: New: ETH: ENA, USDE, PENDLE…",
+     "likes": 9,
+     "author_username": "BinanceAfrica",
+     "author_followers": 310574,
+     "created_at": "2026-11-03T15:24:00+08:00"
     },
     {
-     "id": "2117514003211538664",
-     "url": "https://x.com/cexscan/status/2117514003211538664",
-     "text": "Last 12 hours on Binance Spot: $GPROB +11.7% BMT +10.6% mitosis:native −13.6% 1000CAT −10.4%",
+     "id": "2117514464354247004",
+     "url": "https://x.com/cexscan/status/2117514464354247004",
+     "text": "☀️ Last 12 hours on Binance Spot: 📈 $GPROB +11.7% 📈 BMT +10.6% 📉 mitosis:native −13.6% 📉 1000CAT −10.4%",
      "likes": 0,
      "author_username": "cexscan",
      "author_followers": 10595,
-     "created_at": "2026-11-03T15:07:34+08:00"
+     "created_at": "2026-11-03T15:09:24+08:00"
     },
     {
-     "id": "2117474267810181481",
-     "url": "https://x.com/RyanAtOpen/status/2117474267810181481",
-     "text": "Bubblemaps $16M MARKET CAP. $21M FDV. AND A REAL ONCHAIN INVESTIGATION PLATFORM.",
+     "id": "2117513401802920205",
+     "url": "https://x.com/cexscan/status/2117513401802920205",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Losers include $BMT (Bubblemaps) : ↓-2.44%",
      "likes": 0,
-     "author_username": "RyanAtOpen",
-     "author_followers": 425,
-     "created_at": "2026-11-03T12:29:40+08:00"
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T15:05:11+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 4
   },
   "RUNEUSDT": {
    "symbol": "RUNEUSDT",
    "base": "RUNE",
    "flag": "pump",
    "trigger_at": "2026-11-03T14:30:00+08:00",
-   "checked_at": "2026-11-03T15:13:42+08:00",
+   "checked_at": "2026-11-03T16:13:00+08:00",
    "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 1.5,
-   "spike_ratio": 4.0,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 2.57,
    "verdict": "升溫",
-   "one_line": "訊號bot多間中有新聞",
-   "shill_flag": true,
+   "one_line": "有FBI新聞真人傾",
+   "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117497759888543861",
-     "url": "https://x.com/CryptoAmb/status/2117497759888543861",
-     "text": "#RUNE sees major sell-offs after FBI's demand to block #Binance hacker transactions sparks debate",
-     "likes": 0,
-     "author_username": "CryptoAmb",
-     "author_followers": 45855,
-     "created_at": "2026-11-03T14:03:01+08:00"
+     "id": "2117522202748715239",
+     "url": "https://x.com/PiEDawg_/status/2117522202748715239",
+     "text": "$RUNE | The FBI requested THORChain node operators block transactions linked to addresses used in the Binance hack. #Crypto #Security #Bloc…",
+     "likes": 1,
+     "author_username": "PiEDawg_",
+     "author_followers": 1266,
+     "created_at": "2026-11-03T15:40:09+08:00"
     },
     {
-     "id": "2117509269390295289",
-     "url": "https://x.com/MasteringCrypt/status/2117509269390295289",
-     "text": "$RUNE is taking back control of its higher levels Long $RUNE (DCA Entries)",
+     "id": "2117527793953030641",
+     "url": "https://x.com/FercanY/status/2117527793953030641",
+     "text": "Binance hack sparks $4.7B outflows as crypto retreats (Blue chips, gainers, losers — Change | price | market cap)",
      "likes": 0,
-     "author_username": "MasteringCrypt",
-     "author_followers": 2224,
-     "created_at": "2026-11-03T14:48:45+08:00"
+     "author_username": "FercanY",
+     "author_followers": 14358,
+     "created_at": "2026-11-03T16:02:22+08:00"
     },
     {
-     "id": "2117504607987392848",
-     "url": "https://x.com/cryptolevier/status/2117504607987392848",
-     "text": "30-min #Crypto rocket launched Strongest up 1. $RUNE [HL] (@THORChain) — Crypto Breakout",
+     "id": "2117515259292365064",
+     "url": "https://x.com/mycrypto_signal/status/2117515259292365064",
+     "text": "Overnight in crypto. 📊 • 24h movers: RUNE +12.2%, BEAM -15.1% • BNB ETFs drew $99 million in October",
      "likes": 0,
-     "author_username": "cryptolevier",
-     "author_followers": 8200,
-     "created_at": "2026-11-03T14:30:14+08:00"
+     "author_username": "mycrypto_signal",
+     "author_followers": 73,
+     "created_at": "2026-11-03T15:12:34+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   }
  },
  "history": [
@@ -1156,15 +1156,101 @@
      "created_at": "2026-11-03T12:29:40+08:00"
     }
    ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T14:30:00+08:00",
+   "checked_at": "2026-11-03T16:13:00+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 2.57,
+   "verdict": "升溫",
+   "one_line": "有FBI新聞真人傾",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117522202748715239",
+     "url": "https://x.com/PiEDawg_/status/2117522202748715239",
+     "text": "$RUNE | The FBI requested THORChain node operators block transactions linked to addresses used in the Binance hack. #Crypto #Security #Bloc…",
+     "likes": 1,
+     "author_username": "PiEDawg_",
+     "author_followers": 1266,
+     "created_at": "2026-11-03T15:40:09+08:00"
+    },
+    {
+     "id": "2117527793953030641",
+     "url": "https://x.com/FercanY/status/2117527793953030641",
+     "text": "Binance hack sparks $4.7B outflows as crypto retreats (Blue chips, gainers, losers — Change | price | market cap)",
+     "likes": 0,
+     "author_username": "FercanY",
+     "author_followers": 14358,
+     "created_at": "2026-11-03T16:02:22+08:00"
+    },
+    {
+     "id": "2117515259292365064",
+     "url": "https://x.com/mycrypto_signal/status/2117515259292365064",
+     "text": "Overnight in crypto. 📊 • 24h movers: RUNE +12.2%, BEAM -15.1% • BNB ETFs drew $99 million in October",
+     "likes": 0,
+     "author_username": "mycrypto_signal",
+     "author_followers": 73,
+     "created_at": "2026-11-03T15:12:34+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T12:15:00+08:00",
+   "checked_at": "2026-11-03T16:13:00+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.17,
+   "spike_ratio": 2.77,
+   "verdict": "冷",
+   "one_line": "掃盤bot為主冇真人傾",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117518139843870932",
+     "url": "https://x.com/BinanceAfrica/status/2117518139843870932",
+     "text": "Latest Withdrawal Update Withdrawals have now been re-enabled for the following networks and assets: New: ETH: ENA, USDE, PENDLE…",
+     "likes": 9,
+     "author_username": "BinanceAfrica",
+     "author_followers": 310574,
+     "created_at": "2026-11-03T15:24:00+08:00"
+    },
+    {
+     "id": "2117514464354247004",
+     "url": "https://x.com/cexscan/status/2117514464354247004",
+     "text": "☀️ Last 12 hours on Binance Spot: 📈 $GPROB +11.7% 📈 BMT +10.6% 📉 mitosis:native −13.6% 📉 1000CAT −10.4%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T15:09:24+08:00"
+    },
+    {
+     "id": "2117513401802920205",
+     "url": "https://x.com/cexscan/status/2117513401802920205",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Losers include $BMT (Bubblemaps) : ↓-2.44%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T15:05:11+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 32,
+  "calls_today": 36,
   "cap_reached": false,
-  "updated_at": "2026-11-03T15:14:23+08:00"
+  "updated_at": "2026-11-03T16:13:17+08:00"
  },
- "updated_at": "2026-11-03T15:14:23+08:00",
+ "updated_at": "2026-11-03T16:13:17+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
