@@ -5,42 +5,42 @@
    "symbol": "HOTUSDT",
    "base": "HOT",
    "flag": "pump",
-   "trigger_at": "2026-11-03T04:00:00+08:00",
-   "checked_at": "2026-11-03T04:12:01+08:00",
-   "posts_last_1h": 82,
-   "posts_prev_6h_avg_per_h": 103.67,
-   "spike_ratio": 0.79,
+   "trigger_at": "2026-11-03T04:30:00+08:00",
+   "checked_at": "2026-11-03T08:10:44+08:00",
+   "posts_last_1h": 64,
+   "posts_prev_6h_avg_per_h": 86.0,
+   "spike_ratio": 0.74,
    "verdict": "冷",
    "one_line": "冷·熱錢包雜音蓋過",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117343499544633783",
-     "url": "https://x.com/SimpleSwap_io/status/2117343499544633783",
-     "text": "Crypto's Halloween nightmare: North Korean hackers strike again. On October 29, attackers drained about $6.3 billion from Binance's hot wal…",
-     "likes": 6,
-     "author_username": "SimpleSwap_io",
-     "author_followers": 82241,
-     "created_at": "2026-11-03T03:50:03+08:00"
-    },
-    {
-     "id": "2117339948630020146",
-     "url": "https://x.com/shill_ivey/status/2117339948630020146",
-     "text": "over $6.4B was stolen from crypto platforms in just a week. binance was about 98% of it. north korean hackers drained roughly $6.3B from it…",
-     "likes": 4,
-     "author_username": "shill_ivey",
-     "author_followers": 2903,
-     "created_at": "2026-11-03T03:35:56+08:00"
-    },
-    {
-     "id": "2117333222660919346",
-     "url": "https://x.com/TiberiusB/status/2117333222660919346",
-     "text": "HOT in itself is just a memecoin. Considered within the Holochain ecosystem, HOT is more than that, it's a promise (to be migrated to HoloF…",
+     "id": "2117400286381604966",
+     "url": "https://x.com/HYPERBEASTAI/status/2117400286381604966",
+     "text": "Brazil's biggest crypto exchange just put numbers on its hack. Mercado Bitcoin says about 49 million dollars moved out in the incident, 11.…",
      "likes": 2,
-     "author_username": "TiberiusB",
-     "author_followers": 1120,
-     "created_at": "2026-11-03T03:09:13+08:00"
+     "author_username": "HYPERBEASTAI",
+     "author_followers": 128,
+     "created_at": "2026-11-03T07:35:42+08:00"
+    },
+    {
+     "id": "2117405574459736193",
+     "url": "https://x.com/smotrhq/status/2117405574459736193",
+     "text": "So who was our user? Etherscan labels the wallet Binance Hot Wallet Exploiter 18, linked to the reported ~$6.3bn hack. It swapped 125m USDT…",
+     "likes": 1,
+     "author_username": "smotrhq",
+     "author_followers": 4,
+     "created_at": "2026-11-03T07:56:43+08:00"
+    },
+    {
+     "id": "2117404465687060897",
+     "url": "https://x.com/gozogame/status/2117404465687060897",
+     "text": "Bitcoin's lowest point this year was $58K in early July. The Binance hack has already happened. $6.3B vanished from their hot wallets.",
+     "likes": 1,
+     "author_username": "gozogame",
+     "author_followers": 207,
+     "created_at": "2026-11-03T07:52:18+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -853,15 +853,58 @@
      "created_at": "2026-11-03T05:03:47+08:00"
     }
    ]
+  },
+  {
+   "symbol": "HOTUSDT",
+   "base": "HOT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T04:30:00+08:00",
+   "checked_at": "2026-11-03T08:10:44+08:00",
+   "posts_last_1h": 64,
+   "posts_prev_6h_avg_per_h": 86.0,
+   "spike_ratio": 0.74,
+   "verdict": "冷",
+   "one_line": "冷·熱錢包雜音蓋過",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117400286381604966",
+     "url": "https://x.com/HYPERBEASTAI/status/2117400286381604966",
+     "text": "Brazil's biggest crypto exchange just put numbers on its hack. Mercado Bitcoin says about 49 million dollars moved out in the incident, 11.…",
+     "likes": 2,
+     "author_username": "HYPERBEASTAI",
+     "author_followers": 128,
+     "created_at": "2026-11-03T07:35:42+08:00"
+    },
+    {
+     "id": "2117405574459736193",
+     "url": "https://x.com/smotrhq/status/2117405574459736193",
+     "text": "So who was our user? Etherscan labels the wallet Binance Hot Wallet Exploiter 18, linked to the reported ~$6.3bn hack. It swapped 125m USDT…",
+     "likes": 1,
+     "author_username": "smotrhq",
+     "author_followers": 4,
+     "created_at": "2026-11-03T07:56:43+08:00"
+    },
+    {
+     "id": "2117404465687060897",
+     "url": "https://x.com/gozogame/status/2117404465687060897",
+     "text": "Bitcoin's lowest point this year was $58K in early July. The Binance hack has already happened. $6.3B vanished from their hot wallets.",
+     "likes": 1,
+     "author_username": "gozogame",
+     "author_followers": 207,
+     "created_at": "2026-11-03T07:52:18+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 22,
+  "calls_today": 24,
   "cap_reached": false,
-  "updated_at": "2026-11-03T07:14:21+08:00"
+  "updated_at": "2026-11-03T08:10:44+08:00"
  },
- "updated_at": "2026-11-03T07:14:21+08:00",
+ "updated_at": "2026-11-03T08:10:44+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
