@@ -387,6 +387,50 @@
     }
    ],
    "checks_this_trigger": 1
+  },
+  "BMTUSDT": {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T12:15:00+08:00",
+   "checked_at": "2026-11-03T13:12:57+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 0.17,
+   "spike_ratio": 29.41,
+   "verdict": "冷",
+   "one_line": "只得掃盤bot無人傾",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117483216441336152",
+     "url": "https://x.com/cexscan/status/2117483216441336152",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $BMT (Bubblemaps) : ↑4.36%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T13:05:14+08:00"
+    },
+    {
+     "id": "2117481959899246956",
+     "url": "https://x.com/cryptolevier/status/2117481959899246956",
+     "text": "30-min #Altcoins Pulse $BMT (@bubblemaps) — Bullish Crypto Trending 🔥 INSANE FOMO — NO SELLERS!",
+     "likes": 0,
+     "author_username": "cryptolevier",
+     "author_followers": 8201,
+     "created_at": "2026-11-03T13:00:14+08:00"
+    },
+    {
+     "id": "2117474267810181481",
+     "url": "https://x.com/RyanAtOpen/status/2117474267810181481",
+     "text": "solana:… — Bubblemaps 🔥 $16M MARKET CAP. $21M FDV. AND A REAL ONCHAIN INVESTIGATION PLATFORM.",
+     "likes": 0,
+     "author_username": "RyanAtOpen",
+     "author_followers": 425,
+     "created_at": "2026-11-03T12:29:40+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -896,15 +940,58 @@
      "created_at": "2026-11-03T07:52:18+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T12:15:00+08:00",
+   "checked_at": "2026-11-03T13:12:57+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 0.17,
+   "spike_ratio": 29.41,
+   "verdict": "冷",
+   "one_line": "只得掃盤bot無人傾",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117483216441336152",
+     "url": "https://x.com/cexscan/status/2117483216441336152",
+     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $BMT (Bubblemaps) : ↑4.36%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T13:05:14+08:00"
+    },
+    {
+     "id": "2117481959899246956",
+     "url": "https://x.com/cryptolevier/status/2117481959899246956",
+     "text": "30-min #Altcoins Pulse $BMT (@bubblemaps) — Bullish Crypto Trending 🔥 INSANE FOMO — NO SELLERS!",
+     "likes": 0,
+     "author_username": "cryptolevier",
+     "author_followers": 8201,
+     "created_at": "2026-11-03T13:00:14+08:00"
+    },
+    {
+     "id": "2117474267810181481",
+     "url": "https://x.com/RyanAtOpen/status/2117474267810181481",
+     "text": "solana:… — Bubblemaps 🔥 $16M MARKET CAP. $21M FDV. AND A REAL ONCHAIN INVESTIGATION PLATFORM.",
+     "likes": 0,
+     "author_username": "RyanAtOpen",
+     "author_followers": 425,
+     "created_at": "2026-11-03T12:29:40+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 24,
+  "calls_today": 26,
   "cap_reached": false,
-  "updated_at": "2026-11-03T08:10:44+08:00"
+  "updated_at": "2026-11-03T13:12:57+08:00"
  },
- "updated_at": "2026-11-03T08:10:44+08:00",
+ "updated_at": "2026-11-03T13:12:57+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

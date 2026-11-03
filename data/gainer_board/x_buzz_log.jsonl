@@ -237,3 +237,5 @@
 {"ts": "2026-11-03T07:13:50+08:00", "symbol": "ASTERUSDT", "tool": "search", "query": "($ASTER OR #ASTER) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-11-03T08:10:44+08:00", "symbol": "HOTUSDT", "tool": "counts", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 594}
 {"ts": "2026-11-03T08:10:44+08:00", "symbol": "HOTUSDT", "tool": "search", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-03T13:12:57+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
+{"ts": "2026-11-03T13:12:57+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
