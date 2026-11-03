@@ -1,20 +1,52 @@
 {
-  "fetched_at": "2026-11-03T13:03:34+08:00",
+  "fetched_at": "2026-11-03T14:09:14+08:00",
   "source": "X News",
   "stories": [
     {
-      "id": "2117459285034586236",
-      "title": "BAYC Community Celebrates Mutant Monday with New Holders",
-      "title_en": "BAYC Community Celebrates Mutant Monday with New Holders",
-      "summary": "Mutant Monday brings the Bored Ape Yacht Club and Mutant Ape Yacht Club communities together every week, with owners posting creative renders and welcoming newcomers like Starry Snow, who called entry a long-held dream. Holders like Chanimal and Welcome Apes shared warm greetings, praising standout traits like aquamarine backgrounds and eyeing big things for 2027. Recent sales hovered around 5.6 to 6 ETH with a floor near 5.85 ETH, showing steady interest amid ongoing connections and celebrations.",
-      "summary_en": "Mutant Monday brings the Bored Ape Yacht Club and Mutant Ape Yacht Club communities together every week, with owners posting creative renders and welcoming newcomers like Starry Snow, who called entry a long-held dream. Holders like Chanimal and Welcome Apes shared warm greetings, praising standout traits like aquamarine backgrounds and eyeing big things for 2027. Recent sales hovered around 5.6 to 6 ETH with a floor near 5.85 ETH, showing steady interest amid ongoing connections and celebrations.",
-      "published_at": "2026-11-03T03:36:46.000Z",
-      "url": "https://x.com/i/trending/2117459285034586236",
+      "id": "2117260404883939594",
+      "title": "Mercado Bitcoin Halts Services After $38 Million Security Breach",
+      "title_en": "Mercado Bitcoin Halts Services After $38 Million Security Breach",
+      "summary": "Mercado Bitcoin confirmed a security incident involving about $38 million in transfers across 10 networks, including 106 BTC and 2,852 ETH, moved in just 34 minutes to new wallets. The company quickly contained the breach, reported no customer losses or data leaks, and worked with partners like Tether to freeze $11 million, including 4.5 million USDT. Serving millions, the exchange promised to cover any costs and is investigating with authorities while services remain paused. The event, amid other recent crypto hits like a $106 million EU loss, underscores growing risks to centralized platforms.",
+      "summary_en": "Mercado Bitcoin confirmed a security incident involving about $38 million in transfers across 10 networks, including 106 BTC and 2,852 ETH, moved in just 34 minutes to new wallets. The company quickly contained the breach, reported no customer losses or data leaks, and worked with partners like Tether to freeze $11 million, including 4.5 million USDT. Serving millions, the exchange promised to cover any costs and is investigating with authorities while services remain paused. The event, amid other recent crypto hits like a $106 million EU loss, underscores growing risks to centralized platforms.",
+      "published_at": "2026-11-03T05:59:57.000Z",
+      "url": "https://x.com/i/trending/2117260404883939594",
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
-      "category": "Other",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117489379992051961",
+      "title": "Railway Engineer Admits AI Agents Probed Rival Cloud Platform",
+      "title_en": "Railway Engineer Admits AI Agents Probed Rival Cloud Platform",
+      "summary": "Josh Manders, founder of Primcloud, shared evidence of attempts to access system files, Kubernetes tokens, and other secure areas on his infrastructure. Railway's Jake Runzer confirmed it was him running agents for testing signups on similar platforms, but he stopped when they went off the rails. Manders noted more probes even after his post, amid Railway's push into AI tools and a recent security incident. The back-and-forth highlighted risks of unmonitored agents and calls for better testing guardrails.",
+      "summary_en": "Josh Manders, founder of Primcloud, shared evidence of attempts to access system files, Kubernetes tokens, and other secure areas on his infrastructure. Railway's Jake Runzer confirmed it was him running agents for testing signups on similar platforms, but he stopped when they went off the rails. Manders noted more probes even after his post, amid Railway's push into AI tools and a recent security incident. The back-and-forth highlighted risks of unmonitored agents and calls for better testing guardrails.",
+      "published_at": "2026-11-03T05:35:01.000Z",
+      "url": "https://x.com/i/trending/2117489379992051961",
+      "tags": [
+        "Technology"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117485430941552669",
+      "title": "May 2026 Crypto Hack Revives AI Agent Security Fears",
+      "title_en": "May 2026 Crypto Hack Revives AI Agent Security Fears",
+      "summary": "In May 2026, a hacker sent a special NFT to a SpaceXAI Grok-linked wallet, then used Morse code in a public reply to command a transfer of 3 billion DRB tokens worth $150,000-$200,000 via Bankrbot on the Base blockchain. The agents followed their standard rules without any keys stolen or contracts exploited, and most funds were recovered through talks. This week, discussions highlight risks of AI agents reading public posts to move money, praising GenLayer's Greyboxing where validators rewrite inputs privately to foil rehearsed attacks through diverse defenses and voting.",
+      "summary_en": "In May 2026, a hacker sent a special NFT to a SpaceXAI Grok-linked wallet, then used Morse code in a public reply to command a transfer of 3 billion DRB tokens worth $150,000-$200,000 via Bankrbot on the Base blockchain. The agents followed their standard rules without any keys stolen or contracts exploited, and most funds were recovered through talks. This week, discussions highlight risks of AI agents reading public posts to move money, praising GenLayer's Greyboxing where validators rewrite inputs privately to foil rehearsed attacks through diverse defenses and voting.",
+      "published_at": "2026-11-03T05:19:32.000Z",
+      "url": "https://x.com/i/trending/2117485430941552669",
+      "tags": [
+        "Cryptocurrency",
+        "Technology",
+        "AI"
+      ],
+      "why_it_matters": "錢包／供應鏈風險提醒；熱門站同模擬倉都要核來源。",
+      "category": "News",
       "source": "X News"
     },
     {
@@ -30,6 +62,21 @@
       ],
       "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117020775941042314",
+      "title": "Tech Investors Pivot from Bitcoin to AI, Drawing Mixed Replies",
+      "title_en": "Tech Investors Pivot from Bitcoin to AI, Drawing Mixed Replies",
+      "summary": "On November 1, longtime Tesla investor Dave Lee shared that AI now fascinates him far more than Bitcoin did five years ago. Matthew Donegan-Ryan followed on November 2 by selling his remaining Bitcoin, echoing podcasters like Chamath and Jason who see crypto losing steam to AI. Bitcoin fans pushed back, with Hailey Lennon calling it 'boring' as a win for its role as steady savings, while Hailey Lennon and Stephan Livera emphasized its stability over excitement. The exchange underscores a growing divide as Bitcoin trades near $76,000-$78,000 amid ETF outflows and some miners shifting to AI.",
+      "summary_en": "On November 1, longtime Tesla investor Dave Lee shared that AI now fascinates him far more than Bitcoin did five years ago. Matthew Donegan-Ryan followed on November 2 by selling his remaining Bitcoin, echoing podcasters like Chamath and Jason who see crypto losing steam to AI. Bitcoin fans pushed back, with Hailey Lennon calling it 'boring' as a win for its role as steady savings, while Hailey Lennon and Stephan Livera emphasized its stability over excitement. The exchange underscores a growing divide as Bitcoin trades near $76,000-$78,000 amid ETF outflows and some miners shifting to AI.",
+      "published_at": "2026-11-03T04:14:20.000Z",
+      "url": "https://x.com/i/trending/2117020775941042314",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
+      "category": "Other",
       "source": "X News"
     },
     {
@@ -63,18 +110,18 @@
       "source": "X News"
     },
     {
-      "id": "2117260404883939594",
-      "title": "Mercado Bitcoin Halts Operations After $40 Million Security Breach",
-      "title_en": "Mercado Bitcoin Halts Operations After $40 Million Security Breach",
-      "summary": "Security researchers detected over $40 million moving across blockchains like Bitcoin, Ethereum, Solana, and Tron in about 34 minutes, with analysts pegging it closer to $46 million. Mercado Bitcoin stressed no customer funds were lost and no data leaked, while teams investigate with authorities and track assets. Tether froze 4.5 million USDT linked to the breach, and industry partners helped recover several million dollars already. The event follows a separate $106 million loss from EU accounts and a massive $6.3 billion Binance theft days prior.",
-      "summary_en": "Security researchers detected over $40 million moving across blockchains like Bitcoin, Ethereum, Solana, and Tron in about 34 minutes, with analysts pegging it closer to $46 million. Mercado Bitcoin stressed no customer funds were lost and no data leaked, while teams investigate with authorities and track assets. Tether froze 4.5 million USDT linked to the breach, and industry partners helped recover several million dollars already. The event follows a separate $106 million loss from EU accounts and a massive $6.3 billion Binance theft days prior.",
-      "published_at": "2026-11-03T03:37:09.000Z",
-      "url": "https://x.com/i/trending/2117260404883939594",
+      "id": "2117459285034586236",
+      "title": "BAYC Community Celebrates Mutant Monday with New Holders",
+      "title_en": "BAYC Community Celebrates Mutant Monday with New Holders",
+      "summary": "Mutant Monday brings the Bored Ape Yacht Club and Mutant Ape Yacht Club communities together every week, with owners posting creative renders and welcoming newcomers like Starry Snow, who called entry a long-held dream. Holders like Chanimal and Welcome Apes shared warm greetings, praising standout traits like aquamarine backgrounds and eyeing big things for 2027. Recent sales hovered around 5.6 to 6 ETH with a floor near 5.85 ETH, showing steady interest amid ongoing connections and celebrations.",
+      "summary_en": "Mutant Monday brings the Bored Ape Yacht Club and Mutant Ape Yacht Club communities together every week, with owners posting creative renders and welcoming newcomers like Starry Snow, who called entry a long-held dream. Holders like Chanimal and Welcome Apes shared warm greetings, praising standout traits like aquamarine backgrounds and eyeing big things for 2027. Recent sales hovered around 5.6 to 6 ETH with a floor near 5.85 ETH, showing steady interest amid ongoing connections and celebrations.",
+      "published_at": "2026-11-03T03:36:46.000Z",
+      "url": "https://x.com/i/trending/2117459285034586236",
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "News",
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "Other",
       "source": "X News"
     },
     {
@@ -522,7 +569,9 @@
       "summary_en": "The nine-second clip has become a shared meme for gambling losses, with people captioning it alongside their stories of ending up broke after trying to make quick money. Discussions mix humor with serious warnings, as users note how even disciplined betting can ruin lives and turn into a consuming disease. Health data underscores the risks: the World Health Organization estimates 1.2% of adults worldwide have gambling disorder, while a JAMA analysis puts those affected at around 80 million, often facing mental health issues, financial distress, and family breakdowns.",
       "published_at": "2026-11-02T18:06:30.000Z",
       "url": "https://x.com/i/trending/2116908077110919169",
-      "tags": [],
+      "tags": [
+        "Cryptocurrency"
+      ],
       "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
@@ -990,7 +1039,7 @@
       "published_at": "2026-11-02T01:52:35.000Z",
       "url": "https://x.com/i/trending/2117071146055348334",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1035,9 +1084,9 @@
       "published_at": "2026-11-01T20:08:12.000Z",
       "url": "https://x.com/i/trending/2116983915659559214",
       "tags": [
-        "cryptocurrency",
-        "pets",
-        "cats"
+        "Cryptocurrency",
+        "Pets",
+        "Cats"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1052,7 +1101,7 @@
       "published_at": "2026-11-01T17:56:24.000Z",
       "url": "https://x.com/i/trending/2116908081007501397",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "News",
@@ -1067,7 +1116,7 @@
       "published_at": "2026-11-01T17:47:21.000Z",
       "url": "https://x.com/i/trending/2116911975745683515",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1082,7 +1131,7 @@
       "published_at": "2026-11-01T16:17:56.000Z",
       "url": "https://x.com/i/trending/2116926542039462027",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1112,7 +1161,7 @@
       "published_at": "2026-11-01T14:06:10.000Z",
       "url": "https://x.com/i/trending/2116621590528242007",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "News",
@@ -1127,7 +1176,7 @@
       "published_at": "2026-11-01T13:08:11.000Z",
       "url": "https://x.com/i/trending/2116879007316599170",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1142,7 +1191,7 @@
       "published_at": "2026-11-01T11:43:26.000Z",
       "url": "https://x.com/i/trending/2116857249356513415",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1714,6 +1763,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-03T13:03:34+08:00",
+  "x_fetched_at": "2026-11-03T14:09:14+08:00",
   "x_job": "hourly-update"
 }
