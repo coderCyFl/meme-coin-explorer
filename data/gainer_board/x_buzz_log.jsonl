@@ -239,3 +239,5 @@
 {"ts": "2026-11-03T08:10:44+08:00", "symbol": "HOTUSDT", "tool": "search", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-03T13:12:57+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
 {"ts": "2026-11-03T13:12:57+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
+{"ts": "2026-11-03T14:18:35+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 136}
+{"ts": "2026-11-03T14:18:35+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 4}
