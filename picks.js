@@ -879,7 +879,7 @@
       } else {
         chips.push(`<span class="fr-chip fr-chip-mtm">${hz.label}</span>`);
       }
-      if (sealedAll) chips.push(`<span class="fr-chip fr-chip-lock">Locked 24h snapshot</span>`);
+      if (sealedAll) chips.push(`<span class="fr-chip fr-chip-lock">Sealed 24h</span>`);
       else if (hz.kind === "full") chips.push(`<span class="fr-chip fr-chip-live">Live px stand-in (await seal)</span>`);
       else chips.push(`<span class="fr-chip fr-chip-live">Live mark</span>`);
       chips.push(`<span class="fr-chip fr-chip-win">Win ${known.length ? wins + "/" + known.length : "—"}</span>`);
@@ -923,7 +923,7 @@
           el("div", { class: "nm", text: e.symbol }),
           el("div", { class: "sy" },
             el("span", { class: "angle-pill", text: ANGLE_LABEL[angle] || "Watch" }),
-            r.sealed ? el("span", { class: "pill", text: "24h lock" }) : ""
+            r.sealed ? el("span", { class: "pill", text: "Sealed" }) : ""
           )
         ),
         frPxCell(r, e),
@@ -1659,7 +1659,13 @@
     const kids = [
       el("div", { class: "gb-top" },
         logo,
-        el("div", { class: "gb-id" }, el("div", { class: "nm", text: r.base }), (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
+        el("div", { class: "gb-id" },
+          el("div", { class: "nm", text: r.base }),
+          gbIsEarly(r.tier) ? el("div", { class: "gb-face-tags" },
+            el("span", { class: "gb-watch", text: "⚡ Early" }),
+            r.retained ? el("span", { class: "gb-cand-tag", text: "Held 24h" }) : el("span", { class: "gb-cand-tag soft", text: "24h lock" })
+          ) : null,
+          (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
         (() => {
           const mPx = (gbIsEarly(r.tier) && r.mention_price > 0) ? r.mention_price : null;
           const sinceM = (mPx && px > 0) ? (px / mPx - 1) * 100 : null;
@@ -2179,6 +2185,21 @@
   // ---------- Crypto.M 紙上倉（現貨 + 槓桿逐倉） ----------
   const PF_KEY = "mce:paper:v2";
   const PF_KEY_OLD = "mce:paper:v1";
+  /** Quiet Mock · paper “saved” status (localStorage first). */
+  function paintPfSaved(flash) {
+    const n = $("pfSavedHint"); if (!n) return;
+    let has = false;
+    try { has = !!(localStorage.getItem(PF_KEY) || localStorage.getItem(PF_KEY_OLD)); } catch (_) {}
+    if (!has) { n.hidden = true; return; }
+    n.hidden = false;
+    n.textContent = flash || "saved";
+    n.classList.toggle("flash", !!flash);
+    if (flash) {
+      clearTimeout(n._t);
+      n._t = setTimeout(() => { n.textContent = "saved"; n.classList.remove("flash"); }, 900);
+    }
+  }
+
   const START_CASH = 5000;
   const CAP_PRESETS = [1000, 5000, 10000, 50000];
   const LEV_ALL = [2, 3, 5, 10, 20, 50];
@@ -2262,7 +2283,7 @@
       // BUG FIX (ux-fix): unbounded history could hit the localStorage quota → save threw → trades lost on reload.
       if (Array.isArray(s.trades) && s.trades.length > TRADES_MAX) s.trades = s.trades.slice(0, TRADES_MAX);
       s.rev = (s.rev || 0) + 1;
-      try { localStorage.setItem(PF_KEY, JSON.stringify(s)); _pfRev = s.rev; }
+      try { localStorage.setItem(PF_KEY, JSON.stringify(s)); _pfRev = s.rev; try { paintPfSaved("saved"); } catch (_) {} }
       catch (e) { try { toast("模擬倉儲存失敗：" + e.message, "err"); } catch (_) {} }
     },
   };
@@ -2287,6 +2308,7 @@
   }
   let P = pf.load();
   _pfRev = P.rev || 0;
+  try { paintPfSaved(); } catch (_) {}
   window.addEventListener("storage", (ev) => {
     if (ev.key !== PF_KEY) return;
     if (pfSyncFromStorage()) { try { pfListKey = ""; renderPortfolio(false); } catch (_) {} }
@@ -3308,6 +3330,8 @@
   }
 
   async function renderPortfolio(fetchPrices = true) {
+    try { pfSyncFromStorage(); } catch (_) {}
+    try { paintPfSaved(); } catch (_) {}
     $("feePct").value = P.feePct;
     $("startCash").value = P.start;
     document.querySelectorAll(".segbtn[data-pfmode]").forEach((b) => b.classList.toggle("active", b.dataset.pfmode === pfMode));
@@ -3906,6 +3930,7 @@
   if ($("allinCloseBtn")) $("allinCloseBtn").addEventListener("click", () => closeAllinFromBanner());
   if ($("allinAgain")) $("allinAgain").addEventListener("click", () => againAllin());
   $("pfRefresh").addEventListener("click", async () => {
+    try { pfSyncFromStorage(); } catch (_) {}
     const ps = [
       ...Object.values(P.positions).map((p) => ({ chain: p.chain, pair: p.pair })),
       ...Object.values(P.levPositions).map((p) => ({ chain: p.chain, pair: p.pair })),
@@ -3913,6 +3938,7 @@
     const _bmPs = P.bmAtFirstBuy || P.solAtFirstBuy; if (_bmPs) ps.push({ chain: _bmPs.chain, pair: _bmPs.pair });
     if (ps.length) await fetchPairs(ps, true);
     renderPortfolio(false);
+    try { paintPfSaved("saved"); } catch (_) {}
   });
   $("copyPicks").addEventListener("click", copyPicks);
   $("pfReset").addEventListener("click", () => {
