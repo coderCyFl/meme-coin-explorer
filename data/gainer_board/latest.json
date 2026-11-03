@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-11-04T01:13:27+08:00",
- "batch": "gb-20261104-0111",
- "picked_at": "2026-11-04T01:11:28+08:00",
- "btc_24h_pct": 0.35,
- "universe": 55,
+ "updated_at": "2026-11-04T01:18:26+08:00",
+ "batch": "gb-20261104-0116",
+ "picked_at": "2026-11-04T01:16:40+08:00",
+ "btc_24h_pct": 0.23,
+ "universe": 54,
  "active": [
   {
    "symbol": "SAGA",
@@ -121,6 +121,38 @@
    "range_24h_pct": null,
    "from_24h_high_pct": -0.32,
    "quote_volume_24h": 5512846,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "BMT",
+   "pair": "BMTUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-03T21:30:00+08:00",
+   "entry_price_usd": 0.02699,
+   "price_at_snapshot": 0.02601,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": -4.49,
+   "change_24h_at_pick": 29.26,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261104-0116",
+   "score": 72.8,
+   "change_1h_at_pick": 12.74,
+   "change_4h_at_pick": 10.84,
+   "vol_x_avg": 10.37,
+   "vol_x_prev_hour": 0.9,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -6.61,
+   "quote_volume_24h": 12716468,
    "watch_only": false,
    "outcomes": {},
    "exit_plan": {

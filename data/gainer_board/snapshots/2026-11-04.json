@@ -256,6 +256,102 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261104-0116",
+   "picked_at": "2026-11-04T01:16:40+08:00",
+   "universe": 54,
+   "btc_24h_pct": 0.23,
+   "universe_all": 394,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "BMTUSDT",
+    "HOTUSDT",
+    "RUNEUSDT",
+    "KMNOUSDT",
+    "ZROUSDT",
+    "BOMEUSDT",
+    "KITEUSDT",
+    "GMXUSDT",
+    "NIGHTUSDT",
+    "ACTUSDT",
+    "SAGAUSDT",
+    "HOMEUSDT",
+    "OPENUSDT",
+    "PUMPUSDT",
+    "PYTHUSDT",
+    "YFIUSDT",
+    "CHIPUSDT",
+    "WOOUSDT",
+    "SFPUSDT",
+    "PEPEUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "BMT",
+     "pair": "BMTUSDT",
+     "tier": "pump",
+     "picked_at": "2026-11-03T21:30:00+08:00",
+     "entry_price_usd": 0.02699,
+     "price_at_snapshot": 0.02601,
+     "trigger_via": "1h+vol",
+     "change_15m_at_pick": -4.49,
+     "change_24h_at_pick": 29.26,
+     "rank_24h_at_pick": null,
+     "batch": "gb-20261104-0116",
+     "score": 72.8,
+     "change_1h_at_pick": 12.74,
+     "change_4h_at_pick": 10.84,
+     "vol_x_avg": 10.37,
+     "vol_x_prev_hour": 0.9,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -6.61,
+     "quote_volume_24h": 12716468,
+     "watch_only": false,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    },
+    {
+     "symbol": "PUMP",
+     "pair": "PUMPUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-04T01:16:40+08:00",
+     "entry_price_usd": 0.004244,
+     "price_at_snapshot": 0.004244,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 4.99,
+     "rank_24h_at_pick": 14,
+     "batch": "gb-20261104-0116",
+     "score": 25.9,
+     "change_1h_at_pick": -0.3,
+     "change_4h_at_pick": -0.58,
+     "vol_x_avg": 2.66,
+     "vol_x_prev_hour": 1.48,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -0.95,
+     "quote_volume_24h": 13222765,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
   }
  ]
 }
