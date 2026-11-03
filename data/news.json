@@ -1,7 +1,82 @@
 {
-  "fetched_at": "2026-11-03T16:09:38+08:00",
+  "fetched_at": "2026-11-03T17:09:36+08:00",
   "source": "X News",
   "stories": [
+    {
+      "id": "2117260404883939594",
+      "title": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
+      "title_en": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
+      "summary": "Brazil's largest crypto exchange suspended deposits and withdrawals on November 2 after detecting the incident in one of its systems. They assured millions of customers that no funds were lost, no data leaked, and cold storage stayed secure, while sharing wallet addresses for tracking. Tether and others froze about $11 million in stolen assets, as on-chain analysts pegged outflows up to $46 million; the exchange is coordinating with authorities for updates.",
+      "summary_en": "Brazil's largest crypto exchange suspended deposits and withdrawals on November 2 after detecting the incident in one of its systems. They assured millions of customers that no funds were lost, no data leaked, and cold storage stayed secure, while sharing wallet addresses for tracking. Tether and others froze about $11 million in stolen assets, as on-chain analysts pegged outflows up to $46 million; the exchange is coordinating with authorities for updates.",
+      "published_at": "2026-11-03T08:59:17.000Z",
+      "url": "https://x.com/i/trending/2117260404883939594",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117097470622879922",
+      "title": "SPX6900 Community Bets on Flipping the Stock Market",
+      "title_en": "SPX6900 Community Bets on Flipping the Stock Market",
+      "summary": "Launched in August 2023 on Ethereum, SPX6900 mocks the S&P 500 with its '6900 > 500' slogan and calls to 'flip the stock market,' embracing no roadmap or utility as pure entertainment. Investor Murad Mahmudov predicts it will become a massive socio-cultural phenomenon and one of the most valuable assets ever, urging focus on coins with the strongest communities in this concentrated bull run. As of November 3, 2026, it trades near $0.345 with a $320–330 million market cap, down from 2025 highs, yet daily buyers and shared conviction keep the movement alive amid skeptics' warnings of its pure memecoin risks.",
+      "summary_en": "Launched in August 2023 on Ethereum, SPX6900 mocks the S&P 500 with its '6900 > 500' slogan and calls to 'flip the stock market,' embracing no roadmap or utility as pure entertainment. Investor Murad Mahmudov predicts it will become a massive socio-cultural phenomenon and one of the most valuable assets ever, urging focus on coins with the strongest communities in this concentrated bull run. As of November 3, 2026, it trades near $0.345 with a $320–330 million market cap, down from 2025 highs, yet daily buyers and shared conviction keep the movement alive amid skeptics' warnings of its pure memecoin risks.",
+      "published_at": "2026-11-03T08:38:44.000Z",
+      "url": "https://x.com/i/trending/2117097470622879922",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117240097997484033",
+      "title": "Mercado Bitcoin Breach Drains $40 Million Across Blockchains",
+      "title_en": "Mercado Bitcoin Breach Drains $40 Million Across Blockchains",
+      "summary": "Mercado Bitcoin contained the security incident quickly, pausing deposits and withdrawals while sharing wallet addresses for tracking. No customer funds were lost, and Tether froze millions in linked USDT. Separately, investigator ZachXBT tracked over $133 million stolen from an unidentified EU entity's accounts on November 1, involving swaps to privacy coins and cross-chain moves, with suspicions of a Western European financial institution involved. These hits follow a massive $6.3 billion Binance hack, highlighting risks at centralized platforms despite rapid responses.",
+      "summary_en": "Mercado Bitcoin contained the security incident quickly, pausing deposits and withdrawals while sharing wallet addresses for tracking. No customer funds were lost, and Tether froze millions in linked USDT. Separately, investigator ZachXBT tracked over $133 million stolen from an unidentified EU entity's accounts on November 1, involving swaps to privacy coins and cross-chain moves, with suspicions of a Western European financial institution involved. These hits follow a massive $6.3 billion Binance hack, highlighting risks at centralized platforms despite rapid responses.",
+      "published_at": "2026-11-03T08:32:54.000Z",
+      "url": "https://x.com/i/trending/2117240097997484033",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116847631045456014",
+      "title": "$ANSEM Meme Coin Crashes Over 90% from Peak",
+      "title_en": "$ANSEM Meme Coin Crashes Over 90% from Peak",
+      "summary": "Launched on pump.fun in mid-2026, the Black Bull token tied to Solana influencer Ansem (Zion Thomas) surged on community hype and airdrops before stalling near $0.04. Critics slam Ansem for minimal posts—like his recent 'yo' and 'job not finished'—and holding over 60% of supply, while defenders stress personal responsibility in volatile meme trades. Traders like Rasmr report $200,000 losses and exits, yet some go all-in, underscoring meme coin risks around hype, supply, and influencer engagement.",
+      "summary_en": "Launched on pump.fun in mid-2026, the Black Bull token tied to Solana influencer Ansem (Zion Thomas) surged on community hype and airdrops before stalling near $0.04. Critics slam Ansem for minimal posts—like his recent 'yo' and 'job not finished'—and holding over 60% of supply, while defenders stress personal responsibility in volatile meme trades. Traders like Rasmr report $200,000 losses and exits, yet some go all-in, underscoring meme coin risks around hype, supply, and influencer engagement.",
+      "published_at": "2026-11-03T08:25:50.000Z",
+      "url": "https://x.com/i/trending/2116847631045456014",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117528835277430903",
+      "title": "Solana Price Dips to $92 as Fee Model Sparks Value Debate",
+      "title_en": "Solana Price Dips to $92 as Fee Model Sparks Value Debate",
+      "summary": "A popular post compared Solana's fixed-fee setup to a post office rather than Visa, which takes a cut of each transaction's value, questioning how the network captures revenue from big trades. Replies countered that Solana's speed, low costs, and high transaction volume could support a market cap over $79 billion, while co-founder Toly noted priority fees as the main earner, often just 0.2 to 0.5 basis points. Amid this, real growth shines through Samsung's partnership for USDC sends on 82 million Galaxy devices and $5.49 billion in October token volumes led by BTC-USD pairs.",
+      "summary_en": "A popular post compared Solana's fixed-fee setup to a post office rather than Visa, which takes a cut of each transaction's value, questioning how the network captures revenue from big trades. Replies countered that Solana's speed, low costs, and high transaction volume could support a market cap over $79 billion, while co-founder Toly noted priority fees as the main earner, often just 0.2 to 0.5 basis points. Amid this, real growth shines through Samsung's partnership for USDC sends on 82 million Galaxy devices and $5.49 billion in October token volumes led by BTC-USD pairs.",
+      "published_at": "2026-11-03T08:13:33.000Z",
+      "url": "https://x.com/i/trending/2117528835277430903",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
     {
       "id": "2117525162002362395",
       "title": "No New Memecoins Hit $1 Billion Mark in 2026",
@@ -15,21 +90,6 @@
       ],
       "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
-      "source": "X News"
-    },
-    {
-      "id": "2117260404883939594",
-      "title": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
-      "title_en": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
-      "summary": "Mercado Bitcoin confirmed a security incident on November 2, quickly containing a breach in one system while assuring millions of users that no funds were lost and no data leaked. On-chain analysis showed about 106 BTC, thousands of ETH, SOL, and other tokens moving to new addresses on Bitcoin, Ethereum, Solana, and Tron chains in roughly 34 minutes, with Tether freezing over 4.5 million USDT to help track it. The exchange shared wallet addresses publicly, promised to absorb any impact, and is working with authorities amid a wave of recent crypto thefts.",
-      "summary_en": "Mercado Bitcoin confirmed a security incident on November 2, quickly containing a breach in one system while assuring millions of users that no funds were lost and no data leaked. On-chain analysis showed about 106 BTC, thousands of ETH, SOL, and other tokens moving to new addresses on Bitcoin, Ethereum, Solana, and Tron chains in roughly 34 minutes, with Tether freezing over 4.5 million USDT to help track it. The exchange shared wallet addresses publicly, promised to absorb any impact, and is working with authorities amid a wave of recent crypto thefts.",
-      "published_at": "2026-11-03T07:49:26.000Z",
-      "url": "https://x.com/i/trending/2117260404883939594",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "News",
       "source": "X News"
     },
     {
@@ -75,21 +135,6 @@
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116847631045456014",
-      "title": "$ANSEM Memecoin Drops 90% from Peak, Dividing Community on Influencer Role",
-      "title_en": "$ANSEM Memecoin Drops 90% from Peak, Dividing Community on Influencer Role",
-      "summary": "$ANSEM, a Solana-based memecoin linked to crypto influencer Ansem, launched on pump.fun in mid-June 2026 and hit a peak near $450 million before sliding to about $46 million by early November. Community members sent 60% of the supply to Ansem's wallet, fueling early gains, but his recent posts like 'yo' and 'job not finished' have drawn criticism for lack of updates amid the plunge to $0.046. While some blame Ansem for not engaging enough, others argue buyers alone decide to chase high-risk meme coins and must own the losses, as trader Rasmr's $200,000 exit highlights the fallout.",
-      "summary_en": "$ANSEM, a Solana-based memecoin linked to crypto influencer Ansem, launched on pump.fun in mid-June 2026 and hit a peak near $450 million before sliding to about $46 million by early November. Community members sent 60% of the supply to Ansem's wallet, fueling early gains, but his recent posts like 'yo' and 'job not finished' have drawn criticism for lack of updates amid the plunge to $0.046. While some blame Ansem for not engaging enough, others argue buyers alone decide to chase high-risk meme coins and must own the losses, as trader Rasmr's $200,000 exit highlights the fallout.",
-      "published_at": "2026-11-03T06:13:14.000Z",
-      "url": "https://x.com/i/trending/2116847631045456014",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
-      "category": "Other",
       "source": "X News"
     },
     {
@@ -516,21 +561,6 @@
       "source": "X News"
     },
     {
-      "id": "2117240097997484033",
-      "title": "Brazil Exchange Breach and $106M EU Crypto Theft Hit Amid Security Fears",
-      "title_en": "Brazil Exchange Breach and $106M EU Crypto Theft Hit Amid Security Fears",
-      "summary": "Mercado Bitcoin, Brazil's largest crypto exchange, detected and contained a security incident on November 2, suspending services as a precaution. Blockchain firms estimated over $40 million in suspicious transfers from linked wallets across chains like Bitcoin, Ethereum, Solana, and Tron, with Tether freezing 4.5 million USDT. Separately, investigator ZachXBT reported a suspected $106 million theft on November 1 from an unidentified EU entity's accounts on multiple platforms, with funds swapped to ETH, Monero, and bridged across chains. Observers called the back-to-back hits 'insane' and 'dark times,' urging hardware keys, withdrawal lists, and tighter API controls to protect users.",
-      "summary_en": "Mercado Bitcoin, Brazil's largest crypto exchange, detected and contained a security incident on November 2, suspending services as a precaution. Blockchain firms estimated over $40 million in suspicious transfers from linked wallets across chains like Bitcoin, Ethereum, Solana, and Tron, with Tether freezing 4.5 million USDT. Separately, investigator ZachXBT reported a suspected $106 million theft on November 1 from an unidentified EU entity's accounts on multiple platforms, with funds swapped to ETH, Monero, and bridged across chains. Observers called the back-to-back hits 'insane' and 'dark times,' urging hardware keys, withdrawal lists, and tighter API controls to protect users.",
-      "published_at": "2026-11-02T20:54:49.000Z",
-      "url": "https://x.com/i/trending/2117240097997484033",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
       "id": "2117354880574857599",
       "title": "Solana Dips to $92 as Traders Debate Buy Opportunity",
       "title_en": "Solana Dips to $92 as Traders Debate Buy Opportunity",
@@ -645,7 +675,7 @@
       "published_at": "2026-11-02T18:06:30.000Z",
       "url": "https://x.com/i/trending/2116908077110919169",
       "tags": [
-        "Cryptocurrency"
+        "Memes"
       ],
       "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
@@ -771,21 +801,6 @@
         "Memes"
       ],
       "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
-      "id": "2117097470622879922",
-      "title": "SPX6900 Memecoin Fuels Crypto Community Conviction",
-      "title_en": "SPX6900 Memecoin Fuels Crypto Community Conviction",
-      "summary": "SPX6900, a satirical Ethereum memecoin launched in August 2023 parodying the S&P 500 with its '6900 > 500' joke, now trades near $0.36 with a $340 million market cap. Community members share steady buy orders as part of long-term dollar-cost averaging, embracing slogans like 'Stop trading and believe in something' amid anti-scam sentiment. Supporters see it as a socio-cultural phenomenon backed by persistent holders in the hundreds of thousands, while skeptics dismiss it as hype without fundamentals.",
-      "summary_en": "SPX6900, a satirical Ethereum memecoin launched in August 2023 parodying the S&P 500 with its '6900 > 500' joke, now trades near $0.36 with a $340 million market cap. Community members share steady buy orders as part of long-term dollar-cost averaging, embracing slogans like 'Stop trading and believe in something' amid anti-scam sentiment. Supporters see it as a socio-cultural phenomenon backed by persistent holders in the hundreds of thousands, while skeptics dismiss it as hype without fundamentals.",
-      "published_at": "2026-11-02T17:14:39.000Z",
-      "url": "https://x.com/i/trending/2117097470622879922",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -1838,6 +1853,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-03T16:09:38+08:00",
-  "x_job": "hourly-update"
+  "x_fetched_at": "2026-11-03T17:09:36+08:00",
+  "x_job": "unknown"
 }

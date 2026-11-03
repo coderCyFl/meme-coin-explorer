@@ -33,3 +33,4 @@
 {"event": "pulled", "at": "2026-11-03T14:09:14+08:00", "job": "hourly-update", "stories": 116, "x_reads": 3, "claim_id": "hourly-update@2026-11-03T14:07:44+08:00"}
 {"event": "pulled", "at": "2026-11-03T15:09:55+08:00", "job": "hourly-update", "stories": 118, "x_reads": 3, "claim_id": "hourly-update@2026-11-03T15:05:24+08:00"}
 {"event": "pulled", "at": "2026-11-03T16:09:38+08:00", "job": "hourly-update", "stories": 121, "x_reads": 3, "claim_id": "hourly-update@2026-11-03T16:06:54+08:00"}
+{"event": "pulled", "at": "2026-11-03T17:09:36+08:00", "job": "unknown", "stories": 122, "x_reads": 6, "claim_id": "hourly-update@2026-11-03T17:06:25+08:00"}
