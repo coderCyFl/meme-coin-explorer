@@ -6,6 +6,153 @@
   const DEAD_LIQ = 1000;
   const S = { picks: null, outcomes: [], live: new Map(), solPair: null, news: null };
 
+
+  // ---------- EN ↔ ZH (face chrome) ----------
+  const LANG_KEY = "mce:lang:v1";
+  const I18N = {
+    en: {
+      "auth.login": "Login",
+      "auth.register": "Register",
+      "auth.logout": "Logout",
+      "auth.username": "Username",
+      "auth.password": "Password",
+      "auth.cancel": "Cancel",
+      "auth.signin": "Sign in",
+      "auth.create": "Create",
+      "auth.hint.login": "Mock paper · unlock your saved portfolio",
+      "auth.hint.register": "Mock paper · username + password on this device",
+      "auth.err.user": "Username: 3–24 letters, numbers, _",
+      "auth.err.pass": "Password: 4–64 characters",
+      "auth.err.taken": "Username taken",
+      "auth.err.wrong": "Wrong username or password",
+      "auth.err.fail": "Failed",
+      "auth.toast.out": "Signed out · local paper",
+      "auth.toast.in": "Signed in",
+      "auth.toast.created": "Account created",
+      "auth.signed": "Signed in · @{u}",
+      "mock.paper": "Mock · paper",
+      "mock.saved": "saved",
+      "early.title": "⚡ Early",
+      "early.lock": "24h lock",
+      "early.tag": "⚡ Early",
+      "early.held": "Held 24h",
+      "early.lock_tag": "24h lock",
+      "today.title": "Today",
+      "today.sub": "Daily watch · separate from Early",
+      "today.meta_sep": " · separate from Today picks",
+      "label.24h": "24h",
+      "label.since_mention": "since mention",
+      "chip.also_early": "also Early",
+      "details": "Details",
+      "buy": "Buy",
+      "th.coin": "Coin",
+      "th.price": "Price",
+      "th.24h": "24h",
+      "th.exit": "Exit",
+      "th.target": "Target",
+      "th.size": "Size",
+      "empty.batch": "No batch yet.",
+      "empty.hold": "No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.",
+      "empty.pos": "No positions · tap Buy",
+      "tab.picks": "Today's picks",
+      "tab.markets": "Markets",
+      "tab.portfolio": "Portfolio",
+      "tab.more": "More",
+      "label.24h_mkt": "24h mkt",
+    },
+    zh: {
+      "auth.login": "登入",
+      "auth.register": "註冊",
+      "auth.logout": "登出",
+      "auth.username": "用戶名",
+      "auth.password": "密碼",
+      "auth.cancel": "取消",
+      "auth.signin": "登入",
+      "auth.create": "建立",
+      "auth.hint.login": "模擬紙上 · 解鎖已存組合",
+      "auth.hint.register": "模擬紙上 · 用戶名＋密碼存本機",
+      "auth.err.user": "用戶名：3–24 位英數或 _",
+      "auth.err.pass": "密碼：4–64 字元",
+      "auth.err.taken": "用戶名已被使用",
+      "auth.err.wrong": "用戶名或密碼錯誤",
+      "auth.err.fail": "失敗",
+      "auth.toast.out": "已登出 · 本機紙上",
+      "auth.toast.in": "已登入",
+      "auth.toast.created": "帳號已建立",
+      "auth.signed": "已登入 · @{u}",
+      "mock.paper": "模擬 · 紙上",
+      "mock.saved": "已存",
+      "early.title": "⚡ 早期",
+      "early.lock": "24小時鎖定",
+      "early.tag": "⚡ 早期",
+      "early.held": "持有 24小時",
+      "early.lock_tag": "24小時鎖定",
+      "today.title": "今日",
+      "today.sub": "每日觀察 · 與早期分開",
+      "today.meta_sep": " · 與今日選幣分開",
+      "label.24h": "24小時",
+      "label.since_mention": "自提及",
+      "chip.also_early": "亦早期",
+      "details": "詳情",
+      "buy": "買入",
+      "th.coin": "幣",
+      "th.price": "現價",
+      "th.24h": "24小時",
+      "th.exit": "出場",
+      "th.target": "目標",
+      "th.size": "倉位",
+      "empty.batch": "暫無批次。",
+      "empty.hold": "暫無現貨倉。去今日選幣 → 買入（現貨），或跟批次。",
+      "empty.pos": "暫無倉位 · 撳買入",
+      "tab.picks": "今日選幣",
+      "tab.markets": "市場",
+      "tab.portfolio": "組合",
+      "tab.more": "更多",
+      "label.24h_mkt": "24小時市價",
+    },
+  };
+  let uiLang = (localStorage.getItem(LANG_KEY) === "zh") ? "zh" : "en";
+  function tr(key, vars) {
+    const pack = I18N[uiLang] || I18N.en;
+    let s = (pack && pack[key]) != null ? pack[key] : ((I18N.en && I18N.en[key]) != null ? I18N.en[key] : key);
+    if (vars && typeof vars === "object") {
+      for (const [k, v] of Object.entries(vars)) s = s.split("{" + k + "}").join(String(v));
+    }
+    return s;
+  }
+  function applyLang(lang, { refresh } = { refresh: true }) {
+    uiLang = lang === "zh" ? "zh" : "en";
+    try { localStorage.setItem(LANG_KEY, uiLang); } catch (_) {}
+    document.documentElement.lang = uiLang === "zh" ? "zh-Hant" : "en";
+    document.querySelectorAll("#langToggle [data-lang]").forEach((b) => b.classList.toggle("active", b.dataset.lang === uiLang));
+    document.querySelectorAll("[data-i18n]").forEach((n) => {
+      const k = n.getAttribute("data-i18n");
+      if (!k) return;
+      const v = tr(k);
+      if (v != null) n.textContent = v;
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((n) => {
+      const k = n.getAttribute("data-i18n-placeholder");
+      if (k) n.setAttribute("placeholder", tr(k));
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach((n) => {
+      const k = n.getAttribute("data-i18n-aria");
+      if (k) n.setAttribute("aria-label", tr(k));
+    });
+    // data-label attrs on daily table rebuild via render; static th already data-i18n
+    try { paintAuthBar(); } catch (_) {}
+    try { paintPfSaved(); } catch (_) {}
+    try {
+      const dlg = $("authDlg");
+      if (dlg && dlg.open) openAuthDlg(dlg.dataset.mode || "login");
+    } catch (_) {}
+    if (refresh) {
+      try { renderDailyBatchTable(); } catch (_) {}
+      try { if (!gbBusy) loadGainerBoard(false); } catch (_) {}
+      try { renderPortfolio && renderPortfolio(false); } catch (_) {}
+    }
+  }
+
   // ---------- 簡單 / 完整 ----------
   const UI_KEY = "mce:ui:mode";
   let uiMode = localStorage.getItem(UI_KEY) || "simple";
@@ -239,7 +386,7 @@
   /* Exit plan follows the COIN, not the button you came from (QA 9faccce): 🔥 board momentum plan > today's AI pick plan.
    * Same pair → same meta from the 🔥 card, the AI card, 模擬倉 search, 睇幣 or 孤注一擲. */
   const EXIT_KEYS = ["exitRegime", "exitWeak", "suggested_exit_h", "suggested_second_h", "take_profit_pct", "take_profit2_pct", "stop_loss_pct", "flags", "size"];
-  let gbPumpNow = new Set(), gbChaseNow = new Set();
+  let gbPumpNow = new Set(), gbChaseNow = new Set(), gbEarlyNow = new Set();
   function coinExitMeta(pair) {
     if (!pair) return null;
     if (gbPumpNow.has(pair) || gbChaseNow.has(pair)) {
@@ -769,7 +916,7 @@
         ? liveApi.coinLogoEl(x.e.symbol, "coin-logo", 44)
         : el("span", { class: "coin-logo letter", text: String(x.e.symbol || "?").slice(0, 2) });
       const details = el("details", { class: "sc-details" },
-        el("summary", { text: "Details" }),
+        el("summary", { text: tr("details") }),
         el("div", { class: "sc-detail-body muted" },
           x.e.chain === "binance" ? shillLineEl(x.e.pair_address || x.e.symbol) : null,
           el("div", { text: tip }),
@@ -1601,7 +1748,7 @@
     try { paintShillFlags(); gbLoadX(false).then(paintShillFlags).catch(() => {}); } catch (_) {}
   }
 
-  /** Minimal card: coin · 24h % · price · 目標 · 止蝕 · 幾時放 · buy (🔥 only). Everything else in 詳情. */
+  /** Minimal card: coin · % (Early: vs mention only) · price · buy (🔥 only). Everything else in Details. */
   function gbCard(r, t, { buy }) {
     const liveApi = window.MCE.live;
     const X = gbExitFor(r.tier);
@@ -1617,8 +1764,8 @@
     const tags = r.tier === "cand"
       ? [el("span", { class: "gb-watch", text: "Watch" })]
       : gbIsEarly(r.tier)
-        ? [el("span", { class: "gb-watch", text: "⚡ Early" })]
-            .concat(r.retained ? [el("span", { class: "gb-cand-tag", text: "Held 24h" })] : [el("span", { class: "gb-cand-tag soft", text: "24h lock" })])
+        ? [el("span", { class: "gb-watch", text: tr("early.tag") })]
+            .concat(r.retained ? [el("span", { class: "gb-cand-tag", text: tr("early.held") })] : [el("span", { class: "gb-cand-tag soft", text: tr("early.lock_tag") })])
             .concat(r.thin ? [el("span", { class: "gb-cand-tag", text: "Thin" })] : [])
         : r.tier === "chase"
           ? [el("span", { class: "gb-buytag", text: "🚀 Chase" })].concat(small ? [el("span", { class: "gb-buytag soft", text: "Thin +" })] : [])
@@ -1637,7 +1784,7 @@
         (r.tier === "pump" || gbIsEarly(r.tier)) ? shillLineEl(r.symbol) : null,
         el("div", { class: "pump-badges" },
           gbIsEarly(r.tier) && r.mention_price ? el("span", { class: "pump-badge soft", text: `Mention ${price(r.mention_price)}` + (r.mentioned_at ? ` · ${frTime(r.mentioned_at)}` : "") }) : "",
-          gbIsEarly(r.tier) ? el("span", { class: "pump-badge soft", "data-bn-chg": r.symbol, text: `24h ${pct(r.chg24)}` }) : "",
+          gbIsEarly(r.tier) ? el("span", { class: "pump-badge soft", "data-bn-chg": r.symbol, text: `${tr("label.24h_mkt")} ${pct(r.chg24)}` }) : "",
           el("span", { class: "pump-badge soft gb-fh", "data-gb-fh": r.symbol, "data-gb-high": String(r.high || ""), text: `離 24h 高 ${pct(r.fromHigh)}` }),
           r.volRatio != null ? el("span", { class: "pump-badge " + (r.volRatio >= 1.5 ? "hot" : "soft"), text: `量 ×${r.volRatio.toFixed(1)}` + (r.volRatioPrev != null ? ` ← ×${r.volRatioPrev.toFixed(1)}` : "") }) : "",
           r.c1h != null ? el("span", { class: "pump-badge soft", text: `1h ${pct(r.c1h)}` }) : "",
@@ -1662,18 +1809,19 @@
         el("div", { class: "gb-id" },
           el("div", { class: "nm", text: r.base }),
           gbIsEarly(r.tier) ? el("div", { class: "gb-face-tags" },
-            el("span", { class: "gb-watch", text: "⚡ Early" }),
-            r.retained ? el("span", { class: "gb-cand-tag", text: "Held 24h" }) : el("span", { class: "gb-cand-tag soft", text: "24h lock" })
+            el("span", { class: "gb-watch", text: tr("early.tag") }),
+            r.retained ? el("span", { class: "gb-cand-tag", text: tr("early.held") }) : el("span", { class: "gb-cand-tag soft", text: tr("early.lock_tag") })
           ) : null,
           (r.tier === "pump" || gbIsEarly(r.tier)) ? shillFlagEl(r.symbol) : null),
         (() => {
-          const mPx = (gbIsEarly(r.tier) && r.mention_price > 0) ? r.mention_price : null;
-          const sinceM = (mPx && px > 0) ? (px / mPx - 1) * 100 : null;
-          if (mPx) {
-            return el("div", { class: "gb-px" },
+          // Early face: big % is vs mention only (no competing bare large 24h). Details keeps labeled 24h mkt.
+          if (gbIsEarly(r.tier)) {
+            const mPx = (r.mention_price > 0) ? r.mention_price : null;
+            const sinceM = (mPx && px > 0) ? (px / mPx - 1) * 100 : null;
+            return el("div", { class: "gb-px gb-px-early" },
               el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
-              el("div", { class: "num gb-chg " + cls(sinceM), "data-gb-since": r.symbol, "data-gb-entry": String(mPx), text: sinceM == null ? "—" : pct(sinceM) }),
-              el("div", { class: "tiny muted gb-mention-lab", text: "vs mention" }));
+              el("div", { class: "num gb-chg " + (sinceM == null ? "" : cls(sinceM)), "data-gb-since": r.symbol, "data-gb-entry": mPx ? String(mPx) : "", text: sinceM == null ? "—" : pct(sinceM) }),
+              el("div", { class: "tiny muted gb-mention-lab", text: tr("label.since_mention") }));
           }
           return el("div", { class: "gb-px" },
             el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
@@ -1682,6 +1830,7 @@
       r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
     ];
     if (buy) {
+      const buyLab = tr("buy");
       kids.push(el("div", { class: "gb-buyrow" },
         el("button", { class: "primary gb-buy", onclick: () => openBuy({
           chain: "binance", pair: r.symbol, token: "binance:" + r.symbol,
@@ -1692,7 +1841,7 @@
           size: "full", sizeMult: mult, forceSpot: true, tier: r.tier, exit_plan: gbExitPlanText(X, r.price),
           entry_snapshot: { chg24h_pct: r.chg24, volume24h_usd: r.volQuote, high24h: r.high, tier: r.tier },
           onFilled: (res) => gbLogBought(r, null, res),
-        }) }, "Buy")));
+        }) }, buyLab)));
     }
     if (r.tier === "early2") {
       /* early notes live in Details; face stays name/price/%/Buy */
@@ -1715,12 +1864,21 @@
   function renderEarlyList(early, trig) {
     const box = $("earlyList"); if (!box) return;
     box.textContent = "";
+    gbEarlyNow = new Set();
+    for (const r of early || []) {
+      if (r && r.symbol) gbEarlyNow.add(String(r.symbol).toUpperCase());
+      if (r && r.base) gbEarlyNow.add(String(r.base).toUpperCase());
+      const pair = r && r.symbol ? String(r.symbol).toUpperCase() : "";
+      if (pair.endsWith("USDT")) gbEarlyNow.add(pair.slice(0, -4));
+    }
     const bt = $("gainerEarlyBt"); if (bt) { bt.textContent = ""; bt.append(gbBtLine("early2")); }
     if (!early.length) {
       box.append(el("div", { class: "gb-state gb-empty" }, el("div", { class: "gb-state-msg", text: "No ⚡ live · none in 24h lock" })));
+      try { renderDailyBatchTable(); } catch (_) {}
       return;
     }
     for (const r of early) box.append(gbCard(r, trig.get(r.symbol + ":early2") || null, { buy: false }));
+    try { renderDailyBatchTable(); } catch (_) {}
   }
 
   function renderGainerMult() {
@@ -1980,6 +2138,29 @@
   }
 
   /** Separate table: latest batch buys (每日新留意) — not the big follow-buy cards. */
+
+  /** True if symbol/pair is on the current Early list (live or 24h lock). Display-only overlap chip. */
+  function isAlsoEarly(symbol, pair) {
+    const cands = new Set();
+    for (const raw of [symbol, pair]) {
+      if (!raw) continue;
+      const u = String(raw).toUpperCase();
+      cands.add(u);
+      if (u.endsWith("USDT")) cands.add(u.slice(0, -4));
+      else cands.add(u + "USDT");
+    }
+    for (const c of cands) if (gbEarlyNow.has(c)) return true;
+    try {
+      const locks = gbPruneEarlyLocks(gbLoadEarlyLocks());
+      for (const k of Object.keys(locks)) {
+        const L = locks[k] || {};
+        const keys = [k, L.pair, L.base, L.symbol].filter(Boolean).map((s) => String(s).toUpperCase());
+        if (keys.some((k2) => cands.has(k2))) return true;
+      }
+    } catch (_) {}
+    return false;
+  }
+
   function renderDailyBatchTable() {
     const body = $("dailyBatchBody");
     const empty = $("dailyBatchEmpty");
@@ -1991,13 +2172,13 @@
     const latest = batches.length ? batches[batches.length - 1] : null;
     const buys = latest ? (latest.entries || []).filter((e) => e.type === "buy") : [];
     if (meta) {
-      if (!latest) meta.textContent = "No batch yet";
+      if (!latest) meta.textContent = tr("empty.batch");
       else {
         const reg = latest.regime || {};
         const weak = reg.state === "weak" || reg.sizing === "half";
         meta.textContent = `${latest.id || "batch"} · ${frTime(latest.created_at)} · ${buys.length} buys`
           + (setupQuarterNow() ? " · ¼ size (7d follow not green)" : weak ? " · weak half-size" : " · full size")
-          + " · separate from Today picks";
+          + tr("today.meta_sep");
       }
     }
     if (!buys.length) {
@@ -2040,26 +2221,30 @@
         ? liveApi.coinLogoEl(e.symbol, "coin-logo", 28)
         : el("span", { class: "coin-logo letter", text: String(e.symbol || "?").slice(0, 2) });
       body.append(el("tr", Object.assign({ class: "cardish", "data-daily-sym": e.symbol }, liveAttrs),
-        el("td", { "data-label": "Coin" },
+        el("td", { "data-label": tr("th.coin") },
           el("div", { class: "tok" }, logo, el("div", {},
             el("div", { class: "nm", text: e.symbol }),
-            chg != null ? el("div", { class: "sy num tiny " + cls(chg), text: pct(chg) }) : "",
+            chg != null ? el("div", { class: "sy num tiny daily-chg-under " + cls(chg) },
+              el("span", { class: "chg-lab", text: tr("label.24h") + " " }),
+              el("span", { text: pct(chg) })
+            ) : "",
+            isAlsoEarly(e.symbol, e.pair_address) ? el("span", { class: "also-early", text: tr("chip.also_early") }) : null,
             e.chain === "binance" ? shillFlagEl(e.pair_address || e.symbol) : null
           ))
         ),
-        el("td", { class: "num live-px", "data-label": "Price", "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
-        el("td", { class: "num " + cls(chg), "data-label": "24h", text: chg != null ? pct(chg) : "—" }),
-        el("td", { class: "daily-when", "data-label": "Exit" },
+        el("td", { class: "num live-px", "data-label": tr("th.price"), "data-bn-price": e.pair_address || "", text: px != null ? price(px) : "…" }),
+        el("td", { class: "num " + cls(chg), "data-label": tr("th.24h"), text: chg != null ? pct(chg) : "—" }),
+        el("td", { class: "daily-when", "data-label": tr("th.exit") },
           exitLiveNode("div", {}, "Hold to {review}", plan, lvPx)),
-        el("td", { class: "daily-target", "data-label": "Target" },
+        el("td", { class: "daily-target", "data-label": tr("th.target") },
           exitLiveNode("div", { class: "num pos" }, "{target} (+{tp}%)", plan, lvPx),
           exitLiveNode("div", { class: "num neg tiny" }, "Stop {stop} (−{sl}%)", plan, lvPx),
           qtr ? el("div", { class: "muted tiny", text: "¼ size" }) : null),
-        el("td", { "data-label": "Size" },
+        el("td", { "data-label": tr("th.size") },
           el("span", { class: "size-pill " + (qtr ? "quarter" : half ? "half" : "full"), text: qtr ? "¼" : half ? "Half" : "Full" })
         ),
         el("td", { class: "actions", "data-label": "" },
-          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, "Buy")
+          el("button", { class: "primary sm", onclick: () => openBuy(rowInfo) }, tr("buy"))
         )
       ));
     }
@@ -2185,19 +2370,62 @@
   // ---------- Crypto.M 紙上倉（現貨 + 槓桿逐倉） ----------
   const PF_KEY = "mce:paper:v2";
   const PF_KEY_OLD = "mce:paper:v1";
-  /** Quiet Mock · paper “saved” status (localStorage first). */
+  const AUTH_KEY = "mce:auth:v1";
+  /** Mock-only password fingerprint (not real auth security). */
+  function mockHash(user, pass) {
+    let h = 2166136261;
+    const s = String(user) + "\0" + String(pass) + "\0mce-paper";
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0).toString(16);
+  }
+  function authLoad() {
+    try {
+      const o = JSON.parse(localStorage.getItem(AUTH_KEY) || "null");
+      if (o && o.v === 1 && o.users && typeof o.users === "object") return o;
+    } catch (_) {}
+    return { v: 1, users: {}, session: null };
+  }
+  function authSave(a) {
+    try { localStorage.setItem(AUTH_KEY, JSON.stringify(a)); } catch (_) {}
+  }
+  let _auth = authLoad();
+  function authUser() {
+    const u = _auth && _auth.session;
+    return (u && _auth.users && _auth.users[u]) ? u : null;
+  }
+  function pfKeyFor(user) {
+    return user ? (PF_KEY + ":u:" + user) : PF_KEY;
+  }
+  function pfActiveKey() { return pfKeyFor(authUser()); }
+  /** Quiet Mock · paper “saved” status (localStorage first; account-scoped when logged in). */
   function paintPfSaved(flash) {
     const n = $("pfSavedHint"); if (!n) return;
     let has = false;
-    try { has = !!(localStorage.getItem(PF_KEY) || localStorage.getItem(PF_KEY_OLD)); } catch (_) {}
+    try {
+      const k = pfActiveKey();
+      has = !!(localStorage.getItem(k) || (!authUser() && localStorage.getItem(PF_KEY_OLD)));
+    } catch (_) {}
     if (!has) { n.hidden = true; return; }
     n.hidden = false;
-    n.textContent = flash || "saved";
+    n.textContent = flash || tr("mock.saved");
     n.classList.toggle("flash", !!flash);
     if (flash) {
       clearTimeout(n._t);
-      n._t = setTimeout(() => { n.textContent = "saved"; n.classList.remove("flash"); }, 900);
+      n._t = setTimeout(() => { n.textContent = tr("mock.saved"); n.classList.remove("flash"); }, 900);
     }
+  }
+  function paintAuthBar() {
+    const u = authUser();
+    const login = $("authLoginBtn"), reg = $("authRegisterBtn"), out = $("authLogoutBtn"), lab = $("authUserLabel");
+    const moreIn = $("moreAuthLogin"), moreReg = $("moreAuthRegister"), moreOut = $("moreAuthLogout"), moreLab = $("moreAuthUser");
+    if (login) { login.hidden = !!u; login.textContent = tr("auth.login"); }
+    if (reg) { reg.hidden = !!u; reg.textContent = tr("auth.register"); }
+    if (out) { out.hidden = !u; out.textContent = tr("auth.logout"); }
+    if (lab) { lab.hidden = !u; lab.textContent = u ? ("@" + u) : ""; }
+    if (moreIn) { moreIn.hidden = !!u; moreIn.textContent = tr("auth.login"); }
+    if (moreReg) { moreReg.hidden = !!u; moreReg.textContent = tr("auth.register"); }
+    if (moreOut) { moreOut.hidden = !u; moreOut.textContent = tr("auth.logout"); }
+    if (moreLab) { moreLab.hidden = !u; moreLab.textContent = u ? tr("auth.signed", { u }) : ""; }
   }
 
   const START_CASH = 5000;
@@ -2271,7 +2499,10 @@
     },
     load() {
       try {
-        const raw = localStorage.getItem(PF_KEY) || localStorage.getItem(PF_KEY_OLD);
+        const key = pfActiveKey();
+        let raw = localStorage.getItem(key);
+        // Guest only: migrate legacy v1 key once.
+        if (!raw && !authUser()) raw = localStorage.getItem(PF_KEY_OLD);
         if (!raw) return this.fresh(START_CASH);
         const s = JSON.parse(raw);
         if (s.v === 2) { if (feeMigrate(s)) this.save(s); return s; }
@@ -2283,7 +2514,7 @@
       // BUG FIX (ux-fix): unbounded history could hit the localStorage quota → save threw → trades lost on reload.
       if (Array.isArray(s.trades) && s.trades.length > TRADES_MAX) s.trades = s.trades.slice(0, TRADES_MAX);
       s.rev = (s.rev || 0) + 1;
-      try { localStorage.setItem(PF_KEY, JSON.stringify(s)); _pfRev = s.rev; try { paintPfSaved("saved"); } catch (_) {} }
+      try { localStorage.setItem(pfActiveKey(), JSON.stringify(s)); _pfRev = s.rev; try { paintPfSaved("saved"); } catch (_) {} }
       catch (e) { try { toast("模擬倉儲存失敗：" + e.message, "err"); } catch (_) {} }
     },
   };
@@ -2300,17 +2531,32 @@
   /** BUG FIX (ux-fix): another tab saved newer state → reload before any mutation so a stale tab never overwrites it. */
   function pfSyncFromStorage() {
     try {
-      const raw = localStorage.getItem(PF_KEY); if (!raw) return false;
+      const raw = localStorage.getItem(pfActiveKey()); if (!raw) return false;
       const s = JSON.parse(raw);
       if (s && s.v === 2 && (feeMigrate(s), true) && (s.rev || 0) !== (P.rev || 0)) { P = s; _pfRev = s.rev || 0; return true; }
     } catch (_) {}
     return false;
   }
+  function pfReloadForSession() {
+    P = pf.load();
+    _pfRev = P.rev || 0;
+    try { pfListKey = ""; } catch (_) {}
+    try { paintPfSaved(); } catch (_) {}
+    try { paintAuthBar(); } catch (_) {}
+    try { renderPortfolio(false); } catch (_) {}
+  }
   let P = pf.load();
   _pfRev = P.rev || 0;
   try { paintPfSaved(); } catch (_) {}
+  try { paintAuthBar(); } catch (_) {}
   window.addEventListener("storage", (ev) => {
-    if (ev.key !== PF_KEY) return;
+    if (!ev.key) return;
+    if (ev.key === AUTH_KEY) {
+      _auth = authLoad();
+      pfReloadForSession();
+      return;
+    }
+    if (ev.key !== pfActiveKey()) return;
     if (pfSyncFromStorage()) { try { pfListKey = ""; renderPortfolio(false); } catch (_) {} }
   });
   let pfMode = "all"; // spot | lev | all — portfolio section filter
@@ -3892,6 +4138,99 @@
     const f = $("discFull"); f.hidden = !f.hidden;
     $("discToggle").textContent = f.hidden ? "Details" : "Hide";
   });
+
+  // ---------- Account (mock Register / Login / Logout; portfolio scoped per user) ----------
+  function openAuthDlg(mode) {
+    const dlg = $("authDlg"); if (!dlg) return;
+    const m = mode === "register" ? "register" : "login";
+    document.querySelectorAll("#authModeSeg [data-authmode]").forEach((b) => {
+      b.classList.toggle("active", b.dataset.authmode === m);
+      b.textContent = b.dataset.authmode === "register" ? tr("auth.register") : tr("auth.login");
+    });
+    $("authTitle").textContent = m === "register" ? tr("auth.register") : tr("auth.login");
+    $("authSubmit").textContent = m === "register" ? tr("auth.create") : tr("auth.signin");
+    const hint = $("authHint");
+    if (hint) hint.textContent = m === "register" ? tr("auth.hint.register") : tr("auth.hint.login");
+    const ul = document.querySelector('label[for="authUser"]'); if (ul) ul.textContent = tr("auth.username");
+    const pl = document.querySelector('label[for="authPass"]'); if (pl) pl.textContent = tr("auth.password");
+    const cancel = $("authCancel"); if (cancel) cancel.textContent = tr("auth.cancel");
+    const err = $("authErr"); if (err) { err.hidden = true; err.textContent = ""; }
+    if ($("authUser")) $("authUser").value = "";
+    if ($("authPass")) {
+      $("authPass").value = "";
+      $("authPass").autocomplete = m === "register" ? "new-password" : "current-password";
+    }
+    dlg.dataset.mode = m;
+    if (!dlg.open) dlg.showModal();
+    try { $("authUser").focus(); } catch (_) {}
+  }
+  function closeAuthDlg() {
+    const dlg = $("authDlg");
+    if (dlg && dlg.open) dlg.close();
+  }
+  function authValidateUser(u) {
+    return /^[A-Za-z0-9_]{3,24}$/.test(u || "");
+  }
+  function doRegister(user, pass) {
+    const u = String(user || "").trim();
+    const p = String(pass || "");
+    if (!authValidateUser(u)) return { ok: false, err: tr("auth.err.user") };
+    if (p.length < 4 || p.length > 64) return { ok: false, err: tr("auth.err.pass") };
+    _auth = authLoad();
+    if (_auth.users[u]) return { ok: false, err: tr("auth.err.taken") };
+    // Seed account portfolio from current guest if account key empty.
+    const dest = pfKeyFor(u);
+    try {
+      if (!localStorage.getItem(dest)) {
+        const guest = localStorage.getItem(PF_KEY);
+        if (guest) localStorage.setItem(dest, guest);
+      }
+    } catch (_) {}
+    _auth.users[u] = { hash: mockHash(u, p), created: new Date().toISOString() };
+    _auth.session = u;
+    authSave(_auth);
+    pfReloadForSession();
+    return { ok: true };
+  }
+  function doLogin(user, pass) {
+    const u = String(user || "").trim();
+    const p = String(pass || "");
+    if (!authValidateUser(u)) return { ok: false, err: tr("auth.err.user") };
+    _auth = authLoad();
+    const rec = _auth.users[u];
+    if (!rec || rec.hash !== mockHash(u, p)) return { ok: false, err: tr("auth.err.wrong") };
+    // Persist guest portfolio before switching away.
+    try { pf.save(P); } catch (_) {}
+    _auth.session = u;
+    authSave(_auth);
+    pfReloadForSession();
+    return { ok: true };
+  }
+  function doLogout() {
+    try { pf.save(P); } catch (_) {}
+    _auth = authLoad();
+    _auth.session = null;
+    authSave(_auth);
+    pfReloadForSession();
+    toast(tr("auth.toast.out"));
+  }
+  function submitAuthForm(ev) {
+    if (ev) ev.preventDefault();
+    const dlg = $("authDlg");
+    const mode = (dlg && dlg.dataset.mode) || "login";
+    const user = $("authUser") && $("authUser").value;
+    const pass = $("authPass") && $("authPass").value;
+    const res = mode === "register" ? doRegister(user, pass) : doLogin(user, pass);
+    const err = $("authErr");
+    if (!res.ok) {
+      if (err) { err.hidden = false; err.textContent = res.err || tr("auth.err.fail"); }
+      return false;
+    }
+    closeAuthDlg();
+    toast(mode === "register" ? tr("auth.toast.created") : tr("auth.toast.in"));
+    return true;
+  }
+
   if ($("moreToFull")) $("moreToFull").addEventListener("click", () => { applyUiMode("full"); location.hash = "picks"; });
   if ($("moreHowto")) $("moreHowto").addEventListener("click", () => {
     applyUiMode("full");
@@ -3927,6 +4266,26 @@
     return { pump, held, picks };
   };
   if ($("allinFromPicks")) $("allinFromPicks").addEventListener("click", () => openAllinFlow());
+
+  // Language toggle
+  try { applyLang(uiLang, { refresh: false }); } catch (_) {}
+  document.querySelectorAll("#langToggle [data-lang]").forEach((b) => b.addEventListener("click", () => {
+    if (b.dataset.lang === uiLang) return;
+    applyLang(b.dataset.lang, { refresh: true });
+  }));
+  // Auth chrome
+  try { paintAuthBar(); } catch (_) {}
+  if ($("authLoginBtn")) $("authLoginBtn").addEventListener("click", () => openAuthDlg("login"));
+  if ($("authRegisterBtn")) $("authRegisterBtn").addEventListener("click", () => openAuthDlg("register"));
+  if ($("authLogoutBtn")) $("authLogoutBtn").addEventListener("click", () => doLogout());
+  if ($("moreAuthLogin")) $("moreAuthLogin").addEventListener("click", () => openAuthDlg("login"));
+  if ($("moreAuthRegister")) $("moreAuthRegister").addEventListener("click", () => openAuthDlg("register"));
+  if ($("moreAuthLogout")) $("moreAuthLogout").addEventListener("click", () => doLogout());
+  if ($("authClose")) $("authClose").addEventListener("click", () => closeAuthDlg());
+  if ($("authCancel")) $("authCancel").addEventListener("click", () => closeAuthDlg());
+  document.querySelectorAll("#authModeSeg [data-authmode]").forEach((b) => b.addEventListener("click", () => openAuthDlg(b.dataset.authmode)));
+  if ($("authForm")) $("authForm").addEventListener("submit", submitAuthForm);
+
   if ($("allinCloseBtn")) $("allinCloseBtn").addEventListener("click", () => closeAllinFromBanner());
   if ($("allinAgain")) $("allinAgain").addEventListener("click", () => againAllin());
   $("pfRefresh").addEventListener("click", async () => {
@@ -3959,6 +4318,7 @@
     LIQ_MARGIN_FRAC, setState(s) { P = s; pf.save(P); },
     openAllinFlow, executeAllin, allinActive, loadAllinRounds, endAllinRound, playOverlay, reduceMotion, closeAllinFromBanner, buyAnyCoin, openPosDetail,
     ingestPair, ensureLiveLoop, renderPortfolio,
+    authUser, doRegister, doLogin, doLogout, pfActiveKey, openAuthDlg,
   };
   window.MCE.onBrowseLoaded = () => {};
   window.MCE.onBnBoardLoaded = (rows) => {
@@ -3982,5 +4342,5 @@
   // 預設落地：簡單模式 + #picks
   if (!location.hash) location.replace("#picks");
   else show(location.hash.slice(1));
-  window.MCE.ui = { applyUiMode, get mode() { return uiMode; } };
+  window.MCE.ui = { applyUiMode, applyLang, t: tr, get mode() { return uiMode; }, get lang() { return uiLang; } };
 })();
