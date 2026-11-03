@@ -40,7 +40,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 </header>
 
 <div class="disclaimer disc-chip" role="note">
-  <div class="disc-one">Mock · paper</div>
+  <div class="disc-one">Mock · paper <span class="disc-saved" id="pfSavedHint" hidden>saved</span></div>
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
@@ -200,8 +200,8 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel daily-batch-panel simple-only" id="dailyBatchPanel" aria-live="polite">
     <div class="panelhead">
       <div>
-        <h2 class="home-title">Daily watch</h2>
-        <p class="home-sub" id="dailyBatchMeta">Today’s batch · separate from Today picks</p>
+        <h2 class="home-title">Today</h2>
+        <p class="home-sub" id="dailyBatchMeta">Daily watch · separate from Early</p>
       </div>
     </div>
     <div class="table-wrap daily-batch-wrap">
@@ -503,7 +503,7 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     <div class="gacc" id="gainerCard"></div>
   </div>
   <div id="pfDetail" data-park>
-    <div class="simbanner">Mock cash · not real money</div>
+    <div class="simbanner simbanner-quiet">Mock · paper</div>
     <div id="liveStrip" class="live-strip" hidden>
       <span class="live-dot" aria-hidden="true"></span>
       <span id="liveStripText">Live quotes off</span>
@@ -680,6 +680,6 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261103a"></script>
+<script src="picks.js?v=20261103b"></script>
 </body>
 </html>

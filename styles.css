@@ -1939,3 +1939,16 @@ button.allin-btn:hover,button.gb-allin:hover,.allin-btn:hover{
 .disclaimer.disc-chip{padding:4px 10px!important;margin:8px 20px!important;font-size:11px!important;border-style:dashed!important;opacity:.85}
 .disclaimer.disc-chip .disc-one{margin:0;font-weight:600;color:var(--muted)}
 footer:empty{display:none}
+
+/* UI A+B: quiet Mock · paper saved + Early face tags; Today ≠ Early */
+.disclaimer.disc-chip .disc-one{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.disclaimer.disc-chip .disc-saved{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.disclaimer.disc-chip .disc-saved.flash{color:#86efac}
+.simbanner.simbanner-quiet{
+  margin:0!important;padding:6px 10px;border:1px dashed var(--line-strong);
+  background:transparent;color:var(--muted);font-size:11px;font-weight:600;opacity:.9;border-radius:8px;
+}
+.gb-face-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px;align-items:center}
+.gb-face-tags .gb-watch{margin-left:0}
+.gb-face-tags .gb-cand-tag{margin-left:0}
+.daily-batch-panel .home-title{letter-spacing:0}
