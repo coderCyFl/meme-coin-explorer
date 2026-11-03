@@ -192,6 +192,53 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <div id="earlyList" class="gb-list"></div>
   </section>
 
+  <!-- Hit report: sealed Early scorecards only (display; Strategy N/A) -->
+  <section class="panel hit-report" id="hitReportPanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title" data-i18n="hit.title">Hit report</h2>
+        <p class="home-sub" data-i18n="hit.sub">Sealed Early · last nights vs Binance top 20</p>
+      </div>
+      <div class="seg mini" id="hitWindowSeg" role="group" aria-label="Hit window">
+        <button type="button" class="segbtn active" data-hitwin="7d" data-i18n="hit.win7">7 nights</button>
+        <button type="button" class="segbtn" data-hitwin="night" data-i18n="hit.winnight">One night</button>
+      </div>
+    </div>
+    <div class="hit-hero" id="hitHero">
+      <div class="hit-big num" id="hitBig">—</div>
+      <div class="hit-rate num" id="hitRate">—</div>
+      <div class="hit-meta tiny muted" id="hitMeta"></div>
+    </div>
+    <div class="hit-nights" id="hitNights" hidden></div>
+    <div class="hit-cols" id="hitCols">
+      <div class="hit-col" id="hitColHit"><div class="hit-col-h pos" data-i18n="hit.col.hit">HIT</div><div class="hit-col-b" id="hitListHit"></div></div>
+      <div class="hit-col" id="hitColLate"><div class="hit-col-h warn" data-i18n="hit.col.late">LATE</div><div class="hit-col-b" id="hitListLate"></div></div>
+      <div class="hit-col" id="hitColMiss"><div class="hit-col-h neg" data-i18n="hit.col.miss">MISS</div><div class="hit-col-b" id="hitListMiss"></div></div>
+    </div>
+    <p class="tiny muted" data-i18n="hit.note">Display only · sealed JSON · not a live recompute</p>
+  </section>
+
+  <!-- X-news scan: parallel face + shill veto; never opens paper -->
+  <section class="panel xnews-scan" id="xNewsScanPanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title" data-i18n="xnews.title">X news scan</h2>
+        <p class="home-sub" data-i18n="xnews.sub">Coin X snapshot · parallel only · not a buy signal</p>
+      </div>
+      <button type="button" id="xNewsRefresh" class="ghost sm" title="Refresh" aria-label="Refresh">↻</button>
+    </div>
+    <div class="xnews-filters" id="xNewsFilters" role="group" aria-label="X news filter">
+      <button type="button" class="chip active" data-xnf="all" data-i18n="xnews.all">All</button>
+      <button type="button" class="chip" data-xnf="hot" data-i18n="xnews.hot">Hot</button>
+      <button type="button" class="chip" data-xnf="warm" data-i18n="xnews.warm">Warming</button>
+      <button type="button" class="chip" data-xnf="cold" data-i18n="xnews.cold">Cold</button>
+      <button type="button" class="chip" data-xnf="shill" data-i18n="xnews.shill">Shill 🚩</button>
+    </div>
+    <p class="tiny muted" id="xNewsMeta"></p>
+    <div id="xNewsList" class="xnews-list"></div>
+    <div class="empty" id="xNewsEmpty" hidden data-i18n="xnews.empty">No X snapshot yet.</div>
+  </section>
+
   <!-- Simple home: brief + cards + portfolio strip -->
   <!-- Big numbers first: paper follow report -->
   <section class="panel follow-report" id="followReportPanel" aria-live="polite">
@@ -391,6 +438,8 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
       <button type="button" class="more-item" id="moreAuthRegister" data-i18n="auth.register">Register</button>
       <button type="button" class="more-item" id="moreAuthLogout" hidden data-i18n="auth.logout">Logout</button>
       <a class="more-item" href="#browse">Markets</a>
+      <a class="more-item" href="#picks" id="moreHitReport" data-i18n="hit.title">Hit report</a>
+      <a class="more-item" href="#picks" id="moreXNews" data-i18n="xnews.title">X news scan</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
       <a class="more-item" href="#explore">Scan (full)</a>
@@ -727,6 +776,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104d"></script>
+<script src="picks.js?v=20261104e"></script>
 </body>
 </html>
