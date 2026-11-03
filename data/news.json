@@ -1,7 +1,127 @@
 {
-  "fetched_at": "2026-11-03T11:05:48+08:00",
+  "fetched_at": "2026-11-03T12:08:08+08:00",
   "source": "X News",
   "stories": [
+    {
+      "id": "2117426584554717612",
+      "title": "WorkOS Reveals AI Agent Breach in Internal Sales Systems",
+      "title_en": "WorkOS Reveals AI Agent Breach in Internal Sales Systems",
+      "summary": "The breach exposed business contact details, sales histories, customer communication excerpts, and product usage data, but production systems and customer platforms remained secure. WorkOS quickly disabled access, hired forensics experts, and shared user agent details like 'artex-enrich/1.0' to help others. This incident, coming right after founder Michael Grinich warned about AI agents in attacks, highlights the rising speed of automated threats and the need for tight internal controls.",
+      "summary_en": "The breach exposed business contact details, sales histories, customer communication excerpts, and product usage data, but production systems and customer platforms remained secure. WorkOS quickly disabled access, hired forensics experts, and shared user agent details like 'artex-enrich/1.0' to help others. This incident, coming right after founder Michael Grinich warned about AI agents in attacks, highlights the rising speed of automated threats and the need for tight internal controls.",
+      "published_at": "2026-11-03T04:04:00.000Z",
+      "url": "https://x.com/i/trending/2117426584554717612",
+      "tags": [
+        "Technology"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117463812576342490",
+      "title": "Binance Covers $6.3 Billion Hack Loss from Own Reserves",
+      "title_en": "Binance Covers $6.3 Billion Hack Loss from Own Reserves",
+      "summary": "On October 29, hackers linked to North Korea's TraderTraitor group drained hot wallets across blockchains, marking the largest crypto theft on record. Binance immediately paused withdrawals briefly, then used over $6.34 billion from its Secure Asset Fund, insurance reserves, and treasury to fully replenish user assets through market and OTC buys—90% already restored. The company shared a new proof-of-reserves snapshot, froze $3 billion in stolen funds with partners, and resumed phased withdrawals, showcasing its financial strength without impacting users or markets.",
+      "summary_en": "On October 29, hackers linked to North Korea's TraderTraitor group drained hot wallets across blockchains, marking the largest crypto theft on record. Binance immediately paused withdrawals briefly, then used over $6.34 billion from its Secure Asset Fund, insurance reserves, and treasury to fully replenish user assets through market and OTC buys—90% already restored. The company shared a new proof-of-reserves snapshot, froze $3 billion in stolen funds with partners, and resumed phased withdrawals, showcasing its financial strength without impacting users or markets.",
+      "published_at": "2026-11-03T03:57:20.000Z",
+      "url": "https://x.com/i/trending/2117463812576342490",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117260404883939594",
+      "title": "Mercado Bitcoin Halts Operations After $40 Million Security Breach",
+      "title_en": "Mercado Bitcoin Halts Operations After $40 Million Security Breach",
+      "summary": "Security researchers detected over $40 million moving across blockchains like Bitcoin, Ethereum, Solana, and Tron in about 34 minutes, with analysts pegging it closer to $46 million. Mercado Bitcoin stressed no customer funds were lost and no data leaked, while teams investigate with authorities and track assets. Tether froze 4.5 million USDT linked to the breach, and industry partners helped recover several million dollars already. The event follows a separate $106 million loss from EU accounts and a massive $6.3 billion Binance theft days prior.",
+      "summary_en": "Security researchers detected over $40 million moving across blockchains like Bitcoin, Ethereum, Solana, and Tron in about 34 minutes, with analysts pegging it closer to $46 million. Mercado Bitcoin stressed no customer funds were lost and no data leaked, while teams investigate with authorities and track assets. Tether froze 4.5 million USDT linked to the breach, and industry partners helped recover several million dollars already. The event follows a separate $106 million loss from EU accounts and a massive $6.3 billion Binance theft days prior.",
+      "published_at": "2026-11-03T03:37:09.000Z",
+      "url": "https://x.com/i/trending/2117260404883939594",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117383439385268694",
+      "title": "Fivio Foreign's Deleted Post Mixes Up Dominicans and Republicans Before Midterms",
+      "title_en": "Fivio Foreign's Deleted Post Mixes Up Dominicans and Republicans Before Midterms",
+      "summary": "The post confused a nationality with a political party, sparking memes and jokes across social media as voters headed to the polls on November 3 to decide House control, Senate seats, and governorships. Fans quoted the exact wording, poked fun at Fivio's known spelling mishaps, and turned phrases like 'or choose' into running gags, with some playfully claiming Dominicans run the government. Fivio, real name Maxie Lee Ryles III, built fame in Brooklyn drill with tracks like 'Big Drip' and collabs with Kanye West and Drake; he's shown past political interest, including Trump support in 2024.",
+      "summary_en": "The post confused a nationality with a political party, sparking memes and jokes across social media as voters headed to the polls on November 3 to decide House control, Senate seats, and governorships. Fans quoted the exact wording, poked fun at Fivio's known spelling mishaps, and turned phrases like 'or choose' into running gags, with some playfully claiming Dominicans run the government. Fivio, real name Maxie Lee Ryles III, built fame in Brooklyn drill with tracks like 'Big Drip' and collabs with Kanye West and Drake; he's shown past political interest, including Trump support in 2024.",
+      "published_at": "2026-11-03T03:20:10.000Z",
+      "url": "https://x.com/i/trending/2117383439385268694",
+      "tags": [
+        "Memes"
+      ],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2116847631045456014",
+      "title": "$ANSEM Meme Coin Drops 90% from July Peak Amid Holder Exits",
+      "title_en": "$ANSEM Meme Coin Drops 90% from July Peak Amid Holder Exits",
+      "summary": "$ANSEM, the Solana meme coin linked to trader Ansem, launched in mid-June 2026 and surged after community airdrops to his wallet and teases of creator-fee drops from Pump.fun. It faced a brutal reversal with heavy selling, Ansem.io revenue at just $1.09 on November 1, and exits like holder Rasmr's $200,000 loss. While some blame the project for rugging and refuse to buy even drunk, others insist buyers own the risks of these all-or-nothing meme gambles. Bulls eye the dip as a rebound chance if Ansem re-engages.",
+      "summary_en": "$ANSEM, the Solana meme coin linked to trader Ansem, launched in mid-June 2026 and surged after community airdrops to his wallet and teases of creator-fee drops from Pump.fun. It faced a brutal reversal with heavy selling, Ansem.io revenue at just $1.09 on November 1, and exits like holder Rasmr's $200,000 loss. While some blame the project for rugging and refuse to buy even drunk, others insist buyers own the risks of these all-or-nothing meme gambles. Bulls eye the dip as a rebound chance if Ansem re-engages.",
+      "published_at": "2026-11-03T03:09:29.000Z",
+      "url": "https://x.com/i/trending/2116847631045456014",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117196966702862811",
+      "title": "Mutant Monday Brings Ape Community Together with Wild Art",
+      "title_en": "Mutant Monday Brings Ape Community Together with Wild Art",
+      "summary": "The NFT community celebrated Mutant Monday by sharing imaginative artwork of mutated apes from the 2021 Yuga Labs collection, featuring traits like extra eyes, mechanical parts, and vibrant slime. Enthusiasts posted greetings like 'Gm Legends' alongside originals such as a frog-helmeted mutant or a pink robotic figure with starry visor, drawing in BAYC holders and broader Web3 fans. This weekly ritual fosters connection and creativity, with MAYC floor prices steady near 0.9 ETH amid ongoing trades.",
+      "summary_en": "The NFT community celebrated Mutant Monday by sharing imaginative artwork of mutated apes from the 2021 Yuga Labs collection, featuring traits like extra eyes, mechanical parts, and vibrant slime. Enthusiasts posted greetings like 'Gm Legends' alongside originals such as a frog-helmeted mutant or a pink robotic figure with starry visor, drawing in BAYC holders and broader Web3 fans. This weekly ritual fosters connection and creativity, with MAYC floor prices steady near 0.9 ETH amid ongoing trades.",
+      "published_at": "2026-11-03T03:01:19.000Z",
+      "url": "https://x.com/i/trending/2117196966702862811",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117258463185457563",
+      "title": "Bitcoin Drops Below $77,000 Ahead of U.S. Midterm Elections",
+      "title_en": "Bitcoin Drops Below $77,000 Ahead of U.S. Midterm Elections",
+      "summary": "Major cryptocurrencies like Ethereum, XRP, and Solana are also down sharply, with Bitcoin testing support at $76,777 amid broad market caution. This pullback echoes patterns from 2018 and 2022 midterms, when Bitcoin fell 24-25% post-vote, though analysts like Benjamin Cowen see it fitting a typical Q4 low before potential Q1 recovery. Bullish signals persist, including seven weeks above the 50-week moving average and a 71% Polymarket chance of topping $80,000 this month, as traders watch for a bottom or further dips to $73,000.",
+      "summary_en": "Major cryptocurrencies like Ethereum, XRP, and Solana are also down sharply, with Bitcoin testing support at $76,777 amid broad market caution. This pullback echoes patterns from 2018 and 2022 midterms, when Bitcoin fell 24-25% post-vote, though analysts like Benjamin Cowen see it fitting a typical Q4 low before potential Q1 recovery. Bullish signals persist, including seven weeks above the 50-week moving average and a 71% Polymarket chance of topping $80,000 this month, as traders watch for a bottom or further dips to $73,000.",
+      "published_at": "2026-11-03T02:27:30.000Z",
+      "url": "https://x.com/i/trending/2117258463185457563",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2116983923058344321",
+      "title": "Pump.fun Pays Out $30 Million in Rewards to Top Traders Amid Slow Markets",
+      "title_en": "Pump.fun Pays Out $30 Million in Rewards to Top Traders Amid Slow Markets",
+      "summary": "Pump.fun is sharing 100% of its revenue through rewards, with referrers earning 37.5% of fees from their referrals and the rest going to callout perks—totaling over $30 million paid out so far. The platform has seen daily active traders surge sevenfold to over 50,000 since May, alongside 24 million coin launches and support for multiple chains. Critics argue it favors quick-pump bundlers over regular users, though Pump.fun has tweaked rewards to better tie them to follower profits.",
+      "summary_en": "Pump.fun is sharing 100% of its revenue through rewards, with referrers earning 37.5% of fees from their referrals and the rest going to callout perks—totaling over $30 million paid out so far. The platform has seen daily active traders surge sevenfold to over 50,000 since May, alongside 24 million coin launches and support for multiple chains. Critics argue it favors quick-pump bundlers over regular users, though Pump.fun has tweaked rewards to better tie them to follower profits.",
+      "published_at": "2026-11-03T02:25:11.000Z",
+      "url": "https://x.com/i/trending/2116983923058344321",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
     {
       "id": "2117391934562111784",
       "title": "Web Hood NFT Project Asks Community to Shape Its Future",
@@ -18,17 +138,17 @@
       "source": "X News"
     },
     {
-      "id": "2117260404883939594",
-      "title": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
-      "title_en": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
-      "summary": "Mercado Bitcoin confirmed the incident in one of its systems, quickly containing it with no customer losses or data leaks reported. Blockchain monitors spotted over $40 million in suspicious transfers across Bitcoin, Ethereum, Solana, and Tron, including about 106 BTC and thousands of ETH to new addresses. Tether froze 4.5 million USDT linked to the event, and the exchange is tracing assets, working with authorities, and promising to cover any costs while serving its 4.8 million users.",
-      "summary_en": "Mercado Bitcoin confirmed the incident in one of its systems, quickly containing it with no customer losses or data leaks reported. Blockchain monitors spotted over $40 million in suspicious transfers across Bitcoin, Ethereum, Solana, and Tron, including about 106 BTC and thousands of ETH to new addresses. Tether froze 4.5 million USDT linked to the event, and the exchange is tracing assets, working with authorities, and promising to cover any costs while serving its 4.8 million users.",
-      "published_at": "2026-11-03T01:59:40.000Z",
-      "url": "https://x.com/i/trending/2117260404883939594",
+      "id": "2117432037946560796",
+      "title": "Tether Reveals 150,000 Bitcoin Holdings Worth $11.5 Billion",
+      "title_en": "Tether Reveals 150,000 Bitcoin Holdings Worth $11.5 Billion",
+      "summary": "Speaking at the event, Ardoino disclosed Tether's Bitcoin stash, now valued at over $11.5 billion, up from around 100,000 coins earlier. This forms part of the firm's 'Independence Stack,' which includes energy projects, mining tools, and self-custody wallets designed to sustain operations independently. Tether also boasts 730 million users worldwide, adding 30 million wallets quarterly, with $122.8 billion in U.S. Treasury bills and nearly $8 billion in excess reserves. The move positions Tether among the largest corporate Bitcoin holders, owning 0.7 percent of the total supply.",
+      "summary_en": "Speaking at the event, Ardoino disclosed Tether's Bitcoin stash, now valued at over $11.5 billion, up from around 100,000 coins earlier. This forms part of the firm's 'Independence Stack,' which includes energy projects, mining tools, and self-custody wallets designed to sustain operations independently. Tether also boasts 730 million users worldwide, adding 30 million wallets quarterly, with $122.8 billion in U.S. Treasury bills and nearly $8 billion in excess reserves. The move positions Tether among the largest corporate Bitcoin holders, owning 0.7 percent of the total supply.",
+      "published_at": "2026-11-03T01:47:21.000Z",
+      "url": "https://x.com/i/trending/2117432037946560796",
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "News",
       "source": "X News"
     },
@@ -40,36 +160,6 @@
       "summary_en": "On November 2, 2026—Kabosu's birthday—communities marked International Doge Day with the motto 'Do Only Good Everyday.' DogeOS shared cartoon pups at a picnic, FLOKI posted a Viking-helmeted Shiba beside Kabosu's image, and visitors flocked to her bronze statue in Sakura, Japan, funded by crypto donors. Everyday fans shared heartfelt messages, art like birthday cakes and space scenes, and stories of positivity, keeping the focus on legacy and kindness even as Dogecoin hovered below $0.10.",
       "published_at": "2026-11-03T00:55:03.000Z",
       "url": "https://x.com/i/trending/2117305413645267100",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
-      "id": "2117258463185457563",
-      "title": "Bitcoin Tumbles Below $77,000 Ahead of U.S. Midterm Elections",
-      "title_en": "Bitcoin Tumbles Below $77,000 Ahead of U.S. Midterm Elections",
-      "summary": "Ethereum fell below $2,250, XRP under $1.25, and Solana under $95 in the sharp sell-off, fueled by historical midterm patterns like 51% and 25% drops after 2018 and 2022 votes. Traders watch key Bitcoin support at $76,000 amid risks of deeper falls to $68,000, though staying above the 50-week moving average offers some bullish hope and past cycles saw strong recoveries within a year. While short-term volatility looms with ETF outflows and election results, long-term holders eye on-chain strength over the noise.",
-      "summary_en": "Ethereum fell below $2,250, XRP under $1.25, and Solana under $95 in the sharp sell-off, fueled by historical midterm patterns like 51% and 25% drops after 2018 and 2022 votes. Traders watch key Bitcoin support at $76,000 amid risks of deeper falls to $68,000, though staying above the 50-week moving average offers some bullish hope and past cycles saw strong recoveries within a year. While short-term volatility looms with ETF outflows and election results, long-term holders eye on-chain strength over the noise.",
-      "published_at": "2026-11-03T00:35:49.000Z",
-      "url": "https://x.com/i/trending/2117258463185457563",
-      "tags": [
-        "cryptocurrency"
-      ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
-      "id": "2116847631045456014",
-      "title": "$ANSEM Memecoin Crashes 90% from Peak, Investors Blame Ansem",
-      "title_en": "$ANSEM Memecoin Crashes 90% from Peak, Investors Blame Ansem",
-      "summary": "Launched in mid-June 2026 on Solana and branded 'The Black Bull,' $ANSEM hit a market cap in the hundreds of millions before dropping to around $45-47 million at $0.046 per token. Critics accuse Ansem, real name Zion Thomas and known as the 'Memecoin King' for early calls on dogwifhat and Bonk, of abandoning the project despite earlier promises of strong support, with some calling his lack of tweets a 'disgrace' and pointing to high-profile exits like trader Rasmr's $200,000 loss. While some holders view the dip as a buying opportunity, noting a $100 launch investment still holds steady, Ansem's recent activity has been minimal, with his latest post just 'yo.' The fallout underscores the risks of memecoins linked to single influencers.",
-      "summary_en": "Launched in mid-June 2026 on Solana and branded 'The Black Bull,' $ANSEM hit a market cap in the hundreds of millions before dropping to around $45-47 million at $0.046 per token. Critics accuse Ansem, real name Zion Thomas and known as the 'Memecoin King' for early calls on dogwifhat and Bonk, of abandoning the project despite earlier promises of strong support, with some calling his lack of tweets a 'disgrace' and pointing to high-profile exits like trader Rasmr's $200,000 loss. While some holders view the dip as a buying opportunity, noting a $100 launch investment still holds steady, Ansem's recent activity has been minimal, with his latest post just 'yo.' The fallout underscores the risks of memecoins linked to single influencers.",
-      "published_at": "2026-11-03T00:05:32.000Z",
-      "url": "https://x.com/i/trending/2116847631045456014",
       "tags": [
         "Cryptocurrency"
       ],
@@ -133,7 +223,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -148,7 +238,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -163,7 +253,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -193,7 +283,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -223,7 +313,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -236,9 +326,9 @@
       "published_at": "2026-11-02T21:08:55.000Z",
       "url": "https://x.com/i/trending/2117361074869878831",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -254,7 +344,7 @@
         "Technology",
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -267,7 +357,7 @@
       "published_at": "2026-11-02T20:55:14.000Z",
       "url": "https://x.com/i/trending/2117358118640226797",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "News",
@@ -284,7 +374,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -299,7 +389,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -312,7 +402,7 @@
       "published_at": "2026-11-02T20:14:38.000Z",
       "url": "https://x.com/i/trending/2117347310015328501",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "News",
@@ -345,7 +435,22 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117321780377641184",
+      "title": "Bitcoin Dips Below $77,000 Ahead of U.S. Midterm Elections",
+      "title_en": "Bitcoin Dips Below $77,000 Ahead of U.S. Midterm Elections",
+      "summary": "Major cryptocurrencies like Ethereum, Solana, and XRP also fell sharply—Ethereum under $2,250, Solana below $95, and XRP under $1.25—amid a broader selloff before Tuesday's U.S. midterm elections. Bitcoin has now seen its longest streak of daily net realized losses since mid-August, testing support at $76,000-$76,600, while historical patterns show post-midterm drops followed by yearly gains. ETF outflows hit $643 million on October 30, and traders debate if a bottom is near or if prices could slide to $73,000, with election results set to sway the market.",
+      "summary_en": "Major cryptocurrencies like Ethereum, Solana, and XRP also fell sharply—Ethereum under $2,250, Solana below $95, and XRP under $1.25—amid a broader selloff before Tuesday's U.S. midterm elections. Bitcoin has now seen its longest streak of daily net realized losses since mid-August, testing support at $76,000-$76,600, while historical patterns show post-midterm drops followed by yearly gains. ETF outflows hit $643 million on October 30, and traders debate if a bottom is near or if prices could slide to $73,000, with election results set to sway the market.",
+      "published_at": "2026-11-02T19:31:28.000Z",
+      "url": "https://x.com/i/trending/2117321780377641184",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "News",
       "source": "X News"
     },
@@ -360,7 +465,7 @@
       "tags": [
         "Technology"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "Other",
       "source": "X News"
     },
@@ -373,9 +478,9 @@
       "published_at": "2026-11-02T18:51:16.000Z",
       "url": "https://x.com/i/trending/2117271277454966895",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -387,10 +492,8 @@
       "summary_en": "The nine-second clip has become a shared meme for gambling losses, with people captioning it alongside their stories of ending up broke after trying to make quick money. Discussions mix humor with serious warnings, as users note how even disciplined betting can ruin lives and turn into a consuming disease. Health data underscores the risks: the World Health Organization estimates 1.2% of adults worldwide have gambling disorder, while a JAMA analysis puts those affected at around 80 million, often facing mental health issues, financial distress, and family breakdowns.",
       "published_at": "2026-11-02T18:06:30.000Z",
       "url": "https://x.com/i/trending/2116908077110919169",
-      "tags": [
-        "cryptocurrency"
-      ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "tags": [],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -403,8 +506,8 @@
       "published_at": "2026-11-02T18:05:47.000Z",
       "url": "https://x.com/i/trending/2117314830843752620",
       "tags": [
-        "technology",
-        "ai"
+        "Technology",
+        "AI"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "News",
@@ -452,7 +555,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -467,7 +570,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -482,7 +585,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "錢包／供應鏈風險提醒；熱門站同模擬倉都要核來源。",
       "category": "News",
       "source": "X News"
     },
@@ -497,7 +600,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -513,7 +616,7 @@
         "Cryptocurrency",
         "Memes"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -528,7 +631,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -543,7 +646,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "News",
       "source": "X News"
     },
@@ -573,7 +676,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "Other",
       "source": "X News"
     },
@@ -616,9 +719,9 @@
       "published_at": "2026-11-02T15:59:32.000Z",
       "url": "https://x.com/i/trending/2117236603353747851",
       "tags": [
-        "memes"
+        "Memes"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -630,6 +733,21 @@
       "summary_en": "The NYSE-listed firm, chaired by Tom Lee of Fundstrat, now holds 6,060,506 ETH worth about $13.8 billion, or 4.9% of Ethereum's total supply. This $19.5 million purchase keeps up its weekly buying streak since June 2025, with over 86% of holdings staked to generate projected annual revenue of $358 million. Lee pointed to Ethereum's resilient 4% dip after a $6.3 billion Binance hack as a sign of market strength, while observers note the treasury's scale as a vote of confidence in ETH's future.",
       "published_at": "2026-11-02T14:59:50.000Z",
       "url": "https://x.com/i/trending/2117268952678277285",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117215585561940342",
+      "title": "RBI Probes Offshore Crypto Cards Used for Indian Spending",
+      "title_en": "RBI Probes Offshore Crypto Cards Used for Indian Spending",
+      "summary": "The Reserve Bank of India and Financial Intelligence Unit are reviewing crypto-linked cards from providers like RedotPay, which let users spend stablecoins on domestic purchases, recharges, and withdrawals while merchants get rupees. The probe questions compliance with payment rules and foreign exchange laws, following a Bengaluru group's tests that showed easy transactions with minimal checks. Users report sudden card blocks and site access issues, amid varied views on whether this signals broader crypto controls. No formal actions have been announced yet.",
+      "summary_en": "The Reserve Bank of India and Financial Intelligence Unit are reviewing crypto-linked cards from providers like RedotPay, which let users spend stablecoins on domestic purchases, recharges, and withdrawals while merchants get rupees. The probe questions compliance with payment rules and foreign exchange laws, following a Bengaluru group's tests that showed easy transactions with minimal checks. Users report sudden card blocks and site access issues, amid varied views on whether this signals broader crypto controls. No formal actions have been announced yet.",
+      "published_at": "2026-11-02T14:01:39.000Z",
+      "url": "https://x.com/i/trending/2117215585561940342",
       "tags": [
         "Cryptocurrency"
       ],
@@ -648,7 +766,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -664,7 +782,7 @@
         "Technology",
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -677,9 +795,9 @@
       "published_at": "2026-11-02T11:54:21.000Z",
       "url": "https://x.com/i/trending/2117071148303474696",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -724,7 +842,7 @@
       "tags": [
         "Business & Finance"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "Entertainment",
       "source": "X News"
     },
@@ -739,7 +857,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "BTC 敘事／價格背景，影響弱市 regime 同風險偏好。",
       "category": "News",
       "source": "X News"
     },
@@ -754,7 +872,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -784,7 +902,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -799,7 +917,7 @@
       "tags": [
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
       "source": "X News"
     },
@@ -849,21 +967,6 @@
       "source": "X News"
     },
     {
-      "id": "2116983923058344321",
-      "title": "Pump.fun Updates Referral Rewards to 1.5x Boost Amid Expansion Push",
-      "title_en": "Pump.fun Updates Referral Rewards to 1.5x Boost Amid Expansion Push",
-      "summary": "The platform ended its temporary 4x referral boost, switching to a sustainable 1.5x structure that still sends all revenue back to users via 37.5% to referrers and 62.5% to callout rewards and perks. Daily active traders have surged over 7x since May to more than 50,000, with over $30 million already paid out—even in tough markets. Supporters cheer the big distributions and new features like six chains in six days, while critics worry it favors quick pumps by insiders over long-term trader success.",
-      "summary_en": "The platform ended its temporary 4x referral boost, switching to a sustainable 1.5x structure that still sends all revenue back to users via 37.5% to referrers and 62.5% to callout rewards and perks. Daily active traders have surged over 7x since May to more than 50,000, with over $30 million already paid out—even in tough markets. Supporters cheer the big distributions and new features like six chains in six days, while critics worry it favors quick pumps by insiders over long-term trader success.",
-      "published_at": "2026-11-02T00:31:50.000Z",
-      "url": "https://x.com/i/trending/2116983923058344321",
-      "tags": [
-        "cryptocurrency"
-      ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
       "id": "2117041383488061663",
       "title": "Binance Hacker Swaps $5M Tokens for Just $71 in Thin Pool",
       "title_en": "Binance Hacker Swaps $5M Tokens for Just $71 in Thin Pool",
@@ -887,9 +990,9 @@
       "published_at": "2026-11-01T21:05:20.000Z",
       "url": "https://x.com/i/trending/2116998392547254275",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -1043,7 +1146,7 @@
         "Technology",
         "Cryptocurrency"
       ],
-      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "X News"
     },
@@ -1056,7 +1159,7 @@
       "published_at": "2026-11-01T10:21:23.000Z",
       "url": "https://x.com/i/trending/2116775557878763627",
       "tags": [
-        "cryptocurrency"
+        "Cryptocurrency"
       ],
       "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
       "category": "Other",
@@ -1581,6 +1684,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-03T11:05:48+08:00",
+  "x_fetched_at": "2026-11-03T12:08:08+08:00",
   "x_job": "hourly-update"
 }
