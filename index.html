@@ -179,6 +179,11 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <div id="view-picks" class="view" hidden>
   <!-- ===== 急升榜 (high-risk, separate from AI picks; not halved by weak-market gate) ===== -->
   <section class="panel gainer-panel" id="gainerPanel" aria-live="polite">
+    <div class="early-head">
+      <h3 class="gb-tier-title"><span data-i18n="early.title">Early finds</span> <span class="muted tiny" data-i18n="early.lock">24h lock</span></h3>
+      <p class="home-sub" data-i18n="early.sub">Suggested buys — spotted early, may run hard later</p>
+    </div>
+    <div id="earlyList" class="gb-list"></div>
     <div class="panelhead gb-head">
       <h3 class="home-title gb-tier-title gb-tier-pump">🔥 Gainers · 🚀 Chase <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
       <div class="row home-tools">
@@ -190,11 +195,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <div class="gb-alert" id="gainerAlert" hidden></div>
     <p class="tiny muted gb-xcap" id="gainerXCap" hidden>X daily cap used</p>
     <div id="gainerList" class="gb-list"></div>
-    <div class="early-head">
-      <h3 class="gb-tier-title"><span data-i18n="early.title">Early finds</span> <span class="muted tiny" data-i18n="early.lock">24h lock</span></h3>
-      <p class="home-sub" data-i18n="early.sub">Spotted early — coins that may run hard</p>
-    </div>
-    <div id="earlyList" class="gb-list"></div>
   </section>
 
   <!-- X-news scan: parallel face + shill veto; never opens paper -->
@@ -786,6 +786,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104f"></script>
+<script src="picks.js?v=20261104g"></script>
 </body>
 </html>
