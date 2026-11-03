@@ -396,6 +396,13 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
       <a class="more-item" href="#explore">Scan (full)</a>
       <button type="button" class="more-item" id="moreToFull">Switch to Full UI</button>
       <button type="button" class="more-item" id="moreHowto">Help</button>
+      <label class="more-item more-push" for="pushOptIn">
+        <span class="more-push-lab">
+          <span data-i18n="push.toggle">Enable notifications</span>
+          <span class="more-push-ios muted tiny" id="pushIosHint" hidden data-i18n="push.ios">Add to Home Screen for quicker tips.</span>
+        </span>
+        <input type="checkbox" id="pushOptIn" class="more-push-check" />
+      </label>
       <a class="more-item" href="#picks">Back to Today's picks</a>
     </div>
   </section>
@@ -720,6 +727,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104c"></script>
+<script src="picks.js?v=20261104d"></script>
 </body>
 </html>
