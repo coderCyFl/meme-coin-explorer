@@ -241,3 +241,7 @@
 {"ts": "2026-11-03T13:12:57+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
 {"ts": "2026-11-03T14:18:35+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 136}
 {"ts": "2026-11-03T14:18:35+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-11-03T15:13:42+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 486}
+{"ts": "2026-11-03T15:13:42+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-03T15:13:42+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 131}
+{"ts": "2026-11-03T15:13:42+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 10}

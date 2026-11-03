@@ -393,44 +393,88 @@
    "base": "BMT",
    "flag": "pump",
    "trigger_at": "2026-11-03T12:15:00+08:00",
-   "checked_at": "2026-11-03T14:18:35+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 0.67,
-   "spike_ratio": 9.0,
+   "checked_at": "2026-11-03T15:13:42+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 1.8,
    "verdict": "冷",
    "one_line": "掃盤bot為主冇真人傾",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117488309937053717",
-     "url": "https://x.com/cexscan/status/2117488309937053717",
-     "text": "Last 15m - #Bybit Spot (USDT Trades) Top 3 Losers: $BMT (Bubblemaps) : ↓-4.89%",
+     "id": "2117506113759514641",
+     "url": "https://x.com/Allice_Crypto/status/2117506113759514641",
+     "text": "$BMT UPDATE #BMT is getting a good support here. In this move we can see 80%+ gain here",
+     "likes": 0,
+     "author_username": "Allice_Crypto",
+     "author_followers": 11499,
+     "created_at": "2026-11-03T14:36:13+08:00"
+    },
+    {
+     "id": "2117514003211538664",
+     "url": "https://x.com/cexscan/status/2117514003211538664",
+     "text": "Last 12 hours on Binance Spot: $GPROB +11.7% BMT +10.6% mitosis:native −13.6% 1000CAT −10.4%",
      "likes": 0,
      "author_username": "cexscan",
      "author_followers": 10595,
-     "created_at": "2026-11-03T13:25:28+08:00"
+     "created_at": "2026-11-03T15:07:34+08:00"
     },
     {
-     "id": "2117483216441336152",
-     "url": "https://x.com/cexscan/status/2117483216441336152",
-     "text": "Last 15m - #Binance Spot (USDT Trades) Top 3 Gainers: $BMT (Bubblemaps) : ↑4.36%",
+     "id": "2117474267810181481",
+     "url": "https://x.com/RyanAtOpen/status/2117474267810181481",
+     "text": "Bubblemaps $16M MARKET CAP. $21M FDV. AND A REAL ONCHAIN INVESTIGATION PLATFORM.",
      "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10595,
-     "created_at": "2026-11-03T13:05:14+08:00"
+     "author_username": "RyanAtOpen",
+     "author_followers": 425,
+     "created_at": "2026-11-03T12:29:40+08:00"
+    }
+   ],
+   "checks_this_trigger": 3
+  },
+  "RUNEUSDT": {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T14:30:00+08:00",
+   "checked_at": "2026-11-03T15:13:42+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 4.0,
+   "verdict": "升溫",
+   "one_line": "訊號bot多間中有新聞",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117497759888543861",
+     "url": "https://x.com/CryptoAmb/status/2117497759888543861",
+     "text": "#RUNE sees major sell-offs after FBI's demand to block #Binance hacker transactions sparks debate",
+     "likes": 0,
+     "author_username": "CryptoAmb",
+     "author_followers": 45855,
+     "created_at": "2026-11-03T14:03:01+08:00"
     },
     {
-     "id": "2117481959899246956",
-     "url": "https://x.com/cryptolevier/status/2117481959899246956",
-     "text": "30-min #Altcoins Pulse $BMT (@bubblemaps) — Bullish Crypto Trending 🔥 INSANE FOMO — NO SELLERS!",
+     "id": "2117509269390295289",
+     "url": "https://x.com/MasteringCrypt/status/2117509269390295289",
+     "text": "$RUNE is taking back control of its higher levels Long $RUNE (DCA Entries)",
+     "likes": 0,
+     "author_username": "MasteringCrypt",
+     "author_followers": 2224,
+     "created_at": "2026-11-03T14:48:45+08:00"
+    },
+    {
+     "id": "2117504607987392848",
+     "url": "https://x.com/cryptolevier/status/2117504607987392848",
+     "text": "30-min #Crypto rocket launched Strongest up 1. $RUNE [HL] (@THORChain) — Crypto Breakout",
      "likes": 0,
      "author_username": "cryptolevier",
      "author_followers": 8200,
-     "created_at": "2026-11-03T13:00:14+08:00"
+     "created_at": "2026-11-03T14:30:14+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   }
  },
  "history": [
@@ -1026,15 +1070,101 @@
      "created_at": "2026-11-03T13:00:14+08:00"
     }
    ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T14:30:00+08:00",
+   "checked_at": "2026-11-03T15:13:42+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 4.0,
+   "verdict": "升溫",
+   "one_line": "訊號bot多間中有新聞",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117497759888543861",
+     "url": "https://x.com/CryptoAmb/status/2117497759888543861",
+     "text": "#RUNE sees major sell-offs after FBI's demand to block #Binance hacker transactions sparks debate",
+     "likes": 0,
+     "author_username": "CryptoAmb",
+     "author_followers": 45855,
+     "created_at": "2026-11-03T14:03:01+08:00"
+    },
+    {
+     "id": "2117509269390295289",
+     "url": "https://x.com/MasteringCrypt/status/2117509269390295289",
+     "text": "$RUNE is taking back control of its higher levels Long $RUNE (DCA Entries)",
+     "likes": 0,
+     "author_username": "MasteringCrypt",
+     "author_followers": 2224,
+     "created_at": "2026-11-03T14:48:45+08:00"
+    },
+    {
+     "id": "2117504607987392848",
+     "url": "https://x.com/cryptolevier/status/2117504607987392848",
+     "text": "30-min #Crypto rocket launched Strongest up 1. $RUNE [HL] (@THORChain) — Crypto Breakout",
+     "likes": 0,
+     "author_username": "cryptolevier",
+     "author_followers": 8200,
+     "created_at": "2026-11-03T14:30:14+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T12:15:00+08:00",
+   "checked_at": "2026-11-03T15:13:42+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 1.8,
+   "verdict": "冷",
+   "one_line": "掃盤bot為主冇真人傾",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117506113759514641",
+     "url": "https://x.com/Allice_Crypto/status/2117506113759514641",
+     "text": "$BMT UPDATE #BMT is getting a good support here. In this move we can see 80%+ gain here",
+     "likes": 0,
+     "author_username": "Allice_Crypto",
+     "author_followers": 11499,
+     "created_at": "2026-11-03T14:36:13+08:00"
+    },
+    {
+     "id": "2117514003211538664",
+     "url": "https://x.com/cexscan/status/2117514003211538664",
+     "text": "Last 12 hours on Binance Spot: $GPROB +11.7% BMT +10.6% mitosis:native −13.6% 1000CAT −10.4%",
+     "likes": 0,
+     "author_username": "cexscan",
+     "author_followers": 10595,
+     "created_at": "2026-11-03T15:07:34+08:00"
+    },
+    {
+     "id": "2117474267810181481",
+     "url": "https://x.com/RyanAtOpen/status/2117474267810181481",
+     "text": "Bubblemaps $16M MARKET CAP. $21M FDV. AND A REAL ONCHAIN INVESTIGATION PLATFORM.",
+     "likes": 0,
+     "author_username": "RyanAtOpen",
+     "author_followers": 425,
+     "created_at": "2026-11-03T12:29:40+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-03",
   "daily_total_cap": 120,
-  "calls_today": 28,
+  "calls_today": 32,
   "cap_reached": false,
-  "updated_at": "2026-11-03T14:18:35+08:00"
+  "updated_at": "2026-11-03T15:14:23+08:00"
  },
- "updated_at": "2026-11-03T14:18:35+08:00",
+ "updated_at": "2026-11-03T15:14:23+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
