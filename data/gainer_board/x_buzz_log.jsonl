@@ -336,3 +336,6 @@
 {"ts": "2026-11-04T06:20:31+08:00", "symbol": "AEROUSDT", "tool": "search", "query": "(AERO OR #AERO) (crypto OR binance) lang:en -is:retweet", "result_count": 6}
 {"ts": "2026-11-04T06:20:31+08:00", "symbol": "ENAUSDT", "tool": "search", "query": "(ENA OR #ENA) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-04T06:20:31+08:00", "symbol": "AVAXUSDT", "tool": "search", "query": "(AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-04T07:13:00+08:00", "symbol": "TRXUSDT", "tool": "counts", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-04T07:13:10+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-11-04T07:13:40+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "(TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
