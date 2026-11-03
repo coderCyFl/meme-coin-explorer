@@ -436,45 +436,45 @@
    "symbol": "RUNEUSDT",
    "base": "RUNE",
    "flag": "pump",
-   "trigger_at": "2026-11-03T23:45:00+08:00",
-   "checked_at": "2026-11-04T01:17:28+08:00",
-   "posts_last_1h": 22,
-   "posts_prev_6h_avg_per_h": 19.17,
-   "spike_ratio": 1.15,
+   "trigger_at": "2026-11-04T01:30:00+08:00",
+   "checked_at": "2026-11-04T04:19:30+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 25.17,
+   "spike_ratio": 0.2,
    "verdict": "冷",
-   "one_line": "刷卡文多冇真熱度",
+   "one_line": "量跌兼推廣卡多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117659457811599504",
-     "url": "https://x.com/0xShellyy/status/2117659457811599504",
-     "text": "🚨CRYPTO IS HEATING UP — NOVEMBER 3 UPDATE! Today's crypto headlines are bringing a mix of fear, opportunity and volatility. Here's what tra…",
-     "likes": 2,
-     "author_username": "0xShellyy",
-     "author_followers": 412,
-     "created_at": "2026-11-04T00:45:33+08:00"
+     "id": "2117708216142332089",
+     "url": "https://x.com/AlphaWireHQ/status/2117708216142332089",
+     "text": "Crypto movers today Winners $LIT +11% $ZRO +8% $RUNE +15% Losers $AKE -30% $BEAM -11%. BTC holding near $77.5k.",
+     "likes": 4,
+     "author_username": "AlphaWireHQ",
+     "author_followers": 23109,
+     "created_at": "2026-11-04T03:59:18+08:00"
     },
     {
-     "id": "2117652793431601246",
-     "url": "https://x.com/Areantarmrh/status/2117652793431601246",
-     "text": "My agent derenfk․ai pledged to the North 🐺 If it mints now: a Common Rune Priestess. Every Binance Agent ID agent gets a free hero card. Wh…",
-     "likes": 1,
-     "author_username": "Areantarmrh",
-     "author_followers": 0,
-     "created_at": "2026-11-04T00:19:04+08:00"
+     "id": "2117700659218972985",
+     "url": "https://x.com/NeuralFox17/status/2117700659218972985",
+     "text": "My agent don41.ai pledged to the North. If it mints now: a Rare Rune Priestess. Every Binance Agent ID agent gets a free hero card.",
+     "likes": 0,
+     "author_username": "NeuralFox17",
+     "author_followers": 1109,
+     "created_at": "2026-11-04T03:29:16+08:00"
     },
     {
-     "id": "2117648751099773431",
-     "url": "https://x.com/Little_Ma201/status/2117648751099773431",
-     "text": "My agent necroma․ai pledged to the North 🐺 If it mints now: a Rare Rune Priestess. Every Binance Agent ID agent gets a free hero card. Whic…",
-     "likes": 1,
-     "author_username": "Little_Ma201",
-     "author_followers": 41,
-     "created_at": "2026-11-04T00:03:00+08:00"
+     "id": "2117711517944590699",
+     "url": "https://x.com/Jared_Noble/status/2117711517944590699",
+     "text": "After a liquidation cascade, ask: Did my thesis change, or did my nerves? Fast crypto moves can make volatility feel permanent. $RUNE $CELO…",
+     "likes": 0,
+     "author_username": "Jared_Noble",
+     "author_followers": 268,
+     "created_at": "2026-11-04T04:12:25+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "STRKUSDT": {
    "symbol": "STRKUSDT",
@@ -3290,15 +3290,58 @@
      "created_at": "2026-11-04T02:46:12+08:00"
     }
    ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T01:30:00+08:00",
+   "checked_at": "2026-11-04T04:19:30+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 25.17,
+   "spike_ratio": 0.2,
+   "verdict": "冷",
+   "one_line": "量跌兼推廣卡多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117708216142332089",
+     "url": "https://x.com/AlphaWireHQ/status/2117708216142332089",
+     "text": "Crypto movers today Winners $LIT +11% $ZRO +8% $RUNE +15% Losers $AKE -30% $BEAM -11%. BTC holding near $77.5k.",
+     "likes": 4,
+     "author_username": "AlphaWireHQ",
+     "author_followers": 23109,
+     "created_at": "2026-11-04T03:59:18+08:00"
+    },
+    {
+     "id": "2117700659218972985",
+     "url": "https://x.com/NeuralFox17/status/2117700659218972985",
+     "text": "My agent don41.ai pledged to the North. If it mints now: a Rare Rune Priestess. Every Binance Agent ID agent gets a free hero card.",
+     "likes": 0,
+     "author_username": "NeuralFox17",
+     "author_followers": 1109,
+     "created_at": "2026-11-04T03:29:16+08:00"
+    },
+    {
+     "id": "2117711517944590699",
+     "url": "https://x.com/Jared_Noble/status/2117711517944590699",
+     "text": "After a liquidation cascade, ask: Did my thesis change, or did my nerves? Fast crypto moves can make volatility feel permanent. $RUNE $CELO…",
+     "likes": 0,
+     "author_username": "Jared_Noble",
+     "author_followers": 268,
+     "created_at": "2026-11-04T04:12:25+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 16,
+  "calls_today": 18,
   "cap_reached": false,
-  "updated_at": "2026-11-04T03:15:37+08:00"
+  "updated_at": "2026-11-04T04:19:50+08:00"
  },
- "updated_at": "2026-11-04T03:15:37+08:00",
+ "updated_at": "2026-11-04T04:19:50+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
