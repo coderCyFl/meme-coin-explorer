@@ -172,42 +172,42 @@
    "symbol": "TRXUSDT",
    "base": "TRX",
    "flag": "pump",
-   "trigger_at": "2026-11-03T00:15:00+08:00",
-   "checked_at": "2026-11-03T00:15:00+08:00",
-   "posts_last_1h": 24,
-   "posts_prev_6h_avg_per_h": 28.17,
-   "spike_ratio": 0.85,
+   "trigger_at": "2026-11-04T03:15:00+08:00",
+   "checked_at": "2026-11-04T03:15:37+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 14.39,
+   "spike_ratio": 0.76,
    "verdict": "冷",
-   "one_line": "黑客洗錢討論為主",
-   "shill_flag": false,
-   "big_accounts": 1,
+   "one_line": "量穩但推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117232785748636126",
-     "url": "https://x.com/ourcryptotalk/status/2117232785748636126",
-     "text": "Five tickers caught in the middle of a $500M+ crypto laundering story. $RUNE $NEAR $ETH $TRX $FLIP",
-     "likes": 38,
-     "author_username": "ourcryptotalk",
-     "author_followers": 82788,
-     "created_at": "2026-11-02T20:30:07+08:00"
+     "id": "2117686031856353761",
+     "url": "https://x.com/BitcoinStrat/status/2117686031856353761",
+     "text": "Tron Carries 6x More Dollars. The Tron chain carries about 3 dollars of stablecoins for every dollar of TRX. $TRX #tron #crypto",
+     "likes": 3,
+     "author_username": "BitcoinStrat",
+     "author_followers": 6947,
+     "created_at": "2026-11-04T02:31:09+08:00"
     },
     {
-     "id": "2117184867297284126",
-     "url": "https://x.com/0xTria/status/2117184867297284126",
-     "text": "october on perp dexs volume, vs september: hyperliquid $168b variational $78.1b",
-     "likes": 14,
-     "author_username": "0xTria",
-     "author_followers": 4952,
-     "created_at": "2026-11-02T17:19:42+08:00"
+     "id": "2117694573116035562",
+     "url": "https://x.com/MirelVegar/status/2117694573116035562",
+     "text": "Crypto jargon scares people off. Here's the USDD vocabulary in plain English. Vault: where you lock assets like TRX, ETH or WBTC to mint US…",
+     "likes": 1,
+     "author_username": "MirelVegar",
+     "author_followers": 17293,
+     "created_at": "2026-11-04T03:05:05+08:00"
     },
     {
-     "id": "2117238586646876324",
-     "url": "https://x.com/hackenclub/status/2117238586646876324",
-     "text": "86% of UK financial firms surveyed by the Bank of England and FCA use AI, and only about half report ongoing monitoring.",
-     "likes": 5,
-     "author_username": "hackenclub",
-     "author_followers": 130614,
-     "created_at": "2026-11-02T20:53:10+08:00"
+     "id": "2117689818427580843",
+     "url": "https://x.com/Adarmoriondor2/status/2117689818427580843",
+     "text": "hackers behind the Binance exchange breach are moving part of the stolen funds through the TRON network — around $242 million moved through…",
+     "likes": 0,
+     "author_username": "Adarmoriondor2",
+     "author_followers": 5386,
+     "created_at": "2026-11-04T02:46:12+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -3247,15 +3247,58 @@
      "created_at": "2026-11-04T00:52:03+08:00"
     }
    ]
+  },
+  {
+   "symbol": "TRXUSDT",
+   "base": "TRX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T03:15:00+08:00",
+   "checked_at": "2026-11-04T03:15:37+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 14.39,
+   "spike_ratio": 0.76,
+   "verdict": "冷",
+   "one_line": "量穩但推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117686031856353761",
+     "url": "https://x.com/BitcoinStrat/status/2117686031856353761",
+     "text": "Tron Carries 6x More Dollars. The Tron chain carries about 3 dollars of stablecoins for every dollar of TRX. $TRX #tron #crypto",
+     "likes": 3,
+     "author_username": "BitcoinStrat",
+     "author_followers": 6947,
+     "created_at": "2026-11-04T02:31:09+08:00"
+    },
+    {
+     "id": "2117694573116035562",
+     "url": "https://x.com/MirelVegar/status/2117694573116035562",
+     "text": "Crypto jargon scares people off. Here's the USDD vocabulary in plain English. Vault: where you lock assets like TRX, ETH or WBTC to mint US…",
+     "likes": 1,
+     "author_username": "MirelVegar",
+     "author_followers": 17293,
+     "created_at": "2026-11-04T03:05:05+08:00"
+    },
+    {
+     "id": "2117689818427580843",
+     "url": "https://x.com/Adarmoriondor2/status/2117689818427580843",
+     "text": "hackers behind the Binance exchange breach are moving part of the stolen funds through the TRON network — around $242 million moved through…",
+     "likes": 0,
+     "author_username": "Adarmoriondor2",
+     "author_followers": 5386,
+     "created_at": "2026-11-04T02:46:12+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 14,
+  "calls_today": 16,
   "cap_reached": false,
-  "updated_at": "2026-11-04T02:15:13+08:00"
+  "updated_at": "2026-11-04T03:15:37+08:00"
  },
- "updated_at": "2026-11-04T02:15:13+08:00",
+ "updated_at": "2026-11-04T03:15:37+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
