@@ -307,3 +307,11 @@
 {"ts": "2026-11-03T23:16:13+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-03T23:16:13+08:00", "symbol": "PUMPUSDT", "tool": "counts", "query": "(\"PUMP coin\" OR \"PUMP token\" OR PUMPUSDT OR \"$PUMP\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 1169}
 {"ts": "2026-11-03T23:16:13+08:00", "symbol": "PUMPUSDT", "tool": "search", "query": "(\"PUMP coin\" OR \"PUMP token\" OR PUMPUSDT OR \"$PUMP\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 35}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "HOTUSDT", "tool": "counts", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 127}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "HOTUSDT", "tool": "search", "query": "(\"HOT coin\" OR \"HOT token\" OR HOTUSDT OR \"$HOT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "PUMPUSDT", "tool": "counts", "query": "(\"PUMP coin\" OR \"PUMP token\" OR PUMPUSDT OR \"$PUMP\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 1250}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "PUMPUSDT", "tool": "search", "query": "(\"PUMP coin\" OR \"PUMP token\" OR PUMPUSDT OR \"$PUMP\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 8}
+{"ts": "2026-11-04T00:16:04+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 14}
