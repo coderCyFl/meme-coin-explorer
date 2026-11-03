@@ -1,16 +1,16 @@
-# 急升榜: 15-min snapshot (🔥 pump / ⚡ early) + 4h/24h outcome seal, daily 23:55 HKT scorecard vs
+# 急升榜: 5-min snapshot (🔥 pump / ⚡ early) + 4h/24h outcome seal, daily 23:55 HKT scorecard vs
 # Binance top-20 gainers. Binance public REST only (data-api.binance.vision first). No X / no secrets / no AI.
 name: Gainer board snapshot + seal
 on:
   schedule:
-    # Snapshot: primary 15-min + offset backup 15-min (2026-10-30 primary stalled ~09:22–13:06 HKT).
+    # Snapshot: P2 denser 5-min primary + offset backup (was 15-min primary + 15-min offset with 10m gaps).
     # Seal: primary 23:55 + near backup 23:58 + late catch-up 00:40; every snapshot also seal_due().
     # External 2nd-line backup (not GH schedule): see docs/seal-external-backup.md
-    - cron: "5,20,35,50 * * * *"   # primary 15-min snapshot (denser early flags)
-    - cron: "10,25,40,55 * * * *"  # offset backup 15-min (when primary slots drop for hours)
+    - cron: "*/5 * * * *"          # primary 5-min snapshot (P2 denser e2 / early flags)
+    - cron: "2,17,32,47 * * * *"   # offset backup ~15-min (when primary slots drop for hours)
     - cron: "55 15 * * *"   # 23:55 Asia/Shanghai daily seal (GH cron is UTC: 15:55Z = 23:55 UTC+8)
     - cron: "58 15 * * *"   # 23:58 backup seal (no-op if already sealed)
-    - cron: "40 16 * * *"   # 00:40 catch-up seal (GH often delays crons by hours; every 15-min run also catches up)
+    - cron: "40 16 * * *"   # 00:40 catch-up seal (GH often delays crons by hours; every 5-min run also catches up)
   workflow_dispatch:
     inputs:
       cmd:

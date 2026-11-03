@@ -10,7 +10,7 @@ only landed after a manual `gh workflow run gainer-board.yml -f cmd=scorecard`.
    - `55 15 * * *` → 23:55 Asia/Shanghai primary seal
    - `58 15 * * *` → 23:58 near backup
    - `40 16 * * *` → 00:40 catch-up
-   - plus the 15-min snapshot slots (each also runs `seal_due()`)
+   - plus the 5-min snapshot slots (each also runs `seal_due()`)
 2. **Second line (this doc)** — do **not** rely on GH schedule:
    - Script: `scripts/dispatch_seal_if_missing.sh`
    - Callable from any external cron / host that has `gh` + git access to this repo
