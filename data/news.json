@@ -1,14 +1,29 @@
 {
-  "fetched_at": "2026-11-03T17:09:36+08:00",
+  "fetched_at": "2026-11-03T18:04:24+08:00",
   "source": "X News",
   "stories": [
     {
+      "id": "2117555839229956607",
+      "title": "Solana Hosts SK Hynix Tokenized Shares with $500M Trading Volume",
+      "title_en": "Solana Hosts SK Hynix Tokenized Shares with $500M Trading Volume",
+      "summary": "South Korea's top memory-chip maker, SK Hynix, listed on Nasdaq on November 3, with tokenized versions instantly distributed across the Solana network, racking up $500 million in trading volume. Platforms like Backpack Securities and Ondo now offer 24/7 trading and DeFi collateral use, signaling Asia's pivot from goods exports—up from $0.8 trillion in 1990 to $9.2 trillion in 2025—to borderless capital markets. Supporters highlight same-day global access as a game-changer, though early volume partly reflects trading turnover amid growing real-world asset interest.",
+      "summary_en": "South Korea's top memory-chip maker, SK Hynix, listed on Nasdaq on November 3, with tokenized versions instantly distributed across the Solana network, racking up $500 million in trading volume. Platforms like Backpack Securities and Ondo now offer 24/7 trading and DeFi collateral use, signaling Asia's pivot from goods exports—up from $0.8 trillion in 1990 to $9.2 trillion in 2025—to borderless capital markets. Supporters highlight same-day global access as a game-changer, though early volume partly reflects trading turnover amid growing real-world asset interest.",
+      "published_at": "2026-11-03T09:58:33.000Z",
+      "url": "https://x.com/i/trending/2117555839229956607",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "SOL 生態動態；山寨／meme 風險偏好參考。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
       "id": "2117260404883939594",
-      "title": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
-      "title_en": "Mercado Bitcoin Halts Services After $40 Million Security Breach",
-      "summary": "Brazil's largest crypto exchange suspended deposits and withdrawals on November 2 after detecting the incident in one of its systems. They assured millions of customers that no funds were lost, no data leaked, and cold storage stayed secure, while sharing wallet addresses for tracking. Tether and others froze about $11 million in stolen assets, as on-chain analysts pegged outflows up to $46 million; the exchange is coordinating with authorities for updates.",
-      "summary_en": "Brazil's largest crypto exchange suspended deposits and withdrawals on November 2 after detecting the incident in one of its systems. They assured millions of customers that no funds were lost, no data leaked, and cold storage stayed secure, while sharing wallet addresses for tracking. Tether and others froze about $11 million in stolen assets, as on-chain analysts pegged outflows up to $46 million; the exchange is coordinating with authorities for updates.",
-      "published_at": "2026-11-03T08:59:17.000Z",
+      "title": "Mercado Bitcoin Halts Services After $38 Million Security Breach",
+      "title_en": "Mercado Bitcoin Halts Services After $38 Million Security Breach",
+      "summary": "The exchange confirmed a breach in one of its systems but quickly contained it, with no customer funds lost or data leaked. On-chain trackers spotted outflows across Bitcoin, Ethereum, Solana, and Tron totaling $38 million, of which partners like Tether and Circle froze about $11 million. Mercado Bitcoin pledged to cover all losses itself and shared transaction addresses for tracking, while its cold wallets remained secure. The incident follows massive hacks at Binance and elsewhere, heightening worries about hot-wallet vulnerabilities in crypto.",
+      "summary_en": "The exchange confirmed a breach in one of its systems but quickly contained it, with no customer funds lost or data leaked. On-chain trackers spotted outflows across Bitcoin, Ethereum, Solana, and Tron totaling $38 million, of which partners like Tether and Circle froze about $11 million. Mercado Bitcoin pledged to cover all losses itself and shared transaction addresses for tracking, while its cold wallets remained secure. The incident follows massive hacks at Binance and elsewhere, heightening worries about hot-wallet vulnerabilities in crypto.",
+      "published_at": "2026-11-03T09:31:16.000Z",
       "url": "https://x.com/i/trending/2117260404883939594",
       "tags": [
         "Cryptocurrency"
@@ -1853,6 +1868,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-03T17:09:36+08:00",
-  "x_job": "unknown"
+  "x_fetched_at": "2026-11-03T18:04:24+08:00",
+  "x_job": "hourly-update"
 }
