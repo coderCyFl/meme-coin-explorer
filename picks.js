@@ -2185,11 +2185,41 @@
   // ---------- Crypto.M 紙上倉（現貨 + 槓桿逐倉） ----------
   const PF_KEY = "mce:paper:v2";
   const PF_KEY_OLD = "mce:paper:v1";
-  /** Quiet Mock · paper “saved” status (localStorage first). */
+  const AUTH_KEY = "mce:auth:v1";
+  /** Mock-only password fingerprint (not real auth security). */
+  function mockHash(user, pass) {
+    let h = 2166136261;
+    const s = String(user) + "\0" + String(pass) + "\0mce-paper";
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0).toString(16);
+  }
+  function authLoad() {
+    try {
+      const o = JSON.parse(localStorage.getItem(AUTH_KEY) || "null");
+      if (o && o.v === 1 && o.users && typeof o.users === "object") return o;
+    } catch (_) {}
+    return { v: 1, users: {}, session: null };
+  }
+  function authSave(a) {
+    try { localStorage.setItem(AUTH_KEY, JSON.stringify(a)); } catch (_) {}
+  }
+  let _auth = authLoad();
+  function authUser() {
+    const u = _auth && _auth.session;
+    return (u && _auth.users && _auth.users[u]) ? u : null;
+  }
+  function pfKeyFor(user) {
+    return user ? (PF_KEY + ":u:" + user) : PF_KEY;
+  }
+  function pfActiveKey() { return pfKeyFor(authUser()); }
+  /** Quiet Mock · paper “saved” status (localStorage first; account-scoped when logged in). */
   function paintPfSaved(flash) {
     const n = $("pfSavedHint"); if (!n) return;
     let has = false;
-    try { has = !!(localStorage.getItem(PF_KEY) || localStorage.getItem(PF_KEY_OLD)); } catch (_) {}
+    try {
+      const k = pfActiveKey();
+      has = !!(localStorage.getItem(k) || (!authUser() && localStorage.getItem(PF_KEY_OLD)));
+    } catch (_) {}
     if (!has) { n.hidden = true; return; }
     n.hidden = false;
     n.textContent = flash || "saved";
@@ -2198,6 +2228,19 @@
       clearTimeout(n._t);
       n._t = setTimeout(() => { n.textContent = "saved"; n.classList.remove("flash"); }, 900);
     }
+  }
+  function paintAuthBar() {
+    const u = authUser();
+    const login = $("authLoginBtn"), reg = $("authRegisterBtn"), out = $("authLogoutBtn"), lab = $("authUserLabel");
+    const moreIn = $("moreAuthLogin"), moreReg = $("moreAuthRegister"), moreOut = $("moreAuthLogout"), moreLab = $("moreAuthUser");
+    if (login) login.hidden = !!u;
+    if (reg) reg.hidden = !!u;
+    if (out) out.hidden = !u;
+    if (lab) { lab.hidden = !u; lab.textContent = u ? ("@" + u) : ""; }
+    if (moreIn) moreIn.hidden = !!u;
+    if (moreReg) moreReg.hidden = !!u;
+    if (moreOut) moreOut.hidden = !u;
+    if (moreLab) { moreLab.hidden = !u; moreLab.textContent = u ? ("Signed in · @" + u) : ""; }
   }
 
   const START_CASH = 5000;
@@ -2271,7 +2314,10 @@
     },
     load() {
       try {
-        const raw = localStorage.getItem(PF_KEY) || localStorage.getItem(PF_KEY_OLD);
+        const key = pfActiveKey();
+        let raw = localStorage.getItem(key);
+        // Guest only: migrate legacy v1 key once.
+        if (!raw && !authUser()) raw = localStorage.getItem(PF_KEY_OLD);
         if (!raw) return this.fresh(START_CASH);
         const s = JSON.parse(raw);
         if (s.v === 2) { if (feeMigrate(s)) this.save(s); return s; }
@@ -2283,7 +2329,7 @@
       // BUG FIX (ux-fix): unbounded history could hit the localStorage quota → save threw → trades lost on reload.
       if (Array.isArray(s.trades) && s.trades.length > TRADES_MAX) s.trades = s.trades.slice(0, TRADES_MAX);
       s.rev = (s.rev || 0) + 1;
-      try { localStorage.setItem(PF_KEY, JSON.stringify(s)); _pfRev = s.rev; try { paintPfSaved("saved"); } catch (_) {} }
+      try { localStorage.setItem(pfActiveKey(), JSON.stringify(s)); _pfRev = s.rev; try { paintPfSaved("saved"); } catch (_) {} }
       catch (e) { try { toast("模擬倉儲存失敗：" + e.message, "err"); } catch (_) {} }
     },
   };
@@ -2300,17 +2346,32 @@
   /** BUG FIX (ux-fix): another tab saved newer state → reload before any mutation so a stale tab never overwrites it. */
   function pfSyncFromStorage() {
     try {
-      const raw = localStorage.getItem(PF_KEY); if (!raw) return false;
+      const raw = localStorage.getItem(pfActiveKey()); if (!raw) return false;
       const s = JSON.parse(raw);
       if (s && s.v === 2 && (feeMigrate(s), true) && (s.rev || 0) !== (P.rev || 0)) { P = s; _pfRev = s.rev || 0; return true; }
     } catch (_) {}
     return false;
   }
+  function pfReloadForSession() {
+    P = pf.load();
+    _pfRev = P.rev || 0;
+    try { pfListKey = ""; } catch (_) {}
+    try { paintPfSaved(); } catch (_) {}
+    try { paintAuthBar(); } catch (_) {}
+    try { renderPortfolio(false); } catch (_) {}
+  }
   let P = pf.load();
   _pfRev = P.rev || 0;
   try { paintPfSaved(); } catch (_) {}
+  try { paintAuthBar(); } catch (_) {}
   window.addEventListener("storage", (ev) => {
-    if (ev.key !== PF_KEY) return;
+    if (!ev.key) return;
+    if (ev.key === AUTH_KEY) {
+      _auth = authLoad();
+      pfReloadForSession();
+      return;
+    }
+    if (ev.key !== pfActiveKey()) return;
     if (pfSyncFromStorage()) { try { pfListKey = ""; renderPortfolio(false); } catch (_) {} }
   });
   let pfMode = "all"; // spot | lev | all — portfolio section filter
@@ -3892,6 +3953,95 @@
     const f = $("discFull"); f.hidden = !f.hidden;
     $("discToggle").textContent = f.hidden ? "Details" : "Hide";
   });
+
+  // ---------- Account (mock Register / Login / Logout; portfolio scoped per user) ----------
+  function openAuthDlg(mode) {
+    const dlg = $("authDlg"); if (!dlg) return;
+    const m = mode === "register" ? "register" : "login";
+    document.querySelectorAll("#authModeSeg [data-authmode]").forEach((b) => b.classList.toggle("active", b.dataset.authmode === m));
+    $("authTitle").textContent = m === "register" ? "Register" : "Login";
+    $("authSubmit").textContent = m === "register" ? "Create" : "Sign in";
+    const hint = $("authHint");
+    if (hint) hint.textContent = m === "register"
+      ? "Mock paper · username + password on this device"
+      : "Mock paper · unlock your saved portfolio";
+    const err = $("authErr"); if (err) { err.hidden = true; err.textContent = ""; }
+    if ($("authUser")) $("authUser").value = "";
+    if ($("authPass")) {
+      $("authPass").value = "";
+      $("authPass").autocomplete = m === "register" ? "new-password" : "current-password";
+    }
+    dlg.dataset.mode = m;
+    if (!dlg.open) dlg.showModal();
+    try { $("authUser").focus(); } catch (_) {}
+  }
+  function closeAuthDlg() {
+    const dlg = $("authDlg");
+    if (dlg && dlg.open) dlg.close();
+  }
+  function authValidateUser(u) {
+    return /^[A-Za-z0-9_]{3,24}$/.test(u || "");
+  }
+  function doRegister(user, pass) {
+    const u = String(user || "").trim();
+    const p = String(pass || "");
+    if (!authValidateUser(u)) return { ok: false, err: "Username: 3–24 letters, numbers, _" };
+    if (p.length < 4 || p.length > 64) return { ok: false, err: "Password: 4–64 characters" };
+    _auth = authLoad();
+    if (_auth.users[u]) return { ok: false, err: "Username taken" };
+    // Seed account portfolio from current guest if account key empty.
+    const dest = pfKeyFor(u);
+    try {
+      if (!localStorage.getItem(dest)) {
+        const guest = localStorage.getItem(PF_KEY);
+        if (guest) localStorage.setItem(dest, guest);
+      }
+    } catch (_) {}
+    _auth.users[u] = { hash: mockHash(u, p), created: new Date().toISOString() };
+    _auth.session = u;
+    authSave(_auth);
+    pfReloadForSession();
+    return { ok: true };
+  }
+  function doLogin(user, pass) {
+    const u = String(user || "").trim();
+    const p = String(pass || "");
+    if (!authValidateUser(u)) return { ok: false, err: "Username: 3–24 letters, numbers, _" };
+    _auth = authLoad();
+    const rec = _auth.users[u];
+    if (!rec || rec.hash !== mockHash(u, p)) return { ok: false, err: "Wrong username or password" };
+    // Persist guest portfolio before switching away.
+    try { pf.save(P); } catch (_) {}
+    _auth.session = u;
+    authSave(_auth);
+    pfReloadForSession();
+    return { ok: true };
+  }
+  function doLogout() {
+    try { pf.save(P); } catch (_) {}
+    _auth = authLoad();
+    _auth.session = null;
+    authSave(_auth);
+    pfReloadForSession();
+    toast("Signed out · local paper");
+  }
+  function submitAuthForm(ev) {
+    if (ev) ev.preventDefault();
+    const dlg = $("authDlg");
+    const mode = (dlg && dlg.dataset.mode) || "login";
+    const user = $("authUser") && $("authUser").value;
+    const pass = $("authPass") && $("authPass").value;
+    const res = mode === "register" ? doRegister(user, pass) : doLogin(user, pass);
+    const err = $("authErr");
+    if (!res.ok) {
+      if (err) { err.hidden = false; err.textContent = res.err || "Failed"; }
+      return false;
+    }
+    closeAuthDlg();
+    toast(mode === "register" ? "Account created" : "Signed in");
+    return true;
+  }
+
   if ($("moreToFull")) $("moreToFull").addEventListener("click", () => { applyUiMode("full"); location.hash = "picks"; });
   if ($("moreHowto")) $("moreHowto").addEventListener("click", () => {
     applyUiMode("full");
@@ -3927,6 +4077,19 @@
     return { pump, held, picks };
   };
   if ($("allinFromPicks")) $("allinFromPicks").addEventListener("click", () => openAllinFlow());
+  // Auth chrome
+  try { paintAuthBar(); } catch (_) {}
+  if ($("authLoginBtn")) $("authLoginBtn").addEventListener("click", () => openAuthDlg("login"));
+  if ($("authRegisterBtn")) $("authRegisterBtn").addEventListener("click", () => openAuthDlg("register"));
+  if ($("authLogoutBtn")) $("authLogoutBtn").addEventListener("click", () => doLogout());
+  if ($("moreAuthLogin")) $("moreAuthLogin").addEventListener("click", () => openAuthDlg("login"));
+  if ($("moreAuthRegister")) $("moreAuthRegister").addEventListener("click", () => openAuthDlg("register"));
+  if ($("moreAuthLogout")) $("moreAuthLogout").addEventListener("click", () => doLogout());
+  if ($("authClose")) $("authClose").addEventListener("click", () => closeAuthDlg());
+  if ($("authCancel")) $("authCancel").addEventListener("click", () => closeAuthDlg());
+  document.querySelectorAll("#authModeSeg [data-authmode]").forEach((b) => b.addEventListener("click", () => openAuthDlg(b.dataset.authmode)));
+  if ($("authForm")) $("authForm").addEventListener("submit", submitAuthForm);
+
   if ($("allinCloseBtn")) $("allinCloseBtn").addEventListener("click", () => closeAllinFromBanner());
   if ($("allinAgain")) $("allinAgain").addEventListener("click", () => againAllin());
   $("pfRefresh").addEventListener("click", async () => {
@@ -3959,6 +4122,7 @@
     LIQ_MARGIN_FRAC, setState(s) { P = s; pf.save(P); },
     openAllinFlow, executeAllin, allinActive, loadAllinRounds, endAllinRound, playOverlay, reduceMotion, closeAllinFromBanner, buyAnyCoin, openPosDetail,
     ingestPair, ensureLiveLoop, renderPortfolio,
+    authUser, doRegister, doLogin, doLogout, pfActiveKey, openAuthDlg,
   };
   window.MCE.onBrowseLoaded = () => {};
   window.MCE.onBnBoardLoaded = (rows) => {

@@ -1952,3 +1952,42 @@ footer:empty{display:none}
 .gb-face-tags .gb-watch{margin-left:0}
 .gb-face-tags .gb-cand-tag{margin-left:0}
 .daily-batch-panel .home-title{letter-spacing:0}
+
+
+/* ===== Account auth (Register / Login) — quiet Mock · paper companion ===== */
+.auth-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:100%}
+.auth-bar .auth-btn{min-height:36px;padding:6px 12px;border-radius:999px;font-weight:700;font-size:12px;white-space:nowrap}
+.auth-bar .auth-cta{background:var(--accent,#F0B90B);color:#0b0e11;border-color:transparent}
+.auth-bar .auth-cta:hover{filter:brightness(1.05)}
+.auth-user{font-size:12px;font-weight:700;color:var(--muted);max-width:9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.more-auth-lab{opacity:.85;pointer-events:none;font-size:13px;color:var(--muted)}
+dialog#authDlg{width:min(400px,96vw)}
+dialog#authDlg input[type=text],dialog#authDlg input[type=password]{
+  width:100%;box-sizing:border-box;min-height:48px;font-size:16px;padding:10px 12px;border-radius:10px;
+  border:1px solid var(--line);background:var(--panel2);color:var(--text);margin:4px 0 10px
+}
+dialog#authDlg .auth-mode{margin:0 0 10px}
+dialog#authDlg .auth-err{color:var(--red,#f6465d);font-size:13px;font-weight:600;margin:0 0 8px}
+dialog#authDlg .auth-actions{margin-top:4px}
+dialog#authDlg .auth-actions .primary{background:var(--accent,#F0B90B);color:#0b0e11;border-color:transparent;font-weight:800}
+@media (max-width:700px){
+  .auth-bar{width:100%;justify-content:flex-start;gap:8px}
+  .auth-bar .auth-btn{min-height:44px;padding:10px 14px;font-size:13px}
+  .auth-user{max-width:42vw;font-size:13px}
+  .header-right{flex-wrap:wrap;gap:8px}
+  .header-right .status{max-width:100%;flex:1 1 auto}
+  dialog#authDlg{width:100%;max-width:100%;margin:0;border-radius:16px 16px 0 0;position:fixed;bottom:0;top:auto;left:0;right:0}
+  dialog#authDlg .primary{width:100%;min-height:52px;font-size:17px}
+  dialog#authDlg .auth-actions{flex-wrap:wrap}
+  dialog#authDlg .auth-actions .ghost{flex:1;min-height:48px}
+  dialog#authDlg .auth-actions .primary{flex:2}
+  /* Early / Today / portfolio / auth readable at ~375px — no horizontal crush */
+  .disclaimer.disc-chip{margin-left:12px!important;margin-right:12px!important;max-width:calc(100vw - 24px);box-sizing:border-box}
+  #view-portfolio .panel,#view-picks .panel,#view-more .panel{max-width:calc(100vw - 24px);overflow-x:hidden}
+  .simple-tabs .tab,.top-tabs .tab{max-width:100%}
+}
+@media (max-width:380px){
+  .auth-bar .auth-btn{padding:10px 12px;font-size:12px}
+  .brand .sub{display:none}
+  h1{font-size:17px}
+}

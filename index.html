@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
-<link rel="stylesheet" href="styles.css?v=20261030g">
+<link rel="stylesheet" href="styles.css?v=20261104a">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
 <link rel="icon" href="icons/icon-32.png?v=20261030g" type="image/png" sizes="32x32">
@@ -31,6 +31,12 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
     </div>
   </div>
   <div class="header-right">
+    <div class="auth-bar" id="authBar" aria-label="Account">
+      <button type="button" class="sm auth-btn" id="authLoginBtn">Login</button>
+      <button type="button" class="sm auth-btn auth-cta" id="authRegisterBtn">Register</button>
+      <span class="auth-user" id="authUserLabel" hidden></span>
+      <button type="button" class="sm auth-btn" id="authLogoutBtn" hidden>Logout</button>
+    </div>
     <div class="seg mini ui-toggle" id="uiModeToggle" title="UI mode">
       <button type="button" class="segbtn active" data-ui="simple">Simple</button>
       <button type="button" class="segbtn" data-ui="full">Full</button>
@@ -374,6 +380,10 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <section class="panel">
     <h2>More</h2>
     <div class="more-list">
+      <div class="more-item more-auth-lab" id="moreAuthUser" hidden></div>
+      <button type="button" class="more-item" id="moreAuthLogin">Login</button>
+      <button type="button" class="more-item" id="moreAuthRegister">Register</button>
+      <button type="button" class="more-item" id="moreAuthLogout" hidden>Logout</button>
       <a class="more-item" href="#browse">Markets</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
@@ -595,6 +605,30 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
   <form method="dialog" id="allinPickForm"><div id="allinPickList"></div><button type="button" id="allinPickCancel">Cancel</button></form>
 </dialog>
 
+
+<dialog id="authDlg" class="sheet auth-sheet">
+  <form method="dialog" id="authForm">
+    <div class="sheet-head">
+      <b id="authTitle">Login</b>
+      <button type="button" class="iconbtn" id="authClose" aria-label="Close">✕</button>
+    </div>
+    <div class="seg mini auth-mode" id="authModeSeg" role="tablist" aria-label="Auth mode">
+      <button type="button" class="segbtn active" data-authmode="login">Login</button>
+      <button type="button" class="segbtn" data-authmode="register">Register</button>
+    </div>
+    <label for="authUser" class="tiny muted">Username</label>
+    <input id="authUser" name="username" type="text" autocomplete="username" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" inputmode="text" placeholder="e.g. papertrader">
+    <label for="authPass" class="tiny muted">Password</label>
+    <input id="authPass" name="password" type="password" autocomplete="current-password" required minlength="4" maxlength="64" placeholder="••••">
+    <p class="muted tiny" id="authHint">Mock paper · unlock your saved portfolio</p>
+    <p class="auth-err" id="authErr" hidden></p>
+    <div class="row trade-actions auth-actions">
+      <button type="button" class="ghost" id="authCancel">Cancel</button>
+      <button type="submit" class="primary" id="authSubmit">Sign in</button>
+    </div>
+  </form>
+</dialog>
+
 <dialog id="tradeDlg" class="sheet">
   <form method="dialog" id="tradeForm">
     <div class="trade-head">
@@ -680,6 +714,6 @@ document.body.classList.add(m==='full'?'ui-full':'ui-simple');
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261103b"></script>
+<script src="picks.js?v=20261104a"></script>
 </body>
 </html>
