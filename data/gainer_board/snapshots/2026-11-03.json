@@ -486,6 +486,70 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261103-1026",
+   "picked_at": "2026-11-03T10:26:25+08:00",
+   "universe": 57,
+   "btc_24h_pct": -1.87,
+   "universe_all": 395,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "HAEDALUSDT",
+    "HOTUSDT",
+    "RUNEUSDT",
+    "NOMUSDT",
+    "AWEUSDT",
+    "1000CATUSDT",
+    "COWUSDT",
+    "GMXUSDT",
+    "GLMRUSDT",
+    "SXTUSDT",
+    "ERAUSDT",
+    "LUMIAUSDT",
+    "TRXUSDT",
+    "币安人生USDT",
+    "MEGAUSDT",
+    "TURTLEUSDT",
+    "JSTUSDT",
+    "SUNUSDT",
+    "WINUSDT",
+    "DOLOUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "ERA",
+     "pair": "ERAUSDT",
+     "tier": "early2",
+     "picked_at": "2026-11-03T09:45:00+08:00",
+     "entry_price_usd": 0.0638,
+     "price_at_snapshot": 0.066,
+     "trigger_via": "prec",
+     "change_15m_at_pick": 0.79,
+     "change_24h_at_pick": -2.0,
+     "rank_24h_at_pick": null,
+     "batch": "gb-20261103-1026",
+     "score": 31.2,
+     "change_1h_at_pick": 2.74,
+     "change_4h_at_pick": 3.91,
+     "vol_x_avg": 2.05,
+     "vol_x_prev_hour": 1.49,
+     "range_24h_pct": 8.6,
+     "from_24h_high_pct": -3.04,
+     "quote_volume_24h": 3232803,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
   }
  ]
 }
