@@ -2035,3 +2035,10 @@ dialog#authDlg .auth-actions .primary{background:var(--accent,#F0B90B);color:#0b
 /* Early face: since mention lab distinct from Today 24h */
 .gb-px-early .gb-mention-lab{margin-top:2px;font-size:10px;letter-spacing:.02em;color:var(--muted);opacity:.95;font-weight:600}
 .gb-row.gb-early .gb-chg{font-size:16px}
+
+/* Web Push opt-in (More) — quiet toggle, Mock · paper tips */
+.more-push{display:flex!important;align-items:center;justify-content:space-between;gap:12px;cursor:pointer}
+.more-push-lab{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.more-push-check{width:20px;height:20px;accent-color:var(--accent);flex:0 0 auto;cursor:pointer}
+.more-push-ios{font-weight:500}
+.gb-row.gb-push-focus{outline:2px solid var(--accent);outline-offset:2px;border-radius:12px}

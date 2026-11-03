@@ -59,6 +59,12 @@
       "tab.portfolio": "Portfolio",
       "tab.more": "More",
       "label.24h_mkt": "24h mkt",
+      "push.toggle": "Enable notifications",
+      "push.body": "New Early (paper) — check the board. Not advice.",
+      "push.ios": "Add to Home Screen for quicker tips.",
+      "push.denied": "Notifications blocked · enable in browser settings",
+      "push.on": "Notifications on · Early tips only",
+      "push.off": "Notifications off",
     },
     zh: {
       "auth.login": "登入",
@@ -109,6 +115,12 @@
       "tab.portfolio": "組合",
       "tab.more": "更多",
       "label.24h_mkt": "24小時市價",
+      "push.toggle": "開啟通知",
+      "push.body": "新 Early（模擬）— 到看板看看。非投資建議。",
+      "push.ios": "加入主畫面，更快收到提示。",
+      "push.denied": "通知已封鎖 · 請到瀏覽器設定開啟",
+      "push.on": "已開通知 · 只推 Early",
+      "push.off": "已關通知",
     },
   };
   let uiLang = (localStorage.getItem(LANG_KEY) === "zh") ? "zh" : "en";
@@ -142,6 +154,7 @@
     // data-label attrs on daily table rebuild via render; static th already data-i18n
     try { paintAuthBar(); } catch (_) {}
     try { paintPfSaved(); } catch (_) {}
+    try { paintPushToggle(); } catch (_) {}
     try {
       const dlg = $("authDlg");
       if (dlg && dlg.open) openAuthDlg(dlg.dataset.mode || "login");
@@ -1860,7 +1873,236 @@
     for (const r of rows) box.append(gbCard(r, trig.get(r.symbol + ":" + r.tier) || null, { buy: r.tier === "pump" || r.tier === "chase" }));
   }
 
-  /** ⚡ v2 watch-only rows, computed live in the browser (live.js early2Trigger, every scan); minimal card, no buy. */
+  // ---------- Web Push / Early tips (opt-in; no flag/exit changes; no remote VAPID) ----------
+  const PUSH_OPT_KEY = "mce:push:optin:v1";
+  const PUSH_LOG_KEY = "mce:push:log:v1";
+  const PUSH_DAILY_CAP = 8;
+  const PUSH_C24_MAX = 15; // Strategy: flag-time 24h% < +15%
+  let pushPrimed = false;
+  let pushKnownEarly = new Set();
+
+  function pushDayKey() {
+    try {
+      return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Hong_Kong" });
+    } catch (_) {
+      const d = new Date();
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    }
+  }
+  function loadPushLog() {
+    try {
+      const o = JSON.parse(localStorage.getItem(PUSH_LOG_KEY) || "{}");
+      if (!o || o.day !== pushDayKey()) return { day: pushDayKey(), coins: {}, count: 0 };
+      return { day: o.day, coins: o.coins || {}, count: Number(o.count) || 0 };
+    } catch (_) {
+      return { day: pushDayKey(), coins: {}, count: 0 };
+    }
+  }
+  function savePushLog(log) {
+    try { localStorage.setItem(PUSH_LOG_KEY, JSON.stringify(log)); } catch (_) {}
+  }
+  function pushOptedIn() {
+    try { return localStorage.getItem(PUSH_OPT_KEY) === "1"; } catch (_) { return false; }
+  }
+  function setPushOptIn(on) {
+    try { localStorage.setItem(PUSH_OPT_KEY, on ? "1" : "0"); } catch (_) {}
+  }
+  function isIosDevice() {
+    const ua = navigator.userAgent || "";
+    return /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  }
+  function isStandalonePwa() {
+    try {
+      return !!(window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true;
+    } catch (_) { return !!navigator.standalone; }
+  }
+  function pushSupported() {
+    return typeof window !== "undefined" && "Notification" in window && "serviceWorker" in navigator;
+  }
+  async function ensurePushSw() {
+    if (!("serviceWorker" in navigator)) return null;
+    try {
+      const reg = await navigator.serviceWorker.register("./sw.js", { scope: "./" });
+      return reg;
+    } catch (e) {
+      console.warn("sw register failed", e);
+      return null;
+    }
+  }
+  function earlyFocusSymbolFromUrl() {
+    try {
+      const q = new URLSearchParams(location.search || "");
+      const s = q.get("early") || q.get("coin");
+      if (s) return String(s).toUpperCase();
+    } catch (_) {}
+    return "";
+  }
+  function focusEarlyCoin(sym) {
+    const want = String(sym || "").toUpperCase().replace(/^\$/, "");
+    if (!want) return;
+    try { goView("picks"); } catch (_) {}
+    const match = () => {
+      const nodes = document.querySelectorAll("[data-gb-sym]");
+      for (const n of nodes) {
+        const s = String(n.getAttribute("data-gb-sym") || "").toUpperCase();
+        if (s === want || s === want + "USDT" || s.replace(/USDT$/, "") === want.replace(/USDT$/, "")) return n;
+      }
+      return null;
+    };
+    const paint = (node) => {
+      if (!node) return false;
+      try { node.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (_) {}
+      node.classList.add("gb-push-focus");
+      setTimeout(() => node.classList.remove("gb-push-focus"), 2600);
+      return true;
+    };
+    if (paint(match())) return;
+    let n = 0;
+    const id = setInterval(() => {
+      if (paint(match()) || ++n > 24) clearInterval(id);
+    }, 250);
+  }
+  /** Strategy early-eligible for tips: live Early, not top-20, flag-time 24h% < +15%. No late / Today / pump. */
+  function isEarlyPushEligible(r) {
+    if (!r || !gbIsEarly(r.tier)) return false;
+    if (r.retained) return false; // display-lock leftover — not a new Early entry
+    const rk = r.rank24 != null ? Number(r.rank24) : (r.rank != null ? Number(r.rank) : null);
+    if (rk != null && Number.isFinite(rk) && rk <= 20) return false;
+    const c24 = Number(r.chg24);
+    if (!Number.isFinite(c24) || c24 >= PUSH_C24_MAX) return false;
+    return true;
+  }
+  async function fireEarlyNotification(r) {
+    if (!pushOptedIn() || !pushSupported()) return false;
+    if (typeof Notification !== "undefined" && Notification.permission !== "granted") return false;
+    const sym = String(r.symbol || "").toUpperCase();
+    if (!sym) return false;
+    const log = loadPushLog();
+    if (log.coins[sym] || log.count >= PUSH_DAILY_CAP) return false;
+    const base = r.base || sym.replace(/USDT$/, "");
+    const title = "⚡ " + base;
+    const body = tr("push.body");
+    const url = "./?early=" + encodeURIComponent(sym) + "#picks";
+    const opts = {
+      body,
+      tag: "mce-early-" + sym,
+      renotify: false,
+      data: { url, symbol: sym },
+      icon: "icons/icon-192.png?v=20261030g",
+      badge: "icons/icon-192.png?v=20261030g",
+    };
+    try {
+      const reg = await ensurePushSw();
+      if (reg && reg.showNotification) await reg.showNotification(title, opts);
+      else new Notification(title, opts);
+    } catch (e) {
+      console.warn("early notify failed", e);
+      return false;
+    }
+    log.coins[sym] = 1;
+    log.count = (log.count || 0) + 1;
+    savePushLog(log);
+    return true;
+  }
+  /** After each Early scan: seed on first pass; then tip only newcomers that stay early-eligible. Caps 1/coin/day, ≤8/day. */
+  function considerEarlyPushTips(early) {
+    try {
+      if (!pushOptedIn()) {
+        pushPrimed = false;
+        pushKnownEarly = new Set();
+        return;
+      }
+      const live = (early || []).filter(isEarlyPushEligible);
+      const syms = live.map((r) => String(r.symbol || "").toUpperCase()).filter(Boolean);
+      if (!pushPrimed) {
+        pushKnownEarly = new Set(syms);
+        pushPrimed = true;
+        return;
+      }
+      for (const r of live) {
+        const sym = String(r.symbol || "").toUpperCase();
+        if (!sym || pushKnownEarly.has(sym)) continue;
+        pushKnownEarly.add(sym);
+        fireEarlyNotification(r);
+      }
+      for (const s of syms) pushKnownEarly.add(s);
+    } catch (e) {
+      console.warn("early push tips", e);
+    }
+  }
+  function paintPushToggle() {
+    const box = $("pushOptIn");
+    if (box) box.checked = pushOptedIn() && pushSupported() && (typeof Notification === "undefined" || Notification.permission !== "denied");
+    const hint = $("pushIosHint");
+    if (hint) hint.hidden = !(isIosDevice() && !isStandalonePwa());
+  }
+  async function onPushToggle(ev) {
+    const box = $("pushOptIn");
+    const want = !!(box && box.checked);
+    if (!want) {
+      setPushOptIn(false);
+      pushPrimed = false;
+      pushKnownEarly = new Set();
+      try { toast(tr("push.off")); } catch (_) {}
+      paintPushToggle();
+      return;
+    }
+    if (!pushSupported()) {
+      if (box) box.checked = false;
+      setPushOptIn(false);
+      try { toast(tr("push.denied"), "warn"); } catch (_) {}
+      paintPushToggle();
+      return;
+    }
+    await ensurePushSw();
+    let perm = Notification.permission;
+    if (perm === "default") {
+      try { perm = await Notification.requestPermission(); } catch (_) { perm = "denied"; }
+    }
+    if (perm !== "granted") {
+      if (box) box.checked = false;
+      setPushOptIn(false);
+      try { toast(tr("push.denied"), "warn"); } catch (_) {}
+      paintPushToggle();
+      return;
+    }
+    setPushOptIn(true);
+    pushPrimed = false; // next Early scan seeds without spamming current board
+    pushKnownEarly = new Set();
+    try { toast(tr("push.on")); } catch (_) {}
+    paintPushToggle();
+  }
+  function bootPushTips() {
+    paintPushToggle();
+    if ($("pushOptIn")) $("pushOptIn").addEventListener("change", onPushToggle);
+    if (pushOptedIn() && pushSupported()) ensurePushSw();
+    const focus = earlyFocusSymbolFromUrl();
+    if (focus) {
+      try {
+        const u = new URL(location.href);
+        u.searchParams.delete("early");
+        u.searchParams.delete("coin");
+        history.replaceState(null, "", u.pathname + u.search + u.hash);
+      } catch (_) {}
+      focusEarlyCoin(focus);
+    }
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.addEventListener("message", (ev) => {
+        const d = ev && ev.data;
+        if (!d || d.type !== "mce-focus-early") return;
+        if (d.symbol) focusEarlyCoin(d.symbol);
+        else if (d.url) {
+          try {
+            const u = new URL(d.url, location.href);
+            const s = u.searchParams.get("early") || u.searchParams.get("coin");
+            if (s) focusEarlyCoin(s);
+          } catch (_) {}
+        }
+      });
+    }
+  }
+
+    /** ⚡ v2 watch-only rows, computed live in the browser (live.js early2Trigger, every scan); minimal card, no buy. */
   function renderEarlyList(early, trig) {
     const box = $("earlyList"); if (!box) return;
     box.textContent = "";
@@ -1967,6 +2209,7 @@
       renderGainerBoard(rows, trig);
       renderEarlyList(early, trig);
       paintXChips(); // after 🔥 + ⚡ cards exist so .shill-flag nodes get painted
+      try { considerEarlyPushTips(early); } catch (_) {}
       gbLoadX(false).then(paintXChips).catch(() => {});
       gbClientSnapshot(rows, early);
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
@@ -4336,6 +4579,7 @@
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - gbLastScan > 90_000) loadGainerBoard(false); });
   }
   bootGainer();
+  bootPushTips();
   // Kick live BN picks ASAP for home
   loadLiveBnPicks(false);
 
