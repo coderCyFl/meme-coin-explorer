@@ -315,3 +315,7 @@
 {"ts": "2026-11-04T00:16:04+08:00", "symbol": "PUMPUSDT", "tool": "search", "query": "(\"PUMP coin\" OR \"PUMP token\" OR PUMPUSDT OR \"$PUMP\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 25}
 {"ts": "2026-11-04T00:16:04+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 8}
 {"ts": "2026-11-04T00:16:04+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 14}
+{"ts": "2026-11-04T01:16:14+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 139}
+{"ts": "2026-11-04T01:16:15+08:00", "symbol": "RUNEUSDT", "tool": "counts", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 659}
+{"ts": "2026-11-04T01:16:50+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 20}
+{"ts": "2026-11-04T01:16:50+08:00", "symbol": "RUNEUSDT", "tool": "search", "query": "($RUNE OR #RUNE) (crypto OR binance) lang:en -is:retweet", "result_count": 25}

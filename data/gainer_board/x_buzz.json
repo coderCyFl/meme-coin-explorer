@@ -392,32 +392,32 @@
    "symbol": "BMTUSDT",
    "base": "BMT",
    "flag": "pump",
-   "trigger_at": "2026-11-03T20:45:00+08:00",
-   "checked_at": "2026-11-04T00:16:04+08:00",
-   "posts_last_1h": 8,
-   "posts_prev_6h_avg_per_h": 4.83,
-   "spike_ratio": 1.66,
-   "verdict": "升溫",
-   "one_line": "升溫但訊號喊單多",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-04T01:17:28+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 5.33,
+   "spike_ratio": 0.75,
+   "verdict": "冷",
+   "one_line": "量跌兼喊單bot多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117640192471322760",
-     "url": "https://x.com/CryptoPatel/status/2117640192471322760",
-     "text": "$BMT 380% RALLY DONE! IS ANOTHER MASSIVE PUMP COMING? #BMT has surged 380% in the last 3 months. Long-Term Entry Zone: $0.018–$0.021",
-     "likes": 156,
-     "author_username": "CryptoPatel",
-     "author_followers": 64508,
-     "created_at": "2026-11-03T23:29:00+08:00"
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digita…",
+     "likes": 17,
+     "author_username": "Binance_TH_",
+     "author_followers": 25724,
+     "created_at": "2026-11-03T19:26:54+08:00"
     },
     {
      "id": "2117609315682988386",
      "url": "https://x.com/mrcamerontrader/status/2117609315682988386",
-     "text": "BMT/USDT — LONG SIGNAL NOW! ENTRY 0.02720 / 0.02660 TP 0.02800/0.02900/0.03000 SL 0.02550 LEVERAGE 20X CROSS",
-     "likes": 8,
+     "text": "🚀 BMT/USDT — LONG SIGNAL NOW! ⚡️ POSITION: LONG ENTRY PRICES • Entry 1: 0.02720 (Market Price) • Entry 2: 0.02660 TAKE PROFIT TARGETS • TP1…",
+     "likes": 9,
      "author_username": "mrcamerontrader",
-     "author_followers": 567,
+     "author_followers": 579,
      "created_at": "2026-11-03T21:26:18+08:00"
     },
     {
@@ -426,55 +426,55 @@
      "text": "$BMT is +30% on the day while the watchdog itself is under fire. Our 12 AM scan flagged it at $0.02410. It's ~$0.0272 now after a 7 AM brea…",
      "likes": 2,
      "author_username": "cryptolevier",
-     "author_followers": 8202,
+     "author_followers": 8200,
      "created_at": "2026-11-03T22:14:12+08:00"
     }
    ],
-   "checks_this_trigger": 4
+   "checks_this_trigger": 1
   },
   "RUNEUSDT": {
    "symbol": "RUNEUSDT",
    "base": "RUNE",
    "flag": "pump",
    "trigger_at": "2026-11-03T23:45:00+08:00",
-   "checked_at": "2026-11-04T00:16:04+08:00",
-   "posts_last_1h": 35,
-   "posts_prev_6h_avg_per_h": 19.5,
-   "spike_ratio": 1.79,
-   "verdict": "升溫",
-   "one_line": "升溫但刷卡文多",
+   "checked_at": "2026-11-04T01:17:28+08:00",
+   "posts_last_1h": 22,
+   "posts_prev_6h_avg_per_h": 19.17,
+   "spike_ratio": 1.15,
+   "verdict": "冷",
+   "one_line": "刷卡文多冇真熱度",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117641945665454547",
-     "url": "https://x.com/mrchrismast_/status/2117641945665454547",
-     "text": "My agent mrchrismast.ai pledged to the North. If it mints now: a Common Rune Priestess. Every Binance Agent ID agent gets a free hero card.",
-     "likes": 7,
-     "author_username": "mrchrismast_",
-     "author_followers": 29004,
-     "created_at": "2026-11-03T23:35:58+08:00"
+     "id": "2117659457811599504",
+     "url": "https://x.com/0xShellyy/status/2117659457811599504",
+     "text": "🚨CRYPTO IS HEATING UP — NOVEMBER 3 UPDATE! Today's crypto headlines are bringing a mix of fear, opportunity and volatility. Here's what tra…",
+     "likes": 2,
+     "author_username": "0xShellyy",
+     "author_followers": 412,
+     "created_at": "2026-11-04T00:45:33+08:00"
     },
     {
-     "id": "2117611292689129634",
-     "url": "https://x.com/BobTheTrenchor/status/2117611292689129634",
-     "text": "yet the rune KOLS rather shitpost about how binance has gone insolvent and fade the launchpad that has 41% of the entire chains marketshare",
+     "id": "2117652793431601246",
+     "url": "https://x.com/Areantarmrh/status/2117652793431601246",
+     "text": "My agent derenfk․ai pledged to the North 🐺 If it mints now: a Common Rune Priestess. Every Binance Agent ID agent gets a free hero card. Wh…",
      "likes": 1,
-     "author_username": "BobTheTrenchor",
-     "author_followers": 6,
-     "created_at": "2026-11-03T21:34:10+08:00"
+     "author_username": "Areantarmrh",
+     "author_followers": 0,
+     "created_at": "2026-11-04T00:19:04+08:00"
     },
     {
-     "id": "2117648138584678482",
-     "url": "https://x.com/MyPosition_App/status/2117648138584678482",
-     "text": "#RUNE Liquidation Map Update. Price: $0.646200 | OI: $8.4M. Long/Short Ratio Global: Long 37.6% / Short 62.4%",
-     "likes": 0,
-     "author_username": "MyPosition_App",
-     "author_followers": 395,
-     "created_at": "2026-11-04T00:00:34+08:00"
+     "id": "2117648751099773431",
+     "url": "https://x.com/Little_Ma201/status/2117648751099773431",
+     "text": "My agent necroma․ai pledged to the North 🐺 If it mints now: a Rare Rune Priestess. Every Binance Agent ID agent gets a free hero card. Whic…",
+     "likes": 1,
+     "author_username": "Little_Ma201",
+     "author_followers": 41,
+     "created_at": "2026-11-04T00:03:00+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "STRKUSDT": {
    "symbol": "STRKUSDT",
@@ -3074,15 +3074,101 @@
      "created_at": "2026-11-03T22:14:12+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T21:30:00+08:00",
+   "checked_at": "2026-11-04T01:17:28+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 5.33,
+   "spike_ratio": 0.75,
+   "verdict": "冷",
+   "one_line": "量跌兼喊單bot多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117579264510054774",
+     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
+     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digita…",
+     "likes": 17,
+     "author_username": "Binance_TH_",
+     "author_followers": 25724,
+     "created_at": "2026-11-03T19:26:54+08:00"
+    },
+    {
+     "id": "2117609315682988386",
+     "url": "https://x.com/mrcamerontrader/status/2117609315682988386",
+     "text": "🚀 BMT/USDT — LONG SIGNAL NOW! ⚡️ POSITION: LONG ENTRY PRICES • Entry 1: 0.02720 (Market Price) • Entry 2: 0.02660 TAKE PROFIT TARGETS • TP1…",
+     "likes": 9,
+     "author_username": "mrcamerontrader",
+     "author_followers": 579,
+     "created_at": "2026-11-03T21:26:18+08:00"
+    },
+    {
+     "id": "2117621369336659985",
+     "url": "https://x.com/cryptolevier/status/2117621369336659985",
+     "text": "$BMT is +30% on the day while the watchdog itself is under fire. Our 12 AM scan flagged it at $0.02410. It's ~$0.0272 now after a 7 AM brea…",
+     "likes": 2,
+     "author_username": "cryptolevier",
+     "author_followers": 8200,
+     "created_at": "2026-11-03T22:14:12+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-11-03T23:45:00+08:00",
+   "checked_at": "2026-11-04T01:17:28+08:00",
+   "posts_last_1h": 22,
+   "posts_prev_6h_avg_per_h": 19.17,
+   "spike_ratio": 1.15,
+   "verdict": "冷",
+   "one_line": "刷卡文多冇真熱度",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117659457811599504",
+     "url": "https://x.com/0xShellyy/status/2117659457811599504",
+     "text": "🚨CRYPTO IS HEATING UP — NOVEMBER 3 UPDATE! Today's crypto headlines are bringing a mix of fear, opportunity and volatility. Here's what tra…",
+     "likes": 2,
+     "author_username": "0xShellyy",
+     "author_followers": 412,
+     "created_at": "2026-11-04T00:45:33+08:00"
+    },
+    {
+     "id": "2117652793431601246",
+     "url": "https://x.com/Areantarmrh/status/2117652793431601246",
+     "text": "My agent derenfk․ai pledged to the North 🐺 If it mints now: a Common Rune Priestess. Every Binance Agent ID agent gets a free hero card. Wh…",
+     "likes": 1,
+     "author_username": "Areantarmrh",
+     "author_followers": 0,
+     "created_at": "2026-11-04T00:19:04+08:00"
+    },
+    {
+     "id": "2117648751099773431",
+     "url": "https://x.com/Little_Ma201/status/2117648751099773431",
+     "text": "My agent necroma․ai pledged to the North 🐺 If it mints now: a Rare Rune Priestess. Every Binance Agent ID agent gets a free hero card. Whic…",
+     "likes": 1,
+     "author_username": "Little_Ma201",
+     "author_followers": 41,
+     "created_at": "2026-11-04T00:03:00+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 8,
+  "calls_today": 12,
   "cap_reached": false,
-  "updated_at": "2026-11-04T00:16:43+08:00"
+  "updated_at": "2026-11-04T01:17:41+08:00"
  },
- "updated_at": "2026-11-04T00:16:43+08:00",
+ "updated_at": "2026-11-04T01:17:41+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
