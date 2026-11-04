@@ -1,7 +1,223 @@
 {
-  "fetched_at": "2026-11-04T16:09:56+08:00",
+  "fetched_at": "2026-11-04T17:14:06+08:00",
   "source": "x_search_news",
   "stories": [
+    {
+      "id": "2117902209048559627",
+      "title": "ChatGPT Directed Users to Fake T3 Code Scam Site",
+      "title_en": "ChatGPT Directed Users to Fake T3 Code Scam Site",
+      "summary": "ChatGPT repeatedly recommended a fake version of Theo Browne's T3 Code tool at t33.codes, a site registered just two weeks earlier that mimicked the real t3.codes and pushed meme coins plus risky downloads. Theo investigated but couldn't pinpoint why the clone topped the AI's suggestions, suspecting tactics like manipulated Bing results or spam backlinks. The scam site soon went offline with a 451 legal block on Vercel, its X account banned, while the community rallied to protect related domains and urged verifying official sources before any AI-suggested installs.",
+      "summary_en": "ChatGPT repeatedly recommended a fake version of Theo Browne's T3 Code tool at t33.codes, a site registered just two weeks earlier that mimicked the real t3.codes and pushed meme coins plus risky downloads. Theo investigated but couldn't pinpoint why the clone topped the AI's suggestions, suspecting tactics like manipulated Bing results or spam backlinks. The scam site soon went offline with a 451 legal block on Vercel, its X account banned, while the community rallied to protect related domains and urged verifying official sources before any AI-suggested installs.",
+      "published_at": "2026-11-04T08:56:35.000Z",
+      "url": "https://x.com/i/trending/2117902209048559627",
+      "tags": [
+        "Technology",
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117260404883939594",
+      "title": "Mercado Bitcoin Halts Services After $40 Million Suspicious Transfers",
+      "title_en": "Mercado Bitcoin Halts Services After $40 Million Suspicious Transfers",
+      "summary": "Mercado Bitcoin confirmed a security breach involving over $40 million moved from its wallets across Bitcoin, Ethereum, Solana, and Tron networks. The exchange quickly contained the issue, assured customers of no losses or data exposure, and pledged to cover any damages while freezing $11 million in assets with help from Tether, Circle, and Chainalysis. Services stay suspended during the investigation amid a string of recent crypto hacks, including Binance's record $6 billion theft.",
+      "summary_en": "Mercado Bitcoin confirmed a security breach involving over $40 million moved from its wallets across Bitcoin, Ethereum, Solana, and Tron networks. The exchange quickly contained the issue, assured customers of no losses or data exposure, and pledged to cover any damages while freezing $11 million in assets with help from Tether, Circle, and Chainalysis. Services stay suspended during the investigation amid a string of recent crypto hacks, including Binance's record $6 billion theft.",
+      "published_at": "2026-11-04T08:56:32.000Z",
+      "url": "https://x.com/i/trending/2117260404883939594",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117774846369132635",
+      "title": "Bitcoin Dips Then Rebounds After Democratic Midterm Wins",
+      "title_en": "Bitcoin Dips Then Rebounds After Democratic Midterm Wins",
+      "summary": "Around the U.S. midterm elections on November 4, Bitcoin dropped sharply below $76,000 and Ethereum fell under $2,250 amid reports of Democrats gaining control of the House and Senate, liquidating about $160 million in long positions in an hour. Concerns over regulatory hurdles for crypto-friendly bills like the CLARITY Act fueled the selloff, alongside ETF outflows and a Binance incident. Prices quickly recovered as outcomes clarified, with Bitcoin climbing back above $78,000 in a V-shaped bounce, while historical data shows gains in the year after past midterms.",
+      "summary_en": "Around the U.S. midterm elections on November 4, Bitcoin dropped sharply below $76,000 and Ethereum fell under $2,250 amid reports of Democrats gaining control of the House and Senate, liquidating about $160 million in long positions in an hour. Concerns over regulatory hurdles for crypto-friendly bills like the CLARITY Act fueled the selloff, alongside ETF outflows and a Binance incident. Prices quickly recovered as outcomes clarified, with Bitcoin climbing back above $78,000 in a V-shaped bounce, while historical data shows gains in the year after past midterms.",
+      "published_at": "2026-11-04T08:25:16.000Z",
+      "url": "https://x.com/i/trending/2117774846369132635",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "監管clarification 影響 DeFi／上幣預期，只作背景唔係訊號。",
+      "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117240097997484033",
+      "title": "French Bank Crédit Mutuel Arkéa Loses Over $133 Million in Suspected Crypto Theft",
+      "title_en": "French Bank Crédit Mutuel Arkéa Loses Over $133 Million in Suspected Crypto Theft",
+      "summary": "On-chain investigator ZachXBT reported that Crédit Mutuel Arkéa, a French cooperative bank with $235 billion in assets, likely lost more than $133 million from multiple exchange accounts on November 1. The attacker swapped USDC and USDT into ETH, then Monero, bridging across blockchains while the bank has not confirmed the incident, calling it unverified at this stage. Separately, Brazil's Mercado Bitcoin confirmed a cyberattack the same day, containing losses around $40 million with no customer impact and some funds frozen by stablecoin issuers. These events highlight ongoing security risks where traditional finance meets crypto exchanges.",
+      "summary_en": "On-chain investigator ZachXBT reported that Crédit Mutuel Arkéa, a French cooperative bank with $235 billion in assets, likely lost more than $133 million from multiple exchange accounts on November 1. The attacker swapped USDC and USDT into ETH, then Monero, bridging across blockchains while the bank has not confirmed the incident, calling it unverified at this stage. Separately, Brazil's Mercado Bitcoin confirmed a cyberattack the same day, containing losses around $40 million with no customer impact and some funds frozen by stablecoin issuers. These events highlight ongoing security risks where traditional finance meets crypto exchanges.",
+      "published_at": "2026-11-04T08:24:39.000Z",
+      "url": "https://x.com/i/trending/2117240097997484033",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117256456437432427",
+      "title": "Rome Protocol Bridges Solidity to Solana Seamlessly",
+      "title_en": "Rome Protocol Bridges Solidity to Solana Seamlessly",
+      "summary": "Rome Protocol runs a full EVM bytecode interpreter as a Solana on-chain program, letting teams use tools like Foundry and Hardhat while tapping Solana's speed. Compound v3 and Aave v3 lending markets already run unchanged on its Hadrian testnet, with MetaMask and Phantom users accessing the same contracts and liquidity in one ledger. This enables atomic calls to Solana DeFi like Jupiter, reducing cross-chain friction and opening Solana to Ethereum builders without Rust.",
+      "summary_en": "Rome Protocol runs a full EVM bytecode interpreter as a Solana on-chain program, letting teams use tools like Foundry and Hardhat while tapping Solana's speed. Compound v3 and Aave v3 lending markets already run unchanged on its Hadrian testnet, with MetaMask and Phantom users accessing the same contracts and liquidity in one ledger. This enables atomic calls to Solana DeFi like Jupiter, reducing cross-chain friction and opening Solana to Ethereum builders without Rust.",
+      "published_at": "2026-11-04T08:12:53.000Z",
+      "url": "https://x.com/i/trending/2117256456437432427",
+      "tags": [
+        "Technology",
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "SOL 生態同行情會影響 meme／細幣流動同急升板節奏。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117637468845752581",
+      "title": "Bored Ape Yacht Club Sees Active NFT Trading and Community Buzz",
+      "title_en": "Bored Ape Yacht Club Sees Active NFT Trading and Community Buzz",
+      "summary": "Bored Ape Yacht Club NFTs traded briskly this week through over-the-counter deals and public sales, with floor prices holding around 5.7 to 6 ETH. Active seller machibigbrother.eth moved multiple grails like BAYC #7879 for 6 ETH and others up to 12 ETH, reportedly funneling proceeds into leveraged ETH bets on Hyperliquid. New owners like kek0x celebrated their first apes, while returning collector chipm0nkey upgraded to #8445, and the community welcomed them with open arms via Yuga Grails OTC transfers. Despite lower floors from 2022 highs, the vibe stays lively with praise for rare traits and that lasting sense of belonging.",
+      "summary_en": "Bored Ape Yacht Club NFTs traded briskly this week through over-the-counter deals and public sales, with floor prices holding around 5.7 to 6 ETH. Active seller machibigbrother.eth moved multiple grails like BAYC #7879 for 6 ETH and others up to 12 ETH, reportedly funneling proceeds into leveraged ETH bets on Hyperliquid. New owners like kek0x celebrated their first apes, while returning collector chipm0nkey upgraded to #8445, and the community welcomed them with open arms via Yuga Grails OTC transfers. Despite lower floors from 2022 highs, the vibe stays lively with praise for rare traits and that lasting sense of belonging.",
+      "published_at": "2026-11-04T04:36:26.000Z",
+      "url": "https://x.com/i/trending/2117637468845752581",
+      "tags": [
+        "eth",
+        "sol"
+      ],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
+      "category": "Other",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117805938539479423",
+      "title": "FungoLabs Launches First Encrypted NFTs on Ethereum November 5",
+      "title_en": "FungoLabs Launches First Encrypted NFTs on Ethereum November 5",
+      "summary": "FungoLabs drops a 3,232-NFT Genesis collection on November 5, using Zama's Fully Homomorphic Encryption to keep visuals and attributes like class and stats private, while ownership remains public on-chain. The mint includes 500 free whitelists, 2,500 via encrypted sealed-bid auction in cZAMA where winners pay the lowest successful bid, and 232 for the team. Holders gain big in the $FUNGO ecosystem, receiving 1.113 million tokens each at TGE plus shares of launchpad revenue, with community campaigns adding more ways to join.",
+      "summary_en": "FungoLabs drops a 3,232-NFT Genesis collection on November 5, using Zama's Fully Homomorphic Encryption to keep visuals and attributes like class and stats private, while ownership remains public on-chain. The mint includes 500 free whitelists, 2,500 via encrypted sealed-bid auction in cZAMA where winners pay the lowest successful bid, and 232 for the team. Holders gain big in the $FUNGO ecosystem, receiving 1.113 million tokens each at TGE plus shares of launchpad revenue, with community campaigns adding more ways to join.",
+      "published_at": "2026-11-04T02:34:52.000Z",
+      "url": "https://x.com/i/trending/2117805938539479423",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117803388771393642",
+      "title": "Monero and Zcash Prices Climb Amid Exchange Delistings",
+      "title_en": "Monero and Zcash Prices Climb Amid Exchange Delistings",
+      "summary": "Monero (XMR) reached around $627 and Zcash (ZEC) traded near $1,219, both outperforming flat Bitcoin despite delistings from platforms like Kraken, OKX, and Binance since 2020. Traders note reduced liquid supply from self-custody shifts supporting higher prices, with Zcash gaining 5% to $1,212 and a market cap nearing $20 billion. An EU anti-money laundering rule set for July 2027 will bar licensed providers from handling these privacy coins, yet Monero advocates call it the best private money option while Zcash offers optional shielded transactions.",
+      "summary_en": "Monero (XMR) reached around $627 and Zcash (ZEC) traded near $1,219, both outperforming flat Bitcoin despite delistings from platforms like Kraken, OKX, and Binance since 2020. Traders note reduced liquid supply from self-custody shifts supporting higher prices, with Zcash gaining 5% to $1,212 and a market cap nearing $20 billion. An EU anti-money laundering rule set for July 2027 will bar licensed providers from handling these privacy coins, yet Monero advocates call it the best private money option while Zcash offers optional shielded transactions.",
+      "published_at": "2026-11-04T02:23:27.000Z",
+      "url": "https://x.com/i/trending/2117803388771393642",
+      "tags": [
+        "Cryptocurrency",
+        "XMR",
+        "ZEC"
+      ],
+      "why_it_matters": "大盤／BTC 情緒同資金流，影響急升板風險偏好同弱市半倉規則。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117761961026892004",
+      "title": "Base Ecosystem Launches 25 Payment Innovations in October",
+      "title_en": "Base Ecosystem Launches 25 Payment Innovations in October",
+      "summary": "The Base network saw 25 real-world payment launches in October, boosting stablecoin use in commerce and AI transactions. Shopify and Coinbase's Commerce Payments Protocol has already handled over $42 million in settled payments and 448,000 transactions, with Coinbase CEO Brian Armstrong praising the collaboration. Mastercard and Cloudflare introduced 'Agent Pay for Machines,' enabling AI agents to make micropayments in USDC using a revived 1999 web standard. Other advances included Ripple's stablecoin liquidity, yield tools for tokenized stocks, and stablecoin-backed cards, highlighting Base's speed like 2-second USDC settlements.",
+      "summary_en": "The Base network saw 25 real-world payment launches in October, boosting stablecoin use in commerce and AI transactions. Shopify and Coinbase's Commerce Payments Protocol has already handled over $42 million in settled payments and 448,000 transactions, with Coinbase CEO Brian Armstrong praising the collaboration. Mastercard and Cloudflare introduced 'Agent Pay for Machines,' enabling AI agents to make micropayments in USDC using a revived 1999 web standard. Other advances included Ripple's stablecoin liquidity, yield tools for tokenized stocks, and stablecoin-backed cards, highlighting Base's speed like 2-second USDC settlements.",
+      "published_at": "2026-11-04T02:23:25.000Z",
+      "url": "https://x.com/i/trending/2117761961026892004",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "交易所／資產化快訊；模擬倉情緒背景。",
+      "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117624048901656988",
+      "title": "XRP Surges Past $1.27 on Breakout Momentum and Network Growth",
+      "title_en": "XRP Surges Past $1.27 on Breakout Momentum and Network Growth",
+      "summary": "The token climbed over 2.5% that day, fueled by technical breakouts like tightening Bollinger Bands and a sixth-largest single-day wallet increase of 2026 with 7,934 new addresses. Ripple CEO Brad Garlinghouse clarified that the company's RLUSD stablecoin complements XRP rather than competing, boosting liquidity on the XRP Ledger. Community excitement mixed with memes mocking doubters and frustration over past price action, while old SEC case emails resurfaced without evidence of manipulation; analysts now eye if momentum holds above key resistance.",
+      "summary_en": "The token climbed over 2.5% that day, fueled by technical breakouts like tightening Bollinger Bands and a sixth-largest single-day wallet increase of 2026 with 7,934 new addresses. Ripple CEO Brad Garlinghouse clarified that the company's RLUSD stablecoin complements XRP rather than competing, boosting liquidity on the XRP Ledger. Community excitement mixed with memes mocking doubters and frustration over past price action, while old SEC case emails resurfaced without evidence of manipulation; analysts now eye if momentum holds above key resistance.",
+      "published_at": "2026-11-04T02:03:08.000Z",
+      "url": "https://x.com/i/trending/2117624048901656988",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "SOL／山寨生態動態；風險偏好同急升板參考。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117212594515718558",
+      "title": "AI Agents Now Hire and Pay Each Other Through TermiX Bounties",
+      "title_en": "AI Agents Now Hire and Pay Each Other Through TermiX Bounties",
+      "summary": "TermiX launched its Agents Helping Agents bounty, where one AI posts tasks and rewards others for completion using the AACP protocol. It manages everything on-chain: ERC-8004 agent NFTs for identity, USDC or USDT escrow, staking for accountability, and reputation scores that slash collateral for faults. Recent data shows $78,900 in 30-day revenue and $606,000 cumulative fees, with early bounties like simple social media tasks proving agents can delegate reliably. Community notes highlight the need for clear job specs to avoid disputes as tasks grow more complex.",
+      "summary_en": "TermiX launched its Agents Helping Agents bounty, where one AI posts tasks and rewards others for completion using the AACP protocol. It manages everything on-chain: ERC-8004 agent NFTs for identity, USDC or USDT escrow, staking for accountability, and reputation scores that slash collateral for faults. Recent data shows $78,900 in 30-day revenue and $606,000 cumulative fees, with early bounties like simple social media tasks proving agents can delegate reliably. Community notes highlight the need for clear job specs to avoid disputes as tasks grow more complex.",
+      "published_at": "2026-11-04T00:43:02.000Z",
+      "url": "https://x.com/i/trending/2117212594515718558",
+      "tags": [
+        "Technology",
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "加密快訊更新，提供模擬倉情緒同風險事件背景。",
+      "category": "News",
+      "source": "X News"
+    },
+    {
+      "id": "2117771186054762658",
+      "title": "Yellow Onchain Launches on XRP Ledger with Full Transparency",
+      "title_en": "Yellow Onchain Launches on XRP Ledger with Full Transparency",
+      "summary": "Yellow Onchain debuted as a native platform on the XRP Ledger, recording every trade and record publicly for anyone to inspect at onchain.yellow.pro. It starts with invite-only access for 30 days, unlocked by codes or partner communities like $ARMY token holders and Mutable Soldiers NFT owners. CEO Diego Martin called it the start of a new chapter, tying into teaser imagery of ships and anchors that built excitement. Community members praised the transparency, aligning with XRPL's focus on open ledgers for trading and AI agent commerce.",
+      "summary_en": "Yellow Onchain debuted as a native platform on the XRP Ledger, recording every trade and record publicly for anyone to inspect at onchain.yellow.pro. It starts with invite-only access for 30 days, unlocked by codes or partner communities like $ARMY token holders and Mutable Soldiers NFT owners. CEO Diego Martin called it the start of a new chapter, tying into teaser imagery of ships and anchors that built excitement. Community members praised the transparency, aligning with XRPL's focus on open ledgers for trading and AI agent commerce.",
+      "published_at": "2026-11-04T00:17:50.000Z",
+      "url": "https://x.com/i/trending/2117771186054762658",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "交易所／資產化快訊；模擬倉情緒背景。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117079499435298925",
+      "title": "Pump.fun Influencers Earn Millions as Copy-Traders Lose Big",
+      "title_en": "Pump.fun Influencers Earn Millions as Copy-Traders Lose Big",
+      "summary": "Data from Pump.fun's leaderboards reveals a stark gap: key opinion leaders like sh4vwty earned $53,805 in callouts, yet her copy-traders lost over $82,000 on low-cap tokens. Critics call it 'farming exit liquidity,' where early callers benefit at the expense of late followers, while defenders highlight trading risks and note followers often profited at peaks before market drops. Pump.fun has tweaked rewards to prioritize follower profits and plans expansions like new chains and perpetuals to grow its user base.",
+      "summary_en": "Data from Pump.fun's leaderboards reveals a stark gap: key opinion leaders like sh4vwty earned $53,805 in callouts, yet her copy-traders lost over $82,000 on low-cap tokens. Critics call it 'farming exit liquidity,' where early callers benefit at the expense of late followers, while defenders highlight trading risks and note followers often profited at peaks before market drops. Pump.fun has tweaked rewards to prioritize follower profits and plans expansions like new chains and perpetuals to grow its user base.",
+      "published_at": "2026-11-03T20:47:57.000Z",
+      "url": "https://x.com/i/trending/2117079499435298925",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
+      "category": "Other",
+      "source": "X News"
+    },
+    {
+      "id": "2117674984734638242",
+      "title": "Aave, Veda, and Kamino Submit Framework to SEC on Decentralized Lending",
+      "title_en": "Aave, Veda, and Kamino Submit Framework to SEC on Decentralized Lending",
+      "summary": "Aave Labs, Veda Tech Labs, and the Kamino Foundation filed a joint legal framework with the SEC on October 26, arguing that decentralized lending protocols and non-custodial vaults avoid federal securities laws because users keep full ownership and control is limited by code and governance rules like token holder votes and timelocks. They analyzed key tests like Howey and Reves, emphasizing no intermediaries promise returns or take title to assets, with curators bound by strict mandates. While another industry group stresses human discretion in vaults, Aave's Stani Kulechov said this pushes for rules that match how onchain finance really operates, without seeking new exemptions.",
+      "summary_en": "Aave Labs, Veda Tech Labs, and the Kamino Foundation filed a joint legal framework with the SEC on October 26, arguing that decentralized lending protocols and non-custodial vaults avoid federal securities laws because users keep full ownership and control is limited by code and governance rules like token holder votes and timelocks. They analyzed key tests like Howey and Reves, emphasizing no intermediaries promise returns or take title to assets, with curators bound by strict mandates. While another industry group stresses human discretion in vaults, Aave's Stani Kulechov said this pushes for rules that match how onchain finance really operates, without seeking new exemptions.",
+      "published_at": "2026-11-03T17:56:23.000Z",
+      "url": "https://x.com/i/trending/2117674984734638242",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "監管clarification 影響 DeFi／上幣預期，只作背景唔係訊號。",
+      "category": "News",
+      "source": "X News"
+    },
     {
       "id": "2117879924895674384",
       "title": "Binance Hacker Continues Laundering $6.3 Billion Stolen Funds via Solana to Bitcoin",
@@ -33,21 +249,6 @@
       "source": "x_search_news"
     },
     {
-      "id": "2117260404883939594",
-      "title": "Mercado Bitcoin Halts Services After $38 Million Suspicious Outflows",
-      "title_en": "Mercado Bitcoin Halts Services After $38 Million Suspicious Outflows",
-      "summary": "Mercado Bitcoin, serving millions as Brazil's top crypto platform by volume, confirmed the security incident and quickly contained it overnight. No customer funds were lost, no data leaked, and the exchange pledged to cover any shortfalls while freezing over $11 million with partners like Tether, Circle, and Chainalysis. Teams are tracing the assets with authorities and plan to resume services gradually after checks. The plain signed transactions suggest possible access to signing keys, amid a wave of recent crypto breaches.",
-      "summary_en": "Mercado Bitcoin, serving millions as Brazil's top crypto platform by volume, confirmed the security incident and quickly contained it overnight. No customer funds were lost, no data leaked, and the exchange pledged to cover any shortfalls while freezing over $11 million with partners like Tether, Circle, and Chainalysis. Teams are tracing the assets with authorities and plan to resume services gradually after checks. The plain signed transactions suggest possible access to signing keys, amid a wave of recent crypto breaches.",
-      "published_at": "2026-11-04T14:57:51+08:00",
-      "url": "https://x.com/i/trending/2117260404883939594",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "News",
-      "source": "x_search_news"
-    },
-    {
       "id": "2117797926663540753",
       "title": "Binance Hit by Record $6.3 Billion Crypto Heist from North Korean Hackers",
       "title_en": "Binance Hit by Record $6.3 Billion Crypto Heist from North Korean Hackers",
@@ -71,21 +272,6 @@
       "published_at": "2026-11-04T14:18:24+08:00",
       "url": "https://x.com/i/trending/2117861745771544698",
       "tags": [],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "News",
-      "source": "x_search_news"
-    },
-    {
-      "id": "2117240097997484033",
-      "title": "Crypto Heists Hit EU Bank and Brazil Exchange for Over $170 Million",
-      "title_en": "Crypto Heists Hit EU Bank and Brazil Exchange for Over $170 Million",
-      "summary": "ZachXBT flagged a suspected hack at French banking group Crédit Mutuel Arkéa, tallying losses above $133 million from centralized exchange accounts on November 1-2. Attackers swapped stablecoins into ETH and privacy coin XMR, bridging across chains while the institution stayed silent, allowing over $30 million to be laundered. Separately, Brazil's Mercado Bitcoin confirmed a cyberattack affecting $38 million, which they contained without customer losses and with over $11 million frozen through partnerships. The back-to-back breaches spotlight vulnerabilities in custody and cross-chain tracing.",
-      "summary_en": "ZachXBT flagged a suspected hack at French banking group Crédit Mutuel Arkéa, tallying losses above $133 million from centralized exchange accounts on November 1-2. Attackers swapped stablecoins into ETH and privacy coin XMR, bridging across chains while the institution stayed silent, allowing over $30 million to be laundered. Separately, Brazil's Mercado Bitcoin confirmed a cyberattack affecting $38 million, which they contained without customer losses and with over $11 million frozen through partnerships. The back-to-back breaches spotlight vulnerabilities in custody and cross-chain tracing.",
-      "published_at": "2026-11-04T13:56:49+08:00",
-      "url": "https://x.com/i/trending/2117240097997484033",
-      "tags": [
-        "Cryptocurrency"
-      ],
       "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
       "source": "x_search_news"
@@ -132,21 +318,6 @@
         "Cryptocurrency"
       ],
       "why_it_matters": "RWA／代幣化股票題材持續，相關幣種可放觀察但唔追。",
-      "category": "News",
-      "source": "x_search_news"
-    },
-    {
-      "id": "2117774846369132635",
-      "title": "Bitcoin Swings Wildly Amid U.S. Midterm Election Uncertainty",
-      "title_en": "Bitcoin Swings Wildly Amid U.S. Midterm Election Uncertainty",
-      "summary": "Bitcoin traded near $77,500 as voting started on November 3, then dipped under $76,000 on November 4 amid reports of expected Democratic gains in Congress and worries over crypto rules. Heavy ETF outflows and a Binance security issue added pressure, though the price later reclaimed ground above $78,000. Optimists pointed to history: Bitcoin has risen 23% to 93% in the 12 months after every U.S. midterm since 2010, even after initial corrections of 20-50%. Traders eyed support at $76,000 and resistance above $78,000, with some targeting $95,000-$100,000 on recovery.",
-      "summary_en": "Bitcoin traded near $77,500 as voting started on November 3, then dipped under $76,000 on November 4 amid reports of expected Democratic gains in Congress and worries over crypto rules. Heavy ETF outflows and a Binance security issue added pressure, though the price later reclaimed ground above $78,000. Optimists pointed to history: Bitcoin has risen 23% to 93% in the 12 months after every U.S. midterm since 2010, even after initial corrections of 20-50%. Traders eyed support at $76,000 and resistance above $78,000, with some targeting $95,000-$100,000 on recovery.",
-      "published_at": "2026-11-04T11:47:24+08:00",
-      "url": "https://x.com/i/trending/2117774846369132635",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "監管clarification 影響 DeFi／上幣預期，只作背景唔係訊號。",
       "category": "News",
       "source": "x_search_news"
     },
@@ -206,22 +377,6 @@
       ],
       "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
-      "source": "x_search_news"
-    },
-    {
-      "id": "2117637468845752581",
-      "title": "New Collectors Join Bored Ape Yacht Club Amid Active Sales",
-      "title_en": "New Collectors Join Bored Ape Yacht Club Amid Active Sales",
-      "summary": "Several collectors have picked up their first Bored Apes or upgraded to rarer ones, with sales from machibigbrother.eth around 6 ETH near the 5.7–6 ETH floor price. Buyers like Kek0x celebrated snagging a 'Deathbot' grail, while the community shares congrats and profile updates. The buzz ties into Yuga Labs’ Mudwater trading card game on Solana, where each Ape holder gets free packs claimable into early 2027, drawing in new and returning members focused on the club's global vibe and events.",
-      "summary_en": "Several collectors have picked up their first Bored Apes or upgraded to rarer ones, with sales from machibigbrother.eth around 6 ETH near the 5.7–6 ETH floor price. Buyers like Kek0x celebrated snagging a 'Deathbot' grail, while the community shares congrats and profile updates. The buzz ties into Yuga Labs’ Mudwater trading card game on Solana, where each Ape holder gets free packs claimable into early 2027, drawing in new and returning members focused on the club's global vibe and events.",
-      "published_at": "2026-11-04T09:27:54+08:00",
-      "url": "https://x.com/i/trending/2117637468845752581",
-      "tags": [
-        "eth",
-        "sol"
-      ],
-      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
-      "category": "Other",
       "source": "x_search_news"
     },
     {
@@ -558,21 +713,6 @@
       ],
       "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
-      "source": "x_search_news"
-    },
-    {
-      "id": "2117761961026892004",
-      "title": "Base Blockchain Sees 25 Key Launches in October Stablecoin Push",
-      "title_en": "Base Blockchain Sees 25 Key Launches in October Stablecoin Push",
-      "summary": "Base highlighted integrations like Mastercard's Agent Pay for Machines with Cloudflare, letting AI agents pay for services using USDC on the x402 protocol. Shopify and Coinbase rolled out the Commerce Payments Protocol, enabling merchants to accept USDC without gas fees and settle in local currency, already handling over $42 million in payments. Other moves included Ripple's RLUSD liquidity, tokenized stocks on Pendle and Aave, and tools from Marqeta and Yuno, showing Base bridging crypto with real-world commerce for merchants, users, and machines.",
-      "summary_en": "Base highlighted integrations like Mastercard's Agent Pay for Machines with Cloudflare, letting AI agents pay for services using USDC on the x402 protocol. Shopify and Coinbase rolled out the Commerce Payments Protocol, enabling merchants to accept USDC without gas fees and settle in local currency, already handling over $42 million in payments. Other moves included Ripple's RLUSD liquidity, tokenized stocks on Pendle and Aave, and tools from Marqeta and Yuno, showing Base bridging crypto with real-world commerce for merchants, users, and machines.",
-      "published_at": "2026-11-03T23:39:56.000Z",
-      "url": "https://x.com/i/trending/2117761961026892004",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "交易所／資產化快訊；模擬倉情緒背景。",
-      "category": "News",
       "source": "x_search_news"
     },
     {
@@ -925,22 +1065,6 @@
       ],
       "url": "https://x.com/i/trending/2117614474551341534",
       "why_it_matters": "大盤／BTC 情緒同資金流，影響急升板風險偏好同弱市半倉規則。"
-    },
-    {
-      "id": "2117256456437432427",
-      "title": "Rome Protocol Lets Solidity Code Run Natively on Solana",
-      "title_en": "Rome Protocol Lets Solidity Code Run Natively on Solana",
-      "summary": "Rome Protocol embeds a full EVM bytecode interpreter as a native Solana program, allowing Solidity contracts to deploy and execute directly on Solana's runtime. Solana wallets like Phantom derive synthetic EVM addresses, while MetaMask users sign standard transactions, letting both access the same contracts and state without bridges or mirrored data. Early testnet deployments of Compound v3 and Aave v3 show EVM and Solana users interacting in shared lending markets and DEX pools. Open-source tools and SDKs help teams preserve their Hardhat or Foundry workflows while reaching Solana's DeFi liquidity through atomic transactions.",
-      "summary_en": "Rome Protocol embeds a full EVM bytecode interpreter as a native Solana program, allowing Solidity contracts to deploy and execute directly on Solana's runtime. Solana wallets like Phantom derive synthetic EVM addresses, while MetaMask users sign standard transactions, letting both access the same contracts and state without bridges or mirrored data. Early testnet deployments of Compound v3 and Aave v3 show EVM and Solana users interacting in shared lending markets and DEX pools. Open-source tools and SDKs help teams preserve their Hardhat or Foundry workflows while reaching Solana's DeFi liquidity through atomic transactions.",
-      "published_at": "2026-11-03T13:53:28.000Z",
-      "url": "https://x.com/i/trending/2117256456437432427",
-      "tags": [
-        "Technology",
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "SOL 生態同行情會影響 meme／細幣流動同急升板節奏。",
-      "category": "Other",
-      "source": "X News"
     },
     {
       "id": "2117516031472353405",
@@ -2135,21 +2259,6 @@
       "source": "X News"
     },
     {
-      "id": "2117079499435298925",
-      "title": "Pump.fun Faces Backlash Over Quick Memecoin Pump and Dumps",
-      "title_en": "Pump.fun Faces Backlash Over Quick Memecoin Pump and Dumps",
-      "summary": "Influencers called the low-float coin early, but critics like Dtrain22 accused paid callers of quick exits that hurt everyday users, especially new ones entering late. Chairman_DN defended the trades as standard day trading, noting followers profited until the reversal and he held through the surge. Amid Pump.fun's push to scale with rewards, new chains, and incentives—after generating over $1 billion in fees since January 2024—debate centers on whether the system builds lasting trust or just short hype cycles.",
-      "summary_en": "Influencers called the low-float coin early, but critics like Dtrain22 accused paid callers of quick exits that hurt everyday users, especially new ones entering late. Chairman_DN defended the trades as standard day trading, noting followers profited until the reversal and he held through the surge. Amid Pump.fun's push to scale with rewards, new chains, and incentives—after generating over $1 billion in fees since January 2024—debate centers on whether the system builds lasting trust or just short hype cycles.",
-      "published_at": "2026-11-02T05:29:23.000Z",
-      "url": "https://x.com/i/trending/2117079499435298925",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
       "id": "2116434834285564293",
       "title": "Crypto Users Test Activity-Based Meme Token Launches",
       "title_en": "Crypto Users Test Activity-Based Meme Token Launches",
@@ -2897,6 +3006,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-04T16:09:56+08:00",
+  "x_fetched_at": "2026-11-04T17:14:06+08:00",
   "x_job": "hourly-update"
 }
