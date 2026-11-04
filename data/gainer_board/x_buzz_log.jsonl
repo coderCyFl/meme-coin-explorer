@@ -350,3 +350,17 @@
 {"ts": "2026-11-04T10:20:02+08:00", "symbol": "MEGAUSDT", "tool": "search", "query": "($MEGA OR #MEGA) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
 {"ts": "2026-11-04T11:14:00+08:00", "symbol": "INJUSDT", "tool": "counts", "query": "($INJ OR #INJ) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
 {"ts": "2026-11-04T11:14:00+08:00", "symbol": "INJUSDT", "tool": "search", "query": "($INJ OR #INJ) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
+{"ts": "2026-11-04T12:12:22+08:00", "symbol": "AEROUSDT", "tool": "counts", "query": "($AERO OR #AERO) (crypto OR binance) lang:en -is:retweet", "result_count": 14}
+{"ts": "2026-11-04T12:12:22+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 2}
+{"ts": "2026-11-04T12:12:23+08:00", "symbol": "ASTERUSDT", "tool": "counts", "query": "($ASTER OR #ASTER) lang:en -is:retweet", "result_count": 837}
+{"ts": "2026-11-04T12:12:23+08:00", "symbol": "BTCUSDT", "tool": "counts", "query": "($BTC OR #BTC) (crypto OR binance) lang:en -is:retweet", "result_count": 1342}
+{"ts": "2026-11-04T12:12:23+08:00", "symbol": "TAOUSDT", "tool": "counts", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 19}
+{"ts": "2026-11-04T12:12:24+08:00", "symbol": "SUIUSDT", "tool": "counts", "query": "($SUI OR #SUI) (crypto OR binance) lang:en -is:retweet", "result_count": 28}
+{"ts": "2026-11-04T12:12:24+08:00", "symbol": "BMTUSDT", "tool": "counts", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 30}
+{"ts": "2026-11-04T12:12:40+08:00", "symbol": "AEROUSDT", "tool": "search", "query": "($AERO OR #AERO) (crypto OR binance) lang:en -is:retweet", "result_count": 3}
+{"ts": "2026-11-04T12:12:40+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-11-04T12:12:41+08:00", "symbol": "ASTERUSDT", "tool": "search", "query": "($ASTER OR #ASTER) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-04T12:12:42+08:00", "symbol": "BTCUSDT", "tool": "search", "query": "($BTC OR #BTC) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-04T12:12:43+08:00", "symbol": "TAOUSDT", "tool": "search", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 8}
+{"ts": "2026-11-04T12:12:44+08:00", "symbol": "SUIUSDT", "tool": "search", "query": "($SUI OR #SUI) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
+{"ts": "2026-11-04T12:12:50+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
