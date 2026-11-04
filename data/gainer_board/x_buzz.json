@@ -374,86 +374,86 @@
    "symbol": "BMTUSDT",
    "base": "BMT",
    "flag": "pump",
-   "trigger_at": "2026-11-04T08:12:08+08:00",
-   "checked_at": "2026-11-04T12:13:37+08:00",
-   "posts_last_1h": 5,
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 11,
    "posts_prev_6h_avg_per_h": 3.83,
-   "spike_ratio": 1.31,
-   "verdict": "冷",
-   "one_line": "量穩兼訊號bot多",
+   "spike_ratio": 2.87,
+   "verdict": "升溫",
+   "one_line": "量升但訊號bot多",
    "shill_flag": true,
    "big_accounts": 1,
    "top_posts": [
     {
+     "id": "2117867563208306789",
+     "url": "https://x.com/Blynexex/status/2117867563208306789",
+     "text": "#BLYNEXEX Market Snapshot | 04.11.2026 🚀 Top Gainers 📈 $BMT +30.87% $USELESS +15.61% $ZEC +12.21%",
+     "likes": 7,
+     "author_username": "Blynexex",
+     "author_followers": 4732,
+     "created_at": "2026-11-04T14:32:29+08:00"
+    },
+    {
      "id": "2117829683379372416",
      "url": "https://x.com/KuCoin_Web3/status/2117829683379372416",
-     "text": "#Crypto Market Snapshot (24h) - Binance revealed hack details after replenishing 98% of stolen funds. - HoloFuel network launched, pushing …",
-     "likes": 2,
+     "text": "#Crypto Market Snapshot (24h) Top 5 Gainers 1️⃣ $CLANKER 2️⃣ $PYBOBO 3️⃣ $BMT 4️⃣ $IDOL 5️⃣ $ICNT",
+     "likes": 3,
      "author_username": "KuCoin_Web3",
-     "author_followers": 137709,
+     "author_followers": 137721,
      "created_at": "2026-11-04T12:01:58+08:00"
     },
     {
-     "id": "2117828133210714190",
-     "url": "https://x.com/Hunt029/status/2117828133210714190",
-     "text": "$BMT i wrote abt this token on oct 25. back then, my concern was simple the price was moving, but no confirmed fundamental catalyst. but no…",
-     "likes": 2,
-     "author_username": "Hunt029",
-     "author_followers": 382,
-     "created_at": "2026-11-04T11:55:48+08:00"
-    },
-    {
-     "id": "2117783734267392004",
-     "url": "https://x.com/CryptoBigStarSG/status/2117783734267392004",
-     "text": "#BMTUSDT Entry: 0.0247 Target 1: 0.0254 Target 2: 0.0261 Target 3: 0.0282 Target 4: 0.0316 Stop loss 1: 0.0233 Stop loss 2: 0.0192 #BMT #Cr…",
+     "id": "2117866766332256566",
+     "url": "https://x.com/CR_2030/status/2117866766332256566",
+     "text": "$BMT Complete 💯 44%🔥🔥 Crypto Risk Sniper Bot",
      "likes": 1,
-     "author_username": "CryptoBigStarSG",
-     "author_followers": 3462,
-     "created_at": "2026-11-04T08:59:23+08:00"
+     "author_username": "CR_2030",
+     "author_followers": 1545,
+     "created_at": "2026-11-04T14:29:19+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "RUNEUSDT": {
    "symbol": "RUNEUSDT",
    "base": "RUNE",
    "flag": "pump",
-   "trigger_at": "2026-11-04T01:30:00+08:00",
-   "checked_at": "2026-11-04T04:19:30+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 25.17,
-   "spike_ratio": 0.2,
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 4.83,
+   "spike_ratio": 0.62,
    "verdict": "冷",
-   "one_line": "量跌兼推廣卡多",
+   "one_line": "量低夾假陽性",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117708216142332089",
-     "url": "https://x.com/AlphaWireHQ/status/2117708216142332089",
-     "text": "Crypto movers today Winners $LIT +11% $ZRO +8% $RUNE +15% Losers $AKE -30% $BEAM -11%. BTC holding near $77.5k.",
-     "likes": 4,
-     "author_username": "AlphaWireHQ",
-     "author_followers": 23109,
-     "created_at": "2026-11-04T03:59:18+08:00"
+     "id": "2117855641129890297",
+     "url": "https://x.com/CryptoPulseXgl/status/2117855641129890297",
+     "text": "🟢 $RUNE +15% 🟢 $PUMP +8.6% 🟢 $ZEC +8.2% Meanwhile, $MNT is down 2.8%.",
+     "likes": 1,
+     "author_username": "CryptoPulseXgl",
+     "author_followers": 12697,
+     "created_at": "2026-11-04T13:45:07+08:00"
     },
     {
-     "id": "2117700659218972985",
-     "url": "https://x.com/NeuralFox17/status/2117700659218972985",
-     "text": "My agent don41.ai pledged to the North. If it mints now: a Rare Rune Priestess. Every Binance Agent ID agent gets a free hero card.",
-     "likes": 0,
-     "author_username": "NeuralFox17",
-     "author_followers": 1109,
-     "created_at": "2026-11-04T03:29:16+08:00"
+     "id": "2117835010896281915",
+     "url": "https://x.com/AltcoinReporter/status/2117835010896281915",
+     "text": "THORChain swaps are back on 11 chains. Within hours, a bitcoin address Lookonchain ties to the Binance hacker received about 66.5 BTC throu…",
+     "likes": 1,
+     "author_username": "AltcoinReporter",
+     "author_followers": 123,
+     "created_at": "2026-11-04T12:23:08+08:00"
     },
     {
-     "id": "2117711517944590699",
-     "url": "https://x.com/Jared_Noble/status/2117711517944590699",
-     "text": "After a liquidation cascade, ask: Did my thesis change, or did my nerves? Fast crypto moves can make volatility feel permanent. $RUNE $CELO…",
-     "likes": 0,
-     "author_username": "Jared_Noble",
-     "author_followers": 268,
-     "created_at": "2026-11-04T04:12:25+08:00"
+     "id": "2117827410825756844",
+     "url": "https://x.com/SmCrypto_bro/status/2117827410825756844",
+     "text": "🚀 BINANCE FUTURES GAINERS: Altcoins Are Heating Up! Another strong session for Binance-listed altcoins.",
+     "likes": 1,
+     "author_username": "SmCrypto_bro",
+     "author_followers": 5856,
+     "created_at": "2026-11-04T11:52:56+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -674,44 +674,44 @@
    "base": "UNI",
    "flag": "pump",
    "trigger_at": "2026-11-04T14:30:00+08:00",
-   "checked_at": "2026-11-04T14:21:41+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 2.83,
-   "spike_ratio": 2.12,
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 3.67,
+   "spike_ratio": 2.72,
    "verdict": "升溫",
-   "one_line": "量升有巨鯨",
+   "one_line": "量升巨鯨囤UNI",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
      "id": "2117833769935945863",
      "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
-     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 521.5K $UNI — $3.72M",
-     "likes": 17,
+     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 👀 - 521.5K $UNI — $3.72M - 915.7K $MORPHO — $1.97M - 10M $ARB — $1.56M",
+     "likes": 21,
      "author_username": "ArslanOnChain",
-     "author_followers": 5209,
+     "author_followers": 5208,
      "created_at": "2026-11-04T12:18:12+08:00"
     },
     {
      "id": "2117816609850978808",
      "url": "https://x.com/cryptoissimple/status/2117816609850978808",
-     "text": "🚀 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
-     "likes": 6,
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 9,
      "author_username": "cryptoissimple",
-     "author_followers": 6998,
+     "author_followers": 6999,
      "created_at": "2026-11-04T11:10:01+08:00"
     },
     {
-     "id": "2117820190574678220",
-     "url": "https://x.com/mik71457971/status/2117820190574678220",
-     "text": "@TheCryptoGypsy1 @SaucerSwapLabs Agreed 🤝 $SAUCE Best DEX… heads up $Uni",
-     "likes": 3,
-     "author_username": "mik71457971",
-     "author_followers": 2281,
-     "created_at": "2026-11-04T11:24:15+08:00"
+     "id": "2117826399549497708",
+     "url": "https://x.com/dr_minan/status/2117826399549497708",
+     "text": "🚨 CRYPTO WHALE MOVES $7.18 MILLION IN THREE ALTCOINS FROM BYBIT! UNI, MORPHO, AND ARB IN THE SPOTLIGHT! 🐋🔥",
+     "likes": 1,
+     "author_username": "dr_minan",
+     "author_followers": 443,
+     "created_at": "2026-11-04T11:48:55+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "SUIUSDT": {
    "symbol": "SUIUSDT",
@@ -1175,26 +1175,44 @@
    "base": "LSK",
    "flag": "pump",
    "trigger_at": "2026-11-04T12:30:00+08:00",
-   "checked_at": "2026-11-04T13:22:57+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.67,
-   "spike_ratio": 0.6,
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 2.83,
+   "spike_ratio": 3.88,
    "verdict": "冷",
-   "one_line": "量低訊號bot",
+   "one_line": "量升訊號bot洗",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
+     "id": "2117799238906392723",
+     "url": "https://x.com/PresidentNoble_/status/2117799238906392723",
+     "text": "🪦 RIP Lisk Chain (2016-2026) Lisk shut down its blockchain after ~10 years $LSK lives on as a loyalty token on Ethereum",
+     "likes": 2,
+     "author_username": "PresidentNoble_",
+     "author_followers": 345,
+     "created_at": "2026-11-04T10:01:00+08:00"
+    },
+    {
+     "id": "2117856944656441473",
+     "url": "https://x.com/Professor_mikel/status/2117856944656441473",
+     "text": "FREE CRYPTO SIGNAL 🟢 LONG #LSK/USDT 💥 Leverage: Cross 20x 📍 Entry Zone: 0.19400 – 0.19000",
+     "likes": 1,
+     "author_username": "Professor_mikel",
+     "author_followers": 403,
+     "created_at": "2026-11-04T13:50:18+08:00"
+    },
+    {
      "id": "2117845388199927891",
      "url": "https://x.com/CryptoBigStarSG/status/2117845388199927891",
-     "text": "#LSKUSDT Entry: 0.1915 Target 1: 0.1960 Target 2: 0.2005 Stop loss 1: 0.1821 ##LSKUSDT #LSK #Crypto #Trading #Signal",
+     "text": "#LSKUSDT ➡️ Entry: 0.1915 🎯 Target 1: 0.1960 ✅ 🎯 Target 2: 0.2005 ✅",
      "likes": 1,
      "author_username": "CryptoBigStarSG",
      "author_followers": 3461,
      "created_at": "2026-11-04T13:04:22+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "ONDOUSDT": {
    "symbol": "ONDOUSDT",
@@ -1227,44 +1245,44 @@
    "base": "PENGU",
    "flag": "pump",
    "trigger_at": "2026-11-04T14:30:00+08:00",
-   "checked_at": "2026-11-04T14:21:41+08:00",
-   "posts_last_1h": 29,
-   "posts_prev_6h_avg_per_h": 29.5,
-   "spike_ratio": 0.98,
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 17,
+   "posts_prev_6h_avg_per_h": 30.17,
+   "spike_ratio": 0.56,
    "verdict": "冷",
-   "one_line": "量平夾品牌雜訊",
+   "one_line": "量跌夾品牌雜訊",
    "shill_flag": false,
    "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2117848160546730377",
-     "url": "https://x.com/INTERRO/status/2117848160546730377",
-     "text": "@Pengu If setting my alarm is PENTA then call me Evil Geniuses because I always lose",
-     "likes": 16,
-     "author_username": "INTERRO",
-     "author_followers": 127872,
-     "created_at": "2026-11-04T13:15:23+08:00"
+     "id": "2117866938856542420",
+     "url": "https://x.com/CryptoRohit07/status/2117866938856542420",
+     "text": "👀 Some Projects Never Disappointed CT | 2024–26 Airdrop List 🪂 • Pudgy Penguins $PENGU",
+     "likes": 8,
+     "author_username": "CryptoRohit07",
+     "author_followers": 5560,
+     "created_at": "2026-11-04T14:30:00+08:00"
     },
     {
-     "id": "2117851189811568704",
-     "url": "https://x.com/iamkadense/status/2117851189811568704",
-     "text": "Mom's basement defended and $BTC back near the downtrend line. Trade with pengu on @arcus_xyz",
-     "likes": 7,
-     "author_username": "iamkadense",
-     "author_followers": 74320,
-     "created_at": "2026-11-04T13:27:26+08:00"
+     "id": "2117863464324522301",
+     "url": "https://x.com/kekekkemm/status/2117863464324522301",
+     "text": "So many firsts this election Lets all be inspired by this and vote Pengu for oomf off",
+     "likes": 8,
+     "author_username": "kekekkemm",
+     "author_followers": 187,
+     "created_at": "2026-11-04T14:16:12+08:00"
     },
     {
-     "id": "2117855668216484277",
-     "url": "https://x.com/timoassi/status/2117855668216484277",
-     "text": "Happy Wednesday all! If you missed the past 24 hours in crypto and stocks, here's your full recap",
-     "likes": 6,
-     "author_username": "timoassi",
-     "author_followers": 15834,
-     "created_at": "2026-11-04T13:45:13+08:00"
+     "id": "2117868540372062543",
+     "url": "https://x.com/Jampzey/status/2117868540372062543",
+     "text": "@MtroX207 my lil beautiful pengu",
+     "likes": 0,
+     "author_username": "Jampzey",
+     "author_followers": 115349,
+     "created_at": "2026-11-04T14:36:22+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "ARBUSDT": {
    "symbol": "ARBUSDT",
@@ -1429,6 +1447,85 @@
      "author_username": "ZyntoMarkets",
      "author_followers": 0,
      "created_at": "2026-11-04T12:03:43+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "TIAUSDT": {
+   "symbol": "TIAUSDT",
+   "base": "TIA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 0.0,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "幾乎無討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117865660856344595",
+     "url": "https://x.com/cryptoissimple/status/2117865660856344595",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback?",
+     "likes": 1,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T14:24:56+08:00"
+    },
+    {
+     "id": "2117863959688585490",
+     "url": "https://x.com/MarketSentinelX/status/2117863959688585490",
+     "text": "📈 Market trends — Nov 04, 2026 🔄 Uncertain trend change: TIA 0.4492 → bullish (D1/7)",
+     "likes": 0,
+     "author_username": "MarketSentinelX",
+     "author_followers": 7,
+     "created_at": "2026-11-04T14:18:10+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "HBARUSDT": {
+   "symbol": "HBARUSDT",
+   "base": "HBAR",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 4.5,
+   "spike_ratio": 0.89,
+   "verdict": "冷",
+   "one_line": "量平有實盤討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117855326842343510",
+     "url": "https://x.com/Bmendo_X/status/2117855326842343510",
+     "text": "With Democrats taking control of the House and Senate, Hedera $HBAR is one of the few crypto projects that actually showed up for climate a…",
+     "likes": 22,
+     "author_username": "Bmendo_X",
+     "author_followers": 3969,
+     "created_at": "2026-11-04T13:43:52+08:00"
+    },
+    {
+     "id": "2117872313152782722",
+     "url": "https://x.com/noBScrypto/status/2117872313152782722",
+     "text": "🏦DTCC is tokenizing ~$30T in RWAs at launch Here's the projects DTCC's partnered with: $HBAR: $0.67",
+     "likes": 20,
+     "author_username": "noBScrypto",
+     "author_followers": 45185,
+     "created_at": "2026-11-04T14:51:22+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 9,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T11:10:01+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -4929,15 +5026,307 @@
      "created_at": "2026-11-04T12:03:43+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 2.87,
+   "verdict": "升溫",
+   "one_line": "量升但訊號bot多",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117867563208306789",
+     "url": "https://x.com/Blynexex/status/2117867563208306789",
+     "text": "#BLYNEXEX Market Snapshot | 04.11.2026 🚀 Top Gainers 📈 $BMT +30.87% $USELESS +15.61% $ZEC +12.21%",
+     "likes": 7,
+     "author_username": "Blynexex",
+     "author_followers": 4732,
+     "created_at": "2026-11-04T14:32:29+08:00"
+    },
+    {
+     "id": "2117829683379372416",
+     "url": "https://x.com/KuCoin_Web3/status/2117829683379372416",
+     "text": "#Crypto Market Snapshot (24h) Top 5 Gainers 1️⃣ $CLANKER 2️⃣ $PYBOBO 3️⃣ $BMT 4️⃣ $IDOL 5️⃣ $ICNT",
+     "likes": 3,
+     "author_username": "KuCoin_Web3",
+     "author_followers": 137721,
+     "created_at": "2026-11-04T12:01:58+08:00"
+    },
+    {
+     "id": "2117866766332256566",
+     "url": "https://x.com/CR_2030/status/2117866766332256566",
+     "text": "$BMT Complete 💯 44%🔥🔥 Crypto Risk Sniper Bot",
+     "likes": 1,
+     "author_username": "CR_2030",
+     "author_followers": 1545,
+     "created_at": "2026-11-04T14:29:19+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "RUNEUSDT",
+   "base": "RUNE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 4.83,
+   "spike_ratio": 0.62,
+   "verdict": "冷",
+   "one_line": "量低夾假陽性",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117855641129890297",
+     "url": "https://x.com/CryptoPulseXgl/status/2117855641129890297",
+     "text": "🟢 $RUNE +15% 🟢 $PUMP +8.6% 🟢 $ZEC +8.2% Meanwhile, $MNT is down 2.8%.",
+     "likes": 1,
+     "author_username": "CryptoPulseXgl",
+     "author_followers": 12697,
+     "created_at": "2026-11-04T13:45:07+08:00"
+    },
+    {
+     "id": "2117835010896281915",
+     "url": "https://x.com/AltcoinReporter/status/2117835010896281915",
+     "text": "THORChain swaps are back on 11 chains. Within hours, a bitcoin address Lookonchain ties to the Binance hacker received about 66.5 BTC throu…",
+     "likes": 1,
+     "author_username": "AltcoinReporter",
+     "author_followers": 123,
+     "created_at": "2026-11-04T12:23:08+08:00"
+    },
+    {
+     "id": "2117827410825756844",
+     "url": "https://x.com/SmCrypto_bro/status/2117827410825756844",
+     "text": "🚀 BINANCE FUTURES GAINERS: Altcoins Are Heating Up! Another strong session for Binance-listed altcoins.",
+     "likes": 1,
+     "author_username": "SmCrypto_bro",
+     "author_followers": 5856,
+     "created_at": "2026-11-04T11:52:56+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TIAUSDT",
+   "base": "TIA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 0.0,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "幾乎無討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117865660856344595",
+     "url": "https://x.com/cryptoissimple/status/2117865660856344595",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback?",
+     "likes": 1,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T14:24:56+08:00"
+    },
+    {
+     "id": "2117863959688585490",
+     "url": "https://x.com/MarketSentinelX/status/2117863959688585490",
+     "text": "📈 Market trends — Nov 04, 2026 🔄 Uncertain trend change: TIA 0.4492 → bullish (D1/7)",
+     "likes": 0,
+     "author_username": "MarketSentinelX",
+     "author_followers": 7,
+     "created_at": "2026-11-04T14:18:10+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "HBARUSDT",
+   "base": "HBAR",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 4.5,
+   "spike_ratio": 0.89,
+   "verdict": "冷",
+   "one_line": "量平有實盤討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117855326842343510",
+     "url": "https://x.com/Bmendo_X/status/2117855326842343510",
+     "text": "With Democrats taking control of the House and Senate, Hedera $HBAR is one of the few crypto projects that actually showed up for climate a…",
+     "likes": 22,
+     "author_username": "Bmendo_X",
+     "author_followers": 3969,
+     "created_at": "2026-11-04T13:43:52+08:00"
+    },
+    {
+     "id": "2117872313152782722",
+     "url": "https://x.com/noBScrypto/status/2117872313152782722",
+     "text": "🏦DTCC is tokenizing ~$30T in RWAs at launch Here's the projects DTCC's partnered with: $HBAR: $0.67",
+     "likes": 20,
+     "author_username": "noBScrypto",
+     "author_followers": 45185,
+     "created_at": "2026-11-04T14:51:22+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 9,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PENGUUSDT",
+   "base": "PENGU",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 17,
+   "posts_prev_6h_avg_per_h": 30.17,
+   "spike_ratio": 0.56,
+   "verdict": "冷",
+   "one_line": "量跌夾品牌雜訊",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117866938856542420",
+     "url": "https://x.com/CryptoRohit07/status/2117866938856542420",
+     "text": "👀 Some Projects Never Disappointed CT | 2024–26 Airdrop List 🪂 • Pudgy Penguins $PENGU",
+     "likes": 8,
+     "author_username": "CryptoRohit07",
+     "author_followers": 5560,
+     "created_at": "2026-11-04T14:30:00+08:00"
+    },
+    {
+     "id": "2117863464324522301",
+     "url": "https://x.com/kekekkemm/status/2117863464324522301",
+     "text": "So many firsts this election Lets all be inspired by this and vote Pengu for oomf off",
+     "likes": 8,
+     "author_username": "kekekkemm",
+     "author_followers": 187,
+     "created_at": "2026-11-04T14:16:12+08:00"
+    },
+    {
+     "id": "2117868540372062543",
+     "url": "https://x.com/Jampzey/status/2117868540372062543",
+     "text": "@MtroX207 my lil beautiful pengu",
+     "likes": 0,
+     "author_username": "Jampzey",
+     "author_followers": 115349,
+     "created_at": "2026-11-04T14:36:22+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "UNIUSDT",
+   "base": "UNI",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 3.67,
+   "spike_ratio": 2.72,
+   "verdict": "升溫",
+   "one_line": "量升巨鯨囤UNI",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117833769935945863",
+     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
+     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 👀 - 521.5K $UNI — $3.72M - 915.7K $MORPHO — $1.97M - 10M $ARB — $1.56M",
+     "likes": 21,
+     "author_username": "ArslanOnChain",
+     "author_followers": 5208,
+     "created_at": "2026-11-04T12:18:12+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 9,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117826399549497708",
+     "url": "https://x.com/dr_minan/status/2117826399549497708",
+     "text": "🚨 CRYPTO WHALE MOVES $7.18 MILLION IN THREE ALTCOINS FROM BYBIT! UNI, MORPHO, AND ARB IN THE SPOTLIGHT! 🐋🔥",
+     "likes": 1,
+     "author_username": "dr_minan",
+     "author_followers": 443,
+     "created_at": "2026-11-04T11:48:55+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T12:30:00+08:00",
+   "checked_at": "2026-11-04T15:11:30+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 2.83,
+   "spike_ratio": 3.88,
+   "verdict": "冷",
+   "one_line": "量升訊號bot洗",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117799238906392723",
+     "url": "https://x.com/PresidentNoble_/status/2117799238906392723",
+     "text": "🪦 RIP Lisk Chain (2016-2026) Lisk shut down its blockchain after ~10 years $LSK lives on as a loyalty token on Ethereum",
+     "likes": 2,
+     "author_username": "PresidentNoble_",
+     "author_followers": 345,
+     "created_at": "2026-11-04T10:01:00+08:00"
+    },
+    {
+     "id": "2117856944656441473",
+     "url": "https://x.com/Professor_mikel/status/2117856944656441473",
+     "text": "FREE CRYPTO SIGNAL 🟢 LONG #LSK/USDT 💥 Leverage: Cross 20x 📍 Entry Zone: 0.19400 – 0.19000",
+     "likes": 1,
+     "author_username": "Professor_mikel",
+     "author_followers": 403,
+     "created_at": "2026-11-04T13:50:18+08:00"
+    },
+    {
+     "id": "2117845388199927891",
+     "url": "https://x.com/CryptoBigStarSG/status/2117845388199927891",
+     "text": "#LSKUSDT ➡️ Entry: 0.1915 🎯 Target 1: 0.1960 ✅ 🎯 Target 2: 0.2005 ✅",
+     "likes": 1,
+     "author_username": "CryptoBigStarSG",
+     "author_followers": 3461,
+     "created_at": "2026-11-04T13:04:22+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 81,
+  "calls_today": 97,
   "cap_reached": false,
-  "updated_at": "2026-11-04T14:21:41+08:00"
+  "updated_at": "2026-11-04T15:13:06+08:00"
  },
- "updated_at": "2026-11-04T14:21:41+08:00",
+ "updated_at": "2026-11-04T15:13:06+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
