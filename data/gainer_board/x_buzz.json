@@ -568,45 +568,36 @@
    "symbol": "INJUSDT",
    "base": "INJ",
    "flag": "pump",
-   "trigger_at": "2026-11-03T21:30:00+08:00",
-   "checked_at": "2026-11-03T23:16:13+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 4.83,
-   "spike_ratio": 0.62,
+   "trigger_at": "2026-11-04T11:15:00+08:00",
+   "checked_at": "2026-11-04T11:14:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.6,
    "verdict": "冷",
-   "one_line": "討論平淡偏少",
+   "one_line": "量極低無熱度",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117559613289529458",
-     "url": "https://x.com/linnyluv4/status/2117559613289529458",
-     "text": "Injective closer to TradFi — Canary Capital INJ Staked ETF",
-     "likes": 66,
-     "author_username": "linnyluv4",
-     "author_followers": 6277,
-     "created_at": "2026-11-03T18:08:48+08:00"
-    },
-    {
-     "id": "2117564947899257171",
-     "url": "https://x.com/InvestwithDoc/status/2117564947899257171",
-     "text": "Best AI Crypto list includes $INJ Injective",
-     "likes": 9,
-     "author_username": "InvestwithDoc",
-     "author_followers": 9345,
-     "created_at": "2026-11-03T18:30:00+08:00"
-    },
-    {
-     "id": "2117544838266798474",
-     "url": "https://x.com/puchhu337/status/2117544838266798474",
-     "text": "3X moves loading — $INJ among alts in fearful pullback",
+     "id": "2117795525319602329",
+     "url": "https://x.com/Great_Ikay/status/2117795525319602329",
+     "text": "The CFTC has opened the door for perpetual futures on individual US stocks for the first time. This is another big step for regulated crypt…",
      "likes": 5,
-     "author_username": "puchhu337",
-     "author_followers": 12874,
-     "created_at": "2026-11-03T17:10:06+08:00"
+     "author_username": "Great_Ikay",
+     "author_followers": 2971,
+     "created_at": "2026-11-04T09:46:14+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS — includes $INJ among 20 more coins to watch",
+     "likes": 0,
+     "author_username": "cryptoissimple",
+     "author_followers": 7000,
+     "created_at": "2026-11-04T11:10:01+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "WLFIUSDT": {
    "symbol": "WLFIUSDT",
@@ -3895,15 +3886,49 @@
      "created_at": "2026-11-04T08:46:55+08:00"
     }
    ]
+  },
+  {
+   "symbol": "INJUSDT",
+   "base": "INJ",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T11:15:00+08:00",
+   "checked_at": "2026-11-04T11:14:00+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.6,
+   "verdict": "冷",
+   "one_line": "量極低無熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117795525319602329",
+     "url": "https://x.com/Great_Ikay/status/2117795525319602329",
+     "text": "The CFTC has opened the door for perpetual futures on individual US stocks for the first time. This is another big step for regulated crypt…",
+     "likes": 5,
+     "author_username": "Great_Ikay",
+     "author_followers": 2971,
+     "created_at": "2026-11-04T09:46:14+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS — includes $INJ among 20 more coins to watch",
+     "likes": 0,
+     "author_username": "cryptoissimple",
+     "author_followers": 7000,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 41,
+  "calls_today": 43,
   "cap_reached": false,
-  "updated_at": "2026-11-04T10:20:02+08:00"
+  "updated_at": "2026-11-04T11:14:32+08:00"
  },
- "updated_at": "2026-11-04T10:20:02+08:00",
+ "updated_at": "2026-11-04T11:14:32+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
