@@ -26,6 +26,7 @@
       "auth.err.taken": "Username taken",
       "auth.err.wrong": "Wrong username or password",
       "auth.err.fail": "Failed",
+      "auth.err.persist": "Could not save on this device · check storage / private mode",
       "auth.toast.out": "Signed out · local paper",
       "auth.toast.in": "Signed in",
       "auth.toast.created": "Account created",
@@ -115,6 +116,7 @@
       "auth.err.taken": "用戶名已被使用",
       "auth.err.wrong": "用戶名或密碼錯誤",
       "auth.err.fail": "失敗",
+      "auth.err.persist": "呢部機存唔到 · 檢查儲存空間／無痕模式",
       "auth.toast.out": "已登出 · 本機紙上",
       "auth.toast.in": "已登入",
       "auth.toast.created": "帳號已建立",
@@ -3054,8 +3056,20 @@
     } catch (_) {}
     return { v: 1, users: {}, session: null };
   }
+  /** Persist auth; return false if write/read-back fails (private mode / quota). Never silent. */
   function authSave(a) {
-    try { localStorage.setItem(AUTH_KEY, JSON.stringify(a)); } catch (_) {}
+    try {
+      const raw = JSON.stringify(a);
+      localStorage.setItem(AUTH_KEY, raw);
+      const back = localStorage.getItem(AUTH_KEY);
+      if (back !== raw) return false;
+      const parsed = JSON.parse(back);
+      if (!parsed || parsed.v !== 1 || !parsed.users || typeof parsed.users !== "object") return false;
+      if (a.session && !parsed.users[a.session]) return false;
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
   let _auth = authLoad();
   function authUser() {
@@ -4858,7 +4872,14 @@
     } catch (_) {}
     _auth.users[u] = { hash: mockHash(u, p), created: new Date().toISOString() };
     _auth.session = u;
-    authSave(_auth);
+    if (!authSave(_auth)) {
+      delete _auth.users[u];
+      _auth.session = null;
+      return { ok: false, err: tr("auth.err.persist") };
+    }
+    // Round-trip proof: reload from storage before painting signed-in.
+    _auth = authLoad();
+    if (authUser() !== u) return { ok: false, err: tr("auth.err.persist") };
     pfReloadForSession();
     return { ok: true };
   }
@@ -4872,7 +4893,12 @@
     // Persist guest portfolio before switching away.
     try { pf.save(P); } catch (_) {}
     _auth.session = u;
-    authSave(_auth);
+    if (!authSave(_auth)) {
+      _auth.session = null;
+      return { ok: false, err: tr("auth.err.persist") };
+    }
+    _auth = authLoad();
+    if (authUser() !== u) return { ok: false, err: tr("auth.err.persist") };
     pfReloadForSession();
     return { ok: true };
   }
@@ -4880,7 +4906,10 @@
     try { pf.save(P); } catch (_) {}
     _auth = authLoad();
     _auth.session = null;
-    authSave(_auth);
+    if (!authSave(_auth)) {
+      // Still clear in-memory session so UI matches; next load may resurrect — surface toast.
+      toast(tr("auth.err.persist"));
+    }
     pfReloadForSession();
     toast(tr("auth.toast.out"));
   }
