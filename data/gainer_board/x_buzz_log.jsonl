@@ -420,3 +420,9 @@
 {"ts": "2026-11-04T16:12:30+08:00", "symbol": "LINKUSDT", "tool": "search", "query": "($LINK OR #LINK) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-04T16:12:30+08:00", "symbol": "TIAUSDT", "tool": "counts", "query": "($TIA OR #TIA) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
 {"ts": "2026-11-04T16:12:30+08:00", "symbol": "TIAUSDT", "tool": "search", "query": "($TIA OR #TIA) (crypto OR binance) lang:en -is:retweet", "result_count": 2}
+{"ts": "2026-11-04T17:20:35+08:00", "symbol": null, "tool": "counts", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-11-04T17:20:35+08:00", "symbol": null, "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-11-04T17:20:35+08:00", "symbol": "ASTERUSDT", "tool": "counts", "query": "($ASTER OR #ASTER) lang:en -is:retweet", "result_count": 789}
+{"ts": "2026-11-04T17:20:35+08:00", "symbol": "ASTERUSDT", "tool": "search", "query": "($ASTER OR #ASTER) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-04T17:20:35+08:00", "symbol": "TAOUSDT", "tool": "counts", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-04T17:20:35+08:00", "symbol": "TAOUSDT", "tool": "search", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 10}

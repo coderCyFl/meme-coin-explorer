@@ -330,42 +330,42 @@
    "symbol": "ASTERUSDT",
    "base": "ASTER",
    "flag": "pump",
-   "trigger_at": "2026-11-04T12:15:00+08:00",
-   "checked_at": "2026-11-04T12:13:37+08:00",
-   "posts_last_1h": 136,
-   "posts_prev_6h_avg_per_h": 109.33,
-   "spike_ratio": 1.24,
+   "trigger_at": "2026-11-04T17:30:00+08:00",
+   "checked_at": "2026-11-04T17:20:35+08:00",
+   "posts_last_1h": 76,
+   "posts_prev_6h_avg_per_h": 114.33,
+   "spike_ratio": 0.66,
    "verdict": "冷",
-   "one_line": "量穩但雜訊多",
-   "shill_flag": false,
+   "one_line": "量高但降夾喊單",
+   "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117805904242348319",
-     "url": "https://x.com/Sara_hweb3/status/2117805904242348319",
-     "text": "$ASTER is roaring...",
-     "likes": 2,
-     "author_username": "Sara_hweb3",
-     "author_followers": 7529,
-     "created_at": "2026-11-04T10:27:29+08:00"
+     "id": "2117889599070478804",
+     "url": "https://x.com/CrpBase/status/2117889599070478804",
+     "text": "📢 Token unlocks land in the Pulse feed A token unlock is the day tokens that were locked for the team, investors or a treasury become free …",
+     "likes": 6,
+     "author_username": "CrpBase",
+     "author_followers": 1167,
+     "created_at": "2026-11-04T16:00:03+08:00"
     },
     {
-     "id": "2117782349882802282",
-     "url": "https://x.com/HakResearch/status/2117782349882802282",
-     "text": "@andyyy Why not $ASTER?",
+     "id": "2117859389080047778",
+     "url": "https://x.com/BSCNdecoded/status/2117859389080047778",
+     "text": "Perpetual trading, fully onchain, with no expiry date. That's the big pitch behind Aster. Here's how @Aster_DEX handles margin, liquidation…",
      "likes": 1,
-     "author_username": "HakResearch",
-     "author_followers": 49276,
-     "created_at": "2026-11-04T08:53:53+08:00"
+     "author_username": "BSCNdecoded",
+     "author_followers": 56573,
+     "created_at": "2026-11-04T14:00:00+08:00"
     },
     {
-     "id": "2117827399807091157",
-     "url": "https://x.com/Vx_nior/status/2117827399807091157",
-     "text": "I clearly see accumulation here; this project is heavily focused on perpetuals and features tokens with great potential—CZ is involved as w…",
+     "id": "2117845900596785429",
+     "url": "https://x.com/glieseio/status/2117845900596785429",
+     "text": "🔴 Aster · BNB Smart Chain Aster Timelock (Deposit Bridge) changed its minimum delay. • Delay: 6h → 1d",
      "likes": 1,
-     "author_username": "Vx_nior",
-     "author_followers": 519,
-     "created_at": "2026-11-04T11:52:54+08:00"
+     "author_username": "glieseio",
+     "author_followers": 20,
+     "created_at": "2026-11-04T13:06:25+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1131,12 +1131,12 @@
    "base": "TAO",
    "flag": "pump",
    "trigger_at": "2026-11-04T16:15:00+08:00",
-   "checked_at": "2026-11-04T16:12:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 2.33,
-   "spike_ratio": 0.86,
+   "checked_at": "2026-11-04T17:20:35+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 1.5,
    "verdict": "冷",
-   "one_line": "量穩討論平淡",
+   "one_line": "討論淡夾名單",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
@@ -1144,7 +1144,7 @@
      "id": "2117844287287406810",
      "url": "https://x.com/CadeONeill/status/2117844287287406810",
      "text": "ALTCOINs are falling, which AI crypto are you buying? 👀 • $TAO Bittensor - $222 • $INJ Injective - $7.18 • $ICP Internet Computer - $1.48 •…",
-     "likes": 16,
+     "likes": 17,
      "author_username": "CadeONeill",
      "author_followers": 7061,
      "created_at": "2026-11-04T13:00:00+08:00"
@@ -1153,22 +1153,22 @@
      "id": "2117816609850978808",
      "url": "https://x.com/cryptoissimple/status/2117816609850978808",
      "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS 👀 🚀 MAJOR CRYPTO PRICE TARGETS ₿ $BTC — $92,000 Ξ $ETH — $3,067 🟡 …",
-     "likes": 10,
+     "likes": 12,
      "author_username": "cryptoissimple",
-     "author_followers": 6999,
+     "author_followers": 6998,
      "created_at": "2026-11-04T11:10:01+08:00"
     },
     {
      "id": "2117836737195995183",
      "url": "https://x.com/InvestwithDoc/status/2117836737195995183",
      "text": "Which Crypto Can Flip $XRP? ‣ hedera-hashgraph:native ‣ $QNT ‣ $TAO ‣ $NEAR ‣ $KAS ‣ $ADA ‣ binancecoin:native ‣ solana:So11111111111111111…",
-     "likes": 9,
+     "likes": 10,
      "author_username": "InvestwithDoc",
-     "author_followers": 9362,
+     "author_followers": 9361,
      "created_at": "2026-11-04T12:30:00+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "LSKUSDT": {
    "symbol": "LSKUSDT",
@@ -5786,15 +5786,101 @@
      "created_at": "2026-11-04T14:18:10+08:00"
     }
    ]
+  },
+  {
+   "symbol": "ASTERUSDT",
+   "base": "ASTER",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T17:30:00+08:00",
+   "checked_at": "2026-11-04T17:20:35+08:00",
+   "posts_last_1h": 76,
+   "posts_prev_6h_avg_per_h": 114.33,
+   "spike_ratio": 0.66,
+   "verdict": "冷",
+   "one_line": "量高但降夾喊單",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117889599070478804",
+     "url": "https://x.com/CrpBase/status/2117889599070478804",
+     "text": "📢 Token unlocks land in the Pulse feed A token unlock is the day tokens that were locked for the team, investors or a treasury become free …",
+     "likes": 6,
+     "author_username": "CrpBase",
+     "author_followers": 1167,
+     "created_at": "2026-11-04T16:00:03+08:00"
+    },
+    {
+     "id": "2117859389080047778",
+     "url": "https://x.com/BSCNdecoded/status/2117859389080047778",
+     "text": "Perpetual trading, fully onchain, with no expiry date. That's the big pitch behind Aster. Here's how @Aster_DEX handles margin, liquidation…",
+     "likes": 1,
+     "author_username": "BSCNdecoded",
+     "author_followers": 56573,
+     "created_at": "2026-11-04T14:00:00+08:00"
+    },
+    {
+     "id": "2117845900596785429",
+     "url": "https://x.com/glieseio/status/2117845900596785429",
+     "text": "🔴 Aster · BNB Smart Chain Aster Timelock (Deposit Bridge) changed its minimum delay. • Delay: 6h → 1d",
+     "likes": 1,
+     "author_username": "glieseio",
+     "author_followers": 20,
+     "created_at": "2026-11-04T13:06:25+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TAOUSDT",
+   "base": "TAO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T17:20:35+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 2.0,
+   "spike_ratio": 1.5,
+   "verdict": "冷",
+   "one_line": "討論淡夾名單",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117844287287406810",
+     "url": "https://x.com/CadeONeill/status/2117844287287406810",
+     "text": "ALTCOINs are falling, which AI crypto are you buying? 👀 • $TAO Bittensor - $222 • $INJ Injective - $7.18 • $ICP Internet Computer - $1.48 •…",
+     "likes": 17,
+     "author_username": "CadeONeill",
+     "author_followers": 7061,
+     "created_at": "2026-11-04T13:00:00+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS 👀 🚀 MAJOR CRYPTO PRICE TARGETS ₿ $BTC — $92,000 Ξ $ETH — $3,067 🟡 …",
+     "likes": 12,
+     "author_username": "cryptoissimple",
+     "author_followers": 6998,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117836737195995183",
+     "url": "https://x.com/InvestwithDoc/status/2117836737195995183",
+     "text": "Which Crypto Can Flip $XRP? ‣ hedera-hashgraph:native ‣ $QNT ‣ $TAO ‣ $NEAR ‣ $KAS ‣ $ADA ‣ binancecoin:native ‣ solana:So11111111111111111…",
+     "likes": 10,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9361,
+     "created_at": "2026-11-04T12:30:00+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 113,
-  "cap_reached": false,
-  "updated_at": "2026-11-04T16:13:21+08:00"
+  "calls_today": 119,
+  "cap_reached": true,
+  "updated_at": "2026-11-04T17:20:35+08:00"
  },
- "updated_at": "2026-11-04T16:13:21+08:00",
+ "updated_at": "2026-11-04T17:20:35+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
