@@ -80,7 +80,7 @@
       "hit.metanight": "{date} · early {hits}/{flagged}",
       "hit.tier": "tier {t}",
       "xnews.title": "X news scan",
-      "xnews.sub": "Coin X snapshot · parallel only · not a buy signal",
+      "xnews.sub": "Denser X scan · watch only · not Early",
       "xnews.all": "All",
       "xnews.hot": "Hot",
       "xnews.warm": "Warming",
@@ -90,6 +90,14 @@
       "xnews.view": "View posts",
       "xnews.meta": "Snapshot {when} · {n} coins · scan only (no paper open)",
       "xnews.parallel": "Parallel · shill veto on face · not Early lever",
+      "watch.title": "Watch",
+      "watch.sub": "More coins to watch · not Early · no paper",
+      "watch.chip": "Watch only",
+      "watch.empty": "No watch coins right now.",
+      "watch.meta": "{n} watch · denser face · not scored Early",
+      "watch.src.cand": "Candidate",
+      "watch.src.x": "X buzz",
+      "gainer.title": "🔥 Gainers · 🚀 Chase",
     },
     zh: {
       "auth.login": "登入",
@@ -161,7 +169,7 @@
       "hit.metanight": "{date} · 升前 {hits}/{flagged}",
       "hit.tier": "檔 {t}",
       "xnews.title": "X 新聞掃描",
-      "xnews.sub": "幣 X 快照 · 並行面 · 非買入訊號",
+      "xnews.sub": "更密 X 掃描 · 只留意 · 唔計 Early",
       "xnews.all": "全部",
       "xnews.hot": "熱",
       "xnews.warm": "升溫",
@@ -171,6 +179,14 @@
       "xnews.view": "睇帖",
       "xnews.meta": "快照 {when} · {n} 幣 · 只掃睇（唔開紙上倉）",
       "xnews.parallel": "並行 · 面標洗版 · 唔當 Early 主杆",
+      "watch.title": "留意",
+      "watch.sub": "多幾隻留意 · 唔計 Early · 唔開紙上倉",
+      "watch.chip": "只留意",
+      "watch.empty": "而家冇留意幣。",
+      "watch.meta": "{n} 隻留意 · 更密面 · 唔計 Early",
+      "watch.src.cand": "候補",
+      "watch.src.x": "X 熱度",
+      "gainer.title": "🔥 急升 · 🚀 續升",
     },
   };
   let uiLang = (localStorage.getItem(LANG_KEY) === "zh") ? "zh" : "en";
@@ -213,6 +229,7 @@
       try { renderDailyBatchTable(); } catch (_) {}
       try { if (!gbBusy) loadGainerBoard(false); } catch (_) {}
       try { renderHitReport(); } catch (_) {}
+      try { renderWatchDense(); } catch (_) {}
       try { renderXNewsScan(); } catch (_) {}
       try { renderPortfolio && renderPortfolio(false); } catch (_) {}
     }
@@ -2261,8 +2278,10 @@
       renderGainerBoard(rows, trig);
       renderEarlyList(early, trig);
       paintXChips(); // after 🔥 + ⚡ cards exist so .shill-flag nodes get painted
+      lastWatchCands = Array.isArray(res.watchCands) ? res.watchCands.slice() : [];
+      try { renderWatchDense(); } catch (_) {}
       try { considerEarlyPushTips(early); } catch (_) {}
-      gbLoadX(false).then(paintXChips).catch(() => {});
+      gbLoadX(false).then(() => { try { paintXChips(); renderWatchDense(); renderXNewsScan(); } catch (_) {} }).catch(() => {});
       gbClientSnapshot(rows, early);
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
       const watch = rows.map((r) => r.symbol).concat(early.map((e) => e.symbol));
@@ -2284,7 +2303,8 @@
     renderGainerScorecard(res);
     renderGainerCaptureStrip();
     try { renderHitReport(); } catch (_) {}
-    try { renderXNewsScan(); } catch (_) {}
+    try { renderWatchDense(); } catch (_) {}
+      try { renderXNewsScan(); } catch (_) {}
   }
 
   /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
@@ -2487,6 +2507,93 @@
     }
   }
 
+  // ---------- Watch-only denser face (Strategy OK: denser face watch-only; NOT scored Early) ----------
+  // Reuses gainer 候補 + X hot/warm already on board. Never openBuy / never early_flags / never e2 change.
+  let lastWatchCands = [];
+  function renderWatchDense() {
+    const list = $("watchDenseList");
+    const empty = $("watchDenseEmpty");
+    const meta = $("watchDenseMeta");
+    if (!list) return;
+    list.textContent = "";
+    const blocked = new Set();
+    for (const s of gbEarlyNow) blocked.add(String(s).toUpperCase());
+    for (const s of gbPumpNow) blocked.add(String(s).toUpperCase());
+    for (const s of gbChaseNow) blocked.add(String(s).toUpperCase());
+    const seen = new Set();
+    const rows = [];
+    const pushRow = (sym, base, src, extra) => {
+      const u = String(sym || "").toUpperCase();
+      if (!u || seen.has(u)) return;
+      const baseU = String(base || (u.endsWith("USDT") ? u.slice(0, -4) : u)).toUpperCase();
+      if (blocked.has(u) || blocked.has(baseU)) return;
+      seen.add(u); seen.add(baseU);
+      rows.push({ symbol: u, base: baseU, src, ...(extra || {}) });
+    };
+    for (const r of lastWatchCands || []) {
+      if (!r || !r.symbol) continue;
+      pushRow(r.symbol, r.base, "cand", { chg24: r.chg24, price: r.price, shill: false });
+    }
+    const coinsObj = (gbX.data && gbX.data.coins && typeof gbX.data.coins === "object") ? gbX.data.coins : null;
+    if (coinsObj) {
+      const xRows = [];
+      for (const [pair, c] of Object.entries(coinsObj)) {
+        if (!c || typeof c !== "object") continue;
+        if (c.verdict !== "熱" && c.verdict !== "升溫") continue;
+        xRows.push({ pair, c, t: Date.parse(c.checked_at) || 0 });
+      }
+      xRows.sort((a, b) => (a.c.verdict === "熱" ? 0 : 1) - (b.c.verdict === "熱" ? 0 : 1) || (b.t - a.t));
+      for (const r of xRows) {
+        const base = r.c.base || r.pair.replace(/USDT$/, "");
+        pushRow(r.pair, base, "x", {
+          verdict: r.c.verdict, shill: r.c.shill_flag === true, one: r.c.one_line, t: r.t, c: r.c,
+        });
+      }
+    }
+    // denser face: show up to 16 compact watch rows
+    const shown = rows.slice(0, 16);
+    if (meta) meta.textContent = tr("watch.meta", { n: shown.length });
+    if (empty) empty.hidden = shown.length > 0;
+    if (!shown.length) return;
+    for (const r of shown) {
+      const srcLab = r.src === "x" ? tr("watch.src.x") : tr("watch.src.cand");
+      const kids = [
+        el("span", { class: "nm", text: r.base }),
+        el("span", { class: "watch-dense-chip soft", text: tr("watch.chip") }),
+        el("span", { class: "tiny muted", text: srcLab }),
+      ];
+      if (r.chg24 != null && Number.isFinite(+r.chg24)) {
+        const v = +r.chg24;
+        kids.push(el("span", { class: "num " + (v >= 0 ? "pos" : "neg"), text: (v >= 0 ? "+" : "") + v.toFixed(1) + "%" }));
+      }
+      if (r.verdict) {
+        const vClass = r.verdict === "熱" ? "x-hot" : "x-warm";
+        const vLab = r.verdict === "熱" ? tr("xnews.hot") : tr("xnews.warm");
+        kids.push(el("span", { class: "xnews-verdict " + vClass, text: "X " + vLab }));
+      }
+      const sh = shillFlagEl(r.symbol);
+      if (r.shill && sh) sh.hidden = false;
+      if (sh) kids.push(sh);
+      // View-only for X rows — intentionally NO Buy / NO openBuy / NO paper.
+      if (r.src === "x" && r.c) {
+        kids.push(el("button", {
+          type: "button", class: "ghost sm",
+          text: tr("xnews.view"),
+          onclick: () => {
+            const rec = { ...r.c, _t: r.t };
+            const base = r.base;
+            const vLab = r.verdict === "熱" ? "熱" : "升溫";
+            if (window.MCE.market && window.MCE.market.openSheet) {
+              window.MCE.market.openSheet(`${base} · X ${vLab}`, [gbXSheet(rec), el("p", { class: "tiny muted xnews-note", text: tr("xnews.parallel") })]);
+            }
+          },
+        }));
+      }
+      list.append(el("div", { class: "watch-dense-row", "data-watch": r.symbol, "data-watch-src": r.src },
+        el("div", { class: "watch-dense-top" }, ...kids)));
+    }
+  }
+
   // ---------- X-news scan board (Strategy OK: parallel face + shill veto; NEVER paper opener) ----------
   let xNewsFilter = "all";
   function renderXNewsScan() {
@@ -2495,6 +2602,7 @@
     const meta = $("xNewsMeta");
     if (!list) return;
     list.textContent = "";
+    list.classList.add("xnews-dense");
     document.querySelectorAll("#xNewsFilters [data-xnf]").forEach((b) => {
       b.classList.toggle("active", b.dataset.xnf === xNewsFilter);
     });
@@ -2535,13 +2643,14 @@
       const shillEl = shillFlagEl(r.pair);
       // Show shill immediately when flag true (paintShillFlags also runs after)
       if (r.shill && shillEl) shillEl.hidden = false;
-      list.append(el("div", { class: "xnews-row", "data-xnews": r.pair },
+      list.append(el("div", { class: "xnews-row xnews-dense-row", "data-xnews": r.pair },
         el("div", { class: "xnews-top" },
           el("span", { class: "nm", text: base }),
           el("span", { class: "xnews-verdict " + vClass, text: "X " + vLab }),
+          el("span", { class: "watch-dense-chip soft", text: tr("watch.chip") }),
           shillEl,
           r.t ? el("span", { class: "tiny muted", text: shHm(r.t) }) : null),
-        el("div", { class: "xnews-one", text: String(r.c.one_line || "").slice(0, 80) || "—" }),
+        el("div", { class: "xnews-one", text: String(r.c.one_line || "").slice(0, 48) || "—" }),
         el("div", { class: "xnews-actions" },
           el("button", {
             type: "button", class: "ghost sm",
@@ -4852,6 +4961,7 @@
     setTimeout(() => { const n = $(id); if (n) n.scrollIntoView({ behavior: "smooth", block: "start" }); }, 80);
   };
   if ($("moreHitReport")) $("moreHitReport").addEventListener("click", (ev) => { ev.preventDefault(); goView("hits"); });
+  if ($("moreWatchDense")) $("moreWatchDense").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("watchDensePanel"); });
   if ($("moreXNews")) $("moreXNews").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("xNewsScanPanel"); });
   // 急升榜: own boot + rescan every 90s on ANY tab (decoupled from loadPicks / renderPicks).
   function bootGainer() {

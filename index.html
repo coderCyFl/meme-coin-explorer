@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
-<link rel="stylesheet" href="styles.css?v=20261104c">
+<link rel="stylesheet" href="styles.css?v=20261104h">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
 <link rel="icon" href="icons/icon-32.png?v=20261030g" type="image/png" sizes="32x32">
@@ -185,7 +185,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     </div>
     <div id="earlyList" class="gb-list"></div>
     <div class="panelhead gb-head">
-      <h3 class="home-title gb-tier-title gb-tier-pump">🔥 Gainers · 🚀 Chase <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
+      <h3 class="home-title gb-tier-title gb-tier-pump"><span data-i18n="gainer.title">🔥 Gainers · 🚀 Chase</span> <span class="gb-dot" id="gainerLive" aria-hidden="true"></span></h3>
       <div class="row home-tools">
         <button type="button" id="gainerInfoBtn" class="ghost sm">Info</button>
         <button type="button" id="gainerRefresh" class="ghost sm" title="Refresh" aria-label="Refresh">↻</button>
@@ -197,12 +197,26 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <div id="gainerList" class="gb-list"></div>
   </section>
 
+  <!-- Watch-only denser face: 候補 + X hot/warm not Early; never scored Early / no paper -->
+  <section class="panel watch-dense" id="watchDensePanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title" data-i18n="watch.title">Watch</h2>
+        <p class="home-sub" data-i18n="watch.sub">More coins to watch · not Early · no paper</p>
+      </div>
+      <span class="watch-dense-chip" data-i18n="watch.chip">Watch only</span>
+    </div>
+    <p class="tiny muted" id="watchDenseMeta"></p>
+    <div id="watchDenseList" class="watch-dense-list"></div>
+    <div class="empty" id="watchDenseEmpty" hidden data-i18n="watch.empty">No watch coins right now.</div>
+  </section>
+
   <!-- X-news scan: parallel face + shill veto; never opens paper -->
   <section class="panel xnews-scan" id="xNewsScanPanel" aria-live="polite">
     <div class="panelhead">
       <div>
         <h2 class="home-title" data-i18n="xnews.title">X news scan</h2>
-        <p class="home-sub" data-i18n="xnews.sub">Coin X snapshot · parallel only · not a buy signal</p>
+        <p class="home-sub" data-i18n="xnews.sub">Denser X scan · watch only · not Early</p>
       </div>
       <button type="button" id="xNewsRefresh" class="ghost sm" title="Refresh" aria-label="Refresh">↻</button>
     </div>
@@ -448,6 +462,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
       <button type="button" class="more-item" id="moreAuthLogout" hidden data-i18n="auth.logout">Logout</button>
       <a class="more-item" href="#browse">Markets</a>
       <a class="more-item" href="#hits" id="moreHitReport" data-view="hits" data-i18n="tab.hits">Hits</a>
+      <a class="more-item" href="#picks" id="moreWatchDense" data-i18n="watch.title">Watch</a>
       <a class="more-item" href="#picks" id="moreXNews" data-i18n="xnews.title">X news scan</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
@@ -782,10 +797,10 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
   <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab" data-i18n="tab.more">More</span></a>
 </nav>
 
-<script src="live.js?v=20261103a"></script>
+<script src="live.js?v=20261104h"></script>
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104g"></script>
+<script src="picks.js?v=20261104h"></script>
 </body>
 </html>

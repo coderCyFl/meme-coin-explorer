@@ -2088,3 +2088,26 @@ dialog#authDlg .auth-actions .primary{background:var(--accent,#F0B90B);color:#0b
 .xnews-one{font-size:13px;line-height:1.35}
 .xnews-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .xnews-note{margin:0;color:var(--muted)}
+
+/* ===== Watch-only denser face (not Early / no paper) ===== */
+.watch-dense{border:1px solid #2B3139}
+.watch-dense .panelhead{align-items:center;gap:8px}
+.watch-dense-chip{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:#F0B90B;color:#0B0E11;white-space:nowrap}
+.watch-dense-chip.soft{background:transparent;color:#F0B90B;border:1px solid #F0B90B}
+.watch-dense-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.watch-dense-row{padding:8px 10px;border-radius:10px;background:var(--panel2);border:1px solid var(--line)}
+.watch-dense-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.watch-dense-top .nm{font-weight:800;font-size:14px}
+@media (max-width:520px){
+  .watch-dense-list{grid-template-columns:1fr}
+}
+
+/* denser X-news rows (compact scan; still watch-only) */
+.xnews-list.xnews-dense{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.xnews-row.xnews-dense-row{padding:8px 10px;gap:4px}
+.xnews-row.xnews-dense-row .xnews-one{font-size:12px;line-height:1.3}
+.xnews-row.xnews-dense-row .xnews-actions{margin-top:2px}
+@media (max-width:520px){
+  .xnews-list.xnews-dense{grid-template-columns:1fr}
+}
+
