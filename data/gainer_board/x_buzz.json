@@ -629,86 +629,86 @@
    "symbol": "PEPEUSDT",
    "base": "PEPE",
    "flag": "pump",
-   "trigger_at": "2026-11-03T21:30:00+08:00",
-   "checked_at": "2026-11-03T23:16:13+08:00",
-   "posts_last_1h": 56,
-   "posts_prev_6h_avg_per_h": 21.83,
-   "spike_ratio": 2.56,
-   "verdict": "升溫",
-   "one_line": "升溫但夾推薦碼",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 8.17,
+   "spike_ratio": 1.35,
+   "verdict": "冷",
+   "one_line": "量平討論淡",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117603182192767329",
-     "url": "https://x.com/Tyler_Did_It/status/2117603182192767329",
-     "text": "Morning Minute majors/ETF outflows (PEPE tag in buzz wave)",
-     "likes": 19,
-     "author_username": "Tyler_Did_It",
-     "author_followers": 64880,
-     "created_at": "2026-11-03T21:01:56+08:00"
+     "id": "2117852966099271957",
+     "url": "https://x.com/elhr90581/status/2117852966099271957",
+     "text": "This is quite crazy.. The Binance hacker is currently sitting on 2% of the entire $PEPE supply ($35M+ in valuation)",
+     "likes": 28,
+     "author_username": "elhr90581",
+     "author_followers": 14583,
+     "created_at": "2026-11-04T13:34:29+08:00"
     },
     {
-     "id": "2117541300144664811",
-     "url": "https://x.com/0xjannarh/status/2117541300144664811",
-     "text": "why Binance among top PEPE holders — hot wallets + exploit take",
-     "likes": 17,
-     "author_username": "0xjannarh",
-     "author_followers": 4991,
-     "created_at": "2026-11-03T16:56:02+08:00"
+     "id": "2117856139501076762",
+     "url": "https://x.com/Krybon_Exchange/status/2117856139501076762",
+     "text": "Krybon Top Gainers Today 🔥 $ZEC 9.82% $PUMP 9.1% $PEPE 5.51% $POL 5.60% $SEP 5.32%",
+     "likes": 5,
+     "author_username": "Krybon_Exchange",
+     "author_followers": 9102,
+     "created_at": "2026-11-04T13:47:06+08:00"
     },
     {
-     "id": "2117589173066453298",
-     "url": "https://x.com/onchainfaith/status/2117589173066453298",
-     "text": "People praising $PEPE for holding up in this market",
-     "likes": 8,
-     "author_username": "onchainfaith",
-     "author_followers": 694,
-     "created_at": "2026-11-03T20:06:16+08:00"
+     "id": "2117846200586059960",
+     "url": "https://x.com/qIg3NZ7YW7kHD09/status/2117846200586059960",
+     "text": "🐕 Crypto Legacy | Purchase #2 Bought $100 worth of $SHIB #PEPE #Binance",
+     "likes": 1,
+     "author_username": "qIg3NZ7YW7kHD09",
+     "author_followers": 0,
+     "created_at": "2026-11-04T13:07:36+08:00"
     }
    ],
-   "checks_this_trigger": 3
+   "checks_this_trigger": 1
   },
   "UNIUSDT": {
    "symbol": "UNIUSDT",
    "base": "UNI",
    "flag": "pump",
-   "trigger_at": "2026-11-03T22:30:00+08:00",
-   "checked_at": "2026-11-03T22:22:46+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 6.67,
-   "spike_ratio": 1.35,
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.83,
+   "spike_ratio": 2.12,
    "verdict": "升溫",
-   "one_line": "有人傾支撐略升溫",
+   "one_line": "量升有巨鯨",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117587680158732413",
-     "url": "https://x.com/ChrisOtt/status/2117587680158732413",
-     "text": "$UNI: The $7 support is holding up. It took a hack of Binance and selling of more than 1% of the circulating supply within an hour, to get …",
-     "likes": 8,
-     "author_username": "ChrisOtt",
-     "author_followers": 13547,
-     "created_at": "2026-11-03T20:00:20+08:00"
+     "id": "2117833769935945863",
+     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
+     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 521.5K $UNI — $3.72M",
+     "likes": 17,
+     "author_username": "ArslanOnChain",
+     "author_followers": 5209,
+     "created_at": "2026-11-04T12:18:12+08:00"
     },
     {
-     "id": "2117528427452620946",
-     "url": "https://x.com/Jus7Degen/status/2117528427452620946",
-     "text": "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984 — Uniswap. Everyone is watching ethereum:native… Meet Uniswap",
-     "likes": 7,
-     "author_username": "Jus7Degen",
-     "author_followers": 4805,
-     "created_at": "2026-11-03T16:04:53+08:00"
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 6,
+     "author_username": "cryptoissimple",
+     "author_followers": 6998,
+     "created_at": "2026-11-04T11:10:01+08:00"
     },
     {
-     "id": "2117596741759373703",
-     "url": "https://x.com/economist/status/2117596741759373703",
-     "text": "Hyperliquid's Paycheck Got a 9% Raise… Tuesday board $BTC $ETH $SOL",
+     "id": "2117820190574678220",
+     "url": "https://x.com/mik71457971/status/2117820190574678220",
+     "text": "@TheCryptoGypsy1 @SaucerSwapLabs Agreed 🤝 $SAUCE Best DEX… heads up $Uni",
      "likes": 3,
-     "author_username": "economist",
-     "author_followers": 38673,
-     "created_at": "2026-11-03T20:36:20+08:00"
+     "author_username": "mik71457971",
+     "author_followers": 2281,
+     "created_at": "2026-11-04T11:24:15+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1218,6 +1218,217 @@
      "author_username": "YakusaHL",
      "author_followers": 4875,
      "created_at": "2026-11-04T12:59:55+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "PENGUUSDT": {
+   "symbol": "PENGUUSDT",
+   "base": "PENGU",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 29,
+   "posts_prev_6h_avg_per_h": 29.5,
+   "spike_ratio": 0.98,
+   "verdict": "冷",
+   "one_line": "量平夾品牌雜訊",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117848160546730377",
+     "url": "https://x.com/INTERRO/status/2117848160546730377",
+     "text": "@Pengu If setting my alarm is PENTA then call me Evil Geniuses because I always lose",
+     "likes": 16,
+     "author_username": "INTERRO",
+     "author_followers": 127872,
+     "created_at": "2026-11-04T13:15:23+08:00"
+    },
+    {
+     "id": "2117851189811568704",
+     "url": "https://x.com/iamkadense/status/2117851189811568704",
+     "text": "Mom's basement defended and $BTC back near the downtrend line. Trade with pengu on @arcus_xyz",
+     "likes": 7,
+     "author_username": "iamkadense",
+     "author_followers": 74320,
+     "created_at": "2026-11-04T13:27:26+08:00"
+    },
+    {
+     "id": "2117855668216484277",
+     "url": "https://x.com/timoassi/status/2117855668216484277",
+     "text": "Happy Wednesday all! If you missed the past 24 hours in crypto and stocks, here's your full recap",
+     "likes": 6,
+     "author_username": "timoassi",
+     "author_followers": 15834,
+     "created_at": "2026-11-04T13:45:13+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "ARBUSDT": {
+   "symbol": "ARBUSDT",
+   "base": "ARB",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 3.17,
+   "spike_ratio": 1.26,
+   "verdict": "冷",
+   "one_line": "有消息量仍低",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117809306661777629",
+     "url": "https://x.com/0xtyler/status/2117809306661777629",
+     "text": "@rbthreek I very much respect your brand... The $1.8M is the total amount donated by RH to Arbitrum’s Open House program",
+     "likes": 23,
+     "author_username": "0xtyler",
+     "author_followers": 6121,
+     "created_at": "2026-11-04T10:41:00+08:00"
+    },
+    {
+     "id": "2117833769935945863",
+     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
+     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 10M $ARB — $1.56M",
+     "likes": 17,
+     "author_username": "ArslanOnChain",
+     "author_followers": 5209,
+     "created_at": "2026-11-04T12:18:12+08:00"
+    },
+    {
+     "id": "2117848684193095942",
+     "url": "https://x.com/FourPillarsFP/status/2117848684193095942",
+     "text": "On October 30, the largest hack in human history took place. We take an in-depth look at Binance exploit.",
+     "likes": 9,
+     "author_username": "FourPillarsFP",
+     "author_followers": 17594,
+     "created_at": "2026-11-04T13:17:28+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "WLDUSDT": {
+   "symbol": "WLDUSDT",
+   "base": "WLD",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "幾乎無討論",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117836312015446093",
+     "url": "https://x.com/ZoomexOfficial/status/2117836312015446093",
+     "text": "SOL, XRP and ENA led $45.76M in 24H volume across Zoomex’s top 10 USDT pairs.",
+     "likes": 4,
+     "author_username": "ZoomexOfficial",
+     "author_followers": 115031,
+     "created_at": "2026-11-04T12:28:18+08:00"
+    },
+    {
+     "id": "2117781472350495203",
+     "url": "https://x.com/venturesintern/status/2117781472350495203",
+     "text": "Web3 news — last ~24h. Midterms & policy crypto groups spent ~$176M",
+     "likes": 2,
+     "author_username": "venturesintern",
+     "author_followers": 72,
+     "created_at": "2026-11-04T08:50:24+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "NEARUSDT": {
+   "symbol": "NEARUSDT",
+   "base": "NEAR",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 63,
+   "posts_prev_6h_avg_per_h": 40.0,
+   "spike_ratio": 1.58,
+   "verdict": "冷",
+   "one_line": "假陽性雜訊多",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117859456784519449",
+     "url": "https://x.com/FXStreetNews/status/2117859456784519449",
+     "text": "In case you missed it... $EURUSD gains traction to near 1.1240 $BTC tests critical support #Crypto",
+     "likes": 2,
+     "author_username": "FXStreetNews",
+     "author_followers": 300269,
+     "created_at": "2026-11-04T14:00:17+08:00"
+    },
+    {
+     "id": "2117861980916846876",
+     "url": "https://x.com/space2402/status/2117861980916846876",
+     "text": "Analyst Sets Dogecoin Price Target at $2.60 as $41.6M DOGE Crypto Exits Gate.",
+     "likes": 2,
+     "author_username": "space2402",
+     "author_followers": 64,
+     "created_at": "2026-11-04T14:10:18+08:00"
+    },
+    {
+     "id": "2117861005036257755",
+     "url": "https://x.com/deluxebyluk/status/2117861005036257755",
+     "text": "Spot Bitcoin ETFs: ~$717M in outflows over 7 sessions, BTC sitting right on its 200-day average near $76.5k.",
+     "likes": 1,
+     "author_username": "deluxebyluk",
+     "author_followers": 597,
+     "created_at": "2026-11-04T14:06:26+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "APTUSDT": {
+   "symbol": "APTUSDT",
+   "base": "APT",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 0.75,
+   "verdict": "冷",
+   "one_line": "量極低夾雜訊",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 6,
+     "author_username": "cryptoissimple",
+     "author_followers": 6998,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117799640435241080",
+     "url": "https://x.com/Neome_com/status/2117799640435241080",
+     "text": "CRYPTO BREAKING NEWS: Only the latest. No repeats",
+     "likes": 1,
+     "author_username": "Neome_com",
+     "author_followers": 2772,
+     "created_at": "2026-11-04T10:02:35+08:00"
+    },
+    {
+     "id": "2117830124284285260",
+     "url": "https://x.com/ZyntoMarkets/status/2117830124284285260",
+     "text": "🚨 $APT ORDER FLOW ALERT Price: $0.6080 (-1.25%) #Crypto #OrderFlow",
+     "likes": 0,
+     "author_username": "ZyntoMarkets",
+     "author_followers": 0,
+     "created_at": "2026-11-04T12:03:43+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -4426,15 +4637,307 @@
      "created_at": "2026-11-04T12:53:16+08:00"
     }
    ]
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "base": "PEPE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 8.17,
+   "spike_ratio": 1.35,
+   "verdict": "冷",
+   "one_line": "量平討論淡",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117852966099271957",
+     "url": "https://x.com/elhr90581/status/2117852966099271957",
+     "text": "This is quite crazy.. The Binance hacker is currently sitting on 2% of the entire $PEPE supply ($35M+ in valuation)",
+     "likes": 28,
+     "author_username": "elhr90581",
+     "author_followers": 14583,
+     "created_at": "2026-11-04T13:34:29+08:00"
+    },
+    {
+     "id": "2117856139501076762",
+     "url": "https://x.com/Krybon_Exchange/status/2117856139501076762",
+     "text": "Krybon Top Gainers Today 🔥 $ZEC 9.82% $PUMP 9.1% $PEPE 5.51% $POL 5.60% $SEP 5.32%",
+     "likes": 5,
+     "author_username": "Krybon_Exchange",
+     "author_followers": 9102,
+     "created_at": "2026-11-04T13:47:06+08:00"
+    },
+    {
+     "id": "2117846200586059960",
+     "url": "https://x.com/qIg3NZ7YW7kHD09/status/2117846200586059960",
+     "text": "🐕 Crypto Legacy | Purchase #2 Bought $100 worth of $SHIB #PEPE #Binance",
+     "likes": 1,
+     "author_username": "qIg3NZ7YW7kHD09",
+     "author_followers": 0,
+     "created_at": "2026-11-04T13:07:36+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PENGUUSDT",
+   "base": "PENGU",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 29,
+   "posts_prev_6h_avg_per_h": 29.5,
+   "spike_ratio": 0.98,
+   "verdict": "冷",
+   "one_line": "量平夾品牌雜訊",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117848160546730377",
+     "url": "https://x.com/INTERRO/status/2117848160546730377",
+     "text": "@Pengu If setting my alarm is PENTA then call me Evil Geniuses because I always lose",
+     "likes": 16,
+     "author_username": "INTERRO",
+     "author_followers": 127872,
+     "created_at": "2026-11-04T13:15:23+08:00"
+    },
+    {
+     "id": "2117851189811568704",
+     "url": "https://x.com/iamkadense/status/2117851189811568704",
+     "text": "Mom's basement defended and $BTC back near the downtrend line. Trade with pengu on @arcus_xyz",
+     "likes": 7,
+     "author_username": "iamkadense",
+     "author_followers": 74320,
+     "created_at": "2026-11-04T13:27:26+08:00"
+    },
+    {
+     "id": "2117855668216484277",
+     "url": "https://x.com/timoassi/status/2117855668216484277",
+     "text": "Happy Wednesday all! If you missed the past 24 hours in crypto and stocks, here's your full recap",
+     "likes": 6,
+     "author_username": "timoassi",
+     "author_followers": 15834,
+     "created_at": "2026-11-04T13:45:13+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ARBUSDT",
+   "base": "ARB",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 3.17,
+   "spike_ratio": 1.26,
+   "verdict": "冷",
+   "one_line": "有消息量仍低",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117809306661777629",
+     "url": "https://x.com/0xtyler/status/2117809306661777629",
+     "text": "@rbthreek I very much respect your brand... The $1.8M is the total amount donated by RH to Arbitrum’s Open House program",
+     "likes": 23,
+     "author_username": "0xtyler",
+     "author_followers": 6121,
+     "created_at": "2026-11-04T10:41:00+08:00"
+    },
+    {
+     "id": "2117833769935945863",
+     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
+     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 10M $ARB — $1.56M",
+     "likes": 17,
+     "author_username": "ArslanOnChain",
+     "author_followers": 5209,
+     "created_at": "2026-11-04T12:18:12+08:00"
+    },
+    {
+     "id": "2117848684193095942",
+     "url": "https://x.com/FourPillarsFP/status/2117848684193095942",
+     "text": "On October 30, the largest hack in human history took place. We take an in-depth look at Binance exploit.",
+     "likes": 9,
+     "author_username": "FourPillarsFP",
+     "author_followers": 17594,
+     "created_at": "2026-11-04T13:17:28+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "UNIUSDT",
+   "base": "UNI",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 2.83,
+   "spike_ratio": 2.12,
+   "verdict": "升溫",
+   "one_line": "量升有巨鯨",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117833769935945863",
+     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
+     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 521.5K $UNI — $3.72M",
+     "likes": 17,
+     "author_username": "ArslanOnChain",
+     "author_followers": 5209,
+     "created_at": "2026-11-04T12:18:12+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 6,
+     "author_username": "cryptoissimple",
+     "author_followers": 6998,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117820190574678220",
+     "url": "https://x.com/mik71457971/status/2117820190574678220",
+     "text": "@TheCryptoGypsy1 @SaucerSwapLabs Agreed 🤝 $SAUCE Best DEX… heads up $Uni",
+     "likes": 3,
+     "author_username": "mik71457971",
+     "author_followers": 2281,
+     "created_at": "2026-11-04T11:24:15+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "WLDUSDT",
+   "base": "WLD",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "幾乎無討論",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117836312015446093",
+     "url": "https://x.com/ZoomexOfficial/status/2117836312015446093",
+     "text": "SOL, XRP and ENA led $45.76M in 24H volume across Zoomex’s top 10 USDT pairs.",
+     "likes": 4,
+     "author_username": "ZoomexOfficial",
+     "author_followers": 115031,
+     "created_at": "2026-11-04T12:28:18+08:00"
+    },
+    {
+     "id": "2117781472350495203",
+     "url": "https://x.com/venturesintern/status/2117781472350495203",
+     "text": "Web3 news — last ~24h. Midterms & policy crypto groups spent ~$176M",
+     "likes": 2,
+     "author_username": "venturesintern",
+     "author_followers": 72,
+     "created_at": "2026-11-04T08:50:24+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "NEARUSDT",
+   "base": "NEAR",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 63,
+   "posts_prev_6h_avg_per_h": 40.0,
+   "spike_ratio": 1.58,
+   "verdict": "冷",
+   "one_line": "假陽性雜訊多",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117859456784519449",
+     "url": "https://x.com/FXStreetNews/status/2117859456784519449",
+     "text": "In case you missed it... $EURUSD gains traction to near 1.1240 $BTC tests critical support #Crypto",
+     "likes": 2,
+     "author_username": "FXStreetNews",
+     "author_followers": 300269,
+     "created_at": "2026-11-04T14:00:17+08:00"
+    },
+    {
+     "id": "2117861980916846876",
+     "url": "https://x.com/space2402/status/2117861980916846876",
+     "text": "Analyst Sets Dogecoin Price Target at $2.60 as $41.6M DOGE Crypto Exits Gate.",
+     "likes": 2,
+     "author_username": "space2402",
+     "author_followers": 64,
+     "created_at": "2026-11-04T14:10:18+08:00"
+    },
+    {
+     "id": "2117861005036257755",
+     "url": "https://x.com/deluxebyluk/status/2117861005036257755",
+     "text": "Spot Bitcoin ETFs: ~$717M in outflows over 7 sessions, BTC sitting right on its 200-day average near $76.5k.",
+     "likes": 1,
+     "author_username": "deluxebyluk",
+     "author_followers": 597,
+     "created_at": "2026-11-04T14:06:26+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "APTUSDT",
+   "base": "APT",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T14:30:00+08:00",
+   "checked_at": "2026-11-04T14:21:41+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.33,
+   "spike_ratio": 0.75,
+   "verdict": "冷",
+   "one_line": "量極低夾雜訊",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
+     "likes": 6,
+     "author_username": "cryptoissimple",
+     "author_followers": 6998,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117799640435241080",
+     "url": "https://x.com/Neome_com/status/2117799640435241080",
+     "text": "CRYPTO BREAKING NEWS: Only the latest. No repeats",
+     "likes": 1,
+     "author_username": "Neome_com",
+     "author_followers": 2772,
+     "created_at": "2026-11-04T10:02:35+08:00"
+    },
+    {
+     "id": "2117830124284285260",
+     "url": "https://x.com/ZyntoMarkets/status/2117830124284285260",
+     "text": "🚨 $APT ORDER FLOW ALERT Price: $0.6080 (-1.25%) #Crypto #OrderFlow",
+     "likes": 0,
+     "author_username": "ZyntoMarkets",
+     "author_followers": 0,
+     "created_at": "2026-11-04T12:03:43+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 65,
+  "calls_today": 81,
   "cap_reached": false,
-  "updated_at": "2026-11-04T13:22:57+08:00"
+  "updated_at": "2026-11-04T14:21:41+08:00"
  },
- "updated_at": "2026-11-04T13:22:57+08:00",
+ "updated_at": "2026-11-04T14:21:41+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
