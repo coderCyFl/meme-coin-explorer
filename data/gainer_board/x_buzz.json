@@ -49,42 +49,42 @@
    "symbol": "MEGAUSDT",
    "base": "MEGA",
    "flag": "pump",
-   "trigger_at": "2026-11-02T22:30:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 5.67,
-   "spike_ratio": 0.88,
+   "trigger_at": "2026-11-04T10:30:00+08:00",
+   "checked_at": "2026-11-04T10:20:02+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 1.57,
    "verdict": "冷",
-   "one_line": "真MEGA討論好少",
-   "shill_flag": false,
+   "one_line": "假MEGA多冇真討論",
+   "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117198167959900230",
-     "url": "https://x.com/Pi_Community0/status/2117198167959900230",
-     "text": "$LUNC Something mega big is coming soon Whale Alert 28.92 billion LUNC moved From: Binance",
-     "likes": 88,
-     "author_username": "Pi_Community0",
-     "author_followers": 1548,
-     "created_at": "2026-11-02T18:12:33+08:00"
+     "id": "2117793730094915997",
+     "url": "https://x.com/tazuui1/status/2117793730094915997",
+     "text": "@moonpay Just enabled the @Collector_Crypt plugin on PayBox — those Mega Charizard X, Hoopa V & Mega Gardevoir pulls are actually crazy. Lo…",
+     "likes": 8,
+     "author_username": "tazuui1",
+     "author_followers": 9,
+     "created_at": "2026-11-04T09:39:06+08:00"
     },
     {
-     "id": "2117269379976999279",
-     "url": "https://x.com/0xgodzubby/status/2117269379976999279",
-     "text": "The Latest Perps, Options & Props Developments Perp dex OI surges 76% to $24B in Q3",
-     "likes": 22,
-     "author_username": "0xgodzubby",
-     "author_followers": 2033,
-     "created_at": "2026-11-02T22:55:31+08:00"
+     "id": "2117776139783733329",
+     "url": "https://x.com/falenostar/status/2117776139783733329",
+     "text": "US Stock News 24-Hour Important Summary Midterm Election Day hit and the tape went mixed — Dow slipped about 0.4% while S&P 500 edged up 0.…",
+     "likes": 6,
+     "author_username": "falenostar",
+     "author_followers": 21638,
+     "created_at": "2026-11-04T08:29:12+08:00"
     },
     {
-     "id": "2117182278530981916",
-     "url": "https://x.com/FantasyWhales/status/2117182278530981916",
-     "text": "Story Protocol ($MEGA) surged after its recent Mainnet launch and Binance Web3 Wallet integration, boosting investor interest in its decent…",
+     "id": "2117780596076302341",
+     "url": "https://x.com/ozanktarman/status/2117780596076302341",
+     "text": "Risk & Bitcoin sink w/ Blue Tsunami gazzzzz So are we ready? LFG! Kalshi is upping the ante: JUST IN: Odds of a Democratic mega tsunami sur…",
      "likes": 1,
-     "author_username": "FantasyWhales",
-     "author_followers": 1099,
-     "created_at": "2026-11-02T17:09:25+08:00"
+     "author_username": "ozanktarman",
+     "author_followers": 17520,
+     "created_at": "2026-11-04T08:46:55+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -3852,15 +3852,58 @@
      "created_at": "2026-11-04T09:00:03+08:00"
     }
    ]
+  },
+  {
+   "symbol": "MEGAUSDT",
+   "base": "MEGA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T10:30:00+08:00",
+   "checked_at": "2026-11-04T10:20:02+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 1.57,
+   "verdict": "冷",
+   "one_line": "假MEGA多冇真討論",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117793730094915997",
+     "url": "https://x.com/tazuui1/status/2117793730094915997",
+     "text": "@moonpay Just enabled the @Collector_Crypt plugin on PayBox — those Mega Charizard X, Hoopa V & Mega Gardevoir pulls are actually crazy. Lo…",
+     "likes": 8,
+     "author_username": "tazuui1",
+     "author_followers": 9,
+     "created_at": "2026-11-04T09:39:06+08:00"
+    },
+    {
+     "id": "2117776139783733329",
+     "url": "https://x.com/falenostar/status/2117776139783733329",
+     "text": "US Stock News 24-Hour Important Summary Midterm Election Day hit and the tape went mixed — Dow slipped about 0.4% while S&P 500 edged up 0.…",
+     "likes": 6,
+     "author_username": "falenostar",
+     "author_followers": 21638,
+     "created_at": "2026-11-04T08:29:12+08:00"
+    },
+    {
+     "id": "2117780596076302341",
+     "url": "https://x.com/ozanktarman/status/2117780596076302341",
+     "text": "Risk & Bitcoin sink w/ Blue Tsunami gazzzzz So are we ready? LFG! Kalshi is upping the ante: JUST IN: Odds of a Democratic mega tsunami sur…",
+     "likes": 1,
+     "author_username": "ozanktarman",
+     "author_followers": 17520,
+     "created_at": "2026-11-04T08:46:55+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 39,
+  "calls_today": 41,
   "cap_reached": false,
-  "updated_at": "2026-11-04T09:12:14+08:00"
+  "updated_at": "2026-11-04T10:20:02+08:00"
  },
- "updated_at": "2026-11-04T09:12:14+08:00",
+ "updated_at": "2026-11-04T10:20:02+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
