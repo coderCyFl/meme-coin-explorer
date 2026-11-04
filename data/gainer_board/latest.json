@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T05:42:29+08:00",
+ "updated_at": "2026-11-05T06:11:13+08:00",
  "batch": "gb-20261105-0156",
  "picked_at": "2026-11-05T01:56:09+08:00",
  "btc_24h_pct": 3.5,
@@ -699,48 +699,6 @@
    "quote_volume_24h": 63024215,
    "watch_only": false,
    "outcomes": {},
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "BEAMX",
-   "pair": "BEAMXUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-04T17:45:00+08:00",
-   "entry_price_usd": 0.004083,
-   "price_at_snapshot": 0.004095,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 3.39,
-   "change_24h_at_pick": 0.81,
-   "rank_24h_at_pick": 273,
-   "batch": "gb-20261104-1746",
-   "score": 35.7,
-   "change_1h_at_pick": 4.13,
-   "change_4h_at_pick": 1.37,
-   "vol_x_avg": 3.39,
-   "vol_x_prev_hour": 0.86,
-   "range_24h_pct": 13.2,
-   "from_24h_high_pct": -4.83,
-   "quote_volume_24h": 6060126,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 14.06,
-     "max_drawdown_pct": -0.1,
-     "close_pct": 10.85,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-05T01:36:40+08:00"
-    }
-   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
