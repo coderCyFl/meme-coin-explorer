@@ -619,7 +619,7 @@
   const GB_SURGE_C1 = 5, GB_SURGE_VR = 3, GB_SURGE_C15 = 5;
   const GB_TRIGGER_H = 4;      // a surge stays 🔥 on the board for 4h (same as backtest cooldown / horizon)
   const GB_CAND_C24 = 5, GB_CAND_FH = -30;      // 候補 filler when < 6 rule hits (watch-only)
-  const GB_CAND_N = 6;         // 候補 coins fetched (filler only)
+  const GB_CAND_N = 16;        // denser watch-only face: fetch more 候補 (not Early / not scored)
   // ⚡ v2 (P1 20261103, mirrors gainer_core.early2_at): 起步 + prec_e 1.2/1.5/8 + 細盤 + X熱度早標; watch-only.
   //   起步: 24h vol ≥ $3M, not 🔥, 15m ≥ +2.5%, 1h ≥ 0, prior-24h range ≥ 25%
   //   prec_e (grind): 24h vol ≥ $3M, not 🔥, 1h ≥ +1.2%, vol ≥ 1.5x, 24h % < +8% (was +15%; P1 earlier e2)
@@ -835,9 +835,11 @@
     const chases = out.filter((x) => x.tier === "chase").sort((a, b) => b.trigger.vr - a.trigger.vr || b.score - a.score);
     const fill = out.filter((x) => x.tier === "cand").sort((a, b) => b.score - a.score);
     const buys = pumps.concat(chases);
+    // gainerList still pads to 6 with 候補; denser watch face consumes watchCands separately (not Early).
     const rows = buys.concat(fill.slice(0, Math.max(0, 6 - buys.length))).slice(0, Math.max(n, buys.length));
+    const watchCands = fill.slice(0, 12); // watch-only denser face — never scored Early / no paper
     early.sort((a, b) => b.trigger.t - a.trigger.t || b.score - a.score);
-    gainerCache = { t: Date.now(), rows, early, pool: elig.length + thin.length, poolThin: thin.length, scanned: pool.length, screened4h: r4.size,
+    gainerCache = { t: Date.now(), rows, early, watchCands, pool: elig.length + thin.length, poolThin: thin.length, scanned: pool.length, screened4h: r4.size,
       tokenizedExcluded: bnTokenized.size, tokenizedSrc: bnTokenizedSrc, prices, rank: new Map(elig.concat(thin).map((t) => [t.symbol, t])) };
     return gainerCache;
   }
