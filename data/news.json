@@ -1,7 +1,50 @@
 {
-  "fetched_at": "2026-11-04T14:06:32+08:00",
+  "fetched_at": "2026-11-04T15:08:18+08:00",
   "source": "x_search_news",
   "stories": [
+    {
+      "id": "2117260404883939594",
+      "title": "Mercado Bitcoin Halts Services After $38 Million Suspicious Outflows",
+      "title_en": "Mercado Bitcoin Halts Services After $38 Million Suspicious Outflows",
+      "summary": "Mercado Bitcoin, serving millions as Brazil's top crypto platform by volume, confirmed the security incident and quickly contained it overnight. No customer funds were lost, no data leaked, and the exchange pledged to cover any shortfalls while freezing over $11 million with partners like Tether, Circle, and Chainalysis. Teams are tracing the assets with authorities and plan to resume services gradually after checks. The plain signed transactions suggest possible access to signing keys, amid a wave of recent crypto breaches.",
+      "summary_en": "Mercado Bitcoin, serving millions as Brazil's top crypto platform by volume, confirmed the security incident and quickly contained it overnight. No customer funds were lost, no data leaked, and the exchange pledged to cover any shortfalls while freezing over $11 million with partners like Tether, Circle, and Chainalysis. Teams are tracing the assets with authorities and plan to resume services gradually after checks. The plain signed transactions suggest possible access to signing keys, amid a wave of recent crypto breaches.",
+      "published_at": "2026-11-04T14:57:51+08:00",
+      "url": "https://x.com/i/trending/2117260404883939594",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117797926663540753",
+      "title": "Binance Hit by Record $6.3 Billion Crypto Heist from North Korean Hackers",
+      "title_en": "Binance Hit by Record $6.3 Billion Crypto Heist from North Korean Hackers",
+      "summary": "On October 29, 2026, North Korean-linked group TraderTraitor exploited social engineering over months, starting with a tampered AI coding tool and fake job offers, to breach Binance's systems and steal funds across blockchains. Binance suspended withdrawals, recovered or intercepted $2.85 billion with help from law enforcement, and covered all customer losses using its own reserves, already replenishing 98% of assets. Co-CEO Richard Teng detailed security upgrades like AI anomaly detection, while founder CZ Zhao called it a wake-up for all finance, urging industry-wide AI defenses amid criticism from rivals.",
+      "summary_en": "On October 29, 2026, North Korean-linked group TraderTraitor exploited social engineering over months, starting with a tampered AI coding tool and fake job offers, to breach Binance's systems and steal funds across blockchains. Binance suspended withdrawals, recovered or intercepted $2.85 billion with help from law enforcement, and covered all customer losses using its own reserves, already replenishing 98% of assets. Co-CEO Richard Teng detailed security upgrades like AI anomaly detection, while founder CZ Zhao called it a wake-up for all finance, urging industry-wide AI defenses amid criticism from rivals.",
+      "published_at": "2026-11-04T14:46:58+08:00",
+      "url": "https://x.com/i/trending/2117797926663540753",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117861745771544698",
+      "title": "Binance Largest Hack Sparks OKX CEO Clash with CZ",
+      "title_en": "Binance Largest Hack Sparks OKX CEO Clash with CZ",
+      "summary": "On October 29, hackers tied to North Korea's TraderTraitor group breached Binance through social engineering, stealing from hot wallets. Binance froze $3 billion in assets, covered all losses itself, and CZ urged the industry to build AI defenses and share threat intel. Star_OKX slammed CZ's response as irresponsible in pointed posts, including satirical Halloween photos mocking Binance security, while others criticized the timing as opportunistic. Bitcoin dipped from $81,000 to $76,400 with $1 billion in liquidations, highlighting crypto's tensions between rivalry and shared security needs.",
+      "summary_en": "On October 29, hackers tied to North Korea's TraderTraitor group breached Binance through social engineering, stealing from hot wallets. Binance froze $3 billion in assets, covered all losses itself, and CZ urged the industry to build AI defenses and share threat intel. Star_OKX slammed CZ's response as irresponsible in pointed posts, including satirical Halloween photos mocking Binance security, while others criticized the timing as opportunistic. Bitcoin dipped from $81,000 to $76,400 with $1 billion in liquidations, highlighting crypto's tensions between rivalry and shared security needs.",
+      "published_at": "2026-11-04T14:18:24+08:00",
+      "url": "https://x.com/i/trending/2117861745771544698",
+      "tags": [],
+      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "category": "News",
+      "source": "x_search_news"
+    },
     {
       "id": "2117240097997484033",
       "title": "Crypto Heists Hit EU Bank and Brazil Exchange for Over $170 Million",
@@ -45,21 +88,6 @@
       ],
       "why_it_matters": "弱市下 meme 情緒同獵幣熱度，影響急升板同模擬倉風險偏好。",
       "category": "Other",
-      "source": "x_search_news"
-    },
-    {
-      "id": "2117797926663540753",
-      "title": "Binance Loses $6.34 Billion in North Korea-Linked Hack, Quickly Reimburses Users",
-      "title_en": "Binance Loses $6.34 Billion in North Korea-Linked Hack, Quickly Reimburses Users",
-      "summary": "The attack started in June when hackers tricked an engineer into installing malware disguised as an AI coding tool, escalating through fake HR video calls and tampered take-home assignments that compromised internal systems. Binance detected the breach, froze $2.85 billion of the funds, and used its SAFU reserve to fully replenish customer assets by October 31, resuming withdrawals in phases. CZ argued banks face even greater cyber risks, but critics like OKX's CEO called it misleading amid Bitcoin's dip from $81,000 to $75,000 and calls for better industry security sharing.",
-      "summary_en": "The attack started in June when hackers tricked an engineer into installing malware disguised as an AI coding tool, escalating through fake HR video calls and tampered take-home assignments that compromised internal systems. Binance detected the breach, froze $2.85 billion of the funds, and used its SAFU reserve to fully replenish customer assets by October 31, resuming withdrawals in phases. CZ argued banks face even greater cyber risks, but critics like OKX's CEO called it misleading amid Bitcoin's dip from $81,000 to $75,000 and calls for better industry security sharing.",
-      "published_at": "2026-11-04T12:27:46+08:00",
-      "url": "https://x.com/i/trending/2117797926663540753",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "News",
       "source": "x_search_news"
     },
     {
@@ -383,17 +411,18 @@
       "source": "x_search_news"
     },
     {
-      "id": "2117260404883939594",
-      "title": "Mercado Bitcoin Halts Services After $40 Million Crypto Breach",
-      "title_en": "Mercado Bitcoin Halts Services After $40 Million Crypto Breach",
-      "summary": "Mercado Bitcoin confirmed a security breach in one of its systems, suspending deposits and withdrawals after on-chain researchers flagged activity across blockchains like Bitcoin, Ethereum, Solana, and Tron. The exchange contained the incident fast, with no customer losses or data leaks reported, and shared wallet addresses for tracking—Tether froze over 4.5 million USDT while partners like Circle and Chainalysis helped secure $11 million more. The firm pledged to cover any losses and is working with authorities, amid a wave of recent crypto hacks raising concerns over exchange security.",
-      "summary_en": "Mercado Bitcoin confirmed a security breach in one of its systems, suspending deposits and withdrawals after on-chain researchers flagged activity across blockchains like Bitcoin, Ethereum, Solana, and Tron. The exchange contained the incident fast, with no customer losses or data leaks reported, and shared wallet addresses for tracking—Tether froze over 4.5 million USDT while partners like Circle and Chainalysis helped secure $11 million more. The firm pledged to cover any losses and is working with authorities, amid a wave of recent crypto hacks raising concerns over exchange security.",
-      "published_at": "2026-11-04T05:29:47+08:00",
-      "url": "https://x.com/i/trending/2117260404883939594",
+      "id": "2117678424940503231",
+      "title": "IPX Exchange Raises $4M Seed at $125M Valuation for Tokenized IP Funding",
+      "title_en": "IPX Exchange Raises $4M Seed at $125M Valuation for Tokenized IP Funding",
+      "summary": "Miami-based IPX Exchange secured $4 million in seed funding at a $125 million valuation, led by Bitsurge Holdings and YICIPX Holdings, to build an AI-powered platform on Base for tokenizing films, TV, music, and games. Creators can launch projects with KPI-Gated Escrow that releases USDC funds only after verified milestones, while fans get perks, access, and potential rewards paired with the $IPX token. Ja Rule serves as celebrity co-founder, with over 100 stars signed on for day-one projects like Hollywood films and athlete games; the full launch is set for November 15, 2026.",
+      "summary_en": "Miami-based IPX Exchange secured $4 million in seed funding at a $125 million valuation, led by Bitsurge Holdings and YICIPX Holdings, to build an AI-powered platform on Base for tokenizing films, TV, music, and games. Creators can launch projects with KPI-Gated Escrow that releases USDC funds only after verified milestones, while fans get perks, access, and potential rewards paired with the $IPX token. Ja Rule serves as celebrity co-founder, with over 100 stars signed on for day-one projects like Hollywood films and athlete games; the full launch is set for November 15, 2026.",
+      "published_at": "2026-11-04T05:28:36+08:00",
+      "url": "https://x.com/i/trending/2117678424940503231",
       "tags": [
+        "Business & Finance",
         "Cryptocurrency"
       ],
-      "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
+      "why_it_matters": "RWA／代幣化股票題材持續，相關幣種可放觀察但唔追。",
       "category": "News",
       "source": "x_search_news"
     },
@@ -562,22 +591,6 @@
       "source": "x_search_news"
     },
     {
-      "id": "2117678424940503231",
-      "title": "IPX Exchange Raises $4M Seed at $125M Valuation for Tokenized IP Funding",
-      "title_en": "IPX Exchange Raises $4M Seed at $125M Valuation for Tokenized IP Funding",
-      "summary": "Miami-based IPX Exchange secured $4 million in seed funding at a $125 million valuation, led by Bitsurge Holdings and YICIPX Holdings, to build an AI-powered platform on Base for tokenizing films, TV, music, and games. Creators can launch projects with KPI-Gated Escrow that releases USDC funds only after verified milestones, while fans get perks, access, and potential rewards paired with the $IPX token. Ja Rule serves as celebrity co-founder, with over 100 stars signed on for day-one projects like Hollywood films and athlete games; the full launch is set for November 15, 2026.",
-      "summary_en": "Miami-based IPX Exchange secured $4 million in seed funding at a $125 million valuation, led by Bitsurge Holdings and YICIPX Holdings, to build an AI-powered platform on Base for tokenizing films, TV, music, and games. Creators can launch projects with KPI-Gated Escrow that releases USDC funds only after verified milestones, while fans get perks, access, and potential rewards paired with the $IPX token. Ja Rule serves as celebrity co-founder, with over 100 stars signed on for day-one projects like Hollywood films and athlete games; the full launch is set for November 15, 2026.",
-      "published_at": "2026-11-03T21:28:36.000Z",
-      "url": "https://x.com/i/trending/2117678424940503231",
-      "tags": [
-        "Business & Finance",
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "RWA／代幣化股票題材持續，相關幣種可放觀察但唔追。",
-      "category": "News",
-      "source": "X News"
-    },
-    {
       "id": "2117565995732856889",
       "title": "2026 Memecoins Fail to Birth Billion-Dollar Hits",
       "title_en": "2026 Memecoins Fail to Birth Billion-Dollar Hits",
@@ -637,6 +650,21 @@
       ],
       "why_it_matters": "SOL 生態同行情會影響 meme／細幣流動同急升板節奏。",
       "category": "News",
+      "source": "x_search_news"
+    },
+    {
+      "id": "2117461704674353628",
+      "title": "Ethereum Validators Adopt mump2p for 2-3x Faster Block Delivery",
+      "title_en": "Ethereum Validators Adopt mump2p for 2-3x Faster Block Delivery",
+      "summary": "Launched on October 20, mump2p uses Random Linear Network Coding to split block data into shards that nodes forward and recombine efficiently, cutting latency by hundreds of milliseconds compared to Ethereum's standard GossipSub. Over 8% of staked Ether—3.36 million ETH—now runs through this mesh, with major operators like Blockdaemon and ether.fi onboard. The sidecar design requires no changes to consensus rules, helping validators attest on time for better rewards while opening doors for on-chain trading and reliable data delivery.",
+      "summary_en": "Launched on October 20, mump2p uses Random Linear Network Coding to split block data into shards that nodes forward and recombine efficiently, cutting latency by hundreds of milliseconds compared to Ethereum's standard GossipSub. Over 8% of staked Ether—3.36 million ETH—now runs through this mesh, with major operators like Blockdaemon and ether.fi onboard. The sidecar design requires no changes to consensus rules, helping validators attest on time for better rewards while opening doors for on-chain trading and reliable data delivery.",
+      "published_at": "2026-11-03T20:12:10+08:00",
+      "url": "https://x.com/i/trending/2117461704674353628",
+      "tags": [
+        "Cryptocurrency"
+      ],
+      "why_it_matters": "監管clarification 影響 DeFi／上幣預期，只作背景唔係訊號。",
+      "category": "Other",
       "source": "x_search_news"
     },
     {
@@ -992,21 +1020,6 @@
       "source": "X News"
     },
     {
-      "id": "2117461704674353628",
-      "title": "Ethereum Validators Adopt mump2p for 2-3x Faster Block Delivery",
-      "title_en": "Ethereum Validators Adopt mump2p for 2-3x Faster Block Delivery",
-      "summary": "Launched on October 20, mump2p uses Random Linear Network Coding to split block data into shards that nodes forward and recombine efficiently, cutting latency by hundreds of milliseconds compared to Ethereum's standard GossipSub. Over 8% of staked Ether—3.36 million ETH—now runs through this mesh, with major operators like Blockdaemon and ether.fi onboard. The sidecar design requires no changes to consensus rules, helping validators attest on time for better rewards while opening doors for on-chain trading and reliable data delivery.",
-      "summary_en": "Launched on October 20, mump2p uses Random Linear Network Coding to split block data into shards that nodes forward and recombine efficiently, cutting latency by hundreds of milliseconds compared to Ethereum's standard GossipSub. Over 8% of staked Ether—3.36 million ETH—now runs through this mesh, with major operators like Blockdaemon and ether.fi onboard. The sidecar design requires no changes to consensus rules, helping validators attest on time for better rewards while opening doors for on-chain trading and reliable data delivery.",
-      "published_at": "2026-11-03T12:12:10.000Z",
-      "url": "https://x.com/i/trending/2117461704674353628",
-      "tags": [
-        "Cryptocurrency"
-      ],
-      "why_it_matters": "監管clarification 影響 DeFi／上幣預期，只作背景唔係訊號。",
-      "category": "Other",
-      "source": "X News"
-    },
-    {
       "id": "2117481294821249220",
       "title": "XRP Holders Frustrated After Ripple's Swell Conference Lacks Big Announcements",
       "title_en": "XRP Holders Frustrated After Ripple's Swell Conference Lacks Big Announcements",
@@ -1217,7 +1230,7 @@
       ],
       "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
-      "source": "X News"
+      "source": "x_search_news"
     },
     {
       "id": "2117481295756607950",
@@ -1746,7 +1759,7 @@
       ],
       "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
       "category": "News",
-      "source": "X News"
+      "source": "x_search_news"
     },
     {
       "id": "2117347310015328501",
@@ -1911,7 +1924,7 @@
         "Business & Finance"
       ],
       "why_it_matters": "安全事件更新；模擬倉只做背景，唔係買賣訊號。",
-      "category": "Other",
+      "category": "Entertainment",
       "source": "x_search_news"
     },
     {
@@ -2854,6 +2867,6 @@
       "source": "X News"
     }
   ],
-  "x_fetched_at": "2026-11-04T14:06:32+08:00",
+  "x_fetched_at": "2026-11-04T15:08:18+08:00",
   "x_job": "hourly-update"
 }
