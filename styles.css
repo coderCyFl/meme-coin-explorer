@@ -2111,3 +2111,18 @@ dialog#authDlg .auth-actions .primary{background:var(--accent,#F0B90B);color:#0b
   .xnews-list.xnews-dense{grid-template-columns:1fr}
 }
 
+
+/* ===== Buzz tab (X View-only · Trend/Share · Creative lock) ===== */
+.buzz-board{border:1px solid #3a2a55}
+.buzz-head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.buzz-table{width:100%;border-collapse:collapse}
+.buzz-table th,.buzz-table td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle;text-align:left}
+.buzz-table th{font-size:12px;color:var(--muted);font-weight:700}
+.buzz-table td.num,.buzz-table th.num{text-align:right;font-variant-numeric:tabular-nums}
+.buzz-coin{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.buzz-coin .nm{font-weight:800;font-size:14px}
+.buzz-when{white-space:nowrap}
+@media (max-width:520px){
+  .buzz-table th,.buzz-table td{padding:7px 6px;font-size:13px}
+  .buzz-table .ghost.sm{padding:2px 8px;min-height:28px}
+}
