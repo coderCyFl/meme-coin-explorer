@@ -1450,11 +1450,64 @@
     }
     return map;
   }
+  /**
+   * Upsert one Early display lock. First flag wins: write if missing, or replace only when
+   * candidate.mentioned_at is strictly earlier (never push the clock forward / reset price).
+   */
+  function gbUpsertEarlyLock(map, pair, candidate) {
+    if (!map || !pair || !candidate) return;
+    const mentionPx = candidate.mention_price;
+    if (!(mentionPx > 0) || !candidate.mentioned_at) return;
+    const tNew = new Date(candidate.mentioned_at).getTime();
+    if (!Number.isFinite(tNew)) return;
+    const prev = map[pair];
+    if (prev) {
+      const tPrev = prev.mentioned_at ? new Date(prev.mentioned_at).getTime() : NaN;
+      if (Number.isFinite(tPrev) && tNew >= tPrev) return; // keep earlier first flag
+    }
+    map[pair] = {
+      pair,
+      base: candidate.base || (pair.endsWith("USDT") ? pair.slice(0, -4) : pair),
+      symbol: candidate.symbol || candidate.base || (pair.endsWith("USDT") ? pair.slice(0, -4) : pair),
+      mentioned_at: candidate.mentioned_at,
+      mention_price: mentionPx,
+      via: candidate.via || null,
+    };
+  }
+  /**
+   * Seed locks from server latest.active early2/early still inside 24h.
+   * Live early2Trigger only looks back 4h; without this, Early face drops server-flagged
+   * coins after ~4h even though the product promise is 24h lock. Display only.
+   */
+  function gbSeedEarlyLocksFromServer(map, latest, now = Date.now()) {
+    const active = (latest && Array.isArray(latest.active)) ? latest.active : [];
+    for (const e of active) {
+      if (!e || (e.tier !== "early2" && e.tier !== "early")) continue;
+      let pair = e.pair ? String(e.pair).toUpperCase() : "";
+      if (!pair && e.symbol) {
+        const s = String(e.symbol).toUpperCase();
+        pair = s.endsWith("USDT") ? s : s + "USDT";
+      }
+      if (!pair) continue;
+      const t0 = e.picked_at ? new Date(e.picked_at).getTime() : NaN;
+      if (!Number.isFinite(t0) || now - t0 >= GB_EARLY_LOCK_MS) continue;
+      const mentionPx = e.entry_price_usd > 0 ? e.entry_price_usd : null;
+      if (!(mentionPx > 0)) continue;
+      const base = e.symbol ? String(e.symbol).replace(/USDT$/i, "") : (pair.endsWith("USDT") ? pair.slice(0, -4) : pair);
+      gbUpsertEarlyLock(map, pair, {
+        base, symbol: base, mentioned_at: e.picked_at, mention_price: mentionPx,
+        via: e.via || e.trigger_src || "server",
+      });
+    }
+    return map;
+  }
   /** Persist first early flag only — never reset mentioned_at / mention_price on refresh or re-flag. */
   function gbTouchEarlyLocks(earlyRows) {
     const map = gbPruneEarlyLocks(gbLoadEarlyLocks());
+    // Server active early2 (24h) fills gaps the live 4h window cannot see.
+    try { gbSeedEarlyLocksFromServer(map, gbStatic && gbStatic.latest); } catch (_) {}
     for (const r of earlyRows || []) {
-      if (!r || !r.symbol || map[r.symbol]) continue;
+      if (!r || !r.symbol) continue;
       const mentionPx = (r.trigger && r.trigger.price > 0) ? r.trigger.price
         : (r.serverFlag && r.serverFlag.entry_price_usd > 0) ? r.serverFlag.entry_price_usd
         : r.price;
@@ -1463,14 +1516,13 @@
       if (r.trigger && r.trigger.t) mentionedAt = isoSh(new Date(r.trigger.t));
       else if (r.serverFlag && r.serverFlag.picked_at) mentionedAt = r.serverFlag.picked_at;
       else mentionedAt = isoSh();
-      map[r.symbol] = {
-        pair: r.symbol,
+      gbUpsertEarlyLock(map, r.symbol, {
         base: r.base || (r.symbol.endsWith("USDT") ? r.symbol.slice(0, -4) : r.symbol),
         symbol: r.base || r.symbol,
         mentioned_at: mentionedAt,
         mention_price: mentionPx,
         via: (r.trigger && r.trigger.via) || (r.serverFlag && r.serverFlag.via) || null,
-      };
+      });
     }
     gbSaveEarlyLocks(map);
     return map;
