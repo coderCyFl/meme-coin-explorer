@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
-<link rel="stylesheet" href="styles.css?v=20261104n">
+<link rel="stylesheet" href="styles.css?v=20261104p">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
 <link rel="icon" href="icons/icon-32.png?v=20261030g" type="image/png" sizes="32x32">
@@ -33,21 +33,21 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     </div>
   </div>
   <div class="header-right">
-    <div class="seg mini lang-toggle" id="langToggle" role="group" aria-label="Language">
+    <div class="seg mini lang-toggle" id="langToggle" role="group" aria-label="Language" data-i18n-aria="shared.language">
       <button type="button" class="segbtn active" data-lang="en">EN</button>
       <button type="button" class="segbtn" data-lang="zh">ZH</button>
     </div>
-    <div class="auth-bar" id="authBar" aria-label="Account">
-      <button type="button" class="sm auth-btn" id="authLoginBtn" data-i18n="auth.login">Login</button>
-      <button type="button" class="sm auth-btn auth-cta" id="authRegisterBtn" data-i18n="auth.register">Register</button>
+    <div class="auth-bar" id="authBar" aria-label="Account" data-i18n-aria="auth.account">
+      <button type="button" class="sm auth-btn" id="authLoginBtn" data-i18n="auth.login">Log in</button>
+      <button type="button" class="sm auth-btn auth-cta" id="authRegisterBtn" data-i18n="auth.register">Sign up</button>
       <span class="auth-user" id="authUserLabel" hidden></span>
-      <button type="button" class="sm auth-btn" id="authLogoutBtn" hidden data-i18n="auth.logout">Logout</button>
+      <button type="button" class="sm auth-btn" id="authLogoutBtn" hidden data-i18n="auth.logout">Log out</button>
     </div>
     <div class="seg mini ui-toggle" id="uiModeToggle" title="UI mode">
       <button type="button" class="segbtn active" data-ui="simple">Simple</button>
       <button type="button" class="segbtn" data-ui="full">Full</button>
     </div>
-    <div class="status" id="status">Loading…</div>
+    <div class="status" id="status" data-i18n="shared.loading">Loading…</div>
   </div>
 </header>
 
@@ -56,20 +56,22 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 </div>
 
 <nav class="tabs top-tabs full-only" role="tablist">
-  <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
-  <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
+  <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Early finds</a>
+  <a href="#picks" class="tab" data-view="picks" data-face="watch" data-i18n="tab.watch">Watch</a>
   <a href="#buzz" class="tab" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
+  <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
+  <a href="#picks" class="tab" data-view="picks" data-face="today" data-i18n="tab.today">Today</a>
   <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
   <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
   <a href="#news" class="tab" data-view="news">News</a>
   <a href="#explore" class="tab" data-view="explore">Scan</a>
 </nav>
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="Simple tabs">
-  <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
-  <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
+  <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Early finds</a>
+  <a href="#picks" class="tab" data-view="picks" data-face="watch" data-i18n="tab.watch">Watch</a>
   <a href="#buzz" class="tab" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
-  <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
-  <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
+  <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
+  <a href="#picks" class="tab" data-view="picks" data-face="today" data-i18n="tab.today">Today</a>
   <a href="#more" class="tab" data-view="more" data-i18n="tab.more">More</a>
 </nav>
 
@@ -204,13 +206,13 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <div class="panelhead">
       <div>
         <h2 class="home-title" data-i18n="watch.title">Watch</h2>
-        <p class="home-sub" data-i18n="watch.sub">More coins to watch · not Early · no paper</p>
+        <p class="home-sub" data-i18n="watch.sub">Watching — not scored as Early</p>
       </div>
       <span class="watch-dense-chip" data-i18n="watch.chip">Watch only</span>
     </div>
     <p class="tiny muted" id="watchDenseMeta"></p>
     <div id="watchDenseList" class="watch-dense-list"></div>
-    <div class="empty" id="watchDenseEmpty" hidden data-i18n="watch.empty">No watch coins right now.</div>
+    <div class="empty" id="watchDenseEmpty" hidden data-i18n="watch.empty">Nothing on Watch yet</div>
   </section>
 
   <!-- X-news scan: parallel face + shill veto; never opens paper -->
@@ -255,7 +257,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <div class="panelhead">
       <div>
         <h2 class="home-title" data-i18n="today.title">Today</h2>
-        <p class="home-sub" id="dailyBatchMeta" data-i18n="today.sub">Daily watch · separate from Early</p>
+        <p class="home-sub" id="dailyBatchMeta" data-i18n="today.sub">Today’s snapshot</p>
       </div>
     </div>
     <div class="table-wrap daily-batch-wrap">
@@ -267,7 +269,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
         <tbody id="dailyBatchBody"></tbody>
       </table>
     </div>
-    <div class="empty" id="dailyBatchEmpty" hidden data-i18n="empty.batch">No batch yet.</div>
+    <div class="empty" id="dailyBatchEmpty" hidden data-i18n="empty.batch">Nothing for today yet</div>
   </section>
 
   <section class="panel home-brief simple-only" id="simpleCardsPanel">
@@ -429,8 +431,8 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
   <section class="panel hit-report" id="hitReportPanel" aria-live="polite">
     <div class="panelhead">
       <div>
-        <h2 class="home-title" data-i18n="hit.title">Hit report</h2>
-        <p class="home-sub" data-i18n="hit.sub">Sealed Early · last nights vs Binance top 20</p>
+        <h2 class="home-title" data-i18n="hit.title">Hits</h2>
+        <p class="home-sub" data-i18n="hit.sub">Hit report — what landed</p>
       </div>
       <div class="seg mini" id="hitWindowSeg" role="group" aria-label="Hit window">
         <button type="button" class="segbtn active" data-hitwin="7d" data-i18n="hit.win7">7 nights</button>
@@ -481,7 +483,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
         <tbody id="buzzBoardBody"></tbody>
       </table>
     </div>
-    <div class="empty" id="buzzBoardEmpty" hidden data-i18n="buzz.empty">No buzz yet.</div>
+    <div class="empty" id="buzzBoardEmpty" hidden data-i18n="buzz.empty">No buzz yet</div>
     <p class="tiny muted" data-i18n="buzz.note">Parallel · shill veto on face · not Early · no paper</p>
   </section>
 </div>
@@ -492,10 +494,11 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <h2>More</h2>
     <div class="more-list">
       <div class="more-item more-auth-lab" id="moreAuthUser" hidden></div>
-      <button type="button" class="more-item" id="moreAuthLogin" data-i18n="auth.login">Login</button>
-      <button type="button" class="more-item" id="moreAuthRegister" data-i18n="auth.register">Register</button>
-      <button type="button" class="more-item" id="moreAuthLogout" hidden data-i18n="auth.logout">Logout</button>
-      <a class="more-item" href="#browse">Markets</a>
+      <button type="button" class="more-item" id="moreAuthLogin" data-i18n="auth.login">Log in</button>
+      <button type="button" class="more-item" id="moreAuthRegister" data-i18n="auth.register">Sign up</button>
+      <button type="button" class="more-item" id="moreAuthLogout" hidden data-i18n="auth.logout">Log out</button>
+      <a class="more-item" href="#browse" data-view="browse" data-i18n="tab.markets">Markets</a>
+      <a class="more-item" href="#portfolio" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
       <a class="more-item" href="#hits" id="moreHitReport" data-view="hits" data-i18n="tab.hits">Hits</a>
       <a class="more-item" href="#picks" id="moreWatchDense" data-i18n="watch.title">Watch</a>
       <a class="more-item" href="#buzz" id="moreBuzz" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
@@ -512,7 +515,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
         </span>
         <input type="checkbox" id="pushOptIn" class="more-push-check" />
       </label>
-      <a class="more-item" href="#picks">Back to Today's picks</a>
+      <a class="more-item" href="#picks" data-i18n="tab.picks">Early finds</a>
     </div>
   </section>
 </div>
@@ -677,7 +680,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
         <th>Coin</th><th class="num">Qty</th><th class="num">Avg entry</th><th class="num">Cost</th>
         <th class="num">Mark</th><th class="num">Value</th><th class="num">uPnL %</th><th class="num">uPnL $</th><th></th>
       </tr></thead><tbody id="holdBody"></tbody></table>
-      <div class="empty" id="holdEmpty" data-i18n="empty.hold">No spot positions. Go to Today's picks → Buy (Spot), or Follow batch.</div></div>
+      <div class="empty" id="holdEmpty" data-i18n="empty.hold">No spot positions. Go to Early finds → Buy (Spot), or Follow batch.</div></div>
     </div>
     <div id="levSection" class="pos-section lev-section" hidden>
       <h3><span class="kind-badge lev">Leverage</span> (isolated) <span class="en">Can liquidate</span></h3>
@@ -731,22 +734,22 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <dialog id="authDlg" class="sheet auth-sheet">
   <form method="post" action="#" id="authForm">
     <div class="sheet-head">
-      <b id="authTitle" data-i18n="auth.login">Login</b>
+      <b id="authTitle" data-i18n="auth.login">Log in</b>
       <button type="button" class="iconbtn" id="authClose" aria-label="Close">✕</button>
     </div>
     <div class="seg mini auth-mode" id="authModeSeg" role="tablist" aria-label="Auth mode">
-      <button type="button" class="segbtn active" data-authmode="login" data-i18n="auth.login">Login</button>
-      <button type="button" class="segbtn" data-authmode="register" data-i18n="auth.register">Register</button>
+      <button type="button" class="segbtn active" data-authmode="login" data-i18n="auth.login">Log in</button>
+      <button type="button" class="segbtn" data-authmode="register" data-i18n="auth.register">Sign up</button>
     </div>
-    <label for="authUser" class="tiny muted" data-i18n="auth.username">Username</label>
+    <label for="authUser" class="tiny muted" data-i18n="auth.username">Email</label>
     <input id="authUser" name="username" type="text" autocomplete="username" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" inputmode="text" placeholder="e.g. papertrader">
     <label for="authPass" class="tiny muted" data-i18n="auth.password">Password</label>
     <input id="authPass" name="password" type="password" autocomplete="current-password" required minlength="4" maxlength="64" placeholder="••••">
-    <p class="muted tiny" id="authHint" data-i18n="auth.hint.login">Mock paper · unlock your saved portfolio</p>
+    <p class="muted tiny" id="authHint" data-i18n="auth.hint.login">Mock · paper — practice only</p>
     <p class="auth-err" id="authErr" hidden></p>
     <div class="row trade-actions auth-actions">
       <button type="button" class="ghost" id="authCancel" data-i18n="auth.cancel">Cancel</button>
-      <button type="submit" class="primary" id="authSubmit" data-i18n="auth.signin">Sign in</button>
+      <button type="submit" class="primary" id="authSubmit" data-i18n="auth.signin">Continue</button>
     </div>
   </form>
 </dialog>
@@ -824,20 +827,22 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <div id="popFx" class="pop-fx" hidden aria-hidden="true"></div>
 
 <nav class="bottom-nav" role="tablist" aria-label="Main tabs">
-  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab" data-i18n="tab.picks">Today's picks</span></a>
-  <a href="#hits" class="tab" data-view="hits"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span class="bn-lab" data-i18n="tab.hits">Hits</span></a>
+  <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab" data-i18n="tab.picks">Early finds</span></a>
+  <a href="#picks" class="tab" data-view="picks" data-face="watch"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="bn-lab" data-i18n="tab.watch">Watch</span></a>
   <a href="#buzz" class="tab" data-view="buzz"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4z"/></svg><span class="bn-lab" data-i18n="tab.buzz">Buzz</span></a>
-  <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab" data-i18n="tab.markets">Markets</span></a>
-  <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab" data-i18n="tab.portfolio">Portfolio</span></a>
+  <a href="#hits" class="tab" data-view="hits"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span class="bn-lab" data-i18n="tab.hits">Hits</span></a>
+  <a href="#picks" class="tab" data-view="picks" data-face="today"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="bn-lab" data-i18n="tab.today">Today</span></a>
+  <a href="#browse" class="tab bn-full" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab" data-i18n="tab.markets">Markets</span></a>
+  <a href="#portfolio" class="tab bn-full" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab" data-i18n="tab.portfolio">Portfolio</span></a>
   <a href="#news" class="tab bn-full" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8"/></svg><span class="bn-lab">News</span></a>
   <a href="#explore" class="tab bn-full" data-view="explore"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span class="bn-lab">Scan</span></a>
   <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab" data-i18n="tab.more">More</span></a>
 </nav>
 
-<script src="live.js?v=20261104n"></script>
+<script src="live.js?v=20261104p"></script>
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104n"></script>
+<script src="picks.js?v=20261104p"></script>
 </body>
 </html>
