@@ -304,42 +304,42 @@
    "symbol": "XRPUSDT",
    "base": "XRP",
    "flag": "pump",
-   "trigger_at": "2026-11-03T21:30:00+08:00",
-   "checked_at": "2026-11-03T21:20:21+08:00",
-   "posts_last_1h": 158,
-   "posts_prev_6h_avg_per_h": 121.67,
-   "spike_ratio": 1.3,
+   "trigger_at": "2026-11-04T09:15:00+08:00",
+   "checked_at": "2026-11-04T09:12:00+08:00",
+   "posts_last_1h": 156,
+   "posts_prev_6h_avg_per_h": 160.47,
+   "spike_ratio": 0.97,
    "verdict": "冷",
-   "one_line": "自託管騙文洗版",
+   "one_line": "量穩兼推廣文多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117569204861968877",
-     "url": "https://x.com/simple_crypto7/status/2117569204861968877",
-     "text": "🚨PROTECT YOUR XRP. MOVE YOUR ASSETS OFF EXCHANGES LIKE UPHOLD, BINANCE, COINBASE, KRAKEN, ROBINHOOD, AND OTHERS. 🚨SELF-CUSTODY MATTERS. MESS",
-     "likes": 2,
-     "author_username": "simple_crypto7",
-     "author_followers": 267,
-     "created_at": "2026-11-03T18:46:55+08:00"
+     "id": "2117784370966638833",
+     "url": "https://x.com/Paulatalkscr/status/2117784370966638833",
+     "text": "🚨 BREAKING: A NEW ATTACK AGAINST THE XRP LEDGER! ⚠️ The crypto world is watching as the XRP Ledger faces another security challenge. What d…",
+     "likes": 1,
+     "author_username": "Paulatalkscr",
+     "author_followers": 10770,
+     "created_at": "2026-11-04T09:01:55+08:00"
     },
     {
-     "id": "2117575104104145221",
-     "url": "https://x.com/NBTC_finance/status/2117575104104145221",
-     "text": "Binance Hack Wallet Moves 80M XRP in 50 Seconds as Separate 50M XRP Leaves Binance #Crypto #Exchanges #NBTC #Binance #XRP #Hacking #Wallet #",
+     "id": "2117785497305239954",
+     "url": "https://x.com/NadiaOx_/status/2117785497305239954",
+     "text": "🚨 THE TRUTH ABOUT $XRP IS COMING OUT! 👀💥 BOOOOM! THE BIGGER PICTURE IS STARTING TO EMERGE! COULD THERE BE MORE TO THE STORY? 🔥💎 #XRP #Rippl…",
      "likes": 1,
-     "author_username": "NBTC_finance",
-     "author_followers": 431,
-     "created_at": "2026-11-03T19:10:22+08:00"
+     "author_username": "NadiaOx_",
+     "author_followers": 1009,
+     "created_at": "2026-11-04T09:06:23+08:00"
     },
     {
-     "id": "2117585469835805096",
-     "url": "https://x.com/Team5Warriorss/status/2117585469835805096",
-     "text": "🚨 JUST IN: Binance reports that 90% of stolen assets have been replenished, with BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD, and ZEC r",
+     "id": "2117783902345732573",
+     "url": "https://x.com/thexrpguy/status/2117783902345732573",
+     "text": "Big-news nights can bring sharp swings and thin liquidity, and results can take days to settle. If you use leverage, tonight is a good nigh…",
      "likes": 1,
-     "author_username": "Team5Warriorss",
-     "author_followers": 904,
-     "created_at": "2026-11-03T19:51:33+08:00"
+     "author_username": "thexrpguy",
+     "author_followers": 1271,
+     "created_at": "2026-11-04T09:00:03+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -744,45 +744,45 @@
    "symbol": "SUIUSDT",
    "base": "SUI",
    "flag": "pump",
-   "trigger_at": "2026-11-03T22:30:00+08:00",
-   "checked_at": "2026-11-03T23:16:13+08:00",
-   "posts_last_1h": 11,
-   "posts_prev_6h_avg_per_h": 10.0,
-   "spike_ratio": 1.1,
+   "trigger_at": "2026-11-04T09:15:00+08:00",
+   "checked_at": "2026-11-04T09:12:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 6.92,
+   "spike_ratio": 0.29,
    "verdict": "冷",
-   "one_line": "圖表同掃盤bot為主",
-   "shill_flag": true,
+   "one_line": "量低無熱度",
+   "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117609282191663385",
-     "url": "https://x.com/Clifton_Charts/status/2117609282191663385",
-     "text": "$SUI descending channel 4h — upside breakout = massive rally",
-     "likes": 24,
-     "author_username": "Clifton_Charts",
-     "author_followers": 23814,
-     "created_at": "2026-11-03T21:26:10+08:00"
+     "id": "2117713481768009900",
+     "url": "https://x.com/CryptoBio_/status/2117713481768009900",
+     "text": "🚨2030 CRYPTO PREDICTIONS $BTC $300K • $XRP $50 • $ETH $9K • $SOL $800 • $SUI $100 • $XLM $5 • $HBAR $300 $LUNC $39 $DOGE $20 $SHIBA $15 $PE…",
+     "likes": 23,
+     "author_username": "CryptoBio_",
+     "author_followers": 11373,
+     "created_at": "2026-11-04T04:20:13+08:00"
     },
     {
-     "id": "2117588453206450470",
-     "url": "https://x.com/yahyaiqbal40785/status/2117588453206450470",
-     "text": "Binance Daily Update — withdrawals reopen incl Sui network",
-     "likes": 7,
-     "author_username": "yahyaiqbal40785",
-     "author_followers": 5911,
-     "created_at": "2026-11-03T20:03:24+08:00"
+     "id": "2117699668994150816",
+     "url": "https://x.com/LeaderAlphaNews/status/2117699668994150816",
+     "text": "SUI CRASHES THE ZK VICTORY PARTY 🎉😂 @EvanWeb3 is mocking crypto projects turning Anthropic's ZK research into a victory lap. His countercla…",
+     "likes": 6,
+     "author_username": "LeaderAlphaNews",
+     "author_followers": 15546,
+     "created_at": "2026-11-04T03:25:20+08:00"
     },
     {
-     "id": "2117623051085127778",
-     "url": "https://x.com/Kyra_Bloom0/status/2117623051085127778",
-     "text": "$SUI consolidating in falling wedge; breakout above 50MA",
-     "likes": 1,
-     "author_username": "Kyra_Bloom0",
-     "author_followers": 31240,
-     "created_at": "2026-11-03T22:20:53+08:00"
+     "id": "2117709015664689437",
+     "url": "https://x.com/cryptoissimple/status/2117709015664689437",
+     "text": "If you had to Buy 1 Crypto from this list, which one are you choosing? ◦ $NEAR Near Protocol - $5.07B ◦ $ONDO Ondo Finance - $1.89B ◦ $HBAR…",
+     "likes": 6,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T04:02:29+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "FILUSDT": {
    "symbol": "FILUSDT",
@@ -3766,15 +3766,101 @@
      "created_at": "2026-11-04T02:58:17+08:00"
     }
    ]
+  },
+  {
+   "symbol": "SUIUSDT",
+   "base": "SUI",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T09:15:00+08:00",
+   "checked_at": "2026-11-04T09:12:00+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 6.92,
+   "spike_ratio": 0.29,
+   "verdict": "冷",
+   "one_line": "量低無熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117713481768009900",
+     "url": "https://x.com/CryptoBio_/status/2117713481768009900",
+     "text": "🚨2030 CRYPTO PREDICTIONS $BTC $300K • $XRP $50 • $ETH $9K • $SOL $800 • $SUI $100 • $XLM $5 • $HBAR $300 $LUNC $39 $DOGE $20 $SHIBA $15 $PE…",
+     "likes": 23,
+     "author_username": "CryptoBio_",
+     "author_followers": 11373,
+     "created_at": "2026-11-04T04:20:13+08:00"
+    },
+    {
+     "id": "2117699668994150816",
+     "url": "https://x.com/LeaderAlphaNews/status/2117699668994150816",
+     "text": "SUI CRASHES THE ZK VICTORY PARTY 🎉😂 @EvanWeb3 is mocking crypto projects turning Anthropic's ZK research into a victory lap. His countercla…",
+     "likes": 6,
+     "author_username": "LeaderAlphaNews",
+     "author_followers": 15546,
+     "created_at": "2026-11-04T03:25:20+08:00"
+    },
+    {
+     "id": "2117709015664689437",
+     "url": "https://x.com/cryptoissimple/status/2117709015664689437",
+     "text": "If you had to Buy 1 Crypto from this list, which one are you choosing? ◦ $NEAR Near Protocol - $5.07B ◦ $ONDO Ondo Finance - $1.89B ◦ $HBAR…",
+     "likes": 6,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T04:02:29+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "XRPUSDT",
+   "base": "XRP",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T09:15:00+08:00",
+   "checked_at": "2026-11-04T09:12:00+08:00",
+   "posts_last_1h": 156,
+   "posts_prev_6h_avg_per_h": 160.47,
+   "spike_ratio": 0.97,
+   "verdict": "冷",
+   "one_line": "量穩兼推廣文多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117784370966638833",
+     "url": "https://x.com/Paulatalkscr/status/2117784370966638833",
+     "text": "🚨 BREAKING: A NEW ATTACK AGAINST THE XRP LEDGER! ⚠️ The crypto world is watching as the XRP Ledger faces another security challenge. What d…",
+     "likes": 1,
+     "author_username": "Paulatalkscr",
+     "author_followers": 10770,
+     "created_at": "2026-11-04T09:01:55+08:00"
+    },
+    {
+     "id": "2117785497305239954",
+     "url": "https://x.com/NadiaOx_/status/2117785497305239954",
+     "text": "🚨 THE TRUTH ABOUT $XRP IS COMING OUT! 👀💥 BOOOOM! THE BIGGER PICTURE IS STARTING TO EMERGE! COULD THERE BE MORE TO THE STORY? 🔥💎 #XRP #Rippl…",
+     "likes": 1,
+     "author_username": "NadiaOx_",
+     "author_followers": 1009,
+     "created_at": "2026-11-04T09:06:23+08:00"
+    },
+    {
+     "id": "2117783902345732573",
+     "url": "https://x.com/thexrpguy/status/2117783902345732573",
+     "text": "Big-news nights can bring sharp swings and thin liquidity, and results can take days to settle. If you use leverage, tonight is a good nigh…",
+     "likes": 1,
+     "author_username": "thexrpguy",
+     "author_followers": 1271,
+     "created_at": "2026-11-04T09:00:03+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 34,
+  "calls_today": 39,
   "cap_reached": false,
-  "updated_at": "2026-11-04T08:14:00+08:00"
+  "updated_at": "2026-11-04T09:12:14+08:00"
  },
- "updated_at": "2026-11-04T08:14:00+08:00",
+ "updated_at": "2026-11-04T09:12:14+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
