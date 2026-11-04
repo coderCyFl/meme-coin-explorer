@@ -392,42 +392,42 @@
    "symbol": "BMTUSDT",
    "base": "BMT",
    "flag": "pump",
-   "trigger_at": "2026-11-03T21:30:00+08:00",
-   "checked_at": "2026-11-04T01:17:28+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 5.33,
-   "spike_ratio": 0.75,
+   "trigger_at": "2026-11-04T08:12:08+08:00",
+   "checked_at": "2026-11-04T08:13:47+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 0.26,
    "verdict": "冷",
-   "one_line": "量跌兼喊單bot多",
+   "one_line": "量跌兼訊號bot多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117579264510054774",
-     "url": "https://x.com/Binance_TH_/status/2117579264510054774",
-     "text": "Digital Asset Withdrawal Status Update (As of 3 November 2026 at 17:30, Thailand time) Binance TH would like to provide an update on digita…",
-     "likes": 17,
-     "author_username": "Binance_TH_",
-     "author_followers": 25724,
-     "created_at": "2026-11-03T19:26:54+08:00"
-    },
-    {
-     "id": "2117609315682988386",
-     "url": "https://x.com/mrcamerontrader/status/2117609315682988386",
-     "text": "🚀 BMT/USDT — LONG SIGNAL NOW! ⚡️ POSITION: LONG ENTRY PRICES • Entry 1: 0.02720 (Market Price) • Entry 2: 0.02660 TAKE PROFIT TARGETS • TP1…",
-     "likes": 9,
-     "author_username": "mrcamerontrader",
-     "author_followers": 579,
-     "created_at": "2026-11-03T21:26:18+08:00"
-    },
-    {
-     "id": "2117621369336659985",
-     "url": "https://x.com/cryptolevier/status/2117621369336659985",
-     "text": "$BMT is +30% on the day while the watchdog itself is under fire. Our 12 AM scan flagged it at $0.02410. It's ~$0.0272 now after a 7 AM brea…",
+     "id": "2117708439103172964",
+     "url": "https://x.com/LiqSonar/status/2117708439103172964",
+     "text": "Crypto futures, last 24h BTC +0.6% · ETH +1.4% · SOL +1.4% Liquidated: $88.9M Top gainer: IDOL +52% Most crowded: BMT funding -0.80%",
      "likes": 2,
-     "author_username": "cryptolevier",
-     "author_followers": 8200,
-     "created_at": "2026-11-03T22:14:12+08:00"
+     "author_username": "LiqSonar",
+     "author_followers": 5,
+     "created_at": "2026-11-04T04:00:11+08:00"
+    },
+    {
+     "id": "2117682134466896143",
+     "url": "https://x.com/cexscan/status/2117682134466896143",
+     "text": "Last 15m - Binance Futures (USDT Trades) Top 3 Gainers: $LYN ↑3.84% $HOT ↑3.65% … $BMT",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-11-04T02:15:40+08:00"
+    },
+    {
+     "id": "2117692861214810484",
+     "url": "https://x.com/0x_PUN/status/2117692861214810484",
+     "text": "$BMT looks good here. This pattern is so common in crypto I like for this continuation often. #Bubblemaps #bitcoin #crypto #trading",
+     "likes": 0,
+     "author_username": "0x_PUN",
+     "author_followers": 134,
+     "created_at": "2026-11-04T02:58:17+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -3723,15 +3723,58 @@
      "created_at": "2026-11-04T02:31:09+08:00"
     }
    ]
+  },
+  {
+   "symbol": "BMTUSDT",
+   "base": "BMT",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T08:12:08+08:00",
+   "checked_at": "2026-11-04T08:13:47+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 0.26,
+   "verdict": "冷",
+   "one_line": "量跌兼訊號bot多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117708439103172964",
+     "url": "https://x.com/LiqSonar/status/2117708439103172964",
+     "text": "Crypto futures, last 24h BTC +0.6% · ETH +1.4% · SOL +1.4% Liquidated: $88.9M Top gainer: IDOL +52% Most crowded: BMT funding -0.80%",
+     "likes": 2,
+     "author_username": "LiqSonar",
+     "author_followers": 5,
+     "created_at": "2026-11-04T04:00:11+08:00"
+    },
+    {
+     "id": "2117682134466896143",
+     "url": "https://x.com/cexscan/status/2117682134466896143",
+     "text": "Last 15m - Binance Futures (USDT Trades) Top 3 Gainers: $LYN ↑3.84% $HOT ↑3.65% … $BMT",
+     "likes": 1,
+     "author_username": "cexscan",
+     "author_followers": 10597,
+     "created_at": "2026-11-04T02:15:40+08:00"
+    },
+    {
+     "id": "2117692861214810484",
+     "url": "https://x.com/0x_PUN/status/2117692861214810484",
+     "text": "$BMT looks good here. This pattern is so common in crypto I like for this continuation often. #Bubblemaps #bitcoin #crypto #trading",
+     "likes": 0,
+     "author_username": "0x_PUN",
+     "author_followers": 134,
+     "created_at": "2026-11-04T02:58:17+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 32,
+  "calls_today": 34,
   "cap_reached": false,
-  "updated_at": "2026-11-04T07:13:59+08:00"
+  "updated_at": "2026-11-04T08:14:00+08:00"
  },
- "updated_at": "2026-11-04T07:13:59+08:00",
+ "updated_at": "2026-11-04T08:14:00+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
