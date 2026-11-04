@@ -364,3 +364,11 @@
 {"ts": "2026-11-04T12:12:43+08:00", "symbol": "TAOUSDT", "tool": "search", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 8}
 {"ts": "2026-11-04T12:12:44+08:00", "symbol": "SUIUSDT", "tool": "search", "query": "($SUI OR #SUI) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
 {"ts": "2026-11-04T12:12:50+08:00", "symbol": "BMTUSDT", "tool": "search", "query": "($BMT OR #BMT) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": "LSKUSDT", "tool": "counts", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 420}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": "LSKUSDT", "tool": "search", "query": "($LSK OR #LSK) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": "ONDOUSDT", "tool": "counts", "query": "($ONDO OR #ONDO) (crypto OR binance) lang:en -is:retweet", "result_count": 1255}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": "ONDOUSDT", "tool": "search", "query": "($ONDO OR #ONDO) (crypto OR binance) lang:en -is:retweet", "result_count": 1}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": null, "tool": "counts", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 54}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": null, "tool": "search", "query": "\"牛来\" (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": "TRXUSDT", "tool": "counts", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 4161}
+{"ts": "2026-11-04T13:22:57+08:00", "symbol": "TRXUSDT", "tool": "search", "query": "($TRX OR #TRX) (crypto OR binance) lang:en -is:retweet", "result_count": 1}

@@ -172,42 +172,24 @@
    "symbol": "TRXUSDT",
    "base": "TRX",
    "flag": "pump",
-   "trigger_at": "2026-11-04T07:15:00+08:00",
-   "checked_at": "2026-11-04T07:13:48+08:00",
-   "posts_last_1h": 10,
-   "posts_prev_6h_avg_per_h": 10.83,
-   "spike_ratio": 0.92,
+   "trigger_at": "2026-11-04T13:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.71,
    "verdict": "冷",
-   "one_line": "量穩兼推廣文多",
+   "one_line": "量穩雜訊多",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117697168240726045",
-     "url": "https://x.com/Adellbah/status/2117697168240726045",
-     "text": "The binance hackers stole $6.3 billion and then paid $119 million in panic tax just trying to spend it.",
-     "likes": 7,
-     "author_username": "Adellbah",
-     "author_followers": 30390,
-     "created_at": "2026-11-04T03:15:24+08:00"
-    },
-    {
-     "id": "2117712288564039782",
-     "url": "https://x.com/RocketStrategy_/status/2117712288564039782",
-     "text": "JUST IN: TRON leads ALL networks in stablecoin growth, adding $256.5 MILLION in just 7 days. $TRX #Crypto",
-     "likes": 5,
-     "author_username": "RocketStrategy_",
-     "author_followers": 69,
-     "created_at": "2026-11-04T04:15:29+08:00"
-    },
-    {
-     "id": "2117686031856353761",
-     "url": "https://x.com/BitcoinStrat/status/2117686031856353761",
-     "text": "Tron Carries 6x More Dollars. The Tron chain carries about 3 dollars of stablecoins for every dollar of TRX. $TRX #tron #crypto",
-     "likes": 4,
-     "author_username": "BitcoinStrat",
-     "author_followers": 6954,
-     "created_at": "2026-11-04T02:31:09+08:00"
+     "id": "2117842595296493651",
+     "url": "https://x.com/FuturesWire/status/2117842595296493651",
+     "text": "ALERT: Bitcoin briefly sinks to $75,700 as bets on a Democratic sweep rattle markets. $BTC $ZEC $XRP $ETH $HYPE $TRX $SOL",
+     "likes": 0,
+     "author_username": "FuturesWire",
+     "author_followers": 255,
+     "created_at": "2026-11-04T12:53:16+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1184,6 +1166,58 @@
      "author_username": "SirFrancis13579",
      "author_followers": 46,
      "created_at": "2026-11-04T11:34:59+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "LSKUSDT": {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T12:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.6,
+   "verdict": "冷",
+   "one_line": "量低訊號bot",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117845388199927891",
+     "url": "https://x.com/CryptoBigStarSG/status/2117845388199927891",
+     "text": "#LSKUSDT Entry: 0.1915 Target 1: 0.1960 Target 2: 0.2005 Stop loss 1: 0.1821 ##LSKUSDT #LSK #Crypto #Trading #Signal",
+     "likes": 1,
+     "author_username": "CryptoBigStarSG",
+     "author_followers": 3461,
+     "created_at": "2026-11-04T13:04:22+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "ONDOUSDT": {
+   "symbol": "ONDOUSDT",
+   "base": "ONDO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T13:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 2.83,
+   "spike_ratio": 0.35,
+   "verdict": "冷",
+   "one_line": "量跌無熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117844268274634774",
+     "url": "https://x.com/YakusaHL/status/2117844268274634774",
+     "text": "Most perp DEXs: crypto perps + points. Ondo Perps: OpenAI pre-IPO exposure, as spot and perps; 220K USDC in weekly rewards",
+     "likes": 1,
+     "author_username": "YakusaHL",
+     "author_followers": 4875,
+     "created_at": "2026-11-04T12:59:55+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -4317,15 +4351,90 @@
      "created_at": "2026-11-04T08:59:23+08:00"
     }
    ]
+  },
+  {
+   "symbol": "LSKUSDT",
+   "base": "LSK",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T12:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 0.6,
+   "verdict": "冷",
+   "one_line": "量低訊號bot",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117845388199927891",
+     "url": "https://x.com/CryptoBigStarSG/status/2117845388199927891",
+     "text": "#LSKUSDT Entry: 0.1915 Target 1: 0.1960 Target 2: 0.2005 Stop loss 1: 0.1821 ##LSKUSDT #LSK #Crypto #Trading #Signal",
+     "likes": 1,
+     "author_username": "CryptoBigStarSG",
+     "author_followers": 3461,
+     "created_at": "2026-11-04T13:04:22+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ONDOUSDT",
+   "base": "ONDO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T13:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 2.83,
+   "spike_ratio": 0.35,
+   "verdict": "冷",
+   "one_line": "量跌無熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117844268274634774",
+     "url": "https://x.com/YakusaHL/status/2117844268274634774",
+     "text": "Most perp DEXs: crypto perps + points. Ondo Perps: OpenAI pre-IPO exposure, as spot and perps; 220K USDC in weekly rewards",
+     "likes": 1,
+     "author_username": "YakusaHL",
+     "author_followers": 4875,
+     "created_at": "2026-11-04T12:59:55+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TRXUSDT",
+   "base": "TRX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T13:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.71,
+   "verdict": "冷",
+   "one_line": "量穩雜訊多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117842595296493651",
+     "url": "https://x.com/FuturesWire/status/2117842595296493651",
+     "text": "ALERT: Bitcoin briefly sinks to $75,700 as bets on a Democratic sweep rattle markets. $BTC $ZEC $XRP $ETH $HYPE $TRX $SOL",
+     "likes": 0,
+     "author_username": "FuturesWire",
+     "author_followers": 255,
+     "created_at": "2026-11-04T12:53:16+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 57,
+  "calls_today": 65,
   "cap_reached": false,
-  "updated_at": "2026-11-04T12:14:11+08:00"
+  "updated_at": "2026-11-04T13:22:57+08:00"
  },
- "updated_at": "2026-11-04T12:14:11+08:00",
+ "updated_at": "2026-11-04T13:22:57+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
