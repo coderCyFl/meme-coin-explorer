@@ -426,3 +426,19 @@
 {"ts": "2026-11-04T17:20:35+08:00", "symbol": "ASTERUSDT", "tool": "search", "query": "($ASTER OR #ASTER) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-04T17:20:35+08:00", "symbol": "TAOUSDT", "tool": "counts", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 15}
 {"ts": "2026-11-04T17:20:35+08:00", "symbol": "TAOUSDT", "tool": "search", "query": "($TAO OR #TAO) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "ETHUSDT", "tool": "counts", "query": "($ETH OR #ETH) (crypto OR binance) lang:en -is:retweet", "result_count": 1527}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "ETHUSDT", "tool": "search", "query": "($ETH OR #ETH) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "RAYUSDT", "tool": "counts", "query": "($RAY OR #RAY) (crypto OR binance) lang:en -is:retweet", "result_count": 39}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "RAYUSDT", "tool": "search", "query": "($RAY OR #RAY) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "LINKUSDT", "tool": "counts", "query": "($LINK OR #LINK) (crypto OR binance) lang:en -is:retweet", "result_count": 641}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "LINKUSDT", "tool": "search", "query": "($LINK OR #LINK) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "UNIUSDT", "tool": "counts", "query": "($UNI OR #UNI) (crypto OR binance) lang:en -is:retweet", "result_count": 92}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "UNIUSDT", "tool": "search", "query": "($UNI OR #UNI) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "ADAUSDT", "tool": "counts", "query": "($ADA OR #ADA) (crypto OR binance) lang:en -is:retweet", "result_count": 73}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "ADAUSDT", "tool": "search", "query": "($ADA OR #ADA) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "SUIUSDT", "tool": "counts", "query": "($SUI OR #SUI) (crypto OR binance) lang:en -is:retweet", "result_count": 74}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "SUIUSDT", "tool": "search", "query": "($SUI OR #SUI) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "SOLUSDT", "tool": "counts", "query": "($SOL OR #SOL) (crypto OR binance) lang:en -is:retweet", "result_count": 965}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "SOLUSDT", "tool": "search", "query": "($SOL OR #SOL) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "XPLUSDT", "tool": "counts", "query": "($XPL OR #XPL) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
+{"ts": "2026-11-05T00:17:59+08:00", "symbol": "XPLUSDT", "tool": "search", "query": "($XPL OR #XPL) (crypto OR binance) lang:en -is:retweet", "result_count": 9}

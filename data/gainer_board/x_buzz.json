@@ -1,6 +1,41 @@
 {
  "version": 1,
  "coins": {
+  "MITOUSDT": {
+   "symbol": "MITOUSDT",
+   "base": "MITO",
+   "flag": "pump",
+   "trigger_at": "2026-11-02T21:15:00+08:00",
+   "checked_at": "2026-11-03T01:16:43+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 0.5,
+   "spike_ratio": 6.0,
+   "verdict": "冷",
+   "one_line": "量少諷刺泵未成熱",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117253803020050456",
+     "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
+     "text": "The @MitosisOrg's $MITO is the top gainer on Binance 🤣💀 Crime pump at its finest",
+     "likes": 30,
+     "author_username": "Crypto_Zh0u",
+     "author_followers": 9465,
+     "created_at": "2026-11-02T21:53:37+08:00"
+    },
+    {
+     "id": "2117259764074008984",
+     "url": "https://x.com/soonmource/status/2117259764074008984",
+     "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
+     "likes": 1,
+     "author_username": "soonmource",
+     "author_followers": 8543,
+     "created_at": "2026-11-02T22:17:19+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
   "HOTUSDT": {
    "symbol": "HOTUSDT",
    "base": "HOT",
@@ -41,243 +76,6 @@
      "author_username": "Finora_EN",
      "author_followers": 24798,
      "created_at": "2026-11-03T22:59:01+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "MEGAUSDT": {
-   "symbol": "MEGAUSDT",
-   "base": "MEGA",
-   "flag": "pump",
-   "trigger_at": "2026-11-04T10:30:00+08:00",
-   "checked_at": "2026-11-04T10:20:02+08:00",
-   "posts_last_1h": 6,
-   "posts_prev_6h_avg_per_h": 3.83,
-   "spike_ratio": 1.57,
-   "verdict": "冷",
-   "one_line": "假MEGA多冇真討論",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117793730094915997",
-     "url": "https://x.com/tazuui1/status/2117793730094915997",
-     "text": "@moonpay Just enabled the @Collector_Crypt plugin on PayBox — those Mega Charizard X, Hoopa V & Mega Gardevoir pulls are actually crazy. Lo…",
-     "likes": 8,
-     "author_username": "tazuui1",
-     "author_followers": 9,
-     "created_at": "2026-11-04T09:39:06+08:00"
-    },
-    {
-     "id": "2117776139783733329",
-     "url": "https://x.com/falenostar/status/2117776139783733329",
-     "text": "US Stock News 24-Hour Important Summary Midterm Election Day hit and the tape went mixed — Dow slipped about 0.4% while S&P 500 edged up 0.…",
-     "likes": 6,
-     "author_username": "falenostar",
-     "author_followers": 21638,
-     "created_at": "2026-11-04T08:29:12+08:00"
-    },
-    {
-     "id": "2117780596076302341",
-     "url": "https://x.com/ozanktarman/status/2117780596076302341",
-     "text": "Risk & Bitcoin sink w/ Blue Tsunami gazzzzz So are we ready? LFG! Kalshi is upping the ante: JUST IN: Odds of a Democratic mega tsunami sur…",
-     "likes": 1,
-     "author_username": "ozanktarman",
-     "author_followers": 17520,
-     "created_at": "2026-11-04T08:46:55+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "HAEDALUSDT": {
-   "symbol": "HAEDALUSDT",
-   "base": "HAEDAL",
-   "flag": "pump",
-   "trigger_at": "2026-11-02T22:00:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 3.83,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "訊號同投票帖為主",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117188329594880351",
-     "url": "https://x.com/Jus7Degen/status/2117188329594880351",
-     "text": "$HAEDAL — Haedal Protocol Everyone is watching $SUI, $CETUS, and $DEEP. But what about the protocol helping SUI holders earn staking reward…",
-     "likes": 4,
-     "author_username": "Jus7Degen",
-     "author_followers": 4760,
-     "created_at": "2026-11-02T17:33:27+08:00"
-    },
-    {
-     "id": "2117220542604333482",
-     "url": "https://x.com/grossbel12/status/2117220542604333482",
-     "text": "@HaedalProtocol Liquid Staking on @SuiNetwork Haedal is a native liquid staking protocol on the Sui blockchain",
-     "likes": 2,
-     "author_username": "grossbel12",
-     "author_followers": 1637,
-     "created_at": "2026-11-02T19:41:28+08:00"
-    },
-    {
-     "id": "2117255914348855743",
-     "url": "https://x.com/DyorNetCrypto/status/2117255914348855743",
-     "text": "Top 5 Bullish Trends - USDT - 1h $PRAI $XTSLA GoPlus $HAEDAL $ARIA",
-     "likes": 0,
-     "author_username": "DyorNetCrypto",
-     "author_followers": 82281,
-     "created_at": "2026-11-02T22:02:01+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "MITOUSDT": {
-   "symbol": "MITOUSDT",
-   "base": "MITO",
-   "flag": "pump",
-   "trigger_at": "2026-11-02T21:15:00+08:00",
-   "checked_at": "2026-11-03T01:16:43+08:00",
-   "posts_last_1h": 3,
-   "posts_prev_6h_avg_per_h": 0.5,
-   "spike_ratio": 6.0,
-   "verdict": "冷",
-   "one_line": "量少諷刺泵未成熱",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117253803020050456",
-     "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
-     "text": "The @MitosisOrg's $MITO is the top gainer on Binance 🤣💀 Crime pump at its finest",
-     "likes": 30,
-     "author_username": "Crypto_Zh0u",
-     "author_followers": 9465,
-     "created_at": "2026-11-02T21:53:37+08:00"
-    },
-    {
-     "id": "2117259764074008984",
-     "url": "https://x.com/soonmource/status/2117259764074008984",
-     "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
-     "likes": 1,
-     "author_username": "soonmource",
-     "author_followers": 8543,
-     "created_at": "2026-11-02T22:17:19+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "TRXUSDT": {
-   "symbol": "TRXUSDT",
-   "base": "TRX",
-   "flag": "pump",
-   "trigger_at": "2026-11-04T13:30:00+08:00",
-   "checked_at": "2026-11-04T13:22:57+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 5.67,
-   "spike_ratio": 0.71,
-   "verdict": "冷",
-   "one_line": "量穩雜訊多",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117842595296493651",
-     "url": "https://x.com/FuturesWire/status/2117842595296493651",
-     "text": "ALERT: Bitcoin briefly sinks to $75,700 as bets on a Democratic sweep rattle markets. $BTC $ZEC $XRP $ETH $HYPE $TRX $SOL",
-     "likes": 0,
-     "author_username": "FuturesWire",
-     "author_followers": 255,
-     "created_at": "2026-11-04T12:53:16+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "QNTUSDT": {
-   "symbol": "QNTUSDT",
-   "base": "QNT",
-   "flag": "pump",
-   "trigger_at": "2026-11-03T00:15:00+08:00",
-   "checked_at": "2026-11-03T00:15:00+08:00",
-   "posts_last_1h": 8,
-   "posts_prev_6h_avg_per_h": 7.33,
-   "spike_ratio": 1.09,
-   "verdict": "冷",
-   "one_line": "持貨喊單無爆熱",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117202558074708421",
-     "url": "https://x.com/InvestwithDoc/status/2117202558074708421",
-     "text": "Which RWA Crypto are you most Bullish on? Ondo Stellar Hedera $XRP $QNT XDC $ADA",
-     "likes": 26,
-     "author_username": "InvestwithDoc",
-     "author_followers": 9298,
-     "created_at": "2026-11-02T18:30:00+08:00"
-    },
-    {
-     "id": "2117204441296261229",
-     "url": "https://x.com/AnonHbar/status/2117204441296261229",
-     "text": "$QNT The crowd always underestimates how long the strong can wait $QNT doesn’t need the noise. Clearing House rails.",
-     "likes": 14,
-     "author_username": "AnonHbar",
-     "author_followers": 620,
-     "created_at": "2026-11-02T18:37:29+08:00"
-    },
-    {
-     "id": "2117278508393140715",
-     "url": "https://x.com/BullishMarktCap/status/2117278508393140715",
-     "text": "TOP GAINERS · 24H $TRX +2.2% $ZEC +2.0% $HTX +1.7% $TRUMP +1.2% $QNT +0.9%",
-     "likes": 3,
-     "author_username": "BullishMarktCap",
-     "author_followers": 25299,
-     "created_at": "2026-11-02T23:31:48+08:00"
-    }
-   ],
-   "checks_this_trigger": 1
-  },
-  "ETHUSDT": {
-   "symbol": "ETHUSDT",
-   "base": "ETH",
-   "flag": "pump",
-   "trigger_at": "2026-11-03T00:15:00+08:00",
-   "checked_at": "2026-11-03T00:15:00+08:00",
-   "posts_last_1h": 256,
-   "posts_prev_6h_avg_per_h": 256.0,
-   "spike_ratio": 1.0,
-   "verdict": "冷",
-   "one_line": "基數高多數複製貼",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117219084589007008",
-     "url": "https://x.com/CryptoPulseXgl/status/2117219084589007008",
-     "text": "$ETH is trading around $2,288, up ~0.8%. Ethereum is reacting to record October ETF outflows and recovering from post-Binance hack lows. Ke…",
-     "likes": 9,
-     "author_username": "CryptoPulseXgl",
-     "author_followers": 12631,
-     "created_at": "2026-11-02T19:35:40+08:00"
-    },
-    {
-     "id": "2117275740895072312",
-     "url": "https://x.com/Marketracker365/status/2117275740895072312",
-     "text": "Just in: @BitMNR bought 8,573 #ETH last week, lifting its stash to 6,060,506 ETH. Tom Lee called the muted reaction to the Binance hack con…",
-     "likes": 2,
-     "author_username": "Marketracker365",
-     "author_followers": 113,
-     "created_at": "2026-11-02T23:20:48+08:00"
-    },
-    {
-     "id": "2117279901867024792",
-     "url": "https://x.com/H45216Muntajul/status/2117279901867024792",
-     "text": "Market Update & Binance Security Recovery BTC/USDT around $78,051 ETH/Usdt near $2,297",
-     "likes": 2,
-     "author_username": "H45216Muntajul",
-     "author_followers": 357,
-     "created_at": "2026-11-02T23:37:20+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -673,86 +471,86 @@
    "symbol": "UNIUSDT",
    "base": "UNI",
    "flag": "pump",
-   "trigger_at": "2026-11-04T14:30:00+08:00",
-   "checked_at": "2026-11-04T15:11:30+08:00",
-   "posts_last_1h": 10,
-   "posts_prev_6h_avg_per_h": 3.67,
-   "spike_ratio": 2.72,
-   "verdict": "升溫",
-   "one_line": "量升巨鯨囤UNI",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 13.67,
+   "spike_ratio": 0.59,
+   "verdict": "冷",
+   "one_line": "量跌低過均值",
    "shill_flag": false,
-   "big_accounts": 0,
+   "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2117833769935945863",
-     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
-     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 👀 - 521.5K $UNI — $3.72M - 915.7K $MORPHO — $1.97M - 10M $ARB — $1.56M",
-     "likes": 21,
-     "author_username": "ArslanOnChain",
-     "author_followers": 5208,
-     "created_at": "2026-11-04T12:18:12+08:00"
+     "id": "2118004151984570659",
+     "url": "https://x.com/DefiIgnas/status/2118004151984570659",
+     "text": "End of Crime Season: OG devs who built for years get rewarded: $FLUID $AAVE $UNI etc. Tradfi x crypto merges more.",
+     "likes": 31,
+     "author_username": "DefiIgnas",
+     "author_followers": 164039,
+     "created_at": "2026-11-04T23:35:15+08:00"
     },
     {
-     "id": "2117816609850978808",
-     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
-     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
-     "likes": 9,
-     "author_username": "cryptoissimple",
-     "author_followers": 6999,
-     "created_at": "2026-11-04T11:10:01+08:00"
+     "id": "2118001497367593253",
+     "url": "https://x.com/TheMEMELordx69/status/2118001497367593253",
+     "text": "there can only be one real book of memes in crypto… watch it flip $BOME. $npc $pepe $apu $uni $Hype $ondo",
+     "likes": 2,
+     "author_username": "TheMEMELordx69",
+     "author_followers": 685,
+     "created_at": "2026-11-04T23:24:42+08:00"
     },
     {
-     "id": "2117826399549497708",
-     "url": "https://x.com/dr_minan/status/2117826399549497708",
-     "text": "🚨 CRYPTO WHALE MOVES $7.18 MILLION IN THREE ALTCOINS FROM BYBIT! UNI, MORPHO, AND ARB IN THE SPOTLIGHT! 🐋🔥",
+     "id": "2118002962228527532",
+     "url": "https://x.com/chadchannington/status/2118002962228527532",
+     "text": "bullish on the ONLY REAL book of memes narrative… $eth $hype $uni #spx6900 $pepe",
      "likes": 1,
-     "author_username": "dr_minan",
-     "author_followers": 443,
-     "created_at": "2026-11-04T11:48:55+08:00"
+     "author_username": "chadchannington",
+     "author_followers": 138,
+     "created_at": "2026-11-04T23:30:31+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "SUIUSDT": {
    "symbol": "SUIUSDT",
    "base": "SUI",
    "flag": "pump",
-   "trigger_at": "2026-11-04T16:15:00+08:00",
-   "checked_at": "2026-11-04T16:12:30+08:00",
-   "posts_last_1h": 9,
-   "posts_prev_6h_avg_per_h": 4.5,
-   "spike_ratio": 2.0,
-   "verdict": "升溫",
-   "one_line": "量升有真實討論",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 9.83,
+   "spike_ratio": 1.12,
+   "verdict": "冷",
+   "one_line": "量平有社區聲",
    "shill_flag": false,
-   "big_accounts": 1,
+   "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117813626085974500",
-     "url": "https://x.com/MoonPaxi/status/2117813626085974500",
-     "text": "LATEST🚨: Sui Network (@SuiNetwork) is taking steps to prepare the $SUI ecosystem for potential threats posed by advances in quantum computi…",
-     "likes": 38,
-     "author_username": "MoonPaxi",
-     "author_followers": 202809,
-     "created_at": "2026-11-04T10:58:10+08:00"
+     "id": "2117997991319753029",
+     "url": "https://x.com/suiwire/status/2117997991319753029",
+     "text": "Crypto was supposed to be easy. On $SUI, it is. No seed phrase. Sign in with Google. Fees under a cent.",
+     "likes": 17,
+     "author_username": "suiwire",
+     "author_followers": 16070,
+     "created_at": "2026-11-04T23:10:46+08:00"
     },
     {
-     "id": "2117856253640917052",
-     "url": "https://x.com/ProfessorSui/status/2117856253640917052",
-     "text": "SUI MACRO REPORT — NOVEMBER 3, 2026 1. Sui Market Rebound Broad strength across the Sui ecosystem. All five tracked assets are positive ove…",
-     "likes": 9,
-     "author_username": "ProfessorSui",
-     "author_followers": 1039,
-     "created_at": "2026-11-04T13:47:33+08:00"
+     "id": "2118006927217037631",
+     "url": "https://x.com/suintern_/status/2118006927217037631",
+     "text": "This is even the calm before the $SUI storm, Sui is about to flip everything crypto. Get ready $SUI is about to outperform solana.",
+     "likes": 13,
+     "author_username": "suintern_",
+     "author_followers": 16345,
+     "created_at": "2026-11-04T23:46:16+08:00"
     },
     {
-     "id": "2117821565987410320",
-     "url": "https://x.com/mrcamerontrader/status/2117821565987410320",
-     "text": "Best Signal 📉Buy $SUI now and enjoy your new Rolex #crypto",
-     "likes": 9,
-     "author_username": "mrcamerontrader",
-     "author_followers": 618,
-     "created_at": "2026-11-04T11:29:43+08:00"
+     "id": "2118013257403273278",
+     "url": "https://x.com/nikhumble24/status/2118013257403273278",
+     "text": "ONE PLATFORM, MULTIPLE NETWORKS. Crypto is no longer limited to one blockchain. KriptoK supports 13 networks including Sui.",
+     "likes": 1,
+     "author_username": "nikhumble24",
+     "author_followers": 1695,
+     "created_at": "2026-11-05T00:11:26+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -924,6 +722,32 @@
    ],
    "checks_this_trigger": 1
   },
+  "TRXUSDT": {
+   "symbol": "TRXUSDT",
+   "base": "TRX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T13:30:00+08:00",
+   "checked_at": "2026-11-04T13:22:57+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 5.67,
+   "spike_ratio": 0.71,
+   "verdict": "冷",
+   "one_line": "量穩雜訊多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117842595296493651",
+     "url": "https://x.com/FuturesWire/status/2117842595296493651",
+     "text": "ALERT: Bitcoin briefly sinks to $75,700 as bets on a Democratic sweep rattle markets. $BTC $ZEC $XRP $ETH $HYPE $TRX $SOL",
+     "likes": 0,
+     "author_username": "FuturesWire",
+     "author_followers": 255,
+     "created_at": "2026-11-04T12:53:16+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
   "AVAXUSDT": {
    "symbol": "AVAXUSDT",
    "base": "AVAX",
@@ -1052,6 +876,50 @@
      "author_username": "Binance_NZL",
      "author_followers": 7962,
      "created_at": "2026-11-04T03:15:58+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "MEGAUSDT": {
+   "symbol": "MEGAUSDT",
+   "base": "MEGA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T10:30:00+08:00",
+   "checked_at": "2026-11-04T10:20:02+08:00",
+   "posts_last_1h": 6,
+   "posts_prev_6h_avg_per_h": 3.83,
+   "spike_ratio": 1.57,
+   "verdict": "冷",
+   "one_line": "假MEGA多冇真討論",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117793730094915997",
+     "url": "https://x.com/tazuui1/status/2117793730094915997",
+     "text": "@moonpay Just enabled the @Collector_Crypt plugin on PayBox — those Mega Charizard X, Hoopa V & Mega Gardevoir pulls are actually crazy. Lo…",
+     "likes": 8,
+     "author_username": "tazuui1",
+     "author_followers": 9,
+     "created_at": "2026-11-04T09:39:06+08:00"
+    },
+    {
+     "id": "2117776139783733329",
+     "url": "https://x.com/falenostar/status/2117776139783733329",
+     "text": "US Stock News 24-Hour Important Summary Midterm Election Day hit and the tape went mixed — Dow slipped about 0.4% while S&P 500 edged up 0.…",
+     "likes": 6,
+     "author_username": "falenostar",
+     "author_followers": 21638,
+     "created_at": "2026-11-04T08:29:12+08:00"
+    },
+    {
+     "id": "2117780596076302341",
+     "url": "https://x.com/ozanktarman/status/2117780596076302341",
+     "text": "Risk & Bitcoin sink w/ Blue Tsunami gazzzzz So are we ready? LFG! Kalshi is upping the ante: JUST IN: Odds of a Democratic mega tsunami sur…",
+     "likes": 1,
+     "author_username": "ozanktarman",
+     "author_followers": 17520,
+     "created_at": "2026-11-04T08:46:55+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1666,349 +1534,268 @@
    "symbol": "LINKUSDT",
    "base": "LINK",
    "flag": "pump",
-   "trigger_at": "2026-11-04T16:15:00+08:00",
-   "checked_at": "2026-11-04T16:12:30+08:00",
-   "posts_last_1h": 116,
-   "posts_prev_6h_avg_per_h": 78.5,
-   "spike_ratio": 1.48,
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 101,
+   "posts_prev_6h_avg_per_h": 84.0,
+   "spike_ratio": 1.2,
    "verdict": "冷",
-   "one_line": "假陽性洗版多",
+   "one_line": "搜尋多係推廣噪音",
    "shill_flag": true,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117833121177784626",
-     "url": "https://x.com/basisdesknews/status/2117833121177784626",
-     "text": "Austin Campbell Urges 24-Hour Delays on Billion-Dollar Crypto Transfers Post-Binance Hack Zero Knowledge Group's founder says the industry …",
-     "likes": 0,
-     "author_username": "basisdesknews",
-     "author_followers": 1,
-     "created_at": "2026-11-04T12:15:38+08:00"
+     "id": "2118014164392190147",
+     "url": "https://x.com/clebers1984/status/2118014164392190147",
+     "text": "$AMD SMASHES THROUGH TO $699K MC! From our original $8K call — More early Solana opportunities inside my VIP Telegram.",
+     "likes": 2,
+     "author_username": "clebers1984",
+     "author_followers": 1013,
+     "created_at": "2026-11-05T00:15:02+08:00"
     },
     {
-     "id": "2117837463586558075",
-     "url": "https://x.com/virus2027pulse/status/2117837463586558075",
-     "text": "@Kalshi QUESTIONS? WRITE ME 24/7! I CAN HELP YOU! I AM WAITING😎 GO TO LINK,GO WITH ME🤑 #PulseMarket #reels #virus2027 #Kalshi #Polymarket #…",
-     "likes": 0,
-     "author_username": "virus2027pulse",
-     "author_followers": 67,
-     "created_at": "2026-11-04T12:32:53+08:00"
+     "id": "2118014433528283601",
+     "url": "https://x.com/MasumOnchain/status/2118014433528283601",
+     "text": "Mistbox Airdrop Is Live! Earn $0.40 – $5 USDC Instantly! Sign up, connect wallet, complete tasks.",
+     "likes": 1,
+     "author_username": "MasumOnchain",
+     "author_followers": 5021,
+     "created_at": "2026-11-05T00:16:06+08:00"
     },
     {
-     "id": "2117836782532272424",
-     "url": "https://x.com/virus2027pulse/status/2117836782532272424",
-     "text": "@cz_binance QUESTIONS? WRITE ME 24/7! I CAN HELP YOU! I AM WAITING😎 GO TO LINK,GO WITH ME🤑 #PulseMarket #reels #virus2027 #Kalshi #Polymark…",
+     "id": "2118014435206050091",
+     "url": "https://x.com/AlphaPulsevw/status/2118014435206050091",
+     "text": "$AIB has pushed to $154K MC from our original $5K call! Join my VIP Telegram through the link in bio.",
      "likes": 0,
-     "author_username": "virus2027pulse",
-     "author_followers": 67,
-     "created_at": "2026-11-04T12:30:11+08:00"
+     "author_username": "AlphaPulsevw",
+     "author_followers": 2360,
+     "created_at": "2026-11-05T00:16:06+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "ETHUSDT": {
+   "symbol": "ETHUSDT",
+   "base": "ETH",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 339,
+   "posts_prev_6h_avg_per_h": 186.83,
+   "spike_ratio": 1.81,
+   "verdict": "升溫",
+   "one_line": "量升近倍有市況討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118013866252849492",
+     "url": "https://x.com/iamabdullahdev/status/2118013866252849492",
+     "text": "Look at the precision on this entry. $ETH bottomed to the tick at 2,224.64 before printing this full expansion to 2,435+.",
+     "likes": 1,
+     "author_username": "iamabdullahdev",
+     "author_followers": 7,
+     "created_at": "2026-11-05T00:13:51+08:00"
+    },
+    {
+     "id": "2118013444498891263",
+     "url": "https://x.com/bpaynews/status/2118013444498891263",
+     "text": "Binance hackers have now moved ~81% of the 970K stolen $SOL. The route… bridge to Ethereum → ETH → $BTC via THORChain.",
+     "likes": 0,
+     "author_username": "bpaynews",
+     "author_followers": 3378,
+     "created_at": "2026-11-05T00:12:10+08:00"
+    },
+    {
+     "id": "2118013406879895702",
+     "url": "https://x.com/ValeriusLabs/status/2118013406879895702",
+     "text": "Risk is pumping the day after the blue sweep. $BTC is back above $80K. $ETH is up 8.7% from its low, $SOL 7.0%.",
+     "likes": 0,
+     "author_username": "ValeriusLabs",
+     "author_followers": 2180,
+     "created_at": "2026-11-05T00:12:01+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "RAYUSDT": {
+   "symbol": "RAYUSDT",
+   "base": "RAY",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 5.5,
+   "spike_ratio": 0.91,
+   "verdict": "冷",
+   "one_line": "量低平穩無爆點",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117956663991042513",
+     "url": "https://x.com/coin360com/status/2117956663991042513",
+     "text": "Crypto broadly moved higher after Democrats won both chambers. $RAY, $VVV and $ZEC led the top 100 with gains above 7%.",
+     "likes": 1,
+     "author_username": "coin360com",
+     "author_followers": 18786,
+     "created_at": "2026-11-04T20:26:33+08:00"
+    },
+    {
+     "id": "2117999147072516373",
+     "url": "https://x.com/cryptolevier/status/2117999147072516373",
+     "text": "BIG MOVE DETECTED Top #Altcoins movers. Bullish leaders include $RAY among others.",
+     "likes": 1,
+     "author_username": "cryptolevier",
+     "author_followers": 8202,
+     "created_at": "2026-11-04T23:15:21+08:00"
+    },
+    {
+     "id": "2117978611500089687",
+     "url": "https://x.com/cameron_brooks5/status/2117978611500089687",
+     "text": "Volatility desk note: $JUP for trend stability, $RAY for returning liquidity, $AAVE for a support reaction.",
+     "likes": 1,
+     "author_username": "cameron_brooks5",
+     "author_followers": 254,
+     "created_at": "2026-11-04T21:53:45+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "ADAUSDT": {
+   "symbol": "ADAUSDT",
+   "base": "ADA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 14,
+   "posts_prev_6h_avg_per_h": 9.33,
+   "spike_ratio": 1.5,
+   "verdict": "升溫",
+   "one_line": "量微升有真討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118010099113345350",
+     "url": "https://x.com/cryptoK0nviCt/status/2118010099113345350",
+     "text": "lol did you just compare ADA to TRUMP coin? Lmao you clearly are a newbie to the crypto world and it shows",
+     "likes": 3,
+     "author_username": "cryptoK0nviCt",
+     "author_followers": 158,
+     "created_at": "2026-11-04T23:58:53+08:00"
+    },
+    {
+     "id": "2118013789404635432",
+     "url": "https://x.com/Lucasdb86/status/2118013789404635432",
+     "text": "Update: Binance Help Desk says more networks will reopen in phases… no timeline yet for native Cardano ADA withdrawals. BSC only.",
+     "likes": 0,
+     "author_username": "Lucasdb86",
+     "author_followers": 5841,
+     "created_at": "2026-11-05T00:13:32+08:00"
+    },
+    {
+     "id": "2118003962985025856",
+     "url": "https://x.com/kurdopia/status/2118003962985025856",
+     "text": "Part of the reason we believe in crypto. $ADA",
+     "likes": 0,
+     "author_username": "kurdopia",
+     "author_followers": 1493,
+     "created_at": "2026-11-04T23:34:30+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "SOLUSDT": {
+   "symbol": "SOLUSDT",
+   "base": "SOL",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 191,
+   "posts_prev_6h_avg_per_h": 122.5,
+   "spike_ratio": 1.56,
+   "verdict": "升溫",
+   "one_line": "量升有新聞兼shill",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118014223175319615",
+     "url": "https://x.com/BSCNmedia/status/2118014223175319615",
+     "text": "Today's top crypto stories: Democrats win Congress; Schroders tokenises a bond fund on @solana $SOL; $XRP wallets hit 2,147.",
+     "likes": 2,
+     "author_username": "BSCNmedia",
+     "author_followers": 24106,
+     "created_at": "2026-11-05T00:15:16+08:00"
+    },
+    {
+     "id": "2118013444498891263",
+     "url": "https://x.com/bpaynews/status/2118013444498891263",
+     "text": "Binance hackers have now moved ~81% of the 970K stolen $SOL. Route: SOL → USDC → bridge to Ethereum → ETH → $BTC.",
+     "likes": 0,
+     "author_username": "bpaynews",
+     "author_followers": 3378,
+     "created_at": "2026-11-05T00:12:10+08:00"
+    },
+    {
+     "id": "2118013406879895702",
+     "url": "https://x.com/ValeriusLabs/status/2118013406879895702",
+     "text": "Risk is pumping. $BTC back above $80K. $ETH up 8.7% from its low, $SOL 7.0%.",
+     "likes": 0,
+     "author_username": "ValeriusLabs",
+     "author_followers": 2180,
+     "created_at": "2026-11-05T00:12:01+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "XPLUSDT": {
+   "symbol": "XPLUSDT",
+   "base": "XPL",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 1.8,
+   "verdict": "冷",
+   "one_line": "量極低微升無熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117987733507555442",
+     "url": "https://x.com/InvestwithDoc/status/2117987733507555442",
+     "text": "10 Crypto Projects That Start with The Letter X,, $XRP $XCN $XPL $XEC $XTZ $XLM $XMR $XDC $XPR",
+     "likes": 11,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9364,
+     "created_at": "2026-11-04T22:30:00+08:00"
+    },
+    {
+     "id": "2117957536968315251",
+     "url": "https://x.com/InvestwithDoc/status/2117957536968315251",
+     "text": "Best Opportunity in Crypto Right Now? $ZBCN $XPL Plasma $TAO $ONDO $VIRTUAL $ICP $PENDLE $MON",
+     "likes": 6,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9364,
+     "created_at": "2026-11-04T20:30:01+08:00"
+    },
+    {
+     "id": "2117932375284043780",
+     "url": "https://x.com/Jus7Degen/status/2117932375284043780",
+     "text": "Meet Plasma — A Layer 1 blockchain designed to make digital dollar… Everyone is watching $ETH and Solana.",
+     "likes": 4,
+     "author_username": "Jus7Degen",
+     "author_followers": 4851,
+     "created_at": "2026-11-04T18:50:02+08:00"
     }
    ],
    "checks_this_trigger": 1
   }
  },
  "history": [
-  {
-   "symbol": "HOTUSDT",
-   "base": "HOT",
-   "flag": "pump",
-   "trigger_at": "2026-11-02T22:45:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 126,
-   "posts_prev_6h_avg_per_h": 77.0,
-   "spike_ratio": 1.64,
-   "verdict": "冷",
-   "one_line": "帖文多數講熱錢包",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2117222804663804182",
-     "url": "https://x.com/CryptoTeca__/status/2117222804663804182",
-     "text": "the reported $6.36b binance hack could be one of the biggest crypto security incidents in history. to put it into perspective, $6.3b is hig…",
-     "likes": 73,
-     "author_username": "CryptoTeca__",
-     "author_followers": 186740,
-     "created_at": "2026-11-02T19:50:27+08:00"
-    },
-    {
-     "id": "2117255910301323603",
-     "url": "https://x.com/fitgirltruth/status/2117255910301323603",
-     "text": "Crazy how many just ignored this and still believe their digital code is safe. physical metals, ammo, livestock, and real food are the curr…",
-     "likes": 12,
-     "author_username": "fitgirltruth",
-     "author_followers": 20814,
-     "created_at": "2026-11-02T22:02:00+08:00"
-    },
-    {
-     "id": "2117273069030883783",
-     "url": "https://x.com/cexscan/status/2117273069030883783",
-     "text": "Last 60m - #Binance Futures (USDT Trades) Top 3 Gainers: $ARIA : ↑9.91% $TEM : ↑7.37% $HOT (Holo) : ↑6.4%",
-     "likes": 0,
-     "author_username": "cexscan",
-     "author_followers": 10603,
-     "created_at": "2026-11-02T23:10:11+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "MEGAUSDT",
-   "base": "MEGA",
-   "flag": "pump",
-   "trigger_at": "2026-11-02T22:30:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 5,
-   "posts_prev_6h_avg_per_h": 5.67,
-   "spike_ratio": 0.88,
-   "verdict": "冷",
-   "one_line": "真MEGA討論好少",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117198167959900230",
-     "url": "https://x.com/Pi_Community0/status/2117198167959900230",
-     "text": "$LUNC Something mega big is coming soon Whale Alert 28.92 billion LUNC moved From: Binance",
-     "likes": 88,
-     "author_username": "Pi_Community0",
-     "author_followers": 1548,
-     "created_at": "2026-11-02T18:12:33+08:00"
-    },
-    {
-     "id": "2117269379976999279",
-     "url": "https://x.com/0xgodzubby/status/2117269379976999279",
-     "text": "The Latest Perps, Options & Props Developments Perp dex OI surges 76% to $24B in Q3",
-     "likes": 22,
-     "author_username": "0xgodzubby",
-     "author_followers": 2033,
-     "created_at": "2026-11-02T22:55:31+08:00"
-    },
-    {
-     "id": "2117182278530981916",
-     "url": "https://x.com/FantasyWhales/status/2117182278530981916",
-     "text": "Story Protocol ($MEGA) surged after its recent Mainnet launch and Binance Web3 Wallet integration, boosting investor interest in its decent…",
-     "likes": 1,
-     "author_username": "FantasyWhales",
-     "author_followers": 1099,
-     "created_at": "2026-11-02T17:09:25+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "HAEDALUSDT",
-   "base": "HAEDAL",
-   "flag": "pump",
-   "trigger_at": "2026-11-02T22:00:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 3.83,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "訊號同投票帖為主",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117188329594880351",
-     "url": "https://x.com/Jus7Degen/status/2117188329594880351",
-     "text": "$HAEDAL — Haedal Protocol Everyone is watching $SUI, $CETUS, and $DEEP. But what about the protocol helping SUI holders earn staking reward…",
-     "likes": 4,
-     "author_username": "Jus7Degen",
-     "author_followers": 4760,
-     "created_at": "2026-11-02T17:33:27+08:00"
-    },
-    {
-     "id": "2117220542604333482",
-     "url": "https://x.com/grossbel12/status/2117220542604333482",
-     "text": "@HaedalProtocol Liquid Staking on @SuiNetwork Haedal is a native liquid staking protocol on the Sui blockchain",
-     "likes": 2,
-     "author_username": "grossbel12",
-     "author_followers": 1637,
-     "created_at": "2026-11-02T19:41:28+08:00"
-    },
-    {
-     "id": "2117255914348855743",
-     "url": "https://x.com/DyorNetCrypto/status/2117255914348855743",
-     "text": "Top 5 Bullish Trends - USDT - 1h $PRAI $XTSLA GoPlus $HAEDAL $ARIA",
-     "likes": 0,
-     "author_username": "DyorNetCrypto",
-     "author_followers": 82281,
-     "created_at": "2026-11-02T22:02:01+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "MITOUSDT",
-   "base": "MITO",
-   "flag": "pump",
-   "trigger_at": "2026-11-02T20:30:00+08:00",
-   "checked_at": "2026-11-03T00:14:40+08:00",
-   "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 1.0,
-   "spike_ratio": 0.0,
-   "verdict": "冷",
-   "one_line": "上榜後討論已淡",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117253803020050456",
-     "url": "https://x.com/Crypto_Zh0u/status/2117253803020050456",
-     "text": "The @MitosisOrg's $MITO is the top gainer on Binance Crime pump at its finest",
-     "likes": 26,
-     "author_username": "Crypto_Zh0u",
-     "author_followers": 9466,
-     "created_at": "2026-11-02T21:53:37+08:00"
-    },
-    {
-     "id": "2117180866183225814",
-     "url": "https://x.com/rab4745/status/2117180866183225814",
-     "text": "Top grainer in binance spot $SOPH $MITO Which one are you holding?",
-     "likes": 11,
-     "author_username": "rab4745",
-     "author_followers": 18494,
-     "created_at": "2026-11-02T17:03:48+08:00"
-    },
-    {
-     "id": "2117259764074008984",
-     "url": "https://x.com/soonmource/status/2117259764074008984",
-     "text": "@Crypto_Zh0u @MitosisOrg MITO top gainer on Binance is crazy lmao",
-     "likes": 1,
-     "author_username": "soonmource",
-     "author_followers": 8541,
-     "created_at": "2026-11-02T22:17:19+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "TRXUSDT",
-   "base": "TRX",
-   "flag": "pump",
-   "trigger_at": "2026-11-03T00:15:00+08:00",
-   "checked_at": "2026-11-03T00:15:00+08:00",
-   "posts_last_1h": 24,
-   "posts_prev_6h_avg_per_h": 28.17,
-   "spike_ratio": 0.85,
-   "verdict": "冷",
-   "one_line": "黑客洗錢討論為主",
-   "shill_flag": false,
-   "big_accounts": 1,
-   "top_posts": [
-    {
-     "id": "2117232785748636126",
-     "url": "https://x.com/ourcryptotalk/status/2117232785748636126",
-     "text": "Five tickers caught in the middle of a $500M+ crypto laundering story. $RUNE $NEAR $ETH $TRX $FLIP",
-     "likes": 38,
-     "author_username": "ourcryptotalk",
-     "author_followers": 82788,
-     "created_at": "2026-11-02T20:30:07+08:00"
-    },
-    {
-     "id": "2117184867297284126",
-     "url": "https://x.com/0xTria/status/2117184867297284126",
-     "text": "october on perp dexs volume, vs september: hyperliquid $168b variational $78.1b",
-     "likes": 14,
-     "author_username": "0xTria",
-     "author_followers": 4952,
-     "created_at": "2026-11-02T17:19:42+08:00"
-    },
-    {
-     "id": "2117238586646876324",
-     "url": "https://x.com/hackenclub/status/2117238586646876324",
-     "text": "86% of UK financial firms surveyed by the Bank of England and FCA use AI, and only about half report ongoing monitoring.",
-     "likes": 5,
-     "author_username": "hackenclub",
-     "author_followers": 130614,
-     "created_at": "2026-11-02T20:53:10+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "QNTUSDT",
-   "base": "QNT",
-   "flag": "pump",
-   "trigger_at": "2026-11-03T00:15:00+08:00",
-   "checked_at": "2026-11-03T00:15:00+08:00",
-   "posts_last_1h": 8,
-   "posts_prev_6h_avg_per_h": 7.33,
-   "spike_ratio": 1.09,
-   "verdict": "冷",
-   "one_line": "持貨喊單無爆熱",
-   "shill_flag": false,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117202558074708421",
-     "url": "https://x.com/InvestwithDoc/status/2117202558074708421",
-     "text": "Which RWA Crypto are you most Bullish on? Ondo Stellar Hedera $XRP $QNT XDC $ADA",
-     "likes": 26,
-     "author_username": "InvestwithDoc",
-     "author_followers": 9298,
-     "created_at": "2026-11-02T18:30:00+08:00"
-    },
-    {
-     "id": "2117204441296261229",
-     "url": "https://x.com/AnonHbar/status/2117204441296261229",
-     "text": "$QNT The crowd always underestimates how long the strong can wait $QNT doesn’t need the noise. Clearing House rails.",
-     "likes": 14,
-     "author_username": "AnonHbar",
-     "author_followers": 620,
-     "created_at": "2026-11-02T18:37:29+08:00"
-    },
-    {
-     "id": "2117278508393140715",
-     "url": "https://x.com/BullishMarktCap/status/2117278508393140715",
-     "text": "TOP GAINERS · 24H $TRX +2.2% $ZEC +2.0% $HTX +1.7% $TRUMP +1.2% $QNT +0.9%",
-     "likes": 3,
-     "author_username": "BullishMarktCap",
-     "author_followers": 25299,
-     "created_at": "2026-11-02T23:31:48+08:00"
-    }
-   ]
-  },
-  {
-   "symbol": "ETHUSDT",
-   "base": "ETH",
-   "flag": "pump",
-   "trigger_at": "2026-11-03T00:15:00+08:00",
-   "checked_at": "2026-11-03T00:15:00+08:00",
-   "posts_last_1h": 256,
-   "posts_prev_6h_avg_per_h": 256.0,
-   "spike_ratio": 1.0,
-   "verdict": "冷",
-   "one_line": "基數高多數複製貼",
-   "shill_flag": true,
-   "big_accounts": 0,
-   "top_posts": [
-    {
-     "id": "2117219084589007008",
-     "url": "https://x.com/CryptoPulseXgl/status/2117219084589007008",
-     "text": "$ETH is trading around $2,288, up ~0.8%. Ethereum is reacting to record October ETF outflows and recovering from post-Binance hack lows. Ke…",
-     "likes": 9,
-     "author_username": "CryptoPulseXgl",
-     "author_followers": 12631,
-     "created_at": "2026-11-02T19:35:40+08:00"
-    },
-    {
-     "id": "2117275740895072312",
-     "url": "https://x.com/Marketracker365/status/2117275740895072312",
-     "text": "Just in: @BitMNR bought 8,573 #ETH last week, lifting its stash to 6,060,506 ETH. Tom Lee called the muted reaction to the Binance hack con…",
-     "likes": 2,
-     "author_username": "Marketracker365",
-     "author_followers": 113,
-     "created_at": "2026-11-02T23:20:48+08:00"
-    },
-    {
-     "id": "2117279901867024792",
-     "url": "https://x.com/H45216Muntajul/status/2117279901867024792",
-     "text": "Market Update & Binance Security Recovery BTC/USDT around $78,051 ETH/Usdt near $2,297",
-     "likes": 2,
-     "author_username": "H45216Muntajul",
-     "author_followers": 357,
-     "created_at": "2026-11-02T23:37:20+08:00"
-    }
-   ]
-  },
   {
    "symbol": "MITOUSDT",
    "base": "MITO",
@@ -5872,15 +5659,359 @@
      "created_at": "2026-11-04T12:30:00+08:00"
     }
    ]
+  },
+  {
+   "symbol": "ETHUSDT",
+   "base": "ETH",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 339,
+   "posts_prev_6h_avg_per_h": 186.83,
+   "spike_ratio": 1.81,
+   "verdict": "升溫",
+   "one_line": "量升近倍有市況討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118013866252849492",
+     "url": "https://x.com/iamabdullahdev/status/2118013866252849492",
+     "text": "Look at the precision on this entry. $ETH bottomed to the tick at 2,224.64 before printing this full expansion to 2,435+.",
+     "likes": 1,
+     "author_username": "iamabdullahdev",
+     "author_followers": 7,
+     "created_at": "2026-11-05T00:13:51+08:00"
+    },
+    {
+     "id": "2118013444498891263",
+     "url": "https://x.com/bpaynews/status/2118013444498891263",
+     "text": "Binance hackers have now moved ~81% of the 970K stolen $SOL. The route… bridge to Ethereum → ETH → $BTC via THORChain.",
+     "likes": 0,
+     "author_username": "bpaynews",
+     "author_followers": 3378,
+     "created_at": "2026-11-05T00:12:10+08:00"
+    },
+    {
+     "id": "2118013406879895702",
+     "url": "https://x.com/ValeriusLabs/status/2118013406879895702",
+     "text": "Risk is pumping the day after the blue sweep. $BTC is back above $80K. $ETH is up 8.7% from its low, $SOL 7.0%.",
+     "likes": 0,
+     "author_username": "ValeriusLabs",
+     "author_followers": 2180,
+     "created_at": "2026-11-05T00:12:01+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "RAYUSDT",
+   "base": "RAY",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 5.5,
+   "spike_ratio": 0.91,
+   "verdict": "冷",
+   "one_line": "量低平穩無爆點",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117956663991042513",
+     "url": "https://x.com/coin360com/status/2117956663991042513",
+     "text": "Crypto broadly moved higher after Democrats won both chambers. $RAY, $VVV and $ZEC led the top 100 with gains above 7%.",
+     "likes": 1,
+     "author_username": "coin360com",
+     "author_followers": 18786,
+     "created_at": "2026-11-04T20:26:33+08:00"
+    },
+    {
+     "id": "2117999147072516373",
+     "url": "https://x.com/cryptolevier/status/2117999147072516373",
+     "text": "BIG MOVE DETECTED Top #Altcoins movers. Bullish leaders include $RAY among others.",
+     "likes": 1,
+     "author_username": "cryptolevier",
+     "author_followers": 8202,
+     "created_at": "2026-11-04T23:15:21+08:00"
+    },
+    {
+     "id": "2117978611500089687",
+     "url": "https://x.com/cameron_brooks5/status/2117978611500089687",
+     "text": "Volatility desk note: $JUP for trend stability, $RAY for returning liquidity, $AAVE for a support reaction.",
+     "likes": 1,
+     "author_username": "cameron_brooks5",
+     "author_followers": 254,
+     "created_at": "2026-11-04T21:53:45+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "LINKUSDT",
+   "base": "LINK",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 101,
+   "posts_prev_6h_avg_per_h": 84.0,
+   "spike_ratio": 1.2,
+   "verdict": "冷",
+   "one_line": "搜尋多係推廣噪音",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118014164392190147",
+     "url": "https://x.com/clebers1984/status/2118014164392190147",
+     "text": "$AMD SMASHES THROUGH TO $699K MC! From our original $8K call — More early Solana opportunities inside my VIP Telegram.",
+     "likes": 2,
+     "author_username": "clebers1984",
+     "author_followers": 1013,
+     "created_at": "2026-11-05T00:15:02+08:00"
+    },
+    {
+     "id": "2118014433528283601",
+     "url": "https://x.com/MasumOnchain/status/2118014433528283601",
+     "text": "Mistbox Airdrop Is Live! Earn $0.40 – $5 USDC Instantly! Sign up, connect wallet, complete tasks.",
+     "likes": 1,
+     "author_username": "MasumOnchain",
+     "author_followers": 5021,
+     "created_at": "2026-11-05T00:16:06+08:00"
+    },
+    {
+     "id": "2118014435206050091",
+     "url": "https://x.com/AlphaPulsevw/status/2118014435206050091",
+     "text": "$AIB has pushed to $154K MC from our original $5K call! Join my VIP Telegram through the link in bio.",
+     "likes": 0,
+     "author_username": "AlphaPulsevw",
+     "author_followers": 2360,
+     "created_at": "2026-11-05T00:16:06+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "UNIUSDT",
+   "base": "UNI",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 13.67,
+   "spike_ratio": 0.59,
+   "verdict": "冷",
+   "one_line": "量跌低過均值",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2118004151984570659",
+     "url": "https://x.com/DefiIgnas/status/2118004151984570659",
+     "text": "End of Crime Season: OG devs who built for years get rewarded: $FLUID $AAVE $UNI etc. Tradfi x crypto merges more.",
+     "likes": 31,
+     "author_username": "DefiIgnas",
+     "author_followers": 164039,
+     "created_at": "2026-11-04T23:35:15+08:00"
+    },
+    {
+     "id": "2118001497367593253",
+     "url": "https://x.com/TheMEMELordx69/status/2118001497367593253",
+     "text": "there can only be one real book of memes in crypto… watch it flip $BOME. $npc $pepe $apu $uni $Hype $ondo",
+     "likes": 2,
+     "author_username": "TheMEMELordx69",
+     "author_followers": 685,
+     "created_at": "2026-11-04T23:24:42+08:00"
+    },
+    {
+     "id": "2118002962228527532",
+     "url": "https://x.com/chadchannington/status/2118002962228527532",
+     "text": "bullish on the ONLY REAL book of memes narrative… $eth $hype $uni #spx6900 $pepe",
+     "likes": 1,
+     "author_username": "chadchannington",
+     "author_followers": 138,
+     "created_at": "2026-11-04T23:30:31+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ADAUSDT",
+   "base": "ADA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 14,
+   "posts_prev_6h_avg_per_h": 9.33,
+   "spike_ratio": 1.5,
+   "verdict": "升溫",
+   "one_line": "量微升有真討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118010099113345350",
+     "url": "https://x.com/cryptoK0nviCt/status/2118010099113345350",
+     "text": "lol did you just compare ADA to TRUMP coin? Lmao you clearly are a newbie to the crypto world and it shows",
+     "likes": 3,
+     "author_username": "cryptoK0nviCt",
+     "author_followers": 158,
+     "created_at": "2026-11-04T23:58:53+08:00"
+    },
+    {
+     "id": "2118013789404635432",
+     "url": "https://x.com/Lucasdb86/status/2118013789404635432",
+     "text": "Update: Binance Help Desk says more networks will reopen in phases… no timeline yet for native Cardano ADA withdrawals. BSC only.",
+     "likes": 0,
+     "author_username": "Lucasdb86",
+     "author_followers": 5841,
+     "created_at": "2026-11-05T00:13:32+08:00"
+    },
+    {
+     "id": "2118003962985025856",
+     "url": "https://x.com/kurdopia/status/2118003962985025856",
+     "text": "Part of the reason we believe in crypto. $ADA",
+     "likes": 0,
+     "author_username": "kurdopia",
+     "author_followers": 1493,
+     "created_at": "2026-11-04T23:34:30+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "SUIUSDT",
+   "base": "SUI",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 9.83,
+   "spike_ratio": 1.12,
+   "verdict": "冷",
+   "one_line": "量平有社區聲",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117997991319753029",
+     "url": "https://x.com/suiwire/status/2117997991319753029",
+     "text": "Crypto was supposed to be easy. On $SUI, it is. No seed phrase. Sign in with Google. Fees under a cent.",
+     "likes": 17,
+     "author_username": "suiwire",
+     "author_followers": 16070,
+     "created_at": "2026-11-04T23:10:46+08:00"
+    },
+    {
+     "id": "2118006927217037631",
+     "url": "https://x.com/suintern_/status/2118006927217037631",
+     "text": "This is even the calm before the $SUI storm, Sui is about to flip everything crypto. Get ready $SUI is about to outperform solana.",
+     "likes": 13,
+     "author_username": "suintern_",
+     "author_followers": 16345,
+     "created_at": "2026-11-04T23:46:16+08:00"
+    },
+    {
+     "id": "2118013257403273278",
+     "url": "https://x.com/nikhumble24/status/2118013257403273278",
+     "text": "ONE PLATFORM, MULTIPLE NETWORKS. Crypto is no longer limited to one blockchain. KriptoK supports 13 networks including Sui.",
+     "likes": 1,
+     "author_username": "nikhumble24",
+     "author_followers": 1695,
+     "created_at": "2026-11-05T00:11:26+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "SOLUSDT",
+   "base": "SOL",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 191,
+   "posts_prev_6h_avg_per_h": 122.5,
+   "spike_ratio": 1.56,
+   "verdict": "升溫",
+   "one_line": "量升有新聞兼shill",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2118014223175319615",
+     "url": "https://x.com/BSCNmedia/status/2118014223175319615",
+     "text": "Today's top crypto stories: Democrats win Congress; Schroders tokenises a bond fund on @solana $SOL; $XRP wallets hit 2,147.",
+     "likes": 2,
+     "author_username": "BSCNmedia",
+     "author_followers": 24106,
+     "created_at": "2026-11-05T00:15:16+08:00"
+    },
+    {
+     "id": "2118013444498891263",
+     "url": "https://x.com/bpaynews/status/2118013444498891263",
+     "text": "Binance hackers have now moved ~81% of the 970K stolen $SOL. Route: SOL → USDC → bridge to Ethereum → ETH → $BTC.",
+     "likes": 0,
+     "author_username": "bpaynews",
+     "author_followers": 3378,
+     "created_at": "2026-11-05T00:12:10+08:00"
+    },
+    {
+     "id": "2118013406879895702",
+     "url": "https://x.com/ValeriusLabs/status/2118013406879895702",
+     "text": "Risk is pumping. $BTC back above $80K. $ETH up 8.7% from its low, $SOL 7.0%.",
+     "likes": 0,
+     "author_username": "ValeriusLabs",
+     "author_followers": 2180,
+     "created_at": "2026-11-05T00:12:01+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "XPLUSDT",
+   "base": "XPL",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T00:17:59+08:00",
+   "posts_last_1h": 3,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 1.8,
+   "verdict": "冷",
+   "one_line": "量極低微升無熱度",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117987733507555442",
+     "url": "https://x.com/InvestwithDoc/status/2117987733507555442",
+     "text": "10 Crypto Projects That Start with The Letter X,, $XRP $XCN $XPL $XEC $XTZ $XLM $XMR $XDC $XPR",
+     "likes": 11,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9364,
+     "created_at": "2026-11-04T22:30:00+08:00"
+    },
+    {
+     "id": "2117957536968315251",
+     "url": "https://x.com/InvestwithDoc/status/2117957536968315251",
+     "text": "Best Opportunity in Crypto Right Now? $ZBCN $XPL Plasma $TAO $ONDO $VIRTUAL $ICP $PENDLE $MON",
+     "likes": 6,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9364,
+     "created_at": "2026-11-04T20:30:01+08:00"
+    },
+    {
+     "id": "2117932375284043780",
+     "url": "https://x.com/Jus7Degen/status/2117932375284043780",
+     "text": "Meet Plasma — A Layer 1 blockchain designed to make digital dollar… Everyone is watching $ETH and Solana.",
+     "likes": 4,
+     "author_username": "Jus7Degen",
+     "author_followers": 4851,
+     "created_at": "2026-11-04T18:50:02+08:00"
+    }
+   ]
   }
  ],
  "cap": {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "daily_total_cap": 120,
-  "calls_today": 119,
-  "cap_reached": true,
-  "updated_at": "2026-11-04T17:20:35+08:00"
+  "calls_today": 16,
+  "cap_reached": false,
+  "updated_at": "2026-11-05T00:17:59+08:00"
  },
- "updated_at": "2026-11-04T17:20:35+08:00",
+ "updated_at": "2026-11-05T00:17:59+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
