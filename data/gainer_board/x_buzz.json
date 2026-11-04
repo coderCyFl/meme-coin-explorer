@@ -717,45 +717,45 @@
    "symbol": "SUIUSDT",
    "base": "SUI",
    "flag": "pump",
-   "trigger_at": "2026-11-04T09:15:00+08:00",
-   "checked_at": "2026-11-04T12:13:37+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 4.0,
-   "spike_ratio": 1.0,
-   "verdict": "冷",
-   "one_line": "量穩有大戶提及",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 4.5,
+   "spike_ratio": 2.0,
+   "verdict": "升溫",
+   "one_line": "量升有真實討論",
    "shill_flag": false,
    "big_accounts": 1,
    "top_posts": [
     {
      "id": "2117813626085974500",
      "url": "https://x.com/MoonPaxi/status/2117813626085974500",
-     "text": "LATEST: Sui Network (@SuiNetwork) is taking steps to prepare the $SUI ecosystem for potential threats posed by advances in quantum computin…",
-     "likes": 42,
+     "text": "LATEST🚨: Sui Network (@SuiNetwork) is taking steps to prepare the $SUI ecosystem for potential threats posed by advances in quantum computi…",
+     "likes": 38,
      "author_username": "MoonPaxi",
-     "author_followers": 202822,
+     "author_followers": 202809,
      "created_at": "2026-11-04T10:58:10+08:00"
     },
     {
-     "id": "2117788964895805713",
-     "url": "https://x.com/_CryptoScout/status/2117788964895805713",
-     "text": "Jumper just opened a new opportunity for multi-chain farmers! If you've been earning XP on Solana, Sui, Bitcoin or Tron through @jumperapp,…",
-     "likes": 8,
-     "author_username": "_CryptoScout",
-     "author_followers": 2163,
-     "created_at": "2026-11-04T09:20:10+08:00"
+     "id": "2117856253640917052",
+     "url": "https://x.com/ProfessorSui/status/2117856253640917052",
+     "text": "SUI MACRO REPORT — NOVEMBER 3, 2026 1. Sui Market Rebound Broad strength across the Sui ecosystem. All five tracked assets are positive ove…",
+     "likes": 9,
+     "author_username": "ProfessorSui",
+     "author_followers": 1039,
+     "created_at": "2026-11-04T13:47:33+08:00"
     },
     {
      "id": "2117821565987410320",
      "url": "https://x.com/mrcamerontrader/status/2117821565987410320",
-     "text": "Best Signal Buy $SUI now and enjoy your new Rolex #crypto",
-     "likes": 5,
+     "text": "Best Signal 📉Buy $SUI now and enjoy your new Rolex #crypto",
+     "likes": 9,
      "author_username": "mrcamerontrader",
-     "author_followers": 614,
+     "author_followers": 618,
      "created_at": "2026-11-04T11:29:43+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "FILUSDT": {
    "symbol": "FILUSDT",
@@ -1130,42 +1130,42 @@
    "symbol": "TAOUSDT",
    "base": "TAO",
    "flag": "pump",
-   "trigger_at": "2026-11-04T12:15:00+08:00",
-   "checked_at": "2026-11-04T12:13:37+08:00",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
    "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 2.67,
-   "spike_ratio": 0.75,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 0.86,
    "verdict": "冷",
-   "one_line": "量低無熱度",
+   "one_line": "量穩討論平淡",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
+     "id": "2117844287287406810",
+     "url": "https://x.com/CadeONeill/status/2117844287287406810",
+     "text": "ALTCOINs are falling, which AI crypto are you buying? 👀 • $TAO Bittensor - $222 • $INJ Injective - $7.18 • $ICP Internet Computer - $1.48 •…",
+     "likes": 16,
+     "author_username": "CadeONeill",
+     "author_followers": 7061,
+     "created_at": "2026-11-04T13:00:00+08:00"
+    },
+    {
      "id": "2117816609850978808",
      "url": "https://x.com/cryptoissimple/status/2117816609850978808",
-     "text": "ALT SEASON IS HERE. ARE YOU READY? MY UPDATED CRYPTO PRICE TARGETS. MAJOR CRYPTO PRICE TARGETS BTC — $92,000 ETH — $3,067 BNB — $818 SOL — …",
-     "likes": 3,
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS 👀 🚀 MAJOR CRYPTO PRICE TARGETS ₿ $BTC — $92,000 Ξ $ETH — $3,067 🟡 …",
+     "likes": 10,
      "author_username": "cryptoissimple",
-     "author_followers": 6996,
+     "author_followers": 6999,
      "created_at": "2026-11-04T11:10:01+08:00"
     },
     {
-     "id": "2117802704131276996",
-     "url": "https://x.com/ARcollective1/status/2117802704131276996",
-     "text": "$BTC $SPY $QQQ + ALTCOINS REVIEW & MACRO - ELECTION DAY - SPECIAL COVERAGE 2026 - No Politics! #BITCOIN $ETH $BNB $TAO $ADA $DOGE $HBAR $NE…",
-     "likes": 3,
-     "author_username": "ARcollective1",
-     "author_followers": 2786,
-     "created_at": "2026-11-04T10:14:46+08:00"
-    },
-    {
-     "id": "2117822891031220660",
-     "url": "https://x.com/SirFrancis13579/status/2117822891031220660",
-     "text": "They keep dumping the token while mocking other professional good quality project like $xrp. $xrp after winning against SEC, never touch un…",
-     "likes": 2,
-     "author_username": "SirFrancis13579",
-     "author_followers": 46,
-     "created_at": "2026-11-04T11:34:59+08:00"
+     "id": "2117836737195995183",
+     "url": "https://x.com/InvestwithDoc/status/2117836737195995183",
+     "text": "Which Crypto Can Flip $XRP? ‣ hedera-hashgraph:native ‣ $QNT ‣ $TAO ‣ $NEAR ‣ $KAS ‣ $ADA ‣ binancecoin:native ‣ solana:So11111111111111111…",
+     "likes": 9,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9362,
+     "created_at": "2026-11-04T12:30:00+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1456,9 +1456,9 @@
    "base": "TIA",
    "flag": "pump",
    "trigger_at": "2026-11-04T15:15:00+08:00",
-   "checked_at": "2026-11-04T15:11:30+08:00",
-   "posts_last_1h": 2,
-   "posts_prev_6h_avg_per_h": 0.0,
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 0.33,
    "spike_ratio": 0.0,
    "verdict": "冷",
    "one_line": "幾乎無討論",
@@ -1468,8 +1468,8 @@
     {
      "id": "2117865660856344595",
      "url": "https://x.com/cryptoissimple/status/2117865660856344595",
-     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback?",
-     "likes": 1,
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback? 🔥 1. $NEAR — Near Protoco…",
+     "likes": 4,
      "author_username": "cryptoissimple",
      "author_followers": 6999,
      "created_at": "2026-11-04T14:24:56+08:00"
@@ -1477,14 +1477,14 @@
     {
      "id": "2117863959688585490",
      "url": "https://x.com/MarketSentinelX/status/2117863959688585490",
-     "text": "📈 Market trends — Nov 04, 2026 🔄 Uncertain trend change: TIA 0.4492 → bullish (D1/7)",
+     "text": "📈 Market trends — Nov 04, 2026 🔄 Uncertain trend change: META 619.78 → bullish (D6/7) ENA 0.1798 → bullish (D6/7) AAVE 128.60 → bullish (D5…",
      "likes": 0,
      "author_username": "MarketSentinelX",
      "author_followers": 7,
      "created_at": "2026-11-04T14:18:10+08:00"
     }
    ],
-   "checks_this_trigger": 1
+   "checks_this_trigger": 2
   },
   "HBARUSDT": {
    "symbol": "HBARUSDT",
@@ -1526,6 +1526,182 @@
      "author_username": "cryptoissimple",
      "author_followers": 6999,
      "created_at": "2026-11-04T11:10:01+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "FETUSDT": {
+   "symbol": "FETUSDT",
+   "base": "FET",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 0.67,
+   "verdict": "冷",
+   "one_line": "量低夾雜訊多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117844287287406810",
+     "url": "https://x.com/CadeONeill/status/2117844287287406810",
+     "text": "ALTCOINs are falling, which AI crypto are you buying? 👀 • $TAO Bittensor - $222 • $INJ Injective - $7.18 • $ICP Internet Computer - $1.48 •…",
+     "likes": 16,
+     "author_username": "CadeONeill",
+     "author_followers": 7061,
+     "created_at": "2026-11-04T13:00:00+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS 👀 🚀 MAJOR CRYPTO PRICE TARGETS ₿ $BTC — $92,000 Ξ $ETH — $3,067 🟡 …",
+     "likes": 10,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117865660856344595",
+     "url": "https://x.com/cryptoissimple/status/2117865660856344595",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback? 🔥 1. $NEAR — Near Protoco…",
+     "likes": 4,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T14:24:56+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "BNBUSDT": {
+   "symbol": "BNBUSDT",
+   "base": "BNB",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 50,
+   "posts_prev_6h_avg_per_h": 46.83,
+   "spike_ratio": 1.07,
+   "verdict": "冷",
+   "one_line": "量穩hack雜訊多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117860063180165586",
+     "url": "https://x.com/BitcoinWorldN/status/2117860063180165586",
+     "text": "🚨 NEW: BNB Standard Corp Adds Anthony Scaramucci to Board BNB Standard Corp, the treasury arm of Binance, has appointed Anthony Scaramucci,…",
+     "likes": 1,
+     "author_username": "BitcoinWorldN",
+     "author_followers": 55110,
+     "created_at": "2026-11-04T14:02:41+08:00"
+    },
+    {
+     "id": "2117856509748998573",
+     "url": "https://x.com/TheCurrencyA/status/2117856509748998573",
+     "text": "Hackers used an internal AI tool to control engineers and steal $6.34B from Binance. Can internal tools be trusted? #Crypto $BNB 🚨",
+     "likes": 1,
+     "author_username": "TheCurrencyA",
+     "author_followers": 17871,
+     "created_at": "2026-11-04T13:48:34+08:00"
+    },
+    {
+     "id": "2117844290701603250",
+     "url": "https://x.com/Wassi14313/status/2117844290701603250",
+     "text": "5. What's your favorite alt for this month? Comment below 👇 Follow @Waseem Akram Khan for daily crypto updates. Full analysis on my Binance…",
+     "likes": 1,
+     "author_username": "Wassi14313",
+     "author_followers": 6803,
+     "created_at": "2026-11-04T13:00:01+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "DOGEUSDT": {
+   "symbol": "DOGEUSDT",
+   "base": "DOGE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 16,
+   "posts_prev_6h_avg_per_h": 14.17,
+   "spike_ratio": 1.13,
+   "verdict": "冷",
+   "one_line": "量平訊號bot多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117843317761441856",
+     "url": "https://x.com/BuildrJ/status/2117843317761441856",
+     "text": "The midterms, Binance hack, war prospects are all priced into the market already. There is only so much fundamental based sell pressure tha…",
+     "likes": 23,
+     "author_username": "BuildrJ",
+     "author_followers": 15444,
+     "created_at": "2026-11-04T12:56:09+08:00"
+    },
+    {
+     "id": "2117855668216484277",
+     "url": "https://x.com/timoassi/status/2117855668216484277",
+     "text": "Happy Wednesday all! If you missed the past 24 hours in crypto and stocks, here's your full recap: 🚨 Major Headlines & Market Moves 🚨 - $BT…",
+     "likes": 15,
+     "author_username": "timoassi",
+     "author_followers": 15833,
+     "created_at": "2026-11-04T13:45:13+08:00"
+    },
+    {
+     "id": "2117813078058303762",
+     "url": "https://x.com/MouhieddinA/status/2117813078058303762",
+     "text": "🤖🐶🔥 $AIDOGE — The beast is getting ready to wake up! 🚀 The \"Meme Season\" wave is approaching… and all eyes are set on the peaks! 🌕💎⚡ #AIDOG…",
+     "likes": 6,
+     "author_username": "MouhieddinA",
+     "author_followers": 3561,
+     "created_at": "2026-11-04T10:55:59+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "LINKUSDT": {
+   "symbol": "LINKUSDT",
+   "base": "LINK",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 116,
+   "posts_prev_6h_avg_per_h": 78.5,
+   "spike_ratio": 1.48,
+   "verdict": "冷",
+   "one_line": "假陽性洗版多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117833121177784626",
+     "url": "https://x.com/basisdesknews/status/2117833121177784626",
+     "text": "Austin Campbell Urges 24-Hour Delays on Billion-Dollar Crypto Transfers Post-Binance Hack Zero Knowledge Group's founder says the industry …",
+     "likes": 0,
+     "author_username": "basisdesknews",
+     "author_followers": 1,
+     "created_at": "2026-11-04T12:15:38+08:00"
+    },
+    {
+     "id": "2117837463586558075",
+     "url": "https://x.com/virus2027pulse/status/2117837463586558075",
+     "text": "@Kalshi QUESTIONS? WRITE ME 24/7! I CAN HELP YOU! I AM WAITING😎 GO TO LINK,GO WITH ME🤑 #PulseMarket #reels #virus2027 #Kalshi #Polymarket #…",
+     "likes": 0,
+     "author_username": "virus2027pulse",
+     "author_followers": 67,
+     "created_at": "2026-11-04T12:32:53+08:00"
+    },
+    {
+     "id": "2117836782532272424",
+     "url": "https://x.com/virus2027pulse/status/2117836782532272424",
+     "text": "@cz_binance QUESTIONS? WRITE ME 24/7! I CAN HELP YOU! I AM WAITING😎 GO TO LINK,GO WITH ME🤑 #PulseMarket #reels #virus2027 #Kalshi #Polymark…",
+     "likes": 0,
+     "author_username": "virus2027pulse",
+     "author_followers": 67,
+     "created_at": "2026-11-04T12:30:11+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -5318,15 +5494,307 @@
      "created_at": "2026-11-04T13:04:22+08:00"
     }
    ]
+  },
+  {
+   "symbol": "SUIUSDT",
+   "base": "SUI",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 9,
+   "posts_prev_6h_avg_per_h": 4.5,
+   "spike_ratio": 2.0,
+   "verdict": "升溫",
+   "one_line": "量升有真實討論",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117813626085974500",
+     "url": "https://x.com/MoonPaxi/status/2117813626085974500",
+     "text": "LATEST🚨: Sui Network (@SuiNetwork) is taking steps to prepare the $SUI ecosystem for potential threats posed by advances in quantum computi…",
+     "likes": 38,
+     "author_username": "MoonPaxi",
+     "author_followers": 202809,
+     "created_at": "2026-11-04T10:58:10+08:00"
+    },
+    {
+     "id": "2117856253640917052",
+     "url": "https://x.com/ProfessorSui/status/2117856253640917052",
+     "text": "SUI MACRO REPORT — NOVEMBER 3, 2026 1. Sui Market Rebound Broad strength across the Sui ecosystem. All five tracked assets are positive ove…",
+     "likes": 9,
+     "author_username": "ProfessorSui",
+     "author_followers": 1039,
+     "created_at": "2026-11-04T13:47:33+08:00"
+    },
+    {
+     "id": "2117821565987410320",
+     "url": "https://x.com/mrcamerontrader/status/2117821565987410320",
+     "text": "Best Signal 📉Buy $SUI now and enjoy your new Rolex #crypto",
+     "likes": 9,
+     "author_username": "mrcamerontrader",
+     "author_followers": 618,
+     "created_at": "2026-11-04T11:29:43+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "FETUSDT",
+   "base": "FET",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 1,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 0.67,
+   "verdict": "冷",
+   "one_line": "量低夾雜訊多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117844287287406810",
+     "url": "https://x.com/CadeONeill/status/2117844287287406810",
+     "text": "ALTCOINs are falling, which AI crypto are you buying? 👀 • $TAO Bittensor - $222 • $INJ Injective - $7.18 • $ICP Internet Computer - $1.48 •…",
+     "likes": 16,
+     "author_username": "CadeONeill",
+     "author_followers": 7061,
+     "created_at": "2026-11-04T13:00:00+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS 👀 🚀 MAJOR CRYPTO PRICE TARGETS ₿ $BTC — $92,000 Ξ $ETH — $3,067 🟡 …",
+     "likes": 10,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117865660856344595",
+     "url": "https://x.com/cryptoissimple/status/2117865660856344595",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback? 🔥 1. $NEAR — Near Protoco…",
+     "likes": 4,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T14:24:56+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TAOUSDT",
+   "base": "TAO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 2,
+   "posts_prev_6h_avg_per_h": 2.33,
+   "spike_ratio": 0.86,
+   "verdict": "冷",
+   "one_line": "量穩討論平淡",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117844287287406810",
+     "url": "https://x.com/CadeONeill/status/2117844287287406810",
+     "text": "ALTCOINs are falling, which AI crypto are you buying? 👀 • $TAO Bittensor - $222 • $INJ Injective - $7.18 • $ICP Internet Computer - $1.48 •…",
+     "likes": 16,
+     "author_username": "CadeONeill",
+     "author_followers": 7061,
+     "created_at": "2026-11-04T13:00:00+08:00"
+    },
+    {
+     "id": "2117816609850978808",
+     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
+     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS 👀 🚀 MAJOR CRYPTO PRICE TARGETS ₿ $BTC — $92,000 Ξ $ETH — $3,067 🟡 …",
+     "likes": 10,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T11:10:01+08:00"
+    },
+    {
+     "id": "2117836737195995183",
+     "url": "https://x.com/InvestwithDoc/status/2117836737195995183",
+     "text": "Which Crypto Can Flip $XRP? ‣ hedera-hashgraph:native ‣ $QNT ‣ $TAO ‣ $NEAR ‣ $KAS ‣ $ADA ‣ binancecoin:native ‣ solana:So11111111111111111…",
+     "likes": 9,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9362,
+     "created_at": "2026-11-04T12:30:00+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "BNBUSDT",
+   "base": "BNB",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 50,
+   "posts_prev_6h_avg_per_h": 46.83,
+   "spike_ratio": 1.07,
+   "verdict": "冷",
+   "one_line": "量穩hack雜訊多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117860063180165586",
+     "url": "https://x.com/BitcoinWorldN/status/2117860063180165586",
+     "text": "🚨 NEW: BNB Standard Corp Adds Anthony Scaramucci to Board BNB Standard Corp, the treasury arm of Binance, has appointed Anthony Scaramucci,…",
+     "likes": 1,
+     "author_username": "BitcoinWorldN",
+     "author_followers": 55110,
+     "created_at": "2026-11-04T14:02:41+08:00"
+    },
+    {
+     "id": "2117856509748998573",
+     "url": "https://x.com/TheCurrencyA/status/2117856509748998573",
+     "text": "Hackers used an internal AI tool to control engineers and steal $6.34B from Binance. Can internal tools be trusted? #Crypto $BNB 🚨",
+     "likes": 1,
+     "author_username": "TheCurrencyA",
+     "author_followers": 17871,
+     "created_at": "2026-11-04T13:48:34+08:00"
+    },
+    {
+     "id": "2117844290701603250",
+     "url": "https://x.com/Wassi14313/status/2117844290701603250",
+     "text": "5. What's your favorite alt for this month? Comment below 👇 Follow @Waseem Akram Khan for daily crypto updates. Full analysis on my Binance…",
+     "likes": 1,
+     "author_username": "Wassi14313",
+     "author_followers": 6803,
+     "created_at": "2026-11-04T13:00:01+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "base": "DOGE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 16,
+   "posts_prev_6h_avg_per_h": 14.17,
+   "spike_ratio": 1.13,
+   "verdict": "冷",
+   "one_line": "量平訊號bot多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117843317761441856",
+     "url": "https://x.com/BuildrJ/status/2117843317761441856",
+     "text": "The midterms, Binance hack, war prospects are all priced into the market already. There is only so much fundamental based sell pressure tha…",
+     "likes": 23,
+     "author_username": "BuildrJ",
+     "author_followers": 15444,
+     "created_at": "2026-11-04T12:56:09+08:00"
+    },
+    {
+     "id": "2117855668216484277",
+     "url": "https://x.com/timoassi/status/2117855668216484277",
+     "text": "Happy Wednesday all! If you missed the past 24 hours in crypto and stocks, here's your full recap: 🚨 Major Headlines & Market Moves 🚨 - $BT…",
+     "likes": 15,
+     "author_username": "timoassi",
+     "author_followers": 15833,
+     "created_at": "2026-11-04T13:45:13+08:00"
+    },
+    {
+     "id": "2117813078058303762",
+     "url": "https://x.com/MouhieddinA/status/2117813078058303762",
+     "text": "🤖🐶🔥 $AIDOGE — The beast is getting ready to wake up! 🚀 The \"Meme Season\" wave is approaching… and all eyes are set on the peaks! 🌕💎⚡ #AIDOG…",
+     "likes": 6,
+     "author_username": "MouhieddinA",
+     "author_followers": 3561,
+     "created_at": "2026-11-04T10:55:59+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "LINKUSDT",
+   "base": "LINK",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T16:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 116,
+   "posts_prev_6h_avg_per_h": 78.5,
+   "spike_ratio": 1.48,
+   "verdict": "冷",
+   "one_line": "假陽性洗版多",
+   "shill_flag": true,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117833121177784626",
+     "url": "https://x.com/basisdesknews/status/2117833121177784626",
+     "text": "Austin Campbell Urges 24-Hour Delays on Billion-Dollar Crypto Transfers Post-Binance Hack Zero Knowledge Group's founder says the industry …",
+     "likes": 0,
+     "author_username": "basisdesknews",
+     "author_followers": 1,
+     "created_at": "2026-11-04T12:15:38+08:00"
+    },
+    {
+     "id": "2117837463586558075",
+     "url": "https://x.com/virus2027pulse/status/2117837463586558075",
+     "text": "@Kalshi QUESTIONS? WRITE ME 24/7! I CAN HELP YOU! I AM WAITING😎 GO TO LINK,GO WITH ME🤑 #PulseMarket #reels #virus2027 #Kalshi #Polymarket #…",
+     "likes": 0,
+     "author_username": "virus2027pulse",
+     "author_followers": 67,
+     "created_at": "2026-11-04T12:32:53+08:00"
+    },
+    {
+     "id": "2117836782532272424",
+     "url": "https://x.com/virus2027pulse/status/2117836782532272424",
+     "text": "@cz_binance QUESTIONS? WRITE ME 24/7! I CAN HELP YOU! I AM WAITING😎 GO TO LINK,GO WITH ME🤑 #PulseMarket #reels #virus2027 #Kalshi #Polymark…",
+     "likes": 0,
+     "author_username": "virus2027pulse",
+     "author_followers": 67,
+     "created_at": "2026-11-04T12:30:11+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TIAUSDT",
+   "base": "TIA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T15:15:00+08:00",
+   "checked_at": "2026-11-04T16:12:30+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 0.33,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "幾乎無討論",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117865660856344595",
+     "url": "https://x.com/cryptoissimple/status/2117865660856344595",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback? 🔥 1. $NEAR — Near Protoco…",
+     "likes": 4,
+     "author_username": "cryptoissimple",
+     "author_followers": 6999,
+     "created_at": "2026-11-04T14:24:56+08:00"
+    },
+    {
+     "id": "2117863959688585490",
+     "url": "https://x.com/MarketSentinelX/status/2117863959688585490",
+     "text": "📈 Market trends — Nov 04, 2026 🔄 Uncertain trend change: META 619.78 → bullish (D6/7) ENA 0.1798 → bullish (D6/7) AAVE 128.60 → bullish (D5…",
+     "likes": 0,
+     "author_username": "MarketSentinelX",
+     "author_followers": 7,
+     "created_at": "2026-11-04T14:18:10+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-04",
   "daily_total_cap": 120,
-  "calls_today": 97,
+  "calls_today": 113,
   "cap_reached": false,
-  "updated_at": "2026-11-04T15:13:06+08:00"
+  "updated_at": "2026-11-04T16:13:21+08:00"
  },
- "updated_at": "2026-11-04T15:13:06+08:00",
+ "updated_at": "2026-11-04T16:13:21+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }
