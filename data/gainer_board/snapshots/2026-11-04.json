@@ -1107,6 +1107,37 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261104-1038",
+   "picked_at": "2026-11-04T10:38:52+08:00",
+   "universe": 51,
+   "btc_24h_pct": -0.37,
+   "universe_all": 394,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "BMTUSDT",
+    "RUNEUSDT",
+    "KMNOUSDT",
+    "HOTUSDT",
+    "QKCUSDT",
+    "ZROUSDT",
+    "AMPUSDT",
+    "POWRUSDT",
+    "SAGAUSDT",
+    "HOMEUSDT",
+    "PUMPUSDT",
+    "OSMOUSDT",
+    "BLURUSDT",
+    "WOOUSDT",
+    "RADUSDT",
+    "GPSUSDT",
+    "POLUSDT",
+    "AEROUSDT",
+    "ZECUSDT",
+    "MEGAUSDT"
+   ],
+   "entries": []
   }
  ]
 }
