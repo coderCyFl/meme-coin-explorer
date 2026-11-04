@@ -58,9 +58,19 @@
       "empty.pos": "No positions · tap Buy",
       "tab.picks": "Today's picks",
       "tab.hits": "Hits",
+      "tab.buzz": "Buzz",
       "tab.markets": "Markets",
       "tab.portfolio": "Portfolio",
       "tab.more": "More",
+      "buzz.title": "Buzz",
+      "buzz.sub": "What’s buzzing on X — view only",
+      "buzz.chip": "View only",
+      "buzz.th.trend": "Trend",
+      "buzz.th.share": "Share",
+      "buzz.empty": "No X snapshot yet.",
+      "buzz.note": "Parallel · shill veto on face · not Early · no paper",
+      "buzz.meta": "Snapshot {when} · {n} coins · view only (no paper)",
+      "buzz.view": "View posts",
       "label.24h_mkt": "24h mkt",
       "push.toggle": "Enable notifications",
       "push.body": "New Early (paper) — check the board. Not advice.",
@@ -148,9 +158,19 @@
       "empty.pos": "暫無倉位 · 撳買入",
       "tab.picks": "今日選幣",
       "tab.hits": "命中",
+      "tab.buzz": "熱議",
       "tab.markets": "市場",
       "tab.portfolio": "組合",
       "tab.more": "更多",
+      "buzz.title": "熱議",
+      "buzz.sub": "X 熱議一覽 — 僅瀏覽",
+      "buzz.chip": "僅瀏覽",
+      "buzz.th.trend": "趨勢",
+      "buzz.th.share": "佔比",
+      "buzz.empty": "暫無 X 快照。",
+      "buzz.note": "並行 · 面標洗版 · 唔計 Early · 唔開紙上倉",
+      "buzz.meta": "快照 {when} · {n} 幣 · 僅瀏覽（唔開紙上倉）",
+      "buzz.view": "睇帖",
       "label.24h_mkt": "24小時市價",
       "push.toggle": "開啟通知",
       "push.body": "新 Early（模擬）— 到看板看看。非投資建議。",
@@ -233,6 +253,7 @@
       try { renderHitReport(); } catch (_) {}
       try { renderWatchDense(); } catch (_) {}
       try { renderXNewsScan(); } catch (_) {}
+      try { renderBuzzBoard(); } catch (_) {}
       try { renderPortfolio && renderPortfolio(false); } catch (_) {}
     }
   }
@@ -2335,7 +2356,7 @@
       lastWatchCands = Array.isArray(res.watchCands) ? res.watchCands.slice() : [];
       try { renderWatchDense(); } catch (_) {}
       try { considerEarlyPushTips(early); } catch (_) {}
-      gbLoadX(false).then(() => { try { paintXChips(); renderWatchDense(); renderXNewsScan(); } catch (_) {} }).catch(() => {});
+      gbLoadX(false).then(() => { try { paintXChips(); renderWatchDense(); renderXNewsScan(); renderBuzzBoard(); } catch (_) {} }).catch(() => {});
       gbClientSnapshot(rows, early);
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
       const watch = rows.map((r) => r.symbol).concat(early.map((e) => e.symbol));
@@ -2359,6 +2380,7 @@
     try { renderHitReport(); } catch (_) {}
     try { renderWatchDense(); } catch (_) {}
       try { renderXNewsScan(); } catch (_) {}
+      try { renderBuzzBoard(); } catch (_) {}
   }
 
   /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
@@ -2716,6 +2738,77 @@
               }
             },
           }, tr("xnews.view")))));
+    }
+    try { paintShillFlags(); } catch (_) {}
+  }
+
+
+  // ---------- Buzz tab board (Creative lock: View-only X · Trend/Share · NEVER scored Early / paper) ----------
+  function renderBuzzBoard() {
+    const body = $("buzzBoardBody");
+    const empty = $("buzzBoardEmpty");
+    const meta = $("buzzBoardMeta");
+    const table = $("buzzBoardTable");
+    if (!body) return;
+    body.textContent = "";
+    const coinsObj = (gbX.data && gbX.data.coins && typeof gbX.data.coins === "object") ? gbX.data.coins : null;
+    const rows = [];
+    if (coinsObj) {
+      for (const [pair, c] of Object.entries(coinsObj)) {
+        if (!c || typeof c !== "object") continue;
+        const verdict = c.verdict;
+        if (!["熱", "升溫", "冷"].includes(verdict)) continue;
+        const posts = (typeof c.posts_last_1h === "number" && isFinite(c.posts_last_1h) && c.posts_last_1h > 0) ? c.posts_last_1h : 0;
+        rows.push({ pair, c, verdict, shill: c.shill_flag === true, t: Date.parse(c.checked_at) || 0, posts });
+      }
+    }
+    rows.sort((a, b) => {
+      const rank = (v) => (v === "熱" ? 0 : v === "升溫" ? 1 : 2);
+      const d = rank(a.verdict) - rank(b.verdict);
+      if (d) return d;
+      if (b.posts !== a.posts) return b.posts - a.posts;
+      return (b.t || 0) - (a.t || 0);
+    });
+    const totalPosts = rows.reduce((s, r) => s + (r.posts || 0), 0) || 0;
+    if (meta) {
+      const when = gbX.data && gbX.data.updated_at ? frTime(gbX.data.updated_at) : "—";
+      meta.textContent = tr("buzz.meta", { when, n: rows.length });
+    }
+    if (empty) empty.hidden = rows.length > 0;
+    if (table) table.hidden = rows.length === 0;
+    if (!rows.length) return;
+    for (const r of rows) {
+      const base = (r.c.base || r.pair.replace(/USDT$/, ""));
+      const vClass = r.verdict === "熱" ? "x-hot" : r.verdict === "升溫" ? "x-warm" : "x-cold";
+      const vLab = r.verdict === "熱" ? tr("xnews.hot") : r.verdict === "升溫" ? tr("xnews.warm") : tr("xnews.cold");
+      const sharePct = totalPosts > 0 ? (r.posts / totalPosts) * 100 : 0;
+      const shareTxt = totalPosts > 0 ? (sharePct >= 10 ? sharePct.toFixed(0) : sharePct.toFixed(1)) + "%" : "—";
+      const shillEl = shillFlagEl(r.pair);
+      if (r.shill && shillEl) shillEl.hidden = false;
+      const trEl = el("tr", { "data-buzz": r.pair },
+        el("td", {},
+          el("div", { class: "buzz-coin" },
+            el("span", { class: "nm", text: base }),
+            shillEl)),
+        el("td", {},
+          el("span", { class: "xnews-verdict " + vClass, text: vLab }),
+          r.t ? el("span", { class: "tiny muted buzz-when", text: " · " + shHm(r.t) }) : null),
+        el("td", { class: "num", text: shareTxt }),
+        el("td", {},
+          el("button", {
+            type: "button", class: "ghost sm",
+            // View-only — NO Buy / NO openBuy / NO paper / NOT scored Early.
+            onclick: () => {
+              const rec = { ...r.c, _t: r.t };
+              if (window.MCE.market && window.MCE.market.openSheet) {
+                window.MCE.market.openSheet(`${base} · X ${r.verdict}`, [
+                  gbXSheet(rec),
+                  el("p", { class: "tiny muted xnews-note", text: tr("buzz.note") }),
+                ]);
+              }
+            },
+          }, tr("buzz.view"))));
+      body.append(trEl);
     }
     try { paintShillFlags(); } catch (_) {}
   }
@@ -4608,8 +4701,8 @@
   let applyingHash = false;
   function goView(view) {
     const allowed = uiMode === "simple"
-      ? ["picks", "browse", "portfolio", "more", "news", "explore"]
-      : ["explore", "picks", "browse", "portfolio", "news", "more"];
+      ? ["picks", "hits", "buzz", "browse", "portfolio", "more", "news", "explore"]
+      : ["explore", "picks", "hits", "buzz", "browse", "portfolio", "news", "more"];
     if (!allowed.includes(view)) view = "picks";
     // Close any leftover modal so it cannot eat pointer events
     for (const id of ["tradeDlg", "allinDlg", "allinPickDlg", "coinPickDlg", "infoSheet"]) {
@@ -4741,11 +4834,11 @@
 
   function show(view) {
     const allowed = uiMode === "simple"
-      ? ["picks", "hits", "browse", "portfolio", "more", "news", "explore"]
-      : ["explore", "picks", "hits", "browse", "portfolio", "news", "more"];
+      ? ["picks", "hits", "buzz", "browse", "portfolio", "more", "news", "explore"]
+      : ["explore", "picks", "hits", "buzz", "browse", "portfolio", "news", "more"];
     if (!allowed.includes(view)) view = "picks";
     navGen++;
-    for (const v of ["explore", "picks", "hits", "browse", "portfolio", "news", "more"]) {
+    for (const v of ["explore", "picks", "hits", "buzz", "browse", "portfolio", "news", "more"]) {
       const node = $("view-" + v);
       if (!node) continue;
       const on = v === view;
@@ -4770,6 +4863,12 @@
         loadLiveBnPicks(false);
       }
       if (view === "hits") { try { renderHitReport(); } catch (_) {} }
+      if (view === "buzz") {
+        try {
+          gbLoadX(false).then(() => { try { renderBuzzBoard(); } catch (_) {} }).catch(() => { try { renderBuzzBoard(); } catch (_) {} });
+          renderBuzzBoard();
+        } catch (_) {}
+      }
       if (view === "browse") {
         if (window.MCE.loadBinanceBoard) window.MCE.loadBinanceBoard(false);
       }
@@ -5033,9 +5132,15 @@
     xNewsFilter = b.dataset.xnf || "all";
     renderXNewsScan();
   }));
+  if ($("buzzRefresh")) $("buzzRefresh").addEventListener("click", async () => {
+    try { await gbLoadX(true); } catch (_) {}
+    renderBuzzBoard();
+  });
+  if ($("moreBuzz")) $("moreBuzz").addEventListener("click", (ev) => { ev.preventDefault(); goView("buzz"); });
   if ($("xNewsRefresh")) $("xNewsRefresh").addEventListener("click", async () => {
     try { await gbLoadX(true); } catch (_) {}
     renderXNewsScan();
+    try { renderBuzzBoard(); } catch (_) {}
   });
   const scrollFace = (id) => {
     goView("picks");

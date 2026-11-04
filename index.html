@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
-<link rel="stylesheet" href="styles.css?v=20261104k">
+<link rel="stylesheet" href="styles.css?v=20261104m">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
 <link rel="icon" href="icons/icon-32.png?v=20261030g" type="image/png" sizes="32x32">
@@ -58,6 +58,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <nav class="tabs top-tabs full-only" role="tablist">
   <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
   <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
+  <a href="#buzz" class="tab" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
   <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
   <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
   <a href="#news" class="tab" data-view="news">News</a>
@@ -66,6 +67,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <nav class="tabs simple-tabs simple-only" role="tablist" aria-label="Simple tabs">
   <a href="#picks" class="tab" data-view="picks" data-i18n="tab.picks">Today's picks</a>
   <a href="#hits" class="tab" data-view="hits" data-i18n="tab.hits">Hits</a>
+  <a href="#buzz" class="tab" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
   <a href="#browse" class="tab" data-view="browse" data-i18n="tab.markets">Markets</a>
   <a href="#portfolio" class="tab" data-view="portfolio" data-i18n="tab.portfolio">Portfolio</a>
   <a href="#more" class="tab" data-view="more" data-i18n="tab.more">More</a>
@@ -451,6 +453,39 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 
 </div>
 
+
+<!-- ===== Buzz / 熱議 (X View-only · Creative lock · not Early) ===== -->
+<div id="view-buzz" class="view" hidden>
+  <section class="panel buzz-board" id="buzzBoardPanel" aria-live="polite">
+    <div class="panelhead">
+      <div>
+        <h2 class="home-title" data-i18n="buzz.title">Buzz</h2>
+        <p class="home-sub" data-i18n="buzz.sub">What’s buzzing on X — view only</p>
+      </div>
+      <div class="buzz-head-actions">
+        <span class="watch-dense-chip soft" data-i18n="buzz.chip">View only</span>
+        <button type="button" id="buzzRefresh" class="ghost sm" title="Refresh" aria-label="Refresh">↻</button>
+      </div>
+    </div>
+    <p class="tiny muted" id="buzzBoardMeta"></p>
+    <div class="tablewrap">
+      <table class="buzz-table" id="buzzBoardTable">
+        <thead>
+          <tr>
+            <th data-i18n="th.coin">Coin</th>
+            <th data-i18n="buzz.th.trend">Trend</th>
+            <th class="num" data-i18n="buzz.th.share">Share</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="buzzBoardBody"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="buzzBoardEmpty" hidden data-i18n="buzz.empty">No X snapshot yet.</div>
+    <p class="tiny muted" data-i18n="buzz.note">Parallel · shill veto on face · not Early · no paper</p>
+  </section>
+</div>
+
 <!-- ===== 更多（簡單模式） ===== -->
 <div id="view-more" class="view simple-only" hidden>
   <section class="panel">
@@ -463,6 +498,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
       <a class="more-item" href="#browse">Markets</a>
       <a class="more-item" href="#hits" id="moreHitReport" data-view="hits" data-i18n="tab.hits">Hits</a>
       <a class="more-item" href="#picks" id="moreWatchDense" data-i18n="watch.title">Watch</a>
+      <a class="more-item" href="#buzz" id="moreBuzz" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
       <a class="more-item" href="#picks" id="moreXNews" data-i18n="xnews.title">X news scan</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
@@ -790,6 +826,7 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <nav class="bottom-nav" role="tablist" aria-label="Main tabs">
   <a href="#picks" class="tab" data-view="picks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span class="bn-lab" data-i18n="tab.picks">Today's picks</span></a>
   <a href="#hits" class="tab" data-view="hits"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span class="bn-lab" data-i18n="tab.hits">Hits</span></a>
+  <a href="#buzz" class="tab" data-view="buzz"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4z"/></svg><span class="bn-lab" data-i18n="tab.buzz">Buzz</span></a>
   <a href="#browse" class="tab" data-view="browse"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="bn-lab" data-i18n="tab.markets">Markets</span></a>
   <a href="#portfolio" class="tab" data-view="portfolio"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.7-2.5 2-2.5.8-2.5 2 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg><span class="bn-lab" data-i18n="tab.portfolio">Portfolio</span></a>
   <a href="#news" class="tab bn-full" data-view="news"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8"/></svg><span class="bn-lab">News</span></a>
@@ -797,10 +834,10 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
   <a href="#more" class="tab bn-simple" data-view="more"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span class="bn-lab" data-i18n="tab.more">More</span></a>
 </nav>
 
-<script src="live.js?v=20261104k"></script>
+<script src="live.js?v=20261104m"></script>
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104k"></script>
+<script src="picks.js?v=20261104m"></script>
 </body>
 </html>
