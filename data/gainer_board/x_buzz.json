@@ -752,45 +752,45 @@
    "symbol": "AVAXUSDT",
    "base": "AVAX",
    "flag": "pump",
-   "trigger_at": "2026-11-04T05:15:00+08:00",
-   "checked_at": "2026-11-04T06:20:31+08:00",
-   "posts_last_1h": 7,
-   "posts_prev_6h_avg_per_h": 4.17,
-   "spike_ratio": 1.68,
-   "verdict": "冷",
-   "one_line": "量穩但訊號bot多",
-   "shill_flag": true,
-   "big_accounts": 0,
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 6.33,
+   "spike_ratio": 1.74,
+   "verdict": "升溫",
+   "one_line": "機構買盤同期權熱議",
+   "shill_flag": false,
+   "big_accounts": 3,
    "top_posts": [
     {
-     "id": "2117723539067539875",
-     "url": "https://x.com/Alfred3o3/status/2117723539067539875",
-     "text": "#Crypto Heat Map Report - 2026-11-03 Snapshot Source: CoinGecko coins/markets Top-40 market-cap/major-coin basket value proxy: $2.27T BTC: …",
-     "likes": 4,
-     "author_username": "Alfred3o3",
-     "author_followers": 356,
-     "created_at": "2026-11-04T05:00:11+08:00"
+     "id": "2118012198534398288",
+     "url": "https://x.com/DegenerateNews/status/2118012198534398288",
+     "text": "NEW: @coinbase OPENS REGULATED ACCESS TO GLOBAL CRYPTO OPTIONS AND PERPS FOR U.S. INSTITUTIONS VIA @CoinbasePrime … 20+ ASSETS - INCLUDING …",
+     "likes": 62,
+     "author_username": "DegenerateNews",
+     "author_followers": 425248,
+     "created_at": "2026-11-05T00:07:13+08:00"
     },
     {
-     "id": "2117714127841890336",
-     "url": "https://x.com/mndsetdex/status/2117714127841890336",
-     "text": "Development Update! We’re making serious progress! Multi-chain testing is underway, with $SOL, $ETH, $BNB, $BTC, $MATIC, $AVAX , $ARB & $HO…",
-     "likes": 3,
-     "author_username": "mndsetdex",
-     "author_followers": 256,
-     "created_at": "2026-11-04T04:22:47+08:00"
+     "id": "2117990500162797778",
+     "url": "https://x.com/Nazo_ku/status/2117990500162797778",
+     "text": "A wallet linked to Selini Capital just bought over $500k in $AVAX from Binance, bringing their net buying streak to 6 consecutive days with…",
+     "likes": 33,
+     "author_username": "Nazo_ku",
+     "author_followers": 13544,
+     "created_at": "2026-11-04T22:41:00+08:00"
     },
     {
-     "id": "2117716274931491081",
-     "url": "https://x.com/leviathan_news/status/2117716274931491081",
-     "text": "SQUID DIGEST November 03, 2026 Kim Yo Jong hints US ties to Binance hack as NEAR cuts token issuance from 2.5% to 1.6%",
-     "likes": 1,
-     "author_username": "leviathan_news",
-     "author_followers": 7533,
-     "created_at": "2026-11-04T04:31:19+08:00"
+     "id": "2118015527188615304",
+     "url": "https://x.com/crypto_banter/status/2118015527188615304",
+     "text": "🚨COINBASE GIVES U.S. INSTITUTIONS REGULATED PATH TO DERIBIT OPTIONS AND PERPS! It covers 20+ assets, including BTC ETH SOL XRP AVAX",
+     "likes": 32,
+     "author_username": "crypto_banter",
+     "author_followers": 442397,
+     "created_at": "2026-11-05T00:20:27+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "AEROUSDT": {
    "symbol": "AEROUSDT",
@@ -928,24 +928,24 @@
    "symbol": "INITUSDT",
    "base": "INIT",
    "flag": "pump",
-   "trigger_at": "2026-11-04T12:15:00+08:00",
-   "checked_at": "2026-11-04T12:13:37+08:00",
+   "trigger_at": "2026-11-05T00:30:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
    "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.33,
+   "posts_prev_6h_avg_per_h": 0.67,
    "spike_ratio": 0.0,
    "verdict": "冷",
-   "one_line": "幾乎無討論",
+   "one_line": "量少幾乎冇人傾",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117805999276917142",
-     "url": "https://x.com/Finora_EN/status/2117805999276917142",
-     "text": "alright let's see what's cooking on $INIT #INITUSDT.P 1h. my bias is bearish here on the 1h while price stays below the last swing high — t…",
-     "likes": 0,
-     "author_username": "Finora_EN",
-     "author_followers": 24819,
-     "created_at": "2026-11-04T10:27:51+08:00"
+     "id": "2117944974746542251",
+     "url": "https://x.com/mr_pipfessor/status/2117944974746542251",
+     "text": "$INIT - Price dumped nicely and is now holding above demand. This is a key zone to watch for a potential bullish reaction and upside bounce.",
+     "likes": 2,
+     "author_username": "mr_pipfessor",
+     "author_followers": 1338,
+     "created_at": "2026-11-04T19:40:06+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1086,24 +1086,42 @@
    "symbol": "ONDOUSDT",
    "base": "ONDO",
    "flag": "pump",
-   "trigger_at": "2026-11-04T13:30:00+08:00",
-   "checked_at": "2026-11-04T13:22:57+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 2.83,
-   "spike_ratio": 0.35,
-   "verdict": "冷",
-   "one_line": "量跌無熱度",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 7.17,
+   "spike_ratio": 1.12,
+   "verdict": "升溫",
+   "one_line": "RWA討論穩有上升",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117844268274634774",
-     "url": "https://x.com/YakusaHL/status/2117844268274634774",
-     "text": "Most perp DEXs: crypto perps + points. Ondo Perps: OpenAI pre-IPO exposure, as spot and perps; 220K USDC in weekly rewards",
-     "likes": 1,
-     "author_username": "YakusaHL",
-     "author_followers": 4875,
-     "created_at": "2026-11-04T12:59:55+08:00"
+     "id": "2117937108577124635",
+     "url": "https://x.com/Cryptodictatorr/status/2117937108577124635",
+     "text": "I believe $ONDO could go much higher than most people expect. My thesis is that a few strong altcoins with real utility will eventually abs…",
+     "likes": 24,
+     "author_username": "Cryptodictatorr",
+     "author_followers": 2558,
+     "created_at": "2026-11-04T19:08:50+08:00"
+    },
+    {
+     "id": "2117957536917991707",
+     "url": "https://x.com/CadeONeill/status/2117957536917991707",
+     "text": "Which ISO 20022 Compliant Crypto are you MOST BEARISH on? 👀 • $QNT • $ONDO • $IOTA • $XRP • Hedera • Algorand",
+     "likes": 8,
+     "author_username": "CadeONeill",
+     "author_followers": 7065,
+     "created_at": "2026-11-04T20:30:01+08:00"
+    },
+    {
+     "id": "2117939509535093122",
+     "url": "https://x.com/Jus7Degen/status/2117939509535093122",
+     "text": "Ondo Finance — Everyone is watching $BTC, Ethereum, and Solana. But what about the project bringing traditional financial assets onto block…",
+     "likes": 8,
+     "author_username": "Jus7Degen",
+     "author_followers": 4854,
+     "created_at": "2026-11-04T19:18:23+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1156,42 +1174,42 @@
    "symbol": "ARBUSDT",
    "base": "ARB",
    "flag": "pump",
-   "trigger_at": "2026-11-04T14:30:00+08:00",
-   "checked_at": "2026-11-04T14:21:41+08:00",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
    "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 3.17,
-   "spike_ratio": 1.26,
+   "posts_prev_6h_avg_per_h": 5.5,
+   "spike_ratio": 0.73,
    "verdict": "冷",
-   "one_line": "有消息量仍低",
+   "one_line": "有Council新聞但量跌",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117809306661777629",
-     "url": "https://x.com/0xtyler/status/2117809306661777629",
-     "text": "@rbthreek I very much respect your brand... The $1.8M is the total amount donated by RH to Arbitrum’s Open House program",
-     "likes": 23,
-     "author_username": "0xtyler",
-     "author_followers": 6121,
-     "created_at": "2026-11-04T10:41:00+08:00"
+     "id": "2117962792321835183",
+     "url": "https://x.com/BitmonkCrypto/status/2117962792321835183",
+     "text": "Your keys, your crypto? Not necessarily on Arbitrum 😬 Following the Binance hack, Arbitrum's Security Council moved 8,425 ETH and 74.6M ARB…",
+     "likes": 102,
+     "author_username": "BitmonkCrypto",
+     "author_followers": 33969,
+     "created_at": "2026-11-04T20:50:54+08:00"
     },
     {
-     "id": "2117833769935945863",
-     "url": "https://x.com/ArslanOnChain/status/2117833769935945863",
-     "text": "🚨 A NEW WALLET JUST BUILT A $7.25M CRYPTO PORTFOLIO. 10M $ARB — $1.56M",
-     "likes": 17,
-     "author_username": "ArslanOnChain",
-     "author_followers": 5209,
-     "created_at": "2026-11-04T12:18:12+08:00"
+     "id": "2118015283629879438",
+     "url": "https://x.com/ourcryptotalk/status/2118015283629879438",
+     "text": "Crypto in Republican Era : Nov 2024→Nov 2026 Losers 🟥 $ARB 🔽 70% $AVAX 🔽 67% $SOL 🔽 50%",
+     "likes": 10,
+     "author_username": "ourcryptotalk",
+     "author_followers": 82761,
+     "created_at": "2026-11-05T00:19:29+08:00"
     },
     {
-     "id": "2117848684193095942",
-     "url": "https://x.com/FourPillarsFP/status/2117848684193095942",
-     "text": "On October 30, the largest hack in human history took place. We take an in-depth look at Binance exploit.",
-     "likes": 9,
-     "author_username": "FourPillarsFP",
-     "author_followers": 17594,
-     "created_at": "2026-11-04T13:17:28+08:00"
+     "id": "2117965082890015029",
+     "url": "https://x.com/craigscoinpurse/status/2117965082890015029",
+     "text": "Arbitrum's Security Council moved 8,425 ETH and 74.5M ARB linked to the Binance hack into a holding address. Moving it again now needs a DA…",
+     "likes": 11,
+     "author_username": "craigscoinpurse",
+     "author_followers": 25990,
+     "created_at": "2026-11-04T21:00:00+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1279,42 +1297,42 @@
    "symbol": "APTUSDT",
    "base": "APT",
    "flag": "pump",
-   "trigger_at": "2026-11-04T14:30:00+08:00",
-   "checked_at": "2026-11-04T14:21:41+08:00",
-   "posts_last_1h": 1,
-   "posts_prev_6h_avg_per_h": 1.33,
-   "spike_ratio": 0.75,
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 3.0,
    "verdict": "冷",
-   "one_line": "量極低夾雜訊",
-   "shill_flag": false,
-   "big_accounts": 0,
+   "one_line": "查詢嘈雜真Aptos少",
+   "shill_flag": true,
+   "big_accounts": 1,
    "top_posts": [
     {
-     "id": "2117816609850978808",
-     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
-     "text": "🚀 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
-     "likes": 6,
-     "author_username": "cryptoissimple",
-     "author_followers": 6998,
-     "created_at": "2026-11-04T11:10:01+08:00"
+     "id": "2117978841415135425",
+     "url": "https://x.com/BSCNews/status/2117978841415135425",
+     "text": "The only Telegram channel you need to stay on top of the crypto news that actually matters. Join now… @Avax $AVAX @StellarOrg $XLM @0xPolyg…",
+     "likes": 19,
+     "author_username": "BSCNews",
+     "author_followers": 1374968,
+     "created_at": "2026-11-04T21:54:40+08:00"
     },
     {
-     "id": "2117799640435241080",
-     "url": "https://x.com/Neome_com/status/2117799640435241080",
-     "text": "CRYPTO BREAKING NEWS: Only the latest. No repeats",
+     "id": "2117947455501377866",
+     "url": "https://x.com/Airdrop_Farming/status/2117947455501377866",
+     "text": "$APT STILL ISN'T ON BINANCE... BUT SOMETHING IS MOVING! $APT (Alphea Network) might not be listed on Binance yet…",
+     "likes": 13,
+     "author_username": "Airdrop_Farming",
+     "author_followers": 17792,
+     "created_at": "2026-11-04T19:49:57+08:00"
+    },
+    {
+     "id": "2118021843340898778",
+     "url": "https://x.com/RICHTVLIVE/status/2118021843340898778",
+     "text": "Top Crypto to Watch RIGHT NOW! ZEC up 9% ETH up 7% … APT up 4%",
      "likes": 1,
-     "author_username": "Neome_com",
-     "author_followers": 2772,
-     "created_at": "2026-11-04T10:02:35+08:00"
-    },
-    {
-     "id": "2117830124284285260",
-     "url": "https://x.com/ZyntoMarkets/status/2117830124284285260",
-     "text": "🚨 $APT ORDER FLOW ALERT Price: $0.6080 (-1.25%) #Crypto #OrderFlow",
-     "likes": 0,
-     "author_username": "ZyntoMarkets",
-     "author_followers": 0,
-     "created_at": "2026-11-04T12:03:43+08:00"
+     "author_username": "RICHTVLIVE",
+     "author_followers": 3452,
+     "created_at": "2026-11-05T00:45:33+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1323,77 +1341,86 @@
    "symbol": "TIAUSDT",
    "base": "TIA",
    "flag": "pump",
-   "trigger_at": "2026-11-04T15:15:00+08:00",
-   "checked_at": "2026-11-04T16:12:30+08:00",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
    "posts_last_1h": 0,
-   "posts_prev_6h_avg_per_h": 0.33,
+   "posts_prev_6h_avg_per_h": 1.5,
    "spike_ratio": 0.0,
    "verdict": "冷",
-   "one_line": "幾乎無討論",
+   "one_line": "貼文零星未成熱",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117865660856344595",
-     "url": "https://x.com/cryptoissimple/status/2117865660856344595",
-     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! 🚀🔥 Which ones have the strongest potential to make a comeback? 🔥 1. $NEAR — Near Protoco…",
-     "likes": 4,
+     "id": "2117973022766227736",
+     "url": "https://x.com/cryptoissimple/status/2117973022766227736",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! Which ones have the strongest potential to make a comeback?",
+     "likes": 10,
      "author_username": "cryptoissimple",
-     "author_followers": 6999,
-     "created_at": "2026-11-04T14:24:56+08:00"
+     "author_followers": 7001,
+     "created_at": "2026-11-04T21:31:33+08:00"
     },
     {
-     "id": "2117863959688585490",
-     "url": "https://x.com/MarketSentinelX/status/2117863959688585490",
-     "text": "📈 Market trends — Nov 04, 2026 🔄 Uncertain trend change: META 619.78 → bullish (D6/7) ENA 0.1798 → bullish (D6/7) AAVE 128.60 → bullish (D5…",
-     "likes": 0,
-     "author_username": "MarketSentinelX",
-     "author_followers": 7,
-     "created_at": "2026-11-04T14:18:10+08:00"
+     "id": "2117946570700394917",
+     "url": "https://x.com/Jus7Degen/status/2117946570700394917",
+     "text": "What made each coin famous? Save this list 👇 $BTC : FIRST CRYPTO …",
+     "likes": 3,
+     "author_username": "Jus7Degen",
+     "author_followers": 4854,
+     "created_at": "2026-11-04T19:46:26+08:00"
+    },
+    {
+     "id": "2117945810092720508",
+     "url": "https://x.com/Jus7Degen/status/2117945810092720508",
+     "text": "Some of the most famous coins are NOT the best investments. Read that again.",
+     "likes": 2,
+     "author_username": "Jus7Degen",
+     "author_followers": 4854,
+     "created_at": "2026-11-04T19:43:25+08:00"
     }
    ],
-   "checks_this_trigger": 2
+   "checks_this_trigger": 1
   },
   "HBARUSDT": {
    "symbol": "HBARUSDT",
    "base": "HBAR",
    "flag": "pump",
-   "trigger_at": "2026-11-04T15:15:00+08:00",
-   "checked_at": "2026-11-04T15:11:30+08:00",
-   "posts_last_1h": 4,
-   "posts_prev_6h_avg_per_h": 4.5,
-   "spike_ratio": 0.89,
-   "verdict": "冷",
-   "one_line": "量平有實盤討論",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 14,
+   "posts_prev_6h_avg_per_h": 11.5,
+   "spike_ratio": 1.22,
+   "verdict": "升溫",
+   "one_line": "社群活躍略升溫",
    "shill_flag": false,
    "big_accounts": 0,
    "top_posts": [
     {
-     "id": "2117855326842343510",
-     "url": "https://x.com/Bmendo_X/status/2117855326842343510",
-     "text": "With Democrats taking control of the House and Senate, Hedera $HBAR is one of the few crypto projects that actually showed up for climate a…",
-     "likes": 22,
-     "author_username": "Bmendo_X",
-     "author_followers": 3969,
-     "created_at": "2026-11-04T13:43:52+08:00"
+     "id": "2117967614173434035",
+     "url": "https://x.com/AnonHbar/status/2117967614173434035",
+     "text": "$HBAR is still priced like the market hasn’t done its homework. Hashgraph. Real finality. Enterprise security that doesn’t crack. Still mas…",
+     "likes": 7,
+     "author_username": "AnonHbar",
+     "author_followers": 622,
+     "created_at": "2026-11-04T21:10:03+08:00"
     },
     {
-     "id": "2117872313152782722",
-     "url": "https://x.com/noBScrypto/status/2117872313152782722",
-     "text": "🏦DTCC is tokenizing ~$30T in RWAs at launch Here's the projects DTCC's partnered with: $HBAR: $0.67",
-     "likes": 20,
-     "author_username": "noBScrypto",
-     "author_followers": 45185,
-     "created_at": "2026-11-04T14:51:22+08:00"
+     "id": "2118003780029669510",
+     "url": "https://x.com/Freki_OG/status/2118003780029669510",
+     "text": "HBAR = Hedera native #crypto. Can you get access direct on Schwab and Fidelity? Yes Through SPOT ETFs now. Ticker = HBR",
+     "likes": 6,
+     "author_username": "Freki_OG",
+     "author_followers": 10730,
+     "created_at": "2026-11-04T23:33:46+08:00"
     },
     {
-     "id": "2117816609850978808",
-     "url": "https://x.com/cryptoissimple/status/2117816609850978808",
-     "text": "🚀 🎯 ALT SEASON IS HERE. ARE YOU READY? 🔥 MY UPDATED CRYPTO PRICE TARGETS",
-     "likes": 9,
-     "author_username": "cryptoissimple",
-     "author_followers": 6999,
-     "created_at": "2026-11-04T11:10:01+08:00"
+     "id": "2117975957558407327",
+     "url": "https://x.com/JakeClaverXa/status/2117975957558407327",
+     "text": "🚨 LET’S GOOOOOOOOOOOOO!! 💥 $XRP $HBAR $XLM $QNT $ZBCN … THE UTILITY BULL MARKET IS STARTING!",
+     "likes": 5,
+     "author_username": "JakeClaverXa",
+     "author_followers": 1714,
+     "created_at": "2026-11-04T21:43:13+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -1790,6 +1817,50 @@
      "author_username": "Jus7Degen",
      "author_followers": 4851,
      "created_at": "2026-11-04T18:50:02+08:00"
+    }
+   ],
+   "checks_this_trigger": 1
+  },
+  "PENDLEUSDT": {
+   "symbol": "PENDLEUSDT",
+   "base": "PENDLE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 11.17,
+   "spike_ratio": 0.9,
+   "verdict": "冷",
+   "one_line": "有RWA討論但未爆量",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117957536968315251",
+     "url": "https://x.com/InvestwithDoc/status/2117957536968315251",
+     "text": "Best Opportunity in Crypto Right Now? ‣ $ZBCN Zebec Network ‣ $XPL Plasma ‣ $TAO Bittensor ‣ $ONDO Ondo Finance ‣ $PENDLE Pendle ‣ $MON Mon…",
+     "likes": 6,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9369,
+     "created_at": "2026-11-04T20:30:01+08:00"
+    },
+    {
+     "id": "2118026989139644444",
+     "url": "https://x.com/arbitrum/status/2118026989139644444",
+     "text": "@pendle_fi Pendle 🤝",
+     "likes": 0,
+     "author_username": "arbitrum",
+     "author_followers": 1139524,
+     "created_at": "2026-11-05T01:05:59+08:00"
+    },
+    {
+     "id": "2117950380361285670",
+     "url": "https://x.com/signalshotai/status/2117950380361285670",
+     "text": "Pendle added an interface for real world asset disclosure and yield trading. The new interface means $PENDLE now ties traditional asset flo…",
+     "likes": 1,
+     "author_username": "signalshotai",
+     "author_followers": 174,
+     "created_at": "2026-11-04T20:01:34+08:00"
     }
    ],
    "checks_this_trigger": 1
@@ -6003,15 +6074,341 @@
      "created_at": "2026-11-04T18:50:02+08:00"
     }
    ]
+  },
+  {
+   "symbol": "INITUSDT",
+   "base": "INIT",
+   "flag": "pump",
+   "trigger_at": "2026-11-05T00:30:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 0.67,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "量少幾乎冇人傾",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117944974746542251",
+     "url": "https://x.com/mr_pipfessor/status/2117944974746542251",
+     "text": "$INIT - Price dumped nicely and is now holding above demand. This is a key zone to watch for a potential bullish reaction and upside bounce.",
+     "likes": 2,
+     "author_username": "mr_pipfessor",
+     "author_followers": 1338,
+     "created_at": "2026-11-04T19:40:06+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "PENDLEUSDT",
+   "base": "PENDLE",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 10,
+   "posts_prev_6h_avg_per_h": 11.17,
+   "spike_ratio": 0.9,
+   "verdict": "冷",
+   "one_line": "有RWA討論但未爆量",
+   "shill_flag": false,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117957536968315251",
+     "url": "https://x.com/InvestwithDoc/status/2117957536968315251",
+     "text": "Best Opportunity in Crypto Right Now? ‣ $ZBCN Zebec Network ‣ $XPL Plasma ‣ $TAO Bittensor ‣ $ONDO Ondo Finance ‣ $PENDLE Pendle ‣ $MON Mon…",
+     "likes": 6,
+     "author_username": "InvestwithDoc",
+     "author_followers": 9369,
+     "created_at": "2026-11-04T20:30:01+08:00"
+    },
+    {
+     "id": "2118026989139644444",
+     "url": "https://x.com/arbitrum/status/2118026989139644444",
+     "text": "@pendle_fi Pendle 🤝",
+     "likes": 0,
+     "author_username": "arbitrum",
+     "author_followers": 1139524,
+     "created_at": "2026-11-05T01:05:59+08:00"
+    },
+    {
+     "id": "2117950380361285670",
+     "url": "https://x.com/signalshotai/status/2117950380361285670",
+     "text": "Pendle added an interface for real world asset disclosure and yield trading. The new interface means $PENDLE now ties traditional asset flo…",
+     "likes": 1,
+     "author_username": "signalshotai",
+     "author_followers": 174,
+     "created_at": "2026-11-04T20:01:34+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "TIAUSDT",
+   "base": "TIA",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 0,
+   "posts_prev_6h_avg_per_h": 1.5,
+   "spike_ratio": 0.0,
+   "verdict": "冷",
+   "one_line": "貼文零星未成熱",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117973022766227736",
+     "url": "https://x.com/cryptoissimple/status/2117973022766227736",
+     "text": "🐋 25 CRYPTO TOKENS TO WATCH FOR THE NEXT BULL RUN! Which ones have the strongest potential to make a comeback?",
+     "likes": 10,
+     "author_username": "cryptoissimple",
+     "author_followers": 7001,
+     "created_at": "2026-11-04T21:31:33+08:00"
+    },
+    {
+     "id": "2117946570700394917",
+     "url": "https://x.com/Jus7Degen/status/2117946570700394917",
+     "text": "What made each coin famous? Save this list 👇 $BTC : FIRST CRYPTO …",
+     "likes": 3,
+     "author_username": "Jus7Degen",
+     "author_followers": 4854,
+     "created_at": "2026-11-04T19:46:26+08:00"
+    },
+    {
+     "id": "2117945810092720508",
+     "url": "https://x.com/Jus7Degen/status/2117945810092720508",
+     "text": "Some of the most famous coins are NOT the best investments. Read that again.",
+     "likes": 2,
+     "author_username": "Jus7Degen",
+     "author_followers": 4854,
+     "created_at": "2026-11-04T19:43:25+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ONDOUSDT",
+   "base": "ONDO",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 8,
+   "posts_prev_6h_avg_per_h": 7.17,
+   "spike_ratio": 1.12,
+   "verdict": "升溫",
+   "one_line": "RWA討論穩有上升",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117937108577124635",
+     "url": "https://x.com/Cryptodictatorr/status/2117937108577124635",
+     "text": "I believe $ONDO could go much higher than most people expect. My thesis is that a few strong altcoins with real utility will eventually abs…",
+     "likes": 24,
+     "author_username": "Cryptodictatorr",
+     "author_followers": 2558,
+     "created_at": "2026-11-04T19:08:50+08:00"
+    },
+    {
+     "id": "2117957536917991707",
+     "url": "https://x.com/CadeONeill/status/2117957536917991707",
+     "text": "Which ISO 20022 Compliant Crypto are you MOST BEARISH on? 👀 • $QNT • $ONDO • $IOTA • $XRP • Hedera • Algorand",
+     "likes": 8,
+     "author_username": "CadeONeill",
+     "author_followers": 7065,
+     "created_at": "2026-11-04T20:30:01+08:00"
+    },
+    {
+     "id": "2117939509535093122",
+     "url": "https://x.com/Jus7Degen/status/2117939509535093122",
+     "text": "Ondo Finance — Everyone is watching $BTC, Ethereum, and Solana. But what about the project bringing traditional financial assets onto block…",
+     "likes": 8,
+     "author_username": "Jus7Degen",
+     "author_followers": 4854,
+     "created_at": "2026-11-04T19:18:23+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "APTUSDT",
+   "base": "APT",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 5,
+   "posts_prev_6h_avg_per_h": 1.67,
+   "spike_ratio": 3.0,
+   "verdict": "冷",
+   "one_line": "查詢嘈雜真Aptos少",
+   "shill_flag": true,
+   "big_accounts": 1,
+   "top_posts": [
+    {
+     "id": "2117978841415135425",
+     "url": "https://x.com/BSCNews/status/2117978841415135425",
+     "text": "The only Telegram channel you need to stay on top of the crypto news that actually matters. Join now… @Avax $AVAX @StellarOrg $XLM @0xPolyg…",
+     "likes": 19,
+     "author_username": "BSCNews",
+     "author_followers": 1374968,
+     "created_at": "2026-11-04T21:54:40+08:00"
+    },
+    {
+     "id": "2117947455501377866",
+     "url": "https://x.com/Airdrop_Farming/status/2117947455501377866",
+     "text": "$APT STILL ISN'T ON BINANCE... BUT SOMETHING IS MOVING! $APT (Alphea Network) might not be listed on Binance yet…",
+     "likes": 13,
+     "author_username": "Airdrop_Farming",
+     "author_followers": 17792,
+     "created_at": "2026-11-04T19:49:57+08:00"
+    },
+    {
+     "id": "2118021843340898778",
+     "url": "https://x.com/RICHTVLIVE/status/2118021843340898778",
+     "text": "Top Crypto to Watch RIGHT NOW! ZEC up 9% ETH up 7% … APT up 4%",
+     "likes": 1,
+     "author_username": "RICHTVLIVE",
+     "author_followers": 3452,
+     "created_at": "2026-11-05T00:45:33+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "HBARUSDT",
+   "base": "HBAR",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 14,
+   "posts_prev_6h_avg_per_h": 11.5,
+   "spike_ratio": 1.22,
+   "verdict": "升溫",
+   "one_line": "社群活躍略升溫",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117967614173434035",
+     "url": "https://x.com/AnonHbar/status/2117967614173434035",
+     "text": "$HBAR is still priced like the market hasn’t done its homework. Hashgraph. Real finality. Enterprise security that doesn’t crack. Still mas…",
+     "likes": 7,
+     "author_username": "AnonHbar",
+     "author_followers": 622,
+     "created_at": "2026-11-04T21:10:03+08:00"
+    },
+    {
+     "id": "2118003780029669510",
+     "url": "https://x.com/Freki_OG/status/2118003780029669510",
+     "text": "HBAR = Hedera native #crypto. Can you get access direct on Schwab and Fidelity? Yes Through SPOT ETFs now. Ticker = HBR",
+     "likes": 6,
+     "author_username": "Freki_OG",
+     "author_followers": 10730,
+     "created_at": "2026-11-04T23:33:46+08:00"
+    },
+    {
+     "id": "2117975957558407327",
+     "url": "https://x.com/JakeClaverXa/status/2117975957558407327",
+     "text": "🚨 LET’S GOOOOOOOOOOOOO!! 💥 $XRP $HBAR $XLM $QNT $ZBCN … THE UTILITY BULL MARKET IS STARTING!",
+     "likes": 5,
+     "author_username": "JakeClaverXa",
+     "author_followers": 1714,
+     "created_at": "2026-11-04T21:43:13+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "AVAXUSDT",
+   "base": "AVAX",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 11,
+   "posts_prev_6h_avg_per_h": 6.33,
+   "spike_ratio": 1.74,
+   "verdict": "升溫",
+   "one_line": "機構買盤同期權熱議",
+   "shill_flag": false,
+   "big_accounts": 3,
+   "top_posts": [
+    {
+     "id": "2118012198534398288",
+     "url": "https://x.com/DegenerateNews/status/2118012198534398288",
+     "text": "NEW: @coinbase OPENS REGULATED ACCESS TO GLOBAL CRYPTO OPTIONS AND PERPS FOR U.S. INSTITUTIONS VIA @CoinbasePrime … 20+ ASSETS - INCLUDING …",
+     "likes": 62,
+     "author_username": "DegenerateNews",
+     "author_followers": 425248,
+     "created_at": "2026-11-05T00:07:13+08:00"
+    },
+    {
+     "id": "2117990500162797778",
+     "url": "https://x.com/Nazo_ku/status/2117990500162797778",
+     "text": "A wallet linked to Selini Capital just bought over $500k in $AVAX from Binance, bringing their net buying streak to 6 consecutive days with…",
+     "likes": 33,
+     "author_username": "Nazo_ku",
+     "author_followers": 13544,
+     "created_at": "2026-11-04T22:41:00+08:00"
+    },
+    {
+     "id": "2118015527188615304",
+     "url": "https://x.com/crypto_banter/status/2118015527188615304",
+     "text": "🚨COINBASE GIVES U.S. INSTITUTIONS REGULATED PATH TO DERIBIT OPTIONS AND PERPS! It covers 20+ assets, including BTC ETH SOL XRP AVAX",
+     "likes": 32,
+     "author_username": "crypto_banter",
+     "author_followers": 442397,
+     "created_at": "2026-11-05T00:20:27+08:00"
+    }
+   ]
+  },
+  {
+   "symbol": "ARBUSDT",
+   "base": "ARB",
+   "flag": "pump",
+   "trigger_at": "2026-11-04T23:15:00+08:00",
+   "checked_at": "2026-11-05T01:14:28+08:00",
+   "posts_last_1h": 4,
+   "posts_prev_6h_avg_per_h": 5.5,
+   "spike_ratio": 0.73,
+   "verdict": "冷",
+   "one_line": "有Council新聞但量跌",
+   "shill_flag": false,
+   "big_accounts": 0,
+   "top_posts": [
+    {
+     "id": "2117962792321835183",
+     "url": "https://x.com/BitmonkCrypto/status/2117962792321835183",
+     "text": "Your keys, your crypto? Not necessarily on Arbitrum 😬 Following the Binance hack, Arbitrum's Security Council moved 8,425 ETH and 74.6M ARB…",
+     "likes": 102,
+     "author_username": "BitmonkCrypto",
+     "author_followers": 33969,
+     "created_at": "2026-11-04T20:50:54+08:00"
+    },
+    {
+     "id": "2118015283629879438",
+     "url": "https://x.com/ourcryptotalk/status/2118015283629879438",
+     "text": "Crypto in Republican Era : Nov 2024→Nov 2026 Losers 🟥 $ARB 🔽 70% $AVAX 🔽 67% $SOL 🔽 50%",
+     "likes": 10,
+     "author_username": "ourcryptotalk",
+     "author_followers": 82761,
+     "created_at": "2026-11-05T00:19:29+08:00"
+    },
+    {
+     "id": "2117965082890015029",
+     "url": "https://x.com/craigscoinpurse/status/2117965082890015029",
+     "text": "Arbitrum's Security Council moved 8,425 ETH and 74.5M ARB linked to the Binance hack into a holding address. Moving it again now needs a DA…",
+     "likes": 11,
+     "author_username": "craigscoinpurse",
+     "author_followers": 25990,
+     "created_at": "2026-11-04T21:00:00+08:00"
+    }
+   ]
   }
  ],
  "cap": {
   "date": "2026-11-05",
   "daily_total_cap": 120,
-  "calls_today": 16,
+  "calls_today": 32,
   "cap_reached": false,
-  "updated_at": "2026-11-05T00:17:59+08:00"
+  "updated_at": "2026-11-05T01:14:28+08:00"
  },
- "updated_at": "2026-11-05T00:17:59+08:00",
+ "updated_at": "2026-11-05T01:14:28+08:00",
  "note": "Written by scripts/x_buzz_write.py from the Grok Bot X routine. Site reads only; 0 X calls."
 }

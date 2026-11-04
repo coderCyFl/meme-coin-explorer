@@ -442,3 +442,19 @@
 {"ts": "2026-11-05T00:17:59+08:00", "symbol": "SOLUSDT", "tool": "search", "query": "($SOL OR #SOL) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
 {"ts": "2026-11-05T00:17:59+08:00", "symbol": "XPLUSDT", "tool": "counts", "query": "($XPL OR #XPL) (crypto OR binance) lang:en -is:retweet", "result_count": 13}
 {"ts": "2026-11-05T00:17:59+08:00", "symbol": "XPLUSDT", "tool": "search", "query": "($XPL OR #XPL) (crypto OR binance) lang:en -is:retweet", "result_count": 9}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "INITUSDT", "tool": "counts", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "INITUSDT", "tool": "search", "query": "(\"INIT coin\" OR \"INIT token\" OR INITUSDT OR \"$INIT\") (binance OR crypto OR pump OR listing OR price OR chart OR usdt) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "PENDLEUSDT", "tool": "counts", "query": "($PENDLE OR #PENDLE) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "PENDLEUSDT", "tool": "search", "query": "($PENDLE OR #PENDLE) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "TIAUSDT", "tool": "counts", "query": "($TIA OR #TIA) (crypto OR binance) lang:en -is:retweet", "result_count": 0}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "TIAUSDT", "tool": "search", "query": "($TIA OR #TIA) (crypto OR binance) lang:en -is:retweet", "result_count": 7}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "ONDOUSDT", "tool": "counts", "query": "($ONDO OR #ONDO) (crypto OR binance) lang:en -is:retweet", "result_count": 8}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "ONDOUSDT", "tool": "search", "query": "($ONDO OR #ONDO) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "APTUSDT", "tool": "counts", "query": "($APT OR #APT) (crypto OR binance) lang:en -is:retweet", "result_count": 5}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "APTUSDT", "tool": "search", "query": "($APT OR #APT) (crypto OR binance) lang:en -is:retweet", "result_count": 10}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "HBARUSDT", "tool": "counts", "query": "($HBAR OR #HBAR) (crypto OR binance) lang:en -is:retweet", "result_count": 14}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "HBARUSDT", "tool": "search", "query": "($HBAR OR #HBAR) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "AVAXUSDT", "tool": "counts", "query": "($AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 11}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "AVAXUSDT", "tool": "search", "query": "($AVAX OR #AVAX) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "ARBUSDT", "tool": "counts", "query": "($ARB OR #ARB) (crypto OR binance) lang:en -is:retweet", "result_count": 4}
+{"ts": "2026-11-05T01:14:28+08:00", "symbol": "ARBUSDT", "tool": "search", "query": "($ARB OR #ARB) (crypto OR binance) lang:en -is:retweet", "result_count": 25}
