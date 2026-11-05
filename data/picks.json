@@ -6992,6 +6992,204 @@
      ]
     }
    ]
+  },
+  {
+   "id": "batch-019",
+   "created_at": "2026-11-06T00:43:44+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, accumulation); rotation stopped + higher_lows ¼ (20261030g); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -5.04,
+    "breadth_up_pct": 3.7,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "setup_size_gate": {
+    "size": "quarter",
+    "rolling7d_sealed_ew_pct": -0.95,
+    "n": 25,
+    "seal_hours": {
+     "12h": 25
+    },
+    "rule": "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase 唔受 ¼ gate 限 (細盤 24h vol < $3M 仍用 size:bonus)"
+   },
+   "setup_exit": {
+    "tp": 10,
+    "sl": 4,
+    "reviewH": 6,
+    "sellH": 12
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 76576
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 90.59
+    }
+   },
+   "entries": [
+    {
+     "id": "20261106-019-INJ",
+     "batch": "batch-019",
+     "type": "buy",
+     "created_at": "2026-11-06T00:43:44+08:00",
+     "chain": "binance",
+     "token_address": "binance:INJUSDT",
+     "pair_address": "INJUSDT",
+     "dex": "binance-spot",
+     "symbol": "INJ",
+     "name": "INJ (Binance)",
+     "url": "https://www.binance.com/en/trade/INJ_USDT",
+     "entry_price_usd": 8.029,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 19995228.9445,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": 3.6,
+      "high24h": 8.584,
+      "low24h": 7.71,
+      "vol_creep": 2,
+      "rel_vs_btc_7d": 11.14,
+      "compression": 0.42,
+      "angle": "mean_reversion"
+     },
+     "model_score": 49,
+     "score_parts": {
+      "vol_creep": 22,
+      "compression": 0,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 6,
+      "turnover": 9.126157976438625,
+      "chase_penalty": 0
+     },
+     "conviction": 49,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half",
+      "size:quarter"
+     ],
+     "size": "quarter",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "INJUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 8.8319,
+     "stop_price_usd": 7.70784,
+     "review_at": "2026-11-06T06:43:44+08:00",
+     "sell_by": "2026-11-06T12:43:44+08:00",
+     "exit_plan": "目標 +10%（$8.8319）· 止蝕 −4%（$7.70784）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
+    },
+    {
+     "id": "20261106-019-BCH",
+     "batch": "batch-019",
+     "type": "buy",
+     "created_at": "2026-11-06T00:43:44+08:00",
+     "chain": "binance",
+     "token_address": "binance:BCHUSDT",
+     "pair_address": "BCHUSDT",
+     "dex": "binance-spot",
+     "symbol": "BCH",
+     "name": "BCH (Binance)",
+     "url": "https://www.binance.com/en/trade/BCH_USDT",
+     "entry_price_usd": 278.8,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 11856121.6534,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -1.345,
+      "high24h": 290.6,
+      "low24h": 277.1,
+      "vol_creep": 1.562,
+      "rel_vs_btc_7d": 3.49,
+      "compression": 1.355,
+      "angle": "mean_reversion"
+     },
+     "model_score": 43,
+     "score_parts": {
+      "vol_creep": 15.728294465490857,
+      "compression": 6.384120419541375,
+      "relative": 0,
+      "higher_lows": 12,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 8.842428308588566,
+      "chase_penalty": 0
+     },
+     "conviction": 43,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half",
+      "size:quarter"
+     ],
+     "size": "quarter",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "BCHUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 306.68,
+     "stop_price_usd": 267.648,
+     "review_at": "2026-11-06T06:43:44+08:00",
+     "sell_by": "2026-11-06T12:43:44+08:00",
+     "exit_plan": "目標 +10%（$306.68）· 止蝕 −4%（$267.648）· 6h 檢討 · 最遲 12h 沽 · ¼注（近 7d 跟買未轉正）"
+    }
+   ]
   }
  ]
 }
