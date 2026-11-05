@@ -2914,6 +2914,70 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261105-1939",
+   "picked_at": "2026-11-05T19:39:37+08:00",
+   "universe": 62,
+   "btc_24h_pct": 2.12,
+   "universe_all": 394,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "XTZUSDT",
+    "SOLVUSDT",
+    "FOGOUSDT",
+    "INJUSDT",
+    "KMNOUSDT",
+    "SUPERUSDT",
+    "1000CATUSDT",
+    "ACTUSDT",
+    "ATOMUSDT",
+    "OPENUSDT",
+    "BABYUSDT",
+    "SOMIUSDT",
+    "METUSDT",
+    "TUSDT",
+    "BCHUSDT",
+    "CFGUSDT",
+    "CAKEUSDT",
+    "RSRUSDT",
+    "ETCUSDT",
+    "ERAUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "XTZ",
+     "pair": "XTZUSDT",
+     "tier": "early2",
+     "picked_at": "2026-11-05T19:30:00+08:00",
+     "entry_price_usd": 0.2946,
+     "price_at_snapshot": 0.2993,
+     "trigger_via": "thin",
+     "change_15m_at_pick": 6.2,
+     "change_24h_at_pick": 16.72,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261105-1939",
+     "score": 68.0,
+     "change_1h_at_pick": 9.97,
+     "change_4h_at_pick": 10.75,
+     "vol_x_avg": 24.18,
+     "vol_x_prev_hour": 0.0,
+     "range_24h_pct": 13.7,
+     "from_24h_high_pct": -7.15,
+     "quote_volume_24h": 2720972,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
   }
  ]
 }
