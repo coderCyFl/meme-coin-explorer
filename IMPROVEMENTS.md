@@ -1,3 +1,16 @@
+## Daily upgrade 2026-11-05 ~09:10 Asia/Hong_Kong
+
+Review (Meme Explorer self-upgrade; tip-era/exit/E2/paper frozen — no strategy churn):
+- `origin/main` tip `a6ae27c` (gainer-board seal 11-04 23:35Z). Detached checkout; orange/`ff8a3d` = **0**; `node --check` app/live/picks OK; `qa_diversify.mjs` PASS.
+- Binance public: BTC ~$80.6k 24h **+4.6%**; regime for batch-018 was normal (breadth 96%) at mint; setup still **¼ size** (rolling7d sealed EW ≈ −0.05%, n=23).
+- Picks (read-only): **batch-018** minted 00:31 HKT — buys W/PNUT/PEOPLE/DOGE/TRUMP/NEAR + chase RAY + avoid BONK/ETH. Spot vs entry ~09:10: TRUMP **≈−10.7%**, PNUT ≈−5.6%, others mild; 12h sell_by seals due **~12:32 HKT**.
+- Outcomes: `snapshot_outcomes.py` → **NOTHING_DUE**. Next: batch-018 12h ~12:32; batch-011 7d ~14:33. Do not invent dispatch.
+- Capture sealed: **2026-11-04** recall_top20 **20.0%** / precision **21.1%** PASS (early NEAR ZEC ENA MEGA; late BMT). scorecard_7d recall **17.1%** / prec **17.8%**. Strip denom early_hits/20 OK.
+- News: read-only `fetched_at` 2026-11-04T23:12+08 (~10h); **0 X reads** this run (buzz has own hourly).
+- UX pass (short-term / cautious paper / research): capture strip + Hits board accurate; ¼ gate copy present; rationales/tips populated on batch-018. No material capture-rate or data-accuracy bug found.
+
+Self-growth: **docs only** — no app/JS/UI churn; no picks/news writes; no Crypto.M workflow dispatch. Deferred: decorative polish; tip-era/exit/E2/paper still frozen; TRUMP path-stop will seal at 12h (exit frozen — no early rewrite).
+
 ## 2026-10-30 Asia/Shanghai — trial merge precursor-loosen (stamp after Pages)
 
 Strategy trial + QA wiring PASS `720f6aa`: grind prec_e **1.5/1.5/15**；gainer-board cron **15m**；⚡ early2 **watch-only**。Dry-run e2∪prec_e **36%**（10/25–29）；live 同期 ~3% — **只認 live seal ≥10%**。55% claim 呢窗唔成立。
