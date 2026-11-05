@@ -1830,7 +1830,8 @@
   // ---------- X buzz chip (🔥 + ⚡ X-early). Site makes 0 X calls: reads data/gainer_board/x_buzz.json written by the
   // Grok Bot routine (scripts/x_buzz_write.py). Same-origin only, cache-busted, refreshed every 5 min. ----------
   const GBX_PATH = "data/gainer_board/x_buzz.json";
-  const GBX_MAX_AGE = 3 * 3600e3;   // older than 3h → show nothing
+  // Face chips follow the same Buzz snapshot (Buzz has no age drop). Was 3h — hid heat while Buzz still listed it.
+  const GBX_MAX_AGE = 7 * 24 * 3600e3;   // older than 7d → show nothing
   const GBX_REFRESH = 5 * 60_000;
   let gbX = { t: 0, data: null };
   const gbXOpen = new Set();
