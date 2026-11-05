@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06T03:05:31+08:00",
+ "updated_at": "2026-11-06T05:44:17+08:00",
  "batch": "gb-20261106-0303",
  "picked_at": "2026-11-06T03:03:58+08:00",
  "btc_24h_pct": -5.17,
@@ -425,48 +425,6 @@
      "max_gain_pct": 7.47,
      "max_drawdown_pct": -13.71,
      "close_pct": -13.48,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-06T02:21:14+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "1000CAT",
-   "pair": "1000CATUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-05T16:15:00+08:00",
-   "entry_price_usd": 0.001825,
-   "price_at_snapshot": 0.001732,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 0.27,
-   "change_24h_at_pick": 15.95,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261105-1847",
-   "score": 53.0,
-   "change_1h_at_pick": 6.1,
-   "change_4h_at_pick": 5.98,
-   "vol_x_avg": 3.57,
-   "vol_x_prev_hour": 2.41,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -1.88,
-   "quote_volume_24h": 4613445,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": -0.05,
-     "max_drawdown_pct": -7.12,
-     "close_pct": -2.14,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
