@@ -290,7 +290,6 @@
       try { if (!gbBusy) loadGainerBoard(false); } catch (_) {}
       try { renderHitReport(); } catch (_) {}
       try { renderWatchDense(); } catch (_) {}
-      try { renderXNewsScan(); } catch (_) {}
       try { renderBuzzBoard(); } catch (_) {}
       try { renderPortfolio && renderPortfolio(false); } catch (_) {}
     }
@@ -2022,7 +2021,12 @@
             el("div", { class: "num live-px", "data-bn-price": r.symbol, text: price(px) }),
             el("div", { class: "num gb-chg " + cls(r.chg24), "data-bn-chg": r.symbol, text: pct(r.chg24) }));
         })()),
-      r.tier === "pump" ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
+      // X heat under Early cards (display only via paintXChips; never a scored Early lever)
+      gbIsEarly(r.tier) ? el("button", {
+        type: "button", class: "gb-xchip", "data-gb-x": r.symbol, hidden: true,
+        onclick: (ev) => { ev.preventDefault(); ev.stopPropagation(); gbXToggle(r.symbol); },
+      }) : "",
+      (r.tier === "pump" || gbIsEarly(r.tier)) ? el("div", { class: "gb-xsheet", "data-gb-xsheet": r.symbol, hidden: true }) : "",
     ];
     if (buy) {
       const buyLab = tr("buy");
@@ -2394,7 +2398,7 @@
       lastWatchCands = Array.isArray(res.watchCands) ? res.watchCands.slice() : [];
       try { renderWatchDense(); } catch (_) {}
       try { considerEarlyPushTips(early); } catch (_) {}
-      gbLoadX(false).then(() => { try { paintXChips(); renderWatchDense(); renderXNewsScan(); renderBuzzBoard(); } catch (_) {} }).catch(() => {});
+      gbLoadX(false).then(() => { try { paintXChips(); renderWatchDense(); renderBuzzBoard(); } catch (_) {} }).catch(() => {});
       gbClientSnapshot(rows, early);
       if (window.MCE.live && window.MCE.live.board) refreshExitChips(window.MCE.live.board, { force: true });
       const watch = rows.map((r) => r.symbol).concat(early.map((e) => e.symbol));
@@ -2417,8 +2421,7 @@
     renderGainerCaptureStrip();
     try { renderHitReport(); } catch (_) {}
     try { renderWatchDense(); } catch (_) {}
-      try { renderXNewsScan(); } catch (_) {}
-      try { renderBuzzBoard(); } catch (_) {}
+    try { renderBuzzBoard(); } catch (_) {}
   }
 
   /** WS tick → 觸發後 %, live dot. Price / 24h % cells are patched by app.js (data-bn-price / data-bn-chg). */
@@ -2707,79 +2710,6 @@
         el("div", { class: "watch-dense-top" }, ...kids)));
     }
   }
-
-  // ---------- X-news scan board (Strategy OK: parallel face + shill veto; NEVER paper opener) ----------
-  let xNewsFilter = "all";
-  function renderXNewsScan() {
-    const list = $("xNewsList");
-    const empty = $("xNewsEmpty");
-    const meta = $("xNewsMeta");
-    if (!list) return;
-    list.textContent = "";
-    list.classList.add("xnews-dense");
-    document.querySelectorAll("#xNewsFilters [data-xnf]").forEach((b) => {
-      b.classList.toggle("active", b.dataset.xnf === xNewsFilter);
-    });
-    const coinsObj = (gbX.data && gbX.data.coins && typeof gbX.data.coins === "object") ? gbX.data.coins : null;
-    const rows = [];
-    if (coinsObj) {
-      for (const [pair, c] of Object.entries(coinsObj)) {
-        if (!c || typeof c !== "object") continue;
-        const verdict = c.verdict;
-        if (!["熱", "升溫", "冷"].includes(verdict)) continue;
-        rows.push({ pair, c, verdict, shill: c.shill_flag === true, t: Date.parse(c.checked_at) || 0 });
-      }
-    }
-    rows.sort((a, b) => {
-      const rank = (v) => (v === "熱" ? 0 : v === "升溫" ? 1 : 2);
-      const d = rank(a.verdict) - rank(b.verdict);
-      if (d) return d;
-      return (b.t || 0) - (a.t || 0);
-    });
-    const filtered = rows.filter((r) => {
-      if (xNewsFilter === "all") return true;
-      if (xNewsFilter === "hot") return r.verdict === "熱";
-      if (xNewsFilter === "warm") return r.verdict === "升溫";
-      if (xNewsFilter === "cold") return r.verdict === "冷";
-      if (xNewsFilter === "shill") return r.shill;
-      return true;
-    });
-    if (meta) {
-      const when = gbX.data && gbX.data.updated_at ? frTime(gbX.data.updated_at) : "—";
-      meta.textContent = tr("xnews.meta", { when, n: rows.length }) + " · " + tr("xnews.parallel");
-    }
-    if (empty) empty.hidden = filtered.length > 0;
-    if (!filtered.length) return;
-    for (const r of filtered) {
-      const base = (r.c.base || r.pair.replace(/USDT$/, ""));
-      const vClass = r.verdict === "熱" ? "x-hot" : r.verdict === "升溫" ? "x-warm" : "x-cold";
-      const vLab = r.verdict === "熱" ? tr("xnews.hot") : r.verdict === "升溫" ? tr("xnews.warm") : tr("xnews.cold");
-      const shillEl = shillFlagEl(r.pair);
-      // Show shill immediately when flag true (paintShillFlags also runs after)
-      if (r.shill && shillEl) shillEl.hidden = false;
-      list.append(el("div", { class: "xnews-row xnews-dense-row", "data-xnews": r.pair },
-        el("div", { class: "xnews-top" },
-          el("span", { class: "nm", text: base }),
-          el("span", { class: "xnews-verdict " + vClass, text: "X " + vLab }),
-          el("span", { class: "watch-dense-chip soft", text: tr("watch.chip") }),
-          shillEl,
-          r.t ? el("span", { class: "tiny muted", text: shHm(r.t) }) : null),
-        el("div", { class: "xnews-one", text: String(r.c.one_line || "").slice(0, 48) || "—" }),
-        el("div", { class: "xnews-actions" },
-          el("button", {
-            type: "button", class: "ghost sm",
-            // View-only sheet — intentionally NO Buy / NO openBuy / NO paper.
-            onclick: () => {
-              const rec = { ...r.c, _t: r.t };
-              if (window.MCE.market && window.MCE.market.openSheet) {
-                window.MCE.market.openSheet(`${base} · X ${r.verdict}`, [gbXSheet(rec), el("p", { class: "tiny muted xnews-note", text: tr("xnews.parallel") })]);
-              }
-            },
-          }, tr("xnews.view")))));
-    }
-    try { paintShillFlags(); } catch (_) {}
-  }
-
 
   // ---------- Buzz tab board (Creative lock: View-only X · Trend/Share · NEVER scored Early / paper) ----------
   function renderBuzzBoard() {
@@ -5166,27 +5096,17 @@
     hitWin = b.dataset.hitwin === "night" ? "night" : "7d";
     renderHitReport();
   }));
-  document.querySelectorAll("#xNewsFilters [data-xnf]").forEach((b) => b.addEventListener("click", () => {
-    xNewsFilter = b.dataset.xnf || "all";
-    renderXNewsScan();
-  }));
   if ($("buzzRefresh")) $("buzzRefresh").addEventListener("click", async () => {
     try { await gbLoadX(true); } catch (_) {}
     renderBuzzBoard();
   });
   if ($("moreBuzz")) $("moreBuzz").addEventListener("click", (ev) => { ev.preventDefault(); goView("buzz"); });
-  if ($("xNewsRefresh")) $("xNewsRefresh").addEventListener("click", async () => {
-    try { await gbLoadX(true); } catch (_) {}
-    renderXNewsScan();
-    try { renderBuzzBoard(); } catch (_) {}
-  });
   const scrollFace = (id) => {
     goView("picks");
     setTimeout(() => { const n = $(id); if (n) n.scrollIntoView({ behavior: "smooth", block: "start" }); }, 80);
   };
   if ($("moreHitReport")) $("moreHitReport").addEventListener("click", (ev) => { ev.preventDefault(); goView("hits"); });
   if ($("moreWatchDense")) $("moreWatchDense").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("watchDensePanel"); });
-  if ($("moreXNews")) $("moreXNews").addEventListener("click", (ev) => { ev.preventDefault(); scrollFace("xNewsScanPanel"); });
   // 急升榜: own boot + rescan every 90s on ANY tab (decoupled from loadPicks / renderPicks).
   function bootGainer() {
     loadGainerBoard(false);

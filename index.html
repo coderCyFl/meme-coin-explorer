@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Crypto.M">
 <meta name="application-name" content="Crypto.M">
 <meta name="description" content="Crypto.M: Binance public market data · multi-angle setups · paper trading.">
-<link rel="stylesheet" href="styles.css?v=20261104p">
+<link rel="stylesheet" href="styles.css?v=20261106a">
 <link rel="icon" href="favicon.ico?v=20261030g" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=20261030g" type="image/svg+xml">
 <link rel="icon" href="icons/icon-32.png?v=20261030g" type="image/png" sizes="32x32">
@@ -213,27 +213,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
     <p class="tiny muted" id="watchDenseMeta"></p>
     <div id="watchDenseList" class="watch-dense-list"></div>
     <div class="empty" id="watchDenseEmpty" hidden data-i18n="watch.empty">Nothing on Watch yet</div>
-  </section>
-
-  <!-- X-news scan: parallel face + shill veto; never opens paper -->
-  <section class="panel xnews-scan" id="xNewsScanPanel" aria-live="polite">
-    <div class="panelhead">
-      <div>
-        <h2 class="home-title" data-i18n="xnews.title">X news scan</h2>
-        <p class="home-sub" data-i18n="xnews.sub">Denser X scan · watch only · not Early</p>
-      </div>
-      <button type="button" id="xNewsRefresh" class="ghost sm" title="Refresh" aria-label="Refresh">↻</button>
-    </div>
-    <div class="xnews-filters" id="xNewsFilters" role="group" aria-label="X news filter">
-      <button type="button" class="chip active" data-xnf="all" data-i18n="xnews.all">All</button>
-      <button type="button" class="chip" data-xnf="hot" data-i18n="xnews.hot">Hot</button>
-      <button type="button" class="chip" data-xnf="warm" data-i18n="xnews.warm">Warming</button>
-      <button type="button" class="chip" data-xnf="cold" data-i18n="xnews.cold">Cold</button>
-      <button type="button" class="chip" data-xnf="shill" data-i18n="xnews.shill">Shill 🚩</button>
-    </div>
-    <p class="tiny muted" id="xNewsMeta"></p>
-    <div id="xNewsList" class="xnews-list"></div>
-    <div class="empty" id="xNewsEmpty" hidden data-i18n="xnews.empty">No X snapshot yet.</div>
   </section>
 
   <!-- Simple home: brief + cards + portfolio strip -->
@@ -502,7 +481,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
       <a class="more-item" href="#hits" id="moreHitReport" data-view="hits" data-i18n="tab.hits">Hits</a>
       <a class="more-item" href="#picks" id="moreWatchDense" data-i18n="watch.title">Watch</a>
       <a class="more-item" href="#buzz" id="moreBuzz" data-view="buzz" data-i18n="tab.buzz">Buzz</a>
-      <a class="more-item" href="#picks" id="moreXNews" data-i18n="xnews.title">X news scan</a>
       <a class="more-item" href="#news">News</a>
       <button type="button" class="more-item" id="allinFromPicks">All-in</button>
       <a class="more-item" href="#explore">Scan (full)</a>
@@ -843,6 +821,6 @@ document.documentElement.lang=(L==='zh')?'zh-Hant':'en';
 <script src="market.js?v=20261030g"></script>
 <script src="coin3d.js?v=20261030g"></script>
 <script src="app.js?v=20261030g"></script>
-<script src="picks.js?v=20261104p"></script>
+<script src="picks.js?v=20261106a"></script>
 </body>
 </html>
