@@ -33,7 +33,7 @@ Strategy bot ──experiment report (backtest on real data)──▶ PM bot ─
    Must work on phone (390px), tablet (820px) and desktop (1440px).
 
 ## Screens
-Radar (3D podium + Early Score list) · **All-in** (what $X becomes if you go all-in on every Early signal, vs 10% stake vs
+Radar (3D podium + Early Score list) · **Gainers** (Binance USDT spot 24h movers) · **All-in** (what $X becomes if you go all-in on every Early signal, vs 10% stake vs
 holding BTC, plus "if you go all-in now") · Markets · Portfolio (paper money, auto exits) · Track record (backtest, daily
 results vs the +20% goal, signal log).
 

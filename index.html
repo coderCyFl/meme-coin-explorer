@@ -21,6 +21,7 @@
     <p class="side-tag" data-t="app.tag"></p>
     <nav class="side-nav" aria-label="Main">
       <a href="#radar" data-nav="radar"><img class="ico3d" data-icon="radar" alt="" hidden><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-6"/></svg><span data-t="nav.radar"></span></a>
+      <a href="#gainers" data-nav="gainers"><img class="ico3d" data-icon="gainers" alt="" hidden><svg viewBox="0 0 24 24"><path d="M4 19V11M10 19V7M16 19v-4M22 19H2"/><path d="M3 8l5-5 4 3 6-6"/></svg><span data-t="nav.gainers"></span></a>
       <a href="#allin" data-nav="allin"><img class="ico3d" data-icon="stack" alt="" hidden><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg><span data-t="nav.allin"></span></a>
       <a href="#markets" data-nav="markets"><img class="ico3d" data-icon="markets" alt="" hidden><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg><span data-t="nav.markets"></span></a>
       <a href="#portfolio" data-nav="portfolio"><img class="ico3d" data-icon="wallet" alt="" hidden><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M8 6V4h8v2M3 12h18"/></svg><span data-t="nav.portfolio"></span></a>
@@ -64,6 +65,23 @@
         <ul class="list" id="closestList"></ul>
       </section>
       <ul class="list" id="radarList"></ul>
+    </section>
+
+
+    <!-- Gainers -->
+    <section class="page" data-page="gainers" hidden>
+      <div class="page-head">
+        <h1 data-t="nav.gainers"></h1>
+        <p class="muted" data-t="g.sub"></p>
+      </div>
+      <div class="filters g-filters" role="tablist" id="gMode">
+        <button type="button" class="on" data-gmode="gainers"><span data-t="g.gainers"></span></button>
+        <button type="button" data-gmode="losers"><span data-t="g.losers"></span></button>
+        <button type="button" class="g-all" data-gmode="all"><span data-t="g.all"></span></button>
+      </div>
+      <label class="check g-vol"><input type="checkbox" id="gHideLow"> <span data-t="g.hideLow"></span></label>
+      <p class="muted small-note" id="gMeta"></p>
+      <ul class="list" id="gainerList"></ul>
     </section>
 
     <!-- All-in -->
@@ -137,8 +155,8 @@
 
   <nav class="bottom" aria-label="Main">
     <a href="#radar" data-nav="radar"><img class="ico3d" data-icon="radar" alt="" hidden><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-6"/></svg><span data-t="nav.radar"></span></a>
-      <a href="#allin" data-nav="allin"><img class="ico3d" data-icon="stack" alt="" hidden><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg><span data-t="nav.allin"></span></a>
-    <a href="#markets" data-nav="markets"><img class="ico3d" data-icon="markets" alt="" hidden><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg><span data-t="nav.markets"></span></a>
+    <a href="#gainers" data-nav="gainers"><img class="ico3d" data-icon="gainers" alt="" hidden><svg viewBox="0 0 24 24"><path d="M4 19V11M10 19V7M16 19v-4M22 19H2"/><path d="M3 8l5-5 4 3 6-6"/></svg><span data-t="nav.gainers"></span></a>
+    <a href="#allin" data-nav="allin"><img class="ico3d" data-icon="stack" alt="" hidden><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v5c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg><span data-t="nav.allin"></span></a>
     <a href="#portfolio" data-nav="portfolio"><img class="ico3d" data-icon="wallet" alt="" hidden><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M8 6V4h8v2M3 12h18"/></svg><span data-t="nav.portfolio"></span></a>
     <a href="#record" data-nav="record"><img class="ico3d" data-icon="trophy" alt="" hidden><svg viewBox="0 0 24 24"><path d="M4 20l5-6 4 3 7-9"/><path d="M15 8h5v5"/></svg><span data-t="nav.record"></span></a>
   </nav>

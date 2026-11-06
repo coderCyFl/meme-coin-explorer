@@ -542,6 +542,17 @@
       const top = new THREE.Mesh(_bodyGeo, gold); top.scale.setScalar(0.8); top.position.set(0.15, 0.55, 0.1); top.rotation.set(Math.PI / 2 - 0.35, 0, 0.25); g.add(top);
       const up = new THREE.Mesh(new THREE.ConeGeometry(0.22, 0.42, 20), green); up.position.set(-0.85, 0.45, 0.3); g.add(up);
       add(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 12), green, -0.85, 0.05, 0.3);
+    } else if (kind === "gainers") {
+      add(new THREE.BoxGeometry(2.2, 0.14, 1.0), dark, 0, -0.85, 0);
+      [[-0.7, 0.55], [-0.05, 1.05], [0.65, 1.55]].forEach(([x, h], i) => {
+        add(new THREE.BoxGeometry(0.48, h, 0.48), i === 2 ? green : gold, x, -0.78 + h / 2, 0);
+      });
+      const arrow = new THREE.Group();
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.6, 12), green);
+      shaft.rotation.z = -Math.PI / 2 + 0.85; arrow.add(shaft);
+      const head = new THREE.Mesh(new THREE.ConeGeometry(0.26, 0.48, 20), green);
+      head.position.set(0.55, 0.72, 0); head.rotation.z = -Math.PI / 2 + 0.85; arrow.add(head);
+      arrow.position.set(-0.15, 0.15, 0.5); g.add(arrow);
     } else if (kind === "mark") {
       geos();
       const c = new THREE.Mesh(_bodyGeo, gold); c.rotation.x = Math.PI / 2; g.add(c);

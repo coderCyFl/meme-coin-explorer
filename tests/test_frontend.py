@@ -193,5 +193,36 @@ class FrontendTests(unittest.TestCase):
 
 
 
+
+    def test_gainers_tab_nav_and_universe(self):
+        """T3: Gainers tab, order, phone drops Markets, top20, hide <$1M, no fake score."""
+        assert 'data-page="gainers"' in HTML
+        assert 'data-nav="gainers"' in HTML
+        assert 'data-icon="gainers"' in HTML
+        # side order: radar → gainers → allin → markets → portfolio → record
+        side = HTML.split('class="side-nav"', 1)[1].split("</nav>", 1)[0]
+        order = []
+        for part in side.split('data-nav="')[1:]:
+            order.append(part.split('"', 1)[0])
+        self.assertEqual(order, ["radar", "gainers", "allin", "markets", "portfolio", "record"])
+        # phone bottom: no Markets
+        bottom = HTML.split('class="bottom"', 1)[1].split("</nav>", 1)[0]
+        assert 'data-nav="markets"' not in bottom
+        assert 'data-nav="gainers"' in bottom
+        assert "ticker/24hr?type=MINI" in (ROOT / "js/data.js").read_text(encoding="utf-8")
+        assert "tickersAll" in (ROOT / "js/data.js").read_text(encoding="utf-8")
+        assert "G_TOP = 20" in APP
+        assert "G_VOL_FLOOR = 1e6" in APP
+        assert "gHideLow" in APP
+        assert "g.noScore" in I18N
+        assert "No Early Score on this coin" in I18N
+        assert "呢隻幣冇 Early Score" in I18N
+        assert "nav.gainers" in I18N and "升幅榜" in I18N
+        assert "scheduleGainers" in APP
+        assert "ensureTick" in APP
+        # Buy without score, no fake score number invented for missing r
+        assert "Outside score universe" in APP or "no fake" in APP.lower()
+        assert 'kind === "gainers"' in (ROOT / "js/coin3d.js").read_text(encoding="utf-8")
+
 if __name__ == "__main__":
     unittest.main()

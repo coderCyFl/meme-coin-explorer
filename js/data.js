@@ -41,6 +41,21 @@
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && base.length > 4) return false;
     return +t.quoteVolume >= MIN_QUOTE_VOL && +t.lastPrice > 0;
   }
+  /** Gainers universe: all USDT spot, excl stables + leveraged tokens; no volume floor. */
+  function gainerEligible(t) {
+    if (!t.symbol.endsWith("USDT")) return false;
+    const base = t.symbol.slice(0, -4);
+    if (!base || STABLES.has(base)) return false;
+    if (/(UP|DOWN|BULL|BEAR)$/.test(base) && base.length > 4) return false;
+    return +t.lastPrice > 0;
+  }
+  function mapTicker(t) {
+    const base = t.symbol.slice(0, -4);
+    return {
+      sym: t.symbol, base, name: nameOf(base),
+      price: +t.lastPrice, open24: +t.openPrice, high24: +t.highPrice, low24: +t.lowPrice, qv24: +t.quoteVolume,
+    };
+  }
 
   async function pool(items, n, fn) {
     const out = new Array(items.length); let i = 0;
@@ -56,10 +71,12 @@
     async probe() { await getJSON(REST + "/ping", 5000); return true; },
     async tickers() {
       const all = await getJSON(REST + "/ticker/24hr?type=MINI");
-      return all.filter(eligible).map((t) => ({
-        sym: t.symbol, base: t.symbol.slice(0, -4), name: nameOf(t.symbol.slice(0, -4)),
-        price: +t.lastPrice, open24: +t.openPrice, high24: +t.highPrice, low24: +t.lowPrice, qv24: +t.quoteVolume,
-      })).sort((a, b) => b.qv24 - a.qv24).slice(0, MAX_COINS);
+      return all.filter(eligible).map(mapTicker).sort((a, b) => b.qv24 - a.qv24).slice(0, MAX_COINS);
+    },
+    /** Full Gainers board universe (same filters as Binance spot USDT excl stables / UP-DOWN). */
+    async tickersAll() {
+      const all = await getJSON(REST + "/ticker/24hr?type=MINI");
+      return all.filter(gainerEligible).map(mapTicker);
     },
     async klines(sym) {
       return root.Strategy.parseKlines(await getJSON(`${REST}/klines?symbol=${sym}&interval=15m&limit=${KLINE_LIMIT}`, 10000));
@@ -86,7 +103,10 @@
         ws.onmessage = (ev) => {
           try {
             const arr = JSON.parse(ev.data), m = {};
-            for (const x of arr) if (x.s && x.s.endsWith("USDT")) m[x.s] = +x.c;
+            for (const x of arr) {
+              if (!x.s || !x.s.endsWith("USDT")) continue;
+              m[x.s] = { c: +x.c, o: +x.o, q: +x.q };
+            }
             onPrices(m); retry = 1000;
           } catch (_) {}
         };
@@ -156,6 +176,10 @@
     mode: "demo",
     _series: null, _ticks: null,
     async probe() { return true; },
+    async tickersAll() {
+      if (!this._ticks) await this.scan();
+      return this._ticks.slice();
+    },
     async scan(onProgress) {
       if (!this._series) {
         this._series = {}; this._ticks = [];
@@ -196,5 +220,5 @@
     return demo;
   }
 
-  root.Market = { connect, live, demo, nameOf, setNames };
+  root.Market = { connect, live, demo, nameOf, setNames, gainerEligible };
 })(window);
