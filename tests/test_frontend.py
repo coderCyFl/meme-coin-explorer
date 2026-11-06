@@ -46,5 +46,41 @@ class FrontendTests(unittest.TestCase):
         assert out["n"] > 0 and 0.025 <= out["stop"] <= 0.06
 
 
+
+    def test_radar_defaults_all_and_closest_markup(self):
+        """T1a face-only: default All filter + Closest-to-early top10 markup (EN/ZH)."""
+        assert 'filter: "all"' in APP
+        assert 'filter: "early"' not in APP.split("const S = {", 1)[1].split("};", 1)[0]
+        assert 'id="closestList"' in HTML
+        assert 'data-t="radar.closest"' in HTML
+        assert 'class="on" data-f="all"' in HTML
+        i18n = (ROOT / "js/i18n.js").read_text(encoding="utf-8")
+        assert '"radar.closest": "Closest to early"' in i18n
+        assert '"radar.closest": "最接近早期"' in i18n
+        assert '"radar.closestNone"' in i18n
+
+
+    def test_podium_top3_by_score_any_stage(self):
+        """Podium uses top 3 by score across all stages; no Early/Building fill."""
+        assert 'return ranked("all").slice(0, 3);' in APP
+        assert 'ranked("early")' not in APP.split("function heroCoins()", 1)[1].split("function renderHero()", 1)[0]
+
+
+    def test_closest_list_uses_paintList_top10(self):
+        """Closest strip always shows top10 by score via paintList (patch-in-place)."""
+        assert 'const closest = ranked("all").slice(0, 10);' in APP
+        assert 'paintList(closestEl, closest,' in APP
+
+
+    def test_strategy_params_unchanged_from_main_baseline(self):
+        """T1a must not alter strategy thresholds/candles (byte-proof is separate; this catches PARAMS drift)."""
+        strat = (ROOT / "js/strategy.js").read_text(encoding="utf-8")
+        assert "earlyMin: 70" in strat
+        assert "earlyMin: 60" not in strat
+        assert "if (ret1h <= 0) score = Math.min(score, 35);" in strat
+        assert "closedStart" not in strat
+
+
+
 if __name__ == "__main__":
     unittest.main()
