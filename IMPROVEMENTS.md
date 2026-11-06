@@ -1,3 +1,16 @@
+## Daily upgrade 2026-11-06 ~09:10 Asia/Hong_Kong
+
+Review (Meme Explorer self-upgrade; tip-era/exit/E2/paper frozen — no strategy churn):
+- `origin/main` tip `d111e16` (gainer-board seal 11-06 00:25Z). Detached→branch checkout; orange/`ff8a3d` = **0**; Binance yellow `#F0B90B` present; `node --check` app/live/picks OK; `qa_diversify.mjs` PASS.
+- Binance public: BTC ~$76.3k 24h **−5.4%**; top30 breadth **7/30 ≈ 23%** green ⇒ weak-regime gate **on** (matches batch-019 mint).
+- Picks (read-only): **batch-019** minted 00:43 HKT under weak — INJ/BCH **¼ size** only (no chase/avoid). Prior **batch-018** 24h already sealed by Actions (buys EW **≈ −1.93%** vs BTC **−4.62%**; stops PNUT/TRUMP −4%; avoid BONK/ETH correctly red −9/−6%).
+- Outcomes: `snapshot_outcomes.py` → **NOTHING_DUE**. Next: batch-017 **72h ~00:28 HKT 11-07**; batch-019 **24h ~00:44 HKT 11-07**. Do not invent dispatch.
+- Capture sealed: **2026-11-05** recall_top20 **10.0%** / precision **6.5%** (early SOLV + pump 1000CAT; late 1) — recall at ≥10% floor, precision soft. Prior **2026-11-04** 20.0%/21.1% PASS. scorecard_7d recall **17.1%** / prec **15.4%**.
+- News: read-only `fetched_at` 2026-11-04T23:12+08 (~34h <48h); **0 X reads** this run (no news refresh; buzz has own paused hourly).
+- UX pass (short-term / cautious paper / research): capture strip + Hits board accurate; weak-regime ¼ sizing on batch-019 correct; no material capture-rate or data-accuracy bug found. No app/JS/UI churn.
+
+Self-growth: **docs only** — no app/JS/UI/picks/news writes; no Crypto.M workflow dispatch. Deferred: decorative polish; tip-era/exit/E2/paper still frozen; precision soft on 11-05 seal (watch next sealed day, no rule tweak tonight).
+
 ## 2026-10-30 Asia/Shanghai — trial merge precursor-loosen (stamp after Pages)
 
 Strategy trial + QA wiring PASS `720f6aa`: grind prec_e **1.5/1.5/15**；gainer-board cron **15m**；⚡ early2 **watch-only**。Dry-run e2∪prec_e **36%**（10/25–29）；live 同期 ~3% — **只認 live seal ≥10%**。55% claim 呢窗唔成立。
