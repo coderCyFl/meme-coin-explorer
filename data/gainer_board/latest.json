@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-07T05:11:59+08:00",
+ "updated_at": "2026-11-07T05:15:16+08:00",
  "batch": "gb-20261107-0500",
  "picked_at": "2026-11-07T05:00:59+08:00",
  "btc_24h_pct": -0.3,
@@ -613,48 +613,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-11-07T02:25:48+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "THE",
-   "pair": "THEUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-06T17:15:00+08:00",
-   "entry_price_usd": 0.0401,
-   "price_at_snapshot": 0.0401,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 2.82,
-   "change_24h_at_pick": 7.22,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261106-1934",
-   "score": 52.6,
-   "change_1h_at_pick": 6.37,
-   "change_4h_at_pick": 7.22,
-   "vol_x_avg": 3.82,
-   "vol_x_prev_hour": 7.56,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -2.2,
-   "quote_volume_24h": 3851892,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 4.74,
-     "max_drawdown_pct": -5.74,
-     "close_pct": -4.49,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-06T23:20:08+08:00"
     }
    },
    "exit_plan": {
