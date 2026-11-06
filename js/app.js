@@ -194,7 +194,8 @@
   let liveT = 0;
   function scheduleLive() {
     if (liveT) return;
-    liveT = setTimeout(() => { liveT = 0; rescore(); renderLists(); renderDetail(false); renderPortfolio(); if (document.body.dataset.view === "allin" && !document.querySelector("#aiNow button:active")) renderAllinNow(S.aiStart || 1000); }, 1500);
+    // One rescore → one radar snapshot → podium + Closest refresh together (never lists-only).
+    liveT = setTimeout(() => { liveT = 0; rescore(); takeRadarSnap(); renderHero(); renderLists(); renderDetail(false); renderPortfolio(); if (document.body.dataset.view === "allin" && !document.querySelector("#aiNow button:active")) renderAllinNow(S.aiStart || 1000); }, 1500);
   }
   function ranked(filter) {
     const out = [];
@@ -204,6 +205,16 @@
     }
     return out.sort((a, b) => S.scores[b].score - S.scores[a].score);
   }
+  /** Freeze ranked("all") scores once so podium + Closest never diverge mid-paint. */
+  function takeRadarSnap() {
+    const order = ranked("all");
+    S.radarSnap = order.map((sym) => {
+      const r = S.scores[sym], tk = S.ticks[sym];
+      return { sym, score: r.score, stage: r.stage, ret1h: r.metrics.ret1h, base: tk ? tk.base : sym.replace(/USDT$/, "") };
+    });
+    return S.radarSnap;
+  }
+  function radarSnap() { return S.radarSnap && S.radarSnap.length ? S.radarSnap : takeRadarSnap(); }
 
   /* ================= signal log ================= */
   const LOG_KEY = "cm2:siglog";
@@ -245,7 +256,7 @@
   function wantThumb(base) {
     if (thumbWait.has(base) || !window.THREE || !Coin3D.supported()) return;
     thumbWait.add(base);
-    Coin3D.thumb(base).then((u) => { if (!u) return; clearTimeout(thumbT); thumbT = setTimeout(() => { renderLists(); renderPortfolio(); renderHero(true); }, 120); });
+    Coin3D.thumb(base).then((u) => { if (!u) return; clearTimeout(thumbT); thumbT = setTimeout(() => { takeRadarSnap(); renderHero(); renderLists(); renderPortfolio(); }, 120); });
   }
   /** Full-body engineer mascot image (3D-rendered), empty until the renderer has made it. */
   function mascotImg() { return `<img class="mascot-img" data-icon="engineer" alt="" ${S.mascotUrl ? `src="${S.mascotUrl}"` : "hidden"}>`; }
@@ -299,13 +310,20 @@
     }
   }
   function renderLists() {
-    const counts = { early: ranked("early").length, build: ranked("build").length, late: ranked("late").length, all: ranked("all").length };
+    const snap = radarSnap();
+    const counts = { early: ranked("early").length, build: ranked("build").length, late: ranked("late").length, all: snap.length };
     $$("[data-count]").forEach((b) => (b.textContent = counts[b.dataset.count] || "0"));
     $$("#radarFilters [data-f]").forEach((b) => b.classList.toggle("on", b.dataset.f === S.filter));
-    const closest = ranked("all").slice(0, 10);
+    const closest = snap.slice(0, 10).map((x) => x.sym);
     const closestEl = $("#closestList");
     if (closestEl) {
       paintList(closestEl, closest, `<li class="empty">${S.scanAt ? t("radar.closestNone") : `<span class="loader"></span>`}</li>`);
+      // Patch score rings from the same snap podium uses (paintList otherwise re-reads live S.scores).
+      const bySym = Object.fromEntries(snap.map((x) => [x.sym, x]));
+      for (const b of closestEl.querySelectorAll("button.row")) {
+        const x = bySym[b.dataset.sym]; if (!x) continue;
+        const ring = b.querySelector(".ring b"); if (ring) ring.textContent = String(x.score);
+      }
     }
     const list = ranked(S.filter);
     paintList($("#radarList"), list, `<li class="empty">${S.scanAt ? t("radar.none") : `<span class="loader"></span>`}</li>`);
@@ -319,20 +337,25 @@
   }
 
   function heroCoins() {
-    // Podium = top 3 by score (any stage). Do not invent Early labels just to fill it.
-    return ranked("all").slice(0, 3);
+    // Podium = top 3 from the same radarSnap Closest uses. Do not invent Early labels just to fill it.
+    return radarSnap().slice(0, 3);
   }
   let heroKey = "";
   function renderHero() {
-    const top = heroCoins();
+    const topRows = heroCoins();
+    const top = topRows.map((x) => x.sym);
     $("#heroMeta").textContent = S.scanAt ? t("radar.updated", { t: fmtTime(S.scanAt) }) + " · " + t("radar.tap") : "";
-    const key = top.join(",");
-    if (S.podium && key !== heroKey) { S.podium.set(top.map((s) => ({ sym: s, base: S.ticks[s].base, score: S.scores[s].score, stage: S.scores[s].stage }))); heroKey = key; }
+    // Include scores in the key so podium 3D + labels refresh when scores move without rank churn.
+    const key = topRows.map((x) => x.sym + ":" + x.score + ":" + x.stage).join(",");
+    if (S.podium && key !== heroKey) {
+      S.podium.set(topRows.map((x) => ({ sym: x.sym, base: x.base || (S.ticks[x.sym] && S.ticks[x.sym].base), score: x.score, stage: x.stage })));
+      heroKey = key;
+    }
     if (!S.podium) $("#podium").innerHTML = `<div class="podium-flat">${top.map((s) => badge(S.ticks[s].base, 84)).join("")}</div>`;
-    const order = [top[1], top[0], top[2]];
-    $("#podiumLabels").innerHTML = order.map((s, i) => s ? `<button type="button" class="pl ${i === 1 ? "first" : ""}" data-sym="${esc(s)}">
-      <b>${esc(S.ticks[s].base)}</b><span class="pl-score">${S.scores[s].score}</span><span class="pl-stage">${t("stage." + S.scores[s].stage)}</span>
-      <span class="${sign(S.scores[s].metrics.ret1h)}">${fmtPct(S.scores[s].metrics.ret1h)} 1h</span></button>` : `<span></span>`).join("");
+    const order = [topRows[1], topRows[0], topRows[2]];
+    $("#podiumLabels").innerHTML = order.map((x, i) => x ? `<button type="button" class="pl ${i === 1 ? "first" : ""}" data-sym="${esc(x.sym)}">
+      <b>${esc(x.base || (S.ticks[x.sym] && S.ticks[x.sym].base) || x.sym)}</b><span class="pl-score">${x.score}</span><span class="pl-stage">${t("stage." + x.stage)}</span>
+      <span class="${sign(x.ret1h)}">${fmtPct(x.ret1h)} 1h</span></button>` : `<span></span>`).join("");
     const bt = S.bt;
     $("#btLine").innerHTML = bt && bt.n ? `<span>${S.market.mode === "demo" ? esc(t("radar.btDemo")) + " · " : ""}${esc(t("radar.bt", {
       d: Math.max(1, Math.round((Date.now() - bt.from) / 864e5)), n: bt.n, win: Math.round(bt.win * 100) + "%", avg: fmtPct(bt.avg, 2), base: fmtPct(bt.baseline.avg, 2) }))}</span>
@@ -585,7 +608,7 @@
     $$("[data-tph]").forEach((n) => (n.placeholder = t(n.dataset.tph)));
     $$("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === I18N.lang));
   }
-  function renderAll() { applyText(); paintStatus(); paintAcct(); renderHero(); renderLists(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
+  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
 
   /* ================= routing ================= */
   function route() {
@@ -660,4 +683,7 @@
     setInterval(() => { checkExits(); checkLog(); }, 60000);
   })();
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+
+  // Test seam: same-snapshot radar face (no scoring rules).
+  window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins };
 })();

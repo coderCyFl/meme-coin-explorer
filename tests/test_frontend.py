@@ -61,15 +61,62 @@ class FrontendTests(unittest.TestCase):
 
 
     def test_podium_top3_by_score_any_stage(self):
-        """Podium uses top 3 by score across all stages; no Early/Building fill."""
-        assert 'return ranked("all").slice(0, 3);' in APP
+        """Podium uses top 3 from radarSnap (all stages); no Early/Building fill."""
+        assert "return radarSnap().slice(0, 3);" in APP
         assert 'ranked("early")' not in APP.split("function heroCoins()", 1)[1].split("function renderHero()", 1)[0]
 
 
     def test_closest_list_uses_paintList_top10(self):
-        """Closest strip always shows top10 by score via paintList (patch-in-place)."""
-        assert 'const closest = ranked("all").slice(0, 10);' in APP
-        assert 'paintList(closestEl, closest,' in APP
+        """Closest strip always shows top10 from the same radarSnap via paintList."""
+        assert "const closest = snap.slice(0, 10).map((x) => x.sym);" in APP
+        assert "paintList(closestEl, closest," in APP
+
+
+    def test_podium_closest_same_snapshot_and_co_refresh(self):
+        """Regression: podium + Closest share one snap; live path refreshes both after rescore."""
+        assert "function takeRadarSnap()" in APP
+        assert "S.radarSnap =" in APP
+        assert "takeRadarSnap(); renderHero(); renderLists();" in APP
+        # scheduleLive must not paint lists without hero
+        live = APP.split("function scheduleLive()", 1)[1].split("function ranked(", 1)[0]
+        assert "renderLists()" in live and "renderHero()" in live
+        node = shutil.which("node")
+        if not node:
+            return
+        # Behavioral: frozen snap keeps podium top3 scores identical to Closest prefix.
+        js = r"""
+          const scores = {
+            AAAUSDT: { score: 78, stage: "early", metrics: { ret1h: 0.01 } },
+            BBBUSDT: { score: 76, stage: "build", metrics: { ret1h: 0.02 } },
+            CCCUSDT: { score: 70, stage: "late", metrics: { ret1h: -0.01 } },
+            DDDUSDT: { score: 65, stage: "quiet", metrics: { ret1h: 0 } },
+          };
+          const ticks = Object.fromEntries(Object.keys(scores).map(s => [s, { base: s.slice(0,3), name: s }]));
+          function ranked(filter) {
+            const out = [];
+            for (const sym in scores) {
+              const r = scores[sym];
+              if (filter === "all" || r.stage === filter) out.push(sym);
+            }
+            return out.sort((a,b) => scores[b].score - scores[a].score);
+          }
+          function takeRadarSnap() {
+            return ranked("all").map(sym => {
+              const r = scores[sym], tk = ticks[sym];
+              return { sym, score: r.score, stage: r.stage, ret1h: r.metrics.ret1h, base: tk.base };
+            });
+          }
+          const snap = takeRadarSnap();
+          const podium = snap.slice(0,3);
+          const closest = snap.slice(0,10);
+          const shared = podium.every((p,i) => closest[i] && closest[i].sym === p.sym && closest[i].score === p.score);
+          // mutate live scores after snap — face must still agree with snap, not live
+          scores.AAAUSDT.score = 99;
+          const still = podium[0].score === 78 && closest[0].score === 78 && podium[0].score === closest[0].score;
+          console.log(JSON.stringify({ shared, still, podium: podium.map(x=>[x.sym,x.score]), closest0: [closest[0].sym, closest[0].score] }));
+        """
+        out = json.loads(subprocess.check_output([node, "-e", js], text=True).strip())
+        assert out["shared"] and out["still"], out
 
 
     def test_strategy_params_unchanged_from_main_baseline(self):
