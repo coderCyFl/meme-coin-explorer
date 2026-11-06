@@ -22,11 +22,10 @@ Strategy bot ──experiment report (backtest on real data)──▶ PM bot ─
    change must pass `node tools/backtest.mjs` on the **test half** of real data (≥30 signals, positive average,
    better than random entries) and show before/after numbers. If it doesn't, it doesn't ship.
    Cyrus's goal is +20% a day; always report real daily numbers against that goal, never projections.
-3. **Don't chase pumps.** Coins up > 25% in 24h (or > 12% in 1h) stay "Already pumped": watch only, no Buy button.
-   The old version's own data showed chasing lost money (🔥 tier: −1.3% avg after 4h, −5.1% after 24h).
+3. **Any coin, any time — Buy stays on.** Coins up > 25% in 24h (or > 12% in 1h) are still labelled "Already pumped" with a soft risk note, and quiet coins get a soft note too — but **never hide or disable Buy** by score, stage or risk. Soft notes only.
 4. **Demo data must always be labelled.** When Binance can't be reached the app uses a simulated
    market. Any number from it must say "Demo".
-5. **Leverage max 3x.** Every trade has a stop loss, two targets and a 4-hour time limit.
+5. **Leverage 1x–50x** (`[1,2,3,5,10,20,50]`). Auto TP/SL is **on by default** (stop, two targets, 4h time limit); user can turn auto **off** and then only liquidation or Sell now from Portfolio apply. Liquidation: `liq = entry*(1-0.9/leverage)`; close at `max(price,liq)`; loss incl fees never exceeds margin; balance ≥ 0.
 6. **Both languages.** Every new piece of text goes into `js/i18n.js` in English AND 繁中. No hard-coded text in HTML/JS.
 7. **Look and feel:** black background `#0B0E11`, Binance yellow `#F0B90B`, green `#0ECB81` up, red `#F6465D` down,
    3D coins with real logos, 3D-rendered icons, and the **3D engineer mascot** (yellow hard hat with M badge, orange
