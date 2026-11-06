@@ -21,8 +21,11 @@ class FrontendTests(unittest.TestCase):
         assert 'step="any"' in APP
 
 
-    def test_late_coins_cannot_be_bought(self):
-        assert 'r.stage === "early" || r.stage === "build"' in APP
+    def test_buy_always_enabled_regardless_of_stage(self):
+        # Mock high-risk practise: Buy must not be greyed out by Early Score / late / quiet.
+        assert 'r.stage === "early" || r.stage === "build"' not in APP
+        assert 'data-buy="${esc(sym)}"' in APP
+        assert 'data-buy="${esc(sym)}" ${canBuy' not in APP
 
 
     def test_strategy_runs(self):

@@ -356,7 +356,8 @@
     const r = S.scores[sym], tk = S.ticks[sym];
     if (!r || !tk) return `<div class="d-empty">${mascotImg()}<p>${esc(t("d.pick"))}</p></div>`;
     const m = r.metrics, plan = r.plan, ch24 = tk.price / tk.open24 - 1;
-    const canBuy = r.stage === "early" || r.stage === "build";
+    // Mock trading: Buy stays on for every stage (late/quiet included) so users can try high risk.
+    // Stage labels + soft risk notes remain; stops / targets / leverage caps are unchanged.
     const parts = [["volume", 25], ["momentum", 20], ["breakout", 15], ["squeeze", 10], ["buyers", 15], ["strength", 15]];
     const tr = S.trade && S.trade.sym === sym ? S.trade : null;
     return `<div class="d-head">
@@ -379,7 +380,7 @@
         </dl>
       </div>
       ${r.stage === "late" ? `<p class="note warn">${t("d.lateNote")}</p>` : r.stage === "quiet" ? `<p class="note">${t("d.quietNote", { n: Strategy.EARLY_MIN })}</p>` : ""}
-      ${tr ? tradeHTML(sym, r, tr) : `<button type="button" class="btn primary wide" data-buy="${esc(sym)}" ${canBuy ? "" : "disabled"}>${t("d.buy", { c: esc(tk.base) })}</button>`}`;
+      ${tr ? tradeHTML(sym, r, tr) : `<button type="button" class="btn primary wide" data-buy="${esc(sym)}">${t("d.buy", { c: esc(tk.base) })}</button>`}`;
   }
   function tradeHTML(sym, r, tr) {
     const tk = S.ticks[sym], plan = r.plan, amt = tr.amt, lev = tr.lev, n = amt * lev;
