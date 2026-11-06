@@ -35,7 +35,9 @@
   const S = {
     market: null, ticks: {}, series: {}, btc: null, scores: {}, bt: null, scanAt: 0, scanning: false, prog: [0, 0],
     filter: "all", sort: "score", q: "", selected: null, trade: null, podium: null, viewer: null,
+    gTicks: {}, gMode: "gainers", gHideLow: false, gAt: 0, gLoading: false,
   };
+  const G_TOP = 20, G_VOL_FLOOR = 1e6;
 
   /* ================= accounts ================= */
   const AUTH_KEY = "cm2:auth";
@@ -137,19 +139,28 @@
   function equity() { let e = P.cash; for (const x of P.positions) { const p = priceOf(x.sym); e += posValue(x, isFinite(p) ? p : x.entry); } return e; }
 
   function openTrade(sym, amount, lev, auto) {
+    ensureTick(sym);
     const r = S.scores[sym], tk = S.ticks[sym];
-    if (!r || !tk) return false;
+    if (!tk) return false;
     lev = Math.min(MAX_LEV, Math.max(1, +lev || 1));
     const price = tk.price, notional = amount * lev, fee = notional * FEE;
     if (amount + fee > P.cash + 1e-9) { toast(t("t.nocash")); return false; }
-    const plan = Strategy.planFor(price, r.metrics.atr);
+    const atr = r && r.metrics ? r.metrics.atr : price * 0.02;
+    const plan = Strategy.planFor(price, atr);
     const useAuto = auto !== false;
     P.cash -= amount + fee;
     P.positions.unshift({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), sym, base: tk.base, entry: price,
       qty: notional / price, margin: amount, lev, liq: liqPrice(price, lev), auto: useAuto,
       stop: plan.stop, t1: plan.t1, t2: plan.t2, half: false, frac: 1,
-      openedAt: Date.now(), until: Date.now() + plan.holdHours * 3600e3, score: r.score, realized: -fee, notes: [] });
+      openedAt: Date.now(), until: Date.now() + plan.holdHours * 3600e3, score: r ? r.score : 0, realized: -fee, notes: [] });
     savePf(); return true;
+  }
+  /** Merge a Gainers-board tick into S.ticks so detail/Buy work outside the score universe. */
+  function ensureTick(sym) {
+    if (S.ticks[sym]) return S.ticks[sym];
+    const g = S.gTicks[sym];
+    if (g) { S.ticks[sym] = Object.assign({}, g); return S.ticks[sym]; }
+    return null;
   }
   function closePart(x, f, price, how) {
     f = Math.min(f, x.frac);
@@ -220,17 +231,59 @@
   }
   function onPrices(m) {
     for (const sym in m) {
-      const tk = S.ticks[sym]; if (!tk) continue;
-      tk.price = m[sym];
-      const s = S.series[sym]; if (s) { const i = s.n - 1; s.c[i] = m[sym]; if (m[sym] > s.h[i]) s.h[i] = m[sym]; if (m[sym] < s.l[i]) s.l[i] = m[sym]; }
+      const raw = m[sym];
+      const px = typeof raw === "number" ? raw : +raw.c;
+      if (!isFinite(px)) continue;
+      const tk = S.ticks[sym];
+      if (tk) {
+        tk.price = px;
+        if (raw && typeof raw === "object") {
+          if (isFinite(+raw.o) && +raw.o > 0) tk.open24 = +raw.o;
+          if (isFinite(+raw.q) && +raw.q > 0) tk.qv24 = +raw.q;
+        }
+        const s = S.series[sym]; if (s) { const i = s.n - 1; s.c[i] = px; if (px > s.h[i]) s.h[i] = px; if (px < s.l[i]) s.l[i] = px; }
+      }
+      const g = S.gTicks[sym];
+      if (g) {
+        g.price = px;
+        if (raw && typeof raw === "object") {
+          if (isFinite(+raw.o) && +raw.o > 0) g.open24 = +raw.o;
+          if (isFinite(+raw.q) && +raw.q > 0) g.qv24 = +raw.q;
+        }
+      }
     }
-    checkExits(); scheduleLive();
+    checkExits(); scheduleLive(); scheduleGainers();
   }
-  let liveT = 0;
+  let liveT = 0, gLiveT = 0;
   function scheduleLive() {
     if (liveT) return;
     // One rescore → one radar snapshot → podium + Closest refresh together (never lists-only).
     liveT = setTimeout(() => { liveT = 0; rescore(); takeRadarSnap(); renderHero(); renderLists(); renderDetail(false); renderPortfolio(); if (document.body.dataset.view === "allin" && !document.querySelector("#aiNow button:active")) renderAllinNow(S.aiStart || 1000); }, 1500);
+  }
+  /** Gainers board patches ≤1/s so taps are never swallowed. */
+  function scheduleGainers() {
+    if (gLiveT) return;
+    gLiveT = setTimeout(() => { gLiveT = 0; if (document.body.dataset.view === "gainers") renderGainers(); }, 1000);
+  }
+  async function loadGainers() {
+    if (!S.market || S.gLoading) return;
+    S.gLoading = true; renderGainers();
+    try {
+      const ticks = await S.market.tickersAll();
+      const map = {};
+      for (const tk of ticks) map[tk.sym] = tk;
+      S.gTicks = map; S.gAt = Date.now();
+    } catch (e) { console.warn("gainers load failed", e); }
+    finally { S.gLoading = false; renderGainers(); }
+  }
+  function gainerSyms() {
+    let list = Object.keys(S.gTicks);
+    if (S.gHideLow) list = list.filter((s) => S.gTicks[s].qv24 >= G_VOL_FLOOR);
+    const ch = (s) => { const tk = S.gTicks[s]; return tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0; };
+    if (S.gMode === "losers") list.sort((a, b) => ch(a) - ch(b));
+    else if (S.gMode === "all") list.sort((a, b) => S.gTicks[b].qv24 - S.gTicks[a].qv24);
+    else list.sort((a, b) => ch(b) - ch(a));
+    return list.slice(0, G_TOP);
   }
   function ranked(filter) {
     const out = [];
@@ -298,7 +351,7 @@
   /** Swap the flat SVG icons for 3D-rendered ones once the renderer has made them. */
   function load3DIcons() {
     if (!window.THREE || !Coin3D.supported()) return;
-    for (const kind of ["engineerHead", "engineer", "radar", "stack", "markets", "wallet", "trophy"]) {
+    for (const kind of ["engineerHead", "engineer", "radar", "gainers", "stack", "markets", "wallet", "trophy"]) {
       Coin3D.icon(kind).then((url) => {
         if (!url) return;
         if (kind === "engineer") S.mascotUrl = url;
@@ -370,6 +423,66 @@
     $$("#mSort [data-sort]").forEach((b) => b.classList.toggle("on", b.dataset.sort === S.sort));
     paintList($("#marketList"), m, `<li class="empty"><span class="loader"></span></li>`);
   }
+  function gRow(sym) {
+    const tk = S.gTicks[sym] || S.ticks[sym]; if (!tk) return "";
+    return `<li><button type="button" class="row g-row ${S.selected === sym ? "sel" : ""}" data-sym="${esc(sym)}">${gRowInner(sym)}</button></li>`;
+  }
+  function gRowInner(sym) {
+    const tk = S.gTicks[sym] || S.ticks[sym]; if (!tk) return "";
+    const ch24 = tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0;
+    const r = S.scores[sym];
+    const chip = r ? `<span class="chip score">${r.score}</span>` : "";
+    return `${badge(tk.base)}
+      <span class="r-main"><span class="r-top"><b class="sym">${esc(tk.base)}</b>${chip}</span>
+        <span class="r-why"><span class="muted">${esc(tk.name)}</span></span></span>
+      <span class="r-px"><b>${fmtPrice(tk.price)}</b><span class="${sign(ch24)}">${fmtPct(ch24)} <i>24h</i></span><span class="g-voln">${fmtVol(tk.qv24)}</span></span>`;
+  }
+  // Keep keyed buttons alive across rank swaps; never move a row under an active hand.
+  let gInteractionUntil = 0, gPointerDown = false;
+  document.addEventListener("pointerdown", (e) => {
+    if (e.target.closest("#gainerList")) gPointerDown = true;
+  });
+  document.addEventListener("pointerup", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
+  document.addEventListener("pointercancel", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
+  window.addEventListener("scroll", () => { gInteractionUntil = Date.now() + 500; scheduleGainers(); }, { passive: true });
+  function paintGainerList(el, syms, emptyHTML) {
+    const active = document.activeElement;
+    if (gPointerDown || Date.now() < gInteractionUntil || (active && el.contains(active))) {
+      scheduleGainers(); return;
+    }
+    if (!syms.length) {
+      if (el.dataset.key !== "empty") { el.replaceChildren(); el.insertAdjacentHTML("beforeend", emptyHTML); el.dataset.key = "empty"; }
+      return;
+    }
+    const existing = new Map([...el.querySelectorAll("button.row")].map((button) => [button.dataset.sym, button.parentElement]));
+    const wanted = new Set(syms);
+    for (const child of [...el.children]) {
+      const button = child.querySelector("button.row");
+      if (!button || !wanted.has(button.dataset.sym)) child.remove();
+    }
+    syms.forEach((sym, index) => {
+      let li = existing.get(sym);
+      if (!li) {
+        li = document.createElement("li");
+        li.innerHTML = gRow(sym).replace(/^<li>|<\/li>$/g, "");
+      }
+      const button = li.querySelector("button.row");
+      const html = gRowInner(sym);
+      if (button._h !== html) { button.innerHTML = html; button._h = html; }
+      button.classList.toggle("sel", S.selected === sym);
+      if (el.children[index] !== li) el.insertBefore(li, el.children[index] || null);
+    });
+    el.dataset.key = syms.join(",");
+  }
+  function renderGainers() {
+    const el = $("#gainerList"); if (!el) return;
+    $$("#gMode [data-gmode]").forEach((b) => b.classList.toggle("on", b.dataset.gmode === S.gMode));
+    const hide = $("#gHideLow"); if (hide) hide.checked = !!S.gHideLow;
+    const syms = gainerSyms();
+    const meta = $("#gMeta");
+    if (meta) meta.textContent = S.gAt ? t("g.meta", { n: syms.length }) : "";
+    paintGainerList(el, syms, `<li class="empty">${S.gLoading || !S.gAt ? t("g.loading") : t("g.empty")}</li>`);
+  }
 
   function heroCoins() {
     // Podium = top 3 from the same radarSnap Closest uses. Do not invent Early labels just to fill it.
@@ -414,13 +527,36 @@
   }
 
   function detailHTML(sym) {
+    ensureTick(sym);
     const r = S.scores[sym], tk = S.ticks[sym];
-    if (!r || !tk) return `<div class="d-empty">${mascotImg()}<p>${esc(t("d.pick"))}</p></div>`;
-    const m = r.metrics, plan = r.plan, ch24 = tk.price / tk.open24 - 1;
+    if (!tk) return `<div class="d-empty">${mascotImg()}<p>${esc(t("d.pick"))}</p></div>`;
+    const ch24 = tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0;
+    const tr = S.trade && S.trade.sym === sym ? S.trade : null;
+    // Outside score universe: Buy stays on, no fake Early Score.
+    if (!r) {
+      const atr = tk.price * 0.02, plan = Strategy.planFor(tk.price, atr);
+      return `<div class="d-head">
+        <div class="d-3d" data-viewer>${badge(tk.base, 120)}</div>
+        <div class="d-id"><span class="stage quiet">${t("stage.quiet")}</span><h2>${esc(tk.base)}</h2><p class="muted">${esc(tk.name)}</p>
+          <p class="d-px" data-part="px"><b>${fmtPrice(tk.price)}</b> <span class="${sign(ch24)}">${fmtPct(ch24)} 24h</span></p></div>
+      </div>
+      <p class="muted" data-part="chart">${t("d.vol")} ${fmtVol(tk.qv24)}</p>
+      <div class="d-plan" data-part="plan"><p class="label">${t("d.plan")}</p>
+        <dl>
+          <div><dt>${t("d.entry")}</dt><dd>${fmtPrice(plan.entry)}</dd></div>
+          <div class="up"><dt>${t("d.t1")}</dt><dd>${fmtPrice(plan.t1)} <small>${fmtPct(plan.t1Pct)}</small></dd></div>
+          <div class="up"><dt>${t("d.t2")}</dt><dd>${fmtPrice(plan.t2)} <small>${fmtPct(plan.t2Pct)}</small></dd></div>
+          <div class="down"><dt>${t("d.stop")}</dt><dd>${fmtPrice(plan.stop)} <small>${fmtPct(-plan.stopPct)}</small></dd></div>
+          <div><dt>${t("d.time")}</dt><dd>${t("d.timeV", { h: plan.holdHours })}</dd></div>
+        </dl>
+      </div>
+      <p class="note">${t("g.noScore")}</p>
+      ${tr ? tradeHTML(sym, { plan, score: 0, metrics: { atr } }, tr) : `<button type="button" class="btn primary wide" data-buy="${esc(sym)}">${t("d.buy", { c: esc(tk.base) })}</button>`}`;
+    }
+    const m = r.metrics, plan = r.plan;
     // Mock trading: Buy stays on for every stage (late/quiet included) so users can try high risk.
     // Stage labels + soft risk notes remain; stops / targets / leverage caps are unchanged.
     const parts = [["volume", 25], ["momentum", 20], ["breakout", 15], ["squeeze", 10], ["buyers", 15], ["strength", 15]];
-    const tr = S.trade && S.trade.sym === sym ? S.trade : null;
     return `<div class="d-head">
         <div class="d-3d" data-viewer>${badge(tk.base, 120)}</div>
         <div class="d-id"><span class="stage ${r.stage}">${t("stage." + r.stage)}</span><h2>${esc(tk.base)}</h2><p class="muted">${esc(tk.name)}</p>
@@ -477,8 +613,9 @@
   function renderDetail(full) {
     const host = detailHost();
     if (!isDesk() && !$("#detailSheet").open) return;
+    if (S.selected) ensureTick(S.selected);
     const r = S.scores[S.selected];
-    const stageKey = S.selected + ":" + (r ? r.stage : "") + ":" + I18N.lang;
+    const stageKey = S.selected + ":" + (r ? r.stage : "noscore") + ":" + I18N.lang;
     if (!full && host.dataset.key === stageKey) {
       // live tick: patch only the read-only parts; buttons and the trade form stay untouched
       const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(S.selected);
@@ -501,7 +638,7 @@
   }
   function select(sym) {
     if (S.selected !== sym) S.trade = null;
-    S.selected = sym; renderLists(); renderDetail(true);
+    S.selected = sym; ensureTick(sym); renderLists(); renderGainers(); renderDetail(true);
     if (!isDesk()) { const d = $("#detailSheet"); if (!d.open) d.showModal(); renderDetail(true); d.scrollTop = 0; }
   }
 
@@ -661,12 +798,12 @@
     $$("[data-tph]").forEach((n) => (n.placeholder = t(n.dataset.tph)));
     $$("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === I18N.lang));
   }
-  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
+  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderGainers(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
 
   /* ================= routing ================= */
   function route() {
     const page = (location.hash || "#radar").slice(1);
-    const ok = ["radar", "allin", "markets", "portfolio", "record"].includes(page) ? page : "radar";
+    const ok = ["radar", "gainers", "allin", "markets", "portfolio", "record"].includes(page) ? page : "radar";
     $$("section[data-page]").forEach((s) => (s.hidden = s.dataset.page !== ok));
     $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === ok));
     document.body.dataset.view = ok;
@@ -690,6 +827,7 @@
     if ((n = g("[data-ai-start]"))) { S.aiStart = +n.dataset.aiStart; return renderAllin(); }
     if ((n = g("[data-ai-go]"))) { const sym = n.dataset.aiGo; select(sym); S.trade = { sym, amt: Math.max(10, Math.floor(P.cash / (1 + FEE))), lev: 1, auto: true }; return renderDetail(true); }
     if ((n = g("[data-f]"))) { S.filter = n.dataset.f; return renderLists(); }
+    if ((n = g("[data-gmode]"))) { S.gMode = n.dataset.gmode; return renderGainers(); }
     if ((n = g("[data-sort]"))) { S.sort = n.dataset.sort; return renderLists(); }
     if ((n = g("[data-cap]"))) { S.cap = +n.dataset.cap; return renderPortfolio(); }
     if ((n = g("[data-lang]"))) { I18N.setLang(n.dataset.lang); return renderAll(); }
@@ -723,6 +861,7 @@
     if (e.target && e.target.matches && e.target.matches("[data-auto]") && S.trade) {
       S.trade.auto = !!e.target.checked; renderDetail(true);
     }
+    if (e.target && e.target.id === "gHideLow") { S.gHideLow = !!e.target.checked; renderGainers(); }
   });
   $("#detailSheet").addEventListener("close", () => { S.trade = null; });
   window.addEventListener("hashchange", route);
@@ -735,13 +874,16 @@
     load3DIcons();
     try { const a = await (await fetch("data/bn_assets.json", { cache: "no-store" })).json(); if (a && a.assets) { Coin3D.setAssets(a.assets); Market.setNames(a.assets); } } catch (_) {}
     S.market = await Market.connect(); paintStatus();
+    loadGainers();
     await scan();
     S.market.stream(onPrices);
     setInterval(() => { if (!document.hidden) scan(); }, RESCAN_MS);
+    setInterval(() => { if (!document.hidden) loadGainers(); }, RESCAN_MS);
     setInterval(() => { checkExits(); checkLog(); }, 60000);
   })();
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 
   // Test seam: same-snapshot radar face (no scoring rules).
   window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins };
+  window.CryptoMGainers = { gainerSyms, G_TOP, G_VOL_FLOOR, ensureTick };
 })();
