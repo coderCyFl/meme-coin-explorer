@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-06T07:47:01+08:00",
- "batches": 92,
- "flags": 250,
+ "updated_at": "2026-11-06T08:25:48+08:00",
+ "batches": 93,
+ "flags": 255,
  "horizons": {
   "4h": {
    "n": 249,
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -7.67,
     "closed_up": 46
    },
-   "flags": 142
+   "flags": 147
   },
   "early": {
    "4h": {
