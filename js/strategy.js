@@ -4,7 +4,7 @@
  * coins that already pumped (the old "gainer" rule bought after the move and lost on average).
  *
  * Works on 15-minute candles. Six signals, 100 points total:
- *   Volume surge     25  last 1h volume vs the average hour of the prior 24h
+ *   Volume surge     25  last 4 CLOSED 15m candles vs the average hour of the prior 24h before them
  *   Early momentum   20  last 1h price change in the "early" zone (+1% … +5%)
  *   Breakout         15  price above the prior 24h high
  *   Squeeze          10  the 12h before was tight (quiet before the move)
@@ -26,7 +26,7 @@
   /** Every tunable number in one place. The strategy bot changes these (and only these, unless a new
    *  signal is proposed), then proves the change with `node tools/backtest.mjs`. */
   const PARAMS = {
-    earlyMin: 70, buildMin: 50,          // score cut-offs
+    earlyMin: 60, buildMin: 50,          // score cut-offs (T1 temp 60; final 60/65/70 needs Strategy TEST-half evidence)
     late24h: 0.25, late1h: 0.12,         // "Already pumped" filter
     chase24hPenalty: 0.15,               // −15 points above this 24h gain
     rvolFull: 3.5,                       // volume surge earns full points at this multiple
@@ -103,10 +103,15 @@
     if (!s || i < MIN_BARS || i >= s.n) return null;
     const c = priceOverride || s.c[i];
 
-    const qv1h = sum(s.qv, i - BARS_1H + 1, i);
-    const baseHour = sum(s.qv, i - BARS_24H - BARS_1H + 1, i - BARS_1H) / (BARS_24H / BARS_1H);
+    // Volume + taker-buy use four CLOSED 15m candles (i-4..i-1). The forming candle's
+    // opening volume must not swing the score when the live price is unchanged.
+    const closedEnd = i - 1;
+    const closedStart = i - BARS_1H; // i-4 .. i-1
+    const qv1h = sum(s.qv, closedStart, closedEnd);
+    const baseHour = sum(s.qv, closedStart - BARS_24H, closedStart - 1) / (BARS_24H / BARS_1H);
     const rvol = baseHour > 0 ? qv1h / baseHour : 0;
 
+    // Momentum / breakout / 24h still follow the live (or candle) price.
     const ret1h = c / s.c[i - BARS_1H] - 1;
     const ret4h = c / s.c[i - BARS_4H] - 1;
     const ret24h = c / s.c[i - BARS_24H] - 1;
@@ -116,7 +121,7 @@
     const sqzLo = min(s.l, i - BARS_1H - BARS_12H + 1, i - BARS_1H);
     const squeeze = (sqzHi - sqzLo) / c;
 
-    const buyRatio = qv1h > 0 ? sum(s.tbq, i - BARS_1H + 1, i) / qv1h : 0.5;
+    const buyRatio = qv1h > 0 ? sum(s.tbq, closedStart, closedEnd) / qv1h : 0.5;
     const rs = ret4h - btcRet4h(btc, s.t[i]);
     const atr = atrPct(s, i);
 
@@ -131,7 +136,7 @@
 
     let score = p.volume + p.momentum + p.breakout + p.squeeze + p.buyers + p.strength;
     // Momentum needs to be real: no upward move = no signal, however good the rest looks.
-    if (ret1h <= 0) score = Math.min(score, 35);
+    if (ret1h <= 0) score = Math.min(score, 50);
     if (ret24h > Q.chase24hPenalty) score -= 15;
     score = Math.round(clamp(score, 0, 100));
 

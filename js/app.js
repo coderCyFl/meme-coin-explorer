@@ -32,7 +32,7 @@
   /* ---------- state ---------- */
   const S = {
     market: null, ticks: {}, series: {}, btc: null, scores: {}, bt: null, scanAt: 0, scanning: false, prog: [0, 0],
-    filter: "early", sort: "score", q: "", selected: null, trade: null, podium: null, viewer: null,
+    filter: "all", sort: "score", q: "", selected: null, trade: null, podium: null, viewer: null,
   };
 
   /* ================= accounts ================= */
@@ -302,6 +302,11 @@
     const counts = { early: ranked("early").length, build: ranked("build").length, late: ranked("late").length, all: ranked("all").length };
     $$("[data-count]").forEach((b) => (b.textContent = counts[b.dataset.count] || "0"));
     $$("#radarFilters [data-f]").forEach((b) => b.classList.toggle("on", b.dataset.f === S.filter));
+    const closest = ranked("all").slice(0, 10);
+    const closestEl = $("#closestList");
+    if (closestEl) {
+      paintList(closestEl, closest, `<li class="empty">${S.scanAt ? t("radar.closestNone") : `<span class="loader"></span>`}</li>`);
+    }
     const list = ranked(S.filter);
     paintList($("#radarList"), list, `<li class="empty">${S.scanAt ? t("radar.none") : `<span class="loader"></span>`}</li>`);
     // markets
@@ -314,10 +319,8 @@
   }
 
   function heroCoins() {
-    let top = ranked("early");
-    if (top.length < 3) top = top.concat(ranked("build").slice(0, 3 - top.length));
-    if (top.length < 3) top = top.concat(ranked("all").filter((s) => !top.includes(s) && S.scores[s].stage !== "late").slice(0, 3 - top.length));
-    return top.slice(0, 3);
+    // Podium = top 3 by score (any stage). Do not invent Early labels just to fill it.
+    return ranked("all").slice(0, 3);
   }
   let heroKey = "";
   function renderHero() {
