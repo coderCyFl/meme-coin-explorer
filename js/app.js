@@ -9,7 +9,7 @@
     get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } },
     set(k, v) { try { const raw = JSON.stringify(v); localStorage.setItem(k, raw); return localStorage.getItem(k) === raw; } catch (_) { return false; } },
   };
-  const RESCAN_MS = 5 * 60 * 1000, FEE = 0.001, MAX_LEV = 50;
+  const RESCAN_MS = 2 * 60 * 1000, FEE = 0.001, MAX_LEV = 50;
   const LEVS = [1, 2, 3, 5, 10, 20, 50];
   const liqPrice = (entry, lev) => entry * (1 - 0.9 / Math.max(1, lev));
   const isDesk = () => matchMedia("(min-width: 1080px)").matches;
@@ -29,6 +29,14 @@
   const fmtTime = (ms) => new Date(ms).toLocaleTimeString(I18N.lang === "zh" ? "zh-HK" : "en-GB", { hour: "2-digit", minute: "2-digit" });
   const fmtDT = (ms) => new Date(ms).toLocaleString(I18N.lang === "zh" ? "zh-HK" : "en-GB", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
   const fmtDur = (ms) => { const m = Math.round(ms / 60000); return m < 60 ? m + "m" : Math.floor(m / 60) + "h " + (m % 60) + "m"; };
+  function fmtAge(ms) {
+    if (!ms) return "";
+    const sec = Math.max(0, Math.floor((Date.now() - ms) / 1000));
+    if (sec < 60) return t("status.ageSec", { n: sec });
+    const min = Math.floor(sec / 60);
+    if (min < 60) return t("status.ageMin", { n: min });
+    return t("status.ageHr", { n: Math.floor(min / 60) });
+  }
   const sign = (v) => (v > 0 ? "up" : v < 0 ? "down" : "flat");
 
   /* ---------- state ---------- */
@@ -38,6 +46,20 @@
     gTicks: {}, gMode: "gainers", gHideLow: false, gAt: 0, gLoading: false,
   };
   const G_TOP = 20, G_VOL_FLOOR = 1e6;
+  let closestSig = "", gainerSig = "";
+  function softFlash(el) {
+    if (!el) return;
+    el.classList.remove("soft-flash");
+    void el.offsetWidth;
+    el.classList.add("soft-flash");
+    clearTimeout(el._flashT);
+    el._flashT = setTimeout(() => el.classList.remove("soft-flash"), 1100);
+  }
+  function flashIfMoved(sigRef, key, el) {
+    if (!key) return sigRef;
+    if (sigRef && sigRef !== key) softFlash(el);
+    return key || sigRef;
+  }
 
   /* ================= accounts ================= */
   const AUTH_KEY = "cm2:auth";
@@ -222,6 +244,9 @@
       rescore(); S.scanAt = Date.now();
       logSignals();
       if (!S.selected) { const top = ranked("early")[0] || ranked("all")[0]; if (top && isDesk()) S.selected = top; }
+      const snap = takeRadarSnap();
+      const closestKey = snap.slice(0, 10).map((x) => x.sym).join(",");
+      closestSig = flashIfMoved(closestSig, closestKey, $("#closestList"));
       renderAll();
       setTimeout(() => { S.bt = Strategy.backtest(S.series, S.btc); renderBacktest(); renderHero(); }, 50);
     } catch (e) {
@@ -268,13 +293,18 @@
   async function loadGainers() {
     if (!S.market || S.gLoading) return;
     S.gLoading = true; renderGainers();
+    let movedKey = "";
     try {
       const ticks = await S.market.tickersAll();
       const map = {};
       for (const tk of ticks) map[tk.sym] = tk;
       S.gTicks = map; S.gAt = Date.now();
+      movedKey = gainerSyms().join(",");
     } catch (e) { console.warn("gainers load failed", e); }
-    finally { S.gLoading = false; renderGainers(); }
+    finally {
+      S.gLoading = false; renderGainers();
+      if (movedKey) gainerSig = flashIfMoved(gainerSig, movedKey, $("#gainerList"));
+    }
   }
   function gainerSyms() {
     let list = Object.keys(S.gTicks);
@@ -790,7 +820,11 @@
     const live = S.market && S.market.mode === "live";
     $$("[data-status]").forEach((b) => {
       b.className = "status " + (live ? "live" : "demo");
-      b.innerHTML = `<i></i>${S.scanning && S.prog[1] > 1 ? t("status.scanning", { d: S.prog[0], n: S.prog[1] }) : t(live ? "status.live" : "status.demo")}`;
+      let label;
+      if (S.scanning && S.prog[1] > 1) label = t("status.scanning", { d: S.prog[0], n: S.prog[1] });
+      else if (S.scanAt) label = t(live ? "status.liveAge" : "status.demoAge", { a: fmtAge(S.scanAt) });
+      else label = t(live ? "status.live" : "status.demo");
+      b.innerHTML = `<i></i>${label}`;
     });
   }
   function applyText() {
@@ -832,7 +866,10 @@
     if ((n = g("[data-cap]"))) { S.cap = +n.dataset.cap; return renderPortfolio(); }
     if ((n = g("[data-lang]"))) { I18N.setLang(n.dataset.lang); return renderAll(); }
     if (g("[data-acct]")) return acctClick();
-    if (g("[data-status]")) return toast(S.market.mode === "live" ? t("status.live") : t("status.demoWhy"));
+    if (g("[data-status]")) {
+      if (S.market.mode !== "live") return toast(t("status.demoWhy"));
+      return toast(S.scanAt ? t("status.liveAge", { a: fmtAge(S.scanAt) }) : t("status.live"));
+    }
     if ((n = g("[data-close]"))) return n.closest("dialog").close();
   });
   document.addEventListener("input", (e) => {
@@ -879,6 +916,7 @@
     S.market.stream(onPrices);
     setInterval(() => { if (!document.hidden) scan(); }, RESCAN_MS);
     setInterval(() => { if (!document.hidden) loadGainers(); }, RESCAN_MS);
+    setInterval(() => { if (S.scanAt && !S.scanning && !document.hidden) paintStatus(); }, 15000);
     setInterval(() => { checkExits(); checkLog(); }, 60000);
   })();
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
@@ -886,4 +924,5 @@
   // Test seam: same-snapshot radar face (no scoring rules).
   window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins };
   window.CryptoMGainers = { gainerSyms, G_TOP, G_VOL_FLOOR, ensureTick };
+  window.CryptoMLive = { RESCAN_MS, softFlash, fmtAge };
 })();
