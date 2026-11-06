@@ -9,7 +9,9 @@
     get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } },
     set(k, v) { try { const raw = JSON.stringify(v); localStorage.setItem(k, raw); return localStorage.getItem(k) === raw; } catch (_) { return false; } },
   };
-  const RESCAN_MS = 5 * 60 * 1000, FEE = 0.001, MAX_LEV = 3;
+  const RESCAN_MS = 5 * 60 * 1000, FEE = 0.001, MAX_LEV = 50;
+  const LEVS = [1, 2, 3, 5, 10, 20, 50];
+  const liqPrice = (entry, lev) => entry * (1 - 0.9 / Math.max(1, lev));
   const isDesk = () => matchMedia("(min-width: 1080px)").matches;
 
   /* ---------- formatting ---------- */
@@ -118,39 +120,72 @@
   const pfKey = (u) => "cm2:pf:" + (u || "guest");
   const fresh = (start) => ({ start, cash: start, positions: [], history: [], created: Date.now() });
   let P = fresh(5000);
-  function loadPf() { const p = store.get(pfKey(currentUser())); P = p && Array.isArray(p.positions) ? p : fresh(5000); }
-  function savePf() { if (Array.isArray(P.history) && P.history.length > 300) P.history.length = 300; store.set(pfKey(currentUser()), P); }
+  function migratePos(x) {
+    if (x.auto == null) x.auto = true;
+    if (!(x.liq > 0) && x.entry > 0 && x.lev > 0) x.liq = liqPrice(x.entry, x.lev);
+    return x;
+  }
+  function loadPf() {
+    const p = store.get(pfKey(currentUser()));
+    P = p && Array.isArray(p.positions) ? p : fresh(5000);
+    P.positions = (P.positions || []).map(migratePos);
+    if (P.cash < 0) P.cash = 0;
+  }
+  function savePf() { if (Array.isArray(P.history) && P.history.length > 300) P.history.length = 300; if (P.cash < 0) P.cash = 0; store.set(pfKey(currentUser()), P); }
   const priceOf = (sym) => (S.ticks[sym] ? S.ticks[sym].price : NaN);
   const posValue = (x, p) => x.frac * x.margin + x.frac * x.qty * (p - x.entry);
   function equity() { let e = P.cash; for (const x of P.positions) { const p = priceOf(x.sym); e += posValue(x, isFinite(p) ? p : x.entry); } return e; }
 
-  function openTrade(sym, amount, lev) {
+  function openTrade(sym, amount, lev, auto) {
     const r = S.scores[sym], tk = S.ticks[sym];
     if (!r || !tk) return false;
+    lev = Math.min(MAX_LEV, Math.max(1, +lev || 1));
     const price = tk.price, notional = amount * lev, fee = notional * FEE;
     if (amount + fee > P.cash + 1e-9) { toast(t("t.nocash")); return false; }
     const plan = Strategy.planFor(price, r.metrics.atr);
+    const useAuto = auto !== false;
     P.cash -= amount + fee;
     P.positions.unshift({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), sym, base: tk.base, entry: price,
-      qty: notional / price, margin: amount, lev, stop: plan.stop, t1: plan.t1, t2: plan.t2, half: false, frac: 1,
+      qty: notional / price, margin: amount, lev, liq: liqPrice(price, lev), auto: useAuto,
+      stop: plan.stop, t1: plan.t1, t2: plan.t2, half: false, frac: 1,
       openedAt: Date.now(), until: Date.now() + plan.holdHours * 3600e3, score: r.score, realized: -fee, notes: [] });
     savePf(); return true;
   }
   function closePart(x, f, price, how) {
-    const part = f * x.margin + f * x.qty * (price - x.entry), fee = f * x.qty * price * FEE;
-    P.cash += part - fee; x.realized += part - fee - f * x.margin; x.frac -= f; x.notes.push(how);
+    f = Math.min(f, x.frac);
+    if (f <= 0) return;
+    let exit = price;
+    if (how === "liq") {
+      const floor = x.liq > 0 ? x.liq : liqPrice(x.entry, x.lev);
+      exit = Math.max(price, floor);
+    }
+    let part = f * x.margin + f * x.qty * (exit - x.entry);
+    let fee = f * x.qty * exit * FEE;
+    let proceeds = part - fee;
+    // Loss incl fees never exceeds remaining margin; cash never goes negative from this close.
+    const marginLeft = f * x.margin;
+    if (how === "liq" && proceeds < 0) proceeds = 0;
+    if (how === "liq" && marginLeft - proceeds > marginLeft + 1e-9) proceeds = 0;
+    if (how === "liq") proceeds = Math.max(0, Math.min(marginLeft, proceeds));
+    P.cash += proceeds;
+    if (P.cash < 0) P.cash = 0;
+    x.realized += proceeds - marginLeft;
+    x.frac -= f;
+    x.notes.push(how);
     if (x.frac <= 1e-9) {
       P.positions = P.positions.filter((y) => y !== x);
-      P.history.unshift({ sym: x.sym, base: x.base, entry: x.entry, exit: price, openedAt: x.openedAt, closedAt: Date.now(),
-        pnl: x.realized, pct: x.realized / x.margin, how: x.notes, lev: x.lev, margin: x.margin });
+      P.history.unshift({ sym: x.sym, base: x.base, entry: x.entry, exit, openedAt: x.openedAt, closedAt: Date.now(),
+        pnl: x.realized, pct: x.realized / x.margin, how: x.notes, lev: x.lev, margin: x.margin, auto: !!x.auto });
     }
   }
-  /** Automatic exits: stop, target 1 (half + stop to entry), target 2, time limit, liquidation. */
+  /** Exits: always liquidation; when auto on also stop / targets / time. Manual sell is always available. */
   function checkExits() {
     let changed = false;
     for (const x of [...P.positions]) {
       const p = priceOf(x.sym); if (!isFinite(p)) continue;
-      if (posValue(x, p) <= 0.1 * x.frac * x.margin) { closePart(x, x.frac, p, "liq"); changed = true; continue; }
+      const floor = x.liq > 0 ? x.liq : liqPrice(x.entry, x.lev);
+      if (p <= floor) { closePart(x, x.frac, p, "liq"); changed = true; continue; }
+      if (x.auto === false) continue;
       if (p <= x.stop) { closePart(x, x.frac, x.stop, x.half ? "be" : "stop"); changed = true; continue; }
       if (!x.half && p >= x.t1) { closePart(x, 0.5, x.t1, "t1"); x.half = true; x.stop = x.entry; changed = true; }
       if (x.half && p >= x.t2 && x.frac > 0) { closePart(x, x.frac, x.t2, "t2"); changed = true; continue; }
@@ -405,25 +440,32 @@
           <div><dt>${t("d.time")}</dt><dd>${t("d.timeV", { h: plan.holdHours })}</dd></div>
         </dl>
       </div>
-      ${r.stage === "late" ? `<p class="note warn">${t("d.lateNote")}</p>` : r.stage === "quiet" ? `<p class="note">${t("d.quietNote", { n: Strategy.EARLY_MIN })}</p>` : ""}
+      ${r.stage === "late" ? `<p class="note warn">${t("d.lateNote")}</p>` : r.stage === "quiet" ? `<p class="note">${t("d.quietNote")}</p>` : ""}
       ${tr ? tradeHTML(sym, r, tr) : `<button type="button" class="btn primary wide" data-buy="${esc(sym)}">${t("d.buy", { c: esc(tk.base) })}</button>`}`;
   }
   function tradeHTML(sym, r, tr) {
-    const tk = S.ticks[sym], plan = r.plan, amt = tr.amt, lev = tr.lev, n = amt * lev;
+    const tk = S.ticks[sym], plan = r.plan, amt = tr.amt, lev = tr.lev, auto = tr.auto !== false, n = amt * lev;
     const fee = n * FEE * 2, gain1 = n * plan.t1Pct, gain2 = n * (plan.t1Pct + plan.t2Pct) / 2, loss = n * plan.stopPct;
+    const liq = liqPrice(tk.price, lev);
+    // Capped loss at liquidation: remaining equity floor ~10% of margin, minus open+close fees, never worse than -margin.
+    const liqMove = n * (1 - liq / tk.price);
+    const liqLoss = Math.min(amt, Math.max(0, liqMove + fee));
     const err = amt < 10 ? t("t.low") : amt + n * FEE > P.cash ? t("t.nocash") : "";
     return `<form class="trade" data-trade="${esc(sym)}" novalidate>
       <label class="label" for="tAmt">${t("t.amount")} <span class="muted">· ${t("t.cash", { v: fmtUsd(P.cash) })}</span></label>
       <div class="amt"><span>$</span><input id="tAmt" type="number" inputmode="decimal" min="10" step="any" value="${amt}"></div>
       <div class="seg chips">${[0.1, 0.25, 0.5, 1].map((f) => `<button type="button" data-frac="${f}">${f === 1 ? "Max" : f * 100 + "%"}</button>`).join("")}</div>
       <p class="label">${t("t.lev")}</p>
-      <div class="seg">${[1, 2, 3].map((L) => `<button type="button" data-lev="${L}" class="${L === lev ? "on" : ""}">${L}x</button>`).join("")}</div>
+      <div class="seg">${LEVS.map((L) => `<button type="button" data-lev="${L}" class="${L === lev ? "on" : ""}">${L}x</button>`).join("")}</div>
       ${lev > 1 ? `<p class="muted small-note">${t("t.levNote")}</p>` : ""}
+      <label class="check"><input type="checkbox" data-auto ${auto ? "checked" : ""}> ${t("t.auto")}</label>
+      <p class="muted small-note">${auto ? t("t.autoOn") : t("t.autoOff")}</p>
       <dl class="preview">
         <div><dt>${t("t.cost")}</dt><dd>${fmtUsd(amt)}</dd></div>
-        <div class="up"><dt>${t("t.ifT1")}</dt><dd>${fmtUsdS(gain1 / 2 - fee / 2)}</dd></div>
+        ${auto ? `<div class="up"><dt>${t("t.ifT1")}</dt><dd>${fmtUsdS(gain1 / 2 - fee / 2)}</dd></div>
         <div class="up"><dt>${t("t.ifT2")}</dt><dd>${fmtUsdS(gain2 - fee)}</dd></div>
-        <div class="down"><dt>${t("t.ifStop")}</dt><dd>${fmtUsdS(-loss - fee)}</dd></div>
+        <div class="down"><dt>${t("t.ifStop")}</dt><dd>${fmtUsdS(-loss - fee)}</dd></div>` : ""}
+        ${lev >= 2 ? `<div class="down"><dt>${t("t.ifLiq")}</dt><dd>${fmtUsdS(-liqLoss)} · ${fmtPrice(liq)}</dd></div>` : ""}
       </dl>
       ${err ? `<p class="err">${err}</p>` : ""}
       <div class="trade-go"><button type="button" class="btn ghost" data-cancel>${t("t.cancel")}</button>
@@ -473,13 +515,24 @@
       <div class="stat"><span>${t("p.cash")}</span><b>${fmtUsd(P.cash)}</b>${P.history.length ? `<small>${t("p.winrate", { v: Math.round(wins / P.history.length * 100) + "%", n: P.history.length })}</small>` : ""}</div>`;
     $("#pfOpen").innerHTML = P.positions.length ? `<ul class="cards">${P.positions.map((x) => {
       const p = priceOf(x.sym), cur = isFinite(p) ? p : x.entry, v = posValue(x, cur), up = v - x.frac * x.margin + x.realized;
-      const span = x.t2 - x.stop, pos = Math.max(0, Math.min(1, (cur - x.stop) / span)), en = (x.entry - x.stop) / span, t1 = (x.t1 - x.stop) / span;
+      const auto = x.auto !== false;
+      const floor = x.liq > 0 ? x.liq : liqPrice(x.entry, x.lev);
+      const span = auto ? (x.t2 - x.stop) : (x.entry - floor) || 1;
+      const pos = auto ? Math.max(0, Math.min(1, (cur - x.stop) / span)) : Math.max(0, Math.min(1, (cur - floor) / ((x.entry - floor) || 1)));
+      const en = auto ? (x.entry - x.stop) / span : 1;
+      const t1 = auto ? (x.t1 - x.stop) / span : 1;
+      const meta = auto
+        ? `${t("p.held", { v: fmtDur(Date.now() - x.openedAt) })} · ${t("p.autoExit", { t: fmtTime(x.until) })}${x.half ? " · " + t("x.t1") : ""}`
+        : `${t("p.held", { v: fmtDur(Date.now() - x.openedAt) })} · ${t("p.manualHold")}${x.lev >= 2 ? " · " + t("p.liqAt", { v: fmtPrice(floor) }) : ""}`;
+      const trackL = auto
+        ? `<div class="track-l"><span class="down">${fmtPrice(x.stop)}</span><span>${fmtPrice(cur)}</span><span class="up">${fmtPrice(x.t2)}</span></div>`
+        : `<div class="track-l"><span class="down">${fmtPrice(floor)}</span><span>${fmtPrice(cur)}</span><span>${fmtPrice(x.entry)}</span></div>`;
       return `<li class="pos">
         <div class="pos-top">${badge(x.base, 40)}<div><b>${esc(x.base)}</b> <span class="muted">${x.lev > 1 ? x.lev + "x · " : ""}${fmtUsd(x.margin)}</span>
-          <p class="muted small">${t("p.held", { v: fmtDur(Date.now() - x.openedAt) })} · ${t("p.autoExit", { t: fmtTime(x.until) })}${x.half ? " · " + t("x.t1") : ""}</p></div>
+          <p class="muted small">${meta}</p></div>
           <div class="pos-pnl"><b class="${sign(up)}">${fmtUsdS(up)}</b><span class="${sign(cur - x.entry)}">${fmtPct(cur / x.entry - 1)}</span></div></div>
-        <div class="track" aria-hidden="true"><i class="t-en" style="left:${(en * 100).toFixed(1)}%"></i><i class="t-t1" style="left:${(t1 * 100).toFixed(1)}%"></i><em style="left:${(pos * 100).toFixed(1)}%"></em></div>
-        <div class="track-l"><span class="down">${fmtPrice(x.stop)}</span><span>${fmtPrice(cur)}</span><span class="up">${fmtPrice(x.t2)}</span></div>
+        <div class="track" aria-hidden="true"><i class="t-en" style="left:${(en * 100).toFixed(1)}%"></i>${auto ? `<i class="t-t1" style="left:${(t1 * 100).toFixed(1)}%"></i>` : ""}<em style="left:${(pos * 100).toFixed(1)}%"></em></div>
+        ${trackL}
         <button type="button" class="btn ghost sm" data-sell="${esc(x.id)}">${t("p.close")}</button></li>`;
     }).join("")}</ul>` : `<div class="empty-box">${mascotImg()}<p>${t("p.empty")} <a href="#radar">${t("nav.radar")}</a></p></div>`;
     $("#pfHist").innerHTML = P.history.length ? `<ul class="hist">${P.history.slice(0, 40).map((h) => `<li>${badge(h.base, 30)}
@@ -629,13 +682,13 @@
     const g = (sel) => e.target.closest(sel);
     let n;
     if ((n = g("[data-sym]"))) return select(n.dataset.sym);
-    if ((n = g("[data-buy]"))) { const amt = Math.max(10, Math.floor(P.cash * 0.1 / 10) * 10); S.trade = { sym: n.dataset.buy, amt, lev: 1 }; return renderDetail(true); }
+    if ((n = g("[data-buy]"))) { const amt = Math.max(10, Math.floor(P.cash * 0.1 / 10) * 10); S.trade = { sym: n.dataset.buy, amt, lev: 1, auto: true }; return renderDetail(true); }
     if ((n = g("[data-cancel]"))) { S.trade = null; return renderDetail(true); }
     if ((n = g("[data-frac]")) && S.trade) { S.trade.amt = Math.max(0, Math.floor(P.cash * +n.dataset.frac / (1 + FEE * S.trade.lev))); return renderDetail(true); }
     if ((n = g("[data-lev]")) && S.trade) { S.trade.lev = Math.min(MAX_LEV, +n.dataset.lev); return renderDetail(true); }
     if ((n = g("[data-sell]"))) { const x = P.positions.find((y) => y.id === n.dataset.sell); if (x) { closePart(x, x.frac, priceOf(x.sym), "manual"); savePf(); renderPortfolio(); } return; }
     if ((n = g("[data-ai-start]"))) { S.aiStart = +n.dataset.aiStart; return renderAllin(); }
-    if ((n = g("[data-ai-go]"))) { const sym = n.dataset.aiGo; select(sym); S.trade = { sym, amt: Math.max(10, Math.floor(P.cash / (1 + FEE))), lev: 1 }; return renderDetail(true); }
+    if ((n = g("[data-ai-go]"))) { const sym = n.dataset.aiGo; select(sym); S.trade = { sym, amt: Math.max(10, Math.floor(P.cash / (1 + FEE))), lev: 1, auto: true }; return renderDetail(true); }
     if ((n = g("[data-f]"))) { S.filter = n.dataset.f; return renderLists(); }
     if ((n = g("[data-sort]"))) { S.sort = n.dataset.sort; return renderLists(); }
     if ((n = g("[data-cap]"))) { S.cap = +n.dataset.cap; return renderPortfolio(); }
@@ -653,7 +706,7 @@
     const f = e.target.closest("[data-trade]"); if (!f) return;
     e.preventDefault();
     const sym = f.dataset.trade, base = S.ticks[sym].base;
-    if (S.trade && S.trade.amt >= 10 && openTrade(sym, S.trade.amt, S.trade.lev)) {
+    if (S.trade && S.trade.amt >= 10 && openTrade(sym, S.trade.amt, S.trade.lev, S.trade.auto !== false)) {
       S.trade = null; toast(t("t.done", { c: base })); renderDetail(true); renderPortfolio();
       if (!isDesk()) $("#detailSheet").close();
     }
@@ -666,6 +719,11 @@
   });
   // close sheets by tapping the backdrop
   $$("dialog").forEach((d) => d.addEventListener("click", (e) => { if (e.target === d) d.close(); }));
+  document.addEventListener("change", (e) => {
+    if (e.target && e.target.matches && e.target.matches("[data-auto]") && S.trade) {
+      S.trade.auto = !!e.target.checked; renderDetail(true);
+    }
+  });
   $("#detailSheet").addEventListener("close", () => { S.trade = null; });
   window.addEventListener("hashchange", route);
   matchMedia("(min-width: 1080px)").addEventListener("change", () => { if ($("#detailSheet").open) $("#detailSheet").close(); renderDetail(true); });

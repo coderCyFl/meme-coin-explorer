@@ -389,3 +389,6 @@ dialog.small .err { padding: 10px 12px; border-radius: 10px; background: var(--d
 .ai-now-h { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
 .ai-now-h p { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
 .ai-now .btn.wide { margin-top: 0; }
+
+.trade .check { display: flex; align-items: center; gap: 8px; margin: 10px 0 4px; font-size: 14px; font-weight: 600; }
+.trade .check input { width: 18px; height: 18px; accent-color: var(--accent); }

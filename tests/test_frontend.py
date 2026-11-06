@@ -5,6 +5,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 APP = (ROOT / "js/app.js").read_text(encoding="utf-8")
+I18N = (ROOT / "js/i18n.js").read_text(encoding="utf-8")
+AGENTS = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
 
 
 class FrontendTests(unittest.TestCase):
@@ -26,6 +28,68 @@ class FrontendTests(unittest.TestCase):
         assert 'r.stage === "early" || r.stage === "build"' not in APP
         assert 'data-buy="${esc(sym)}"' in APP
         assert 'data-buy="${esc(sym)}" ${canBuy' not in APP
+        assert "never hide or disable Buy" in AGENTS
+
+
+    def test_leverage_options_to_50x(self):
+        assert "MAX_LEV = 50" in APP
+        assert "const LEVS = [1, 2, 3, 5, 10, 20, 50]" in APP
+        assert "[1, 2, 3].map" not in APP
+        assert "Max 3x" not in I18N
+        assert "1x–50x" in AGENTS
+
+
+    def test_soft_notes_copy(self):
+        assert "This one has already moved a lot. Buying after a pump is riskier. You can still buy." in I18N
+        assert "呢隻已經升咗好多。追升風險較高，你仍然可以買。" in I18N
+        assert "No early signal on this coin right now. You can still buy it." in I18N
+        assert "呢隻幣而家冇早期訊號，你仍然可以買。" in I18N
+
+
+    def test_auto_tpsl_and_manual_hold_wiring(self):
+        assert "data-auto" in APP
+        assert "t.auto" in I18N
+        assert "x.auto === false" in APP
+        assert "Sell yourself from Portfolio" in I18N
+        assert "喺持倉自己平倉" in I18N
+        assert "p.manualHold" in I18N
+        assert "migratePos" in APP
+
+
+    def test_liquidation_formula_and_caps(self):
+        assert "liqPrice = (entry, lev) => entry * (1 - 0.9 / Math.max(1, lev))" in APP
+        assert 'how === "liq"' in APP
+        assert "P.cash < 0" in APP
+        node = shutil.which("node")
+        if not node:
+            return
+        js = """
+          const liqPrice = (entry, lev) => entry * (1 - 0.9 / Math.max(1, lev));
+          const FEE = 0.001;
+          function sim(entry, lev, margin, price) {
+            const qty = (margin * lev) / entry;
+            const floor = liqPrice(entry, lev);
+            const exit = Math.max(price, floor);
+            let part = margin + qty * (exit - entry);
+            let fee = qty * exit * FEE;
+            let proceeds = part - fee;
+            if (proceeds < 0) proceeds = 0;
+            proceeds = Math.max(0, Math.min(margin, proceeds));
+            const loss = margin - proceeds;
+            return { floor, exit, proceeds, loss, okLoss: loss <= margin + 1e-9, okCash: proceeds >= 0 };
+          }
+          const a = sim(100, 10, 100, 50);
+          const b = sim(100, 50, 100, 98);
+          const c = sim(100, 2, 100, liqPrice(100, 2));
+          console.log(JSON.stringify({ a, b, c, floor10: liqPrice(100, 10), floor50: liqPrice(100, 50) }));
+        """
+        out = json.loads(subprocess.check_output([node, "-e", js], text=True).strip())
+        self.assertAlmostEqual(out["floor10"], 91.0, places=6)
+        self.assertAlmostEqual(out["floor50"], 100 * (1 - 0.9 / 50), places=6)
+        self.assertTrue(out["a"]["okLoss"] and out["a"]["okCash"])
+        self.assertTrue(out["b"]["okLoss"] and out["b"]["okCash"])
+        self.assertTrue(out["c"]["okLoss"] and out["c"]["okCash"])
+        self.assertEqual(out["a"]["exit"], out["a"]["floor"])
 
 
     def test_strategy_runs(self):

@@ -27,10 +27,10 @@ before Cyrus does. Before every review, read `AGENTS.md` in the repo (product ru
 - [ ] After reload you are still logged in and see your own trades
 
 **Trading (paper)**
-- [ ] Tap a coin → detail opens (sheet on phone, side panel on desktop) → Buy → amount chips 10/25/50/Max and leverage 1x/2x/3x work
+- [ ] Tap a coin → detail opens (sheet on phone, side panel on desktop) → Buy → amount chips 10/25/50/Max and leverage 1x/2x/3x/5x/10x/20x/50x work; auto TP/SL checkbox defaults on; off skips stop/targets/time (liq + Sell now only); 2x+ shows "If it gets liquidated" preview
 - [ ] Odd amounts like 1248 or 333.5 can be bought (no silent block)
 - [ ] The trade preview shows target 1, target 2 and stop-loss results in $
-- [ ] "Already pumped" coins have the Buy button disabled
+- [ ] "Already pumped" / quiet coins still show Buy (never disabled by score/stage/risk); soft notes only
 - [ ] Portfolio shows the trade; "Sell now" closes it and it appears in Closed trades
 - [ ] Prices update live without the screen jumping or taps being lost (try tapping during updates)
 
