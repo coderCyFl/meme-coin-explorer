@@ -437,15 +437,42 @@
         <span class="r-why"><span class="muted">${esc(tk.name)}</span></span></span>
       <span class="r-px"><b>${fmtPrice(tk.price)}</b><span class="${sign(ch24)}">${fmtPct(ch24)} <i>24h</i></span><span class="g-voln">${fmtVol(tk.qv24)}</span></span>`;
   }
+  // Keep keyed buttons alive across rank swaps; never move a row under an active hand.
+  let gInteractionUntil = 0, gPointerDown = false;
+  document.addEventListener("pointerdown", (e) => {
+    if (e.target.closest("#gainerList")) gPointerDown = true;
+  });
+  document.addEventListener("pointerup", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
+  document.addEventListener("pointercancel", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
+  window.addEventListener("scroll", () => { gInteractionUntil = Date.now() + 500; scheduleGainers(); }, { passive: true });
   function paintGainerList(el, syms, emptyHTML) {
-    const key = S.gMode + "|" + (S.gHideLow ? "1" : "0") + "|" + syms.join(",");
-    if (!syms.length) { el.dataset.key = ""; el.innerHTML = emptyHTML; return; }
-    if (el.dataset.key !== key) { el.dataset.key = key; el.innerHTML = syms.map(gRow).join(""); return; }
-    for (const b of el.querySelectorAll("button.row")) {
-      const html = gRowInner(b.dataset.sym);
-      if (b._h !== html) { b.innerHTML = html; b._h = html; }
-      b.classList.toggle("sel", S.selected === b.dataset.sym);
+    const active = document.activeElement;
+    if (gPointerDown || Date.now() < gInteractionUntil || (active && el.contains(active))) {
+      scheduleGainers(); return;
     }
+    if (!syms.length) {
+      if (el.dataset.key !== "empty") { el.replaceChildren(); el.insertAdjacentHTML("beforeend", emptyHTML); el.dataset.key = "empty"; }
+      return;
+    }
+    const existing = new Map([...el.querySelectorAll("button.row")].map((button) => [button.dataset.sym, button.parentElement]));
+    const wanted = new Set(syms);
+    for (const child of [...el.children]) {
+      const button = child.querySelector("button.row");
+      if (!button || !wanted.has(button.dataset.sym)) child.remove();
+    }
+    syms.forEach((sym, index) => {
+      let li = existing.get(sym);
+      if (!li) {
+        li = document.createElement("li");
+        li.innerHTML = gRow(sym).replace(/^<li>|<\/li>$/g, "");
+      }
+      const button = li.querySelector("button.row");
+      const html = gRowInner(sym);
+      if (button._h !== html) { button.innerHTML = html; button._h = html; }
+      button.classList.toggle("sel", S.selected === sym);
+      if (el.children[index] !== li) el.insertBefore(li, el.children[index] || null);
+    });
+    el.dataset.key = syms.join(",");
   }
   function renderGainers() {
     const el = $("#gainerList"); if (!el) return;
