@@ -224,5 +224,30 @@ class FrontendTests(unittest.TestCase):
         assert "Outside score universe" in APP or "no fake" in APP.lower()
         assert 'kind === "gainers"' in (ROOT / "js/coin3d.js").read_text(encoding="utf-8")
 
+
+
+    def test_t4_live_status_rescan_and_soft_flash(self):
+        """T4: 2-min rescan, status shows last-scan age EN+ZH, soft flash on list moves."""
+        assert "RESCAN_MS = 2 * 60 * 1000" in APP
+        assert "RESCAN_MS = 5 * 60 * 1000" not in APP
+        assert "status.liveAge" in I18N and "Live · {a}" in I18N
+        assert "status.demoAge" in I18N
+        assert "status.ageSec" in I18N and "status.ageMin" in I18N and "status.ageHr" in I18N
+        assert "即時 · {a}" in I18N and "示範 · {a}" in I18N
+        assert "{n} 分鐘前" in I18N and "{n}m ago" in I18N
+        assert "every 2 minutes" in I18N
+        assert "每 2 分鐘會再掃一次" in I18N
+        assert "every 5 minutes" not in I18N
+        assert "function fmtAge(" in APP
+        assert "function softFlash(" in APP
+        assert "flashIfMoved" in APP
+        assert "paintStatus(); }, 15000)" in APP
+        assert 'classList.add("soft-flash")' in APP
+        css = (ROOT / "css/app.css").read_text(encoding="utf-8")
+        assert "@keyframes soft-flash" in css
+        assert ".soft-flash" in css
+        # Gainers identity guard must still be present
+        assert "gPointerDown" in APP and "gInteractionUntil" in APP
+
 if __name__ == "__main__":
     unittest.main()
