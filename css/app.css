@@ -110,6 +110,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .bt-line:empty { display: none; }
 .bt-line a { font-weight: 600; text-decoration: none; }
 
+/* ---------- closest-to-early ---------- */
+.closest { margin: 0 0 14px; }
+.closest-title { margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--ink-3); text-transform: none; }
+
 /* ---------- filters + lists ---------- */
 .filters, .seg { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
 .filters { margin: 0 0 12px; }
