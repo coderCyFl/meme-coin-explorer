@@ -1,37 +1,37 @@
 {
- "updated_at": "2026-11-06T23:21:44+08:00",
- "batches": 97,
- "flags": 274,
+ "updated_at": "2026-11-07T02:28:59+08:00",
+ "batches": 98,
+ "flags": 276,
  "horizons": {
   "4h": {
-   "n": 262,
-   "hit20": 8,
+   "n": 264,
+   "hit20": 9,
    "hit50": 1,
-   "avg_max_gain_pct": 4.42,
-   "avg_close_pct": -1.16,
-   "avg_max_drawdown_pct": -4.82,
-   "closed_up": 86
+   "avg_max_gain_pct": 4.51,
+   "avg_close_pct": -1.1,
+   "avg_max_drawdown_pct": -4.8,
+   "closed_up": 88
   },
   "24h": {
-   "n": 238,
+   "n": 240,
    "hit20": 26,
    "hit50": 2,
    "avg_max_gain_pct": 7.98,
-   "avg_close_pct": -3.58,
-   "avg_max_drawdown_pct": -9.39,
-   "closed_up": 74
+   "avg_close_pct": -3.53,
+   "avg_max_drawdown_pct": -9.34,
+   "closed_up": 75
   }
  },
  "tiers": {
   "pump": {
    "4h": {
-    "n": 106,
-    "hit20": 5,
+    "n": 108,
+    "hit20": 6,
     "hit50": 1,
-    "avg_max_gain_pct": 5.83,
-    "avg_close_pct": -1.15,
-    "avg_max_drawdown_pct": -6.15,
-    "closed_up": 33
+    "avg_max_gain_pct": 6.03,
+    "avg_close_pct": -1.0,
+    "avg_max_drawdown_pct": -6.07,
+    "closed_up": 35
    },
    "24h": {
     "n": 101,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -11.53,
     "closed_up": 25
    },
-   "flags": 108
+   "flags": 110
   },
   "early2": {
    "4h": {
@@ -55,13 +55,13 @@
     "closed_up": 52
    },
    "24h": {
-    "n": 132,
+    "n": 134,
     "hit20": 9,
     "hit50": 0,
-    "avg_max_gain_pct": 6.93,
-    "avg_close_pct": -2.5,
-    "avg_max_drawdown_pct": -7.78,
-    "closed_up": 47
+    "avg_max_gain_pct": 6.95,
+    "avg_close_pct": -2.42,
+    "avg_max_drawdown_pct": -7.71,
+    "closed_up": 48
    },
    "flags": 161
   },
@@ -88,11 +88,11 @@
   },
   "cand": {
    "4h": {
-    "n": 305,
+    "n": 306,
     "hit20": 0,
     "hit50": 0,
-    "avg_max_gain_pct": 3.02,
-    "avg_close_pct": -0.87,
+    "avg_max_gain_pct": 3.01,
+    "avg_close_pct": -0.88,
     "avg_max_drawdown_pct": -3.22,
     "closed_up": 106
    },
@@ -105,13 +105,24 @@
     "avg_max_drawdown_pct": -7.26,
     "closed_up": 96
    },
-   "flags": 310
+   "flags": 316
   }
  },
  "latest_4h": {
   "batch": "gb-20261106-1934",
   "picked_at": "2026-11-06T19:34:55+08:00",
   "entries": [
+   {
+    "symbol": "ONE",
+    "tier": "pump",
+    "entry_price_usd": 0.001372,
+    "change_24h_at_pick": 21.96,
+    "max_gain_pct": 20.04,
+    "close_pct": 12.24,
+    "max_drawdown_pct": -2.26,
+    "hit20": true,
+    "hit50": false
+   },
    {
     "symbol": "THE",
     "tier": "pump",
@@ -120,6 +131,28 @@
     "max_gain_pct": 4.74,
     "close_pct": -4.49,
     "max_drawdown_pct": -5.74,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "CYBER",
+    "tier": "pump",
+    "entry_price_usd": 0.362,
+    "change_24h_at_pick": 43.08,
+    "max_gain_pct": 13.26,
+    "close_pct": 1.1,
+    "max_drawdown_pct": -1.1,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "ERA",
+    "tier": "cand",
+    "entry_price_usd": 0.0729,
+    "change_24h_at_pick": 8.46,
+    "max_gain_pct": 1.65,
+    "close_pct": -1.92,
+    "max_drawdown_pct": -2.88,
     "hit20": false,
     "hit50": false
    }
@@ -286,152 +319,6 @@
   }
  },
  "scorecards": [
-  {
-   "date": "2026-10-30",
-   "flagged": 49,
-   "early_flagged": 41,
-   "late_flagged": 8,
-   "early_hits": 7,
-   "late_hits": 2,
-   "precision_pct": 17.1,
-   "late_precision_pct": 25.0,
-   "recall_top20_pct": 35.0,
-   "recall_top10_pct": 40.0,
-   "buyable_flagged": 14,
-   "x_split": {
-    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
-    "hot": {
-     "flags": 2,
-     "sealed": 2,
-     "pending": 0,
-     "mean_4h_close_pct": 2.7,
-     "hit20_pct": 0.0
-    },
-    "cold": {
-     "flags": 5,
-     "sealed": 5,
-     "pending": 0,
-     "mean_4h_close_pct": 8.06,
-     "hit20_pct": 20.0
-    },
-    "unchecked": {
-     "flags": 10,
-     "sealed": 7,
-     "pending": 3,
-     "mean_4h_close_pct": 4.1,
-     "hit20_pct": 14.3
-    }
-   },
-   "by_tier": {
-    "pump": {
-     "flagged": 12,
-     "early_flagged": 11,
-     "early_hits": 4,
-     "precision_pct": 36.4,
-     "hits": [
-      "PARTI",
-      "RUNE",
-      "BEAMX",
-      "BLUR"
-     ]
-    },
-    "early2": {
-     "flagged": 37,
-     "early_flagged": 30,
-     "early_hits": 3,
-     "precision_pct": 10.0,
-     "hits": [
-      "BCH",
-      "PUNDIX",
-      "NIL"
-     ]
-    },
-    "early": {
-     "flagged": 0,
-     "early_flagged": 0,
-     "early_hits": 0,
-     "precision_pct": null,
-     "hits": []
-    },
-    "main": {
-     "flagged": 2,
-     "early_flagged": 2,
-     "early_hits": 0,
-     "precision_pct": 0.0,
-     "hits": []
-    }
-   },
-   "hits": [
-    {
-     "symbol": "PARTI",
-     "flag_time": "2026-10-30T00:15:00+08:00",
-     "final_rank": 1,
-     "lead_h": 1.8
-    },
-    {
-     "symbol": "BCH",
-     "flag_time": "2026-10-30T05:45:00+08:00",
-     "final_rank": 15,
-     "lead_h": 17.2
-    },
-    {
-     "symbol": "RUNE",
-     "flag_time": "2026-10-30T05:45:00+08:00",
-     "final_rank": 12,
-     "lead_h": 7.2
-    },
-    {
-     "symbol": "BEAMX",
-     "flag_time": "2026-10-30T12:15:00+08:00",
-     "final_rank": 2,
-     "lead_h": 8.8
-    },
-    {
-     "symbol": "BLUR",
-     "flag_time": "2026-10-30T18:15:00+08:00",
-     "final_rank": 10,
-     "lead_h": -0.2
-    },
-    {
-     "symbol": "PUNDIX",
-     "flag_time": "2026-10-30T18:45:00+08:00",
-     "final_rank": 11,
-     "lead_h": 0.2
-    },
-    {
-     "symbol": "NIL",
-     "flag_time": "2026-10-30T22:00:00+08:00",
-     "final_rank": 6,
-     "lead_h": 0.0
-    }
-   ],
-   "late": [
-    {
-     "symbol": "TRX",
-     "flag_time": "2026-10-30T05:45:00+08:00",
-     "rank_24h_at_flag": 4,
-     "final_rank": 17
-    },
-    {
-     "symbol": "SOPH",
-     "flag_time": "2026-10-30T22:30:00+08:00",
-     "rank_24h_at_flag": 3,
-     "final_rank": 3
-    }
-   ],
-   "missed": [
-    "SOLV",
-    "KERNEL",
-    "BREV",
-    "DIA",
-    "AVA",
-    "KNC",
-    "POL",
-    "SKY",
-    "ALICE",
-    "HUMA"
-   ]
-  },
   {
    "date": "2026-10-31",
    "flagged": 32,
@@ -1152,15 +1039,131 @@
     "BCH",
     "PROM"
    ]
+  },
+  {
+   "date": "2026-11-06",
+   "flagged": 28,
+   "early_flagged": 22,
+   "late_flagged": 6,
+   "early_hits": 2,
+   "late_hits": 3,
+   "precision_pct": 9.1,
+   "late_precision_pct": 50.0,
+   "recall_top20_pct": 10.0,
+   "recall_top10_pct": 10.0,
+   "buyable_flagged": 7,
+   "x_split": {
+    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+    "hot": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "cold": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "unchecked": {
+     "flags": 8,
+     "sealed": 8,
+     "pending": 0,
+     "mean_4h_close_pct": 0.54,
+     "hit20_pct": 12.5
+    }
+   },
+   "by_tier": {
+    "pump": {
+     "flagged": 5,
+     "early_flagged": 1,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    },
+    "early2": {
+     "flagged": 25,
+     "early_flagged": 21,
+     "early_hits": 2,
+     "precision_pct": 9.5,
+     "hits": [
+      "ARB",
+      "ETHFI"
+     ]
+    },
+    "early": {
+     "flagged": 0,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "main": {
+     "flagged": 2,
+     "early_flagged": 2,
+     "early_hits": 0,
+     "precision_pct": 0.0,
+     "hits": []
+    }
+   },
+   "hits": [
+    {
+     "symbol": "ARB",
+     "flag_time": "2026-11-06T02:15:00+08:00",
+     "final_rank": 10,
+     "lead_h": 19.8
+    },
+    {
+     "symbol": "ETHFI",
+     "flag_time": "2026-11-06T10:45:00+08:00",
+     "final_rank": 14,
+     "lead_h": 11.2
+    }
+   ],
+   "late": [
+    {
+     "symbol": "ERA",
+     "flag_time": "2026-11-06T02:15:00+08:00",
+     "rank_24h_at_flag": 1,
+     "final_rank": 18
+    },
+    {
+     "symbol": "CYBER",
+     "flag_time": "2026-11-06T07:00:00+08:00",
+     "rank_24h_at_flag": null,
+     "final_rank": 1
+    },
+    {
+     "symbol": "ONE",
+     "flag_time": "2026-11-06T19:30:00+08:00",
+     "rank_24h_at_flag": 2,
+     "final_rank": 2
+    }
+   ],
+   "missed": [
+    "ZIL",
+    "MOVR",
+    "PARTI",
+    "W",
+    "ACE",
+    "MAGIC",
+    "WAL",
+    "USUAL",
+    "RVN",
+    "PORTAL"
+   ]
   }
  ],
  "scorecard_7d": {
   "days": 7,
-  "early_flagged": 156,
-  "flagged": 191,
-  "early_hits": 24,
-  "late_hits": 17,
-  "precision_pct": 15.4,
-  "recall_top20_pct": 17.1
+  "early_flagged": 137,
+  "flagged": 170,
+  "early_hits": 19,
+  "late_hits": 18,
+  "precision_pct": 13.9,
+  "recall_top20_pct": 13.6
  }
 }
