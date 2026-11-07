@@ -370,7 +370,7 @@ dialog.small .err { padding: 10px 12px; border-radius: 10px; background: var(--d
 .dbar .goal { position: absolute; top: -4px; bottom: -4px; border-left: 2px dashed var(--accent); }
 
 /* ---------- All-in page ---------- */
-.bottom { grid-template-columns: repeat(5, 1fr); }
+.bottom { grid-template-columns: repeat(6, 1fr); }
 .bottom a span { white-space: nowrap; font-size: 11px; }
 #aiStart { margin-bottom: 14px; }
 .ai-hero { display: grid; gap: 10px; }
@@ -407,3 +407,16 @@ dialog.small .err { padding: 10px 12px; border-radius: 10px; background: var(--d
 .g-vol input { accent-color: var(--accent); }
 .row.g-row .g-voln { font-size: 11.5px; color: var(--ink-3); }
 .row.g-row .chip.score { font-size: 11px; padding: 2px 7px; border-radius: 99px; background: rgba(240,185,11,.12); color: var(--accent); font-weight: 700; }
+
+/* AI Watch */
+.chip.mock-paper { margin-top: 8px; display: inline-flex; background: rgba(240,185,11,.12); color: var(--accent); font-weight: 600; }
+.aw-row { display: grid; gap: 6px; text-align: left; width: 100%; padding: 12px 14px; }
+.aw-row .r-top { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.aw-row .aw-verdict { font-weight: 700; padding: 2px 8px; border-radius: 99px; font-size: 12px; }
+.aw-row .aw-verdict.hot { background: rgba(14,203,129,.18); color: var(--up); }
+.aw-row .aw-verdict.warm { background: rgba(240,185,11,.16); color: var(--accent); }
+.aw-row .aw-verdict.cold { background: var(--surface-2); color: var(--ink-3); }
+.aw-row .aw-line { font-size: 13.5px; color: var(--ink-2); }
+.aw-row .aw-grok { font-size: 12.5px; color: var(--ink-3); }
+.aw-row .chip.shill { background: rgba(246,70,93,.16); color: var(--down); }
+#awCap.cap-hit { color: var(--down); }

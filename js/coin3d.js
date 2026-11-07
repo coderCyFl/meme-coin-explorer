@@ -542,6 +542,10 @@
       const top = new THREE.Mesh(_bodyGeo, gold); top.scale.setScalar(0.8); top.position.set(0.15, 0.55, 0.1); top.rotation.set(Math.PI / 2 - 0.35, 0, 0.25); g.add(top);
       const up = new THREE.Mesh(new THREE.ConeGeometry(0.22, 0.42, 20), green); up.position.set(-0.85, 0.45, 0.3); g.add(up);
       add(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 12), green, -0.85, 0.05, 0.3);
+    } else if (kind === "aiwatch") {
+      add(new THREE.TorusGeometry(0.95, 0.12, 16, 48), gold, 0, 0, 0);
+      add(new THREE.SphereGeometry(0.38, 24, 24), green, 0, 0, 0.05);
+      add(new THREE.SphereGeometry(0.16, 16, 16), dark, 0, 0, 0.42);
     } else if (kind === "gainers") {
       add(new THREE.BoxGeometry(2.2, 0.14, 1.0), dark, 0, -0.85, 0);
       [[-0.7, 0.55], [-0.05, 1.05], [0.65, 1.55]].forEach(([x, h], i) => {

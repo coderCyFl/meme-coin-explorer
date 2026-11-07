@@ -199,16 +199,17 @@ class FrontendTests(unittest.TestCase):
         assert 'data-page="gainers"' in HTML
         assert 'data-nav="gainers"' in HTML
         assert 'data-icon="gainers"' in HTML
-        # side order: radar → gainers → allin → markets → portfolio → record
+        # side order: radar → gainers → aiwatch → allin → markets → portfolio → record
         side = HTML.split('class="side-nav"', 1)[1].split("</nav>", 1)[0]
         order = []
         for part in side.split('data-nav="')[1:]:
             order.append(part.split('"', 1)[0])
-        self.assertEqual(order, ["radar", "gainers", "allin", "markets", "portfolio", "record"])
-        # phone bottom: no Markets
+        self.assertEqual(order, ["radar", "gainers", "aiwatch", "allin", "markets", "portfolio", "record"])
+        # phone bottom: no Markets; AI Watch present
         bottom = HTML.split('class="bottom"', 1)[1].split("</nav>", 1)[0]
         assert 'data-nav="markets"' not in bottom
         assert 'data-nav="gainers"' in bottom
+        assert 'data-nav="aiwatch"' in bottom
         assert "ticker/24hr?type=MINI" in (ROOT / "js/data.js").read_text(encoding="utf-8")
         assert "tickersAll" in (ROOT / "js/data.js").read_text(encoding="utf-8")
         assert "G_TOP = 20" in APP
@@ -248,6 +249,29 @@ class FrontendTests(unittest.TestCase):
         assert ".soft-flash" in css
         # Gainers identity guard must still be present
         assert "gPointerDown" in APP and "gInteractionUntil" in APP
+
+    def test_ai_watch_face_en_zh(self):
+        """AI Watch C: face from same-origin ai_watch.json, EN+ZH, no client secrets."""
+        assert 'data-page="aiwatch"' in HTML
+        assert 'data-nav="aiwatch"' in HTML
+        assert 'data-icon="aiwatch"' in HTML
+        assert 'id="aiWatchList"' in HTML
+        assert "nav.aiwatch" in I18N and "AI Watch" in I18N and "AI 盯盤" in I18N
+        assert "aw.sub" in I18N and "Same-origin JSON" in I18N
+        assert "aw.mock" in I18N and "Mock · paper" in I18N
+        assert "Mock · 模擬" in I18N
+        assert "aw.cap" in I18N and "HKT" in I18N
+        assert "loadAiWatch" in APP and "renderAiWatch" in APP
+        assert "loadAiWatch();" in APP
+        # boot: called from start() beside loadGainers (not export-only)
+        assert APP.count("loadAiWatch()") >= 3
+        assert 'fetch("data/ai_watch.json"' in APP
+        assert "X_BEARER_TOKEN" not in APP and "XAI_API_KEY" not in APP
+        assert 'kind === "aiwatch"' in (ROOT / "js/coin3d.js").read_text(encoding="utf-8")
+        import subprocess
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+
 
 if __name__ == "__main__":
     unittest.main()
