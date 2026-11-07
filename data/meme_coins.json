@@ -1,0 +1,313 @@
+{
+  "source": "Binance product tags — tag exact \"Meme\" on USDT spot TRADING pairs",
+  "source_url": "https://www.binance.com/bapi/asset/v2/public/asset-service/product/get-products",
+  "fetched_at": "2026-11-07T04:00:03.185Z",
+  "note": "Verified Meme-category list for AI Watch A. User examples alone are not proof of active listing; this file is. PM maintains.",
+  "coins": [
+    {
+      "symbol": "1000CATUSDT",
+      "base": "1000CAT",
+      "name": "1000*Simons Cat",
+      "tags": [
+        "Meme",
+        "Seed",
+        "Launchpool",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "1000CHEEMSUSDT",
+      "base": "1000CHEEMS",
+      "name": "1000*cheems.pet",
+      "tags": [
+        "Meme",
+        "Seed",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "1000SATSUSDT",
+      "base": "1000SATS",
+      "name": "1000*SATS (Ordinals)",
+      "tags": [
+        "Seed",
+        "Meme"
+      ]
+    },
+    {
+      "symbol": "1MBABYDOGEUSDT",
+      "base": "1MBABYDOGE",
+      "name": "1M x BABYDOGE",
+      "tags": [
+        "Meme",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "ACTUSDT",
+      "base": "ACT",
+      "name": "Act I : The AI Prophecy",
+      "tags": [
+        "Monitoring",
+        "Solana",
+        "AI",
+        "Seed",
+        "Meme"
+      ]
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "base": "AIXBT",
+      "name": "aixbt by Virtuals",
+      "tags": [
+        "AI",
+        "Seed",
+        "Meme"
+      ]
+    },
+    {
+      "symbol": "BANANAS31USDT",
+      "base": "BANANAS31",
+      "name": "Banana For Scale",
+      "tags": [
+        "Seed",
+        "Meme",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "base": "BOME",
+      "name": "BOOK OF MEME",
+      "tags": [
+        "Meme",
+        "Seed",
+        "Solana"
+      ]
+    },
+    {
+      "symbol": "BONKUSDT",
+      "base": "BONK",
+      "name": "Bonk",
+      "tags": [
+        "Meme",
+        "Solana"
+      ]
+    },
+    {
+      "symbol": "BROCCOLI714USDT",
+      "base": "BROCCOLI714",
+      "name": "CZ’s Dog",
+      "tags": [
+        "Seed",
+        "Meme",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "base": "DOGE",
+      "name": "Dogecoin",
+      "tags": [
+        "Meme",
+        "mining-zone"
+      ]
+    },
+    {
+      "symbol": "DOGSUSDT",
+      "base": "DOGS",
+      "name": "Dogs",
+      "tags": [
+        "Meme",
+        "Launchpool",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "FLOKIUSDT",
+      "base": "FLOKI",
+      "name": "FLOKI",
+      "tags": [
+        "Meme",
+        "innovation-zone",
+        "Gaming",
+        "Seed",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "GIGGLEUSDT",
+      "base": "GIGGLE",
+      "name": "Giggle Fund",
+      "tags": [
+        "Meme",
+        "Seed",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "MARSCOINUSDT",
+      "base": "MARSCOIN",
+      "name": "MarsCoin",
+      "tags": [
+        "Meme",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "MEMEUSDT",
+      "base": "MEME",
+      "name": "Memecoin",
+      "tags": [
+        "Meme",
+        "Seed",
+        "Launchpool"
+      ]
+    },
+    {
+      "symbol": "MUBARAKUSDT",
+      "base": "MUBARAK",
+      "name": "Mubarak",
+      "tags": [
+        "Seed",
+        "Meme",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "NEIROUSDT",
+      "base": "NEIRO",
+      "name": "First Neiro On Ethereum",
+      "tags": [
+        "Meme",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "base": "ORDI",
+      "name": "ORDI",
+      "tags": [
+        "Meme",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "base": "PENGU",
+      "name": "Pudgy Penguins",
+      "tags": [
+        "NFT",
+        "Solana",
+        "Meme",
+        "Launchpool"
+      ]
+    },
+    {
+      "symbol": "PEOPLEUSDT",
+      "base": "PEOPLE",
+      "name": "ConstitutionDAO",
+      "tags": [
+        "innovation-zone",
+        "Meme",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "base": "PEPE",
+      "name": "Pepe",
+      "tags": [
+        "Meme",
+        "innovation-zone"
+      ]
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "base": "PNUT",
+      "name": "Peanut the Squirrel",
+      "tags": [
+        "Meme",
+        "Solana",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "SHIBUSDT",
+      "base": "SHIB",
+      "name": "SHIBA INU",
+      "tags": [
+        "Meme"
+      ]
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "base": "TRUMP",
+      "name": "OFFICIAL TRUMP",
+      "tags": [
+        "Meme",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "TSTUSDT",
+      "base": "TST",
+      "name": "Test",
+      "tags": [
+        "Meme",
+        "Seed",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "TURBOUSDT",
+      "base": "TURBO",
+      "name": "Turbo",
+      "tags": [
+        "Meme",
+        "AI",
+        "Seed"
+      ]
+    },
+    {
+      "symbol": "TUTUSDT",
+      "base": "TUT",
+      "name": "Tutorial",
+      "tags": [
+        "Seed",
+        "Meme",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "WIFUSDT",
+      "base": "WIF",
+      "name": "Dogwifhat",
+      "tags": [
+        "Monitoring",
+        "Seed",
+        "Solana",
+        "Meme"
+      ]
+    },
+    {
+      "symbol": "币安人生USDT",
+      "base": "币安人生",
+      "name": "币安人生",
+      "tags": [
+        "Meme",
+        "Seed",
+        "BSC"
+      ]
+    },
+    {
+      "symbol": "牛来USDT",
+      "base": "牛来",
+      "name": "牛来",
+      "tags": [
+        "Meme",
+        "Seed"
+      ]
+    }
+  ]
+}
