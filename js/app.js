@@ -917,6 +917,7 @@
     document.body.dataset.view = ok;
     if ($("#detailSheet").open) $("#detailSheet").close();
     window.scrollTo(0, 0);
+    if (ok === "aiwatch" && !S.awAt && !S.awLoading) loadAiWatch();
   }
 
   let toastT = 0;
@@ -986,10 +987,12 @@
     try { const a = await (await fetch("data/bn_assets.json", { cache: "no-store" })).json(); if (a && a.assets) { Coin3D.setAssets(a.assets); Market.setNames(a.assets); } } catch (_) {}
     S.market = await Market.connect(); paintStatus();
     loadGainers();
+    loadAiWatch();
     await scan();
     S.market.stream(onPrices);
     setInterval(() => { if (!document.hidden) scan(); }, RESCAN_MS);
     setInterval(() => { if (!document.hidden) loadGainers(); }, RESCAN_MS);
+    setInterval(() => { if (!document.hidden) loadAiWatch(); }, RESCAN_MS);
     setInterval(() => { if (S.scanAt && !S.scanning && !document.hidden) paintStatus(); }, 15000);
     setInterval(() => { checkExits(); checkLog(); }, 60000);
   })();

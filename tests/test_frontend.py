@@ -262,6 +262,9 @@ class FrontendTests(unittest.TestCase):
         assert "Mock · 模擬" in I18N
         assert "aw.cap" in I18N and "HKT" in I18N
         assert "loadAiWatch" in APP and "renderAiWatch" in APP
+        assert "loadAiWatch();" in APP
+        # boot: called from start() beside loadGainers (not export-only)
+        assert APP.count("loadAiWatch()") >= 3
         assert 'fetch("data/ai_watch.json"' in APP
         assert "X_BEARER_TOKEN" not in APP and "XAI_API_KEY" not in APP
         assert 'kind === "aiwatch"' in (ROOT / "js/coin3d.js").read_text(encoding="utf-8")
