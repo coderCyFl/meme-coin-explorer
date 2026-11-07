@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-11-07T08:53:30+08:00",
- "batch": "gb-20261107-0851",
- "picked_at": "2026-11-07T08:51:58+08:00",
- "btc_24h_pct": -0.58,
- "universe": 50,
+ "updated_at": "2026-11-07T11:03:59+08:00",
+ "batch": "gb-20261107-1102",
+ "picked_at": "2026-11-07T11:02:16+08:00",
+ "btc_24h_pct": -0.21,
+ "universe": 49,
  "active": [
   {
    "symbol": "GTC",
@@ -505,132 +505,6 @@
      "max_gain_pct": 1.01,
      "max_drawdown_pct": -1.75,
      "close_pct": -0.66,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-07T05:00:31+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ZEC",
-   "pair": "ZECUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-06T22:45:00+08:00",
-   "entry_price_usd": 1358.9,
-   "price_at_snapshot": 1366.78,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 3.13,
-   "change_24h_at_pick": 5.57,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261106-2320",
-   "score": 39.2,
-   "change_1h_at_pick": 3.73,
-   "change_4h_at_pick": 5.56,
-   "vol_x_avg": 2.33,
-   "vol_x_prev_hour": 0.9,
-   "range_24h_pct": 10.2,
-   "from_24h_high_pct": -2.1,
-   "quote_volume_24h": 322507334,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 2.0,
-     "max_drawdown_pct": -3.32,
-     "close_pct": -0.67,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-07T05:00:31+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "DASH",
-   "pair": "DASHUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-06T22:45:00+08:00",
-   "entry_price_usd": 48.2,
-   "price_at_snapshot": 48.1,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 2.42,
-   "change_24h_at_pick": 0.71,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261106-2320",
-   "score": 36.3,
-   "change_1h_at_pick": 3.66,
-   "change_4h_at_pick": 5.91,
-   "vol_x_avg": 1.9,
-   "vol_x_prev_hour": 1.24,
-   "range_24h_pct": 13.0,
-   "from_24h_high_pct": -0.97,
-   "quote_volume_24h": 6259293,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.08,
-     "max_drawdown_pct": -1.7,
-     "close_pct": -1.45,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-07T05:00:31+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ONE",
-   "pair": "ONEUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-06T22:30:00+08:00",
-   "entry_price_usd": 0.001567,
-   "price_at_snapshot": 0.001582,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 6.31,
-   "change_24h_at_pick": 39.79,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261107-0225",
-   "score": 81.7,
-   "change_1h_at_pick": 3.36,
-   "change_4h_at_pick": 22.81,
-   "vol_x_avg": 6.85,
-   "vol_x_prev_hour": 2.43,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -0.82,
-   "quote_volume_24h": 13317184,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 5.11,
-     "max_drawdown_pct": -6.19,
-     "close_pct": 0.45,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
