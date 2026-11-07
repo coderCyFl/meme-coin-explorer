@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-08T04:29:13+08:00",
- "batch": "gb-20261108-0415",
- "picked_at": "2026-11-08T04:15:59+08:00",
- "btc_24h_pct": -0.08,
+ "updated_at": "2026-11-08T06:23:04+08:00",
+ "batch": "gb-20261108-0622",
+ "picked_at": "2026-11-08T06:22:04+08:00",
+ "btc_24h_pct": -0.32,
  "universe": 41,
  "active": [
   {
@@ -26,7 +26,17 @@
    "from_24h_high_pct": -8.54,
    "quote_volume_24h": 11319636,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 1.24,
+     "max_drawdown_pct": -1.57,
+     "close_pct": -0.54,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-08T06:21:55+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -58,7 +68,17 @@
    "from_24h_high_pct": -8.46,
    "quote_volume_24h": 2301136,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 1.67,
+     "max_drawdown_pct": -12.78,
+     "close_pct": -12.68,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-08T06:21:55+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -90,7 +110,17 @@
    "from_24h_high_pct": -2.67,
    "quote_volume_24h": 41090666,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 2.07,
+     "max_drawdown_pct": -11.33,
+     "close_pct": -2.07,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-08T06:21:55+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -173,48 +203,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-11-08T02:39:45+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ACT",
-   "pair": "ACTUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-07T16:30:00+08:00",
-   "entry_price_usd": 0.01159,
-   "price_at_snapshot": 0.01136,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 2.29,
-   "change_24h_at_pick": 19.86,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261107-1756",
-   "score": 55.6,
-   "change_1h_at_pick": 5.75,
-   "change_4h_at_pick": 6.92,
-   "vol_x_avg": 3.63,
-   "vol_x_prev_hour": 2.35,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -0.86,
-   "quote_volume_24h": 5151892,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 3.97,
-     "max_drawdown_pct": -11.48,
-     "close_pct": -10.09,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-07T21:55:44+08:00"
     }
    },
    "exit_plan": {
