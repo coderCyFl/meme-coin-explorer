@@ -44,6 +44,7 @@
     market: null, ticks: {}, series: {}, btc: null, scores: {}, bt: null, scanAt: 0, scanning: false, prog: [0, 0],
     filter: "all", sort: "score", q: "", selected: null, trade: null, podium: null, viewer: null,
     gTicks: {}, gMode: "gainers", gHideLow: false, gAt: 0, gLoading: false,
+    awDoc: null, awAt: 0, awLoading: false,
   };
   const G_TOP = 20, G_VOL_FLOOR = 1e6;
   let closestSig = "", gainerSig = "";
@@ -381,7 +382,7 @@
   /** Swap the flat SVG icons for 3D-rendered ones once the renderer has made them. */
   function load3DIcons() {
     if (!window.THREE || !Coin3D.supported()) return;
-    for (const kind of ["engineerHead", "engineer", "radar", "gainers", "stack", "markets", "wallet", "trophy"]) {
+    for (const kind of ["engineerHead", "engineer", "radar", "gainers", "aiwatch", "stack", "markets", "wallet", "trophy"]) {
       Coin3D.icon(kind).then((url) => {
         if (!url) return;
         if (kind === "engineer") S.mascotUrl = url;
@@ -512,6 +513,79 @@
     const meta = $("#gMeta");
     if (meta) meta.textContent = S.gAt ? t("g.meta", { n: syms.length }) : "";
     paintGainerList(el, syms, `<li class="empty">${S.gLoading || !S.gAt ? t("g.loading") : t("g.empty")}</li>`);
+  }
+
+
+  /* ================= AI Watch (same-origin data/ai_watch.json; 0 client secrets) ================= */
+  async function loadAiWatch() {
+    S.awLoading = true; renderAiWatch();
+    try {
+      const r = await fetch("data/ai_watch.json", { cache: "no-store" });
+      if (!r.ok) throw new Error("ai_watch " + r.status);
+      const doc = await r.json();
+      if (!doc || typeof doc !== "object") throw new Error("bad ai_watch");
+      S.awDoc = doc; S.awAt = Date.now();
+      for (const e of doc.entries || []) {
+        if (e && e.symbol) ensureTick(e.symbol);
+      }
+    } catch (err) {
+      console.warn("ai_watch load failed", err);
+    }
+    S.awLoading = false; renderAiWatch();
+  }
+
+  function awVerdictClass(v) {
+    if (v === "熱") return "hot";
+    if (v === "升溫") return "warm";
+    return "cold";
+  }
+
+  function renderAiWatch() {
+    const list = $("#aiWatchList"); if (!list) return;
+    const doc = S.awDoc;
+    const meta = $("#awMeta");
+    const capEl = $("#awCap");
+    const entries = (doc && Array.isArray(doc.entries)) ? doc.entries : [];
+    if (meta) {
+      meta.textContent = S.awAt && doc
+        ? t("aw.meta", { t: doc.updated_at ? String(doc.updated_at).replace("T", " ").slice(0, 19) : fmtTime(S.awAt), n: entries.length })
+        : "";
+    }
+    if (capEl) {
+      const cap = doc && doc.cap;
+      if (cap) {
+        capEl.textContent = cap.cap_reached
+          ? t("aw.capHit")
+          : t("aw.cap", { u: cap.calls_today ?? 0, c: cap.daily_cap ?? 300 });
+        capEl.classList.toggle("cap-hit", !!cap.cap_reached);
+      } else {
+        capEl.textContent = "";
+        capEl.classList.remove("cap-hit");
+      }
+    }
+    if (!entries.length) {
+      list.innerHTML = `<li class="empty">${S.awLoading || !S.awAt ? t("aw.loading") : t("aw.empty")}</li>`;
+      return;
+    }
+    list.innerHTML = entries.map((e) => {
+      const sym = e.symbol;
+      const base = e.base || (S.ticks[sym] && S.ticks[sym].base) || String(sym || "").replace(/USDT$/, "");
+      const x = e.x || {};
+      const g = e.grok || {};
+      const reasons = (e.reason || []).map((r) => `<span class="chip">${esc(t("aw.reason." + r))}</span>`).join("");
+      const verdict = x.verdict || g.verdict || "冷";
+      const line = x.one_line || g.one_line || "";
+      const shill = x.shill_flag ? `<span class="chip shill">${esc(t("aw.shill"))}</span>` : "";
+      const spike = x.spike_ratio != null ? `<span class="chip">${esc(t("aw.spike", { v: Number(x.spike_ratio).toFixed(1) }))}</span>` : "";
+      const posts = x.posts_last_1h != null ? `<span class="chip">${esc(t("aw.posts", { n: x.posts_last_1h }))}</span>` : "";
+      const tone = g.tone ? `<span class="chip">${esc(t("aw.tone." + g.tone))}</span>` : "";
+      const summary = g.summary ? `<p class="aw-grok"><b>${esc(t("aw.grok"))}</b> · ${esc(g.summary)}</p>` : "";
+      return `<li><button type="button" class="row aw-row ${S.selected === sym ? "sel" : ""}" data-sym="${esc(sym)}">
+        <span class="r-top"><b class="sym">${esc(base)}</b><span class="aw-verdict ${awVerdictClass(verdict)}">${esc(verdict)}</span>${shill}${reasons}${spike}${posts}${tone}</span>
+        <span class="aw-line">${esc(line)}</span>
+        ${summary}
+      </button></li>`;
+    }).join("");
   }
 
   function heroCoins() {
@@ -668,7 +742,7 @@
   }
   function select(sym) {
     if (S.selected !== sym) S.trade = null;
-    S.selected = sym; ensureTick(sym); renderLists(); renderGainers(); renderDetail(true);
+    S.selected = sym; ensureTick(sym); renderLists(); renderGainers(); renderAiWatch(); renderDetail(true);
     if (!isDesk()) { const d = $("#detailSheet"); if (!d.open) d.showModal(); renderDetail(true); d.scrollTop = 0; }
   }
 
@@ -832,12 +906,12 @@
     $$("[data-tph]").forEach((n) => (n.placeholder = t(n.dataset.tph)));
     $$("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === I18N.lang));
   }
-  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderGainers(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
+  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderGainers(); renderAiWatch(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
 
   /* ================= routing ================= */
   function route() {
     const page = (location.hash || "#radar").slice(1);
-    const ok = ["radar", "gainers", "allin", "markets", "portfolio", "record"].includes(page) ? page : "radar";
+    const ok = ["radar", "gainers", "aiwatch", "allin", "markets", "portfolio", "record"].includes(page) ? page : "radar";
     $$("section[data-page]").forEach((s) => (s.hidden = s.dataset.page !== ok));
     $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === ok));
     document.body.dataset.view = ok;
@@ -924,5 +998,6 @@
   // Test seam: same-snapshot radar face (no scoring rules).
   window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins };
   window.CryptoMGainers = { gainerSyms, G_TOP, G_VOL_FLOOR, ensureTick };
+  window.CryptoMAiWatch = { loadAiWatch, renderAiWatch };
   window.CryptoMLive = { RESCAN_MS, softFlash, fmtAge };
 })();
