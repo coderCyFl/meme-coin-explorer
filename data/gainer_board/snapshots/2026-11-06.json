@@ -1209,6 +1209,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-11-06T15:18:40+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 6.86,
+       "max_drawdown_pct": -2.15,
+       "close_pct": 2.29,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-07T15:00:23+08:00"
       }
      },
      "exit_plan": {
@@ -1251,6 +1260,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-11-06T15:18:40+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 2.99,
+       "max_drawdown_pct": -1.86,
+       "close_pct": -1.56,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-07T15:00:23+08:00"
       }
      },
      "exit_plan": {
@@ -1344,6 +1362,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-11-06T19:34:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 6.95,
+       "max_drawdown_pct": -5.59,
+       "close_pct": -1.91,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-07T15:00:23+08:00"
       }
      },
      "exit_plan": {
@@ -1418,6 +1445,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-11-06T19:34:45+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 11.72,
+       "max_drawdown_pct": -15.53,
+       "close_pct": -12.81,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-07T15:00:23+08:00"
       }
      },
      "exit_plan": {
