@@ -1,0 +1,506 @@
+{
+  "updated_at": "2026-11-07T04:00:43.205Z",
+  "source": {
+    "rest": "https://data-api.binance.vision/api/v3",
+    "meme_coins": "data/meme_coins.json",
+    "meme_source": "Binance product tags — tag exact \"Meme\" on USDT spot TRADING pairs",
+    "meme_fetched_at": "2026-11-07T04:00:03.185Z",
+    "strategy_earlyMin": 70,
+    "score_universe": 72,
+    "gainer_universe": 682,
+    "meme_live": 31
+  },
+  "buckets": {
+    "early": [
+      {
+        "symbol": "SKHYBUSDT",
+        "base": "SKHYB",
+        "score": 37,
+        "change_24h": 0.011087,
+        "volume_24h": 7560802.01
+      },
+      {
+        "symbol": "UNIUSDT",
+        "base": "UNI",
+        "score": 37,
+        "change_24h": 0.00689,
+        "volume_24h": 28902338.7
+      },
+      {
+        "symbol": "KORUBUSDT",
+        "base": "KORUB",
+        "score": 36,
+        "change_24h": 0.007174,
+        "volume_24h": 6629391.84
+      },
+      {
+        "symbol": "HYPEUSDT",
+        "base": "HYPE",
+        "score": 35,
+        "change_24h": 0.025274,
+        "volume_24h": 46725609.52
+      },
+      {
+        "symbol": "QQQBUSDT",
+        "base": "QQQB",
+        "score": 33,
+        "change_24h": 0.004108,
+        "volume_24h": 8362546.05
+      },
+      {
+        "symbol": "XAUTUSDT",
+        "base": "XAUT",
+        "score": 33,
+        "change_24h": 0.007467,
+        "volume_24h": 19025050.28
+      },
+      {
+        "symbol": "UUSDT",
+        "base": "U",
+        "score": 32,
+        "change_24h": -0.0004,
+        "volume_24h": 47243658.15
+      },
+      {
+        "symbol": "SPCXBUSDT",
+        "base": "SPCXB",
+        "score": 31,
+        "change_24h": 0.070328,
+        "volume_24h": 45244563.51
+      },
+      {
+        "symbol": "INTWBUSDT",
+        "base": "INTWB",
+        "score": 29,
+        "change_24h": 0.089249,
+        "volume_24h": 3478849.71
+      },
+      {
+        "symbol": "TONUSDT",
+        "base": "TON",
+        "score": 29,
+        "change_24h": 0.009464,
+        "volume_24h": 7717352.42
+      }
+    ],
+    "gainer": [
+      {
+        "symbol": "CREAMUSDT",
+        "base": "CREAM",
+        "change_24h": 0.653543,
+        "volume_24h": 276098.07,
+        "score": null
+      },
+      {
+        "symbol": "ONEUSDT",
+        "base": "ONE",
+        "change_24h": 0.601098,
+        "volume_24h": 24748804.83,
+        "score": null
+      },
+      {
+        "symbol": "PNTUSDT",
+        "base": "PNT",
+        "change_24h": 0.452282,
+        "volume_24h": 261845.06,
+        "score": null
+      },
+      {
+        "symbol": "QNTBUSDT",
+        "base": "QNTB",
+        "change_24h": 0.204108,
+        "volume_24h": 170059.93,
+        "score": null
+      },
+      {
+        "symbol": "KDAUSDT",
+        "base": "KDA",
+        "change_24h": 0.176471,
+        "volume_24h": 343775.05,
+        "score": null
+      },
+      {
+        "symbol": "RKLBBUSDT",
+        "base": "RKLBB",
+        "change_24h": 0.141401,
+        "volume_24h": 357597.46,
+        "score": null
+      },
+      {
+        "symbol": "CLVUSDT",
+        "base": "CLV",
+        "change_24h": 0.139697,
+        "volume_24h": 349014.84,
+        "score": null
+      },
+      {
+        "symbol": "MDXUSDT",
+        "base": "MDX",
+        "change_24h": 0.135242,
+        "volume_24h": 314138.79,
+        "score": null
+      },
+      {
+        "symbol": "ACTUSDT",
+        "base": "ACT",
+        "change_24h": 0.124056,
+        "volume_24h": 3091541.68,
+        "score": null
+      },
+      {
+        "symbol": "WAVESUSDT",
+        "base": "WAVES",
+        "change_24h": 0.119667,
+        "volume_24h": 438682.25,
+        "score": null
+      }
+    ],
+    "meme_volume": [
+      {
+        "symbol": "PEPEUSDT",
+        "base": "PEPE",
+        "change_24h": 0.018405,
+        "volume_24h": 53306392.91,
+        "score": null
+      },
+      {
+        "symbol": "DOGEUSDT",
+        "base": "DOGE",
+        "change_24h": 0.00181,
+        "volume_24h": 21746799.57,
+        "score": null
+      },
+      {
+        "symbol": "TRUMPUSDT",
+        "base": "TRUMP",
+        "change_24h": -0.018137,
+        "volume_24h": 10935941,
+        "score": null
+      },
+      {
+        "symbol": "ACTUSDT",
+        "base": "ACT",
+        "change_24h": 0.124056,
+        "volume_24h": 3091541.68,
+        "score": null
+      },
+      {
+        "symbol": "PENGUUSDT",
+        "base": "PENGU",
+        "change_24h": -0.01013,
+        "volume_24h": 2932416.07,
+        "score": null
+      },
+      {
+        "symbol": "MARSCOINUSDT",
+        "base": "MARSCOIN",
+        "change_24h": 0.034091,
+        "volume_24h": 2891468.9,
+        "score": null
+      },
+      {
+        "symbol": "牛来USDT",
+        "base": "牛来",
+        "change_24h": -0.022855,
+        "volume_24h": 2871281.26,
+        "score": null
+      },
+      {
+        "symbol": "币安人生USDT",
+        "base": "币安人生",
+        "change_24h": 0.042046,
+        "volume_24h": 2120893.68,
+        "score": null
+      },
+      {
+        "symbol": "MUBARAKUSDT",
+        "base": "MUBARAK",
+        "change_24h": 0.035459,
+        "volume_24h": 1782611.31,
+        "score": null
+      },
+      {
+        "symbol": "BONKUSDT",
+        "base": "BONK",
+        "change_24h": -0.027778,
+        "volume_24h": 1485323.88,
+        "score": null
+      }
+    ]
+  },
+  "policy": {
+    "cap": 25,
+    "per_bucket": 10,
+    "buckets": [
+      "early",
+      "gainer",
+      "meme_volume"
+    ],
+    "dedupe": "Walk buckets early→gainer→meme_volume; merge reasons; sort by reason_count desc, score desc, change_24h desc, volume_24h desc, symbol asc; truncate to cap.",
+    "candidate_slots": 30,
+    "unique_before_cap": 29,
+    "truncation": {
+      "before_cap": 29,
+      "dropped": [
+        "PENGUUSDT",
+        "TRUMPUSDT",
+        "牛来USDT",
+        "BONKUSDT"
+      ],
+      "note": "Dropped 4 after unique merge exceeded cap 25."
+    }
+  },
+  "entries": [
+    {
+      "symbol": "ACTUSDT",
+      "base": "ACT",
+      "reason": [
+        "gainer",
+        "meme_volume"
+      ],
+      "score": null,
+      "change_24h": 0.124056,
+      "volume_24h": 3091541.68
+    },
+    {
+      "symbol": "SKHYBUSDT",
+      "base": "SKHYB",
+      "reason": [
+        "early"
+      ],
+      "score": 37,
+      "change_24h": 0.011087,
+      "volume_24h": 7560802.01
+    },
+    {
+      "symbol": "UNIUSDT",
+      "base": "UNI",
+      "reason": [
+        "early"
+      ],
+      "score": 37,
+      "change_24h": 0.00689,
+      "volume_24h": 28902338.7
+    },
+    {
+      "symbol": "KORUBUSDT",
+      "base": "KORUB",
+      "reason": [
+        "early"
+      ],
+      "score": 36,
+      "change_24h": 0.007174,
+      "volume_24h": 6629391.84
+    },
+    {
+      "symbol": "HYPEUSDT",
+      "base": "HYPE",
+      "reason": [
+        "early"
+      ],
+      "score": 35,
+      "change_24h": 0.025274,
+      "volume_24h": 46725609.52
+    },
+    {
+      "symbol": "XAUTUSDT",
+      "base": "XAUT",
+      "reason": [
+        "early"
+      ],
+      "score": 33,
+      "change_24h": 0.007467,
+      "volume_24h": 19025050.28
+    },
+    {
+      "symbol": "QQQBUSDT",
+      "base": "QQQB",
+      "reason": [
+        "early"
+      ],
+      "score": 33,
+      "change_24h": 0.004108,
+      "volume_24h": 8362546.05
+    },
+    {
+      "symbol": "UUSDT",
+      "base": "U",
+      "reason": [
+        "early"
+      ],
+      "score": 32,
+      "change_24h": -0.0004,
+      "volume_24h": 47243658.15
+    },
+    {
+      "symbol": "SPCXBUSDT",
+      "base": "SPCXB",
+      "reason": [
+        "early"
+      ],
+      "score": 31,
+      "change_24h": 0.070328,
+      "volume_24h": 45244563.51
+    },
+    {
+      "symbol": "INTWBUSDT",
+      "base": "INTWB",
+      "reason": [
+        "early"
+      ],
+      "score": 29,
+      "change_24h": 0.089249,
+      "volume_24h": 3478849.71
+    },
+    {
+      "symbol": "TONUSDT",
+      "base": "TON",
+      "reason": [
+        "early"
+      ],
+      "score": 29,
+      "change_24h": 0.009464,
+      "volume_24h": 7717352.42
+    },
+    {
+      "symbol": "CREAMUSDT",
+      "base": "CREAM",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.653543,
+      "volume_24h": 276098.07
+    },
+    {
+      "symbol": "ONEUSDT",
+      "base": "ONE",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.601098,
+      "volume_24h": 24748804.83
+    },
+    {
+      "symbol": "PNTUSDT",
+      "base": "PNT",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.452282,
+      "volume_24h": 261845.06
+    },
+    {
+      "symbol": "QNTBUSDT",
+      "base": "QNTB",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.204108,
+      "volume_24h": 170059.93
+    },
+    {
+      "symbol": "KDAUSDT",
+      "base": "KDA",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.176471,
+      "volume_24h": 343775.05
+    },
+    {
+      "symbol": "RKLBBUSDT",
+      "base": "RKLBB",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.141401,
+      "volume_24h": 357597.46
+    },
+    {
+      "symbol": "CLVUSDT",
+      "base": "CLV",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.139697,
+      "volume_24h": 349014.84
+    },
+    {
+      "symbol": "MDXUSDT",
+      "base": "MDX",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.135242,
+      "volume_24h": 314138.79
+    },
+    {
+      "symbol": "WAVESUSDT",
+      "base": "WAVES",
+      "reason": [
+        "gainer"
+      ],
+      "score": null,
+      "change_24h": 0.119667,
+      "volume_24h": 438682.25
+    },
+    {
+      "symbol": "币安人生USDT",
+      "base": "币安人生",
+      "reason": [
+        "meme_volume"
+      ],
+      "score": null,
+      "change_24h": 0.042046,
+      "volume_24h": 2120893.68
+    },
+    {
+      "symbol": "MUBARAKUSDT",
+      "base": "MUBARAK",
+      "reason": [
+        "meme_volume"
+      ],
+      "score": null,
+      "change_24h": 0.035459,
+      "volume_24h": 1782611.31
+    },
+    {
+      "symbol": "MARSCOINUSDT",
+      "base": "MARSCOIN",
+      "reason": [
+        "meme_volume"
+      ],
+      "score": null,
+      "change_24h": 0.034091,
+      "volume_24h": 2891468.9
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "base": "PEPE",
+      "reason": [
+        "meme_volume"
+      ],
+      "score": null,
+      "change_24h": 0.018405,
+      "volume_24h": 53306392.91
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "base": "DOGE",
+      "reason": [
+        "meme_volume"
+      ],
+      "score": null,
+      "change_24h": 0.00181,
+      "volume_24h": 21746799.57
+    }
+  ]
+}
