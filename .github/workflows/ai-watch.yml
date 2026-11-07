@@ -1,0 +1,83 @@
+# AI Watch B — secure X + Grok producer → data/ai_watch.json
+# Secrets (Actions only): X_BEARER_TOKEN, XAI_API_KEY — never in browser/repo.
+# daily_cap=300 (HKT midnight). Atomic write + history archive.
+# 15-min schedule stays OFF until Secrets ready + PM activates (uncomment cron).
+name: AI Watch producer
+on:
+  # schedule:
+  #   # Every 15 min — OFF until PM activates after Secrets are set.
+  #   - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_fixtures:
+        description: "Run offline fixtures instead of live APIs (no secrets needed)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: ai-watch
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Produce ai_watch.json
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          FORCE_FIXTURES: ${{ github.event.inputs.force_fixtures }}
+        run: |
+          set -euo pipefail
+          if [ "${FORCE_FIXTURES:-false}" = "true" ]; then
+            node tools/ai_watch_producer.mjs --fixtures tests/fixtures/ai_watch_fixture.json
+          else
+            if [ -z "${X_BEARER_TOKEN:-}" ] || [ -z "${XAI_API_KEY:-}" ]; then
+              echo "::error::Secrets X_BEARER_TOKEN / XAI_API_KEY missing. Set repo Secrets, or dispatch with force_fixtures=true. Schedule stays OFF."
+              exit 1
+            fi
+            node tools/ai_watch_producer.mjs
+          fi
+      - name: Guard — only authorized paths
+        run: |
+          OTHER=$(git status --porcelain --untracked-files=all | grep -vE ' data/ai_watch\.json$| data/ai_watch_history/' || true)
+          if [ -n "$OTHER" ]; then
+            echo "::error::producer touched non-authorized paths:"
+            echo "$OTHER"
+            exit 1
+          fi
+          # Refuse accidental secret material in staged JSON
+          if git grep -nE 'X_BEARER_TOKEN|XAI_API_KEY|sk-[A-Za-z0-9]{10,}' -- data/ai_watch.json data/ai_watch_history 2>/dev/null; then
+            echo "::error::secret-looking string in outputs"
+            exit 1
+          fi
+      - name: Commit + push (ai_watch only, rebase retry)
+        id: push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ai_watch.json data/ai_watch_history
+          if git diff --staged --quiet; then echo "changed=0" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git commit -m "chore(ai-watch): producer refresh $(TZ=Asia/Hong_Kong date +%FT%T%z) [skip ci]"
+          ok=0
+          for i in 1 2 3 4; do
+            if git pull --rebase origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((i*5))
+          done
+          [ "$ok" = "1" ] || { echo "::error::push failed after retries"; exit 1; }
+          echo "changed=1" >> "$GITHUB_OUTPUT"
+      - name: Deploy Pages
+        if: steps.push.outputs.changed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main || echo "pages dispatch failed (non-fatal)"
