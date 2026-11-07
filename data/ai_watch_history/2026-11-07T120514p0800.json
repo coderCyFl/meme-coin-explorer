@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-07T12:05:14+08:00",
+  "source": {
+    "producer": "tools/ai_watch_producer.mjs",
+    "targets": "data/ai_targets.json",
+    "x": "api.x.com",
+    "grok": "api.x.ai",
+    "note": "Site reads same-origin JSON only; 0 client secrets / 0 browser X|Grok calls."
+  },
+  "cap": {
+    "date": "2026-11-07",
+    "daily_cap": 300,
+    "calls_today": 3,
+    "cap_reached": false,
+    "reset": "HKT midnight (UTC+8)"
+  },
+  "entries": [
+    {
+      "symbol": "ACTUSDT",
+      "base": "ACT",
+      "reason": [
+        "gainer",
+        "meme_volume"
+      ],
+      "x": {
+        "checked_at": "2026-11-07T12:00:00+08:00",
+        "posts_last_1h": 12,
+        "posts_prev_6h_avg_per_h": 2.5,
+        "spike_ratio": 4.8,
+        "verdict": "熱",
+        "one_line": "討論急升有量",
+        "shill_flag": false,
+        "big_accounts": 1,
+        "top_posts": [
+          {
+            "id": "1987654321098765432",
+            "url": "https://x.com/demo_user/status/1987654321098765432",
+            "text": "$ACT pumping on Binance volume",
+            "likes": 42,
+            "author_username": "demo_user",
+            "author_followers": 120000,
+            "created_at": "2026-11-07T11:50:00+08:00"
+          }
+        ]
+      },
+      "grok": {
+        "checked_at": "2026-11-07T12:00:05+08:00",
+        "verdict": "熱",
+        "one_line": "熱度真實偏多",
+        "tone": "bullish",
+        "summary": "Spike with a large account; not pure shill cluster.",
+        "model": "grok-2-latest"
+      }
+    }
+  ],
+  "skipped": [],
+  "run": {
+    "id": "fixture-b1",
+    "mode": "fixtures",
+    "targets_considered": 1,
+    "x_calls": 2,
+    "grok_calls": 1
+  }
+}
