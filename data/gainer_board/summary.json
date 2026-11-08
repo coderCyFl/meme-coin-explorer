@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-08T09:46:47+08:00",
- "batches": 111,
- "flags": 293,
+ "updated_at": "2026-11-08T10:45:06+08:00",
+ "batches": 112,
+ "flags": 295,
  "horizons": {
   "4h": {
    "n": 290,
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -7.17,
     "closed_up": 60
    },
-   "flags": 169
+   "flags": 171
   },
   "early": {
    "4h": {
@@ -88,12 +88,12 @@
   },
   "cand": {
    "4h": {
-    "n": 336,
+    "n": 337,
     "hit20": 1,
     "hit50": 0,
-    "avg_max_gain_pct": 3.09,
+    "avg_max_gain_pct": 3.1,
     "avg_close_pct": -0.71,
-    "avg_max_drawdown_pct": -3.13,
+    "avg_max_drawdown_pct": -3.14,
     "closed_up": 119
    },
    "24h": {
@@ -109,28 +109,17 @@
   }
  },
  "latest_4h": {
-  "batch": "gb-20261108-0415",
-  "picked_at": "2026-11-08T04:15:59+08:00",
+  "batch": "gb-20261108-0622",
+  "picked_at": "2026-11-08T06:22:04+08:00",
   "entries": [
    {
-    "symbol": "MET",
+    "symbol": "ONE",
     "tier": "cand",
-    "entry_price_usd": 0.3245,
-    "change_24h_at_pick": 15.84,
-    "max_gain_pct": 3.61,
-    "close_pct": 0.06,
-    "max_drawdown_pct": -1.2,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "MITO",
-    "tier": "cand",
-    "entry_price_usd": 0.00809,
-    "change_24h_at_pick": 21.66,
-    "max_gain_pct": 6.3,
-    "close_pct": -0.87,
-    "max_drawdown_pct": -4.57,
+    "entry_price_usd": 0.002057,
+    "change_24h_at_pick": 31.81,
+    "max_gain_pct": 5.49,
+    "close_pct": -2.48,
+    "max_drawdown_pct": -5.79,
     "hit20": false,
     "hit50": false
    }
