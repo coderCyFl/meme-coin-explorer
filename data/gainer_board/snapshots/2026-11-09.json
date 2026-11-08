@@ -1,0 +1,69 @@
+{
+ "date": "2026-11-09",
+ "batches": [
+  {
+   "batch": "gb-20261109-0017",
+   "picked_at": "2026-11-09T00:17:15+08:00",
+   "universe": 43,
+   "btc_24h_pct": 0.35,
+   "universe_all": 394,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "HOTUSDT",
+    "BMTUSDT",
+    "ERAUSDT",
+    "DGBUSDT",
+    "RSRUSDT",
+    "GTCUSDT",
+    "AUDIOUSDT",
+    "MEGAUSDT",
+    "PEPEUSDT",
+    "DASHUSDT",
+    "BTTCUSDT",
+    "PUMPUSDT",
+    "REDUSDT",
+    "XNOUSDT",
+    "BEAMXUSDT",
+    "ARBUSDT",
+    "BATUSDT",
+    "DUSKUSDT",
+    "KITEUSDT",
+    "WINUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "RSR",
+     "pair": "RSRUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-09T00:17:15+08:00",
+     "entry_price_usd": 0.001682,
+     "price_at_snapshot": 0.001682,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 8.73,
+     "rank_24h_at_pick": 5,
+     "batch": "gb-20261109-0017",
+     "score": 33.3,
+     "change_1h_at_pick": 2.23,
+     "change_4h_at_pick": 2.42,
+     "vol_x_avg": 2.1,
+     "vol_x_prev_hour": 2.66,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -0.7,
+     "quote_volume_24h": 3562338,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
+  }
+ ]
+}
