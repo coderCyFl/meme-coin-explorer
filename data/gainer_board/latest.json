@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-11-09T04:09:59+08:00",
- "batch": "gb-20261109-0355",
- "picked_at": "2026-11-09T03:55:05+08:00",
- "btc_24h_pct": 0.19,
- "universe": 42,
+ "updated_at": "2026-11-09T04:38:20+08:00",
+ "batch": "gb-20261109-0437",
+ "picked_at": "2026-11-09T04:37:15+08:00",
+ "btc_24h_pct": 0.16,
+ "universe": 43,
  "active": [
   {
    "symbol": "GNS",
@@ -299,48 +299,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-11-09T03:54:54+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ONE",
-   "pair": "ONEUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-08T16:15:00+08:00",
-   "entry_price_usd": 0.00213,
-   "price_at_snapshot": 0.00221,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 5.81,
-   "change_24h_at_pick": 11.34,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261108-1734",
-   "score": 33.2,
-   "change_1h_at_pick": 6.29,
-   "change_4h_at_pick": 14.45,
-   "vol_x_avg": 0.63,
-   "vol_x_prev_hour": 0.45,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -13.97,
-   "quote_volume_24h": 45251852,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 5.82,
-     "max_drawdown_pct": -12.3,
-     "close_pct": -10.56,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-08T23:21:03+08:00"
     }
    },
    "exit_plan": {
