@@ -6,7 +6,7 @@
   const REST = "https://data-api.binance.vision/api/v3";
   const WS = "wss://data-stream.binance.vision/ws/!miniTicker@arr";
   const MIN_QUOTE_VOL = 3e6;   // skip coins with < $3M traded in 24h (too thin, easy to manipulate)
-  const MAX_COINS = 150;
+  const MAX_COINS = 60;  // product score universe (not full Binance dump)
   const KLINE_LIMIT = 400;     // ~4 days of 15m candles: 24h for the score + ~3 days to backtest it
   const STABLES = new Set(["USDC", "FDUSD", "TUSD", "BUSD", "DAI", "USDP", "EUR", "AEUR", "USDE", "XUSD", "USD1", "PAXG", "WBTC", "BFUSD", "EURI"]);
 

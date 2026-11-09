@@ -319,10 +319,13 @@
   function ranked(filter) {
     const out = [];
     for (const sym in S.scores) {
-      const r = S.scores[sym]; if (!r || sym === "BTCUSDT" && filter !== "all") continue;
+      const r = S.scores[sym];
+      if (!r || !r.stage) continue;
+      if (sym === "BTCUSDT" && filter !== "all") continue;
+      // Stage chips: exact match only. "all" = every scored stage (early/build/late/quiet).
       if (filter === "all" || r.stage === filter) out.push(sym);
     }
-    return out.sort((a, b) => S.scores[b].score - S.scores[a].score);
+    return out.sort((a, b) => (S.scores[b].score || 0) - (S.scores[a].score || 0));
   }
   /** Freeze ranked("all") scores once so podium + Closest never diverge mid-paint. */
   function takeRadarSnap() {
@@ -408,8 +411,8 @@
     return `<li><button type="button" class="row ${S.selected === sym ? "sel" : ""}" data-sym="${esc(sym)}">${rowInner(sym)}</button></li>`;
   }
   function rowInner(sym) {
-    const r = S.scores[sym], tk = S.ticks[sym]; if (!r || !tk) return "";
-    const ch24 = tk.price / tk.open24 - 1;
+    const r = S.scores[sym], tk = S.ticks[sym]; if (!r || !tk || !r.stage || !r.metrics) return "";
+    const ch24 = tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0;
     return `${badge(tk.base)}
       <span class="r-main"><span class="r-top"><b class="sym">${esc(tk.base)}</b><span class="stage ${r.stage}">${t("stage." + r.stage)}</span></span>
         <span class="r-why">${reasonChips(r) || `<span class="muted">${esc(tk.name)}</span>`}</span></span>
@@ -431,25 +434,34 @@
   function renderLists() {
     const snap = radarSnap();
     const counts = { early: ranked("early").length, build: ranked("build").length, late: ranked("late").length, all: snap.length };
-    $$("[data-count]").forEach((b) => (b.textContent = counts[b.dataset.count] || "0"));
+    $$("#radarFilters [data-count]").forEach((b) => (b.textContent = counts[b.dataset.count] || "0"));
     $$("#radarFilters [data-f]").forEach((b) => b.classList.toggle("on", b.dataset.f === S.filter));
+    // Closest-to-early is score-rank, not the Early stage chip — keep visible, never dump into Early list.
     const closest = snap.slice(0, 10).map((x) => x.sym);
     const closestEl = $("#closestList");
     if (closestEl) {
       paintList(closestEl, closest, `<li class="empty">${S.scanAt ? t("radar.closestNone") : `<span class="loader"></span>`}</li>`);
-      // Patch score rings from the same snap podium uses (paintList otherwise re-reads live S.scores).
       const bySym = Object.fromEntries(snap.map((x) => [x.sym, x]));
       for (const b of closestEl.querySelectorAll("button.row")) {
         const x = bySym[b.dataset.sym]; if (!x) continue;
         const ring = b.querySelector(".ring b"); if (ring) ring.textContent = String(x.score);
+        const st = b.querySelector(".stage"); if (st) { st.className = "stage " + x.stage; st.textContent = t("stage." + x.stage); }
       }
     }
     const list = ranked(S.filter);
-    paintList($("#radarList"), list, `<li class="empty">${S.scanAt ? t("radar.none") : `<span class="loader"></span>`}</li>`);
-    // markets
+    const radarEl = $("#radarList");
+    // Force rebuild when the stage chip changes so a failed paint cannot leave the previous "all" dump.
+    if (radarEl && radarEl.dataset.filter !== S.filter) { radarEl.dataset.filter = S.filter; radarEl.dataset.key = ""; }
+    paintList(radarEl, list, `<li class="empty">${S.scanAt ? t("radar.none") : `<span class="loader"></span>`}</li>`);
+    // Markets: product face — hide quiet flood unless user is searching.
     const q = S.q.trim().toUpperCase();
-    let m = Object.keys(S.scores).filter((s) => S.ticks[s] && (!q || s.includes(q) || S.ticks[s].name.toUpperCase().includes(q)));
-    const ch = (s) => S.ticks[s].price / S.ticks[s].open24 - 1;
+    let m = Object.keys(S.scores).filter((s) => {
+      if (!S.ticks[s] || !S.scores[s]) return false;
+      if (s === "BTCUSDT") return false;
+      if (!q && S.scores[s].stage === "quiet") return false;
+      return !q || s.includes(q) || S.ticks[s].name.toUpperCase().includes(q);
+    });
+    const ch = (s) => { const tk = S.ticks[s]; return tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0; };
     m.sort(S.sort === "change" ? (a, b) => ch(b) - ch(a) : S.sort === "vol" ? (a, b) => S.ticks[b].qv24 - S.ticks[a].qv24 : (a, b) => S.scores[b].score - S.scores[a].score);
     $$("#mSort [data-sort]").forEach((b) => b.classList.toggle("on", b.dataset.sort === S.sort));
     paintList($("#marketList"), m, `<li class="empty"><span class="loader"></span></li>`);
@@ -783,6 +795,38 @@
     $$("#pfCap [data-cap]").forEach((b) => b.classList.toggle("on", +b.dataset.cap === (S.cap || P.start)));
   }
 
+
+  /* ================= Hits (sealed gainer_board scorecard; display only) ================= */
+  S.hitsDoc = null; S.hitsAt = 0;
+  async function loadHits() {
+    try {
+      const r = await fetch("data/gainer_board/summary.json", { cache: "no-store" });
+      if (!r.ok) throw new Error("hits " + r.status);
+      S.hitsDoc = await r.json(); S.hitsAt = Date.now();
+    } catch (e) { console.warn("hits load failed", e); }
+    renderHits();
+  }
+  function renderHits() {
+    const el = $("#hitsStrip"); if (!el) return;
+    const doc = S.hitsDoc, roll = doc && doc.scorecard_7d, cards = (doc && doc.scorecards) || [];
+    const last = Array.isArray(cards) && cards.length ? cards[cards.length - 1] : null;
+    if (!roll && !last) {
+      el.innerHTML = `<p class="muted small-note">${esc(t("hit.empty"))}</p>`;
+      return;
+    }
+    const days = roll && roll.days != null ? roll.days : (cards.length || 0);
+    const hits = roll && roll.early_hits != null ? roll.early_hits : (last && last.early_hits) || 0;
+    const flagged = roll && roll.early_flagged != null ? roll.early_flagged : (last && last.early_flagged) || 0;
+    const recall = roll && roll.recall_top20_pct != null ? roll.recall_top20_pct : (last && last.recall_top20_pct);
+    const night = last ? t("hit.metanight", { date: last.date || "—", hits: last.early_hits ?? 0, flagged: last.early_flagged ?? 0 }) : "";
+    el.innerHTML = `<div class="hits-card">
+      <div class="hits-h"><b data-t-skip>${esc(t("hit.title"))}</b><span class="muted">${esc(t("hit.sub"))}</span></div>
+      <p class="hits-meta">${esc(t("hit.meta7", { hits, flagged, days }))}${recall != null ? ` · ${esc(t("hit.recall", { v: recall }))}` : ""}</p>
+      ${night ? `<p class="hits-night muted small-note">${esc(night)}</p>` : ""}
+      <p class="muted small-note">${esc(t("hit.note"))}</p>
+    </div>`;
+  }
+
   function renderBacktest() {
     const bt = S.bt; if (!bt || !$("#btStats")) return;
     const demo = S.market.mode === "demo";
@@ -906,7 +950,7 @@
     $$("[data-tph]").forEach((n) => (n.placeholder = t(n.dataset.tph)));
     $$("[data-lang]").forEach((b) => b.classList.toggle("on", b.dataset.lang === I18N.lang));
   }
-  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderGainers(); renderAiWatch(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
+  function renderAll() { applyText(); paintStatus(); paintAcct(); takeRadarSnap(); renderHero(); renderLists(); renderHits(); renderGainers(); renderAiWatch(); renderDetail(true); renderPortfolio(); renderBacktest(); renderLog(); }
 
   /* ================= routing ================= */
   function route() {
@@ -935,7 +979,7 @@
     if ((n = g("[data-sell]"))) { const x = P.positions.find((y) => y.id === n.dataset.sell); if (x) { closePart(x, x.frac, priceOf(x.sym), "manual"); savePf(); renderPortfolio(); } return; }
     if ((n = g("[data-ai-start]"))) { S.aiStart = +n.dataset.aiStart; return renderAllin(); }
     if ((n = g("[data-ai-go]"))) { const sym = n.dataset.aiGo; select(sym); S.trade = { sym, amt: Math.max(10, Math.floor(P.cash / (1 + FEE))), lev: 1, auto: true }; return renderDetail(true); }
-    if ((n = g("[data-f]"))) { S.filter = n.dataset.f; return renderLists(); }
+    if ((n = g("#radarFilters [data-f]"))) { S.filter = n.dataset.f; return renderLists(); }
     if ((n = g("[data-gmode]"))) { S.gMode = n.dataset.gmode; return renderGainers(); }
     if ((n = g("[data-sort]"))) { S.sort = n.dataset.sort; return renderLists(); }
     if ((n = g("[data-cap]"))) { S.cap = +n.dataset.cap; return renderPortfolio(); }
@@ -988,6 +1032,7 @@
     S.market = await Market.connect(); paintStatus();
     loadGainers();
     loadAiWatch();
+    loadHits();
     await scan();
     S.market.stream(onPrices);
     setInterval(() => { if (!document.hidden) scan(); }, RESCAN_MS);
@@ -999,7 +1044,7 @@
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 
   // Test seam: same-snapshot radar face (no scoring rules).
-  window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins };
+  window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins, loadHits, renderHits };
   window.CryptoMGainers = { gainerSyms, G_TOP, G_VOL_FLOOR, ensureTick };
   window.CryptoMAiWatch = { loadAiWatch, renderAiWatch };
   window.CryptoMLive = { RESCAN_MS, softFlash, fmtAge };

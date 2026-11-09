@@ -273,5 +273,73 @@ class FrontendTests(unittest.TestCase):
         self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
 
 
+    def test_urgent_b1_b2_b3_face(self):
+        """URGENT B1–B3: universe cap, stage-exact filters, Hits strip EN+ZH; strategy frozen."""
+        data = (ROOT / "js/data.js").read_text(encoding="utf-8")
+        assert "const MAX_COINS = 60" in data
+        assert "const MAX_COINS = 150" not in data
+        # B2: stage-exact ranked + force rebuild on chip change; scoped filter clicks
+        assert 'if (filter === "all" || r.stage === filter)' in APP
+        assert 'radarEl.dataset.filter !== S.filter' in APP
+        assert 'g("#radarFilters [data-f]")' in APP
+        assert 'stage === "quiet"' in APP  # Markets hide quiet flood
+        # Closest stays score-rank, not Early dump
+        assert "const closest = snap.slice(0, 10).map((x) => x.sym);" in APP
+        assert "paintList(closestEl, closest," in APP
+        # B3 Hits strip
+        assert 'id="hitsStrip"' in HTML
+        assert "loadHits" in APP and "renderHits" in APP
+        assert 'fetch("data/gainer_board/summary.json"' in APP
+        assert '"hit.title": "Hits"' in I18N and '"hit.title": "命中"' in I18N
+        assert '"hit.sub"' in I18N and "Daily caught report" in I18N
+        assert "每日捕捉報告" in I18N
+        assert '"hit.meta7"' in I18N and '"hit.empty"' in I18N
+        css = (ROOT / "css/app.css").read_text(encoding="utf-8")
+        assert ".hits-strip" in css and ".hits-card" in css
+        # strategy byte-proof + PARAMS
+        import subprocess
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+        node = shutil.which("node")
+        if not node:
+            return
+        js = r"""
+          const scores = {
+            E1USDT: { score: 80, stage: "early", metrics: { ret1h: 0.02 } },
+            E2USDT: { score: 75, stage: "early", metrics: { ret1h: 0.01 } },
+            B1USDT: { score: 68, stage: "build", metrics: { ret1h: 0.01 } },
+            L1USDT: { score: 72, stage: "late", metrics: { ret1h: 0.05 } },
+            Q1USDT: { score: 40, stage: "quiet", metrics: { ret1h: 0 } },
+            BTCUSDT: { score: 50, stage: "quiet", metrics: { ret1h: 0 } },
+          };
+          function ranked(filter) {
+            const out = [];
+            for (const sym in scores) {
+              const r = scores[sym];
+              if (!r || !r.stage) continue;
+              if (sym === "BTCUSDT" && filter !== "all") continue;
+              if (filter === "all" || r.stage === filter) out.push(sym);
+            }
+            return out.sort((a, b) => (scores[b].score || 0) - (scores[a].score || 0));
+          }
+          const early = ranked("early");
+          const late = ranked("late");
+          const all = ranked("all");
+          const ok =
+            early.join(",") === "E1USDT,E2USDT" &&
+            late.join(",") === "L1USDT" &&
+            !early.includes("L1USDT") &&
+            !early.includes("B1USDT") &&
+            !late.includes("E1USDT") &&
+            all.includes("Q1USDT") &&
+            all.includes("BTCUSDT") &&
+            !ranked("early").includes("BTCUSDT");
+          console.log(JSON.stringify({ ok, early, late, allN: all.length }));
+        """
+        out = json.loads(subprocess.check_output([node, "-e", js], text=True).strip())
+        self.assertTrue(out["ok"], out)
+
+
+
 if __name__ == "__main__":
     unittest.main()
