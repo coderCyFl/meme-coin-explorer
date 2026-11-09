@@ -827,8 +827,16 @@
     const flagged = roll && roll.early_flagged != null ? roll.early_flagged : (last && last.early_flagged) || 0;
     const recall = roll && roll.recall_top20_pct != null ? roll.recall_top20_pct : (last && last.recall_top20_pct);
     const night = last ? t("hit.metanight", { date: last.date || "—", hits: last.early_hits ?? 0, flagged: last.early_flagged ?? 0 }) : "";
+    // Sealed early-hit symbols from latest scorecard (not live Early Radar)
+    const hitRows = last && Array.isArray(last.hits) ? last.hits : [];
+    const syms = hitRows.map((h) => h && h.symbol).filter(Boolean);
+    const caught = syms.length
+      ? `<div class="hits-caught"><span class="muted small-note">${esc(t("hit.caught"))}</span>
+          <div class="hits-syms">${syms.map((s) => `<span class="hit-chip">${esc(s)}</span>`).join("")}</div></div>`
+      : `<p class="hits-caught-empty muted small-note">${esc(t("hit.caughtEmpty"))}</p>`;
     el.innerHTML = `<div class="hits-card">
       <div class="hits-h"><b data-t-skip>${esc(t("hit.title"))}</b><span class="muted">${esc(t("hit.sub"))}</span></div>
+      ${caught}
       <p class="hits-meta">${esc(t("hit.meta7", { hits, flagged, days }))}${recall != null ? ` · ${esc(t("hit.recall", { v: recall }))}` : ""}</p>
       ${night ? `<p class="hits-night muted small-note">${esc(night)}</p>` : ""}
       <p class="muted small-note">${esc(t("hit.note"))}</p>

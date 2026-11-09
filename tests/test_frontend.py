@@ -296,6 +296,13 @@ class FrontendTests(unittest.TestCase):
         assert '"hit.meta7"' in I18N and '"hit.empty"' in I18N
         css = (ROOT / "css/app.css").read_text(encoding="utf-8")
         assert ".hits-strip" in css and ".hits-card" in css
+        # Hits symbols from last.hits[].symbol (not counts-only)
+        assert "last.hits" in APP and "h.symbol" in APP
+        assert "hit-chip" in APP and "hits-syms" in APP
+        assert '"hit.caught": "Caught"' in I18N and '"hit.caught": "中咗"' in I18N
+        assert '"hit.caughtEmpty"' in I18N and "No early hits that sealed night" in I18N
+        assert "嗰晚冇升前命中" in I18N
+        assert ".hit-chip" in css
         # strategy byte-proof + PARAMS
         import subprocess
         sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
@@ -353,6 +360,22 @@ class FrontendTests(unittest.TestCase):
         import subprocess
         sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
         self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+    def test_hits_strip_symbols(self):
+        """Hits strip lists sealed early-hit symbols from last.hits[].symbol."""
+        assert "last.hits" in APP
+        assert ".map((h) => h && h.symbol)" in APP or "h.symbol" in APP
+        assert "hit-chip" in APP
+        assert '"hit.caught": "Caught"' in I18N
+        assert '"hit.caught": "中咗"' in I18N
+        assert '"hit.caughtEmpty": "No early hits that sealed night"' in I18N
+        assert '"hit.caughtEmpty": "嗰晚冇升前命中"' in I18N
+        css = (ROOT / "css/app.css").read_text(encoding="utf-8")
+        assert ".hit-chip" in css and ".hits-syms" in css
+        import subprocess
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+
+
 
 
 
