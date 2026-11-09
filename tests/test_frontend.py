@@ -341,5 +341,20 @@ class FrontendTests(unittest.TestCase):
 
 
 
+    def test_radar_stage_hides_closest(self):
+        """Stage chips hide Closest strip; only All shows mixed score-rank Closest."""
+        assert 'S.filter === "all"' in APP
+        assert 'closestSec.hidden = true' in APP or 'closestSec.hidden = True' in APP
+        assert 'closestSec.hidden = false' in APP or 'closestSec.hidden = False' in APP
+        assert '"radar.noneBuild"' in I18N and '"radar.noneLate"' in I18N
+        assert "No building signals" in I18N
+        assert "暫時冇醞釀中訊號" in I18N
+        assert "No already-pumped coins" in I18N
+        import subprocess
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+
+
+
 if __name__ == "__main__":
     unittest.main()
