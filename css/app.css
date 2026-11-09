@@ -433,3 +433,15 @@ dialog.small .err { padding: 10px 12px; border-radius: 10px; background: var(--d
 .hits-h b { font-size: 14px; }
 .hits-meta { margin: 4px 0; font-size: 13px; font-weight: 600; }
 .hits-night { margin: 0; }
+
+.hits-caught { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0 8px; }
+.hits-syms { display: flex; flex-wrap: wrap; gap: 6px; }
+.hit-chip {
+  display: inline-flex; align-items: center;
+  padding: 3px 9px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.02em;
+  background: color-mix(in srgb, #22c55e 22%, var(--card));
+  border: 1px solid color-mix(in srgb, #22c55e 45%, var(--line));
+  color: var(--ink);
+}
+.hits-caught-empty { margin: 4px 0 6px; }
