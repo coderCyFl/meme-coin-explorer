@@ -420,3 +420,16 @@ dialog.small .err { padding: 10px 12px; border-radius: 10px; background: var(--d
 .aw-row .aw-grok { font-size: 12.5px; color: var(--ink-3); }
 .aw-row .chip.shill { background: rgba(246,70,93,.16); color: var(--down); }
 #awCap.cap-hit { color: var(--down); }
+
+/* —— Hits strip (sealed scorecard face) —— */
+.hits-strip { margin: 10px 0 12px; }
+.hits-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--card) 92%, #22c55e 8%);
+}
+.hits-h { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.hits-h b { font-size: 14px; }
+.hits-meta { margin: 4px 0; font-size: 13px; font-weight: 600; }
+.hits-night { margin: 0; }
