@@ -436,23 +436,31 @@
     const counts = { early: ranked("early").length, build: ranked("build").length, late: ranked("late").length, all: snap.length };
     $$("#radarFilters [data-count]").forEach((b) => (b.textContent = counts[b.dataset.count] || "0"));
     $$("#radarFilters [data-f]").forEach((b) => b.classList.toggle("on", b.dataset.f === S.filter));
-    // Closest-to-early is score-rank, not the Early stage chip — keep visible, never dump into Early list.
-    const closest = snap.slice(0, 10).map((x) => x.sym);
+    // Closest-to-early is score-rank mixed stages — only on All. Stage chips must show stage-only rows (badge match).
+    const closestSec = $("#closestList") && $("#closestList").closest("section.closest");
     const closestEl = $("#closestList");
-    if (closestEl) {
-      paintList(closestEl, closest, `<li class="empty">${S.scanAt ? t("radar.closestNone") : `<span class="loader"></span>`}</li>`);
-      const bySym = Object.fromEntries(snap.map((x) => [x.sym, x]));
-      for (const b of closestEl.querySelectorAll("button.row")) {
-        const x = bySym[b.dataset.sym]; if (!x) continue;
-        const ring = b.querySelector(".ring b"); if (ring) ring.textContent = String(x.score);
-        const st = b.querySelector(".stage"); if (st) { st.className = "stage " + x.stage; st.textContent = t("stage." + x.stage); }
+    if (S.filter === "all") {
+      if (closestSec) closestSec.hidden = false;
+      const closest = snap.slice(0, 10).map((x) => x.sym);
+      if (closestEl) {
+        paintList(closestEl, closest, `<li class="empty">${S.scanAt ? t("radar.closestNone") : `<span class="loader"></span>`}</li>`);
+        const bySym = Object.fromEntries(snap.map((x) => [x.sym, x]));
+        for (const b of closestEl.querySelectorAll("button.row")) {
+          const x = bySym[b.dataset.sym]; if (!x) continue;
+          const ring = b.querySelector(".ring b"); if (ring) ring.textContent = String(x.score);
+          const st = b.querySelector(".stage"); if (st) { st.className = "stage " + x.stage; st.textContent = t("stage." + x.stage); }
+        }
       }
+    } else {
+      if (closestSec) closestSec.hidden = true;
+      if (closestEl) { closestEl.dataset.key = ""; closestEl.innerHTML = ""; }
     }
     const list = ranked(S.filter);
     const radarEl = $("#radarList");
     // Force rebuild when the stage chip changes so a failed paint cannot leave the previous "all" dump.
     if (radarEl && radarEl.dataset.filter !== S.filter) { radarEl.dataset.filter = S.filter; radarEl.dataset.key = ""; }
-    paintList(radarEl, list, `<li class="empty">${S.scanAt ? t("radar.none") : `<span class="loader"></span>`}</li>`);
+    const emptyKey = S.filter === "early" ? "radar.none" : S.filter === "build" ? "radar.noneBuild" : S.filter === "late" ? "radar.noneLate" : "radar.none";
+    paintList(radarEl, list, `<li class="empty">${S.scanAt ? t(emptyKey) : `<span class="loader"></span>`}</li>`);
     // Markets: product face — hide quiet flood unless user is searching.
     const q = S.q.trim().toUpperCase();
     let m = Object.keys(S.scores).filter((s) => {
