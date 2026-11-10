@@ -282,7 +282,7 @@ class FrontendTests(unittest.TestCase):
         assert 'if (filter === "all" || r.stage === filter)' in APP
         assert 'radarEl.dataset.filter !== S.filter' in APP
         assert 'g("#radarFilters [data-f]")' in APP
-        assert 'stage === "quiet"' in APP  # Markets hide quiet flood
+        assert 'S.scores[s].stage === "quiet"' not in APP  # Markets shows full list, including quiet
         # Closest stays score-rank, not Early dump
         assert "const closest = snap.slice(0, 10).map((x) => x.sym);" in APP
         assert "paintList(closestEl, closest," in APP

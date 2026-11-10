@@ -34,11 +34,12 @@
     } finally { clearTimeout(to); }
   }
 
-  function eligible(t) {
+  function eligible(t, tokenized) {
     if (!t.symbol.endsWith("USDT")) return false;
     const base = t.symbol.slice(0, -4);
     if (!base || STABLES.has(base)) return false;
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && base.length > 4) return false;
+    if (tokenized && tokenized.has(base)) return false;
     return +t.quoteVolume >= MIN_QUOTE_VOL && +t.lastPrice > 0;
   }
   /** Drop BREAK/halted phantoms whose MINI closeTime is frozen (>~2h stale). */
@@ -92,7 +93,9 @@
     async probe() { await getJSON(REST + "/ping", 5000); return true; },
     async tickers() {
       const all = await getJSON(REST + "/ticker/24hr?type=MINI");
-      return all.filter(eligible).map(mapTicker).sort((a, b) => b.qv24 - a.qv24).slice(0, MAX_COINS);
+      const tokenized = await loadTokenizedBases();
+      // Drop bStocks before the MAX_COINS slice so mid-caps (HBAR/XLM/FIL) are not crowded out.
+      return all.filter((t) => eligible(t, tokenized)).map(mapTicker).sort((a, b) => b.qv24 - a.qv24).slice(0, MAX_COINS);
     },
     /** Full Gainers board: live MINI tickers, drop stale closeTime + bStocks. */
     async tickersAll() {
@@ -243,5 +246,5 @@
     return demo;
   }
 
-  root.Market = { connect, live, demo, nameOf, setNames, gainerEligible, tickerFresh, GAINER_STALE_MS, loadTokenizedBases };
+  root.Market = { connect, live, demo, nameOf, setNames, eligible, gainerEligible, tickerFresh, GAINER_STALE_MS, loadTokenizedBases, MIN_QUOTE_VOL, MAX_COINS };
 })(window);
