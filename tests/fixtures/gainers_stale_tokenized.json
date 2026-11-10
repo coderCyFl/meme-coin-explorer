@@ -1,0 +1,115 @@
+{
+  "now_ms": 1794274722000,
+  "tokenized_bases": [
+    "SOXLB",
+    "AMDB",
+    "TSLAB",
+    "MVLLB"
+  ],
+  "tickers": [
+    {
+      "symbol": "CREAMUSDT",
+      "lastPrice": "2.10000000",
+      "openPrice": "1.27000000",
+      "highPrice": "2.20000000",
+      "lowPrice": "1.20000000",
+      "quoteVolume": "276098.07",
+      "volume": "1",
+      "closeTime": 1791265122000,
+      "note": "BREAK phantom"
+    },
+    {
+      "symbol": "PNTUSDT",
+      "lastPrice": "0.03500000",
+      "openPrice": "0.02410000",
+      "highPrice": "0.04",
+      "lowPrice": "0.02",
+      "quoteVolume": "261845.06",
+      "volume": "1",
+      "closeTime": 1794263922000,
+      "note": "stale closeTime"
+    },
+    {
+      "symbol": "SOXLBUSDT",
+      "lastPrice": "55.42000000",
+      "openPrice": "44.00000000",
+      "highPrice": "56",
+      "lowPrice": "43",
+      "quoteVolume": "36500000",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "bStock"
+    },
+    {
+      "symbol": "AMDBUSDT",
+      "lastPrice": "507.78000000",
+      "openPrice": "444.03000000",
+      "highPrice": "510",
+      "lowPrice": "440",
+      "quoteVolume": "2950000",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "bStock"
+    },
+    {
+      "symbol": "INITUSDT",
+      "lastPrice": "0.20089000",
+      "openPrice": "0.12443000",
+      "highPrice": "0.21",
+      "lowPrice": "0.12",
+      "quoteVolume": "13045123",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "live gainer"
+    },
+    {
+      "symbol": "TSTUSDT",
+      "lastPrice": "0.01291000",
+      "openPrice": "0.01128000",
+      "highPrice": "0.013",
+      "lowPrice": "0.011",
+      "quoteVolume": "8084828",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "live gainer"
+    },
+    {
+      "symbol": "HOTUSDT",
+      "lastPrice": "0.00100000",
+      "openPrice": "0.00087000",
+      "highPrice": "0.0011",
+      "lowPrice": "0.0008",
+      "quoteVolume": "7181290",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "live gainer"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "lastPrice": "1.00000000",
+      "openPrice": "0.99900000",
+      "highPrice": "1.001",
+      "lowPrice": "0.999",
+      "quoteVolume": "9e9",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "stable"
+    },
+    {
+      "symbol": "BTCUPUSDT",
+      "lastPrice": "10",
+      "openPrice": "9",
+      "highPrice": "11",
+      "lowPrice": "8",
+      "quoteVolume": "1e7",
+      "volume": "1",
+      "closeTime": 1794274662000,
+      "note": "leveraged"
+    }
+  ],
+  "expect_bases": [
+    "INIT",
+    "HOT",
+    "TST"
+  ]
+}

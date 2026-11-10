@@ -41,12 +41,33 @@
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && base.length > 4) return false;
     return +t.quoteVolume >= MIN_QUOTE_VOL && +t.lastPrice > 0;
   }
-  /** Gainers universe: all USDT spot, excl stables + leveraged tokens; no volume floor. */
-  function gainerEligible(t) {
+  /** Drop BREAK/halted phantoms whose MINI closeTime is frozen (>~2h stale). */
+  const GAINER_STALE_MS = 2 * 3600e3;
+  function tickerFresh(t, now) {
+    const ct = +t.closeTime;
+    if (!isFinite(ct) || ct <= 0) return false;
+    return ((now == null ? Date.now() : now) - ct) <= GAINER_STALE_MS;
+  }
+  let _tokenizedBases = null, _tokenizedAt = 0;
+  async function loadTokenizedBases() {
+    if (_tokenizedBases && Date.now() - _tokenizedAt < 3600e3) return _tokenizedBases;
+    try {
+      const doc = await getJSON("data/gainer_board/tokenized_stocks.json", 5000);
+      _tokenizedBases = new Set(doc.bases || []);
+    } catch (_) {
+      _tokenizedBases = _tokenizedBases || new Set();
+    }
+    _tokenizedAt = Date.now();
+    return _tokenizedBases;
+  }
+  /** Gainers universe: fresh USDT spot, excl stables + leveraged + bStocks; no volume floor. */
+  function gainerEligible(t, tokenized, now) {
     if (!t.symbol.endsWith("USDT")) return false;
     const base = t.symbol.slice(0, -4);
     if (!base || STABLES.has(base)) return false;
     if (/(UP|DOWN|BULL|BEAR)$/.test(base) && base.length > 4) return false;
+    if (tokenized && tokenized.has(base)) return false;
+    if (!tickerFresh(t, now)) return false;
     return +t.lastPrice > 0;
   }
   function mapTicker(t) {
@@ -73,10 +94,12 @@
       const all = await getJSON(REST + "/ticker/24hr?type=MINI");
       return all.filter(eligible).map(mapTicker).sort((a, b) => b.qv24 - a.qv24).slice(0, MAX_COINS);
     },
-    /** Full Gainers board universe (same filters as Binance spot USDT excl stables / UP-DOWN). */
+    /** Full Gainers board: live MINI tickers, drop stale closeTime + bStocks. */
     async tickersAll() {
       const all = await getJSON(REST + "/ticker/24hr?type=MINI");
-      return all.filter(gainerEligible).map(mapTicker);
+      const tokenized = await loadTokenizedBases();
+      const now = Date.now();
+      return all.filter((t) => gainerEligible(t, tokenized, now)).map(mapTicker);
     },
     async klines(sym) {
       return root.Strategy.parseKlines(await getJSON(`${REST}/klines?symbol=${sym}&interval=15m&limit=${KLINE_LIMIT}`, 10000));
@@ -220,5 +243,5 @@
     return demo;
   }
 
-  root.Market = { connect, live, demo, nameOf, setNames, gainerEligible };
+  root.Market = { connect, live, demo, nameOf, setNames, gainerEligible, tickerFresh, GAINER_STALE_MS, loadTokenizedBases };
 })(window);
