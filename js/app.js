@@ -178,8 +178,13 @@
       openedAt: Date.now(), until: Date.now() + plan.holdHours * 3600e3, score: r ? r.score : 0, realized: -fee, notes: [] });
     savePf(); return true;
   }
-  /** Merge a Gainers-board tick into S.ticks so detail/Buy work outside the score universe. */
+  function isTokenizedSym(sym) {
+    const base = String(sym || "").replace(/USDT$/, "");
+    return !!(S.tokenized && S.tokenized.has(base));
+  }
+  /** Merge a Gainers-board tick into S.ticks so detail/Buy work outside the score universe. Never re-inject bStocks. */
   function ensureTick(sym) {
+    if (isTokenizedSym(sym)) { if (S.ticks[sym]) delete S.ticks[sym]; return null; }
     if (S.ticks[sym]) return S.ticks[sym];
     const g = S.gTicks[sym];
     if (g) { S.ticks[sym] = Object.assign({}, g); return S.ticks[sym]; }
@@ -239,11 +244,16 @@
     if (S.scanning) return; S.scanning = true; paintStatus();
     try {
       const { ticks, series } = await S.market.scan((d, n) => { S.prog = [d, n]; paintStatus(); });
-      S.ticks = {}; for (const tk of ticks) S.ticks[tk.sym] = tk;
-      S.series = series; S.btc = Strategy.indexSeries(series.BTCUSDT);
+      S.tokenized = await Market.loadTokenizedBases();
+      S.ticks = {}; for (const tk of ticks) { if (!isTokenizedSym(tk.sym)) S.ticks[tk.sym] = tk; }
+      S.series = series;
+      if (S.series) { for (const sym of Object.keys(S.series)) { if (isTokenizedSym(sym) && sym !== "BTCUSDT") delete S.series[sym]; } }
+      S.scores = {}; // drop leftover scores (e.g. SOXSB) from a prior universe
+      S.btc = Strategy.indexSeries(series.BTCUSDT);
       if (!S.ticks.BTCUSDT && series.BTCUSDT) { const b = series.BTCUSDT; S.ticks.BTCUSDT = { sym: "BTCUSDT", base: "BTC", name: "Bitcoin", price: b.c[b.n - 1], open24: b.c[b.n - 97], qv24: 0 }; }
       rescore(); S.scanAt = Date.now();
       logSignals();
+      if (S.selected && (isTokenizedSym(S.selected) || (!S.ticks[S.selected] && !S.gTicks[S.selected]))) S.selected = null;
       if (!S.selected) { const top = ranked("early")[0] || ranked("all")[0]; if (top && isDesk()) S.selected = top; }
       const snap = takeRadarSnap();
       const closestKey = snap.slice(0, 10).map((x) => x.sym).join(",");
@@ -321,6 +331,7 @@
     for (const sym in S.scores) {
       const r = S.scores[sym];
       if (!r || !r.stage) continue;
+      if (!S.ticks[sym] || isTokenizedSym(sym)) continue; // no leftover bStocks / prior-universe rows
       if (sym === "BTCUSDT" && filter !== "all") continue;
       // Stage chips: exact match only. "all" = every scored stage (early/build/late/quiet).
       if (filter === "all" || r.stage === filter) out.push(sym);
@@ -461,18 +472,19 @@
     if (radarEl && radarEl.dataset.filter !== S.filter) { radarEl.dataset.filter = S.filter; radarEl.dataset.key = ""; }
     const emptyKey = S.filter === "early" ? "radar.none" : S.filter === "build" ? "radar.noneBuild" : S.filter === "late" ? "radar.noneLate" : "radar.none";
     paintList(radarEl, list, `<li class="empty">${S.scanAt ? t(emptyKey) : `<span class="loader"></span>`}</li>`);
-    // Markets: product face — hide quiet flood unless user is searching.
+    // Markets: full scanned universe (same order of magnitude as Radar All), including quiet.
     const q = S.q.trim().toUpperCase();
     let m = Object.keys(S.scores).filter((s) => {
       if (!S.ticks[s] || !S.scores[s]) return false;
       if (s === "BTCUSDT") return false;
-      if (!q && S.scores[s].stage === "quiet") return false;
+      if (isTokenizedSym(s)) return false;
       return !q || s.includes(q) || S.ticks[s].name.toUpperCase().includes(q);
     });
     const ch = (s) => { const tk = S.ticks[s]; return tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0; };
     m.sort(S.sort === "change" ? (a, b) => ch(b) - ch(a) : S.sort === "vol" ? (a, b) => S.ticks[b].qv24 - S.ticks[a].qv24 : (a, b) => S.scores[b].score - S.scores[a].score);
     $$("#mSort [data-sort]").forEach((b) => b.classList.toggle("on", b.dataset.sort === S.sort));
-    paintList($("#marketList"), m, `<li class="empty"><span class="loader"></span></li>`);
+    const mEmpty = S.scanAt ? t(q ? "m.empty" : "m.none") : `<span class="loader"></span>`;
+    paintList($("#marketList"), m, `<li class="empty">${mEmpty}</li>`);
   }
   function gRow(sym) {
     const tk = S.gTicks[sym] || S.ticks[sym]; if (!tk) return "";
