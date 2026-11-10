@@ -44,6 +44,7 @@
     market: null, ticks: {}, series: {}, btc: null, scores: {}, bt: null, scanAt: 0, scanning: false, prog: [0, 0],
     filter: "all", sort: "score", q: "", selected: null, trade: null, podium: null, viewer: null,
     gTicks: {}, gMode: "gainers", gHideLow: false, gAt: 0, gLoading: false,
+    mTicks: {}, mAt: 0, mLoading: false,
     awDoc: null, awAt: 0, awLoading: false,
   };
   const G_TOP = 20, G_VOL_FLOOR = 1e6;
@@ -186,7 +187,7 @@
   function ensureTick(sym) {
     if (isTokenizedSym(sym)) { if (S.ticks[sym]) delete S.ticks[sym]; return null; }
     if (S.ticks[sym]) return S.ticks[sym];
-    const g = S.gTicks[sym];
+    const g = S.gTicks[sym] || S.mTicks[sym];
     if (g) { S.ticks[sym] = Object.assign({}, g); return S.ticks[sym]; }
     return null;
   }
@@ -287,6 +288,14 @@
           if (isFinite(+raw.q) && +raw.q > 0) g.qv24 = +raw.q;
         }
       }
+      const mk = S.mTicks[sym];
+      if (mk) {
+        mk.price = px;
+        if (raw && typeof raw === "object") {
+          if (isFinite(+raw.o) && +raw.o > 0) mk.open24 = +raw.o;
+          if (isFinite(+raw.q) && +raw.q > 0) mk.qv24 = +raw.q;
+        }
+      }
     }
     checkExits(); scheduleLive(); scheduleGainers();
   }
@@ -300,6 +309,18 @@
   function scheduleGainers() {
     if (gLiveT) return;
     gLiveT = setTimeout(() => { gLiveT = 0; if (document.body.dataset.view === "gainers") renderGainers(); }, 1000);
+  }
+  async function loadCatalog() {
+    if (!S.market || S.mLoading) return;
+    S.mLoading = true;
+    try {
+      S.tokenized = await Market.loadTokenizedBases();
+      const ticks = await S.market.tickersCatalog();
+      const map = {};
+      for (const tk of ticks) { if (!isTokenizedSym(tk.sym)) map[tk.sym] = tk; }
+      S.mTicks = map; S.mAt = Date.now();
+    } catch (e) { console.warn("catalog load failed", e); }
+    finally { S.mLoading = false; renderLists(); }
   }
   async function loadGainers() {
     if (!S.market || S.gLoading) return;
@@ -472,19 +493,55 @@
     if (radarEl && radarEl.dataset.filter !== S.filter) { radarEl.dataset.filter = S.filter; radarEl.dataset.key = ""; }
     const emptyKey = S.filter === "early" ? "radar.none" : S.filter === "build" ? "radar.noneBuild" : S.filter === "late" ? "radar.noneLate" : "radar.none";
     paintList(radarEl, list, `<li class="empty">${S.scanAt ? t(emptyKey) : `<span class="loader"></span>`}</li>`);
-    // Markets: full scanned universe (same order of magnitude as Radar All), including quiet.
+    // Markets: full eligible USDT catalog (no MAX_COINS slice, no $3M floor). Radar stays scored-60.
     const q = S.q.trim().toUpperCase();
-    let m = Object.keys(S.scores).filter((s) => {
-      if (!S.ticks[s] || !S.scores[s]) return false;
-      if (s === "BTCUSDT") return false;
-      if (isTokenizedSym(s)) return false;
-      return !q || s.includes(q) || S.ticks[s].name.toUpperCase().includes(q);
+    const mtk = (s) => S.mTicks[s] || S.ticks[s];
+    let m = Object.keys(S.mTicks).filter((s) => {
+      const tk = S.mTicks[s];
+      if (!tk || isTokenizedSym(s)) return false;
+      if (!q) return true;
+      const base = (tk.base || s.replace(/USDT$/, "")).toUpperCase();
+      const name = (tk.name || "").toUpperCase();
+      return s.includes(q) || base.includes(q) || name.includes(q);
     });
-    const ch = (s) => { const tk = S.ticks[s]; return tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0; };
-    m.sort(S.sort === "change" ? (a, b) => ch(b) - ch(a) : S.sort === "vol" ? (a, b) => S.ticks[b].qv24 - S.ticks[a].qv24 : (a, b) => S.scores[b].score - S.scores[a].score);
+    const ch = (s) => { const tk = mtk(s); return tk && tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0; };
+    const vol = (s) => (mtk(s) && mtk(s).qv24) || 0;
+    const sc = (s) => (S.scores[s] && S.scores[s].score) || 0;
+    m.sort(S.sort === "change" ? (a, b) => ch(b) - ch(a) : S.sort === "vol" ? (a, b) => vol(b) - vol(a) : (a, b) => sc(b) - sc(a) || vol(b) - vol(a));
     $$("#mSort [data-sort]").forEach((b) => b.classList.toggle("on", b.dataset.sort === S.sort));
-    const mEmpty = S.scanAt ? t(q ? "m.empty" : "m.none") : `<span class="loader"></span>`;
-    paintList($("#marketList"), m, `<li class="empty">${mEmpty}</li>`);
+    const mEmpty = (S.mAt || S.scanAt) ? t(q ? "m.empty" : "m.none") : `<span class="loader"></span>`;
+    paintMarketList($("#marketList"), m, `<li class="empty">${mEmpty}</li>`);
+  }
+  function mRow(sym) {
+    const tk = S.mTicks[sym] || S.ticks[sym]; if (!tk) return "";
+    return `<li><button type="button" class="row ${S.selected === sym ? "sel" : ""}" data-sym="${esc(sym)}">${mRowInner(sym)}</button></li>`;
+  }
+  function mRowInner(sym) {
+    const tk = S.mTicks[sym] || S.ticks[sym]; if (!tk) return "";
+    const ch24 = tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0;
+    const r = S.scores[sym];
+    // Unscored rows: price / 24h / vol only — no fake Early Score.
+    const stage = r && r.stage ? `<span class="stage ${r.stage}">${t("stage." + r.stage)}</span>` : "";
+    const ring = r && r.stage ? scoreRing(r.score, r.stage) : "";
+    const sparkSvg = r && S.series[sym] ? `<span class="r-spark">${spark(S.series[sym], 96, 32)}</span>` : "";
+    const why = r ? (reasonChips(r) || `<span class="muted">${esc(tk.name)}</span>`) : `<span class="muted">${esc(tk.name)}</span>`;
+    const px1h = r && r.metrics ? `<span class="${sign(r.metrics.ret1h)}">${fmtPct(r.metrics.ret1h)} <i>1h</i></span>` : "";
+    return `${badge(tk.base)}
+      <span class="r-main"><span class="r-top"><b class="sym">${esc(tk.base)}</b>${stage}</span>
+        <span class="r-why">${why}</span></span>
+      ${sparkSvg}
+      <span class="r-px"><b>${fmtPrice(tk.price)}</b>${px1h}<span class="${sign(ch24)} ${r && r.metrics ? "sub" : ""}">${fmtPct(ch24)} <i>24h</i></span><span class="g-voln">${fmtVol(tk.qv24)}</span></span>
+      ${ring}`;
+  }
+  function paintMarketList(el, syms, emptyHTML) {
+    const key = syms.join(",");
+    if (!syms.length) { el.dataset.key = ""; el.innerHTML = emptyHTML; return; }
+    if (el.dataset.key !== key) { el.dataset.key = key; el.innerHTML = syms.map(mRow).join(""); return; }
+    for (const b of el.querySelectorAll("button.row")) {
+      const html = mRowInner(b.dataset.sym);
+      if (b._h !== html) { b.innerHTML = html; b._h = html; }
+      b.classList.toggle("sel", S.selected === b.dataset.sym);
+    }
   }
   function gRow(sym) {
     const tk = S.gTicks[sym] || S.ticks[sym]; if (!tk) return "";
@@ -1059,12 +1116,14 @@
     try { const a = await (await fetch("data/bn_assets.json", { cache: "no-store" })).json(); if (a && a.assets) { Coin3D.setAssets(a.assets); Market.setNames(a.assets); } } catch (_) {}
     S.market = await Market.connect(); paintStatus();
     loadGainers();
+    loadCatalog();
     loadAiWatch();
     loadHits();
     await scan();
     S.market.stream(onPrices);
     setInterval(() => { if (!document.hidden) scan(); }, RESCAN_MS);
     setInterval(() => { if (!document.hidden) loadGainers(); }, RESCAN_MS);
+    setInterval(() => { if (!document.hidden) loadCatalog(); }, RESCAN_MS);
     setInterval(() => { if (!document.hidden) loadAiWatch(); }, RESCAN_MS);
     setInterval(() => { if (S.scanAt && !S.scanning && !document.hidden) paintStatus(); }, 15000);
     setInterval(() => { checkExits(); checkLog(); }, 60000);

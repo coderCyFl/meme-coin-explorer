@@ -104,6 +104,13 @@
       const now = Date.now();
       return all.filter((t) => gainerEligible(t, tokenized, now)).map(mapTicker);
     },
+    /** Full Markets catalog: same eligibility as Gainers (fresh closeTime, no $3M floor), no MAX_COINS slice. */
+    async tickersCatalog() {
+      const all = await getJSON(REST + "/ticker/24hr?type=MINI");
+      const tokenized = await loadTokenizedBases();
+      const now = Date.now();
+      return all.filter((t) => gainerEligible(t, tokenized, now)).map(mapTicker).sort((a, b) => b.qv24 - a.qv24);
+    },
     async klines(sym) {
       return root.Strategy.parseKlines(await getJSON(`${REST}/klines?symbol=${sym}&interval=15m&limit=${KLINE_LIMIT}`, 10000));
     },
@@ -203,6 +210,10 @@
     _series: null, _ticks: null,
     async probe() { return true; },
     async tickersAll() {
+      if (!this._ticks) await this.scan();
+      return this._ticks.slice();
+    },
+    async tickersCatalog() {
       if (!this._ticks) await this.scan();
       return this._ticks.slice();
     },
