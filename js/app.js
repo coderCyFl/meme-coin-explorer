@@ -43,7 +43,7 @@
   const S = {
     market: null, ticks: {}, series: {}, btc: null, scores: {}, bt: null, scanAt: 0, scanning: false, prog: [0, 0],
     filter: "all", sort: "score", q: "", selected: null, trade: null, podium: null, viewer: null,
-    gTicks: {}, gMode: "gainers", gHideLow: false, gAt: 0, gLoading: false,
+    gTicks: {}, gMode: "gainers", gHideLow: false, gAt: 0, gLoading: false, gQ: "",
     mTicks: {}, mAt: 0, mLoading: false,
     awDoc: null, awAt: 0, awLoading: false,
   };
@@ -338,8 +338,27 @@
       if (movedKey) gainerSig = flashIfMoved(gainerSig, movedKey, $("#gainerList"));
     }
   }
+  function coinQueryHit(tk, q) {
+    if (!tk || !q) return !q;
+    const sym = String(tk.sym || "").toUpperCase();
+    const base = String(tk.base || sym.replace(/USDT$/, "")).toUpperCase();
+    const name = String(tk.name || "").toUpperCase();
+    return sym.includes(q) || base.includes(q) || name.includes(q);
+  }
   function gainerSyms() {
     let list = Object.keys(S.gTicks);
+    const q = (S.gQ || "").trim().toUpperCase();
+    // Non-empty query: full tickersAll / gainerEligible list (no tab slice, no $1M hide, no G_TOP cap).
+    if (q) {
+      list = list.filter((s) => coinQueryHit(S.gTicks[s], q));
+      const exact = (s) => {
+        const tk = S.gTicks[s] || {};
+        const base = String(tk.base || s.replace(/USDT$/, "")).toUpperCase();
+        return (base === q || s === q || s === q + "USDT") ? 1 : 0;
+      };
+      list.sort((a, b) => exact(b) - exact(a) || (S.gTicks[b].qv24 || 0) - (S.gTicks[a].qv24 || 0));
+      return list;
+    }
     if (S.gHideLow) list = list.filter((s) => S.gTicks[s].qv24 >= G_VOL_FLOOR);
     const ch = (s) => { const tk = S.gTicks[s]; return tk.open24 > 0 ? tk.price / tk.open24 - 1 : 0; };
     if (S.gMode === "losers") list.sort((a, b) => ch(a) - ch(b));
@@ -598,10 +617,13 @@
     const el = $("#gainerList"); if (!el) return;
     $$("#gMode [data-gmode]").forEach((b) => b.classList.toggle("on", b.dataset.gmode === S.gMode));
     const hide = $("#gHideLow"); if (hide) hide.checked = !!S.gHideLow;
+    const q = (S.gQ || "").trim();
+    const box = $("#gSearch"); if (box && box.value !== S.gQ) box.value = S.gQ;
     const syms = gainerSyms();
     const meta = $("#gMeta");
-    if (meta) meta.textContent = S.gAt ? t("g.meta", { n: syms.length }) : "";
-    paintGainerList(el, syms, `<li class="empty">${S.gLoading || !S.gAt ? t("g.loading") : t("g.empty")}</li>`);
+    if (meta) meta.textContent = S.gAt ? t(q ? "g.searchMeta" : "g.meta", { n: syms.length }) : "";
+    const emptyKey = q ? "g.searchEmpty" : "g.empty";
+    paintGainerList(el, syms, `<li class="empty">${S.gLoading || !S.gAt ? t("g.loading") : t(emptyKey)}</li>`);
   }
 
 
@@ -1080,6 +1102,7 @@
     if (e.target.id === "tAmt" && S.trade) { S.trade.amt = Math.max(0, +e.target.value || 0); const pos = e.target.selectionStart;
       renderDetail(true); const i = $("#tAmt", detailHost()); if (i) { i.focus(); try { i.setSelectionRange(pos, pos); } catch (_) {} } }
     if (e.target.id === "mSearch") { S.q = e.target.value; renderLists(); }
+    if (e.target.id === "gSearch") { S.gQ = e.target.value; renderGainers(); }
   });
   document.addEventListener("submit", (e) => {
     const f = e.target.closest("[data-trade]"); if (!f) return;
@@ -1132,7 +1155,7 @@
 
   // Test seam: same-snapshot radar face (no scoring rules).
   window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins, loadHits, renderHits };
-  window.CryptoMGainers = { gainerSyms, G_TOP, G_VOL_FLOOR, ensureTick };
+  window.CryptoMGainers = { gainerSyms, coinQueryHit, G_TOP, G_VOL_FLOOR, ensureTick };
   window.CryptoMAiWatch = { loadAiWatch, renderAiWatch };
   window.CryptoMLive = { RESCAN_MS, softFlash, fmtAge };
 })();
