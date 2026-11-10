@@ -1,10 +1,42 @@
 {
- "updated_at": "2026-11-10T08:25:46+08:00",
- "batch": "gb-20261110-0815",
- "picked_at": "2026-11-10T08:15:41+08:00",
- "btc_24h_pct": 0.29,
- "universe": 60,
+ "updated_at": "2026-11-10T11:53:00+08:00",
+ "batch": "gb-20261110-1151",
+ "picked_at": "2026-11-10T11:51:41+08:00",
+ "btc_24h_pct": -0.57,
+ "universe": 59,
  "active": [
+  {
+   "symbol": "GRAM",
+   "pair": "GRAMUSDT",
+   "tier": "early2",
+   "picked_at": "2026-11-10T11:15:00+08:00",
+   "entry_price_usd": 1.076,
+   "price_at_snapshot": 1.086,
+   "trigger_via": "prec",
+   "change_15m_at_pick": -1.47,
+   "change_24h_at_pick": 7.49,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261110-1151",
+   "score": 42.5,
+   "change_1h_at_pick": 1.7,
+   "change_4h_at_pick": 3.86,
+   "vol_x_avg": 9.08,
+   "vol_x_prev_hour": 1.06,
+   "range_24h_pct": 13.1,
+   "from_24h_high_pct": -4.1,
+   "quote_volume_24h": 14229364,
+   "watch_only": true,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
   {
    "symbol": "HOT",
    "pair": "HOTUSDT",
@@ -26,7 +58,17 @@
    "from_24h_high_pct": -8.03,
    "quote_volume_24h": 7226902,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 3.49,
+     "max_drawdown_pct": -4.37,
+     "close_pct": -0.22,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-10T11:51:29+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -58,7 +100,17 @@
    "from_24h_high_pct": -12.83,
    "quote_volume_24h": 8391406,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.84,
+     "max_drawdown_pct": -7.65,
+     "close_pct": -6.61,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-10T11:51:29+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -90,7 +142,17 @@
    "from_24h_high_pct": -5.21,
    "quote_volume_24h": 11779388,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 5.71,
+     "max_drawdown_pct": -8.58,
+     "close_pct": 1.72,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-10T11:51:29+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -253,426 +315,6 @@
      "max_gain_pct": 0.74,
      "max_drawdown_pct": -1.91,
      "close_pct": 0.12,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ONDO",
-   "pair": "ONDOUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-09T23:45:00+08:00",
-   "entry_price_usd": 0.3845,
-   "price_at_snapshot": 0.3852,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 2.4,
-   "change_24h_at_pick": 6.27,
-   "rank_24h_at_pick": 15,
-   "batch": "gb-20261110-0008",
-   "score": 61.1,
-   "change_1h_at_pick": 6.57,
-   "change_4h_at_pick": 9.23,
-   "vol_x_avg": 14.45,
-   "vol_x_prev_hour": 1.19,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -0.29,
-   "quote_volume_24h": 14497642,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.46,
-     "max_drawdown_pct": -3.22,
-     "close_pct": -1.79,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "WLFI",
-   "pair": "WLFIUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-09T23:45:00+08:00",
-   "entry_price_usd": 0.048,
-   "price_at_snapshot": 0.0477,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 0.21,
-   "change_24h_at_pick": 2.56,
-   "rank_24h_at_pick": 163,
-   "batch": "gb-20261110-0008",
-   "score": 33.3,
-   "change_1h_at_pick": 1.69,
-   "change_4h_at_pick": 3.9,
-   "vol_x_avg": 2.38,
-   "vol_x_prev_hour": 1.01,
-   "range_24h_pct": 5.3,
-   "from_24h_high_pct": -0.83,
-   "quote_volume_24h": 5048099,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 0.63,
-     "max_drawdown_pct": -1.25,
-     "close_pct": 0.42,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "INJ",
-   "pair": "INJUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-09T23:45:00+08:00",
-   "entry_price_usd": 8.236,
-   "price_at_snapshot": 8.135,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 2.15,
-   "change_24h_at_pick": 1.18,
-   "rank_24h_at_pick": 292,
-   "batch": "gb-20261110-0008",
-   "score": 28.6,
-   "change_1h_at_pick": 1.43,
-   "change_4h_at_pick": 2.01,
-   "vol_x_avg": 2.11,
-   "vol_x_prev_hour": 1.41,
-   "range_24h_pct": 7.2,
-   "from_24h_high_pct": -0.95,
-   "quote_volume_24h": 15565154,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 0.7,
-     "max_drawdown_pct": -2.37,
-     "close_pct": -0.12,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "SIGN",
-   "pair": "SIGNUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-09T23:30:00+08:00",
-   "entry_price_usd": 0.00936,
-   "price_at_snapshot": 0.00957,
-   "trigger_via": "thin",
-   "change_15m_at_pick": 2.63,
-   "change_24h_at_pick": 10.12,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 62.8,
-   "change_1h_at_pick": 7.09,
-   "change_4h_at_pick": 10.25,
-   "vol_x_avg": 9.43,
-   "vol_x_prev_hour": 0.0,
-   "range_24h_pct": 19.8,
-   "from_24h_high_pct": -2.7,
-   "quote_volume_24h": 2105570,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 7.37,
-     "max_drawdown_pct": -3.85,
-     "close_pct": -1.39,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ENA",
-   "pair": "ENAUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-09T23:30:00+08:00",
-   "entry_price_usd": 0.1556,
-   "price_at_snapshot": 0.156,
-   "trigger_via": "prec",
-   "change_15m_at_pick": -0.13,
-   "change_24h_at_pick": 0.65,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 28.5,
-   "change_1h_at_pick": 1.37,
-   "change_4h_at_pick": 2.84,
-   "vol_x_avg": 2.01,
-   "vol_x_prev_hour": 1.14,
-   "range_24h_pct": 8.4,
-   "from_24h_high_pct": -1.14,
-   "quote_volume_24h": 31725607,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.29,
-     "max_drawdown_pct": -2.06,
-     "close_pct": -0.51,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "HYPE",
-   "pair": "HYPEUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-09T23:15:00+08:00",
-   "entry_price_usd": 75.9,
-   "price_at_snapshot": 75.58,
-   "trigger_via": "prec",
-   "change_15m_at_pick": -0.24,
-   "change_24h_at_pick": -1.95,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 38.2,
-   "change_1h_at_pick": 2.83,
-   "change_4h_at_pick": 4.1,
-   "vol_x_avg": 3.47,
-   "vol_x_prev_hour": 2.85,
-   "range_24h_pct": 7.2,
-   "from_24h_high_pct": -2.28,
-   "quote_volume_24h": 44126835,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.16,
-     "max_drawdown_pct": -2.13,
-     "close_pct": -1.42,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ETHFI",
-   "pair": "ETHFIUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-09T23:15:00+08:00",
-   "entry_price_usd": 0.6279,
-   "price_at_snapshot": 0.6308,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 0.5,
-   "change_24h_at_pick": 5.6,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 35.6,
-   "change_1h_at_pick": 1.27,
-   "change_4h_at_pick": 6.01,
-   "vol_x_avg": 2.22,
-   "vol_x_prev_hour": 2.5,
-   "range_24h_pct": 12.3,
-   "from_24h_high_pct": -0.33,
-   "quote_volume_24h": 4472164,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.11,
-     "max_drawdown_pct": -1.78,
-     "close_pct": 0.38,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "GNS",
-   "pair": "GNSUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-09T23:00:00+08:00",
-   "entry_price_usd": 0.458,
-   "price_at_snapshot": 0.486,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 7.26,
-   "change_24h_at_pick": 43.13,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 19.2,
-   "change_1h_at_pick": 7.01,
-   "change_4h_at_pick": -10.02,
-   "vol_x_avg": 1.31,
-   "vol_x_prev_hour": 1.31,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -20.35,
-   "quote_volume_24h": 6674162,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 7.86,
-     "max_drawdown_pct": -12.66,
-     "close_pct": -7.21,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "TST",
-   "pair": "TSTUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-09T21:45:00+08:00",
-   "entry_price_usd": 0.01459,
-   "price_at_snapshot": 0.01279,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": -2.6,
-   "change_24h_at_pick": 25.78,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 87.2,
-   "change_1h_at_pick": 18.33,
-   "change_4h_at_pick": 23.96,
-   "vol_x_avg": 102.48,
-   "vol_x_prev_hour": 6.27,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -6.83,
-   "quote_volume_24h": 5521024,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 3.84,
-     "max_drawdown_pct": -13.71,
-     "close_pct": -7.68,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-10T05:38:59+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "AVAX",
-   "pair": "AVAXUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-09T21:00:00+08:00",
-   "entry_price_usd": 8.453,
-   "price_at_snapshot": 8.912,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 1.15,
-   "change_24h_at_pick": 3.34,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261110-0008",
-   "score": 51.4,
-   "change_1h_at_pick": 5.22,
-   "change_4h_at_pick": 5.46,
-   "vol_x_avg": 24.1,
-   "vol_x_prev_hour": 4.78,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -2.31,
-   "quote_volume_24h": 44417565,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 6.64,
-     "max_drawdown_pct": -0.86,
-     "close_pct": 3.49,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
