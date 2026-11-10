@@ -1,21 +1,256 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-07T12:05:14+08:00",
+  "updated_at": "2026-11-10T22:31:52+08:00",
   "source": {
-    "producer": "tools/ai_watch_producer.mjs",
-    "targets": "data/ai_targets.json",
-    "x": "api.x.com",
-    "grok": "api.x.ai",
-    "note": "Site reads same-origin JSON only; 0 client secrets / 0 browser X|Grok calls."
+    "producer": "proxy-builtin-x",
+    "targets": "live Binance 24hr (fresh, not tokenized, USDT)",
+    "x": "Grok Bot built-in X tools",
+    "grok": null,
+    "note": "Site reads same-origin JSON only; 0 client secrets / 0 browser X calls. Proxy refresh via built-in X, no user token."
   },
   "cap": {
-    "date": "2026-11-07",
+    "date": "2026-11-10",
     "daily_cap": 300,
-    "calls_today": 3,
+    "calls_today": 20,
     "cap_reached": false,
     "reset": "HKT midnight (UTC+8)"
   },
   "entries": [
+    {
+      "symbol": "INITUSDT",
+      "base": "INIT",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:29:14+08:00",
+        "posts_last_1h": 8,
+        "posts_prev_6h_avg_per_h": 20.33,
+        "spike_ratio": 0.39,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120161371581194365",
+            "url": "https://x.com/Ruck520224/status/2120161371581194365",
+            "text": "24小时拉升 +89.12%！$INIT 逆势冲上榜首，这波资金抢筹究竟藏着什么信号？\n🔥 异动核心数据：\n标的：$INIT\n现价：$0.242400 | 24H 涨幅：+89.12%\n24H 成交量：突破 23.3M USDT（参照 $BTC 现价 $73,941.36）\n🎯 ",
+            "likes": 0,
+            "author_username": "Ruck520224",
+            "author_followers": 31,
+            "created_at": "2026-11-10T14:27:16.000Z"
+          },
+          {
+            "id": "2120161351662248261",
+            "url": "https://x.com/BTC_Balporsugu/status/2120161351662248261",
+            "text": "Son durum böyle #Inıt Vazgeçmek yok bunların yaptığı kaşarlık yanlarına kalmaz \n\nBu pozisyondan sonra #Binance #Okx #Gateio  benim için bitm",
+            "likes": 1,
+            "author_username": "BTC_Balporsugu",
+            "author_followers": 3765,
+            "created_at": "2026-11-10T14:27:11.000Z"
+          },
+          {
+            "id": "2120161308373053737",
+            "url": "https://x.com/AndrejHank/status/2120161308373053737",
+            "text": "@AirdropGlideApp The reason for the pump is that the spot supply on Binance is limited - the chain is down, you cannot deposit INIT to sell.",
+            "likes": 1,
+            "author_username": "AndrejHank",
+            "author_followers": 12,
+            "created_at": "2026-11-10T14:27:01.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "QIUSDT",
+      "base": "QI",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:29:15+08:00",
+        "posts_last_1h": 1,
+        "posts_prev_6h_avg_per_h": 2.67,
+        "spike_ratio": 0.38,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120134071149822046",
+            "url": "https://x.com/DreadMark18/status/2120134071149822046",
+            "text": "The battles just got a whole lot more exciting!\n\nThe Inuverse Relic Update is now LIVE!\n\nUnlock powerful combat abilities, discover unique r",
+            "likes": 0,
+            "author_username": "DreadMark18",
+            "author_followers": 111,
+            "created_at": "2026-11-10T12:38:47.000Z"
+          },
+          {
+            "id": "2120133926094311834",
+            "url": "https://x.com/Cber_CMCZH/status/2120133926094311834",
+            "text": "https://t.co/mxBj7jdpYE",
+            "likes": 0,
+            "author_username": "Cber_CMCZH",
+            "author_followers": 1905,
+            "created_at": "2026-11-10T12:38:12.000Z"
+          },
+          {
+            "id": "2120126211686809624",
+            "url": "https://x.com/Cryptorbix/status/2120126211686809624",
+            "text": "INIT rockets +58.47% to $0.194930 on 108.6M vol; QI +25.46% to $0.00206 (1.5B vol); ONE +20.85% $0.001826 (11.2B vol); SECZB $8.32 +18.18% (",
+            "likes": 0,
+            "author_username": "Cryptorbix",
+            "author_followers": 1306,
+            "created_at": "2026-11-10T12:07:33.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "ONEUSDT",
+      "base": "ONE",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:29:56+08:00",
+        "posts_last_1h": 520,
+        "posts_prev_6h_avg_per_h": 678.67,
+        "spike_ratio": 0.77,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120161986239472073",
+            "url": "https://x.com/ricardotakamura/status/2120161986239472073",
+            "text": "Three days of photography, art and meaningful encounters at the Campos de Luz International Photography Festival, in Campos do Jordão, Brazi",
+            "likes": 0,
+            "author_username": "ricardotakamura",
+            "author_followers": 4273,
+            "created_at": "2026-11-10T14:29:42.000Z"
+          },
+          {
+            "id": "2120161968963363319",
+            "url": "https://x.com/TraderF_/status/2120161968963363319",
+            "text": "HERKES SATARKEN, ALACAK OLAN BABAYİĞİTLER BİR ADIM ÖNE\n\n#bitcoin #crypto #fed #Ethereum",
+            "likes": 1,
+            "author_username": "TraderF_",
+            "author_followers": 48,
+            "created_at": "2026-11-10T14:29:38.000Z"
+          },
+          {
+            "id": "2120161967377694858",
+            "url": "https://x.com/Yu_Min1995/status/2120161967377694858",
+            "text": "Thanks for your comment, fam! 🤝\n🚀 Crypto moves fast. Let’s make sense of it.\nMarket updates, whale activity &amp; Web3 trends—all in one pla",
+            "likes": 1,
+            "author_username": "Yu_Min1995",
+            "author_followers": 16,
+            "created_at": "2026-11-10T14:29:38.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "CYBERUSDT",
+      "base": "CYBER",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:29:57+08:00",
+        "posts_last_1h": 7,
+        "posts_prev_6h_avg_per_h": 12.83,
+        "spike_ratio": 0.55,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120160907871301639",
+            "url": "https://x.com/tonminecrypto/status/2120160907871301639",
+            "text": "#CYBER/USDT 💥💥\n\nProfit: +1,539.55%🤑\n\nTo join the vip room send DM https://t.co/rOxtNmWrKp https://t.co/v3kBWMzbzQ",
+            "likes": 0,
+            "author_username": "tonminecrypto",
+            "author_followers": 8,
+            "created_at": "2026-11-10T14:25:25.000Z"
+          },
+          {
+            "id": "2120160033245925855",
+            "url": "https://x.com/tonminecrypto/status/2120160033245925855",
+            "text": "#CYBER/USDT 🤩🤩 https://t.co/hTVCCIMtpz https://t.co/v3kBWMzJpo",
+            "likes": 0,
+            "author_username": "tonminecrypto",
+            "author_followers": 8,
+            "created_at": "2026-11-10T14:21:57.000Z"
+          },
+          {
+            "id": "2120159913788002396",
+            "url": "https://x.com/h_a_t_a_r_a_k_e/status/2120159913788002396",
+            "text": "【11/10 本日のまとめ】AIニュースまとめ\n\n■フォロー中のポストから\n\n① AI at Meta（@AIatMeta）：最小・最効率のモデル「Muse Ember」を発表、Muse 3モデルがGoogle Cloudでも提供へ\nMetaは10日未明から朝にかけて、Museフ",
+            "likes": 0,
+            "author_username": "h_a_t_a_r_a_k_e",
+            "author_followers": 1206,
+            "created_at": "2026-11-10T14:21:28.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "SOPHUSDT",
+      "base": "SOPH",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:29:58+08:00",
+        "posts_last_1h": 3,
+        "posts_prev_6h_avg_per_h": 4.50,
+        "spike_ratio": 0.67,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120159971769790697",
+            "url": "https://x.com/cexscan/status/2120159971769790697",
+            "text": "🇺🇸 US open: $SOPH (Sophon) touched its all-time low in the last 12 hours and is up 19% over the same window on Binance Spot.\n\nThe 12-hour lo",
+            "likes": 0,
+            "author_username": "cexscan",
+            "author_followers": 10601,
+            "created_at": "2026-11-10T14:21:42.000Z"
+          },
+          {
+            "id": "2120155746906325156",
+            "url": "https://x.com/mrcamerontrader/status/2120155746906325156",
+            "text": "📉LONG $SOPH\nlarge buyers stepping in!\n\nEntry: 0.001488\nSL: 0.001449\n#crypto https://t.co/DEDOmAtnqJ",
+            "likes": 1,
+            "author_username": "mrcamerontrader",
+            "author_followers": 819,
+            "created_at": "2026-11-10T14:04:55.000Z"
+          },
+          {
+            "id": "2120154095403384983",
+            "url": "https://x.com/DyorNetCrypto/status/2120154095403384983",
+            "text": "➡️ View the $SOPH USDT 1h chart\nhttps://t.co/glYc2uqSWV",
+            "likes": 0,
+            "author_username": "DyorNetCrypto",
+            "author_followers": 82276,
+            "created_at": "2026-11-10T13:58:21.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
     {
       "symbol": "ACTUSDT",
       "base": "ACT",
@@ -24,42 +259,232 @@
         "meme_volume"
       ],
       "x": {
-        "checked_at": "2026-11-07T12:00:00+08:00",
-        "posts_last_1h": 12,
-        "posts_prev_6h_avg_per_h": 2.5,
-        "spike_ratio": 4.8,
-        "verdict": "熱",
-        "one_line": "討論急升有量",
+        "checked_at": "2026-11-10T22:31:01+08:00",
+        "posts_last_1h": 15,
+        "posts_prev_6h_avg_per_h": 27.17,
+        "spike_ratio": 0.55,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
         "shill_flag": false,
-        "big_accounts": 1,
+        "big_accounts": 0,
         "top_posts": [
           {
-            "id": "1987654321098765432",
-            "url": "https://x.com/demo_user/status/1987654321098765432",
-            "text": "$ACT pumping on Binance volume",
-            "likes": 42,
-            "author_username": "demo_user",
-            "author_followers": 120000,
-            "created_at": "2026-11-07T11:50:00+08:00"
+            "id": "2120162103818428722",
+            "url": "https://x.com/bestreferralX/status/2120162103818428722",
+            "text": "https://t.co/1XfTyjbfrz",
+            "likes": 0,
+            "author_username": "bestreferralX",
+            "author_followers": 30,
+            "created_at": "2026-11-10T14:30:10.000Z"
+          },
+          {
+            "id": "2120161745071165631",
+            "url": "https://x.com/EXC_Markets/status/2120161745071165631",
+            "text": "#BTC, #ETH, and #SOL have hit multi-month lows as political uncertainty, regulatory concerns, and increased market pressure weigh on the cry",
+            "likes": 1,
+            "author_username": "EXC_Markets",
+            "author_followers": 1591,
+            "created_at": "2026-11-10T14:28:45.000Z"
+          },
+          {
+            "id": "2120161582755791284",
+            "url": "https://x.com/tonminecrypto/status/2120161582755791284",
+            "text": "Save $5–10 a day to grow your money.\nWant to act like a big trader with $1? Okay 😂\nYou might luckily 1000x $1 on a #memecoin, but that’s mos",
+            "likes": 0,
+            "author_username": "tonminecrypto",
+            "author_followers": 8,
+            "created_at": "2026-11-10T14:28:06.000Z"
           }
         ]
       },
-      "grok": {
-        "checked_at": "2026-11-07T12:00:05+08:00",
-        "verdict": "熱",
-        "one_line": "熱度真實偏多",
-        "tone": "bullish",
-        "summary": "Spike with a large account; not pure shill cluster.",
-        "model": "grok-2-latest"
-      }
+      "grok": null
+    },
+    {
+      "symbol": "BEAMXUSDT",
+      "base": "BEAMX",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:31:02+08:00",
+        "posts_last_1h": 0,
+        "posts_prev_6h_avg_per_h": 0.33,
+        "spike_ratio": 0.00,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": true,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120101555223269450",
+            "url": "https://x.com/peacoin1/status/2120101555223269450",
+            "text": "#BEAMX/USDT 💥💥\n\nProfit: +2,002.54%🤑 https://t.co/zB1YS63wXR https://t.co/OPwIa8IVaG",
+            "likes": 1,
+            "author_username": "peacoin1",
+            "author_followers": 41,
+            "created_at": "2026-11-10T10:29:35.000Z"
+          },
+          {
+            "id": "2120101475456020704",
+            "url": "https://x.com/peacoin1/status/2120101475456020704",
+            "text": "New signal \n\nCoin: $BEAMX/USDT\n\nSignal type:Long\n \n Entry 0.002156\n\nTake profits Targets\n1) 0.002300\n2) 0.002500\n3) 0.002700\n4) 0.002900\n5) ",
+            "likes": 1,
+            "author_username": "peacoin1",
+            "author_followers": 41,
+            "created_at": "2026-11-10T10:29:15.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "ERAUSDT",
+      "base": "ERA",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:31:03+08:00",
+        "posts_last_1h": 19,
+        "posts_prev_6h_avg_per_h": 44.50,
+        "spike_ratio": 0.43,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120161528527597641",
+            "url": "https://x.com/DRAGECOINsolana/status/2120161528527597641",
+            "text": "🐉 THE DRAGON IS AWAKENING.\n\nA new chapter begins. A new community is rising.\n\n🔥 Introducing $DRG — DRAGE\n\nBuilt on Solana. Inspired by the p",
+            "likes": 2,
+            "author_username": "DRAGECOINsolana",
+            "author_followers": 55,
+            "created_at": "2026-11-10T14:27:53.000Z"
+          },
+          {
+            "id": "2120160324137505140",
+            "url": "https://x.com/JoestarCrypto/status/2120160324137505140",
+            "text": "End of an era\n\nI'm moving from a cartoonish/NFT pfp to a real picture of myself\n\nCrypto is maturing, so am i\n\nAnd what better way to show it",
+            "likes": 8,
+            "author_username": "JoestarCrypto",
+            "author_followers": 15414,
+            "created_at": "2026-11-10T14:23:06.000Z"
+          },
+          {
+            "id": "2120160103315931195",
+            "url": "https://x.com/LowellCouncilor/status/2120160103315931195",
+            "text": "Some of the greats of our ERA! Remember 2024 when $NVDA &amp; $LRCX Split? $MU was at $100… Jerome Powell was cutting rates. Crypto flying… ",
+            "likes": 0,
+            "author_username": "LowellCouncilor",
+            "author_followers": 1974,
+            "created_at": "2026-11-10T14:22:13.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "NIGHTUSDT",
+      "base": "NIGHT",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:31:04+08:00",
+        "posts_last_1h": 20,
+        "posts_prev_6h_avg_per_h": 20.83,
+        "spike_ratio": 0.96,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120162182444773378",
+            "url": "https://x.com/thecrossoverio/status/2120162182444773378",
+            "text": "Late on Sunday night, more than $1 billion of crypto was sold automatically.\n\nIt belonged to traders who had borrowed money to bet that pric",
+            "likes": 0,
+            "author_username": "thecrossoverio",
+            "author_followers": 33,
+            "created_at": "2026-11-10T14:30:29.000Z"
+          },
+          {
+            "id": "2120162096222474541",
+            "url": "https://x.com/TheRightTrader/status/2120162096222474541",
+            "text": "Your 24-hour crypto heatmap is in.\n\n$PI #NIGHT #JUP #LIT outperforming 🟢\n\n#RAIN #ARB #QNT #XMR underperforming 🔴 https://t.co/48TJbznxrQ",
+            "likes": 0,
+            "author_username": "TheRightTrader",
+            "author_followers": 16665,
+            "created_at": "2026-11-10T14:30:09.000Z"
+          },
+          {
+            "id": "2120161528087519526",
+            "url": "https://x.com/Rich79_Capital/status/2120161528087519526",
+            "text": "TRON ECO × BBW 2026: SIX MAJOR EVENTS, ONE ECOSYSTEM, ENDLESS POSSIBILITIES\n\nThe blockchain industry continues to evolve through collaborati",
+            "likes": 0,
+            "author_username": "Rich79_Capital",
+            "author_followers": 67926,
+            "created_at": "2026-11-10T14:27:53.000Z"
+          }
+        ]
+      },
+      "grok": null
+    },
+    {
+      "symbol": "JUPUSDT",
+      "base": "JUP",
+      "reason": [
+        "gainer"
+      ],
+      "x": {
+        "checked_at": "2026-11-10T22:31:05+08:00",
+        "posts_last_1h": 4,
+        "posts_prev_6h_avg_per_h": 4.17,
+        "spike_ratio": 0.96,
+        "verdict": "冷",
+        "one_line": "討論偏冷",
+        "shill_flag": false,
+        "big_accounts": 0,
+        "top_posts": [
+          {
+            "id": "2120162096222474541",
+            "url": "https://x.com/TheRightTrader/status/2120162096222474541",
+            "text": "Your 24-hour crypto heatmap is in.\n\n$PI #NIGHT #JUP #LIT outperforming 🟢\n\n#RAIN #ARB #QNT #XMR underperforming 🔴 https://t.co/48TJbznxrQ",
+            "likes": 0,
+            "author_username": "TheRightTrader",
+            "author_followers": 16665,
+            "created_at": "2026-11-10T14:30:09.000Z"
+          },
+          {
+            "id": "2120157525182165307",
+            "url": "https://x.com/KCEX_Vietnam/status/2120157525182165307",
+            "text": "📊 #KCEX Market Daily | 10/11\nNasdaq-100 tăng 3,40%, S&amp;P 500 tăng 2,35%, nhưng tâm lý crypto vẫn ở mức 28 (Sợ hãi).\n\n🚀 Top Futures:\n🥇 $JU",
+            "likes": 0,
+            "author_username": "KCEX_Vietnam",
+            "author_followers": 30811,
+            "created_at": "2026-11-10T14:11:59.000Z"
+          },
+          {
+            "id": "2120154522760687905",
+            "url": "https://x.com/Weeklyoptions/status/2120154522760687905",
+            "text": "📊 Top crypto movers · 24h\n\n🟢 $PIEVERSE +16.4%  PI +6.8%  NIGHT +5.9%  JUP +5.3%  XDC +5.3%\n🔴 RAIN -11.2%  ARB -10.5%  QNT -8.8%  BTW -8.2%  ",
+            "likes": 0,
+            "author_username": "Weeklyoptions",
+            "author_followers": 19240,
+            "created_at": "2026-11-10T14:00:03.000Z"
+          }
+        ]
+      },
+      "grok": null
     }
   ],
   "skipped": [],
   "run": {
-    "id": "fixture-b1",
-    "mode": "fixtures",
-    "targets_considered": 1,
-    "x_calls": 2,
-    "grok_calls": 1
+    "id": "proxy-1110-2231",
+    "mode": "proxy",
+    "targets_considered": 10,
+    "x_calls": 20,
+    "grok_calls": 0
   }
 }
