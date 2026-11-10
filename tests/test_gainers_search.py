@@ -40,10 +40,13 @@ class GainersSearchTests(unittest.TestCase):
         self.assertIn('e.target.id === "gSearch"', APP)
         # Empty query still caps to G_TOP; a typed query must not.
         body = APP.split("function gainerSyms()", 1)[1].split("function ranked", 1)[0]
-        # The G_TOP slice stays on the empty-query path only.
+        # G_TOP slice stays on empty-query Gainers/Losers only — All is unsliced.
         self.assertIn("list.slice(0, G_TOP)", body)
         self.assertIn("coinQueryHit(S.gTicks[s], q)", body)
         self.assertNotIn("slice(0, G_TOP)", body.split("if (q)", 1)[1].split("if (S.gHideLow)", 1)[0])
+        self.assertIn('if (S.gMode === "all") return list;', body)
+        after_all = body.split('if (S.gMode === "all") return list;', 1)[1]
+        self.assertIn("list.slice(0, G_TOP)", after_all)
 
     def test_saga_finds_saga_typo_empty_and_all_intact(self):
         node = which("node")
@@ -59,7 +62,7 @@ class GainersSearchTests(unittest.TestCase):
             const ch = 0.2 - i * 0.001;
             gTicks[base + "USDT"] = { sym: base + "USDT", base, name: "Big " + i, price: 1, open24: 1 / (1 + ch), qv24: 9e6 - i * 1e3 };
           }
-          gTicks.SAGAUSDT = { sym: "SAGAUSDT", base: "SAGA", name: "Saga", price: 0.12, open24: 0.10, qv24: 4e5 };
+          gTicks.SAGAUSDT = { sym: "SAGAUSDT", base: "SAGA", name: "Saga", price: 0.12, open24: 0.12, qv24: 4e5 };
           gTicks.PYTHUSDT = { sym: "PYTHUSDT", base: "PYTH", name: "Pyth Network", price: 0.3, open24: 0.28, qv24: 2e6 };
           function coinQueryHit(tk, q) {
             if (!tk || !q) return !q;
@@ -86,10 +89,13 @@ class GainersSearchTests(unittest.TestCase):
             if (S.gMode === "losers") list.sort((a, b) => ch(a) - ch(b));
             else if (S.gMode === "all") list.sort((a, b) => gTicks[b].qv24 - gTicks[a].qv24);
             else list.sort((a, b) => ch(b) - ch(a));
+            if (S.gMode === "all") return list;
             return list.slice(0, G_TOP);
           }
           const allEmpty = gainerSyms({ gQ: "", gMode: "all", gHideLow: false });
           const allHide = gainerSyms({ gQ: "", gMode: "all", gHideLow: true });
+          const gainersEmpty = gainerSyms({ gQ: "", gMode: "gainers", gHideLow: false });
+          const losersEmpty = gainerSyms({ gQ: "", gMode: "losers", gHideLow: false });
           const sagaLower = gainerSyms({ gQ: "saga", gMode: "gainers", gHideLow: true });
           const sagaUpper = gainerSyms({ gQ: "SAGA", gMode: "losers", gHideLow: true });
           const sagaName = gainerSyms({ gQ: "Saga", gMode: "gainers", gHideLow: true });
@@ -97,24 +103,33 @@ class GainersSearchTests(unittest.TestCase):
           const emptyAgain = gainerSyms({ gQ: "", gMode: "all", gHideLow: false });
           console.log(JSON.stringify({
             allN: allEmpty.length, all0: allEmpty[0], hasSagaInAll: allEmpty.includes("SAGAUSDT"),
-            hideN: allHide.length, hideHasSaga: allHide.includes("SAGAUSDT"),
+            hideN: allHide.length, hideHasSaga: allHide.includes("SAGAUSDT"), hideHasPyth: allHide.includes("PYTHUSDT"),
+            gainersN: gainersEmpty.length, gainersHasSaga: gainersEmpty.includes("SAGAUSDT"),
+            losersN: losersEmpty.length,
             sagaLower, sagaUpper, sagaName, typo, emptyAgain,
           }));
         """
         out = json.loads(subprocess.check_output([node, "-e", js], text=True).strip())
-        self.assertEqual(out["allN"], 20)
+        # All tab: unsliced full list, includes a non-top name such as SAGA.
+        self.assertGreater(out["allN"], 20)
+        self.assertEqual(out["allN"], 27)  # 25 BIG + SAGA + PYTH
         self.assertEqual(out["all0"], "BIG0USDT")
-        self.assertFalse(out["hasSagaInAll"])
-        self.assertEqual(out["hideN"], 20)
+        self.assertTrue(out["hasSagaInAll"])
+        self.assertGreater(out["hideN"], 20)
         self.assertFalse(out["hideHasSaga"])
+        self.assertTrue(out["hideHasPyth"])
+        # Empty search on Gainers / Losers still top 20.
+        self.assertEqual(out["gainersN"], 20)
+        self.assertFalse(out["gainersHasSaga"])
+        self.assertEqual(out["losersN"], 20)
         self.assertEqual(out["sagaLower"], ["SAGAUSDT"])
         self.assertEqual(out["sagaUpper"], ["SAGAUSDT"])
         self.assertEqual(out["sagaName"], ["SAGAUSDT"])
         self.assertEqual(out["typo"], [])
         self.assertEqual(out["emptyAgain"], out["allEmpty"] if "allEmpty" in out else out["emptyAgain"])
-        self.assertEqual(len(out["emptyAgain"]), 20)
+        self.assertEqual(len(out["emptyAgain"]), 27)
         self.assertEqual(out["emptyAgain"][0], "BIG0USDT")
-        self.assertNotIn("SAGAUSDT", out["emptyAgain"])
+        self.assertIn("SAGAUSDT", out["emptyAgain"])
 
 
 if __name__ == "__main__":

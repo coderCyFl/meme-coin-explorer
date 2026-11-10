@@ -364,6 +364,8 @@
     if (S.gMode === "losers") list.sort((a, b) => ch(a) - ch(b));
     else if (S.gMode === "all") list.sort((a, b) => S.gTicks[b].qv24 - S.gTicks[a].qv24);
     else list.sort((a, b) => ch(b) - ch(a));
+    // All: full tickersAll list. Gainers / Losers keep a top-20 board when search is empty.
+    if (S.gMode === "all") return list;
     return list.slice(0, G_TOP);
   }
   function ranked(filter) {
