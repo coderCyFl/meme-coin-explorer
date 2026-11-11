@@ -587,14 +587,16 @@
   document.addEventListener("pointercancel", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
   window.addEventListener("scroll", () => { gInteractionUntil = Date.now() + 500; scheduleGainers(); }, { passive: true });
   function paintGainerList(el, syms, emptyHTML) {
+    if (!syms.length) {
+      // Empty list has no rows to protect. Apply current copy even during the
+      // pointer/scroll lock — a 中 click's pointerup arms that lock, and
+      // renderGainers has already updated #gMeta.
+      el.replaceChildren(); el.insertAdjacentHTML("beforeend", emptyHTML); el.dataset.key = "empty";
+      return;
+    }
     const active = document.activeElement;
     if (gPointerDown || Date.now() < gInteractionUntil || (active && el.contains(active))) {
       scheduleGainers(); return;
-    }
-    if (!syms.length) {
-      // Always rewrite: language switch can keep key "empty" while the copy must change.
-      el.replaceChildren(); el.insertAdjacentHTML("beforeend", emptyHTML); el.dataset.key = "empty";
-      return;
     }
     const existing = new Map([...el.querySelectorAll("button.row")].map((button) => [button.dataset.sym, button.parentElement]));
     const wanted = new Set(syms);

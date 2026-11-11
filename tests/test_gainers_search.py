@@ -49,14 +49,19 @@ class GainersSearchTests(unittest.TestCase):
         self.assertIn("list.slice(0, G_TOP)", after_all)
 
     def test_empty_list_copy_refreshes_on_language_switch(self):
-        # paintGainerList must always write emptyHTML so EN↔ZH updates the body,
-        # not only chrome/meta. Skipping when dataset.key is already "empty" leaves
-        # "No coins match this search." stuck after a 中 click.
+        # Empty copy must write before the interaction lock. A 中 click's pointerup
+        # arms gInteractionUntil, so an early return left EN "No coins match this
+        # search." on screen after chrome/meta had already switched to ZH.
         body = APP.split("function paintGainerList", 1)[1].split("const existing", 1)[0]
-        self.assertIn("emptyHTML", body)
-        self.assertIn('el.dataset.key = "empty"', body)
+        before_empty, after_empty = body.split("if (!syms.length)", 1)
+        self.assertNotIn("gInteractionUntil", before_empty)
+        self.assertNotIn("gPointerDown", before_empty)
+        self.assertNotIn("scheduleGainers(); return", before_empty)
+        empty_block = after_empty.split("const active", 1)[0]
+        self.assertIn("emptyHTML", empty_block)
+        self.assertIn('el.dataset.key = "empty"', empty_block)
         self.assertNotIn('el.dataset.key !== "empty"', body)
-        self.assertIn("insertAdjacentHTML", body)
+        self.assertIn("gInteractionUntil", after_empty)
 
     def test_saga_finds_saga_typo_empty_and_all_intact(self):
         node = which("node")
