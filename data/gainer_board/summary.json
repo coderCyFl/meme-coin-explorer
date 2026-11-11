@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-11T08:37:14+08:00",
- "batches": 133,
- "flags": 385,
+ "updated_at": "2026-11-11T09:27:24+08:00",
+ "batches": 134,
+ "flags": 387,
  "horizons": {
   "4h": {
    "n": 383,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -12.09,
     "closed_up": 34
    },
-   "flags": 153
+   "flags": 154
   },
   "early2": {
    "4h": {
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -6.84,
     "closed_up": 79
    },
-   "flags": 227
+   "flags": 228
   },
   "early": {
    "4h": {
@@ -105,7 +105,7 @@
     "avg_max_drawdown_pct": -7.14,
     "closed_up": 113
    },
-   "flags": 395
+   "flags": 397
   }
  },
  "latest_4h": {
