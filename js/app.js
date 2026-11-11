@@ -592,7 +592,8 @@
       scheduleGainers(); return;
     }
     if (!syms.length) {
-      if (el.dataset.key !== "empty") { el.replaceChildren(); el.insertAdjacentHTML("beforeend", emptyHTML); el.dataset.key = "empty"; }
+      // Always rewrite: language switch can keep key "empty" while the copy must change.
+      el.replaceChildren(); el.insertAdjacentHTML("beforeend", emptyHTML); el.dataset.key = "empty";
       return;
     }
     const existing = new Map([...el.querySelectorAll("button.row")].map((button) => [button.dataset.sym, button.parentElement]));

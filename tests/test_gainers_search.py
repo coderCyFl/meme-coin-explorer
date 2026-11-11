@@ -48,6 +48,16 @@ class GainersSearchTests(unittest.TestCase):
         after_all = body.split('if (S.gMode === "all") return list;', 1)[1]
         self.assertIn("list.slice(0, G_TOP)", after_all)
 
+    def test_empty_list_copy_refreshes_on_language_switch(self):
+        # paintGainerList must always write emptyHTML so EN↔ZH updates the body,
+        # not only chrome/meta. Skipping when dataset.key is already "empty" leaves
+        # "No coins match this search." stuck after a 中 click.
+        body = APP.split("function paintGainerList", 1)[1].split("const existing", 1)[0]
+        self.assertIn("emptyHTML", body)
+        self.assertIn('el.dataset.key = "empty"', body)
+        self.assertNotIn('el.dataset.key !== "empty"', body)
+        self.assertIn("insertAdjacentHTML", body)
+
     def test_saga_finds_saga_typo_empty_and_all_intact(self):
         node = which("node")
         if not node:
