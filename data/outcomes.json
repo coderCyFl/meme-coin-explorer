@@ -6696,6 +6696,42 @@
    "due_at": "2026-11-11T00:18:41+08:00",
    "price_source": "kline_1m_due",
    "sealed_run_at": "2026-11-11T06:14:22+08:00"
+  },
+  {
+   "pick_id": "20261111-024-APT",
+   "horizon_h": 12,
+   "observed_at": "2026-11-11T12:35:59+08:00",
+   "price_usd": 0.5725,
+   "liquidity_usd": 4843923.767695,
+   "status": "live",
+   "return_pct": 1.51,
+   "return_pct_eod": 1.51,
+   "exit_reason": "hold_sell_by",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.5725,
+   "btc_return_pct": 0.98,
+   "sol_return_pct": 1.55,
+   "due_at": "2026-11-11T12:35:03+08:00",
+   "price_source": "kline_1m_due",
+   "sealed_run_at": "2026-11-11T15:38:32+08:00"
+  },
+  {
+   "pick_id": "20261111-024-MOVE",
+   "horizon_h": 12,
+   "observed_at": "2026-11-11T12:35:59+08:00",
+   "price_usd": 0.00563,
+   "liquidity_usd": 273094.2568817,
+   "status": "live",
+   "return_pct": 0.7,
+   "return_pct_eod": 0.7,
+   "exit_reason": "hold_sell_by",
+   "exit_method": "eod_clip",
+   "exit_price_usd": 0.00563,
+   "btc_return_pct": 0.98,
+   "sol_return_pct": 1.55,
+   "due_at": "2026-11-11T12:35:03+08:00",
+   "price_source": "kline_1m_due",
+   "sealed_run_at": "2026-11-11T15:38:32+08:00"
   }
  ]
 }
