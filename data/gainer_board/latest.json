@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-12T11:10:17+08:00",
- "batch": "gb-20261112-1108",
- "picked_at": "2026-11-12T11:08:49+08:00",
- "btc_24h_pct": 0.06,
+ "updated_at": "2026-11-12T11:25:57+08:00",
+ "batch": "gb-20261112-1124",
+ "picked_at": "2026-11-12T11:24:07+08:00",
+ "btc_24h_pct": 0.01,
  "universe": 50,
  "active": [
   {
@@ -315,90 +315,6 @@
      "max_gain_pct": 1.79,
      "max_drawdown_pct": -2.51,
      "close_pct": -2.04,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-12T06:13:17+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "OPG",
-   "pair": "OPGUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-11T23:15:00+08:00",
-   "entry_price_usd": 0.1527,
-   "price_at_snapshot": 0.1504,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 2.76,
-   "change_24h_at_pick": 18.56,
-   "rank_24h_at_pick": 1,
-   "batch": "gb-20261111-2327",
-   "score": 72.8,
-   "change_1h_at_pick": 7.99,
-   "change_4h_at_pick": 13.96,
-   "vol_x_avg": 18.89,
-   "vol_x_prev_hour": 6.99,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -1.42,
-   "quote_volume_24h": 4745584,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 7.47,
-     "max_drawdown_pct": -10.81,
-     "close_pct": -6.88,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-12T06:13:17+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ZRO",
-   "pair": "ZROUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-11T23:15:00+08:00",
-   "entry_price_usd": 1.586,
-   "price_at_snapshot": 1.585,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 0.32,
-   "change_24h_at_pick": 1.93,
-   "rank_24h_at_pick": 13,
-   "batch": "gb-20261111-2327",
-   "score": 25.1,
-   "change_1h_at_pick": 1.28,
-   "change_4h_at_pick": 0.89,
-   "vol_x_avg": 1.76,
-   "vol_x_prev_hour": 0.76,
-   "range_24h_pct": 10.8,
-   "from_24h_high_pct": -0.94,
-   "quote_volume_24h": 6168630,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 2.84,
-     "max_drawdown_pct": -1.77,
-     "close_pct": 0.25,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,

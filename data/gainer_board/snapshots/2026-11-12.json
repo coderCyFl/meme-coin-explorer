@@ -885,6 +885,37 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261112-1124",
+   "picked_at": "2026-11-12T11:24:07+08:00",
+   "universe": 50,
+   "btc_24h_pct": 0.01,
+   "universe_all": 394,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "NIGHTUSDT",
+    "ERAUSDT",
+    "NXPCUSDT",
+    "GNSUSDT",
+    "WINUSDT",
+    "SXTUSDT",
+    "SIGNUSDT",
+    "OPGUSDT",
+    "DYMUSDT",
+    "MINAUSDT",
+    "GRAMUSDT",
+    "HAEDALUSDT",
+    "OSMOUSDT",
+    "KITEUSDT",
+    "ASTERUSDT",
+    "0GUSDT",
+    "NEXOUSDT",
+    "SOLVUSDT",
+    "WLFIUSDT",
+    "PORTALUSDT"
+   ],
+   "entries": []
   }
  ]
 }
