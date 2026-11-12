@@ -1,9 +1,9 @@
 {
- "updated_at": "2026-11-12T19:30:02+08:00",
- "batch": "gb-20261112-1928",
- "picked_at": "2026-11-12T19:28:43+08:00",
- "btc_24h_pct": -0.91,
- "universe": 51,
+ "updated_at": "2026-11-12T19:42:02+08:00",
+ "batch": "gb-20261112-1940",
+ "picked_at": "2026-11-12T19:40:10+08:00",
+ "btc_24h_pct": -1.35,
+ "universe": 52,
  "active": [
   {
    "symbol": "KITE",
@@ -121,6 +121,38 @@
    "range_24h_pct": null,
    "from_24h_high_pct": -1.59,
    "quote_volume_24h": 11218094,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "ONE",
+   "pair": "ONEUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-12T15:45:00+08:00",
+   "entry_price_usd": 0.001609,
+   "price_at_snapshot": 0.001697,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": 3.54,
+   "change_24h_at_pick": -1.29,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261112-1940",
+   "score": 64.0,
+   "change_1h_at_pick": 10.97,
+   "change_4h_at_pick": 11.12,
+   "vol_x_avg": 4.31,
+   "vol_x_prev_hour": 3.72,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -1.59,
+   "quote_volume_24h": 11338382,
    "watch_only": false,
    "outcomes": {},
    "exit_plan": {
