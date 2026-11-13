@@ -2278,6 +2278,37 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261113-2339",
+   "picked_at": "2026-11-13T23:39:21+08:00",
+   "universe": 67,
+   "btc_24h_pct": -4.45,
+   "universe_all": 394,
+   "excluded_tokenized": 105,
+   "top20_24h": [
+    "BARDUSDT",
+    "SOPHUSDT",
+    "OSMOUSDT",
+    "BMTUSDT",
+    "DODOUSDT",
+    "INJUSDT",
+    "BERAUSDT",
+    "IOTAUSDT",
+    "FFUSDT",
+    "PLUMEUSDT",
+    "牛来USDT",
+    "SHELLUSDT",
+    "SUSDT",
+    "PROMUSDT",
+    "CELRUSDT",
+    "HMSTRUSDT",
+    "VANAUSDT",
+    "STOUSDT",
+    "KATUSDT",
+    "ZKPUSDT"
+   ],
+   "entries": []
   }
  ]
 }
