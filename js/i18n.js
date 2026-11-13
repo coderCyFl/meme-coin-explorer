@@ -184,7 +184,7 @@
     "g.meta": "頭 {n} 名 · 即時 USDT 現貨",
     "g.empty": "呢個篩選暫時冇幣。",
     "g.loading": "載入升跌榜…",
-    "g.noScore": "呢隻幣冇 Early Score — 仍然可以用模擬錢買。",
+    "g.noScore": "呢隻幣冇早期分數 — 仍然可以用模擬錢買。",
     "aw.sub": "AI 盯盤名單嘅 X + Grok 熱議。只讀同源 JSON — 瀏覽器唔存密鑰。",
     "aw.mock": "Mock · 模擬",
     "aw.meta": "{t} 更新 · {n} 隻幣",

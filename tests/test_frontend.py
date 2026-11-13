@@ -205,9 +205,11 @@ class FrontendTests(unittest.TestCase):
         for part in side.split('data-nav="')[1:]:
             order.append(part.split('"', 1)[0])
         self.assertEqual(order, ["radar", "gainers", "aiwatch", "allin", "markets", "portfolio", "record"])
-        # phone bottom: no Markets; AI Watch present
+        # phone bottom: all 7 tabs including Markets + Gainers + AI Watch
         bottom = HTML.split('class="bottom"', 1)[1].split("</nav>", 1)[0]
-        assert 'data-nav="markets"' not in bottom
+        bottom_order = [part.split('"', 1)[0] for part in bottom.split('data-nav="')[1:]]
+        self.assertEqual(bottom_order, ["radar", "gainers", "aiwatch", "allin", "markets", "portfolio", "record"])
+        assert 'data-nav="markets"' in bottom
         assert 'data-nav="gainers"' in bottom
         assert 'data-nav="aiwatch"' in bottom
         assert "ticker/24hr?type=MINI" in (ROOT / "js/data.js").read_text(encoding="utf-8")
@@ -217,7 +219,9 @@ class FrontendTests(unittest.TestCase):
         assert "gHideLow" in APP
         assert "g.noScore" in I18N
         assert "No Early Score on this coin" in I18N
-        assert "呢隻幣冇 Early Score" in I18N
+        assert "呢隻幣冇早期分數" in I18N
+        zh_no_score = [line for line in I18N.splitlines() if '"g.noScore":' in line and "呢隻幣" in line]
+        self.assertTrue(zh_no_score and "Early Score" not in zh_no_score[0], zh_no_score)
         assert "nav.gainers" in I18N and "升幅榜" in I18N
         assert "scheduleGainers" in APP
         assert "ensureTick" in APP
@@ -377,6 +381,33 @@ class FrontendTests(unittest.TestCase):
 
 
 
+
+
+
+    def test_cache_bust_and_non_caching_sw(self):
+        """Daily #1: explicit version params on CSS/JS assets; sw.js stays non-caching."""
+        for asset in ("css/app.css", "js/i18n.js", "js/strategy.js", "js/data.js", "js/coin3d.js", "js/app.js"):
+            self.assertRegex(HTML, rf'{asset.replace(".", r"\.")}\?v=\d+')
+        sw = (ROOT / "sw.js").read_text(encoding="utf-8")
+        assert "caches.delete" in sw
+        assert "caches.open" not in sw
+        assert "respondWith" not in sw
+        assert 'updateViaCache: "none"' in APP
+
+
+    def test_mobile_responsiveness_clarity_and_dpr(self):
+        """Daily #1: bottom nav Markets, filter wrap, safe clearance, crisp DPR snapper."""
+        css = (ROOT / "css/app.css").read_text(encoding="utf-8")
+        coin = (ROOT / "js/coin3d.js").read_text(encoding="utf-8")
+        assert "overflow-x: clip" in css
+        assert ".filters { display: flex; flex-wrap: wrap;" in css
+        assert "calc(var(--nav-h) + 40px + env(safe-area-inset-bottom))" in css
+        assert "scroll-padding-bottom: calc(var(--nav-h) + 36px + env(safe-area-inset-bottom))" in css
+        assert "#mSearch, #gSearch" in css and "font-size: 16px" in css
+        assert "renderer.setPixelRatio(dpr)" in coin
+        assert "renderer.setPixelRatio(1)" not in coin
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
 
 
 if __name__ == "__main__":

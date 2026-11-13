@@ -216,8 +216,9 @@
     let w = 0, h = 0;
     function resize() {
       const r = el.getBoundingClientRect(); if (!r.width || !r.height) return false;
-      if (r.width === w && r.height === h) return true;
-      w = r.width; h = r.height; renderer.setSize(w, h, false);
+      const dpr = Math.min(root.devicePixelRatio || 1, 2);
+      if (r.width === w && r.height === h && renderer.getPixelRatio() === dpr) return true;
+      w = r.width; h = r.height; renderer.setPixelRatio(dpr); renderer.setSize(w, h, false);
       renderer.domElement.style.width = w + "px"; renderer.domElement.style.height = h + "px";
       camera.aspect = w / h; camera.updateProjectionMatrix(); return true;
     }
@@ -434,9 +435,9 @@
   let snap = null;
   function snapper() {
     if (snap) return snap;
-    const THREE = T(), SIZE = 192;
+    const THREE = T(), dpr = Math.min(root.devicePixelRatio || 1, 2), SIZE = dpr > 1 ? 160 : 192;
     const renderer = makeRenderer({ preserveDrawingBuffer: true });
-    renderer.setPixelRatio(1); renderer.setSize(SIZE, SIZE, false);
+    renderer.setPixelRatio(dpr); renderer.setSize(SIZE, SIZE, false);
     const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
     lights(scene);
     snap = { THREE, renderer, scene, camera, env: studioEnv(renderer), queue: Promise.resolve() };
@@ -467,7 +468,7 @@
       const c = makeCoin(base, s.env); await c.userData.ready;
       c.rotation.set(0.12, -0.42, 0); c.scale.setScalar(1.18);
       return c;
-    }).then((u) => { thumbDone.set(base, u); return u; }).catch(() => null);
+    }).then(async (u) => { thumbDone.set(base, u); await new Promise((r) => setTimeout(r, 0)); return u; }).catch(() => null);
     thumbs.set(base, p);
     return p;
   }
