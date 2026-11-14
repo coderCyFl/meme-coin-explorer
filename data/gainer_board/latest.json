@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-15T04:23:38+08:00",
+ "updated_at": "2026-11-15T04:55:59+08:00",
  "batch": "gb-20261115-0409",
  "picked_at": "2026-11-15T04:09:38+08:00",
  "btc_24h_pct": -4.92,
@@ -541,48 +541,6 @@
      "hit50": false,
      "bars_1m": 240,
      "sealed_at": "2026-11-14T23:43:26+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "SHELL",
-   "pair": "SHELLUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-14T16:30:00+08:00",
-   "entry_price_usd": 0.03614,
-   "price_at_snapshot": 0.0346,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 6.58,
-   "change_24h_at_pick": 86.19,
-   "rank_24h_at_pick": 1,
-   "batch": "gb-20261114-1652",
-   "score": 39.0,
-   "change_1h_at_pick": 7.72,
-   "change_4h_at_pick": 13.58,
-   "vol_x_avg": 0.98,
-   "vol_x_prev_hour": 0.87,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -30.0,
-   "quote_volume_24h": 34805508,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 0.06,
-     "max_drawdown_pct": -22.19,
-     "close_pct": -22.08,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-14T22:58:59+08:00"
     }
    },
    "exit_plan": {
