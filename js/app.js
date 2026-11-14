@@ -431,7 +431,7 @@
   function wantThumb(base) {
     if (thumbWait.has(base) || !window.THREE || !Coin3D.supported()) return;
     thumbWait.add(base);
-    Coin3D.thumb(base).then((u) => { if (!u) return; clearTimeout(thumbT); thumbT = setTimeout(() => { takeRadarSnap(); renderHero(); renderLists(); renderPortfolio(); }, 120); });
+    Coin3D.thumb(base).then((u) => { if (!u) return; clearTimeout(thumbT); thumbT = setTimeout(() => { takeRadarSnap(); renderHero(); renderLists(); renderPortfolio(); if (document.body.dataset.view === "gainers") scheduleGainers(); }, 120); });
   }
   /** Full-body engineer mascot image (3D-rendered), empty until the renderer has made it. */
   function mascotImg() { return `<img class="mascot-img" data-icon="engineer" alt="" ${S.mascotUrl ? `src="${S.mascotUrl}"` : "hidden"}>`; }
@@ -1071,6 +1071,8 @@
     $$("section[data-page]").forEach((s) => (s.hidden = s.dataset.page !== ok));
     $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === ok));
     document.body.dataset.view = ok;
+    const activeBottom = $(`.bottom [data-nav="${ok}"]`);
+    if (activeBottom && activeBottom.scrollIntoView) activeBottom.scrollIntoView({ inline: "nearest", block: "nearest" });
     if ($("#detailSheet").open) $("#detailSheet").close();
     window.scrollTo(0, 0);
     if (ok === "aiwatch" && !S.awAt && !S.awLoading) loadAiWatch();
@@ -1156,7 +1158,7 @@
     setInterval(() => { if (S.scanAt && !S.scanning && !document.hidden) paintStatus(); }, 15000);
     setInterval(() => { checkExits(); checkLog(); }, 60000);
   })();
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).catch(() => {});
 
   // Test seam: same-snapshot radar face (no scoring rules).
   window.CryptoMRadar = { takeRadarSnap, radarSnap, ranked, heroCoins, loadHits, renderHits };
