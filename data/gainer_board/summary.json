@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-14T09:42:28+08:00",
- "batches": 155,
+ "updated_at": "2026-11-14T09:53:27+08:00",
+ "batches": 156,
  "flags": 461,
  "horizons": {
   "4h": {
@@ -88,10 +88,10 @@
   },
   "cand": {
    "4h": {
-    "n": 431,
+    "n": 432,
     "hit20": 5,
     "hit50": 1,
-    "avg_max_gain_pct": 3.4,
+    "avg_max_gain_pct": 3.41,
     "avg_close_pct": -0.3,
     "avg_max_drawdown_pct": -3.03,
     "closed_up": 159
@@ -105,7 +105,7 @@
     "avg_max_drawdown_pct": -7.1,
     "closed_up": 133
    },
-   "flags": 437
+   "flags": 438
   }
  },
  "latest_4h": {
@@ -131,6 +131,17 @@
     "max_gain_pct": 0.87,
     "close_pct": -6.59,
     "max_drawdown_pct": -8.08,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "SOPH",
+    "tier": "cand",
+    "entry_price_usd": 0.00175,
+    "change_24h_at_pick": 36.72,
+    "max_gain_pct": 4.57,
+    "close_pct": -0.57,
+    "max_drawdown_pct": -4.57,
     "hit20": false,
     "hit50": false
    }
