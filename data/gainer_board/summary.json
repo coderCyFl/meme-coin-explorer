@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-15T07:37:56+08:00",
- "batches": 163,
- "flags": 483,
+ "updated_at": "2026-11-15T07:59:53+08:00",
+ "batches": 164,
+ "flags": 484,
  "horizons": {
   "4h": {
    "n": 481,
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -6.82,
     "closed_up": 92
    },
-   "flags": 286
+   "flags": 287
   },
   "early": {
    "4h": {
@@ -88,7 +88,7 @@
   },
   "cand": {
    "4h": {
-    "n": 445,
+    "n": 446,
     "hit20": 6,
     "hit50": 1,
     "avg_max_gain_pct": 3.47,
@@ -105,7 +105,7 @@
     "avg_max_drawdown_pct": -7.22,
     "closed_up": 137
    },
-   "flags": 448
+   "flags": 449
   }
  },
  "latest_4h": {
