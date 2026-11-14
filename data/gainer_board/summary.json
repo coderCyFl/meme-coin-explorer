@@ -1,16 +1,16 @@
 {
- "updated_at": "2026-11-14T23:01:43+08:00",
- "batches": 159,
- "flags": 471,
+ "updated_at": "2026-11-14T23:45:46+08:00",
+ "batches": 160,
+ "flags": 477,
  "horizons": {
   "4h": {
-   "n": 467,
-   "hit20": 22,
+   "n": 468,
+   "hit20": 23,
    "hit50": 3,
-   "avg_max_gain_pct": 4.93,
-   "avg_close_pct": -0.96,
+   "avg_max_gain_pct": 5.0,
+   "avg_close_pct": -0.94,
    "avg_max_drawdown_pct": -4.89,
-   "closed_up": 165
+   "closed_up": 166
   },
   "24h": {
    "n": 451,
@@ -25,13 +25,13 @@
  "tiers": {
   "pump": {
    "4h": {
-    "n": 183,
-    "hit20": 18,
+    "n": 184,
+    "hit20": 19,
     "hit50": 3,
-    "avg_max_gain_pct": 7.92,
-    "avg_close_pct": -0.93,
-    "avg_max_drawdown_pct": -6.98,
-    "closed_up": 63
+    "avg_max_gain_pct": 8.08,
+    "avg_close_pct": -0.88,
+    "avg_max_drawdown_pct": -6.95,
+    "closed_up": 64
    },
    "24h": {
     "n": 172,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -12.98,
     "closed_up": 43
    },
-   "flags": 186
+   "flags": 188
   },
   "early2": {
    "4h": {
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -6.82,
     "closed_up": 92
    },
-   "flags": 280
+   "flags": 284
   },
   "early": {
    "4h": {
@@ -97,52 +97,30 @@
     "closed_up": 163
    },
    "24h": {
-    "n": 422,
-    "hit20": 31,
+    "n": 426,
+    "hit20": 32,
     "hit50": 5,
-    "avg_max_gain_pct": 7.41,
+    "avg_max_gain_pct": 7.44,
     "avg_close_pct": -2.23,
-    "avg_max_drawdown_pct": -7.05,
-    "closed_up": 135
+    "avg_max_drawdown_pct": -7.06,
+    "closed_up": 136
    },
    "flags": 445
   }
  },
  "latest_4h": {
-  "batch": "gb-20261114-1652",
-  "picked_at": "2026-11-14T16:52:58+08:00",
+  "batch": "gb-20261114-2259",
+  "picked_at": "2026-11-14T22:59:34+08:00",
   "entries": [
    {
-    "symbol": "SHELL",
+    "symbol": "SOPH",
     "tier": "pump",
-    "entry_price_usd": 0.03614,
-    "change_24h_at_pick": 86.19,
-    "max_gain_pct": 0.06,
-    "close_pct": -22.08,
-    "max_drawdown_pct": -22.19,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "TIA",
-    "tier": "early2",
-    "entry_price_usd": 0.3707,
-    "change_24h_at_pick": -11.68,
-    "max_gain_pct": 0.38,
-    "close_pct": -1.32,
-    "max_drawdown_pct": -1.94,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "BARD",
-    "tier": "early2",
-    "entry_price_usd": 0.1283,
-    "change_24h_at_pick": -9.52,
-    "max_gain_pct": 0.7,
-    "close_pct": -5.46,
-    "max_drawdown_pct": -7.56,
-    "hit20": false,
+    "entry_price_usd": 0.0019,
+    "change_24h_at_pick": 14.46,
+    "max_gain_pct": 37.37,
+    "close_pct": 7.89,
+    "max_drawdown_pct": -2.11,
+    "hit20": true,
     "hit50": false
    }
   ]
