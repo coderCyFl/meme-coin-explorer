@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-14T16:06:43+08:00",
- "batches": 157,
- "flags": 464,
+ "updated_at": "2026-11-14T16:54:48+08:00",
+ "batches": 158,
+ "flags": 467,
  "horizons": {
   "4h": {
    "n": 461,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -12.88,
     "closed_up": 42
    },
-   "flags": 182
+   "flags": 183
   },
   "early2": {
    "4h": {
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -6.72,
     "closed_up": 91
    },
-   "flags": 277
+   "flags": 279
   },
   "early": {
    "4h": {
