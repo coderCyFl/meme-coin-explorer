@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-16T04:43:00+08:00",
+ "updated_at": "2026-11-16T04:47:32+08:00",
  "batch": "gb-20261116-0349",
  "picked_at": "2026-11-16T03:49:44+08:00",
  "btc_24h_pct": -0.89,
@@ -263,48 +263,6 @@
      "max_gain_pct": 3.57,
      "max_drawdown_pct": -5.56,
      "close_pct": -3.84,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-15T22:05:28+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "KAVA",
-   "pair": "KAVAUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-15T16:45:00+08:00",
-   "entry_price_usd": 0.0334,
-   "price_at_snapshot": 0.03256,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 12.16,
-   "change_24h_at_pick": -51.06,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261115-1843",
-   "score": 12.7,
-   "change_1h_at_pick": 16.95,
-   "change_4h_at_pick": 10.56,
-   "vol_x_avg": 0.52,
-   "vol_x_prev_hour": 0.94,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -51.18,
-   "quote_volume_24h": 21496387,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 15.96,
-     "max_drawdown_pct": -6.59,
-     "close_pct": -0.96,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
