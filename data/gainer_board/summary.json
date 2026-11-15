@@ -1,16 +1,16 @@
 {
- "updated_at": "2026-11-15T11:05:44+08:00",
- "batches": 165,
- "flags": 501,
+ "updated_at": "2026-11-15T14:14:57+08:00",
+ "batches": 166,
+ "flags": 505,
  "horizons": {
   "4h": {
-   "n": 483,
+   "n": 485,
    "hit20": 24,
    "hit50": 3,
-   "avg_max_gain_pct": 5.02,
+   "avg_max_gain_pct": 5.03,
    "avg_close_pct": -1.03,
-   "avg_max_drawdown_pct": -4.97,
-   "closed_up": 169
+   "avg_max_drawdown_pct": -5.0,
+   "closed_up": 170
   },
   "24h": {
    "n": 461,
@@ -25,12 +25,12 @@
  "tiers": {
   "pump": {
    "4h": {
-    "n": 192,
+    "n": 193,
     "hit20": 20,
     "hit50": 3,
-    "avg_max_gain_pct": 8.09,
-    "avg_close_pct": -1.02,
-    "avg_max_drawdown_pct": -7.05,
+    "avg_max_gain_pct": 8.11,
+    "avg_close_pct": -1.05,
+    "avg_max_drawdown_pct": -7.14,
     "closed_up": 66
    },
    "24h": {
@@ -42,17 +42,17 @@
     "avg_max_drawdown_pct": -13.36,
     "closed_up": 45
    },
-   "flags": 199
+   "flags": 203
   },
   "early2": {
    "4h": {
-    "n": 286,
+    "n": 287,
     "hit20": 4,
     "hit50": 0,
     "avg_max_gain_pct": 3.02,
-    "avg_close_pct": -1.01,
+    "avg_close_pct": -0.99,
     "avg_max_drawdown_pct": -3.57,
-    "closed_up": 102
+    "closed_up": 103
    },
    "24h": {
     "n": 275,
@@ -88,13 +88,13 @@
   },
   "cand": {
    "4h": {
-    "n": 446,
+    "n": 449,
     "hit20": 6,
     "hit50": 1,
-    "avg_max_gain_pct": 3.47,
-    "avg_close_pct": -0.26,
-    "avg_max_drawdown_pct": -3.08,
-    "closed_up": 164
+    "avg_max_gain_pct": 3.5,
+    "avg_close_pct": -0.27,
+    "avg_max_drawdown_pct": -3.1,
+    "closed_up": 165
    },
    "24h": {
     "n": 438,
@@ -105,32 +105,21 @@
     "avg_max_drawdown_pct": -7.29,
     "closed_up": 139
    },
-   "flags": 449
+   "flags": 451
   }
  },
  "latest_4h": {
-  "batch": "gb-20261115-0735",
-  "picked_at": "2026-11-15T07:35:16+08:00",
+  "batch": "gb-20261115-1103",
+  "picked_at": "2026-11-15T11:03:57+08:00",
   "entries": [
    {
-    "symbol": "MEGA",
+    "symbol": "SOPH",
     "tier": "pump",
-    "entry_price_usd": 0.04621,
-    "change_24h_at_pick": 2.55,
-    "max_gain_pct": 0.45,
-    "close_pct": -2.16,
-    "max_drawdown_pct": -4.93,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "MARSCOIN",
-    "tier": "early2",
-    "entry_price_usd": 0.0342,
-    "change_24h_at_pick": -14.07,
-    "max_gain_pct": 4.68,
-    "close_pct": 4.39,
-    "max_drawdown_pct": -2.34,
+    "entry_price_usd": 0.00229,
+    "change_24h_at_pick": 32.37,
+    "max_gain_pct": 11.79,
+    "close_pct": -6.55,
+    "max_drawdown_pct": -25.33,
     "hit20": false,
     "hit50": false
    }
