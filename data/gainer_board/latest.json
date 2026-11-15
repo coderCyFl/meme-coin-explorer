@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-16T04:47:32+08:00",
+ "updated_at": "2026-11-16T05:16:16+08:00",
  "batch": "gb-20261116-0349",
  "picked_at": "2026-11-16T03:49:44+08:00",
  "btc_24h_pct": -0.89,
@@ -221,48 +221,6 @@
      "max_gain_pct": 1.41,
      "max_drawdown_pct": -0.08,
      "close_pct": 0.25,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-15T22:05:28+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ONE",
-   "pair": "ONEUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-15T17:15:00+08:00",
-   "entry_price_usd": 0.001458,
-   "price_at_snapshot": 0.001404,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 11.72,
-   "change_24h_at_pick": 9.79,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261115-1843",
-   "score": 74.4,
-   "change_1h_at_pick": 12.59,
-   "change_4h_at_pick": 14.0,
-   "vol_x_avg": 6.78,
-   "vol_x_prev_hour": 2.94,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -0.82,
-   "quote_volume_24h": 4536861,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 3.57,
-     "max_drawdown_pct": -5.56,
-     "close_pct": -3.84,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
