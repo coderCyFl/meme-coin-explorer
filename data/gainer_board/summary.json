@@ -1,48 +1,48 @@
 {
- "updated_at": "2026-11-16T14:11:07+08:00",
- "batches": 174,
- "flags": 525,
+ "updated_at": "2026-11-16T16:47:23+08:00",
+ "batches": 175,
+ "flags": 530,
  "horizons": {
   "4h": {
-   "n": 523,
-   "hit20": 27,
+   "n": 524,
+   "hit20": 28,
    "hit50": 3,
-   "avg_max_gain_pct": 5.09,
-   "avg_close_pct": -1.07,
+   "avg_max_gain_pct": 5.12,
+   "avg_close_pct": -1.06,
    "avg_max_drawdown_pct": -4.99,
-   "closed_up": 185
+   "closed_up": 186
   },
   "24h": {
-   "n": 505,
-   "hit20": 60,
+   "n": 506,
+   "hit20": 61,
    "hit50": 12,
-   "avg_max_gain_pct": 8.79,
-   "avg_close_pct": -4.21,
-   "avg_max_drawdown_pct": -9.8,
+   "avg_max_gain_pct": 8.82,
+   "avg_close_pct": -4.23,
+   "avg_max_drawdown_pct": -9.81,
    "closed_up": 151
   }
  },
  "tiers": {
   "pump": {
    "4h": {
-    "n": 211,
-    "hit20": 22,
+    "n": 212,
+    "hit20": 23,
     "hit50": 3,
-    "avg_max_gain_pct": 8.15,
-    "avg_close_pct": -1.28,
-    "avg_max_drawdown_pct": -7.15,
-    "closed_up": 68
+    "avg_max_gain_pct": 8.23,
+    "avg_close_pct": -1.25,
+    "avg_max_drawdown_pct": -7.14,
+    "closed_up": 69
    },
    "24h": {
-    "n": 203,
-    "hit20": 47,
+    "n": 204,
+    "hit20": 48,
     "hit50": 11,
-    "avg_max_gain_pct": 13.46,
-    "avg_close_pct": -6.77,
-    "avg_max_drawdown_pct": -14.03,
+    "avg_max_gain_pct": 13.51,
+    "avg_close_pct": -6.81,
+    "avg_max_drawdown_pct": -14.04,
     "closed_up": 49
    },
-   "flags": 213
+   "flags": 216
   },
   "early2": {
    "4h": {
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -6.92,
     "closed_up": 100
    },
-   "flags": 307
+   "flags": 309
   },
   "early": {
    "4h": {
@@ -97,96 +97,30 @@
     "closed_up": 175
    },
    "24h": {
-    "n": 449,
+    "n": 451,
     "hit20": 36,
     "hit50": 7,
-    "avg_max_gain_pct": 7.72,
+    "avg_max_gain_pct": 7.71,
     "avg_close_pct": -2.42,
-    "avg_max_drawdown_pct": -7.42,
-    "closed_up": 142
+    "avg_max_drawdown_pct": -7.4,
+    "closed_up": 143
    },
    "flags": 485
   }
  },
  "latest_4h": {
-  "batch": "gb-20261116-0951",
-  "picked_at": "2026-11-16T09:51:01+08:00",
+  "batch": "gb-20261116-1409",
+  "picked_at": "2026-11-16T14:09:42+08:00",
   "entries": [
    {
     "symbol": "RARE",
-    "tier": "early2",
-    "entry_price_usd": 0.01262,
-    "change_24h_at_pick": 50.42,
-    "max_gain_pct": 21.24,
-    "close_pct": 16.56,
-    "max_drawdown_pct": -9.83,
+    "tier": "pump",
+    "entry_price_usd": 0.0124,
+    "change_24h_at_pick": 47.27,
+    "max_gain_pct": 23.39,
+    "close_pct": 4.68,
+    "max_drawdown_pct": -4.84,
     "hit20": true,
-    "hit50": false
-   },
-   {
-    "symbol": "UNI",
-    "tier": "cand",
-    "entry_price_usd": 5.112,
-    "change_24h_at_pick": 7.38,
-    "max_gain_pct": 2.7,
-    "close_pct": 0.96,
-    "max_drawdown_pct": -0.2,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "BCH",
-    "tier": "cand",
-    "entry_price_usd": 207.9,
-    "change_24h_at_pick": 5.17,
-    "max_gain_pct": 1.54,
-    "close_pct": 0.0,
-    "max_drawdown_pct": -0.1,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "TAO",
-    "tier": "cand",
-    "entry_price_usd": 190.3,
-    "change_24h_at_pick": 5.32,
-    "max_gain_pct": 1.73,
-    "close_pct": 0.53,
-    "max_drawdown_pct": -0.21,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "ARB",
-    "tier": "cand",
-    "entry_price_usd": 0.1335,
-    "change_24h_at_pick": 5.45,
-    "max_gain_pct": 2.02,
-    "close_pct": -0.37,
-    "max_drawdown_pct": -0.45,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "XRP",
-    "tier": "cand",
-    "entry_price_usd": 0.9594,
-    "change_24h_at_pick": 4.5,
-    "max_gain_pct": 1.42,
-    "close_pct": -0.76,
-    "max_drawdown_pct": -0.82,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "ADA",
-    "tier": "cand",
-    "entry_price_usd": 0.1521,
-    "change_24h_at_pick": 4.85,
-    "max_gain_pct": 1.91,
-    "close_pct": 0.59,
-    "max_drawdown_pct": -0.26,
-    "hit20": false,
     "hit50": false
    }
   ]
