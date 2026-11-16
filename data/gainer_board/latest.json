@@ -1,10 +1,74 @@
 {
- "updated_at": "2026-11-16T09:53:06+08:00",
- "batch": "gb-20261116-0951",
- "picked_at": "2026-11-16T09:51:01+08:00",
- "btc_24h_pct": 3.64,
- "universe": 60,
+ "updated_at": "2026-11-16T14:11:07+08:00",
+ "batch": "gb-20261116-1409",
+ "picked_at": "2026-11-16T14:09:42+08:00",
+ "btc_24h_pct": 0.25,
+ "universe": 58,
  "active": [
+  {
+   "symbol": "GLMR",
+   "pair": "GLMRUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-16T13:15:00+08:00",
+   "entry_price_usd": 0.006696,
+   "price_at_snapshot": 0.00646,
+   "trigger_via": "15m",
+   "change_15m_at_pick": 5.95,
+   "change_24h_at_pick": 17.99,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261116-1409",
+   "score": 24.5,
+   "change_1h_at_pick": 8.97,
+   "change_4h_at_pick": 5.53,
+   "vol_x_avg": 0.58,
+   "vol_x_prev_hour": 0.32,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -21.41,
+   "quote_volume_24h": 5350619,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "RARE",
+   "pair": "RAREUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-16T11:45:00+08:00",
+   "entry_price_usd": 0.0124,
+   "price_at_snapshot": 0.01364,
+   "trigger_via": "15m",
+   "change_15m_at_pick": 5.17,
+   "change_24h_at_pick": 47.27,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261116-1409",
+   "score": 3.7,
+   "change_1h_at_pick": -2.52,
+   "change_4h_at_pick": -2.52,
+   "vol_x_avg": 0.98,
+   "vol_x_prev_hour": 0.82,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -24.02,
+   "quote_volume_24h": 14486936,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
   {
    "symbol": "RARE",
    "pair": "RAREUSDT",
@@ -26,7 +90,17 @@
    "from_24h_high_pct": -22.67,
    "quote_volume_24h": 11540109,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 21.24,
+     "max_drawdown_pct": -9.83,
+     "close_pct": 16.56,
+     "hit20": true,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-16T14:09:00+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -58,7 +132,17 @@
    "from_24h_high_pct": -0.08,
    "quote_volume_24h": 54909265,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 0.07,
+     "max_drawdown_pct": -2.61,
+     "close_pct": -1.7,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-16T14:09:00+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -90,7 +174,17 @@
    "from_24h_high_pct": -20.03,
    "quote_volume_24h": 12066081,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 3.37,
+     "max_drawdown_pct": -5.68,
+     "close_pct": 3.23,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-16T14:09:00+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -122,7 +216,17 @@
    "from_24h_high_pct": -22.7,
    "quote_volume_24h": 4636319,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 4.16,
+     "max_drawdown_pct": -4.34,
+     "close_pct": -2.32,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-16T14:09:00+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -154,7 +258,17 @@
    "from_24h_high_pct": -53.91,
    "quote_volume_24h": 15540552,
    "watch_only": true,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 6.78,
+     "max_drawdown_pct": -17.8,
+     "close_pct": -16.1,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-16T14:09:00+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -359,48 +473,6 @@
      "max_gain_pct": 12.03,
      "max_drawdown_pct": -14.58,
      "close_pct": -12.54,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-16T07:55:01+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "SHELL",
-   "pair": "SHELLUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-16T02:00:00+08:00",
-   "entry_price_usd": 0.03131,
-   "price_at_snapshot": 0.02774,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 20.98,
-   "change_24h_at_pick": 20.52,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261116-0349",
-   "score": 84.0,
-   "change_1h_at_pick": 23.85,
-   "change_4h_at_pick": 25.79,
-   "vol_x_avg": 4.15,
-   "vol_x_prev_hour": 4.15,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -5.72,
-   "quote_volume_24h": 12021213,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 12.42,
-     "max_drawdown_pct": -14.28,
-     "close_pct": -12.71,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
