@@ -1,25 +1,25 @@
 {
- "updated_at": "2026-11-17T19:00:39+08:00",
- "batches": 181,
- "flags": 554,
+ "updated_at": "2026-11-18T01:43:06+08:00",
+ "batches": 182,
+ "flags": 558,
  "horizons": {
   "4h": {
-   "n": 549,
+   "n": 554,
    "hit20": 28,
    "hit50": 3,
-   "avg_max_gain_pct": 5.15,
-   "avg_close_pct": -1.07,
+   "avg_max_gain_pct": 5.12,
+   "avg_close_pct": -1.09,
    "avg_max_drawdown_pct": -5.04,
-   "closed_up": 195
+   "closed_up": 196
   },
   "24h": {
-   "n": 530,
-   "hit20": 66,
+   "n": 536,
+   "hit20": 68,
    "hit50": 12,
-   "avg_max_gain_pct": 9.04,
-   "avg_close_pct": -4.22,
+   "avg_max_gain_pct": 9.11,
+   "avg_close_pct": -4.25,
    "avg_max_drawdown_pct": -9.86,
-   "closed_up": 158
+   "closed_up": 159
   }
  },
  "tiers": {
@@ -34,36 +34,36 @@
     "closed_up": 75
    },
    "24h": {
-    "n": 216,
-    "hit20": 52,
+    "n": 221,
+    "hit20": 53,
     "hit50": 11,
-    "avg_max_gain_pct": 13.88,
-    "avg_close_pct": -6.62,
-    "avg_max_drawdown_pct": -14.0,
+    "avg_max_gain_pct": 13.84,
+    "avg_close_pct": -6.68,
+    "avg_max_drawdown_pct": -13.91,
     "closed_up": 54
    },
-   "flags": 228
+   "flags": 231
   },
   "early2": {
    "4h": {
-    "n": 316,
+    "n": 321,
     "hit20": 5,
     "hit50": 0,
-    "avg_max_gain_pct": 3.02,
-    "avg_close_pct": -0.91,
-    "avg_max_drawdown_pct": -3.56,
-    "closed_up": 119
+    "avg_max_gain_pct": 3.0,
+    "avg_close_pct": -0.95,
+    "avg_max_drawdown_pct": -3.59,
+    "closed_up": 120
    },
    "24h": {
-    "n": 309,
-    "hit20": 14,
+    "n": 310,
+    "hit20": 15,
     "hit50": 1,
-    "avg_max_gain_pct": 5.75,
-    "avg_close_pct": -2.58,
+    "avg_max_gain_pct": 5.82,
+    "avg_close_pct": -2.55,
     "avg_max_drawdown_pct": -6.99,
-    "closed_up": 102
+    "closed_up": 103
    },
-   "flags": 321
+   "flags": 322
   },
   "early": {
    "4h": {
@@ -88,60 +88,104 @@
   },
   "cand": {
    "4h": {
-    "n": 492,
-    "hit20": 6,
+    "n": 502,
+    "hit20": 7,
     "hit50": 1,
-    "avg_max_gain_pct": 3.39,
-    "avg_close_pct": -0.31,
-    "avg_max_drawdown_pct": -3.06,
-    "closed_up": 181
+    "avg_max_gain_pct": 3.43,
+    "avg_close_pct": -0.28,
+    "avg_max_drawdown_pct": -3.05,
+    "closed_up": 187
    },
    "24h": {
-    "n": 485,
+    "n": 486,
     "hit20": 36,
     "hit50": 7,
     "avg_max_gain_pct": 7.38,
-    "avg_close_pct": -2.48,
+    "avg_close_pct": -2.47,
     "avg_max_drawdown_pct": -7.29,
     "closed_up": 152
    },
-   "flags": 502
+   "flags": 505
   }
  },
  "latest_4h": {
-  "batch": "gb-20261117-1605",
-  "picked_at": "2026-11-17T16:05:02+08:00",
+  "batch": "gb-20261117-1858",
+  "picked_at": "2026-11-17T18:58:37+08:00",
   "entries": [
    {
-    "symbol": "SOPH",
-    "tier": "pump",
-    "entry_price_usd": 0.00107,
-    "change_24h_at_pick": 18.89,
-    "max_gain_pct": 0.93,
-    "close_pct": -9.35,
-    "max_drawdown_pct": -10.28,
+    "symbol": "DODO",
+    "tier": "early2",
+    "entry_price_usd": 0.03464,
+    "change_24h_at_pick": 6.52,
+    "max_gain_pct": 0.0,
+    "close_pct": -2.97,
+    "max_drawdown_pct": -5.2,
     "hit20": false,
     "hit50": false
    },
    {
-    "symbol": "RARE",
-    "tier": "pump",
-    "entry_price_usd": 0.01478,
-    "change_24h_at_pick": 22.55,
-    "max_gain_pct": 10.83,
-    "close_pct": -0.07,
-    "max_drawdown_pct": -11.5,
+    "symbol": "ZEC",
+    "tier": "early2",
+    "entry_price_usd": 927.98,
+    "change_24h_at_pick": 4.2,
+    "max_gain_pct": 3.45,
+    "close_pct": 2.8,
+    "max_drawdown_pct": -1.39,
     "hit20": false,
     "hit50": false
    },
    {
     "symbol": "HUMA",
-    "tier": "pump",
-    "entry_price_usd": 0.00935,
-    "change_24h_at_pick": 48.41,
-    "max_gain_pct": 2.99,
-    "close_pct": -10.37,
-    "max_drawdown_pct": -12.51,
+    "tier": "early2",
+    "entry_price_usd": 0.00871,
+    "change_24h_at_pick": 31.17,
+    "max_gain_pct": 3.1,
+    "close_pct": -9.99,
+    "max_drawdown_pct": -11.14,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "PHA",
+    "tier": "cand",
+    "entry_price_usd": 0.0328,
+    "change_24h_at_pick": 12.0,
+    "max_gain_pct": 14.02,
+    "close_pct": 11.59,
+    "max_drawdown_pct": 0.0,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "LUNC",
+    "tier": "cand",
+    "entry_price_usd": 3.914e-05,
+    "change_24h_at_pick": 7.97,
+    "max_gain_pct": 4.75,
+    "close_pct": 1.1,
+    "max_drawdown_pct": -1.23,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "ICP",
+    "tier": "cand",
+    "entry_price_usd": 2.39,
+    "change_24h_at_pick": 9.29,
+    "max_gain_pct": 1.8,
+    "close_pct": -2.51,
+    "max_drawdown_pct": -3.6,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "SOPH",
+    "tier": "cand",
+    "entry_price_usd": 0.00096,
+    "change_24h_at_pick": 7.69,
+    "max_gain_pct": 1.04,
+    "close_pct": -6.25,
+    "max_drawdown_pct": -7.29,
     "hit20": false,
     "hit50": false
    }
@@ -308,143 +352,6 @@
   }
  },
  "scorecards": [
-  {
-   "date": "2026-11-10",
-   "flagged": 33,
-   "early_flagged": 24,
-   "late_flagged": 9,
-   "early_hits": 3,
-   "late_hits": 5,
-   "precision_pct": 12.5,
-   "late_precision_pct": 55.6,
-   "recall_top20_pct": 15.0,
-   "recall_top10_pct": 20.0,
-   "buyable_flagged": 18,
-   "x_split": {
-    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
-    "hot": {
-     "flags": 0,
-     "sealed": 0,
-     "pending": 0,
-     "mean_4h_close_pct": null,
-     "hit20_pct": null
-    },
-    "cold": {
-     "flags": 0,
-     "sealed": 0,
-     "pending": 0,
-     "mean_4h_close_pct": null,
-     "hit20_pct": null
-    },
-    "unchecked": {
-     "flags": 18,
-     "sealed": 14,
-     "pending": 4,
-     "mean_4h_close_pct": 1.99,
-     "hit20_pct": 28.6
-    }
-   },
-   "by_tier": {
-    "pump": {
-     "flagged": 12,
-     "early_flagged": 4,
-     "early_hits": 2,
-     "precision_pct": 50.0,
-     "hits": [
-      "ONE",
-      "牛来"
-     ]
-    },
-    "early2": {
-     "flagged": 17,
-     "early_flagged": 16,
-     "early_hits": 2,
-     "precision_pct": 12.5,
-     "hits": [
-      "ONE",
-      "GRAM"
-     ]
-    },
-    "early": {
-     "flagged": 0,
-     "early_flagged": 0,
-     "early_hits": 0,
-     "precision_pct": null,
-     "hits": []
-    },
-    "main": {
-     "flagged": 6,
-     "early_flagged": 6,
-     "early_hits": 0,
-     "precision_pct": 0.0,
-     "hits": []
-    }
-   },
-   "hits": [
-    {
-     "symbol": "ONE",
-     "flag_time": "2026-11-10T04:45:00+08:00",
-     "final_rank": 2,
-     "lead_h": 13.2
-    },
-    {
-     "symbol": "GRAM",
-     "flag_time": "2026-11-10T11:15:00+08:00",
-     "final_rank": 9,
-     "lead_h": -1.2
-    },
-    {
-     "symbol": "牛来",
-     "flag_time": "2026-11-10T23:30:00+08:00",
-     "final_rank": 17,
-     "lead_h": -0.5
-    }
-   ],
-   "late": [
-    {
-     "symbol": "INIT",
-     "flag_time": "2026-11-10T03:15:00+08:00",
-     "rank_24h_at_flag": null,
-     "final_rank": 1
-    },
-    {
-     "symbol": "HOT",
-     "flag_time": "2026-11-10T05:15:00+08:00",
-     "rank_24h_at_flag": 3,
-     "final_rank": 8
-    },
-    {
-     "symbol": "ACT",
-     "flag_time": "2026-11-10T16:30:00+08:00",
-     "rank_24h_at_flag": null,
-     "final_rank": 7
-    },
-    {
-     "symbol": "CYBER",
-     "flag_time": "2026-11-10T20:00:00+08:00",
-     "rank_24h_at_flag": 4,
-     "final_rank": 5
-    },
-    {
-     "symbol": "QI",
-     "flag_time": "2026-11-10T21:30:00+08:00",
-     "rank_24h_at_flag": null,
-     "final_rank": 3
-    }
-   ],
-   "missed": [
-    "SOPH",
-    "ERA",
-    "SXT",
-    "BTTC",
-    "NIGHT",
-    "BEAMX",
-    "KITE",
-    "JUP",
-    "MOVR",
-    "OPG"
-   ]
-  },
   {
    "date": "2026-11-11",
    "flagged": 13,
@@ -1138,15 +1045,128 @@
     "WIN",
     "SENT"
    ]
+  },
+  {
+   "date": "2026-11-17",
+   "flagged": 20,
+   "early_flagged": 16,
+   "late_flagged": 4,
+   "early_hits": 3,
+   "late_hits": 1,
+   "precision_pct": 18.8,
+   "late_precision_pct": 25.0,
+   "recall_top20_pct": 15.0,
+   "recall_top10_pct": 10.0,
+   "buyable_flagged": 12,
+   "x_split": {
+    "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+    "hot": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "cold": {
+     "flags": 0,
+     "sealed": 0,
+     "pending": 0,
+     "mean_4h_close_pct": null,
+     "hit20_pct": null
+    },
+    "unchecked": {
+     "flags": 12,
+     "sealed": 12,
+     "pending": 0,
+     "mean_4h_close_pct": -1.68,
+     "hit20_pct": 0.0
+    }
+   },
+   "by_tier": {
+    "pump": {
+     "flagged": 6,
+     "early_flagged": 4,
+     "early_hits": 1,
+     "precision_pct": 25.0,
+     "hits": [
+      "GLMR"
+     ]
+    },
+    "early2": {
+     "flagged": 11,
+     "early_flagged": 7,
+     "early_hits": 1,
+     "precision_pct": 14.3,
+     "hits": [
+      "ZEC"
+     ]
+    },
+    "early": {
+     "flagged": 0,
+     "early_flagged": 0,
+     "early_hits": 0,
+     "precision_pct": null,
+     "hits": []
+    },
+    "main": {
+     "flagged": 6,
+     "early_flagged": 6,
+     "early_hits": 1,
+     "precision_pct": 16.7,
+     "hits": [
+      "HMSTR"
+     ]
+    }
+   },
+   "hits": [
+    {
+     "symbol": "HMSTR",
+     "flag_time": "2026-11-17T02:50:37+08:00",
+     "final_rank": 6,
+     "lead_h": 18.2
+    },
+    {
+     "symbol": "GLMR",
+     "flag_time": "2026-11-17T05:15:00+08:00",
+     "final_rank": 12,
+     "lead_h": 7.8
+    },
+    {
+     "symbol": "ZEC",
+     "flag_time": "2026-11-17T18:15:00+08:00",
+     "final_rank": 14,
+     "lead_h": 1.8
+    }
+   ],
+   "late": [
+    {
+     "symbol": "MMT",
+     "flag_time": "2026-11-16T23:30:00+08:00",
+     "rank_24h_at_flag": 12,
+     "final_rank": 3
+    }
+   ],
+   "missed": [
+    "BREV",
+    "XNO",
+    "BLUR",
+    "LUNC",
+    "INJ",
+    "RUNE",
+    "BANANAS31",
+    "PROM",
+    "SCR",
+    "HOME"
+   ]
   }
  ],
  "scorecard_7d": {
   "days": 7,
-  "early_flagged": 130,
-  "flagged": 166,
+  "early_flagged": 122,
+  "flagged": 153,
   "early_hits": 20,
-  "late_hits": 16,
-  "precision_pct": 15.4,
+  "late_hits": 12,
+  "precision_pct": 16.4,
   "recall_top20_pct": 14.3
  }
 }
