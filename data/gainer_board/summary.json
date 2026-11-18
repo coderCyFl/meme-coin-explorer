@@ -1,37 +1,37 @@
 {
- "updated_at": "2026-11-18T08:02:20+08:00",
- "batches": 184,
- "flags": 569,
+ "updated_at": "2026-11-18T09:55:21+08:00",
+ "batches": 185,
+ "flags": 571,
  "horizons": {
   "4h": {
-   "n": 563,
+   "n": 564,
    "hit20": 29,
    "hit50": 3,
-   "avg_max_gain_pct": 5.18,
-   "avg_close_pct": -1.08,
+   "avg_max_gain_pct": 5.19,
+   "avg_close_pct": -1.07,
    "avg_max_drawdown_pct": -5.03,
-   "closed_up": 200
+   "closed_up": 201
   },
   "24h": {
-   "n": 544,
+   "n": 546,
    "hit20": 68,
    "hit50": 12,
    "avg_max_gain_pct": 9.05,
    "avg_close_pct": -4.27,
-   "avg_max_drawdown_pct": -9.86,
-   "closed_up": 161
+   "avg_max_drawdown_pct": -9.85,
+   "closed_up": 162
   }
  },
  "tiers": {
   "pump": {
    "4h": {
-    "n": 233,
+    "n": 234,
     "hit20": 24,
     "hit50": 3,
     "avg_max_gain_pct": 8.3,
-    "avg_close_pct": -1.24,
-    "avg_max_drawdown_pct": -7.06,
-    "closed_up": 78
+    "avg_close_pct": -1.21,
+    "avg_max_drawdown_pct": -7.04,
+    "closed_up": 79
    },
    "24h": {
     "n": 225,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -13.86,
     "closed_up": 55
    },
-   "flags": 234
+   "flags": 235
   },
   "early2": {
    "4h": {
@@ -55,15 +55,15 @@
     "closed_up": 121
    },
    "24h": {
-    "n": 314,
+    "n": 316,
     "hit20": 15,
     "hit50": 1,
-    "avg_max_gain_pct": 5.78,
-    "avg_close_pct": -2.59,
+    "avg_max_gain_pct": 5.81,
+    "avg_close_pct": -2.58,
     "avg_max_drawdown_pct": -7.01,
-    "closed_up": 104
+    "closed_up": 105
    },
-   "flags": 330
+   "flags": 331
   },
   "early": {
    "4h": {
@@ -97,84 +97,29 @@
     "closed_up": 189
    },
    "24h": {
-    "n": 486,
+    "n": 490,
     "hit20": 36,
     "hit50": 7,
     "avg_max_gain_pct": 7.38,
-    "avg_close_pct": -2.47,
-    "avg_max_drawdown_pct": -7.29,
-    "closed_up": 152
+    "avg_close_pct": -2.49,
+    "avg_max_drawdown_pct": -7.3,
+    "closed_up": 153
    },
-   "flags": 512
+   "flags": 514
   }
  },
  "latest_4h": {
-  "batch": "gb-20261118-0344",
-  "picked_at": "2026-11-18T03:44:59+08:00",
+  "batch": "gb-20261118-0800",
+  "picked_at": "2026-11-18T08:00:17+08:00",
   "entries": [
    {
-    "symbol": "KAVA",
-    "tier": "pump",
-    "entry_price_usd": 0.0302,
-    "change_24h_at_pick": 10.79,
-    "max_gain_pct": 3.44,
-    "close_pct": -5.96,
-    "max_drawdown_pct": -7.75,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "PENGU",
-    "tier": "pump",
-    "entry_price_usd": 0.004885,
-    "change_24h_at_pick": -0.27,
-    "max_gain_pct": 4.05,
-    "close_pct": 0.76,
-    "max_drawdown_pct": -4.89,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "TLM",
-    "tier": "early2",
-    "entry_price_usd": 0.00107,
-    "change_24h_at_pick": 14.93,
-    "max_gain_pct": 1.59,
-    "close_pct": -5.79,
-    "max_drawdown_pct": -8.97,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "INIT",
-    "tier": "early2",
-    "entry_price_usd": 0.10276,
-    "change_24h_at_pick": 0.25,
-    "max_gain_pct": 3.49,
-    "close_pct": -0.48,
-    "max_drawdown_pct": -2.56,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "WLD",
-    "tier": "early2",
-    "entry_price_usd": 0.2641,
-    "change_24h_at_pick": 0.61,
-    "max_gain_pct": 2.99,
-    "close_pct": 2.08,
-    "max_drawdown_pct": -0.72,
-    "hit20": false,
-    "hit50": false
-   },
-   {
     "symbol": "BREV",
-    "tier": "cand",
-    "entry_price_usd": 0.0998,
-    "change_24h_at_pick": 73.5,
-    "max_gain_pct": 17.23,
-    "close_pct": 8.92,
-    "max_drawdown_pct": -0.2,
+    "tier": "pump",
+    "entry_price_usd": 0.1076,
+    "change_24h_at_pick": 89.44,
+    "max_gain_pct": 8.74,
+    "close_pct": 6.32,
+    "max_drawdown_pct": -1.86,
     "hit20": false,
     "hit50": false
    }
