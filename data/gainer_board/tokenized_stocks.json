@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-19T17:15:24Z",
+ "updated": "2026-11-19T21:52:02Z",
  "source": "exchangeInfo:TRD_GRP_261+product-tag:bStocks",
  "marker_group": "TRD_GRP_261",
- "count": 112,
+ "count": 113,
  "bases": [
   "AAOIB",
   "AAPLB",
@@ -13,6 +13,7 @@
   "AMCB",
   "AMDB",
   "AMZNB",
+  "ANTB",
   "APPB",
   "ARMB",
   "ASMLB",
