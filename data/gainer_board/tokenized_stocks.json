@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-19T23:37:54Z",
+ "updated": "2026-11-20T02:59:26Z",
  "source": "exchangeInfo:TRD_GRP_261+product-tag:bStocks",
  "marker_group": "TRD_GRP_261",
- "count": 113,
+ "count": 112,
  "bases": [
   "AAOIB",
   "AAPLB",
@@ -98,7 +98,6 @@
   "SKUUB",
   "SMCIB",
   "SMHB",
-  "SNDKB",
   "SNXXB",
   "SOXLB",
   "SOXSB",
@@ -200,7 +199,6 @@
   "SKHYB": "SK Hynix (bStocks)",
   "SMCIB": "Super Micro Computer (bStocks)",
   "SMHB": "VanEck Semiconductor ETF (bStocks)",
-  "SNDKB": "SanDisk (bStocks)",
   "SNXXB": "Tradr 2X Long SNDK ETF (bStocks)",
   "SOXLB": "Semicon Bull 3X ETF (bStocks)",
   "SOXSB": "Direxion Semiconductor Bear 3X ETF (bStocks)",
