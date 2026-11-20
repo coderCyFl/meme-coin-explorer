@@ -1,25 +1,25 @@
 {
- "updated_at": "2026-11-20T11:00:50+08:00",
- "batches": 198,
- "flags": 634,
+ "updated_at": "2026-11-20T12:20:44+08:00",
+ "batches": 199,
+ "flags": 637,
  "horizons": {
   "4h": {
-   "n": 630,
+   "n": 631,
    "hit20": 33,
    "hit50": 4,
-   "avg_max_gain_pct": 5.31,
+   "avg_max_gain_pct": 5.3,
    "avg_close_pct": -1.06,
    "avg_max_drawdown_pct": -5.14,
    "closed_up": 222
   },
   "24h": {
-   "n": 602,
-   "hit20": 76,
+   "n": 610,
+   "hit20": 77,
    "hit50": 16,
-   "avg_max_gain_pct": 9.2,
-   "avg_close_pct": -4.23,
-   "avg_max_drawdown_pct": -9.93,
-   "closed_up": 175
+   "avg_max_gain_pct": 9.18,
+   "avg_close_pct": -4.21,
+   "avg_max_drawdown_pct": -9.9,
+   "closed_up": 176
   }
  },
  "tiers": {
@@ -34,36 +34,36 @@
     "closed_up": 85
    },
    "24h": {
-    "n": 249,
-    "hit20": 60,
+    "n": 250,
+    "hit20": 61,
     "hit50": 15,
-    "avg_max_gain_pct": 14.39,
-    "avg_close_pct": -6.63,
+    "avg_max_gain_pct": 14.49,
+    "avg_close_pct": -6.55,
     "avg_max_drawdown_pct": -14.14,
-    "closed_up": 60
+    "closed_up": 61
    },
    "flags": 261
   },
   "early2": {
    "4h": {
-    "n": 365,
+    "n": 366,
     "hit20": 5,
     "hit50": 0,
-    "avg_max_gain_pct": 2.95,
+    "avg_max_gain_pct": 2.94,
     "avg_close_pct": -0.96,
     "avg_max_drawdown_pct": -3.52,
     "closed_up": 136
    },
    "24h": {
-    "n": 348,
+    "n": 355,
     "hit20": 16,
     "hit50": 1,
-    "avg_max_gain_pct": 5.56,
-    "avg_close_pct": -2.55,
-    "avg_max_drawdown_pct": -6.93,
+    "avg_max_gain_pct": 5.51,
+    "avg_close_pct": -2.6,
+    "avg_max_drawdown_pct": -6.92,
     "closed_up": 113
    },
-   "flags": 368
+   "flags": 371
   },
   "early": {
    "4h": {
@@ -88,24 +88,24 @@
   },
   "cand": {
    "4h": {
-    "n": 555,
+    "n": 557,
     "hit20": 8,
     "hit50": 1,
     "avg_max_gain_pct": 3.48,
     "avg_close_pct": -0.32,
     "avg_max_drawdown_pct": -3.1,
-    "closed_up": 206
+    "closed_up": 207
    },
    "24h": {
-    "n": 533,
+    "n": 539,
     "hit20": 43,
     "hit50": 9,
-    "avg_max_gain_pct": 7.85,
-    "avg_close_pct": -2.17,
+    "avg_max_gain_pct": 7.84,
+    "avg_close_pct": -2.21,
     "avg_max_drawdown_pct": -7.32,
     "closed_up": 168
    },
-   "flags": 560
+   "flags": 562
   }
  },
  "latest_4h": {
@@ -120,6 +120,39 @@
     "max_gain_pct": 6.0,
     "close_pct": 1.14,
     "max_drawdown_pct": -2.27,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "INIT",
+    "tier": "early2",
+    "entry_price_usd": 0.10247,
+    "change_24h_at_pick": 3.44,
+    "max_gain_pct": 0.52,
+    "close_pct": -1.26,
+    "max_drawdown_pct": -3.48,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "HUMA",
+    "tier": "cand",
+    "entry_price_usd": 0.00941,
+    "change_24h_at_pick": 3.41,
+    "max_gain_pct": 9.14,
+    "close_pct": 1.59,
+    "max_drawdown_pct": -1.91,
+    "hit20": false,
+    "hit50": false
+   },
+   {
+    "symbol": "MMT",
+    "tier": "cand",
+    "entry_price_usd": 0.2647,
+    "change_24h_at_pick": 19.74,
+    "max_gain_pct": 2.68,
+    "close_pct": -2.87,
+    "max_drawdown_pct": -3.48,
     "hit20": false,
     "hit50": false
    }
