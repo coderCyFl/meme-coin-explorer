@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-21T06:29:00+08:00",
+ "updated_at": "2026-11-21T06:48:53+08:00",
  "batch": "gb-20261121-0516",
  "picked_at": "2026-11-21T05:16:10+08:00",
  "btc_24h_pct": -5.75,
@@ -531,90 +531,6 @@
      "max_gain_pct": 14.13,
      "max_drawdown_pct": -13.77,
      "close_pct": -7.16,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-21T03:14:50+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ERA",
-   "pair": "ERAUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-20T18:45:00+08:00",
-   "entry_price_usd": 0.0784,
-   "price_at_snapshot": 0.0775,
-   "trigger_via": "prec",
-   "change_15m_at_pick": 1.42,
-   "change_24h_at_pick": 6.52,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261120-1924",
-   "score": 33.8,
-   "change_1h_at_pick": 2.48,
-   "change_4h_at_pick": 3.29,
-   "vol_x_avg": 2.02,
-   "vol_x_prev_hour": 1.37,
-   "range_24h_pct": 11.3,
-   "from_24h_high_pct": -0.51,
-   "quote_volume_24h": 3208124,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.28,
-     "max_drawdown_pct": -5.74,
-     "close_pct": -5.36,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-21T03:14:50+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "MMT",
-   "pair": "MMTUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-20T18:30:00+08:00",
-   "entry_price_usd": 0.2557,
-   "price_at_snapshot": 0.2526,
-   "trigger_via": "start",
-   "change_15m_at_pick": 3.31,
-   "change_24h_at_pick": 30.93,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261120-1924",
-   "score": 12.8,
-   "change_1h_at_pick": 1.79,
-   "change_4h_at_pick": 2.98,
-   "vol_x_avg": 0.54,
-   "vol_x_prev_hour": 0.64,
-   "range_24h_pct": 63.3,
-   "from_24h_high_pct": -19.52,
-   "quote_volume_24h": 51469119,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 6.37,
-     "max_drawdown_pct": -8.45,
-     "close_pct": -6.8,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
