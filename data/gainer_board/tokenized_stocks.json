@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-20T13:15:17Z",
+ "updated": "2026-11-20T19:15:24Z",
  "source": "exchangeInfo:TRD_GRP_261+product-tag:bStocks",
  "marker_group": "TRD_GRP_261",
- "count": 112,
+ "count": 113,
  "bases": [
   "AAOIB",
   "AAPLB",
@@ -98,6 +98,7 @@
   "SKUUB",
   "SMCIB",
   "SMHB",
+  "SNDKB",
   "SNXXB",
   "SOXLB",
   "SOXSB",
