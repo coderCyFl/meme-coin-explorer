@@ -656,15 +656,33 @@
     return "cold";
   }
 
+  function awSnapshotStatus(updatedAt, now = Date.now()) {
+    const at = typeof updatedAt === "string" ? Date.parse(updatedAt) : NaN;
+    const valid = Number.isFinite(at);
+    return {
+      stale: valid && now - at > 24 * 60 * 60 * 1000,
+      // Show the snapshot's time in HKT, never the time this browser fetched it.
+      updated: valid ? new Date(at + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace("T", " ") + " HKT" : "",
+    };
+  }
+
   function renderAiWatch() {
     const list = $("#aiWatchList"); if (!list) return;
     const doc = S.awDoc;
     const meta = $("#awMeta");
+    const warning = $("#awStale");
+    const snapshot = awSnapshotStatus(doc && doc.updated_at);
+    if (warning) {
+      warning.hidden = !doc || (!snapshot.stale && !!snapshot.updated);
+      warning.textContent = !doc ? "" : snapshot.stale
+        ? t("aw.stale", { t: snapshot.updated })
+        : !snapshot.updated ? t("aw.unknown") : "";
+    }
     const capEl = $("#awCap");
     const entries = (doc && Array.isArray(doc.entries)) ? doc.entries : [];
     if (meta) {
       meta.textContent = S.awAt && doc
-        ? t("aw.meta", { t: doc.updated_at ? String(doc.updated_at).replace("T", " ").slice(0, 19) : fmtTime(S.awAt), n: entries.length })
+        ? t("aw.meta", { t: snapshot.updated || t("aw.timeUnknown"), n: entries.length })
         : "";
     }
     if (capEl) {

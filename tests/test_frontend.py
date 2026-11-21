@@ -263,7 +263,7 @@ class FrontendTests(unittest.TestCase):
         assert "nav.aiwatch" in I18N and "AI Watch" in I18N and "AI 盯盤" in I18N
         assert "aw.sub" in I18N and "Same-origin JSON" in I18N
         assert "aw.mock" in I18N and "Mock · paper" in I18N
-        assert "Mock · 模擬" in I18N
+        assert "模擬 · 紙上" in I18N
         assert "aw.cap" in I18N and "HKT" in I18N
         assert "loadAiWatch" in APP and "renderAiWatch" in APP
         assert "loadAiWatch();" in APP
@@ -275,6 +275,81 @@ class FrontendTests(unittest.TestCase):
         import subprocess
         sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
         self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+
+
+    def test_ai_watch_stale_boundary_and_languages(self):
+        """Run the shipped renderer with fixed time, real translations and retained rows."""
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("node required for AI Watch boundary checks")
+        assert 'id="awStale" role="status" hidden' in HTML
+        js = r"""
+          const assert = require("node:assert/strict");
+          const fs = require("node:fs"), vm = require("node:vm");
+          const NOW = Date.parse("2026-11-15T04:00:00Z");
+          const elements = Object.fromEntries(["#aiWatchList", "#awMeta", "#awCap", "#awStale"].map(id =>
+            [id, { textContent: "", innerHTML: "", hidden: true, classList: { toggle() {}, remove() {} } }]));
+          const context = {
+            window: {}, document: { documentElement: {} }, navigator: { language: "en" },
+            localStorage: { getItem() {}, setItem() {} },
+            Date: class extends Date { static now() { return NOW; } },
+            $: id => elements[id], esc: x => String(x),
+            S: { awAt: NOW, awLoading: false, selected: "", ticks: {} },
+          };
+          vm.createContext(context);
+          vm.runInContext(fs.readFileSync("js/i18n.js", "utf8"), context);
+          context.t = context.window.I18N.t;
+          const app = fs.readFileSync("js/app.js", "utf8");
+          vm.runInContext(app.slice(app.indexOf("  function awVerdictClass("), app.indexOf("  function heroCoins(")), context);
+          const warning = elements["#awStale"];
+          for (const lang of ["en", "zh"]) {
+            context.window.I18N.setLang(lang);
+            const t = context.t;
+            for (const age of [24 * 3600000 - 1, 24 * 3600000, 24 * 3600000 + 1]) {
+              context.S.awDoc = { updated_at: new Date(NOW - age).toISOString(), entries: [{ symbol: "TESTUSDT" }] };
+              context.renderAiWatch();
+              const stale = age > 24 * 3600000;
+              assert.equal(warning.hidden, !stale, `${lang}: age ${age}`);
+              assert.equal(warning.textContent, stale ? t("aw.stale", { t: context.awSnapshotStatus(context.S.awDoc.updated_at).updated }) : "");
+              assert.ok(elements["#aiWatchList"].innerHTML.includes("TEST"));
+              assert.ok(elements["#awMeta"].textContent.includes("HKT"));
+              if (stale) {
+                assert.ok(warning.textContent.includes(lang === "en" ? "Stale snapshot" : "資料已過期"));
+                assert.ok(warning.textContent.includes("2026-11-14 11:59:59 HKT"));
+              }
+            }
+            // A new fetch must not make an old snapshot appear fresh; a refreshed document clears it.
+            context.S.awAt = NOW;
+            context.renderAiWatch();
+            assert.equal(warning.hidden, false);
+            context.S.awDoc.updated_at = new Date(NOW).toISOString();
+            context.renderAiWatch();
+            assert.equal(warning.hidden, true);
+            for (const invalid of [undefined, null, "", "not-a-date"]) {
+              context.S.awDoc.updated_at = invalid;
+              context.renderAiWatch();
+              assert.equal(warning.hidden, false);
+              assert.equal(warning.textContent, t("aw.unknown"));
+              assert.ok(elements["#aiWatchList"].innerHTML.includes("TEST"));
+              assert.ok(!elements["#awMeta"].textContent.includes("2026-11-15"));
+            }
+            if (lang === "zh") {
+              assert.equal(t("aw.mock"), "模擬 · 紙上");
+              assert.equal(t("aw.reason.meme_volume"), "迷因成交量");
+            } else {
+              assert.equal(t("aw.mock"), "Mock · paper");
+              assert.equal(t("aw.reason.meme_volume"), "Meme vol");
+            }
+          }
+          assert.equal(context.awSnapshotStatus("2026-11-15T12:00:00+08:00").updated, "2026-11-15 12:00:00 HKT");
+          context.S.awDoc = null;
+          context.renderAiWatch();
+          assert.equal(warning.hidden, true);
+          assert.equal(warning.textContent, "");
+        """
+        subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
+        for path in ["css/app.css", "js/i18n.js", "js/strategy.js", "js/data.js", "js/coin3d.js", "js/app.js"]:
+            assert path + "?v=20261115" in HTML
 
 
     def test_urgent_b1_b2_b3_face(self):
