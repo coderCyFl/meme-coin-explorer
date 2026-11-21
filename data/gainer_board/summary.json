@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-21T16:15:27+08:00",
- "batches": 206,
- "flags": 675,
+ "updated_at": "2026-11-21T18:10:40+08:00",
+ "batches": 207,
+ "flags": 682,
  "horizons": {
   "4h": {
    "n": 662,
@@ -13,12 +13,12 @@
    "closed_up": 233
   },
   "24h": {
-   "n": 637,
+   "n": 638,
    "hit20": 80,
    "hit50": 16,
-   "avg_max_gain_pct": 9.17,
-   "avg_close_pct": -4.3,
-   "avg_max_drawdown_pct": -9.97,
+   "avg_max_gain_pct": 9.16,
+   "avg_close_pct": -4.34,
+   "avg_max_drawdown_pct": -10.0,
    "closed_up": 181
   }
  },
@@ -34,15 +34,15 @@
     "closed_up": 88
    },
    "24h": {
-    "n": 261,
+    "n": 262,
     "hit20": 64,
     "hit50": 15,
-    "avg_max_gain_pct": 14.5,
-    "avg_close_pct": -6.53,
-    "avg_max_drawdown_pct": -14.09,
+    "avg_max_gain_pct": 14.46,
+    "avg_close_pct": -6.61,
+    "avg_max_drawdown_pct": -14.15,
     "closed_up": 65
    },
-   "flags": 277
+   "flags": 278
   },
   "early2": {
    "4h": {
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -7.08,
     "closed_up": 114
    },
-   "flags": 393
+   "flags": 399
   },
   "early": {
    "4h": {
