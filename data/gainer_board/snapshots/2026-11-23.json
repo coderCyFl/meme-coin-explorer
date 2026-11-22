@@ -646,6 +646,37 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261123-0651",
+   "picked_at": "2026-11-23T06:51:15+08:00",
+   "universe": 50,
+   "btc_24h_pct": 1.43,
+   "universe_all": 394,
+   "excluded_tokenized": 113,
+   "top20_24h": [
+    "LISTAUSDT",
+    "NIGHTUSDT",
+    "PUMPUSDT",
+    "牛来USDT",
+    "YGGUSDT",
+    "ETHFIUSDT",
+    "KITEUSDT",
+    "PYTHUSDT",
+    "AEROUSDT",
+    "JTOUSDT",
+    "XVGUSDT",
+    "KAITOUSDT",
+    "PARTIUSDT",
+    "AIGENSYNUSDT",
+    "EDUUSDT",
+    "FTTUSDT",
+    "INJUSDT",
+    "XTZUSDT",
+    "DUSKUSDT",
+    "FLUXUSDT"
+   ],
+   "entries": []
   }
  ]
 }
