@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T05:26:46+08:00",
+ "updated_at": "2026-11-23T05:30:19+08:00",
  "batch": "gb-20261123-0146",
  "picked_at": "2026-11-23T01:46:24+08:00",
  "btc_24h_pct": 1.3,
@@ -169,48 +169,6 @@
      "max_gain_pct": 0.68,
      "max_drawdown_pct": -0.98,
      "close_pct": -0.33,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-23T01:03:16+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "RARE",
-   "pair": "RAREUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-22T17:30:00+08:00",
-   "entry_price_usd": 0.01389,
-   "price_at_snapshot": 0.01465,
-   "trigger_via": "start",
-   "change_15m_at_pick": 2.66,
-   "change_24h_at_pick": 1.46,
-   "rank_24h_at_pick": 212,
-   "batch": "gb-20261122-1802",
-   "score": 3.1,
-   "change_1h_at_pick": 2.13,
-   "change_4h_at_pick": 0.29,
-   "vol_x_avg": 0.43,
-   "vol_x_prev_hour": 0.28,
-   "range_24h_pct": 25.4,
-   "from_24h_high_pct": -16.02,
-   "quote_volume_24h": 7712610,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 9.58,
-     "max_drawdown_pct": -0.5,
-     "close_pct": 3.96,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
