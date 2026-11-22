@@ -224,6 +224,70 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261123-0146",
+   "picked_at": "2026-11-23T01:46:24+08:00",
+   "universe": 48,
+   "btc_24h_pct": 1.3,
+   "universe_all": 394,
+   "excluded_tokenized": 113,
+   "top20_24h": [
+    "NIGHTUSDT",
+    "ALLOUSDT",
+    "COOKIEUSDT",
+    "FORMUSDT",
+    "PUMPUSDT",
+    "ETHFIUSDT",
+    "牛来USDT",
+    "PYTHUSDT",
+    "AEROUSDT",
+    "LISTAUSDT",
+    "AIGENSYNUSDT",
+    "NEARUSDT",
+    "PARTIUSDT",
+    "DUSKUSDT",
+    "YGGUSDT",
+    "EDUUSDT",
+    "BERAUSDT",
+    "PHAUSDT",
+    "MARSCOINUSDT",
+    "ERAUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "NEAR",
+     "pair": "NEARUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-23T01:46:24+08:00",
+     "entry_price_usd": 3.007,
+     "price_at_snapshot": 3.007,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 4.79,
+     "rank_24h_at_pick": 12,
+     "batch": "gb-20261123-0146",
+     "score": 15.7,
+     "change_1h_at_pick": -0.1,
+     "change_4h_at_pick": 0.17,
+     "vol_x_avg": 1.06,
+     "vol_x_prev_hour": 0.63,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.12,
+     "quote_volume_24h": 69183839,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
   }
  ]
 }
