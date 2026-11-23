@@ -8,7 +8,7 @@
   const MIN_QUOTE_VOL = 3e6;   // skip coins with < $3M traded in 24h (too thin, easy to manipulate)
   const MAX_COINS = 60;  // product score universe (not full Binance dump)
   const KLINE_LIMIT = 400;     // ~4 days of 15m candles: 24h for the score + ~3 days to backtest it
-  const STABLES = new Set(["USDC", "FDUSD", "TUSD", "BUSD", "DAI", "USDP", "EUR", "AEUR", "USDE", "XUSD", "USD1", "PAXG", "WBTC", "BFUSD", "EURI"]);
+  const STABLES = new Set(["USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1", "BFUSD", "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL", "KGST"]);
 
   const names = {
     BTC: "Bitcoin", ETH: "Ethereum", SOL: "Solana", BNB: "BNB", DOGE: "Dogecoin", PEPE: "Pepe", WIF: "dogwifhat",

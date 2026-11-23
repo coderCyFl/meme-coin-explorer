@@ -349,7 +349,7 @@ class FrontendTests(unittest.TestCase):
         """
         subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
         for path in ["css/app.css", "js/i18n.js", "js/strategy.js", "js/data.js", "js/coin3d.js", "js/app.js"]:
-            assert path + "?v=20261115" in HTML
+            assert path + "?v=20261123" in HTML
 
 
     def test_urgent_b1_b2_b3_face(self):
