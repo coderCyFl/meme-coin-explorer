@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-23T11:06:32+08:00",
- "batch": "gb-20261123-1105",
- "picked_at": "2026-11-23T11:05:24+08:00",
- "btc_24h_pct": 2.59,
+ "updated_at": "2026-11-23T11:24:43+08:00",
+ "batch": "gb-20261123-1123",
+ "picked_at": "2026-11-23T11:23:09+08:00",
+ "btc_24h_pct": 3.87,
  "universe": 49,
  "active": [
   {
@@ -38,6 +38,38 @@
    "shill_flag": null
   },
   {
+   "symbol": "ACE",
+   "pair": "ACEUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-23T07:45:00+08:00",
+   "entry_price_usd": 0.0751,
+   "price_at_snapshot": 0.0684,
+   "trigger_via": "15m",
+   "change_15m_at_pick": 8.37,
+   "change_24h_at_pick": -13.08,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261123-1123",
+   "score": 34.4,
+   "change_1h_at_pick": 10.28,
+   "change_4h_at_pick": 2.88,
+   "vol_x_avg": 1.74,
+   "vol_x_prev_hour": 0.59,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -13.88,
+   "quote_volume_24h": 17327520,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
    "symbol": "KAVA",
    "pair": "KAVAUSDT",
    "tier": "pump",
@@ -58,7 +90,17 @@
    "from_24h_high_pct": -6.74,
    "quote_volume_24h": 4461110,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 3.34,
+     "max_drawdown_pct": -0.71,
+     "close_pct": 0.56,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-23T11:23:08+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -90,7 +132,17 @@
    "from_24h_high_pct": -18.23,
    "quote_volume_24h": 17256870,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 26.23,
+     "max_drawdown_pct": -5.75,
+     "close_pct": -2.38,
+     "hit20": true,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-23T11:23:08+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
