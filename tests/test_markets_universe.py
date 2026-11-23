@@ -13,9 +13,24 @@ APP = (ROOT / "js/app.js").read_text(encoding="utf-8")
 I18N = (ROOT / "js/i18n.js").read_text(encoding="utf-8")
 
 STABLES = {
-    "USDC", "FDUSD", "TUSD", "BUSD", "DAI", "USDP", "EUR", "AEUR", "USDE",
-    "XUSD", "USD1", "PAXG", "WBTC", "BFUSD", "EURI",
+    "USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "EURI", "AEUR", "XUSD", "USD1", "BFUSD",
+    "USDE", "USDEB", "U", "FRAX", "RLUSD", "USDS", "RWUSD", "PYUSD", "PAXG", "XAUT", "WBTC", "WBETH", "BNSOL",
+    "KGST",
 }
+
+# Aligned with scripts/gainer_core.py STABLE, plus frontend-only KGST.
+EXTRA_STABLES = ("RLUSD", "RWUSD", "U", "USDS", "KGST", "WBETH", "BNSOL", "FRAX", "XAUT", "PYUSD", "USDEB")
+
+
+def parse_js_stables(src):
+    m = re.search(r"const STABLES = new Set\(\[(.*?)\]\)", src, re.S)
+    return set(re.findall(r'"([^"]+)"', m.group(1)))
+
+
+def parse_py_stables(src):
+    m = re.search(r"STABLE = \{([^}]+)\}", src, re.S)
+    return set(re.findall(r'"([A-Z0-9]+)"', m.group(1)))
+
 MIN_QUOTE_VOL = 3e6
 MAX_COINS = 60
 
@@ -32,6 +47,22 @@ def eligible(t, tokenized=None):
     if tokenized and base in tokenized:
         return False
     return float(t["quoteVolume"]) >= MIN_QUOTE_VOL and float(t["lastPrice"]) > 0
+
+
+def gainer_eligible_local(t, tokenized=None, now=None):
+    sym = t["symbol"]
+    if not sym.endswith("USDT"):
+        return False
+    base = sym[:-4]
+    if not base or base in STABLES:
+        return False
+    if re.search(r"(UP|DOWN|BULL|BEAR)$", base) and len(base) > 4:
+        return False
+    if tokenized and base in tokenized:
+        return False
+    if now is not None and int(t.get("closeTime") or 0) and now - int(t["closeTime"]) > 2 * 3600_000:
+        return False
+    return float(t["lastPrice"]) > 0
 
 
 def slice_universe(tickers, tokenized, drop_before_slice=True):
@@ -300,6 +331,69 @@ class MarketsUniverseTests(unittest.TestCase):
             ["git", "hash-object", str(ROOT / "js/strategy.js")], text=True
         ).strip()
         self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+
+    def test_frontend_stables_align_and_drop_named_bases(self):
+        """eligible, tickersCatalog path (gainerEligible) drop aligned stables including KGST."""
+        js_set = parse_js_stables(DATA_JS)
+        py_set = parse_py_stables((ROOT / "scripts/gainer_core.py").read_text(encoding="utf-8"))
+        self.assertEqual(js_set, py_set | {"KGST"})
+        self.assertTrue(set(EXTRA_STABLES) <= js_set)
+        now = 1_800_000_000_000
+        fresh = now - 60_000
+        rows = []
+        for base in EXTRA_STABLES + ("BTC", "SAGA"):
+            rows.append({
+                "symbol": base + "USDT",
+                "lastPrice": "1",
+                "quoteVolume": "9e9",
+                "closeTime": fresh,
+            })
+        rows.append({"symbol": "BTCUSDT", "lastPrice": "1", "quoteVolume": "9e9", "closeTime": fresh})  # already added
+        # Radar All uses eligible(); Markets/Gainers All use gainerEligible via tickersCatalog/tickersAll.
+        radar = [t for t in rows if eligible(t)]
+        catalog = [t for t in rows if gainer_eligible_local(t, None, now)]
+        for kept in (radar, catalog):
+            bases = {t["symbol"][:-4] for t in kept}
+            for base in EXTRA_STABLES:
+                self.assertNotIn(base, bases)
+            self.assertIn("BTC", bases)
+            self.assertIn("SAGA", bases)
+        node = __import__("shutil").which("node")
+        if not node:
+            return
+        js = r"""
+          const assert = require("node:assert/strict");
+          const fs = require("node:fs"), vm = require("node:vm");
+          const context = { window: {}, Date, fetch: async () => { throw new Error("no net"); } };
+          vm.createContext(context);
+          vm.runInContext(fs.readFileSync("js/data.js", "utf8"), context);
+          const { eligible, gainerEligible } = context.window.Market;
+          const now = Date.now();
+          const drop = ["RLUSD","RWUSD","U","USDS","KGST","WBETH","BNSOL","FRAX","XAUT","PYUSD","USDEB"];
+          const keep = ["BTC","SAGA"];
+          const row = (base) => ({ symbol: base+"USDT", lastPrice: "1", quoteVolume: "9e9", openPrice: "1", highPrice: "1", lowPrice: "1", closeTime: now });
+          const tokenized = new Set();
+          function tickersAll(all) { return all.filter((t) => gainerEligible(t, tokenized, now)); }
+          function tickersCatalog(all) { return all.filter((t) => gainerEligible(t, tokenized, now)).sort((a,b) => +b.quoteVolume - +a.quoteVolume); }
+          const all = [...drop, ...keep].map(row);
+          const viaEligible = all.filter((t) => eligible(t, tokenized));
+          const viaAll = tickersAll(all);
+          const viaCat = tickersCatalog(all);
+          for (const kept of [viaEligible, viaAll, viaCat]) {
+            const bases = kept.map((t) => t.symbol.slice(0, -4));
+            for (const b of drop) assert.ok(!bases.includes(b), "kept "+b);
+            for (const b of keep) assert.ok(bases.includes(b), "dropped "+b);
+          }
+          const src = fs.readFileSync("js/data.js", "utf8");
+          assert.ok(src.includes("async tickersAll()"));
+          assert.ok(src.includes("async tickersCatalog()"));
+          const allBody = src.split("async tickersAll() {")[1].split("async tickersCatalog()")[0];
+          const catBody = src.split("/** Full Markets catalog")[1].split("async klines")[0];
+          assert.ok(allBody.includes("gainerEligible(t, tokenized, now)"));
+          assert.ok(catBody.includes("gainerEligible(t, tokenized, now)"));
+        """
+        subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
+
 
 
 if __name__ == "__main__":
