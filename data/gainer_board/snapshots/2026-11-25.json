@@ -256,6 +256,37 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261125-0505",
+   "picked_at": "2026-11-25T05:05:41+08:00",
+   "universe": 52,
+   "btc_24h_pct": -2.53,
+   "universe_all": 394,
+   "excluded_tokenized": 113,
+   "top20_24h": [
+    "ATMUSDT",
+    "LISTAUSDT",
+    "SAHARAUSDT",
+    "OPGUSDT",
+    "MMTUSDT",
+    "SHELLUSDT",
+    "DODOUSDT",
+    "WINUSDT",
+    "AIGENSYNUSDT",
+    "USUALUSDT",
+    "INITUSDT",
+    "LUNCUSDT",
+    "BIGTIMEUSDT",
+    "BLURUSDT",
+    "ASRUSDT",
+    "2ZUSDT",
+    "RPLUSDT",
+    "CUSDT",
+    "PSGUSDT",
+    "EDENUSDT"
+   ],
+   "entries": []
   }
  ]
 }
