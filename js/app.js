@@ -656,6 +656,22 @@
     return "cold";
   }
 
+  function awVerdictLabel(v) {
+    if (v === "熱") return t("aw.verdict.hot");
+    if (v === "升溫") return t("aw.verdict.warm");
+    if (v === "冷") return t("aw.verdict.cold");
+    return v || "";
+  }
+
+  function awLineLabel(line) {
+    if (line === "討論急升") return t("aw.line.hot");
+    if (line === "討論回暖") return t("aw.line.warm");
+    if (line === "討論偏冷") return t("aw.line.cold");
+    if (line === "無明確訊號") return t("aw.line.none");
+    if (line === "解析失敗") return t("aw.line.parseFail");
+    return line || "";
+  }
+
   function awSnapshotStatus(updatedAt, now = Date.now()) {
     const at = typeof updatedAt === "string" ? Date.parse(updatedAt) : NaN;
     const valid = Number.isFinite(at);
@@ -715,8 +731,8 @@
       const tone = g.tone ? `<span class="chip">${esc(t("aw.tone." + g.tone))}</span>` : "";
       const summary = g.summary ? `<p class="aw-grok"><b>${esc(t("aw.grok"))}</b> · ${esc(g.summary)}</p>` : "";
       return `<li><button type="button" class="row aw-row ${S.selected === sym ? "sel" : ""}" data-sym="${esc(sym)}">
-        <span class="r-top"><b class="sym">${esc(base)}</b><span class="aw-verdict ${awVerdictClass(verdict)}">${esc(verdict)}</span>${shill}${reasons}${spike}${posts}${tone}</span>
-        <span class="aw-line">${esc(line)}</span>
+        <span class="r-top"><b class="sym">${esc(base)}</b><span class="aw-verdict ${awVerdictClass(verdict)}">${esc(awVerdictLabel(verdict))}</span>${shill}${reasons}${spike}${posts}${tone}</span>
+        <span class="aw-line">${esc(awLineLabel(line))}</span>
         ${summary}
       </button></li>`;
     }).join("");

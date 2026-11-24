@@ -349,7 +349,105 @@ class FrontendTests(unittest.TestCase):
         """
         subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
         for path in ["css/app.css", "js/i18n.js", "js/strategy.js", "js/data.js", "js/coin3d.js", "js/app.js"]:
-            assert path + "?v=20261123" in HTML
+            assert path + "?v=20261124" in HTML
+
+
+    def test_ai_watch_verdict_and_fixed_line_i18n(self):
+        """Producer 熱/升溫/冷 and fixed one-liners go through i18n; CSS class stays raw; free text stays raw."""
+        locked = {
+            "aw.verdict.hot": ("Hot", "熱"),
+            "aw.verdict.warm": ("Warming", "升溫"),
+            "aw.verdict.cold": ("Cold", "冷"),
+            "aw.line.hot": ("Discussion surging", "討論急升"),
+            "aw.line.warm": ("Discussion picking up", "討論回暖"),
+            "aw.line.cold": ("Quiet discussion", "討論偏冷"),
+            "aw.line.none": ("No clear signal", "無明確訊號"),
+            "aw.line.parseFail": ("Could not parse", "解析失敗"),
+        }
+        for key, (en, zh) in locked.items():
+            assert f'"{key}": "{en}"' in I18N
+            assert f'"{key}": "{zh}"' in I18N
+        assert 'awVerdictClass(verdict)' in APP
+        assert "awVerdictLabel(verdict)" in APP
+        assert "awLineLabel(line)" in APP
+        assert "esc(g.summary)" in APP
+        # Stale warning copy is unchanged.
+        assert "Stale snapshot — over 24 hours old. Last updated {t}." in I18N
+        assert "資料已過期 — 超過 24 小時未更新。上次更新：{t}。" in I18N
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("node required for AI Watch i18n checks")
+        js = r"""
+          const assert = require("node:assert/strict");
+          const fs = require("node:fs"), vm = require("node:vm");
+          const NOW = Date.parse("2026-11-24T04:00:00Z");
+          const elements = Object.fromEntries(["#aiWatchList", "#awMeta", "#awCap", "#awStale"].map(id =>
+            [id, { textContent: "", innerHTML: "", hidden: true, classList: { toggle() {}, remove() {} } }]));
+          const context = {
+            window: {}, document: { documentElement: {} }, navigator: { language: "en" },
+            localStorage: { getItem() {}, setItem() {} },
+            Date: class extends Date { static now() { return NOW; } },
+            $: id => elements[id], esc: x => String(x),
+            S: { awAt: NOW, awLoading: false, selected: "", ticks: {} },
+          };
+          vm.createContext(context);
+          vm.runInContext(fs.readFileSync("js/i18n.js", "utf8"), context);
+          context.t = context.window.I18N.t;
+          const app = fs.readFileSync("js/app.js", "utf8");
+          vm.runInContext(app.slice(app.indexOf("  function awVerdictClass("), app.indexOf("  function heroCoins(")), context);
+          const entries = [
+            { symbol: "HOTUSDT", x: { verdict: "熱", one_line: "討論急升" } },
+            { symbol: "WARMUSDT", x: { verdict: "升溫", one_line: "討論回暖" } },
+            { symbol: "COLDUSDT", x: { verdict: "冷", one_line: "討論偏冷" } },
+            { symbol: "NONEUSDT", x: { verdict: "冷", one_line: "無明確訊號" } },
+            { symbol: "FAILUSDT", x: { verdict: "冷", one_line: "解析失敗" } },
+            { symbol: "FREEUSDT", x: { verdict: "冷", one_line: "自訂一句" }, grok: { summary: "自訂摘要" } },
+          ];
+          context.S.awDoc = { updated_at: new Date(NOW - 2 * 3600000).toISOString(), entries };
+          const expect = {
+            en: {
+              "熱": "Hot", "升溫": "Warming", "冷": "Cold",
+              "討論急升": "Discussion surging", "討論回暖": "Discussion picking up",
+              "討論偏冷": "Quiet discussion", "無明確訊號": "No clear signal", "解析失敗": "Could not parse",
+            },
+            zh: {
+              "熱": "熱", "升溫": "升溫", "冷": "冷",
+              "討論急升": "討論急升", "討論回暖": "討論回暖",
+              "討論偏冷": "討論偏冷", "無明確訊號": "無明確訊號", "解析失敗": "解析失敗",
+            },
+          };
+          for (const lang of ["en", "zh"]) {
+            context.window.I18N.setLang(lang);
+            context.renderAiWatch();
+            const html = elements["#aiWatchList"].innerHTML;
+            const map = expect[lang];
+            assert.ok(html.includes('class="aw-verdict hot"') && html.includes(map["熱"]));
+            assert.ok(html.includes('class="aw-verdict warm"') && html.includes(map["升溫"]));
+            assert.ok(html.includes('class="aw-verdict cold"') && html.includes(map["冷"]));
+            for (const phrase of ["討論急升", "討論回暖", "討論偏冷", "無明確訊號", "解析失敗"]) {
+              assert.ok(html.includes(map[phrase]));
+            }
+            assert.ok(html.includes("自訂一句"));
+            assert.ok(html.includes("自訂摘要"));
+            if (lang === "en") {
+              assert.ok(html.includes("Cold") && html.includes("Quiet discussion"));
+              assert.ok(!html.includes("討論偏冷"));
+              assert.equal((html.match(/>冷</g) || []).length, 0);
+            } else {
+              assert.ok(html.includes("冷") && html.includes("討論偏冷"));
+              assert.ok(!html.includes("Cold"));
+              assert.ok(!html.includes("Quiet discussion"));
+            }
+            assert.equal(elements["#awStale"].hidden, true);
+            assert.equal(context.awVerdictClass("熱"), "hot");
+            assert.equal(context.awVerdictClass("升溫"), "warm");
+            assert.equal(context.awVerdictClass("冷"), "cold");
+            assert.equal(context.awVerdictClass("unknown"), "cold");
+          }
+        """
+        subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
 
 
     def test_urgent_b1_b2_b3_face(self):
