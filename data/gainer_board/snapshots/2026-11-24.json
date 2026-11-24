@@ -52,7 +52,17 @@
      "from_24h_high_pct": -1.7,
      "quote_volume_24h": 5757458,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 7.64,
+       "max_drawdown_pct": -6.82,
+       "close_pct": 5.4,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -84,7 +94,17 @@
      "from_24h_high_pct": -6.92,
      "quote_volume_24h": 3340429,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 3.71,
+       "max_drawdown_pct": -1.78,
+       "close_pct": 0.45,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -116,7 +136,17 @@
      "from_24h_high_pct": -10.79,
      "quote_volume_24h": 10768361,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 14.55,
+       "max_drawdown_pct": -0.19,
+       "close_pct": 11.71,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -148,7 +178,17 @@
      "from_24h_high_pct": -6.29,
      "quote_volume_24h": 6149464,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.56,
+       "max_drawdown_pct": -4.95,
+       "close_pct": -4.02,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -180,7 +220,17 @@
      "from_24h_high_pct": -2.52,
      "quote_volume_24h": 9362186,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 4.04,
+       "max_drawdown_pct": -6.44,
+       "close_pct": -5.49,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -212,7 +262,17 @@
      "from_24h_high_pct": -7.41,
      "quote_volume_24h": 5369307,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.45,
+       "max_drawdown_pct": -5.66,
+       "close_pct": -2.88,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -244,7 +304,17 @@
      "from_24h_high_pct": -1.47,
      "quote_volume_24h": 3031957,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.9,
+       "max_drawdown_pct": -0.78,
+       "close_pct": 2.12,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -276,7 +346,17 @@
      "from_24h_high_pct": -4.98,
      "quote_volume_24h": 5806944,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.8,
+       "max_drawdown_pct": -2.36,
+       "close_pct": 0.81,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -308,7 +388,17 @@
      "from_24h_high_pct": -4.63,
      "quote_volume_24h": 5923077,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.7,
+       "max_drawdown_pct": -1.7,
+       "close_pct": 0.82,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -372,7 +462,17 @@
      "from_24h_high_pct": -4.85,
      "quote_volume_24h": 20230923,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.45,
+       "max_drawdown_pct": -2.7,
+       "close_pct": -0.34,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -404,7 +504,17 @@
      "from_24h_high_pct": -6.83,
      "quote_volume_24h": 4161313,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.12,
+       "max_drawdown_pct": -3.04,
+       "close_pct": -1.7,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -436,7 +546,17 @@
      "from_24h_high_pct": -7.51,
      "quote_volume_24h": 5611877,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.58,
+       "max_drawdown_pct": -2.93,
+       "close_pct": 0.25,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -468,7 +588,17 @@
      "from_24h_high_pct": -10.33,
      "quote_volume_24h": 14334168,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.0,
+       "max_drawdown_pct": -2.48,
+       "close_pct": -0.97,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -500,7 +630,17 @@
      "from_24h_high_pct": -9.99,
      "quote_volume_24h": 3808831,
      "watch_only": true,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 1.55,
+       "max_drawdown_pct": -2.07,
+       "close_pct": 0.91,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -531,6 +671,240 @@
      "range_24h_pct": null,
      "from_24h_high_pct": -9.1,
      "quote_volume_24h": 4809955,
+     "watch_only": true,
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.51,
+       "max_drawdown_pct": -2.67,
+       "close_pct": -1.65,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-24T18:50:52+08:00"
+      }
+     },
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
+  },
+  {
+   "batch": "gb-20261124-1851",
+   "picked_at": "2026-11-24T18:51:17+08:00",
+   "universe": 66,
+   "btc_24h_pct": -3.11,
+   "universe_all": 394,
+   "excluded_tokenized": 113,
+   "top20_24h": [
+    "LISTAUSDT",
+    "ATMUSDT",
+    "SAHARAUSDT",
+    "BABYUSDT",
+    "LUNCUSDT",
+    "ZILUSDT",
+    "ASRUSDT",
+    "SHELLUSDT",
+    "ATOMUSDT",
+    "RPLUSDT",
+    "HUMAUSDT",
+    "HOMEUSDT",
+    "ALLOUSDT",
+    "OPGUSDT",
+    "DODOUSDT",
+    "LAZIOUSDT",
+    "币安人生USDT",
+    "RESOLVUSDT",
+    "PSGUSDT",
+    "IOSTUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "ATM",
+     "pair": "ATMUSDT",
+     "tier": "early2",
+     "picked_at": "2026-11-24T18:45:00+08:00",
+     "entry_price_usd": 0.837,
+     "price_at_snapshot": 0.874,
+     "trigger_via": "thin",
+     "change_15m_at_pick": -0.24,
+     "change_24h_at_pick": 17.06,
+     "rank_24h_at_pick": 2,
+     "batch": "gb-20261124-1851",
+     "score": 71.9,
+     "change_1h_at_pick": 11.6,
+     "change_4h_at_pick": 10.28,
+     "vol_x_avg": 9.69,
+     "vol_x_prev_hour": 0.0,
+     "range_24h_pct": 20.2,
+     "from_24h_high_pct": -1.53,
+     "quote_volume_24h": 1846349,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    },
+    {
+     "symbol": "LUNC",
+     "pair": "LUNCUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-24T18:51:17+08:00",
+     "entry_price_usd": 4.535e-05,
+     "price_at_snapshot": 4.535e-05,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 13.42,
+     "rank_24h_at_pick": 5,
+     "batch": "gb-20261124-1851",
+     "score": 43.7,
+     "change_1h_at_pick": 1.8,
+     "change_4h_at_pick": 6.03,
+     "vol_x_avg": 3.42,
+     "vol_x_prev_hour": 1.82,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -1.15,
+     "quote_volume_24h": 3650728,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    },
+    {
+     "symbol": "BABY",
+     "pair": "BABYUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-24T18:51:17+08:00",
+     "entry_price_usd": 0.00855,
+     "price_at_snapshot": 0.00855,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 16.08,
+     "rank_24h_at_pick": 4,
+     "batch": "gb-20261124-1851",
+     "score": 29.8,
+     "change_1h_at_pick": -0.22,
+     "change_4h_at_pick": 2.05,
+     "vol_x_avg": 2.39,
+     "vol_x_prev_hour": 4.17,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -3.45,
+     "quote_volume_24h": 3448873,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    },
+    {
+     "symbol": "SAHARA",
+     "pair": "SAHARAUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-24T18:51:17+08:00",
+     "entry_price_usd": 0.00563,
+     "price_at_snapshot": 0.00563,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 15.05,
+     "rank_24h_at_pick": 3,
+     "batch": "gb-20261124-1851",
+     "score": 12.3,
+     "change_1h_at_pick": -2.02,
+     "change_4h_at_pick": -3.81,
+     "vol_x_avg": 2.12,
+     "vol_x_prev_hour": 1.65,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -10.34,
+     "quote_volume_24h": 8507605,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    },
+    {
+     "symbol": "ATOM",
+     "pair": "ATOMUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-24T18:51:17+08:00",
+     "entry_price_usd": 1.283,
+     "price_at_snapshot": 1.283,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 8.02,
+     "rank_24h_at_pick": 9,
+     "batch": "gb-20261124-1851",
+     "score": 6.4,
+     "change_1h_at_pick": -0.92,
+     "change_4h_at_pick": -1.97,
+     "vol_x_avg": 0.52,
+     "vol_x_prev_hour": 0.5,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.71,
+     "quote_volume_24h": 3498410,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    },
+    {
+     "symbol": "LISTA",
+     "pair": "LISTAUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-24T18:51:17+08:00",
+     "entry_price_usd": 0.1082,
+     "price_at_snapshot": 0.1082,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 18.79,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261124-1851",
+     "score": -12.2,
+     "change_1h_at_pick": -6.9,
+     "change_4h_at_pick": -9.1,
+     "vol_x_avg": 1.1,
+     "vol_x_prev_hour": 2.3,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -13.13,
+     "quote_volume_24h": 9286058,
      "watch_only": true,
      "outcomes": {},
      "exit_plan": {
