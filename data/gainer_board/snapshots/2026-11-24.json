@@ -918,6 +918,37 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261124-1855",
+   "picked_at": "2026-11-24T18:55:00+08:00",
+   "universe": 66,
+   "btc_24h_pct": -3.01,
+   "universe_all": 394,
+   "excluded_tokenized": 113,
+   "top20_24h": [
+    "LISTAUSDT",
+    "ATMUSDT",
+    "SAHARAUSDT",
+    "BABYUSDT",
+    "LUNCUSDT",
+    "ZILUSDT",
+    "ATOMUSDT",
+    "SHELLUSDT",
+    "JUVUSDT",
+    "ASRUSDT",
+    "RPLUSDT",
+    "DODOUSDT",
+    "HOMEUSDT",
+    "HUMAUSDT",
+    "ALLOUSDT",
+    "OPGUSDT",
+    "币安人生USDT",
+    "RESOLVUSDT",
+    "MMTUSDT",
+    "IOSTUSDT"
+   ],
+   "entries": []
   }
  ]
 }
