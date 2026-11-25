@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-25T05:07:06+08:00",
+ "updated_at": "2026-11-25T08:16:47+08:00",
  "batch": "gb-20261125-0505",
  "picked_at": "2026-11-25T05:05:41+08:00",
  "btc_24h_pct": -2.53,
@@ -27,48 +27,6 @@
    "quote_volume_24h": 6034878,
    "watch_only": false,
    "outcomes": {},
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "ATM",
-   "pair": "ATMUSDT",
-   "tier": "early2",
-   "picked_at": "2026-11-24T18:45:00+08:00",
-   "entry_price_usd": 0.837,
-   "price_at_snapshot": 0.874,
-   "trigger_via": "thin",
-   "change_15m_at_pick": -0.24,
-   "change_24h_at_pick": 17.06,
-   "rank_24h_at_pick": 2,
-   "batch": "gb-20261124-1851",
-   "score": 71.9,
-   "change_1h_at_pick": 11.6,
-   "change_4h_at_pick": 10.28,
-   "vol_x_avg": 9.69,
-   "vol_x_prev_hour": 0.0,
-   "range_24h_pct": 20.2,
-   "from_24h_high_pct": -1.53,
-   "quote_volume_24h": 1846349,
-   "watch_only": true,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 28.43,
-     "max_drawdown_pct": 0.12,
-     "close_pct": 14.7,
-     "hit20": true,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-25T05:00:02+08:00"
-    }
-   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
