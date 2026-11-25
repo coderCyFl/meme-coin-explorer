@@ -517,6 +517,70 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261125-1217",
+   "picked_at": "2026-11-25T12:17:58+08:00",
+   "universe": 50,
+   "btc_24h_pct": -1.81,
+   "universe_all": 394,
+   "excluded_tokenized": 113,
+   "top20_24h": [
+    "BIGTIMEUSDT",
+    "ATMUSDT",
+    "OPGUSDT",
+    "INITUSDT",
+    "WAXPUSDT",
+    "DODOUSDT",
+    "BLURUSDT",
+    "QKCUSDT",
+    "SKYUSDT",
+    "ERAUSDT",
+    "USUALUSDT",
+    "EDENUSDT",
+    "SOPHUSDT",
+    "CUSDT",
+    "LUNCUSDT",
+    "SANTOSUSDT",
+    "ALICEUSDT",
+    "OGUSDT",
+    "ASRUSDT",
+    "PSGUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "BIGTIME",
+     "pair": "BIGTIMEUSDT",
+     "tier": "early2",
+     "picked_at": "2026-11-25T12:15:00+08:00",
+     "entry_price_usd": 0.00649,
+     "price_at_snapshot": 0.0069,
+     "trigger_via": "thin",
+     "change_15m_at_pick": 45.84,
+     "change_24h_at_pick": 64.3,
+     "rank_24h_at_pick": 1,
+     "batch": "gb-20261125-1217",
+     "score": 96.5,
+     "change_1h_at_pick": 42.64,
+     "change_4h_at_pick": 51.99,
+     "vol_x_avg": 5.01,
+     "vol_x_prev_hour": 0.0,
+     "range_24h_pct": 30.7,
+     "from_24h_high_pct": -2.84,
+     "quote_volume_24h": 2635620,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
   }
  ]
 }
