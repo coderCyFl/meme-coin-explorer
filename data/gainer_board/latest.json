@@ -1,10 +1,42 @@
 {
- "updated_at": "2026-11-26T07:12:47+08:00",
- "batch": "gb-20261126-0709",
- "picked_at": "2026-11-26T07:09:37+08:00",
- "btc_24h_pct": 0.07,
+ "updated_at": "2026-11-26T07:35:19+08:00",
+ "batch": "gb-20261126-0733",
+ "picked_at": "2026-11-26T07:33:56+08:00",
+ "btc_24h_pct": 0.57,
  "universe": 58,
  "active": [
+  {
+   "symbol": "LISTA",
+   "pair": "LISTAUSDT",
+   "tier": "early2",
+   "picked_at": "2026-11-26T07:30:00+08:00",
+   "entry_price_usd": 0.1032,
+   "price_at_snapshot": 0.1031,
+   "trigger_via": "start",
+   "change_15m_at_pick": 2.89,
+   "change_24h_at_pick": -6.94,
+   "rank_24h_at_pick": 389,
+   "batch": "gb-20261126-0733",
+   "score": -15.6,
+   "change_1h_at_pick": 0.0,
+   "change_4h_at_pick": -10.26,
+   "vol_x_avg": 0.52,
+   "vol_x_prev_hour": 0.22,
+   "range_24h_pct": 34.7,
+   "from_24h_high_pct": -17.7,
+   "quote_volume_24h": 5324795,
+   "watch_only": true,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
   {
    "symbol": "NEAR",
    "pair": "NEARUSDT",
@@ -41,6 +73,38 @@
    "symbol": "MANTRA",
    "pair": "MANTRAUSDT",
    "tier": "pump",
+   "picked_at": "2026-11-26T03:45:00+08:00",
+   "entry_price_usd": 0.00333,
+   "price_at_snapshot": 0.00321,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": 0.6,
+   "change_24h_at_pick": 99.4,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261126-0733",
+   "score": 97.0,
+   "change_1h_at_pick": 22.43,
+   "change_4h_at_pick": 29.07,
+   "vol_x_avg": 8.38,
+   "vol_x_prev_hour": 0.86,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -4.03,
+   "quote_volume_24h": 15344821,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
+   "symbol": "MANTRA",
+   "pair": "MANTRAUSDT",
+   "tier": "pump",
    "picked_at": "2026-11-26T03:15:00+08:00",
    "entry_price_usd": 0.00325,
    "price_at_snapshot": 0.0033,
@@ -58,7 +122,17 @@
    "from_24h_high_pct": -5.8,
    "quote_volume_24h": 14993286,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 14.46,
+     "max_drawdown_pct": -5.85,
+     "close_pct": 1.54,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-26T07:33:55+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -90,7 +164,17 @@
    "from_24h_high_pct": -8.51,
    "quote_volume_24h": 4749415,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 10.47,
+     "max_drawdown_pct": -3.49,
+     "close_pct": 4.98,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-26T07:33:55+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -211,48 +295,6 @@
      "max_gain_pct": 18.18,
      "max_drawdown_pct": -4.09,
      "close_pct": 17.27,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-26T07:09:16+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "BIGTIME",
-   "pair": "BIGTIMEUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-25T19:30:00+08:00",
-   "entry_price_usd": 0.00735,
-   "price_at_snapshot": 0.00696,
-   "trigger_via": "15m",
-   "change_15m_at_pick": 5.0,
-   "change_24h_at_pick": 82.38,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261125-2214",
-   "score": 28.3,
-   "change_1h_at_pick": 8.73,
-   "change_4h_at_pick": -0.54,
-   "vol_x_avg": 1.46,
-   "vol_x_prev_hour": 0.9,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -30.4,
-   "quote_volume_24h": 10108873,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 1.09,
-     "max_drawdown_pct": -14.29,
-     "close_pct": -12.11,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
