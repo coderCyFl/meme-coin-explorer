@@ -951,6 +951,70 @@
      "shill_flag": null
     }
    ]
+  },
+  {
+   "batch": "gb-20261125-2252",
+   "picked_at": "2026-11-25T22:52:04+08:00",
+   "universe": 50,
+   "btc_24h_pct": -4.76,
+   "universe_all": 394,
+   "excluded_tokenized": 118,
+   "top20_24h": [
+    "BIGTIMEUSDT",
+    "MANTRAUSDT",
+    "MMTUSDT",
+    "SSVUSDT",
+    "BLURUSDT",
+    "OPGUSDT",
+    "LISTAUSDT",
+    "LAYERUSDT",
+    "BABYUSDT",
+    "WAXPUSDT",
+    "MOVEUSDT",
+    "QKCUSDT",
+    "SENTUSDT",
+    "ERAUSDT",
+    "PROMUSDT",
+    "AIGENSYNUSDT",
+    "SKYUSDT",
+    "ACEUSDT",
+    "HIVEUSDT",
+    "MBLUSDT"
+   ],
+   "entries": [
+    {
+     "symbol": "SSV",
+     "pair": "SSVUSDT",
+     "tier": "cand",
+     "picked_at": "2026-11-25T22:52:04+08:00",
+     "entry_price_usd": 1.873,
+     "price_at_snapshot": 1.873,
+     "trigger_via": null,
+     "change_15m_at_pick": null,
+     "change_24h_at_pick": 19.82,
+     "rank_24h_at_pick": 4,
+     "batch": "gb-20261125-2252",
+     "score": 28.8,
+     "change_1h_at_pick": -0.96,
+     "change_4h_at_pick": 5.08,
+     "vol_x_avg": 1.56,
+     "vol_x_prev_hour": 2.57,
+     "range_24h_pct": null,
+     "from_24h_high_pct": -2.87,
+     "quote_volume_24h": 3064730,
+     "watch_only": true,
+     "outcomes": {},
+     "exit_plan": {
+      "take_profit_pct": 20.0,
+      "take_profit2_pct": 50.0,
+      "stop_loss_pct": 10.0,
+      "suggested_exit_h": 4,
+      "suggested_second_h": 12
+     },
+     "x_verdict": null,
+     "shill_flag": null
+    }
+   ]
   }
  ]
 }
