@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-26T23:05:39+08:00",
- "batch": "gb-20261126-2304",
- "picked_at": "2026-11-26T23:04:15+08:00",
- "btc_24h_pct": 3.07,
+ "updated_at": "2026-11-26T23:45:09+08:00",
+ "batch": "gb-20261126-2343",
+ "picked_at": "2026-11-26T23:43:39+08:00",
+ "btc_24h_pct": 3.79,
  "universe": 62,
  "active": [
   {
@@ -166,6 +166,38 @@
    "shill_flag": null
   },
   {
+   "symbol": "INIT",
+   "pair": "INITUSDT",
+   "tier": "pump",
+   "picked_at": "2026-11-26T19:45:00+08:00",
+   "entry_price_usd": 0.1146,
+   "price_at_snapshot": 0.13277,
+   "trigger_via": "1h+vol",
+   "change_15m_at_pick": -4.2,
+   "change_24h_at_pick": 32.12,
+   "rank_24h_at_pick": null,
+   "batch": "gb-20261126-2343",
+   "score": 78.1,
+   "change_1h_at_pick": 5.54,
+   "change_4h_at_pick": 28.07,
+   "vol_x_avg": 3.72,
+   "vol_x_prev_hour": 4.74,
+   "range_24h_pct": null,
+   "from_24h_high_pct": -5.2,
+   "quote_volume_24h": 16074538,
+   "watch_only": false,
+   "outcomes": {},
+   "exit_plan": {
+    "take_profit_pct": 20.0,
+    "take_profit2_pct": 50.0,
+    "stop_loss_pct": 10.0,
+    "suggested_exit_h": 4,
+    "suggested_second_h": 12
+   },
+   "x_verdict": null,
+   "shill_flag": null
+  },
+  {
    "symbol": "ME",
    "pair": "MEUSDT",
    "tier": "pump",
@@ -186,7 +218,17 @@
    "from_24h_high_pct": -16.85,
    "quote_volume_24h": 6045603,
    "watch_only": false,
-   "outcomes": {},
+   "outcomes": {
+    "4h": {
+     "max_gain_pct": 3.55,
+     "max_drawdown_pct": -8.29,
+     "close_pct": -6.51,
+     "hit20": false,
+     "hit50": false,
+     "bars_1m": 240,
+     "sealed_at": "2026-11-26T23:43:38+08:00"
+    }
+   },
    "exit_plan": {
     "take_profit_pct": 20.0,
     "take_profit2_pct": 50.0,
@@ -349,48 +391,6 @@
      "max_gain_pct": 11.7,
      "max_drawdown_pct": -3.45,
      "close_pct": -1.57,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-26T23:03:50+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "牛来",
-   "pair": "牛来USDT",
-   "tier": "pump",
-   "picked_at": "2026-11-26T11:45:00+08:00",
-   "entry_price_usd": 0.04892,
-   "price_at_snapshot": 0.04951,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 3.6,
-   "change_24h_at_pick": 27.66,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261126-1303",
-   "score": 75.0,
-   "change_1h_at_pick": 5.29,
-   "change_4h_at_pick": 17.79,
-   "vol_x_avg": 7.63,
-   "vol_x_prev_hour": 9.28,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -1.57,
-   "quote_volume_24h": 6133308,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 5.68,
-     "max_drawdown_pct": -9.65,
-     "close_pct": -8.09,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
