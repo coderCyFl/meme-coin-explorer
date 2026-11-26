@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-26T07:58:17+08:00",
+ "updated_at": "2026-11-26T08:40:16+08:00",
  "batch": "gb-20261126-0733",
  "picked_at": "2026-11-26T07:33:56+08:00",
  "btc_24h_pct": 0.57,
@@ -211,48 +211,6 @@
      "max_gain_pct": 2.4,
      "max_drawdown_pct": -5.73,
      "close_pct": -3.73,
-     "hit20": false,
-     "hit50": false,
-     "bars_1m": 240,
-     "sealed_at": "2026-11-26T07:09:16+08:00"
-    }
-   },
-   "exit_plan": {
-    "take_profit_pct": 20.0,
-    "take_profit2_pct": 50.0,
-    "stop_loss_pct": 10.0,
-    "suggested_exit_h": 4,
-    "suggested_second_h": 12
-   },
-   "x_verdict": null,
-   "shill_flag": null
-  },
-  {
-   "symbol": "MMT",
-   "pair": "MMTUSDT",
-   "tier": "pump",
-   "picked_at": "2026-11-25T20:00:00+08:00",
-   "entry_price_usd": 0.2625,
-   "price_at_snapshot": 0.2752,
-   "trigger_via": "1h+vol",
-   "change_15m_at_pick": 5.55,
-   "change_24h_at_pick": 11.94,
-   "rank_24h_at_pick": null,
-   "batch": "gb-20261125-2214",
-   "score": 60.7,
-   "change_1h_at_pick": 5.04,
-   "change_4h_at_pick": 17.34,
-   "vol_x_avg": 3.04,
-   "vol_x_prev_hour": 3.57,
-   "range_24h_pct": null,
-   "from_24h_high_pct": -2.67,
-   "quote_volume_24h": 15546030,
-   "watch_only": false,
-   "outcomes": {
-    "4h": {
-     "max_gain_pct": 10.21,
-     "max_drawdown_pct": -4.53,
-     "close_pct": 8.0,
      "hit20": false,
      "hit50": false,
      "bars_1m": 240,
