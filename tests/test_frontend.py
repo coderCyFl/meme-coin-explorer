@@ -349,7 +349,7 @@ class FrontendTests(unittest.TestCase):
         """
         subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
         for path in ["css/app.css", "js/i18n.js", "js/strategy.js", "js/data.js", "js/coin3d.js", "js/app.js"]:
-            assert path + "?v=20261124" in HTML
+            assert path + "?v=20261126" in HTML
 
 
     def test_ai_watch_verdict_and_fixed_line_i18n(self):
@@ -555,6 +555,88 @@ class FrontendTests(unittest.TestCase):
 
 
 
+
+
+
+    def test_track_record_live_filters_demo_and_sticky_table(self):
+        """Live mode default device-log table omits demo rows; demo label is i18n; sticky first column."""
+        assert 'muted small">demo</span>' not in APP
+        assert 't("r.demo")' in APP and 't("r.demoLog")' in APP
+        assert 'class="demo-log"' in APP
+        assert '"r.demo": "Demo"' in I18N and '"r.demoLog": "Demo session"' in I18N
+        assert '"r.demo": "示範"' in I18N and '"r.demoLog": "示範時段"' in I18N
+        css = (ROOT / "css/app.css").read_text(encoding="utf-8")
+        assert "#sigLog { min-width: 0; max-width: 100%; }" in css
+        assert ".tbl th:first-child, .tbl td:first-child" in css
+        assert "position: sticky; left: 0;" in css
+        assert "@media (max-width: 430px)" in css
+        assert "overflow-x: clip" in css
+        assert 'href="css/app.css?v=20261126"' in HTML
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
+        node = shutil.which("node")
+        js = r"""
+          const assert = require("assert");
+          const fs = require("fs");
+          const vm = require("vm");
+          const app = fs.readFileSync("js/app.js", "utf8");
+          const start = app.indexOf("  function renderLog()");
+          const end = app.indexOf("\n  function ", start + 1);
+          assert.ok(start >= 0 && end > start, "renderLog not found");
+          const src = app.slice(start, end);
+          const copy = {
+            en: { "r.coin": "Coin", "r.time": "Time", "r.score": "Score", "r.after1": "After 1h", "r.after4": "After 4h", "r.wait": "waiting", "r.logEmpty": "Nothing logged yet.", "r.demo": "Demo", "r.demoLog": "Demo session" },
+            zh: { "r.coin": "幣", "r.time": "時間", "r.score": "分數", "r.after1": "1 小時後", "r.after4": "4 小時後", "r.wait": "等緊", "r.logEmpty": "未有紀錄。", "r.demo": "示範", "r.demoLog": "示範時段" },
+          };
+          const log = [
+            { base: "MMT", t: 1, price: 1, score: 9, p1: 1.1, p4: 1.2 },
+            { base: "WIF", t: 2, price: 1, score: 8, p1: 2.78, p4: 2.92, demo: true },
+            { base: "XLM", t: 3, price: 1, score: 7, p1: null, p4: null },
+            { base: "FET", t: 4, price: 1, score: 6, p1: 0.08, p4: 0.08, demo: true },
+            { base: "KAVA", t: 5, price: 1, score: 5, p1: 1, p4: 1 },
+          ];
+          function render(mode, lang, rows) {
+            let html = "";
+            const el = { set innerHTML(v) { html = v; }, get innerHTML() { return html; } };
+            const dict = copy[lang];
+            vm.runInNewContext(src + "\nrenderLog();", {
+              S: { market: { mode } },
+              store: { get: () => rows },
+              LOG_KEY: "cm2:siglog",
+              $: (sel) => sel === "#sigLog" ? el : null,
+              t: (k) => dict[k] ?? k,
+              esc: (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])),
+              fmtDT: () => "t",
+              fmtPct: (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v * 100).toFixed(1) + "%",
+              sign: (v) => (v > 0 ? "up" : v < 0 ? "down" : "flat"),
+            });
+            return html;
+          }
+          let html = render("live", "en", log);
+          const liveEn = html.split("<details")[0];
+          assert.ok(liveEn.includes("MMT") && liveEn.includes("XLM") && liveEn.includes("KAVA"));
+          assert.ok(!liveEn.includes("WIF") && !liveEn.includes("FET"));
+          assert.ok(!liveEn.includes("Demo") && !liveEn.includes("demo"));
+          assert.ok(html.includes('<details class="demo-log">') && html.includes("Demo session"));
+          const demoEn = html.slice(html.indexOf("<details"));
+          assert.ok(demoEn.includes("WIF") && demoEn.includes("FET"));
+          assert.ok(demoEn.includes("Demo"));
+          assert.ok(!demoEn.includes('>demo<') && !demoEn.includes('muted small">demo'));
+          html = render("live", "zh", log);
+          const liveZh = html.split("<details")[0];
+          assert.ok(liveZh.includes("MMT") && !liveZh.includes("WIF"));
+          assert.ok(html.includes("示範時段") && html.includes("示範"));
+          assert.ok(!html.includes(">demo<") && !html.includes(">Demo<"));
+          html = render("demo", "zh", log);
+          assert.ok(html.includes("WIF") && html.includes("MMT"));
+          assert.ok(!html.includes("demo-log"));
+          assert.ok(html.includes("示範") && !html.includes(">demo<"));
+          html = render("live", "en", log.filter((x) => x.demo));
+          assert.ok(html.includes("empty-box") && html.includes("Nothing logged yet."));
+          assert.ok(html.includes("Demo session") && html.includes("WIF"));
+          assert.ok(!html.split("<details")[0].includes("WIF"));
+        """
+        subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
 
 
     def test_cache_bust_and_non_caching_sw(self):

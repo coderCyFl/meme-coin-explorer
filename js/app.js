@@ -1074,11 +1074,22 @@
       <button type="button" class="btn primary wide" data-ai-go="${esc(top)}">${t("ai.go", { c: esc(base) })}</button></div>`;
   }
   function renderLog() {
-    const log = store.get(LOG_KEY, []); if (!$("#sigLog")) return;
+    const el = $("#sigLog"); if (!el) return;
+    const log = store.get(LOG_KEY, []);
+    const liveMode = S.market && S.market.mode === "live";
     const cell = (x, p) => p == null ? `<span class="muted">${t("r.wait")}</span>` : `<span class="${sign(p - x.price)}">${fmtPct(p / x.price - 1)}</span>`;
-    $("#sigLog").innerHTML = log.length ? `<div class="tbl"><table><thead><tr><th>${t("r.coin")}</th><th>${t("r.time")}</th><th>${t("r.score")}</th><th>${t("r.after1")}</th><th>${t("r.after4")}</th></tr></thead><tbody>
-      ${log.slice(0, 60).map((x) => `<tr><td><b>${esc(x.base)}</b>${x.demo ? ' <span class="muted small">demo</span>' : ""}</td><td>${fmtDT(x.t)}</td><td>${x.score}</td><td>${cell(x, x.p1)}</td><td>${cell(x, x.p4)}</td></tr>`).join("")}
-      </tbody></table></div>` : `<p class="empty-box">${t("r.logEmpty")}</p>`;
+    const row = (x, showDemoTag) => `<tr><td><b>${esc(x.base)}</b>${showDemoTag && x.demo ? ` <span class="muted small">${esc(t("r.demo"))}</span>` : ""}</td><td>${fmtDT(x.t)}</td><td>${x.score}</td><td>${cell(x, x.p1)}</td><td>${cell(x, x.p4)}</td></tr>`;
+    const table = (rows, showDemoTag) => `<div class="tbl"><table><thead><tr><th>${t("r.coin")}</th><th>${t("r.time")}</th><th>${t("r.score")}</th><th>${t("r.after1")}</th><th>${t("r.after4")}</th></tr></thead><tbody>
+      ${rows.map((x) => row(x, showDemoTag)).join("")}
+      </tbody></table></div>`;
+    const liveRows = log.filter((x) => !x.demo);
+    const demoRows = log.filter((x) => x.demo);
+    const main = (liveMode ? liveRows : log).slice(0, 60);
+    let html = main.length ? table(main, !liveMode) : `<p class="empty-box">${t("r.logEmpty")}</p>`;
+    if (liveMode && demoRows.length) {
+      html += `<details class="demo-log"><summary>${esc(t("r.demoLog"))}</summary>${table(demoRows.slice(0, 60), true)}</details>`;
+    }
+    el.innerHTML = html;
   }
   function paintStatus() {
     const live = S.market && S.market.mode === "live";
