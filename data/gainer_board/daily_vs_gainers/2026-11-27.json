@@ -1,0 +1,724 @@
+{
+ "date": "2026-11-27",
+ "scheduled_for": "2026-11-27T23:55:00+08:00",
+ "taken_at": "2026-11-27T23:55:00+08:00",
+ "as_of": "2026-11-27T23:55:00+08:00",
+ "method": "kline_asof_2355_v1",
+ "universe_all": 394,
+ "excluded_tokenized": 118,
+ "tokenized_source": "exchangeInfo:TRD_GRP_261+product-tag:bStocks",
+ "rule": "Top 20 = ALL Binance USDT spot pairs (stables / leveraged / tokenized excluded, no volume floor) by 24h %, computed from Binance 5m klines AS OF 23:55 Asia/Shanghai (close of the 5m bar ending 23:55 vs open 24h earlier) — never the live ticker at run time, so any re-run gives the same seal. Only flags timestamped before 23:55 (from snapshot batches taken by 23:55) count. A flag is EARLY only if rank_24h_at_flag > 20 and 24h % < +15% at flag time; otherwise LATE. Precision / recall use EARLY flags only; LATE reported separately.",
+ "flagged": 20,
+ "early_flagged": 14,
+ "late_flagged": 6,
+ "early_hits": 2,
+ "late_hits": 4,
+ "precision_pct": 14.3,
+ "late_precision_pct": 66.7,
+ "recall_top20_pct": 10.0,
+ "recall_top10_pct": 20.0,
+ "late_recall_top20_pct": 20.0,
+ "buyable_flagged": 14,
+ "buyable_early_hits": 2,
+ "hits": [
+  {
+   "symbol": "LISTA",
+   "pair": "LISTAUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T14:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -6.26,
+   "entry_price_usd": 0.0929,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 9,
+   "final_change_24h": 10.02,
+   "peak_time": "2026-11-27T17:00:00+08:00",
+   "lead_h": 2.8
+  },
+  {
+   "symbol": "KAVA",
+   "pair": "KAVAUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T19:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 10.09,
+   "entry_price_usd": 0.02673,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 8,
+   "final_change_24h": 10.97,
+   "peak_time": "2026-11-27T21:00:00+08:00",
+   "lead_h": 1.2
+  }
+ ],
+ "late": [
+  {
+   "symbol": "HAEDAL",
+   "pair": "HAEDALUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T11:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 36.83,
+   "entry_price_usd": 0.02467,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 2,
+   "final_change_24h": 31.64,
+   "peak_time": "2026-11-27T13:00:00+08:00",
+   "lead_h": 1.8
+  },
+  {
+   "symbol": "CFG",
+   "pair": "CFGUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T16:15:00+08:00",
+   "rank_24h_at_flag": 10,
+   "change_24h_at_flag": 6.18,
+   "entry_price_usd": 0.055,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 5,
+   "final_change_24h": 13.65,
+   "peak_time": "2026-11-27T17:00:00+08:00",
+   "lead_h": 0.8
+  },
+  {
+   "symbol": "YB",
+   "pair": "YBUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T16:15:00+08:00",
+   "rank_24h_at_flag": 4,
+   "change_24h_at_flag": 20.26,
+   "entry_price_usd": 0.0659,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 4,
+   "final_change_24h": 15.17,
+   "peak_time": "2026-11-27T16:00:00+08:00",
+   "lead_h": -0.2
+  },
+  {
+   "symbol": "PORTAL",
+   "pair": "PORTALUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T19:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 69.27,
+   "entry_price_usd": 0.02143,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 1,
+   "final_change_24h": 116.41,
+   "peak_time": "2026-11-27T23:00:00+08:00",
+   "lead_h": 3.5
+  }
+ ],
+ "missed": [
+  {
+   "symbol": "SOPH",
+   "rank": 3,
+   "change_24h": 15.29
+  },
+  {
+   "symbol": "QI",
+   "rank": 6,
+   "change_24h": 13.31
+  },
+  {
+   "symbol": "REZ",
+   "rank": 7,
+   "change_24h": 11.86
+  },
+  {
+   "symbol": "HEI",
+   "rank": 10,
+   "change_24h": 9.44
+  },
+  {
+   "symbol": "AVA",
+   "rank": 11,
+   "change_24h": 9.05
+  },
+  {
+   "symbol": "FET",
+   "rank": 12,
+   "change_24h": 8.91
+  },
+  {
+   "symbol": "CATI",
+   "rank": 13,
+   "change_24h": 8.45
+  },
+  {
+   "symbol": "TST",
+   "rank": 14,
+   "change_24h": 6.76
+  },
+  {
+   "symbol": "HYPER",
+   "rank": 15,
+   "change_24h": 6.41
+  },
+  {
+   "symbol": "MAGIC",
+   "rank": 16,
+   "change_24h": 6.05
+  },
+  {
+   "symbol": "SHELL",
+   "rank": 17,
+   "change_24h": 5.94
+  },
+  {
+   "symbol": "HYPE",
+   "rank": 18,
+   "change_24h": 5.89
+  },
+  {
+   "symbol": "OPN",
+   "rank": 19,
+   "change_24h": 5.79
+  },
+  {
+   "symbol": "SPK",
+   "rank": 20,
+   "change_24h": 4.94
+  }
+ ],
+ "top20": [
+  {
+   "symbol": "PORTAL",
+   "rank": 1,
+   "change_24h": 116.41,
+   "quote_volume_24h": 27349564
+  },
+  {
+   "symbol": "HAEDAL",
+   "rank": 2,
+   "change_24h": 31.64,
+   "quote_volume_24h": 18861251
+  },
+  {
+   "symbol": "SOPH",
+   "rank": 3,
+   "change_24h": 15.29,
+   "quote_volume_24h": 3774022
+  },
+  {
+   "symbol": "YB",
+   "rank": 4,
+   "change_24h": 15.17,
+   "quote_volume_24h": 3148241
+  },
+  {
+   "symbol": "CFG",
+   "rank": 5,
+   "change_24h": 13.65,
+   "quote_volume_24h": 7054240
+  },
+  {
+   "symbol": "QI",
+   "rank": 6,
+   "change_24h": 13.31,
+   "quote_volume_24h": 1420542
+  },
+  {
+   "symbol": "REZ",
+   "rank": 7,
+   "change_24h": 11.86,
+   "quote_volume_24h": 1834893
+  },
+  {
+   "symbol": "KAVA",
+   "rank": 8,
+   "change_24h": 10.97,
+   "quote_volume_24h": 3686257
+  },
+  {
+   "symbol": "LISTA",
+   "rank": 9,
+   "change_24h": 10.02,
+   "quote_volume_24h": 6962100
+  },
+  {
+   "symbol": "HEI",
+   "rank": 10,
+   "change_24h": 9.44,
+   "quote_volume_24h": 1085682
+  },
+  {
+   "symbol": "AVA",
+   "rank": 11,
+   "change_24h": 9.05,
+   "quote_volume_24h": 883148
+  },
+  {
+   "symbol": "FET",
+   "rank": 12,
+   "change_24h": 8.91,
+   "quote_volume_24h": 12954542
+  },
+  {
+   "symbol": "CATI",
+   "rank": 13,
+   "change_24h": 8.45,
+   "quote_volume_24h": 178929
+  },
+  {
+   "symbol": "TST",
+   "rank": 14,
+   "change_24h": 6.76,
+   "quote_volume_24h": 467320
+  },
+  {
+   "symbol": "HYPER",
+   "rank": 15,
+   "change_24h": 6.41,
+   "quote_volume_24h": 1422625
+  },
+  {
+   "symbol": "MAGIC",
+   "rank": 16,
+   "change_24h": 6.05,
+   "quote_volume_24h": 560318
+  },
+  {
+   "symbol": "SHELL",
+   "rank": 17,
+   "change_24h": 5.94,
+   "quote_volume_24h": 760540
+  },
+  {
+   "symbol": "HYPE",
+   "rank": 18,
+   "change_24h": 5.89,
+   "quote_volume_24h": 42838631
+  },
+  {
+   "symbol": "OPN",
+   "rank": 19,
+   "change_24h": 5.79,
+   "quote_volume_24h": 534468
+  },
+  {
+   "symbol": "SPK",
+   "rank": 20,
+   "change_24h": 4.94,
+   "quote_volume_24h": 2589435
+  }
+ ],
+ "flags": [
+  {
+   "symbol": "AAVE",
+   "pair": "AAVEUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T00:53:44+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 2.374,
+   "entry_price_usd": 93.14,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.47
+  },
+  {
+   "symbol": "BCH",
+   "pair": "BCHUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T00:53:44+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 6.24,
+   "entry_price_usd": 207.7,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -1.73
+  },
+  {
+   "symbol": "EIGEN",
+   "pair": "EIGENUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T00:53:44+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 4.866,
+   "entry_price_usd": 0.1099,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.18
+  },
+  {
+   "symbol": "HMSTR",
+   "pair": "HMSTRUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T00:53:44+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -9.573,
+   "entry_price_usd": 0.0001228,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.66
+  },
+  {
+   "symbol": "PNUT",
+   "pair": "PNUTUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T00:53:44+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 6.25,
+   "entry_price_usd": 0.0272,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 0.0
+  },
+  {
+   "symbol": "PYTH",
+   "pair": "PYTHUSDT",
+   "tiers": [
+    "main"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T00:53:44+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 3.794,
+   "entry_price_usd": 0.04842,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -0.27
+  },
+  {
+   "symbol": "BIGTIME",
+   "pair": "BIGTIMEUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T09:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 1.41,
+   "entry_price_usd": 0.00648,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 4.13
+  },
+  {
+   "symbol": "SSV",
+   "pair": "SSVUSDT",
+   "tiers": [
+    "early2",
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T10:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 17.1,
+   "entry_price_usd": 2.87,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -7.15
+  },
+  {
+   "symbol": "HAEDAL",
+   "pair": "HAEDALUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T11:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 36.83,
+   "entry_price_usd": 0.02467,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 2,
+   "final_change_24h": 31.64,
+   "peak_time": "2026-11-27T13:00:00+08:00",
+   "lead_h": 1.8
+  },
+  {
+   "symbol": "BLUR",
+   "pair": "BLURUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T11:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -1.66,
+   "entry_price_usd": 0.01067,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -15.6
+  },
+  {
+   "symbol": "ARB",
+   "pair": "ARBUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T13:15:00+08:00",
+   "rank_24h_at_flag": 90,
+   "change_24h_at_flag": 2.87,
+   "entry_price_usd": 0.1184,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 2.14
+  },
+  {
+   "symbol": "LINK",
+   "pair": "LINKUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T13:15:00+08:00",
+   "rank_24h_at_flag": 40,
+   "change_24h_at_flag": 4.38,
+   "entry_price_usd": 9.638,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 1.26
+  },
+  {
+   "symbol": "LISTA",
+   "pair": "LISTAUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T14:15:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": -6.26,
+   "entry_price_usd": 0.0929,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 9,
+   "final_change_24h": 10.02,
+   "peak_time": "2026-11-27T17:00:00+08:00",
+   "lead_h": 2.8
+  },
+  {
+   "symbol": "INJ",
+   "pair": "INJUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T16:00:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 5.09,
+   "entry_price_usd": 6.439,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 2.47
+  },
+  {
+   "symbol": "CFG",
+   "pair": "CFGUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T16:15:00+08:00",
+   "rank_24h_at_flag": 10,
+   "change_24h_at_flag": 6.18,
+   "entry_price_usd": 0.055,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 5,
+   "final_change_24h": 13.65,
+   "peak_time": "2026-11-27T17:00:00+08:00",
+   "lead_h": 0.8
+  },
+  {
+   "symbol": "YB",
+   "pair": "YBUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T16:15:00+08:00",
+   "rank_24h_at_flag": 4,
+   "change_24h_at_flag": 20.26,
+   "entry_price_usd": 0.0659,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 4,
+   "final_change_24h": 15.17,
+   "peak_time": "2026-11-27T16:00:00+08:00",
+   "lead_h": -0.2
+  },
+  {
+   "symbol": "GRAM",
+   "pair": "GRAMUSDT",
+   "tiers": [
+    "early2"
+   ],
+   "buyable": false,
+   "flag_time": "2026-11-27T16:30:00+08:00",
+   "rank_24h_at_flag": 113,
+   "change_24h_at_flag": 2.59,
+   "entry_price_usd": 0.991,
+   "late": false,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": 3.15
+  },
+  {
+   "symbol": "INIT",
+   "pair": "INITUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T16:30:00+08:00",
+   "rank_24h_at_flag": 2,
+   "change_24h_at_flag": 35.92,
+   "entry_price_usd": 0.12706,
+   "late": true,
+   "in_top20": false,
+   "final_rank": null,
+   "final_change_24h": -22.32
+  },
+  {
+   "symbol": "PORTAL",
+   "pair": "PORTALUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T19:30:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 69.27,
+   "entry_price_usd": 0.02143,
+   "late": true,
+   "in_top20": true,
+   "final_rank": 1,
+   "final_change_24h": 116.41,
+   "peak_time": "2026-11-27T23:00:00+08:00",
+   "lead_h": 3.5
+  },
+  {
+   "symbol": "KAVA",
+   "pair": "KAVAUSDT",
+   "tiers": [
+    "pump"
+   ],
+   "buyable": true,
+   "flag_time": "2026-11-27T19:45:00+08:00",
+   "rank_24h_at_flag": null,
+   "change_24h_at_flag": 10.09,
+   "entry_price_usd": 0.02673,
+   "late": false,
+   "in_top20": true,
+   "final_rank": 8,
+   "final_change_24h": 10.97,
+   "peak_time": "2026-11-27T21:00:00+08:00",
+   "lead_h": 1.2
+  }
+ ],
+ "by_tier": {
+  "pump": {
+   "flagged": 8,
+   "early_flagged": 4,
+   "early_hits": 2,
+   "precision_pct": 50.0,
+   "hits": [
+    "LISTA",
+    "KAVA"
+   ]
+  },
+  "early2": {
+   "flagged": 7,
+   "early_flagged": 4,
+   "early_hits": 0,
+   "precision_pct": 0.0,
+   "hits": []
+  },
+  "early": {
+   "flagged": 0,
+   "early_flagged": 0,
+   "early_hits": 0,
+   "precision_pct": null,
+   "hits": []
+  },
+  "main": {
+   "flagged": 6,
+   "early_flagged": 6,
+   "early_hits": 0,
+   "precision_pct": 0.0,
+   "hits": []
+  }
+ },
+ "x_split": {
+  "rule": "🔥 flags grouped by the first X check (-30min..+4h of the flag): hot = 熱/升溫, cold = 冷. 4h close return + hit +20% from sealed 4h outcomes; pending = not sealed yet.",
+  "hot": {
+   "flags": 0,
+   "sealed": 0,
+   "pending": 0,
+   "mean_4h_close_pct": null,
+   "hit20_pct": null
+  },
+  "cold": {
+   "flags": 0,
+   "sealed": 0,
+   "pending": 0,
+   "mean_4h_close_pct": null,
+   "hit20_pct": null
+  },
+  "unchecked": {
+   "flags": 12,
+   "sealed": 10,
+   "pending": 2,
+   "mean_4h_close_pct": -0.4,
+   "hit20_pct": 30.0
+  }
+ },
+ "sealed": true,
+ "sealed_at": "2026-11-28T02:32:31+08:00",
+ "seal_note": "補封印（run 遲 157 分鐘；數據照 23:55 K 線計，同準時一樣）"
+}
