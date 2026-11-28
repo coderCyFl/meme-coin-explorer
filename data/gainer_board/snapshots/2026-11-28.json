@@ -61,6 +61,15 @@
        "hit50": true,
        "bars_1m": 240,
        "sealed_at": "2026-11-28T07:40:18+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 142.83,
+       "max_drawdown_pct": -38.07,
+       "close_pct": -34.75,
+       "hit20": true,
+       "hit50": true,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-29T01:46:40+08:00"
       }
      },
      "exit_plan": {
@@ -103,6 +112,15 @@
        "hit50": false,
        "bars_1m": 240,
        "sealed_at": "2026-11-28T07:40:18+08:00"
+      },
+      "24h": {
+       "max_gain_pct": 9.52,
+       "max_drawdown_pct": -13.53,
+       "close_pct": -8.49,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 1440,
+       "sealed_at": "2026-11-29T01:46:40+08:00"
       }
      },
      "exit_plan": {
@@ -2102,7 +2120,17 @@
      "from_24h_high_pct": -11.04,
      "quote_volume_24h": 10844551,
      "watch_only": false,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.54,
+       "max_drawdown_pct": -10.07,
+       "close_pct": -7.72,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-29T01:46:40+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -2134,7 +2162,17 @@
      "from_24h_high_pct": -30.04,
      "quote_volume_24h": 10302832,
      "watch_only": false,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 2.19,
+       "max_drawdown_pct": -17.24,
+       "close_pct": -8.15,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-29T01:46:40+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
@@ -2166,7 +2204,17 @@
      "from_24h_high_pct": -14.09,
      "quote_volume_24h": 3612049,
      "watch_only": false,
-     "outcomes": {},
+     "outcomes": {
+      "4h": {
+       "max_gain_pct": 0.98,
+       "max_drawdown_pct": -8.72,
+       "close_pct": -4.68,
+       "hit20": false,
+       "hit50": false,
+       "bars_1m": 240,
+       "sealed_at": "2026-11-29T01:46:40+08:00"
+      }
+     },
      "exit_plan": {
       "take_profit_pct": 20.0,
       "take_profit2_pct": 50.0,
