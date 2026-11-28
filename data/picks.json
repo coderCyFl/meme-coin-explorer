@@ -17219,6 +17219,278 @@
      ]
     }
    ]
+  },
+  {
+   "id": "batch-042",
+   "created_at": "2026-11-29T00:47:49+08:00",
+   "x_window": null,
+   "method": "scripts/make_bn_setup_picks.mjs multi-angle OHLCV precursors (vol creep, compression, RS vs BTC, accumulation); rotation stopped + higher_lows ¼ (20261030g); excludes hard 24h pumps from primary",
+   "regime": {
+    "state": "weak",
+    "btc24h_pct": -0.89,
+    "breadth_up_pct": 5.6,
+    "sizing": "half",
+    "rule": "weak if BTC 24h < -2% or <30% of scanned coins green; weak => max 4 buys ranked by RS vs BTC, half size"
+   },
+   "setup_size_gate": {
+    "size": "full",
+    "rolling7d_sealed_ew_pct": 0.48,
+    "n": 28,
+    "seal_hours": {
+     "12h": 28
+    },
+    "rule": "setup picks ¼ size until rolling 7d avg sealed exit-aware return_pct (non-chase buys; seal = snapshot_outcomes first-horizon record, 12h sell_by for setup_20261030e, legacy 24h) > 0; 🚀 chase 唔受 ¼ gate 限 (細盤 24h vol < $3M 仍用 size:bonus)"
+   },
+   "setup_exit": {
+    "tp": 10,
+    "sl": 4,
+    "reviewH": 6,
+    "sellH": 12
+   },
+   "benchmarks": {
+    "BTC": {
+     "chain": "binance",
+     "address": "binance:BTCUSDT",
+     "pair_address": "BTCUSDT",
+     "price_usd": 59627.16
+    },
+    "SOL": {
+     "chain": "binance",
+     "address": "binance:SOLUSDT",
+     "pair_address": "SOLUSDT",
+     "price_usd": 70.72
+    }
+   },
+   "entries": [
+    {
+     "id": "20261129-042-UNI",
+     "batch": "batch-042",
+     "type": "buy",
+     "created_at": "2026-11-29T00:47:49+08:00",
+     "chain": "binance",
+     "token_address": "binance:UNIUSDT",
+     "pair_address": "UNIUSDT",
+     "dex": "binance-spot",
+     "symbol": "UNI",
+     "name": "UNI (Binance)",
+     "url": "https://www.binance.com/en/trade/UNI_USDT",
+     "entry_price_usd": 4.685,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 17317285.09188,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -2.028,
+      "high24h": 4.904,
+      "low24h": 4.623,
+      "vol_creep": 0.623,
+      "rel_vs_btc_7d": -0.29,
+      "compression": 1.605,
+      "angle": "accumulation"
+     },
+     "model_score": 38,
+     "score_parts": {
+      "vol_creep": 0,
+      "compression": 10.882947784880198,
+      "relative": 0,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 18,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.048099758415562,
+      "chase_penalty": 0
+     },
+     "conviction": 38,
+     "rationale": "24h 只 -2.0%，但成交較 7 日均低 38% · 靜吸（角度：accumulation。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "24h 只 -2.0%，但成交較 7 日均低 38% · 靜吸",
+     "angle": "accumulation",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:accumulation",
+      "regime:weak",
+      "size:half"
+     ],
+     "size": "half",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "UNIUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 5.1535,
+     "stop_price_usd": 4.4976,
+     "review_at": "2026-11-29T06:47:49+08:00",
+     "sell_by": "2026-11-29T12:47:49+08:00",
+     "exit_plan": "目標 +10%（$5.1535）· 止蝕 −4%（$4.4976）· 6h 檢討 · 最遲 12h 沽"
+    },
+    {
+     "id": "20261129-042-PENDLE",
+     "batch": "batch-042",
+     "type": "buy",
+     "created_at": "2026-11-29T00:47:49+08:00",
+     "chain": "binance",
+     "token_address": "binance:PENDLEUSDT",
+     "pair_address": "PENDLEUSDT",
+     "dex": "binance-spot",
+     "symbol": "PENDLE",
+     "name": "PENDLE (Binance)",
+     "url": "https://www.binance.com/en/trade/PENDLE_USDT",
+     "entry_price_usd": 1.158,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 1970825.5325,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -3.741,
+      "high24h": 1.226,
+      "low24h": 1.147,
+      "vol_creep": 1.359,
+      "rel_vs_btc_7d": -8.28,
+      "compression": 1.925,
+      "angle": "mean_reversion"
+     },
+     "model_score": 73,
+     "score_parts": {
+      "vol_creep": 10.044609704961534,
+      "compression": 16,
+      "relative": 14.897445285038712,
+      "higher_lows": 0,
+      "rotation": 24,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 7.868310225030806,
+      "chase_penalty": 0
+     },
+     "conviction": 73,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "size": "half",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "PENDLEUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 1.2738,
+     "stop_price_usd": 1.11168,
+     "review_at": "2026-11-29T06:47:49+08:00",
+     "sell_by": "2026-11-29T12:47:49+08:00",
+     "exit_plan": "目標 +10%（$1.2738）· 止蝕 −4%（$1.11168）· 6h 檢討 · 最遲 12h 沽"
+    },
+    {
+     "id": "20261129-042-TRUMP",
+     "batch": "batch-042",
+     "type": "buy",
+     "created_at": "2026-11-29T00:47:49+08:00",
+     "chain": "binance",
+     "token_address": "binance:TRUMPUSDT",
+     "pair_address": "TRUMPUSDT",
+     "dex": "binance-spot",
+     "symbol": "TRUMP",
+     "name": "TRUMP (Binance)",
+     "url": "https://www.binance.com/en/trade/TRUMP_USDT",
+     "entry_price_usd": 0.746,
+     "entry_snapshot": {
+      "liquidity_usd": 1000000000000,
+      "volume24h_usd": 16283707.412817,
+      "market_cap_usd": null,
+      "fdv_usd": null,
+      "pair_age_h": null,
+      "chg24h_pct": -13.657,
+      "high24h": 0.888,
+      "low24h": 0.737,
+      "vol_creep": 2.892,
+      "rel_vs_btc_7d": -15.23,
+      "compression": 0.988,
+      "angle": "mean_reversion"
+     },
+     "model_score": 39,
+     "score_parts": {
+      "vol_creep": 22,
+      "compression": 0,
+      "relative": 18,
+      "higher_lows": 0,
+      "rotation": 0,
+      "accumulation": 0,
+      "breakout": 0,
+      "precursor_echo": 0,
+      "turnover": 9.014691612916824,
+      "chase_penalty": -10
+     },
+     "conviction": 39,
+     "rationale": "仍近區間中低位，量回暖 · 睇反彈多過追升（角度：mean_reversion。唔係因為 24h 已經升最多；用 1d+1h OHLCV 睇量能／壓縮／相對 BTC／輪動。）",
+     "tip": "仍近區間中低位，量回暖 · 睇反彈多過追升",
+     "angle": "mean_reversion",
+     "flags": [
+      "Binance USDT spot",
+      "multi-angle setup",
+      "not 24h gainer rank",
+      "angle:mean_reversion",
+      "regime:weak",
+      "size:half"
+     ],
+     "size": "half",
+     "exitRegime": "weak",
+     "exit_rule": "setup_20261030e",
+     "suggested_exit_h": 6,
+     "suggested_second_h": 12,
+     "take_profit_pct": 10,
+     "stop_loss_pct": 4,
+     "evidence": {
+      "source": "binance-klines-1d-1h",
+      "symbol": "TRUMPUSDT",
+      "note": "Setup scored from public OHLCV precursors; primary list excludes hard 24h pumps."
+     },
+     "horizons_h": [
+      12,
+      24,
+      72,
+      168
+     ],
+     "target_price_usd": 0.8206,
+     "stop_price_usd": 0.71616,
+     "review_at": "2026-11-29T06:47:49+08:00",
+     "sell_by": "2026-11-29T12:47:49+08:00",
+     "exit_plan": "目標 +10%（$0.8206）· 止蝕 −4%（$0.71616）· 6h 檢討 · 最遲 12h 沽"
+    }
+   ]
   }
  ]
 }
