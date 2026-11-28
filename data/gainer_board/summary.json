@@ -1,16 +1,16 @@
 {
- "updated_at": "2026-11-28T08:14:14+08:00",
- "batches": 246,
- "flags": 780,
+ "updated_at": "2026-11-28T09:40:53+08:00",
+ "batches": 247,
+ "flags": 784,
  "horizons": {
   "4h": {
-   "n": 777,
+   "n": 779,
    "hit20": 44,
    "hit50": 6,
    "avg_max_gain_pct": 5.64,
-   "avg_close_pct": -1.03,
-   "avg_max_drawdown_pct": -5.24,
-   "closed_up": 288
+   "avg_close_pct": -1.04,
+   "avg_max_drawdown_pct": -5.25,
+   "closed_up": 289
   },
   "24h": {
    "n": 753,
@@ -25,13 +25,13 @@
  "tiers": {
   "pump": {
    "4h": {
-    "n": 331,
+    "n": 333,
     "hit20": 36,
     "hit50": 5,
-    "avg_max_gain_pct": 8.97,
-    "avg_close_pct": -1.33,
-    "avg_max_drawdown_pct": -7.6,
-    "closed_up": 109
+    "avg_max_gain_pct": 8.96,
+    "avg_close_pct": -1.36,
+    "avg_max_drawdown_pct": -7.62,
+    "closed_up": 110
    },
    "24h": {
     "n": 317,
@@ -42,7 +42,7 @@
     "avg_max_drawdown_pct": -13.79,
     "closed_up": 80
    },
-   "flags": 334
+   "flags": 335
   },
   "early2": {
    "4h": {
@@ -63,7 +63,7 @@
     "avg_max_drawdown_pct": -6.83,
     "closed_up": 153
    },
-   "flags": 440
+   "flags": 443
   },
   "early": {
    "4h": {
@@ -97,106 +97,40 @@
     "closed_up": 298
    },
    "24h": {
-    "n": 714,
-    "hit20": 62,
+    "n": 725,
+    "hit20": 63,
     "hit50": 10,
     "avg_max_gain_pct": 8.04,
-    "avg_close_pct": -1.88,
-    "avg_max_drawdown_pct": -7.03,
-    "closed_up": 242
+    "avg_close_pct": -1.91,
+    "avg_max_drawdown_pct": -7.05,
+    "closed_up": 245
    },
-   "flags": 749
+   "flags": 754
   }
  },
  "latest_4h": {
-  "batch": "gb-20261128-0230",
-  "picked_at": "2026-11-28T02:30:12+08:00",
+  "batch": "gb-20261128-0740",
+  "picked_at": "2026-11-28T07:40:27+08:00",
   "entries": [
    {
-    "symbol": "PORTAL",
+    "symbol": "THE",
     "tier": "pump",
-    "entry_price_usd": 0.02314,
-    "change_24h_at_pick": 83.21,
-    "max_gain_pct": 88.94,
-    "close_pct": 65.56,
-    "max_drawdown_pct": -4.28,
-    "hit20": true,
-    "hit50": true
+    "entry_price_usd": 0.0359,
+    "change_24h_at_pick": 39.15,
+    "max_gain_pct": 8.36,
+    "close_pct": -15.6,
+    "max_drawdown_pct": -16.71,
+    "hit20": false,
+    "hit50": false
    },
    {
-    "symbol": "HEI",
+    "symbol": "SKY",
     "tier": "pump",
-    "entry_price_usd": 0.0872,
-    "change_24h_at_pick": 16.58,
-    "max_gain_pct": 9.52,
-    "close_pct": -6.54,
-    "max_drawdown_pct": -7.57,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "RENDER",
-    "tier": "early2",
-    "entry_price_usd": 1.398,
-    "change_24h_at_pick": 5.99,
-    "max_gain_pct": 1.29,
-    "close_pct": 0.64,
-    "max_drawdown_pct": -1.14,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "COOKIE",
-    "tier": "early2",
-    "entry_price_usd": 0.00858,
-    "change_24h_at_pick": 12.75,
-    "max_gain_pct": 1.98,
-    "close_pct": -7.58,
-    "max_drawdown_pct": -7.58,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "HAEDAL",
-    "tier": "early2",
-    "entry_price_usd": 0.02422,
-    "change_24h_at_pick": 33.37,
-    "max_gain_pct": 0.5,
-    "close_pct": -2.73,
-    "max_drawdown_pct": -9.37,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "CFG",
-    "tier": "cand",
-    "entry_price_usd": 0.0566,
-    "change_24h_at_pick": 15.03,
-    "max_gain_pct": 3.36,
-    "close_pct": 0.18,
-    "max_drawdown_pct": -1.41,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "YB",
-    "tier": "cand",
-    "entry_price_usd": 0.0575,
-    "change_24h_at_pick": 10.44,
-    "max_gain_pct": 0.87,
-    "close_pct": 0.17,
-    "max_drawdown_pct": -1.04,
-    "hit20": false,
-    "hit50": false
-   },
-   {
-    "symbol": "KAVA",
-    "tier": "cand",
-    "entry_price_usd": 0.02691,
-    "change_24h_at_pick": 7.01,
-    "max_gain_pct": 2.68,
-    "close_pct": 1.64,
-    "max_drawdown_pct": -1.23,
+    "entry_price_usd": 0.05141,
+    "change_24h_at_pick": 11.91,
+    "max_gain_pct": 6.42,
+    "close_pct": 1.69,
+    "max_drawdown_pct": -2.61,
     "hit20": false,
     "hit50": false
    }
