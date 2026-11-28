@@ -586,6 +586,8 @@
   document.addEventListener("pointerup", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
   document.addEventListener("pointercancel", () => { gPointerDown = false; gInteractionUntil = Date.now() + 350; scheduleGainers(); });
   window.addEventListener("scroll", () => { gInteractionUntil = Date.now() + 500; scheduleGainers(); }, { passive: true });
+  const gainerScrollRoot = document.querySelector(".main");
+  if (gainerScrollRoot) gainerScrollRoot.addEventListener("scroll", () => { gInteractionUntil = Date.now() + 500; scheduleGainers(); }, { passive: true });
   function paintGainerList(el, syms, emptyHTML) {
     if (!syms.length) {
       // Empty list has no rows to protect. Apply current copy even during the
@@ -1120,6 +1122,8 @@
     if (activeBottom && activeBottom.scrollIntoView) activeBottom.scrollIntoView({ inline: "nearest", block: "nearest" });
     if ($("#detailSheet").open) $("#detailSheet").close();
     window.scrollTo(0, 0);
+    const main = document.querySelector(".main");
+    if (main) main.scrollTop = 0;
     if (ok === "aiwatch" && !S.awAt && !S.awLoading) loadAiWatch();
   }
 

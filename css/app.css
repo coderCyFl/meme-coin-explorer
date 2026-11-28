@@ -350,6 +350,34 @@ dialog.small .err { padding: 10px 12px; border-radius: 10px; background: var(--d
 .toast[hidden] { display: none; }
 .loader { display: inline-block; width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--surface-2); border-top-color: var(--accent); animation: sweep .8s linear infinite; }
 
+/* Phone: bottom bar sits in the column, not over the scrollport, so list
+   rows, Track Record, and Radar Hits never paint under it. Empty Portfolio
+   is compacted so Reset / 重設模擬錢 is on the first screen at ~375px. */
+@media (max-width: 1079px) {
+  html, body { height: 100%; height: 100dvh; }
+  body { overflow-x: clip; overflow-y: hidden; }
+  .app { height: 100%; height: 100dvh; display: flex; flex-direction: column; overflow-x: clip; overflow-y: hidden; }
+  .top { flex: none; }
+  .main {
+    flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    padding-bottom: 24px;
+    scroll-padding-bottom: calc(var(--nav-h) + 36px + env(safe-area-inset-bottom));
+  }
+  .bottom {
+    position: relative; flex: none;
+    height: auto;
+    min-height: calc(var(--nav-h) + env(safe-area-inset-bottom));
+  }
+  .page[data-page="portfolio"] .page-head { margin: 8px 0 10px; }
+  .page[data-page="portfolio"] h2 { margin: 14px 0 8px; }
+  .page[data-page="portfolio"] .empty-box { padding: 12px 14px; }
+  .page[data-page="portfolio"] .empty-box .mascot-img { width: 48px; height: 48px; }
+  .page[data-page="portfolio"] .stat { padding: 10px 12px; }
+  .page[data-page="portfolio"] .stat.big b { font-size: 1.7rem; }
+  .page[data-page="portfolio"] .reset-row { margin-top: 16px; }
+  .foot { margin: 16px 0 8px; }
+}
+
 /* ---------- tablet / desktop ---------- */
 @media (min-width: 760px) {
   .main { padding-left: max(28px, env(safe-area-inset-left, 0px)); padding-right: max(28px, env(safe-area-inset-right, 0px)); }

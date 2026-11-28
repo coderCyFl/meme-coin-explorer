@@ -349,7 +349,7 @@ class FrontendTests(unittest.TestCase):
         """
         subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
         for path in ["css/app.css", "js/i18n.js", "js/strategy.js", "js/data.js", "js/coin3d.js", "js/app.js"]:
-            assert path + "?v=20261126" in HTML
+            assert path + "?v=20261128" in HTML
 
 
     def test_ai_watch_verdict_and_fixed_line_i18n(self):
@@ -571,7 +571,7 @@ class FrontendTests(unittest.TestCase):
         assert "position: sticky; left: 0;" in css
         assert "@media (max-width: 430px)" in css
         assert "overflow-x: clip" in css
-        assert 'href="css/app.css?v=20261126"' in HTML
+        assert 'href="css/app.css?v=20261128"' in HTML
         sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
         self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
         node = shutil.which("node")
@@ -637,6 +637,25 @@ class FrontendTests(unittest.TestCase):
           assert.ok(!html.split("<details")[0].includes("WIF"));
         """
         subprocess.run([node, "-e", js], cwd=ROOT, check=True, capture_output=True, text=True)
+
+
+
+    def test_mobile_bottom_nav_clearance_and_empty_portfolio_reset(self):
+        """Daily 28 Nov: in-flow bottom bar; empty Portfolio Reset on first screen; desk ≥1080 unchanged."""
+        css = (ROOT / "css/app.css").read_text(encoding="utf-8")
+        assert "@media (max-width: 1079px)" in css
+        assert "flex-direction: column" in css
+        assert "overflow-y: auto" in css
+        assert ".bottom {\n    position: relative; flex: none;" in css
+        assert '.page[data-page="portfolio"] .reset-row' in css
+        assert "@media (min-width: 1080px)" in css
+        assert ".top, .bottom { display: none; }" in css
+        assert ".app { display: grid; grid-template-columns: 232px minmax(0, 1fr) minmax(360px, 420px); }" in css
+        assert ".main { max-width: none; width: 100%; padding: 24px 28px 40px; }" in css
+        assert 'href="css/app.css?v=20261128"' in HTML
+        assert "main.scrollTop = 0" in APP
+        sha = subprocess.check_output(["git", "hash-object", str(ROOT / "js/strategy.js")], text=True).strip()
+        self.assertEqual(sha, "30b15dc7283d5afc411706e2244e288bf3bd4277")
 
 
     def test_cache_bust_and_non_caching_sw(self):
